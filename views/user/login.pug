@@ -1,0 +1,33 @@
+extends ../layout
+
+block content
+  #home.parallax-content-list.baner-content-listing-biz
+    .container
+      .xxx
+        a.btn-gp-link(href="/auth/facebook")
+          button.btn-fb
+            i.fa.fa-fw.fa-facebook.pull-left(aria-hidden='true')          
+            |                 Login with Facebook
+        br
+        a.btn-gp-link(href="/auth/google")
+          button.btn-gp
+            i.fa.fa-fw.fa-google-plus.pull-left(aria-hidden='true')          
+            |                 Login with Google
+        br
+        .signup-or-separator
+          span.h6.signup-or-separator--text or
+          hr
+        form(method="post", action="/login")
+          .form-group
+            input#exampleInputEmaillog.form-control-form(type='text', placeholder='username',name='username')
+          .form-group
+            input#exampleInputPasswordpas.form-control-form(type='password', placeholder='Password',name='password')
+          .row
+            .col-md-6
+              .checkbox
+                label
+                  input(type='checkbox')
+                  |  Remember me
+            .col-md-4.col-md-offset-2
+              p.frgt-pswd(data-toggle='modal', data-dismiss='modal', data-target='#at-reset-pswd')  Forgot Password ?
+          button.btn-lgin(type='submit') Login

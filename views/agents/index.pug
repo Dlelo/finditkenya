@@ -1,0 +1,40 @@
+extends ../admin/admin-layout
+
+block content
+  // /.row
+  // ==============================================================
+  // Different data widgets
+  // ==============================================================
+  // .row
+  .row
+    .col-md-12.col-lg-12.col-sm-12
+      .white-box
+        .col-md-3.col-sm-4.col-xs-6.pull-right
+          select.form-control.pull-right.row.b-none
+            option March 2017
+            option April 2017
+            option May 2017
+            option June 2017
+            option July 2017
+        h3.box-title Agents
+        .table-responsive
+          table.table
+            thead
+              tr
+                th #
+                th NAME
+                th PHONE
+                th ACTIONS
+            tbody
+              each agent,i in agents
+                tr
+                  td #{i+1}
+                  td.txt-oflo
+                    =agent.name
+                  td 
+                    =agent.phone
+                  td
+                    span.text-info
+                      a(href="/admin/agent/number/"+agent.phone, title="see businesses")
+                        i.fa.fa-eye.fa-fw(aria-hidden='true')
+              

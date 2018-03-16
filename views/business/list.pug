@@ -1,0 +1,117 @@
+extends ../layout
+
+block content
+    #home.parallax-content-list.baner-content-listing-biz
+      .row
+      .col-md-3
+          if subcategory
+              .panel-heading.category
+                .text-center
+                  a(href="/subcategory/"+subcategory)
+                    i.fa.fa-cog   
+                    =subcategory
+          
+          if subcategory
+            .panel.panel-warning
+              .panel-body.black
+                strong Filter   
+                   .panel-heading.category
+                     a(href="/nearby/"+features[0].name+"/"+subcategory)
+                      i.fa.fa-cog   
+                      |  Nearby
+          .dropdown
+            button.btn.btn-default.form-control.dropdown-toggle(type='button', data-toggle='dropdown')
+              | Filter Sub Categories  
+              span.caret
+            ul.dropdown-menu(style="width: -webkit-fill-available;")
+              if features            
+                each feature in features
+                  each item in feature.subcategories
+                    .panel-heading.category
+                      li.text-center
+                        a(href="/subcategory/"+item.name)
+                          i.fa.fa-cog   
+                          =item.name
+      .col-md-9
+        ul
+        each biz in businesses
+          .row.flowerwhite
+            li
+              a(href="/"+biz.slug)
+                .col-md-4
+                  img(src="/uploads/"+ biz.photo, height="200px")
+                .col-md-8
+                  h3.text-left
+                    =biz.name
+                  p.padding.text-left  !{biz.description.substr(0, 150) + '..... <strong style="color:#d44457">Read More</strong>'}
+                .col-md-12                  
+                  .row
+                    .col-md-3.text-primary
+                      p 
+                        span.glyphicon.glyphicon-th-list.glyph.border 
+                        |  #{biz.subcategory}
+                    .col-md-3
+                      p 
+                        span.glyphicon.glyphicon-globe.text-success.glyph.border 
+                        a(href=biz.website,target="_blank")
+                          |  website
+                    .col-md-3
+                      p 
+                        span.glyphicon.glyphicon-earphone.text-info.glyph.border 
+                        |  #{biz.phone}
+                    .col-md-3
+                      p
+                        if biz.reviews
+                          if( biz.reviews.length == 1) 
+                            .col-md-6(class="rating medium star-icon value-4 label-hidden")
+                              .star-container
+                                .star
+                                  i.star-empty
+                                  i.star-half
+                                  i.star-filled
+                                .star
+                                  i.star-empty
+                                  i.star-half
+                                  i.star-filled
+                                .star
+                                  i.star-empty
+                                  i.star-half
+                                  i.star-filled
+                                .star
+                                  i.star-empty
+                                  i.star-half
+                                  i.star-filled
+                                .star
+                                  i.star-empty
+                                  i.star-half
+                                  i.star-filled
+                            small
+                              | #{biz.reviews.length} Review
+                          else if( biz.reviews.length > 1)
+                            span.glyphicon.glyphicon-cog.glyph.border
+                              div(class="rating medium star-icon value-4 label-hidden")
+                                .star-container
+                                  .star
+                                    i.star-empty
+                                    i.star-half
+                                    i.star-filled
+                                  .star
+                                    i.star-empty
+                                    i.star-half
+                                    i.star-filled
+                                  .star
+                                    i.star-empty
+                                    i.star-half
+                                    i.star-filled
+                                  .star
+                                    i.star-empty
+                                    i.star-half
+                                    i.star-filled
+                                  .star
+                                    i.star-empty
+                                    i.star-half
+                                    i.star-filled
+                            |  #{biz.reviews.length} Reviews
+                          else
+                            span.glyphicon.glyphicon-cog.glyph.border
+                            |  Be the first to review

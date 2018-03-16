@@ -1,0 +1,80 @@
+extends ../layout
+
+block content
+  #home.parallax-content-list.baner-content-listing-biz
+    .container
+      h4 Claim This Business
+      form(method='post', action='/claim/'+bizid)
+        .form-group
+          input.form-control-form(name='phone', type='text', value='', placeholder='phone *', required)
+        .form-group
+          input.form-control-form(name='email', type='text', value='', placeholder='email *', required)
+        .form-group
+          .row
+            .col-md-4
+              .panel.panel-info
+                .panel-heading
+                  strong
+                    |  Bronze (KES: 2320)
+                .panel-body
+                  ul
+                    li
+                      | Upto 6 Images
+                    li
+                      | 120 Words to describe your business  
+                    li
+                      | 10 keywords
+                    li
+                      | Map Location
+                    li
+                      | 1 catalog/Menu
+                    li
+                      | Upto 6 Images
+                  input.form-control-form(name='package', type='radio', value='bronze')
+            .col-md-4
+              .panel.panel-warning
+                .panel-heading
+                  strong
+                    |  Silver (KES: 5600)
+                .panel-body
+                  ul
+                    li
+                      | Upto 10 Images
+                    li
+                      | 120 Words to describe your business  
+                    li
+                      | Upto 25 keywords
+                    li
+                      | Map Location
+                    li
+                      | Upto 3 catalog/Menu(s)
+                    li
+                      | Priority Listing one day per month
+                    li
+                      | 1 free news letter adverts per month
+                  input.form-control-form(name='package', type='radio', value='silver')
+            .col-md-4
+              .panel.panel-danger
+                .panel-heading
+                  strong
+                    |  Gold (KES: 13920)
+                .panel-body
+                  ul
+                    li
+                      | Unlimited Images
+                    li
+                      | Unlimited Words to describe your business  
+                    li
+                      | Upto 100 keywords
+                    li
+                      | Map Location
+                    li
+                      | Unlimited catalog/Menu(s)
+                    li
+                      | Priority Listing three day per month
+                    li
+                      | 3 free news letter adverts per month
+                  input.form-control-form(name='package', type='radio', value='gold')
+        .form-group
+          button.btn.btn-danger.form-control-form.btn-gp(type='submit')                 
+            | Claim Business

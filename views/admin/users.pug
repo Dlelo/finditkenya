@@ -1,0 +1,74 @@
+extends admin-layout
+
+block content
+  // /.row
+  // ==============================================================
+  // Different data widgets
+  // ==============================================================
+  // .row
+  .row
+    .col-lg-4.col-sm-6.col-xs-12
+      .white-box.analytics-info
+        h3.box-title Total Visit
+        ul.list-inline.two-part
+          li
+            #sparklinedash
+          li.text-right
+            i.ti-arrow-up.text-success
+            span.counter.text-success 659
+    .col-lg-4.col-sm-6.col-xs-12
+      .white-box.analytics-info
+        h3.box-title Total Page Views
+        ul.list-inline.two-part
+          li
+            #sparklinedash2
+          li.text-right
+            i.ti-arrow-up.text-purple
+            span.counter.text-purple 869
+    .col-lg-4.col-sm-6.col-xs-12
+      .white-box.analytics-info
+        h3.box-title Unique Visitor
+        ul.list-inline.two-part
+          li
+            #sparklinedash3
+          li.text-right
+            i.ti-arrow-up.text-info
+            span.counter.text-info 911
+  // ==============================================================
+  // table
+  // ==============================================================
+  .row
+    .col-md-12.col-lg-12.col-sm-12
+      .white-box
+        .col-md-3.col-sm-4.col-xs-6.pull-right
+          select.form-control.pull-right.row.b-none
+            option March 2017
+            option April 2017
+            option May 2017
+            option June 2017
+            option July 2017
+        h3.box-title Businesses
+        .table-responsive
+          table.table
+            thead
+              tr
+                th #
+                th NAME
+                th PHONE
+                th EMAIL
+                th BUSINESSES
+            tbody
+              each user in users
+                tr
+                  td 1
+                  td 
+                    =user.names
+                  td.txt-oflo 
+                    =user.phone
+                  td
+                    span.text-success
+                      =user.email
+                  td
+                    span.text-success
+                      a(href="/admin/user/"+user.username, title="see businesses")
+                        i.fa.fa-eye.fa-fw(aria-hidden='true')

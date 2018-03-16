@@ -1,0 +1,212 @@
+extends ../layout
+
+block content
+  #home.parallax-content-list.baner-content-listing-biz
+    .container
+      .row.flowerwhite
+        .row          
+          .col-md-3
+            img.img-responsive(src="/uploads/thumbs/cover"+ biz.photo,width="80%") 
+          .col-md-9
+            h3.text-left 
+              =biz.name
+            
+            p.text-left
+              if (biz.openstatus.isOpen)
+                if (biz.openstatus.isOpen == true)
+                  span.label.label-success
+                    span.glyphicon.glyphicon-ok-circle.glyph
+                    |  Now Open
+                else
+                  span.label.label-danger
+                    span.glyphicon.glyphicon-ban-circle.glyph
+                    |  Now Closed
+              - var list = [1,2,3,4,5]
+              - list.sort((a,b)=>{return Math.random()-0.5})
+              each feature in biz.features
+                a(href="/subcategory/"+feature)
+                  span.glyphicon.glyphicon-cog.text-default.glyph
+                  |  #{feature}   
+            
+        .row                        
+          .col-md-4.padding-map.mapbox.nomargin
+            
+            iframe(width='90%', height='150', frameborder='0', style='border:0', src='https://www.google.com/maps/embed/v1/view?zoom='+biz.map.zoom+'&center='+biz.map.lati+','+biz.map.long+'&key=AIzaSyA0P3blnbZTWe7vHDrbX3Bsd7RA2Y5ViTk', allowfullscreen='',)
+            .row.is-island
+              .col-md-12
+                if biz.building
+                  p.text-left
+                    span.fa.fa-building
+                      |  #{biz.building}
+                if biz.street
+                  p.text-left
+                    span.fa.fa-road
+                      |  #{biz.street}
+              .col-md-12
+                p.text-left
+                  span.glyphicon.glyphicon-th-list.glyph.border
+                  |  #{biz.subcategory}
+                hr.nomargin
+              .col-md-12
+                p.text-left
+                  span.glyphicon.glyphicon-globe.text-success.glyph.border
+                  a.findit(href="http://"+biz.website,target="_blank")
+                    |  website
+                hr.nomargin
+              .col-md-12
+                p.text-left
+                  each phone in phones
+                    span.glyphicon.glyphicon-earphone.text-info.glyph.border
+                    a.findit(href="tel:"+phone)
+                      |  #{phone}
+                    br
+                hr.nomargin
+              .col-md-12
+                p.text-left
+                  each email in emails
+                    span.fa.fa-envelope.glyph.border
+                    a.findit(href="mailto:"+email)
+                      |  Mail
+                    br
+                hr.nomargin
+              .col-md-12.text-left
+                if biz.catalog
+                  each catalogue in biz.catalog
+                    span.glyphicon.glyphicon-list-alt.glyph.border
+                    a.findit(href="/business/catalog/"+catalogue.filename, target="_blank")
+                      |  #{catalogue.filename} 
+                    hr   
+              .col-md-12.text-center
+                if biz.paid
+                  span.fa.fa-check-circle.strong(style="color:#2862ec;")
+                  strong
+                    |  Claimed
+                else
+                  h4 Claim This Business
+                  form(method='get', action='/claim-form/'+biz.id)
+                    .form-group
+                      input.form-control(name='phone', type='text', value='', placeholder='phone')
+                    .form-group
+                      input.form-control(name='email', type='text', value='', placeholder='email')
+                    .form-group
+                      button.btn.btn-danger.form-control(type='submit')                 
+                        | Claim Business
+          .col-md-7.col-xs-12
+            
+            .row(width="100%")
+                #lightgallery.thumbnails.scrollmenu
+                  if biz.gallery
+                    each image in biz.gallery
+                      a.nopadding(href='/uploads/'+image.filename, width="", alt='#{biz.slug}')
+                        .thumbnail
+                          img.img-thumbnail.img-responsive(src='/uploads/thumbs/gallery-'+image.filename,  alt='')
+            if biz.description
+              .panel.panel-info
+                .panel-heading Description
+                .panel-body
+                  p.padding-p  !{biz.description}
+            if (biz.openstatus.isOpen)
+              .row
+                .col-md-12.is-island
+                  strong
+                    |  Hours
+                .col-md-12
+                  each hour in biz.hours.monday
+                    p Mon: #{hour.opens} - #{hour.closes}
+                  each hour in biz.hours.tuesday
+                    p Tue: #{hour.opens} - #{hour.closes}
+                  each hour in biz.hours.wednesday
+                    p Wed: #{hour.opens} - #{hour.closes}
+                  each hour in biz.hours.thursday
+                    p Thu: #{hour.opens} - #{hour.closes}
+                  each hour in biz.hours.friday
+                    p Fri: #{hour.opens} - #{hour.closes}
+                  each hour in biz.hours.saturday
+                    p Sat: #{hour.opens} - #{hour.closes}
+                  each hour in biz.hours.sunday
+                    p Sun: #{hour.opens} - #{hour.closes}
+
+            .row
+              .panel-body                
+                if biz.extras.length 
+                  each extra in biz.extras 
+                    span.label.label-dark
+                      =extra
+            
+          if biz.youtube
+            .col-md-6
+              iframe(width='100%', height='315', src=biz.youtube)
+          
+        .row
+          .col-md-12
+            h3.text-left
+              | Reviews
+            each review in biz.reviews              
+              .row               
+                .col-md-4.text-left 
+                  span.glyphicon.glyphicon-comment.glyph.border
+                .col-md-8
+                  .col-md-6(class="rating medium star-icon value-"+review.rate+" label-hidden")
+                    .star-container
+                      .star
+                        i.star-empty
+                        i.star-half
+                        i.star-filled
+                      .star
+                        i.star-empty
+                        i.star-half
+                        i.star-filled
+                      .star
+                        i.star-empty
+                        i.star-half
+                        i.star-filled
+                      .star
+                        i.star-empty
+                        i.star-half
+                        i.star-filled
+                      .star
+                        i.star-empty
+                        i.star-half
+                        i.star-filled
+                .col-md-10.text-left
+                  | !{review.msg} 
+          .col-md-12 
+            .row
+              hr
+              .col-md-4                
+                h3 Submit a Review
+                span.glyphicon.glyphicon-comment.glyph.border
+              .col-md-8
+                form.form-horizontal(method="post",action="/business/review/")                
+                  .col-md-12
+                    textarea.form-control-form(name='review')
+                    input#bizid(type='hidden', name='bizid',value=biz.id)
+                  .col-md-12.text-left
+                    strong
+                      | Review Rating
+                    fieldset.ratings
+                      input#star5(type='radio', name='rating', value='5')
+                      label.full(for='star5', title='Awesome - 5 stars')
+                      input#star4half(type='radio', name='rating', value='4 half')
+                      label.half(for='star4half', title='Pretty good - 4.5 stars')
+                      input#star4(type='radio', name='rating', value='4')
+                      label.full(for='star4', title='Pretty good - 4 stars')
+                      input#star3half(type='radio', name='rating', value='3 half')
+                      label.half(for='star3half', title='Meh - 3.5 stars')
+                      input#star3(type='radio', name='rating', value='3')
+                      label.full(for='star3', title='Meh - 3 stars')
+                      input#star2half(type='radio', name='rating', value='2 half')
+                      label.half(for='star2half', title='Kinda bad - 2.5 stars')
+                      input#star2(type='radio', name='rating', value='2')
+                      label.full(for='star2', title='Kinda bad - 2 stars')
+                      input#star1half(type='radio', name='rating', value='1 half')
+                      label.half(for='star1half', title='Meh - 1.5 stars')
+                      input#star1(type='radio', name='rating', value='1')
+                      label.full(for='star1', title='Sucks big time - 1 star')
+                      input#starhalf(type='radio', name='rating', value='half')
+                      label.half(for='starhalf', title='Sucks big time - 0.5 stars')
+                  .col-md-12
+                    button.button.btn.btn-warning.form-control(type='submit') Review
+      .row
+
+        

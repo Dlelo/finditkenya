@@ -1,0 +1,18 @@
+extends ../layout
+
+block content
+  #home.parallax-content-list.baner-content-listing-biz
+    .container
+      form(method='post', action='https://payments.ipayafrica.com/v3/ke')
+        input(name='hsh', type='hidden', value=hash)
+        each input,i in inputs
+           input(name=i, type='hidden', value=input)
+        h3 
+          | Pay This Amount to Claim Your Business
+        h5
+          | Claim your business today to add more features including photos, key word searches, geo-location, your menu or catalog + other extras. 
+        span.btn.btn-grey.btn-block.btn-lg.noLnk(style=' border: 1px solid;margin-bottom:10px;')
+          small(style='text-transform: none;') KShs. #{inputs.ttl} for #{package} Package.
+          strong(id='')
+        button.btn.btn-primary.form-control(type='submit')
+          | Claim

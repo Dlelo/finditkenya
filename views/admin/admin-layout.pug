@@ -1,0 +1,314 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    link(rel='icon', type='image/png', sizes='16x16', href='../plugins/images/favicon.png')
+    title Find It Dashboard
+    // Bootstrap Core CSS
+    link(href='/stylesheets/bootstrap.min.css', rel='stylesheet')
+    link(rel='stylesheet', href='/stylesheets/bootstrap-theme.min.css')
+    // Menu CSS
+    link(href='/stylesheets/admin/sidebar-nav.min.css', rel='stylesheet')
+    // toast CSS
+    link(href='/stylesheets/admin/jquery.toast.css', rel='stylesheet')
+    // animation CSS
+    link(href='/stylesheets/admin/animate.css', rel='stylesheet')
+    // Custom CSS
+    link(href='/stylesheets/admin/style.css', rel='stylesheet')
+    // color CSS
+    link#theme(href='/stylesheets/default.css', rel='stylesheet')
+    link(rel='stylesheet', href='/stylesheets/bootstrap-select.min.css')
+    link(rel='stylesheet', href='/stylesheets/jquery-gmaps-latlon-picker.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap-datetimepicker.min.css')
+    script(src='/javascripts/jquery.min.js')
+  body.fix-header
+    // ==============================================================
+    // Preloader
+    // ==============================================================
+    .preloader
+      svg.circular(viewbox='25 25 50 50')
+        circle.path(cx='50', cy='50', r='20', fill='none', stroke-width='2', stroke-miterlimit='10')
+    // ==============================================================
+    // Wrapper
+    // ==============================================================
+    #wrapper
+      // ==============================================================
+      // Topbar header - style you can find in pages.scss
+      // ==============================================================
+      nav.navbar.navbar-default.navbar-static-top.m-b-0
+        .navbar-header
+          .top-left-part
+            // Logo
+            a.logo(href='/dashboard')
+              // Logo icon image, you can use font-icon also
+              b
+                // This is dark logo icon
+                img.dark-logo(src='/plugins/images/admin-logo.png', alt='home')
+                // This is light logo icon
+                img.light-logo(src='/plugins/images/admin-logo-dark.png', alt='home')
+              // Logo text image you can use text also
+              span.hidden-xs
+                // This is dark logo text
+                img.dark-logo(src='/img/find-it.png', alt='home')
+                // This is light logo text
+                img.light-logo(src='/img/find-it.png', alt='home')
+
+
+
+
+          // /Logo
+          ul.nav.navbar-top-links.navbar-left
+            li
+              a.open-close.waves-effect.waves-light(href='javascript:void(0)')
+                i.fa.fa-bars
+              // /.dropdown-messages
+            // .Task dropdown
+            li.dropdown
+              a.dropdown-toggle.waves-effect.waves-light(data-toggle='dropdown', href='#')
+                i.mdi.mdi-check-circle
+                .notify
+                  span.heartbit
+                  span.point
+              ul.dropdown-menu.dropdown-tasks.animated.slideInUp
+                li
+                  a(href='#')
+                    div
+                      p
+                        strong Task 1
+                        span.pull-right.text-muted 40% Complete
+                      .progress.progress-striped.active
+                        .progress-bar.progress-bar-success(role='progressbar', aria-valuenow='40', aria-valuemin='0', aria-valuemax='100', style='width: 40%')
+                          span.sr-only 40% Complete (success)
+                li.divider
+            // .Megamenu
+            li.mega-dropdown
+              ul.dropdown-menu.mega-dropdown-menu.animated.bounceInDown
+                li.col-sm-3
+                  ul
+                    li.dropdown-header Forms Elements
+                    li
+                      a(href='form-basic.html') Basic Forms
+                    li
+                      a(href='form-layout.html') Form Layout
+                    li
+                      a(href='form-advanced.html') Form Addons
+                    li
+                      a(href='form-material-elements.html') Form Material
+                    li
+                      a(href='form-float-input.html') Form Float Input
+                    li
+                      a(href='form-upload.html') File Upload
+                    li
+                      a(href='form-mask.html') Form Mask
+                    li
+                      a(href='form-img-cropper.html') Image Cropping
+                    li
+                      a(href='form-validation.html') Form Validation
+            // /.Megamenu
+
+
+
+
+
+          ul.nav.navbar-top-links.navbar-right.pull-right
+            li
+              form.app-search.hidden-sm.hidden-xs.m-r-10(role='search')
+                input.form-control(type='text', placeholder='Search...')
+                a(href='')
+                  i.fa.fa-search
+            li
+              a.profile-pic(href='#')
+                img.img-circle(src='/plugins/images/users/varun.jpg', alt='user-img', width='36')
+                b.hidden-xs 
+                if user
+                  =user.names
+            li
+              a.profile-pic(href='/logout')
+                b.hidden-xs 
+                | logout
+        // /.navbar-header
+        // /.navbar-top-links
+        // /.navbar-static-side
+      // End Top Navigation
+      // ==============================================================
+      // Left Sidebar - style you can find in sidebar.scss
+      // ==============================================================
+      .navbar-default.sidebar(role='navigation')
+        .sidebar-nav.slimscrollsidebar
+          .sidebar-head
+            h3
+              span.fa-fw.open-close
+                i.fa.fa-remove
+              span.hide-menu Navigation
+          ul#side-menu.nav
+            li(style='padding: 70px 0 0;')
+              a.waves-effect(href='/dashboard')
+                i.fa.fa-clock-o.fa-fw(aria-hidden='true')
+                | Dashboard
+            li
+              a.waves-effect(href='/profile')
+                i.fa.fa-user.fa-fw(aria-hidden='true')
+                | Profile
+            li
+                a.waves-effect(href='/admin/category')
+                  i.fa.fa-font.fa-fw(aria-hidden='true')
+                  | Categories
+            if(user.role == 1)
+              li
+                a.waves-effect(href='/users')
+                  i.fa.fa-table.fa-fw(aria-hidden='true')
+                  | Users
+              
+              li
+                a.waves-effect(href='/admin/agents')
+                  i.fa.fa-group.fa-fw(aria-hidden='true')
+                  | Agents
+            if(user.role == 2)
+              li
+                a.waves-effect(href='blank.html')
+                  i.fa.fa-columns.fa-fw(aria-hidden='true')
+                  | Blank Page
+              li
+                a.waves-effect(href='404.html')
+                  i.fa.fa-info-circle.fa-fw(aria-hidden='true')
+                  | Error 404          
+          .center.p-10
+            a.btn.btn-info.btn-block.waves-effect.waves-light(href='/business/freeadd') Add Free Business
+          .center.p-10
+            a.btn.btn-info.btn-block.waves-effect.waves-light(href='/business/add') Add Premium Business
+          if(user.role == 1)
+            .center.p-10
+              a.btn.btn-info.btn-block.waves-effect.waves-light(href='/admin/category/add') Add Category
+            .center.p-10
+              a.btn.btn-info.btn-block.waves-effect.waves-light(href='/admin/subcategory/add') Add Sub Category
+            .center.p-10
+              a.btn.btn-warning.btn-block.waves-effect.waves-light(href='/admin/agent/add') Add Agent
+            .center.p-10
+              a.btn.btn-warning.btn-block.waves-effect.waves-light(href='/admin/activate/all') Activate Businesses
+      // ==============================================================
+      // End Left Sidebar
+      // ==============================================================
+      // ==============================================================
+      // Page Content
+      // ==============================================================
+      #page-wrapper
+        .container-fluid
+          if errors
+            each error in errors
+              .alert.alert-danger
+                = error
+          if message
+            .alert.alert-info wala
+              = message
+          if success_msg.length
+            .alert.alert-success walaa
+              = success_msg
+          if error_msg.length
+            .alert.alert-danger walaaa
+              = error_msg
+          if error.length
+            .alert.alert-danger walaaaa
+              = error
+        .container-fluid          
+          .row.bg-title
+            .col-lg-3.col-md-4.col-sm-4.col-xs-12
+              h4.page-title Dashboard
+            .col-lg-9.col-sm-8.col-md-8.col-xs-12
+              a.btn.btn-danger.pull-right.m-l-20.hidden-xs.hidden-sm.waves-effect.waves-light(href='https://wrappixel.com/templates/ampleadmin/', target='_blank') Find It
+              ol.breadcrumb
+                li
+                  a(href='#') Dashboard
+            // /.col-lg-12
+          block content
+        // /.container-fluid
+        footer.footer.text-center  2017 © Admin brought to you by sokompare.com 
+      // ==============================================================
+      // End Page Content
+      // ==============================================================
+    // ==============================================================
+    // End Wrapper
+    // ==============================================================
+    // ==============================================================
+    // All Jquery
+    // ==============================================================
+    script(src='/javascripts/jquery.min.js')
+    // Bootstrap Core JavaScript
+    script(src='/javascripts/admin/tether.min.js')
+    script(src='/javascripts/bootstrap.js')
+    // Menu Plugin JavaScript
+    script(src='/javascripts/admin/sidebar-nav.min.js')
+    // slimscroll JavaScript
+    script(src='/javascripts/admin/jquery.slimscroll.js')
+    // Wave Effects
+    script(src='/javascripts/admin/waves.js')
+    // Custom Theme JavaScript
+    script(src='/javascripts/admin/custom.min.js')
+    script(src='/javascripts/admin/jquery.toast.js')
+    script(src='/javascripts/bootstrap-select.min.js')
+    script(src="https://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyC9MX39yDkMJn6rjWi6vt4Rens5u_cVBQE&format=png&maptype=roadmap&style=feature:administrative%7Celement:geometry%7Cvisibility:off&style=feature:poi%7Cvisibility:off&style=feature:road%7Celement:labels.icon%7Cvisibility:off&style=feature:transit%7Cvisibility:off")
+    script(src="/javascripts/jquery-gmaps-latlon-picker.js")
+    script(src="/javascripts/tinymce.min.js")
+    script(src="/javascripts/moment.min.js")
+    script(src="/javascripts/bootstrap-datetimepicker.min.js")
+    script(type='text/javascript').
+      $(document).ready(function() {
+
+        $('.datetimepicker').datetimepicker({      
+            sideBySide: true,
+            format: 'DD-MM-YYYY HH:mm:ss'
+        });
+
+        
+        $('.timepicker').datetimepicker({      
+            sideBySide: true,
+            format: 'HH:mm'
+        });
+
+        $('.timepicker').click(function(event){
+          $(this).removeAttr('readonly').select();
+        });
+
+        $('.timepicker').blur(function(event){
+          $(this).attr('readonly', 'readonly');
+        });
+        tinymce.init({ 
+            selector:'#descriptio',
+            height: 150,
+            width: '100%',
+              menubar: false,
+              plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table contextmenu paste code'
+              ],
+              toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+              content_css: '//www.tinymce.com/css/codepen.min.css'
+        });
+        var $cat = $(".subcategory"),
+        $subcat = $(".ssubcategory");
+    
+        $cat.on("change",function(){
+            var _rel = $(this).val();
+            $subcat.find("option").attr("style","");
+            $subcat.val("");
+            if(!_rel) return $subcat.prop("disabled",true);
+            $subcat.find("[rel='"+_rel+"']").show();
+            $subcat.prop("disabled",false);
+
+            if(_rel == 'Events'){
+                $('#startDate').hide();
+                $('.timeopen').hide();
+                $('#endeventDate').show();
+                $('#starteventDate').show();
+            }else{
+                $('#startDate').show();
+                $('.timeopen').show();
+                $('#endeventDate').hide();
+                $('#starteventDate').hide();
+            }
+        });
+      });

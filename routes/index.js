@@ -22,7 +22,7 @@ var User = require('./../models/User');
 var Business = require('./../models/Business');
 var Category = require(__dirname + '/../models/Category');
 var transporter = require(__dirname + '/../config/Email');
-var email = require(__dirname + '/../config/Mail');
+var emailModel = require(__dirname + '/../config/Mail');
 
 var mailer = require('express-mailer');
 
@@ -47,8 +47,8 @@ router.get('/nss/:name',function(req, res, next){
 });
 
 router.get('/email', function (req, res, next) {
-  var holder = email.app;
-  var mailer = email.mailer;
+  var holder = emailModel.app;
+  var mailer = emailModel.mailer;
   holder.mailer.send('email/welcome', {
     to: 'kelvinchege@gmail.com', // REQUIRED. This can be a comma delimited string just like a normal email to field. 
     subject: 'Welcome To FindIt', // REQUIRED.
@@ -226,8 +226,8 @@ router.post('/register',
               }
               if(small){
                 console.log("user created");
-                var holder = email.app;
-                var mailer = email.mailer;
+                var holder = emailModel.app;
+                var mailer = emailModel.mailer;
                 holder.mailer.send('email/welcome', {
                   to: email, // REQUIRED. This can be a comma delimited string just like a normal email to field. 
                   subject: 'Welcome To FindIt', // REQUIRED.

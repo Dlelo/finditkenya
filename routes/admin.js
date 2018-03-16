@@ -418,10 +418,12 @@ router.post('/agent/create',role.admin, function(req, res){
 });
 
 router.get('/agent/number/:number', function(req, res){
+	console.log(req.params);
 	Business.find({
-    agentnumber: req.params.number
+    agentphone: req.params.number
   })
   .then(function(data){
+  	console.log(data);
   	res.render('admin/index', {title: "Find It Dashboard", businesses: data});
   })
   .catch(function(err){

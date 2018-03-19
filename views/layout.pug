@@ -133,7 +133,8 @@ html
                         input(type='checkbox')
                         |  Remember me
                   .col-md-4.col-md-offset-2
-                    p.frgt-pswd(data-toggle='modal', data-dismiss='modal', data-target='#at-reset-pswd') 	Forgot Password ?
+                    a(href="/forgotpassword")
+                      p.frgt-pswd() 	Forgot Password ?
                 button.btn-lgin(type='submit') Login
             .modal-footer
               .row
@@ -239,11 +240,11 @@ html
               button.close(type='button', data-dismiss='modal', aria-label='Close')
                 span(aria-hidden='true') ×
             .modal-body
-              form
+              form(method="post", action="/forgotpassword")
                 p
                   | Enter the email address associated with your account, and we’ll email you a link to reset your password.
                 .form-group
-                  input#exampleInputEmaillog.form-control-form(type='email', placeholder='Email')
+                  input#exampleInputEmaillog.form-control-form(type='email', placeholder='Email', name="email")
             .modal-footer
       // MODAL HELP
       #at-helping.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')

@@ -18,7 +18,8 @@ const userSchema = new Schema({
 		role: String,
 		email: String,
 		website: String,
-		postal: String
+		postal: String,
+		resetcode: String
 });
 
 module.exports = mongoose.model('User', userSchema);

@@ -393,6 +393,50 @@ router.get('/agent/:slug', function(req, res){
   res.render('site/agent');
 });
 
+router.get('/forgotpassword', function(req, res){
+  res.render('user/forgotpassword');
+});
+
+router.get('/resetpassword', function(req, res){
+  res.render('site/forgotpassword');
+});
+
+router.post('/forgotpassword', function(req, res){
+  Users.find({
+    email: req.params.email
+  })
+  .then(function(d){
+    var salt = bcrypt.genSaltSync(10);
+    var hash = bcrypt.hashSync(new Date(), salt);
+    d.resetcode = hash;
+    d.save(function(err){
+      if(err){
+        req.flash('error', 'Error occured when updating agent number');
+        res.redirect('/');
+      }
+      var holder = emailModel.app;
+      var mailer = emailModel.mailer;
+      holder.mailer.send('email/welcome', {
+        to: d.email, // REQUIRED. This can be a comma delimited string just like a normal email to field. 
+        subject: 'Find Password Recovery', // REQUIRED.
+        otherProperty: 'Other Property' // All additional properties are also passed to the template as local variables.
+      }, function (err) {
+        if (err) {
+          // handle error
+          console.log(err);
+          res.send('There was an error sending the email');
+          return;
+        }
+      });
+      req.flash('success_msg', 'Agent number Successfully Updated');
+      res.redirect('/');
+    });
+  })
+  .catch(function(err){
+     console.log(err);
+  });
+});
+
 router.post('/agent/:slug', function(req, res){
   Business.findOne({
     slug: req.params.slug

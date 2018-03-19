@@ -418,7 +418,6 @@ router.post('/agent/create',role.admin, function(req, res){
 });
 
 router.get('/agent/number/:number', function(req, res){
-	console.log(req.params);
 	Business.find({
     agentphone: req.params.number
   })

@@ -487,7 +487,8 @@ router.post('/forgotpassword', function(req, res){
     });
   })
   .catch(function(err){
-     console.log(err);
+     req.flash('error_msg', 'Email Sent');
+      res.redirect('/forgotpassword');
   });
 });
 

@@ -230,22 +230,30 @@ block content
           }
         });
         $('.spnCharLeft').css('display', 'none');
+        var words = "";
         $("#keywords").on("keyup", function() {
           //var keywordCount = this.value.length;
           var keywordCount = this.value.match(/\S+/g).length;
+          
           if(packagename == "bronze"){
-            if(keywordCount == 10){
-              this.value = '';
+            if(keywordCount == 11){
+              var keywords = this.value.split(/\s+/).slice(0, 10);
+              var shortened = keywords.join(' ');
+              this.value = shortened;
               alert("You can select upto 10 keywords");
             }
           }else if(packagename == "silver"){
-            if(keywordCount == 25){
-              this.value = '';
+            if(keywordCount == 26){
+              var keywords = this.value.split(/\s+/).slice(0, 25);
+              var shortened = keywords.join(' ');
+              this.value = shortened;
               alert("You can select upto 25 keywords");
             }
           }else if(packagename == "" && packagename != "gold"){
             if(keywordCount > 1){
-              this.value = '';
+              var keywords = this.value.split(/\s+/).slice(0, 1);
+              var shortened = keywords.join(' ');
+              this.value = shortened;
               alert("This free package doesnt allow you this feature");
             }
           }

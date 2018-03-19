@@ -412,8 +412,9 @@ router.post('/resetpassword/:id', function(req, res){
     User.findById(req.params.id)
     .then(function(d){
       var salt = bcrypt.genSaltSync(10);
-      var hash = bcrypt.hashSync(password, salt);
+      var hash = bcrypt.hashSync(req.body.password, salt);
       d.password = hash;
+      console.log(d);
       d.save(function(err){
         if(err){
           req.flash('error','Some Error Occured, Kindly try again');

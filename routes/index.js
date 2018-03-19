@@ -482,7 +482,7 @@ router.post('/forgotpassword', function(req, res){
           return;
         }
       });
-      req.flash('success_msg', 'Agent number Successfully Updated');
+      req.flash('success_msg', 'Email Sent');
       res.redirect('/');
     });
   })

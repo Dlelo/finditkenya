@@ -15,6 +15,8 @@ var request = require('request');
 const { check, validationResult } = require('express-validator/check');
 const { matchedData, sanitize } = require('express-validator/filter');
 var nodemailer = require('nodemailer');
+var md5 = require('md5');
+var validator = require('validator');
 
 var sys = require(__dirname + '/../config/System');
 var role = require(__dirname + '/../config/Role');
@@ -49,10 +51,10 @@ router.get('/nss/:name',function(req, res, next){
 router.get('/email', function (req, res, next) {
   var holder = emailModel.app;
   var mailer = emailModel.mailer;
-  holder.mailer.send('email/welcome', {
+  holder.mailer.send('email/forgotpassword', {
     to: 'kelvinchege@gmail.com', // REQUIRED. This can be a comma delimited string just like a normal email to field. 
     subject: 'Welcome To FindIt', // REQUIRED.
-    otherProperty: 'Other Property' // All additional properties are also passed to the template as local variables.
+    forgotpasswordlink:  req.get('host') + '/resetpassword/xxxxxx',// All additional properties are also passed to the template as local variables.
   }, function (err) {
     if (err) {
       // handle error
@@ -325,8 +327,8 @@ router.post('/claim/:id/', role.auth, function(req, res){
     "p2": "",
     "p3": "",
     "p4": "",
-    "lbk": 'http://'+req.get('host')+'/cancel',
-    "cbk": 'http://'+req.get('host')+'/receive',
+    "lbk": 'https://'+req.get('host')+'/cancel',
+    "cbk": 'https://'+req.get('host')+'/receive',
     "cst": "1",
     "crl": "0"
   };
@@ -397,18 +399,70 @@ router.get('/forgotpassword', function(req, res){
   res.render('user/forgotpassword');
 });
 
-router.get('/resetpassword', function(req, res){
-  res.render('site/forgotpassword');
+router.post('/resetpassword/:id', function(req, res){
+  var rst = validator.equals(req.body.password, req.body.cpassword);
+  if(rst == false){
+    req.flash('error','Password Mismatch');
+    res.redirect(ssn.returnUrl);
+  }
+  else if(req.body.password.length < 4){
+    req.flash('error','Password Length Should be More Than Four Characters');
+    res.redirect(ssn.returnUrl);
+  }else{
+    User.findById(req.params.id)
+    .then(function(d){
+      var salt = bcrypt.genSaltSync(10);
+      var hash = bcrypt.hashSync(password, salt);
+      d.password = hash;
+      d.save(function(err){
+        if(err){
+          req.flash('error','Some Error Occured, Kindly try again');
+          res.redirect(ssn.returnUrl);
+        }else{
+          req.flash('success_msg','Password Changed Successfully');
+          res.redirect('/login');
+        }
+      });
+    })
+    .catch(function(err){
+       console.log(err);
+    });
+  }
 });
 
+router.get('/resetpassword/:id/:resetcode', function(req, res){
+  User.findOne({
+    _id: req.params.id,
+    resetcode: req.params.resetcode
+  })
+  .then(function(d){
+    if(!d){
+      req.flash('error_msg','The Password Reset Link is not Valid');
+      res.redirect('/forgotpassword');
+    }else{
+      ssn = req.session;
+      ssn.returnUrl = req.originalUrl;
+      res.render('user/passwordreset',{id: req.params.id});
+    }    
+  })
+  .catch(function(err){
+     console.log(err);
+  });
+});
+
+
 router.post('/forgotpassword', function(req, res){
-  Users.find({
-    email: req.params.email
+  User.findOne({
+    email: req.body.email
   })
   .then(function(d){
     var salt = bcrypt.genSaltSync(10);
-    var hash = bcrypt.hashSync(new Date(), salt);
+    var date = new Date();
+    var hash = md5(date.toString());
+    console.log(hash);
+    
     d.resetcode = hash;
+    console.log(d);
     d.save(function(err){
       if(err){
         req.flash('error', 'Error occured when updating agent number');
@@ -416,10 +470,10 @@ router.post('/forgotpassword', function(req, res){
       }
       var holder = emailModel.app;
       var mailer = emailModel.mailer;
-      holder.mailer.send('email/welcome', {
+      holder.mailer.send('email/forgotpassword', {
         to: d.email, // REQUIRED. This can be a comma delimited string just like a normal email to field. 
-        subject: 'Find Password Recovery', // REQUIRED.
-        otherProperty: 'Other Property' // All additional properties are also passed to the template as local variables.
+        subject: 'FindIt Password Recovery', // REQUIRED.
+        forgotpasswordlink:  'https://' + req.get('host') + '/resetpassword/'+d.id+'/'+hash, // All additional properties are also passed to the template as local variables.
       }, function (err) {
         if (err) {
           // handle error

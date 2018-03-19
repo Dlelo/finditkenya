@@ -76,7 +76,6 @@ p {
 
 
 .header {
-    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -239,7 +238,6 @@ bootstrap.min.css:5
 }
 .baner-content-listing-biz {
 	width: 100%;
-  	padding-top: 13vh;
   	text-align: center;
   	background-image: url(../img/background.jpg) no-repeat center center fixed;
 	-webkit-background-size: cover;

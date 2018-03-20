@@ -50,14 +50,14 @@ block content
               .col-md-12
                 p.text-left
                   span.glyphicon.glyphicon-globe.text-success.glyph.border
-                  a.findit(href="http://"+biz.website,target="_blank")
-                    |  website
+                  a.findit(href="http://"+biz.website,target="_blank",style="color:#2862ec;")
+                    |  #{biz.website}
                 hr.nomargin
               .col-md-12
                 p.text-left
                   each phone in phones
                     span.glyphicon.glyphicon-earphone.text-info.glyph.border
-                    a.findit(href="tel:"+phone)
+                    a.findit(href="tel:"+phone,style="color:#2862ec;")
                       |  #{phone}
                     br
                 hr.nomargin
@@ -65,7 +65,7 @@ block content
                 p.text-left
                   each email in emails
                     span.fa.fa-envelope.glyph.border
-                    a.findit(href="mailto:"+email)
+                    a.findit(href="mailto:"+email,style="color:#2862ec;")
                       |  Mail
                     br
                 hr.nomargin

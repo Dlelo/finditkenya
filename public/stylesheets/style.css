@@ -87,10 +87,10 @@ a.findit:hover {
     margin: 3px;
 }
 p{
-  font-family: 'Montserrat';
+  font-family: 'Roboto', arial, sans-serif;
 }
 h5, h4, h3, h2, h6{
-  font-family: 'Montserrat';
+  font-family: 'Roboto', arial, sans-serif;
 }
 .mapbox {
     padding: 5px;

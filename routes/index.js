@@ -305,6 +305,7 @@ router.post('/claim/:id/', role.auth, function(req, res){
   ssn.hashkey = "852sokompare963001";
   ssn.vendor_id = "sokompare";
   var package = req.body.package;
+  ssn.agentnumber = req.body.agentnumber;
   var amount = 0;
   if(package == "bronze"){
     //amount = "2320";
@@ -361,6 +362,7 @@ router.get('/receive', function(req, res){
     b.amountpaid = amount;
     b.datepaid = new Date();
     b.user_id = res.locals.user.username;
+    b.agentphone = ssn.agentnumber;
     //if(amount == "2320"){
     if(amount == "10.00"){
       b.packagepaid = "bronze";
@@ -377,8 +379,8 @@ router.get('/receive', function(req, res){
         b.save(function(err){
           req.flash('success_msg', 'Payment Successfully Done!');
           if(err)
-            res.render('site/agent',{slug: b.slug});
-          res.render('site/agent',{slug: b.slug});
+            res.redirect('/'+b.slug);
+          res.redirect('/'+b.slug);
         });
       }else{
         req.flash('error', 'Transaction Already Authenticated!');

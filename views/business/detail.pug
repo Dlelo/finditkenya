@@ -47,11 +47,12 @@ block content
                   span.glyphicon.glyphicon-th-list.glyph.border
                   |  #{biz.subcategory}
                 hr.nomargin
-              .col-md-12
-                p.text-left
-                  span.glyphicon.glyphicon-globe.text-success.glyph.border
-                  a.findit(href="http://"+biz.website,target="_blank",style="color:#2862ec;")
-                    |  #{biz.website}
+              if(biz.website)
+                .col-md-12
+                  p.text-left
+                    span.glyphicon.glyphicon-globe.text-success.glyph.border
+                    a.findit(href="http://"+biz.website,target="_blank",style="color:#2862ec;")
+                      |  #{biz.website}
                 hr.nomargin
               .col-md-12
                 p.text-left

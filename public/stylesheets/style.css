@@ -88,6 +88,7 @@ a.findit:hover {
 }
 p{
   font-family: 'Roboto', arial, sans-serif;
+  margin: 0 0 3px;
 }
 h5, h4, h3, h2, h6{
   font-family: 'Roboto', arial, sans-serif;

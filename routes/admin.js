@@ -48,7 +48,6 @@ router.post('/edit/:id', role.auth, cpUpload, function(req, res, next) {
 		if(req.body.category){
 			b.category = req.body.category;
 		}
-		b.reviews = req.body.reviews;
 		b.startdate = req.body.startdate;
 		if(req.body.subcategory){
 			b.subcategory = req.body.subcategory;

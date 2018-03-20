@@ -175,9 +175,8 @@ block content
             .row
               hr
               .col-md-12 
-                span.glyphicon.glyphicon-comment.glyph
-                  .findit-red.padding10
-                    strong Submit a Review
+                .findit-red.padding10
+                  strong Submit a Review
               .col-md-12
                 form.form-horizontal(method="post",action="/business/review/")                
                   .col-md-12
@@ -208,7 +207,7 @@ block content
                       input#starhalf(type='radio', name='rating', value='half')
                       label.half(for='starhalf', title='Sucks big time - 0.5 stars')
                   .col-md-12
-                    button.button.btn.btn-warning.form-control(type='submit') Review
+                    button.button.btn.btn-danger.form-control(type='submit') Submit Review
       .row
 
         

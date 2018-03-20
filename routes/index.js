@@ -362,6 +362,7 @@ router.get('/receive', function(req, res){
     b.amountpaid = amount;
     b.datepaid = new Date();
     b.user_id = res.locals.user.username;
+    var ssn = req.session;
     b.agentphone = ssn.agentnumber;
     //if(amount == "2320"){
     if(amount == "10.00"){

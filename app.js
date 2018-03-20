@@ -206,7 +206,6 @@ app.post('/login', passport.authenticate('local', {failureRedirect: '/login',
                                    failureFlash: true })
   , function(req, res){
     ssn = req.session;
-    console.log(ssn);
     if(ssn.returnUrl){
       res.redirect(ssn.returnUrl);
     }

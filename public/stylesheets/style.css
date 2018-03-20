@@ -660,7 +660,7 @@ CARD DESIGN
 }
 
 
-.package ul li::before {content: " * ";padding: 5px; color: red}
+.package ul li::before {content: " ✔ ";padding: 5px; color: red}
 /***********
 
 END OF CARD DESIGN

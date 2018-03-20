@@ -136,9 +136,9 @@ block content
                 | Reviews
               each review in biz.reviews              
                 .row               
-                  .col-md-4.text-left 
+                  .col-md-1.text-left 
                     span.glyphicon.glyphicon-comment.glyph.border
-                  .col-md-8
+                  .col-md-3
                     .col-md-6(class="rating medium star-icon value-"+review.rate+" label-hidden")
                       .star-container
                         .star
@@ -161,7 +161,7 @@ block content
                           i.star-empty
                           i.star-half
                           i.star-filled
-                  .col-md-10.text-left
+                  .col-md-8.text-left
                     | !{review.msg}
             
           if biz.youtube

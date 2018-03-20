@@ -13,14 +13,14 @@ block content
           .form-group
             .col-sm-12
               if(biz.packagepaid == "bronze")
-                textarea#description.form-control-form(name='description',rows=20,cols=30,placeholder="Describe yourself here...",maxlength="120")
+                textarea#description.form-control-form(name='description',rows=20,cols=30,placeholder="Describe yourself here...",maxlength="50")
                   =biz.description
               else if(biz.packagepaid == "silver")
-                textarea#description.form-control-form(name='description',rows=20,cols=30,placeholder="Describe yourself here...",maxlength="200")
+                textarea#description.form-control-form(name='description',rows=20,cols=30,placeholder="Describe yourself here...",maxlength="120")
               else if(biz.packagepaid == "gold")
-                textarea#description.form-control-form(name='description',rows=20,cols=30,placeholder="Describe yourself here...",)
+                textarea#description.form-control-form(name='description',rows=20,cols=30,placeholder="Describe yourself here...",maxlength="250")
               else
-                textarea#description.form-control-form(name='description',rows=20,cols=30,placeholder="Describe yourself here...",maxlength="50")
+                textarea#description.form-control-form(name='description',rows=20,cols=30,placeholder="Describe yourself here...",maxlength="1")
           .form-group
             .col-sm-12
               textarea#keywords.form-control-form(name='keywords',placeholder="type your comma separated keywords")

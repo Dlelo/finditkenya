@@ -91,23 +91,9 @@ block content
                     .form-group
                       button.btn.btn-danger.form-control(type='submit')                 
                         | Claim Business
-          .col-md-7.col-xs-12
-            
-            .row(width="100%")
-                #lightgallery.thumbnails.scrollmenu
-                  if biz.gallery
-                    each image in biz.gallery
-                      a.nopadding(href='/uploads/'+image.filename, width="", alt='#{biz.slug}')
-                        .thumbnail
-                          img.img-thumbnail.img-responsive(src='/uploads/thumbs/gallery-'+image.filename,  alt='')
-            if biz.description
-              .panel.panel-info
-                .panel-heading Description
-                .panel-body
-                  p.padding-p  !{biz.description}
             if (biz.openstatus.isOpen)
               .row
-                .col-md-12.is-island
+                .col-md-12.alert.alert-danger
                   strong
                     |  Hours
                 .col-md-12
@@ -125,7 +111,20 @@ block content
                     p Sat: #{hour.opens} - #{hour.closes}
                   each hour in biz.hours.sunday
                     p Sun: #{hour.opens} - #{hour.closes}
-
+          .col-md-7.col-xs-12
+            
+            .row(width="100%")
+                #lightgallery.thumbnails.scrollmenu
+                  if biz.gallery
+                    each image in biz.gallery
+                      a.nopadding(href='/uploads/'+image.filename, width="", alt='#{biz.slug}')
+                        .thumbnail
+                          img.img-thumbnail.img-responsive(src='/uploads/thumbs/gallery-'+image.filename,  alt='')
+            if biz.description
+              .panel.panel-info
+                .panel-heading Description
+                .panel-body
+                  p.padding-p  !{biz.description}
             .row
               .panel-body                
                 if biz.extras.length 

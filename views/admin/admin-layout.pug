@@ -267,6 +267,9 @@ html(lang='en')
             format: 'HH:mm'
         });
 
+        $('.hoursopened').val('08:00');
+        $('.hoursclosed').val('17:00');
+
         $('.timepicker').click(function(event){
           $(this).removeAttr('readonly').select();
         });

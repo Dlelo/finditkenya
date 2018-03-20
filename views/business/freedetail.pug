@@ -120,17 +120,17 @@ block content
           .col-md-12 
             .row
               hr
-              .col-md-4                
-                h3 Submit a Review
-                span.glyphicon.glyphicon-comment.glyph.border
-              .col-md-8
+              .col-md-12 
+                .findit-red.padding10
+                  strong Submit a Review
+              .col-md-12
                 form.form-horizontal(method="post",action="/business/review/")                
                   .col-md-12
                     textarea.form-control-form(name='review')
                     input#bizid(type='hidden', name='bizid',value=biz.id)
                   .col-md-12.text-left
                     strong
-                      | Review Rating
+                      | Star Rating
                     fieldset.ratings
                       input#star5(type='radio', name='rating', value='5')
                       label.full(for='star5', title='Awesome - 5 stars')
@@ -153,7 +153,7 @@ block content
                       input#starhalf(type='radio', name='rating', value='half')
                       label.half(for='starhalf', title='Sucks big time - 0.5 stars')
                   .col-md-12
-                    button.button.btn.btn-warning.form-control(type='submit') Review
+                    button.button.btn.btn-danger.form-control(type='submit') Submit Review
       .row
 
         

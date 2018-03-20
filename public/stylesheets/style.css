@@ -647,6 +647,20 @@ CARD DESIGN
     display:block;
     z-index:999;
 }
+.bronze{
+  background-color: #CD7F32;
+  color: #fdfdfd;
+}
+.silver{
+  background-color: #C0C0C0;
+  color: #fdfdfd;
+}
+.gold{
+  background-color: #FFD700;
+}
+
+
+.package ul li::before {content: " * ";padding: 5px; color: red}
 /***********
 
 END OF CARD DESIGN

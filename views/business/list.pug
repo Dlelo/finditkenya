@@ -54,10 +54,11 @@ block content
                         span.glyphicon.glyphicon-globe.text-success.glyph.border 
                         a(href=biz.website,target="_blank")
                           |  website
-                    .col-md-2.text-left
-                      p 
-                        span.glyphicon.glyphicon-earphone.text-info.glyph.border 
-                        |  #{biz.phone}
+                    if(biz.phone)
+                      .col-md-2.text-left
+                        p 
+                          span.glyphicon.glyphicon-earphone.text-info.glyph.border 
+                          |  #{biz.phone}
                     .col-md-2.text-left
                       p
                         if biz.reviews

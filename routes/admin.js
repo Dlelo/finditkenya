@@ -57,7 +57,7 @@ router.post('/edit/:id', role.auth, cpUpload, function(req, res, next) {
 		}	
 		
 		b.keywords = req.body.keywords;
-		b.youtube = req.body.youtube;	
+			
 		if(req.files['gallery']){
 			b.gallery = req.files['gallery'];
 		}
@@ -67,6 +67,13 @@ router.post('/edit/:id', role.auth, cpUpload, function(req, res, next) {
 	    b.extras = req.body.extras;
 	    b.street = req.body.street;
 	    b.building = req.body.building;
+
+	    //Social links
+	    b.facebook = req.body.facebook;
+	    b.twitter = req.body.twitter;
+	    b.instagram = req.body.instagram;
+	    b.youtube = req.body.youtube;
+
 	    if(req.body.hoursopensun){
 	    	b.hours.sunday = [];
 	    	b.hours.sunday.push({opens: req.body.hoursopensun, closes: req.body.hoursclosesun});

@@ -33,6 +33,11 @@ const bizSchema = new Schema({
 		street: String,
 		building: String,
 		youtube: String,
+		deliverylink: String,
+		bookinglink: String,
+		facebook: String,
+		twitter: String,
+		instagram: String,
 		gallery: Array,
 		reviews: [{
 			rate: String,

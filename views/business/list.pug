@@ -49,20 +49,16 @@ block content
                   p.padding.text-left  !{biz.description.substr(0, 150) + '..... <strong style="color:#d44457">Read More</strong>'}
                 .col-md-12                  
                   .row
-                    .col-md-3.text-primary
-                      p 
-                        span.glyphicon.glyphicon-th-list.glyph.border 
-                        |  #{biz.subcategory}
-                    .col-md-3
+                    .col-md-2
                       p 
                         span.glyphicon.glyphicon-globe.text-success.glyph.border 
                         a(href=biz.website,target="_blank")
                           |  website
-                    .col-md-3
+                    .col-md-2
                       p 
                         span.glyphicon.glyphicon-earphone.text-info.glyph.border 
                         |  #{biz.phone}
-                    .col-md-3
+                    .col-md-2
                       p
                         if biz.reviews
                           if( biz.reviews.length == 1) 
@@ -118,3 +114,27 @@ block content
                           else
                             span.glyphicon.glyphicon-cog.glyph.border
                             |  Be the first to review
+                    if(biz.facebook)
+                      .col-md-2
+                        p 
+                          a.findit(href="http://"+biz.facebook,target="_blank",style="color:#2862ec;")
+                            span.fa.fa-facebook-f.text-info.glyph.border 
+                            |  Facebook
+                    if(biz.twitter)
+                      .col-md-2
+                        p 
+                          a.findit(href="http://"+biz.twitter,target="_blank",style="color:#2862ec;")
+                            span.fa.fa-twitter.text-info.glyph.border 
+                            |  Twitter
+                    if(biz.instagram)
+                      .col-md-2
+                        p 
+                          a.findit(href="http://"+biz.instagram,target="_blank",style="color:#2862ec;")
+                            span.fa.fa-instagram.text-info.glyph.border 
+                            |  Instagram
+                    if(biz.youtube)
+                      .col-md-2
+                        p 
+                          a.findit(href="http://"+biz.youtube,target="_blank",style="color:#2862ec;")
+                            span.fa.fa-youtube.text-info.glyph.border 
+                            |  Youtube

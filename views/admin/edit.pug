@@ -46,9 +46,11 @@ block content
             .col-sm-6
               input#map.form-control-form(type='text', name='website', placeholder='website',value=biz.website)
             .col-sm-6
-              input#map.form-control-form(type='text', name='email', placeholder='email',value=biz.email)
+              input#map.form-control-form(type='text', name='email', placeholder='email',value=biz.email)            
             .col-sm-6
-              input#map.form-control-form(type='text', name='youtube', placeholder='youtube url',value=biz.youtube)
+              input#map.form-control-form(type='text', name='deliverylink', placeholder='Delivery Link',value=biz.deliverylink)
+            .col-sm-6
+              input#map.form-control-form(type='text', name='bookinglink', placeholder='Booking Link',value=biz.bookinglink)
             .col-sm-6
               input#map.form-control-form(type='text', name='street', placeholder='street',value=biz.street)
             .col-sm-6
@@ -79,7 +81,22 @@ block content
             .col-sm-3(style="display:none",id="endeventDate")
               input#startdate.form-control-form(type='text', name='endeventdate', placeholder='End Event Date',class='datetimepicker',value=biz.endeventdate) 
               =biz.endeventdate
+          .form-group
+            .col-sm-12
+              select.form-control-form(name='extras', multiple='', data-selected-text-format='count > 10')
+                option(data-icon='glyphicon-wrench', value=biz.extras) #{biz.extras.join()}
+                option(data-icon='glyphicon glyphicon-signal', value='wifi') Wifi
+                option(data-icon='glyphicon-credit-card', value='creditcards') Credits Cards
+                option(data-icon='glyphicon-cutlery', value='buffet') Buffet
+                option(data-icon='glyphicon glyphicon-glass', value='full_bar') Full Bar
+                option(data-icon='glyphicon-gift', value='takeaway') Take Away
+                option(data-icon='glyphicon-ok-circle', value='parking') Parking
+                option(data-icon='glyphicon-tent', value='camping') Camping
+                option(data-icon='glyphicon-bed', value='accomodation') Accomodation
           .row
+            .col-sm-12.text-center
+              strong
+                |  Opening & Closing Hours
             .form-group
               .col-sm-3.text-center
                 |  Monday
@@ -129,18 +146,6 @@ block content
                 input#hours.form-control-form(type='text', name='hoursopensun', placeholder='Opening Hours Sunday',class='timepicker hoursopened')
               .col-sm-3(id="hoursclose",class="hoursclose")
                 input#startdate.form-control-form(type='text', name='hoursclosesun', placeholder='Closing Hours Sunday',class='timepicker hoursclosed')
-          .form-group
-            .col-sm-12
-              select.form-control-form(name='extras', multiple='', data-selected-text-format='count > 10')
-                option(data-icon='glyphicon-wrench', value=biz.extras) #{biz.extras.join()}
-                option(data-icon='glyphicon glyphicon-signal', value='wifi') Wifi
-                option(data-icon='glyphicon-credit-card', value='creditcards') Credits Cards
-                option(data-icon='glyphicon-cutlery', value='buffet') Buffet
-                option(data-icon='glyphicon glyphicon-glass', value='full_bar') Full Bar
-                option(data-icon='glyphicon-gift', value='takeaway') Take Away
-                option(data-icon='glyphicon-ok-circle', value='parking') Parking
-                option(data-icon='glyphicon-tent', value='camping') Camping
-                option(data-icon='glyphicon-bed', value='accomodation') Accomodation
           .row
             .col-md-6
               .form-group
@@ -183,6 +188,18 @@ block content
                   input#lati.gllpLatitude(type='hidden', value=biz.map.lati,name='lati')
                   input#long.gllpLongitude(type='hidden', value=biz.map.long,name='long')
                   input#zoom.gllpZoom(type='hidden', value=biz.map.zoom,name='zoom')
+          .form-group
+            .col-sm-12.text-center
+              strong
+                |  Social Links
+            .col-sm-6
+              input#map.form-control-form(type='text', name='youtube', placeholder='youtube url',value=biz.youtube)
+            .col-sm-6
+              input#map.form-control-form(type='text', name='facebook', placeholder='facebook Url',value=biz.facebook)
+            .col-sm-6
+              input#map.form-control-form(type='text', name='twitter', placeholder='twitter Url',value=biz.twitter)
+            .col-sm-6
+              input#map.form-control-form(type='text', name='instagram', placeholder='Instagram Url',value=biz.instagram)
               
           .form-group
             .row

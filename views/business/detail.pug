@@ -5,8 +5,9 @@ block content
     .container
       .row.flowerwhite
         .row          
-          .col-md-3
-            img.img-responsive(src="/uploads/thumbs/cover"+ biz.photo,width="80%") 
+          if(biz.photo)
+            .col-md-3
+              img.img-responsive(src="/uploads/thumbs/cover"+ biz.photo,width="80%") 
           .col-md-9
             h3.text-left 
               =biz.name

@@ -38,8 +38,9 @@ block content
           .row.flowerwhite
             li
               a(href="/"+biz.slug)
-                .col-md-4
-                  img(src="/uploads/"+ biz.photo, height="200px")
+                if(biz.photo)
+                  .col-md-4
+                    img(src="/uploads/"+ biz.photo, height="200px")
                 .col-md-8
                   h3.text-left
                     =biz.name

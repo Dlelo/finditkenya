@@ -433,7 +433,7 @@ router.get('/agent/number/:number', function(req, res){
 router.get('/user/:number', function(req, res){
 	Business.find({
     user_id: req.params.number
-  })
+  }).sort([['date', -1]])
   .then(function(data){
   	res.render('admin/bizadded', {title: "Find It Dashboard", businesses: data});
   })

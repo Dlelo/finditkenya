@@ -75,10 +75,11 @@ router.get('/search',function(req, res, next){
       keywords: { "$regex": req.query.search, "$options": "i" }
     },
     {
-      subcategory: { "$regex": req.params.name, "$options": "i" }
+      subcategory: { "$regex": req.query.search, "$options": "i" }
     }
     ],approved: true})
-  .select('-_id slug description name website')
+  .select('-_id slug description name website paid')
+  .sort([['paid', -1],['datepaid', 1],['slug', 1]])
   .then(function(data){
     res.render('business/list', { 
           title: req.query.search,
@@ -126,7 +127,12 @@ router.get('/category/:cat',function(req, res, next){
       });
     });
   }else{
-    var businesses = Business.find({subcategory: req.params.cat, approved: true});
+    var businesses = Business.find({
+      $query: {
+        subcategory: req.params.cat,
+        approved: true
+      }
+    }).sort([['paid', -1],['datepaid', 1],['slug', 1]]);
     var features = Category.find({name: req.params.cat });
     Promise.all([businesses, features]).then(values => {
       res.render('business/list', { 

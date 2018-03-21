@@ -148,15 +148,17 @@ block content
                   label(for='photo') Cover Photo
                 .col-sm-5
                   img(src="/uploads/"+ biz.photo, width="200px")
+                  img(src="",id="coverphotopreview", width="200px")
                 .col-sm-4
-                  input#photo.form-control-form(type='file', name='photo', placeholder='photo')
+                  input#photo.form-control-form(type='file', name='photo', placeholder='photo')                  
               .form-group
                 .col-sm-3
                   label(for='gallery') Gallery
                 .col-sm-5
-                if gallery
-                  each photo in biz.gallery
-                    img(src="/uploads/"+ photo.filename, width="200px")
+                  if gallery
+                    each photo in biz.gallery
+                      img(src="/uploads/"+ photo.filename, width="200px")
+                  #gallerypreview
                 .col-sm-4
                   input#gallery.form-control-form.imagegallery(type='file', name='gallery', placeholder='gallery', multiple='')
               .form-group

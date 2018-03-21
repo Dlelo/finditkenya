@@ -43,6 +43,9 @@ block content
                 .col-md-8
                   h3.text-left
                     =biz.name
+                    if (biz.paid == true)
+                      small                      
+                        span.fa.fa-check-circle.strong(style="color:#2862ec;")
                   p.padding.text-left  !{biz.description.substr(0, 150) + '..... <strong style="color:#d44457">Read More</strong>'}
                 .col-md-12                  
                   .row

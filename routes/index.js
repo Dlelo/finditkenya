@@ -76,6 +76,9 @@ router.get('/search',function(req, res, next){
     },
     {
       subcategory: { "$regex": req.query.search, "$options": "i" }
+    },
+    {
+      slug: { "$regex": req.query.search, "$options": "i" }
     }
     ],approved: true})
   .select('-_id slug description name website paid')

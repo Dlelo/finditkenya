@@ -108,15 +108,17 @@ html
               button.close(type='button', data-dismiss='modal', aria-label='Close')
                 span(aria-hidden='true') ×
             .modal-body
-              button.btn-fb
-                i.fa.fa-fw.fa-facebook.pull-left(aria-hidden='true')
-                a.btn-gp-link(href="/auth/facebook")
-                  | 								Login with Facebook
+              a.btn-gp-link(href="/auth/facebook")
+                button.btn-fb
+                  i.fa.fa-fw.fa-facebook.pull-left(aria-hidden='true')
+                  strong
+                    | 								Login with Facebook
               br
-              button.btn-gp
-                i.fa.fa-fw.fa-google-plus.pull-left(aria-hidden='true')
-                a.btn-gp-link(href="/auth/google")
-                  | 								Login with Google
+              a.btn-gp-link(href="/auth/google")
+                button.btn-gp
+                  i.fa.fa-fw.fa-google-plus.pull-left(aria-hidden='true')
+                  strong
+                    | 								Login with Google
               br
               .signup-or-separator
                 span.h6.signup-or-separator--text or

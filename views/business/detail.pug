@@ -95,6 +95,8 @@ block content
                     span.fa.fa-youtube.text-info.glyph.border 
                     a.findit(href="http://"+biz.youtube,target="_blank",style="color:#2862ec;")
                       |  Youtube
+              
+
               if (biz.catalog.length)
                 .col-md-12.text-left
                   each catalogue in biz.catalog
@@ -147,6 +149,21 @@ block content
                       a.nopadding(href='/uploads/'+image.filename, width="", alt='#{biz.slug}')
                         .thumbnail
                           img.img-thumbnail.img-responsive(src='/uploads/thumbs/gallery-'+image.filename,  alt='')
+            .row
+              if(biz.deliverylink)
+                .col-md-6
+                  p 
+                    span.fa.fa-motorcycle.text-info.glyph.border 
+                    a.findit(href="http://"+biz.deliverylink,target="_blank",style="color:#2862ec;")
+                      strong
+                        |  Order Now
+              if(biz.bookinglink)
+                .col-md-6
+                  p 
+                    span.fa.fa-plain.text-info.glyph.border 
+                    a.findit(href="http://"+biz.bookinglink,target="_blank",style="color:#2862ec;")
+                      strong
+                        |  Book Now
             if biz.description
               .panel
                 .findit-red.padding10top

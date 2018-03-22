@@ -74,6 +74,10 @@ router.post('/edit/:id', role.auth, cpUpload, function(req, res, next) {
 	    b.instagram = req.body.instagram;
 	    b.youtube = req.body.youtube;
 
+	    //Booking and Ordering
+	    b.bookinglink = req.body.bookinglink;
+	    b.deliverylink = req.body.deliverylink;
+
 	    if(req.body.hoursopensun){
 	    	b.hours.sunday = [];
 	    	b.hours.sunday.push({opens: req.body.hoursopensun, closes: req.body.hoursclosesun});

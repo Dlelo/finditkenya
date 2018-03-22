@@ -224,7 +224,7 @@ bootstrap.min.css:5
 
 .baner-content {
 	width: 100%;
-  	padding-top: 35vh;
+  	padding-top: 15vh;
   	text-align: center;
   	background-image: url(../img/banner_bg.jpg);
   	vertical-align: middle;
@@ -1017,4 +1017,7 @@ footer .terms-policy ul li a {
 	  background-size: cover;
 	}
 
+}
+.input-group-addon {
+    padding: 6px 30px;
 }

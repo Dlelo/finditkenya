@@ -81,7 +81,6 @@ router.get('/search',function(req, res, next){
       slug: { "$regex": req.query.search, "$options": "i" }
     }
     ],approved: true})
-  .select('-_id slug description name website paid')
   .sort([['paid', -1],['datepaid', 1],['slug', 1]])
   .then(function(data){
     res.render('business/list', { 

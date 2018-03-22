@@ -27,6 +27,7 @@ block content
                 th CITY
                 th PAID
                 th APPROVED
+                th PACKAGE
                 th ACTIONS
             tbody
               each biz,i in businesses
@@ -45,6 +46,9 @@ block content
                   td
                     span.text-info
                       =biz.approved
+                  td
+                    span.text-info
+                      =biz.packagepaid
                   td
                     span.text-info
                       a(href="/admin/edit/"+biz.id)

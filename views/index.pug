@@ -7,15 +7,16 @@ block content
         .text-content
           form.form(method='get', action='/search')
             .row.justify-content-center
-              .input-group
-                .input-group-addon 
-                  strong
-                    h4
-                      | Find  
-                    
-                input#search2(type='text', placeholder='Search Restaurants, Businesses, Handymen, Services, Events and More ...')
-                .input-group-addon
-                  span.fa.fa-search.fa-2x(style="color:#000;")
+              .col-md-10.col-md-offset-1
+                .input-group
+                  .input-group-addon 
+                    strong
+                      h4
+                        | Find  
+                      
+                  input#search2(type='text', placeholder='Search Restaurants, Businesses, Handymen, Services, Events and More ...')
+                  .input-group-addon
+                    span.fa.fa-search.fa-2x(style="color:#000;")
     section#bottom-scroll.page-section(style='padding:2px;bottom: 0px;left: 0px;background: black;width:100%;padding:20px')
       //.arrow-up.cat
       .owl-carousel.owl-theme

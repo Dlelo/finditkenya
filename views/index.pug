@@ -7,9 +7,14 @@ block content
         .text-content
           form.form(method='get', action='/search')
             .row.justify-content-center
-              fieldset
-                .col-md-4.col-md-offset-4.search
-                  input#search2.form-control(type='text', name='search', placeholder='Restaurants, Handymen, Accountants, ...')
+              .input-group
+                .input-group-addon 
+                  strong
+                    | Find  
+                  span.fa.fa-search.text-info.glyph(style="color:#000;")
+                input#search2(type='text', placeholder='Search Restaurants, Businesses, Handymen, Services, Events and More ...')
+                .input-group-addon
+                  button.btn.btn-warning(type='submit') Search
     section#bottom-scroll.page-section(style='padding:2px;bottom: 0px;left: 0px;background: black;width:100%;padding:20px')
       //.arrow-up.cat
       .owl-carousel.owl-theme

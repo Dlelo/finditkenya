@@ -324,6 +324,7 @@ router.post('/claim/:id/', role.auth, function(req, res){
   ssn.vendor_id = "sokompare";
   var package = req.body.package;
   ssn.agentnumber = req.body.agentnumber;
+  ssn.email = req.body.email;
   var amount = 0;
   if(package == "bronze"){
     //amount = "2320";
@@ -389,7 +390,7 @@ router.get('/receive', function(req, res){
           var holder = emailModel.app;
           var mailer = emailModel.mailer;
           holder.mailer.send('email/bronze', {
-            to: email, // REQUIRED. This can be a comma delimited string just like a normal email to field. 
+            to: ssn.email, // REQUIRED. This can be a comma delimited string just like a normal email to field. 
             subject: 'Payment Confirmed', // REQUIRED.
             otherProperty: 'Other Property' // All additional properties are also passed to the template as local variables.
           }, function (err) {
@@ -405,7 +406,7 @@ router.get('/receive', function(req, res){
           var holder = emailModel.app;
           var mailer = emailModel.mailer;
           holder.mailer.send('email/silver', {
-            to: email, // REQUIRED. This can be a comma delimited string just like a normal email to field. 
+            to: ssn.email, // REQUIRED. This can be a comma delimited string just like a normal email to field. 
             subject: 'Payment Confirmed', // REQUIRED.
             otherProperty: 'Other Property' // All additional properties are also passed to the template as local variables.
           }, function (err) {
@@ -421,7 +422,7 @@ router.get('/receive', function(req, res){
       var holder = emailModel.app;
           var mailer = emailModel.mailer;
           holder.mailer.send('email/gold', {
-            to: email, // REQUIRED. This can be a comma delimited string just like a normal email to field. 
+            to: ssn.email, // REQUIRED. This can be a comma delimited string just like a normal email to field. 
             subject: 'Payment Confirmed', // REQUIRED.
             otherProperty: 'Other Property' // All additional properties are also passed to the template as local variables.
           }, function (err) {

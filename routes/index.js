@@ -31,6 +31,7 @@ var mailer = require('express-mailer');
 /* GET home page. */
 router.get('/nss/:name',function(req, res, next){
 	//wait for the initialization
+  console.log(req.params.name);
   Business.find({$or: [
     {
       name: { "$regex": req.params.name, "$options": "i" }

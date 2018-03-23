@@ -12,15 +12,8 @@ block content
               input#name.form-control-form(type='text', name='name', placeholder='Name',value=biz.name)
           .form-group
             .col-sm-12
-              if(biz.packagepaid == "bronze")
-                textarea#description.form-control-form(name='description',rows=20,cols=30,placeholder="Describe yourself here...",maxlength="50")
+              textarea#description.form-control-form(name='description',rows=20,cols=30,placeholder="Describe yourself here...")
                   =biz.description
-              else if(biz.packagepaid == "silver")
-                textarea#description.form-control-form(name='description',rows=20,cols=30,placeholder="Describe yourself here...",maxlength="120")
-              else if(biz.packagepaid == "gold")
-                textarea#description.form-control-form(name='description',rows=20,cols=30,placeholder="Describe yourself here...",maxlength="250")
-              else
-                textarea#description.form-control-form(name='description',rows=20,cols=30,placeholder="Describe yourself here...",maxlength="1")
           .form-group
             .col-sm-12
               textarea#keywords.form-control-form(name='keywords',placeholder="type your comma separated keywords")
@@ -275,6 +268,34 @@ block content
               var shortened = keywords.join(' ');
               this.value = shortened;
               alert("This free package doesnt allow you this feature");
+            }
+          }
+        });
+
+        $("#description").on("keyup", function() {
+          //var keywordCount = this.value.length;
+          var keywordCount = this.value.match(/\S+/g).length;
+          
+          if(packagename == "bronze"){
+            if(keywordCount > 50){
+              var keywords = this.value.split(/\s+/).slice(0, 50);
+              var shortened = keywords.join(' ');
+              this.value = shortened;
+              alert("You can select upto 50 words");
+            }
+          }else if(packagename == "silver"){
+            if(keywordCount > 120 ){
+              var keywords = this.value.split(/\s+/).slice(0, 120);
+              var shortened = keywords.join(' ');
+              this.value = shortened;
+              alert("You can select upto 120 words");
+            }
+          }else if(packagename == "gold"){
+            if(keywordCount > 250){
+              var keywords = this.value.split(/\s+/).slice(0, 250);
+              var shortened = keywords.join(' ');
+              this.value = shortened;
+              alert("You can select upto 250 words");
             }
           }
         });

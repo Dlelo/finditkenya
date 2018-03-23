@@ -68,7 +68,7 @@ router.get('/email', function (req, res, next) {
 
 router.get('/search',function(req, res, next){
   //wait for the initialization
-  Business.find({$or: [
+  var businesses = Business.find({$or: [
     {
       name: { "$regex": req.query.search, "$options": "i" }
     }, 
@@ -82,13 +82,20 @@ router.get('/search',function(req, res, next){
       slug: { "$regex": req.query.search, "$options": "i" }
     }
     ],approved: true})
-  .sort([['paid', -1],['datepaid', 1],['slug', 1]])
-  .then(function(data){
-    res.render('business/list', { 
-          title: req.query.search,
-          businesses: data
+  .sort([['paid', -1],['datepaid', 1],['slug', 1]]);
+
+  var searchstring = req.query.search.charAt(0).toUpperCase() + req.query.search.slice(1)
+
+  var features = Category.find({name: searchstring });
+  Promise.all([businesses, features]).then(values => {
+    console.log(values[1]);
+      res.render('business/list', { 
+          title: req.params.search,
+          businesses: values[0],
+          features: values[1],
+          host: req.get('host')
       });
-  });
+    });
 });
 
 router.get('/moment',function(req,res){

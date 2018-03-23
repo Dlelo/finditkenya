@@ -71,7 +71,7 @@ router.get('/search',function(req, res, next){
   var businesses = Business.find({$or: [
     {
       name: { "$regex": req.query.search, "$options": "i" }
-    }, 
+    },
     {
       keywords: { "$regex": req.query.search, "$options": "i" }
     },
@@ -80,6 +80,9 @@ router.get('/search',function(req, res, next){
     },
     {
       slug: { "$regex": req.query.search, "$options": "i" }
+    },
+    {
+      features: { "$regex": req.query.search, "$options": "i" }
     }
     ],approved: true})
   .sort([['paid', -1],['datepaid', 1],['slug', 1]]);

@@ -246,7 +246,6 @@ router.post('/register',
                 //return handleError(err);
               }
               if(small){
-                console.log("user created");
                 var holder = emailModel.app;
                 var mailer = emailModel.mailer;
                 holder.mailer.send('email/welcome', {
@@ -386,10 +385,53 @@ router.get('/receive', function(req, res){
     //if(amount == "2320"){
     if(amount == "10.00"){
       b.packagepaid = "bronze";
+
+          var holder = emailModel.app;
+          var mailer = emailModel.mailer;
+          holder.mailer.send('email/bronze', {
+            to: email, // REQUIRED. This can be a comma delimited string just like a normal email to field. 
+            subject: 'Payment Confirmed', // REQUIRED.
+            otherProperty: 'Other Property' // All additional properties are also passed to the template as local variables.
+          }, function (err) {
+            if (err) {
+              // handle error
+              console.log(err);
+              res.send('There was an error sending the email');
+              return;
+            }
+          });
     }else if(amount == "11.00"){
       b.packagepaid = "silver";
+          var holder = emailModel.app;
+          var mailer = emailModel.mailer;
+          holder.mailer.send('email/silver', {
+            to: email, // REQUIRED. This can be a comma delimited string just like a normal email to field. 
+            subject: 'Payment Confirmed', // REQUIRED.
+            otherProperty: 'Other Property' // All additional properties are also passed to the template as local variables.
+          }, function (err) {
+            if (err) {
+              // handle error
+              console.log(err);
+              res.send('There was an error sending the email');
+              return;
+            }
+          });
     }else if(amount == "12.00"){
       b.packagepaid = "gold";
+      var holder = emailModel.app;
+          var mailer = emailModel.mailer;
+          holder.mailer.send('email/gold', {
+            to: email, // REQUIRED. This can be a comma delimited string just like a normal email to field. 
+            subject: 'Payment Confirmed', // REQUIRED.
+            otherProperty: 'Other Property' // All additional properties are also passed to the template as local variables.
+          }, function (err) {
+            if (err) {
+              // handle error
+              console.log(err);
+              res.send('There was an error sending the email');
+              return;
+            }
+          });
     }
     request(ipnurl, function (error, response, body) {
       //console.log(body); // Print the HTML for the Google homepage.

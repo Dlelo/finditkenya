@@ -659,7 +659,12 @@ CARD DESIGN
   background-color: #FFD700;
 }
 
-
+.addbusiness{
+  background-color: aliceblue;
+  margin-top: 10px;
+  text-align: right;
+  margin-right: 10px;
+}
 .package ul li::before {content: " ✔ ";padding: 5px; color: red}
 /***********
 

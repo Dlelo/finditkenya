@@ -599,7 +599,7 @@ router.get('/:name',function(req, res, next){
       res.render('business/freedetail',{title: data.name, biz: data, phones: phones, emails: emails});
       res.end();
     }else{
-      res.render('business/detail',{title: data.name, biz: data, phones: phones, emails: emails});
+      res.render('business/detail',{title: data.name, biz: data, phones: phones, emails: emails, description: description});
       res.end();
     }    
   })

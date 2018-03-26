@@ -71,10 +71,6 @@ html
                   a(data-id='login', data-toggle='modal', href='#at-login') 
                     span.glyphicon.glyphicon-user.text-default.glyph
                     |  Login
-                li
-                  a(data-id='login', data-toggle='modal', href='#at-signup') 
-                    span.glyphicon.glyphicon-send.text-default.glyph
-                    |  Sign Up
         
           // /.navbar-collapse
         // /.navbar
@@ -143,7 +139,8 @@ html
                 .col-md-6
                   p.ta-l Don't have an account ? 
                 .col-md-4.col-md-offset-2
-                  button.btn-gst(data-toggle='modal', data-dismiss='modal', data-target='#at-signup') Sign Up 
+                  a(href="/register")
+                    button.btn-gst() Sign Up 
       // MODAL LOGIN ENDS
       // MODAL SIGNUP
       #at-signup.modal.fade(tabindex='1', role='dialog', aria-labelledby='myModalLabel')

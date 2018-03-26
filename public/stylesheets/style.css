@@ -664,6 +664,7 @@ CARD DESIGN
   margin-top: 10px;
   text-align: right;
   margin-right: 10px;
+  padding: 0px 50px;
 }
 .package ul li::before {content: " ✔ ";padding: 5px; color: red}
 /***********

@@ -176,9 +176,7 @@ html(lang='en')
                   i.fa.fa-info-circle.fa-fw(aria-hidden='true')
                   | Error 404          
           .center.p-10
-            a.btn.btn-info.btn-block.waves-effect.waves-light(href='/business/freeadd') Add Free Business
-          .center.p-10
-            a.btn.btn-info.btn-block.waves-effect.waves-light(href='/business/add') Add Premium Business
+            a.btn.btn-info.btn-block.waves-effect.waves-light(href='/business/freeadd') Add Business
           if(user.role == 1)
             .center.p-10
               a.btn.btn-info.btn-block.waves-effect.waves-light(href='/admin/category/add') Add Category
@@ -216,11 +214,13 @@ html(lang='en')
           .row.bg-title
             .col-lg-3.col-md-4.col-sm-4.col-xs-12
               h4.page-title Dashboard
-            .col-lg-9.col-sm-8.col-md-8.col-xs-12
-              a.btn.btn-danger.pull-right.m-l-20.hidden-xs.hidden-sm.waves-effect.waves-light(href='https://wrappixel.com/templates/ampleadmin/', target='_blank') Find It
-              ol.breadcrumb
-                li
-                  a(href='#') Dashboard
+            .col-lg-9.col-sm-8.col-md-8.col-xs-12                
+              ul.nav.pull-right.text-right.addbusiness
+                li 
+                  a(href='/business/freeadd')
+                    span.fa.fa-database.text-default.glyph
+                    strong
+                      |  Add Business
             // /.col-lg-12
           block content
         // /.container-fluid

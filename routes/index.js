@@ -116,7 +116,8 @@ router.get('/fetchCat/:name',function(req, res, next){
 router.get('/', function(req, res, next) {
   Category.find({approved: true})
   .then(function(data){
-      res.render('index', { title: 'Find It Kenya | Find businesses and service providers in Kenya' , categories: data});
+    description = "Find it or be found. Kenyas no1 online search for everything and anything";
+      res.render('index', { title: 'Find It Kenya | Find businesses and service providers in Kenya' , categories: data, description: description});
   })
   .catch(function(err){
        console.log(err);

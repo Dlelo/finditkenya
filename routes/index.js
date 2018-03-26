@@ -597,7 +597,7 @@ router.get('/:name',function(req, res, next){
     data.openstatus = openingTimesMoment.getStatus(now);  
     console.log(data.openstatus.isOpen); 
     if(data.paid == false || typeof data.paid === 'undefined'){
-      description = data.name + '; '+ data.subcategory + ', ' + ' In Kenya';
+      description = data.name + ', '+ data.subcategory + ', ' + data.street +', '+data.city + ' Kenya';
       console.log(description);
       res.render('business/freedetail',{title: data.name, biz: data, phones: phones, emails: emails});
       res.end();

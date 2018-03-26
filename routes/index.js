@@ -332,7 +332,7 @@ router.post('/claim/:id/', role.auth, function(req, res){
   }else if(package == "silver"){
     amount = "5600";
   }else if(package == "gold"){
-    amount = "13000";
+    amount = "10";
   }
   var fields = {
     "live":"1",
@@ -417,7 +417,7 @@ router.get('/receive', function(req, res){
               return;
             }
           });
-    }else if(amount == "13000.00"){
+    }else if(amount == "10.00"){
       b.packagepaid = "gold";
       var holder = emailModel.app;
           var mailer = emailModel.mailer;

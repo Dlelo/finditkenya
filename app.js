@@ -108,7 +108,7 @@ passport.use(new GoogleStrategy({
     passReqToCallback   : true
   },
   function(request, accessToken, refreshToken, profile, done) {
-    User.findOne({ googleid: profile.id }, function (err, user) {
+    User.findOne({ googleId: profile.id }, function (err, user) {
       if(!user){
         User.create({
           googleId: profile.id,

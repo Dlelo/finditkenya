@@ -597,10 +597,13 @@ router.get('/:name',function(req, res, next){
     data.openstatus = openingTimesMoment.getStatus(now);  
     console.log(data.openstatus.isOpen); 
     if(data.paid == false || typeof data.paid === 'undefined'){
+      description = data.name + '; '+ data.subcategory + ', ' + ' In Kenya';
+      console.log(description);
       res.render('business/freedetail',{title: data.name, biz: data, phones: phones, emails: emails});
       res.end();
     }else{
-      description = data.name + ' '+ data.subcategory + ': ' + data.features.split(",") + ' In Kenya';
+      description = data.description;
+      console.log(description);
       res.render('business/detail',{title: data.name, biz: data, phones: phones, emails: emails, description: description});
       res.end();
     }    

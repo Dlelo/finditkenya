@@ -81,42 +81,57 @@ router.post('/add', role.auth, cpUpload, function(req, res, next) {
 	if(req.body.hoursopensat){
 		instance.hours.saturday.push({opens: req.body.hoursopensat, closes: req.body.hoursclosesat}); 
 	}
-	instance.save(function(err){
-		if(err){
-			Category.find({})
-			.then(function(data){
-			    res.render('business/new',{title: "Find It Categories", categories: data, errors: err});
-			})
-			.catch(function(err){
-			     console.log(err);
-			});
-		}else{
-			if (req.files['photo'] != null){
-				Jimp.read("./public/uploads/"+instance.photo).then(function (cover) {
-				    return cover.resize(200, 140)     // resize
-				         .quality(100)                 // set JPEG quality
-				         .greyscale()                 // set greyscale
-				         .write("./public/uploads/thumbs/cover"+instance.photo); // save
-				}).catch(function (err) {
-				    console.error(err);
-				});
-			}
-			if(instance.gallery){
-				instance.gallery.forEach(function(gallery) {
-				  	Jimp.read("./public/uploads/"+gallery.filename).then(function (cover) {
-					    return cover.resize(200, 140)     // resize
-					         .quality(100)                 // set JPEG quality
-					         .greyscale()                 // set greyscale
-					         .write("./public/uploads/thumbs/gallery-"+gallery.filename); // save
-					}).catch(function (err) {
-					    console.error(err);
+	Business.findOne({
+	   slug: instance.slug
+	})
+	.then(function(data){
+	    if(!data){
+	     	instance.save(function(err){
+				if(err){
+					Category.find({})
+					.then(function(data){
+					    res.render('business/new',{title: "Find It Categories", categories: data, errors: err});
+					})
+					.catch(function(err){
+					     console.log(err);
 					});
-				});
-			}
-			
-			res.redirect('/dashboard');
-		}
+				}else{
+					if (req.files['photo'] != null){
+						Jimp.read("./public/uploads/"+instance.photo).then(function (cover) {
+						    return cover.resize(200, 140)     // resize
+						         .quality(100)                 // set JPEG quality
+						         .greyscale()                 // set greyscale
+						         .write("./public/uploads/thumbs/cover"+instance.photo); // save
+						}).catch(function (err) {
+						    console.error(err);
+						});
+					}
+					if(instance.gallery){
+						instance.gallery.forEach(function(gallery) {
+						  	Jimp.read("./public/uploads/"+gallery.filename).then(function (cover) {
+							    return cover.resize(200, 140)     // resize
+							         .quality(100)                 // set JPEG quality
+							         .greyscale()                 // set greyscale
+							         .write("./public/uploads/thumbs/gallery-"+gallery.filename); // save
+							}).catch(function (err) {
+							    console.error(err);
+							});
+						});
+					}
+					
+					res.redirect('/dashboard');
+				}
+			});
+	    }else{
+	    	req.flash('error', 'Business already exists');
+	    	res.redirect('/'+instance.slug);
+	    } 
+	})
+	.catch(function(err){
+	    console.log(err);
+	    res.redirect('/');
 	});
+	
 });
 
 router.get('/freeadd',role.auth, function(req, res, next){

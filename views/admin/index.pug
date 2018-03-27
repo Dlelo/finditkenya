@@ -58,5 +58,6 @@ block content
                       if(user.role == 1)
                         a(href="/admin/approve/"+biz.id)
                           i.fa.fa-check.fa-fw(aria-hidden='true')
-                      a(href="/admin/pay/"+biz.id)
-                        i.fa.fa-credit-card.fa-fw(aria-hidden='true')
+                      if(biz.paid != 1)
+                        a(href="/claim-form/"+biz.id, title="Pay for this business")
+                          i.fa.fa-credit-card.fa-fw(aria-hidden='true')

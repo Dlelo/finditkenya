@@ -667,6 +667,9 @@ CARD DESIGN
   padding: 0px 50px;
 }
 .package ul li::before {content: " ✔ ";padding: 5px; color: red}
+.input-group-addon {
+  border: 0px solid #ccc; 
+}
 /***********
 
 END OF CARD DESIGN

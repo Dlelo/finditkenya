@@ -31,6 +31,7 @@ html
     link(rel='stylesheet', href='/stylesheets/bootstrap-datetimepicker.min.css')
     link(href='https://fonts.googleapis.com/css?family=Arimo|Montserrat', rel='stylesheet')
     script(src='/javascripts/vendor/modernizr-2.8.3-respond-1.4.2.min.js')
+    script(src='/javascripts/jquery.min.js')
   body
     .header
       .container
@@ -270,7 +271,7 @@ html
               
             .modal-footer
               button.btn.btn-secondary(type='button', data-dismiss='modal') Close
-script(src='/javascripts/jquery.min.js')
+
 script(src='/javascripts/bootstrap.min.js')
 script(src='/javascripts/plugins.js')
 script(src="/javascripts/owl.carousel.min.js")
@@ -296,8 +297,7 @@ script(type='text/javascript').
 
   $('.timepicker').datetimepicker({      
       sideBySide: true,
-      format: 'HH:mm',
-      defaultTime: '08:00'
+      format: 'HH:mm'
   });
 
   $('.timepicker').click(function(event){
@@ -308,7 +308,8 @@ script(type='text/javascript').
     $(this).attr('readonly', 'readonly');
   });
 
-
+  $('.hoursopened').val('08:00');
+  $('.hoursclosed').val('17:00');
 
   $(document).on('click', ".cat", function() {
       var originalHeight = $('#bottom-scroll').height();
@@ -397,7 +398,7 @@ script(type='text/javascript').
                       // You will need to alter the below to get the right values from your json object.  Guessing that d.id / d.modelName are columns in your carModels data
                       console.log(d.name);
                       $('#ssubcategory').append('<option value="' + d.name + '">' + d.name + '</option>');
-
+                      $('#ssubcategoryy').append('<option value="' + d.name + '">' + d.name + '</option>');
                   });
                   $('.selectpicker').selectpicker('refresh');
               }

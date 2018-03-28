@@ -251,20 +251,28 @@ block content
           var keywordCount = this.value.match(/\S+/g).length;
           
           if(packagename == "bronze"){
-            if(keywordCount == 11){
+            if(keywordCount >= 11){
               var keywords = this.value.split(/\s+/).slice(0, 10);
               var shortened = keywords.join(' ');
               this.value = shortened;
               alert("You can select upto 10 keywords");
             }
           }else if(packagename == "silver"){
-            if(keywordCount == 26){
+            if(keywordCount >= 26){
               var keywords = this.value.split(/\s+/).slice(0, 25);
               var shortened = keywords.join(' ');
               this.value = shortened;
               alert("You can select upto 25 keywords");
             }
-          }else if(packagename == "" && packagename != "gold"){
+          }else if(packagename == "gold"){
+            if(keywordCount >= 100){
+              var keywords = this.value.split(/\s+/).slice(0, 25);
+              var shortened = keywords.join(' ');
+              this.value = shortened;
+              alert("You can select upto 25 keywords");
+            }
+          }
+          else if(packagename == "" && packagename != "gold"){
             if(keywordCount > 1){
               var keywords = this.value.split(/\s+/).slice(0, 1);
               var shortened = keywords.join(' ');

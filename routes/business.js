@@ -60,6 +60,7 @@ router.post('/add', role.auth, cpUpload, function(req, res, next) {
 	instance.building = req.body.building;
 	instance.starteventdate = req.body.starteventdate;
 	instance.endeventdate = req.body.endeventdate;
+	instance.approved = true;
 	if(req.body.hoursopensun){
 		instance.hours.sunday.push({opens: req.body.hoursopensun, closes: req.body.hoursclosesun});
 	}

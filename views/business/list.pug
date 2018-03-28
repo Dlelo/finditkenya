@@ -12,13 +12,14 @@ block content
                     =subcategory
           
           if subcategory
-            .panel.panel-warning
-              .panel-body.black
-                strong Filter   
-                   .panel-heading.category
-                     a(href="/nearby/"+features[0].name+"/"+subcategory)
-                      i.fa.fa-cog   
-                      |  Nearby
+            if features.length
+              .panel.panel-warning
+                .panel-body.black
+                  strong Filter   
+                     .panel-heading.category
+                       a(href="/nearby/"+features[0].name+"/"+subcategory)
+                        i.fa.fa-cog   
+                        |  Nearby
           .dropdown
             button.btn.btn-default.form-control.dropdown-toggle(type='button', data-toggle='dropdown')
               | Filter Sub Categories  

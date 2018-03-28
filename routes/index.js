@@ -162,7 +162,9 @@ router.get('/category/:cat',function(req, res, next){
 router.get('/subcategory/:name', function(req, res, next){
   var businesses = Business.find({ features: req.params.name, approved: true });
   var features = Category.find({ subcategories: {$elemMatch: { name: req.params.name}} });
+
   Promise.all([businesses,features]).then(values => {
+    console.log(values[1]);
     res.render('business/list', { 
         title: req.params.cat,
         businesses: values[0],

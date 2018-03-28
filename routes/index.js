@@ -133,7 +133,7 @@ router.get('/category/:cat',function(req, res, next){
     });
     var features = Category.find({name: req.params.cat });
     Promise.all([businesses, features]).then(values => {
-      res.render('business/eventslist', { 
+      res.render('business/list', { 
           title: req.params.cat,
           businesses: values[0],
           features: values[1],

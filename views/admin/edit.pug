@@ -1,4 +1,4 @@
-extends admin-layout
+extends ../layout
 
 block content
   .page_body.basic-content
@@ -78,7 +78,7 @@ block content
               =biz.endeventdate
           .form-group
             .col-sm-12
-              select.form-control-form(name='extras', multiple='', data-selected-text-format='count > 10')
+              select.form-control-form.selectpicker(name='extras', multiple='', data-selected-text-format='count > 10')
                 option(data-icon='glyphicon-wrench', value=biz.extras) #{biz.extras.join()}
                 option(data-icon='glyphicon glyphicon-signal', value='wifi') Wifi
                 option(data-icon='glyphicon-credit-card', value='creditcards') Credits Cards

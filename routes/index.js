@@ -321,7 +321,7 @@ router.get('/claim-form/:id/', role.auth, function(req, res, next){
   res.render('site/formclaim', {title: "Choose Package", bizid: req.params.id});
 });
 
-router.get('/add-agent',function(req, res, next){
+router.get('/add-agent',role.auth,function(req, res, next){
   res.render('site/agent');
 });
 

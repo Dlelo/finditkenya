@@ -2,11 +2,16 @@ extends layout
 
 block content
     ul.nav.pull-right.text-right.addbusiness
-      li 
+      li(style="float: left;")
         a(href='/business/freeadd')
           span.fa.fa-database.text-default.glyph
           strong
             |  Add Business
+      li(style="float: left;")
+        a(href='/add-agent')
+          span.fa.fa-user-circle-o.text-default.glyph
+          strong
+            |  Apply As An Agent 
     #home.parallax-content.baner-content
       .container.nopadding
         .text-content

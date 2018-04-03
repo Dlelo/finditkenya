@@ -8,8 +8,8 @@ mongoose.Promise =require('bluebird');
 const Schema = mongoose.Schema;
 
 const agentSchema = new Schema({
-		name: { type: String,required: true, index: { unique: true, sparse: true }},
-		phone: String
+		name: { type: String,required: true},
+		phone: { type: String,required: true,index: { unique: true, sparse: true }}
 });
 
 agentSchema.plugin(superPagination, {

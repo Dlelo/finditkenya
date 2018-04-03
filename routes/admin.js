@@ -414,17 +414,32 @@ router.get('/agent/add',role.admin, function(req, res){
 	res.render('agents/new', {title: "New Agent"});
 });
 
-router.post('/agent/create',role.admin, function(req, res){
-	var i = new Agents();
-	i.name = req.body.name;
-	i.phone = req.body.phone;
-	i.save(function(err){
-		if(err){
-			console.log(err);
-			res.redirect('/admin/agents');
-		}
-		res.redirect('/admin/agents');
+router.post('/agent/create', function(req, res){
+	
+	Agents.findOne({
+	   phone: req.body.phone
 	})
+	.then(function(data){
+		if(!data){
+			var i = new Agents();
+			i.name = req.body.name;
+			i.phone = req.body.phone;
+			i.save(function(err){
+				if(role.admin){
+					if(err){
+						console.log(err);
+						res.redirect('/admin/agents');
+					}
+					res.redirect('/admin/agents');
+				}else{
+					res.render('site/agent',{success_msg: "Agent details successfully submitted"})
+				}				
+			});
+		}else{
+			res.render('site/agent',{error_msg: "Agent already exists"})
+		}
+	});
+	
 });
 
 router.get('/agent/number/:number', function(req, res){

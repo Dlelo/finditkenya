@@ -321,6 +321,10 @@ router.get('/claim-form/:id/', role.auth, function(req, res, next){
   res.render('site/formclaim', {title: "Choose Package", bizid: req.params.id});
 });
 
+router.get('/add-agent',function(req, res, next){
+  res.render('site/agent');
+});
+
 router.post('/claim/:id/', role.auth, function(req, res){
   ssn = req.session;
   ssn.hashkey = "852sokompare963001";

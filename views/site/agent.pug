@@ -4,13 +4,12 @@ block content
   #home.parallax-content-list.baner-content-listing-biz
     .container
       h3 
-        | Kindly Input The Phone Number of Your Agent
-      form(method='post', action='/agent/'+slug)
+        | Kindly Input The Name and Phone Number of This Agent
+      form(method='post', action='/admin/agent/create')
+        .form-group
+          input.form-control(name='name',type='text',placeholder="Full Name") 
         .form-group
           input.form-control(name='phone',type='text',placeholder="phone") 
         .form-group     
-          button.btn.btn-success.form-control(type='submit')
-            | Finish
-      a(href="/", title="Skip Step")
-        button.btn.btn-default.form-control(type='button')
-          | Skip This Step
+          button.btn.btn-danger.form-control(type='submit')
+            | Create

@@ -258,7 +258,7 @@ router.get('/category/showhome/:id',role.admin, function(req, res, next){
 	});
 });
 
-router.get('/subcategory/:name',role.auth, function(req, res, next){
+router.get('/subcategory/bizlist/:name',role.auth, function(req, res, next){
   var businesses = Business.find({ features: req.params.name, approved: true });
   var features = Category.find({ subcategories: {$elemMatch: { name: req.params.name}} });
 
@@ -342,7 +342,7 @@ router.get('/subcategory', function(req, res, next) {
   });  
 });
 
-router.get('/subcategory/add', function(req, res, next){
+router.get('/subcategory/add',role.admin, function(req, res, next){
 	Category.find({})
 	.then(function(data){
 	  	console.log(data);

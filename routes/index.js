@@ -542,11 +542,6 @@ router.post('/forgotpassword', function(req, res){
       }
       var holder = emailModel.app;
       var mailer = emailModel.mailer;
-      console.log('******MAIL***********');
-      console.log(emailModel.app);
-      console.log('****** END MAIL***********');
-      console.log(emailModel.mailer);
-      console.log('****** END MAILER***********');
       holder.mailer.send('email/forgotpassword', {
         to: d.email, // REQUIRED. This can be a comma delimited string just like a normal email to field. 
         subject: 'FindIt Password Recovery', // REQUIRED.

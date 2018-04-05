@@ -23,7 +23,8 @@ var index = require('./routes/index');
 var User = require('./models/User');
 var admin = require('./routes/admin');
 var Business = require('./models/Business');
-var transporter = require('./config/Email');
+var config = require('./config.json');
+
 
 var app = express();
 
@@ -56,18 +57,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-mailer.extend(app, {
-  from: 'noreply@findit.ke',
-  host: 'smtp.zoho.com', // hostname
-  secureConnection: true, // use SSL
-  port: 465, // port for secure SMTP
-  transportMethod: 'SMTP', // default is SMTP. Accepts anything that nodemailer accepts
-  auth: {
-    user: 'noreply@findit.ke',
-    pass: '12345678'
-  }
-});
 
 passport.serializeUser(function(user, done) {
   done(null, user.id);
@@ -102,8 +91,8 @@ passport.use(new LocalStrategy(
 
 
 passport.use(new GoogleStrategy({
-    clientID:     '118322684414-q0vllioiccmtodvj62kc5n2rcivatj83.apps.googleusercontent.com',
-    clientSecret: 'j5in8fHjSBfLkZi5mAc3k3bZ',
+    clientID: config.google.clientId,
+    clientSecret: config.google.clientSecret,
     callbackURL: "https://findit.ke/auth/google/callback",
     passReqToCallback   : true
   },
@@ -142,8 +131,8 @@ passport.use(new GoogleStrategy({
 ));
 
 passport.use(new FacebookStrategy({
-    clientID: '152589045423306',
-    clientSecret: 'e7e3ae226db70be289d5eb8c2ff2dd19',
+    clientID: config.facebook.clientId,
+    clientSecret: config.facebook.clientSecret,
     callbackURL: "https://findit.ke/auth/facebook/callback"
   },
   function(accessToken, refreshToken, profile, done) {
@@ -177,22 +166,6 @@ app.use(function(req, res, next){
   }else{
      next();
   }
-});
-
-app.get('/mail', function (req, res, next) {
-  app.mailer.send('email/welcome', {
-    to: 'kelvinchege@gmail.com', // REQUIRED. This can be a comma delimited string just like a normal email to field. 
-    subject: 'Test Email', // REQUIRED.
-    otherProperty: 'Other Property' // All additional properties are also passed to the template as local variables.
-  }, function (err) {
-    if (err) {
-      // handle error
-      console.log(err);
-      res.send('There was an error sending the email');
-      return;
-    }
-    res.send('Email Sent');
-  });
 });
 
 app.get('/logout', function(req, res){

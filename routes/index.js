@@ -23,7 +23,6 @@ var role = require(__dirname + '/../config/Role');
 var User = require('./../models/User');
 var Business = require('./../models/Business');
 var Category = require(__dirname + '/../models/Category');
-var transporter = require(__dirname + '/../config/Email');
 var emailModel = require(__dirname + '/../config/Mail');
 
 var mailer = require('express-mailer');
@@ -543,6 +542,11 @@ router.post('/forgotpassword', function(req, res){
       }
       var holder = emailModel.app;
       var mailer = emailModel.mailer;
+      console.log('******MAIL***********');
+      console.log(emailModel.app);
+      console.log('****** END MAIL***********');
+      console.log(emailModel.mailer);
+      console.log('****** END MAILER***********');
       holder.mailer.send('email/forgotpassword', {
         to: d.email, // REQUIRED. This can be a comma delimited string just like a normal email to field. 
         subject: 'FindIt Password Recovery', // REQUIRED.
@@ -553,10 +557,12 @@ router.post('/forgotpassword', function(req, res){
           console.log(err);
           res.send('There was an error sending the email');
           return;
+        }else{
+          req.flash('success_msg', 'Email Sent');
+          res.redirect('/');
         }
       });
-      req.flash('success_msg', 'Email Sent');
-      res.redirect('/');
+      
     });
   })
   .catch(function(err){

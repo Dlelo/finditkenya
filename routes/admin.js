@@ -258,6 +258,20 @@ router.get('/category/showhome/:id',role.admin, function(req, res, next){
 	});
 });
 
+router.get('/subcategory/:name',role.auth, function(req, res, next){
+  var businesses = Business.find({ features: req.params.name, approved: true });
+  var features = Category.find({ subcategories: {$elemMatch: { name: req.params.name}} });
+
+  Promise.all([businesses,features]).then(values => {
+    res.render('admin/index', { 
+        title: req.params.cat,
+        businesses: values[0],
+        features: values[1],
+        subcategory: req.params.name
+    });
+  });
+});
+
 router.get('/subcategory/delete/:id/:name',role.auth, function(req, res, next){
 		Category.update(
 			{_id: req.params.id},

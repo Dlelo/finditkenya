@@ -320,18 +320,32 @@ router.get('/businesses', role.auth, function(req, res){
     
 });
 
-router.post('/datatables', function(req, res) {
-  console.log(req.body);
-  Business.dataTables({
-    limit: req.body.length,
-    skip: req.body.start,
-    
-    sort: {
-      name: 1
-    }
-  }).then(function (table) {
-    res.json(table); // table.total, table.data
-  })
+router.post('/datatables', role.auth, function(req, res) {
+  if(req.user.role == 1){
+    Business.dataTables({
+      limit: req.body.length,
+      skip: req.body.start,
+      
+      sort: {
+        name: 1
+      }
+    }).then(function (table) {
+      res.json(table); // table.total, table.data
+    })
+  }else{
+    Business.dataTables({
+      limit: req.body.length,
+      skip: req.body.start,
+      find: {
+        user_id: res.locals.user.username
+      },   
+      sort: {
+        name: 1
+      }
+    }).then(function (table) {
+      res.json(table); // table.total, table.data
+    })
+  }
 });
 
 router.get('/profile', function(req, res){

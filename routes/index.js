@@ -274,7 +274,8 @@ router.post('/register',
 );
 
 router.get('/dashboard', role.auth, function(req, res){
-  if(req.user.role == 1){
+  res.render('admin/index', {title: "Find It Dashboard"});
+  /*if(req.user.role == 1){
     Business.find({})
     .then(function(data){
       res.render('admin/index', {title: "Find It Dashboard", businesses: data});
@@ -292,8 +293,45 @@ router.get('/dashboard', role.auth, function(req, res){
     .catch(function(err){
        console.log(err);
     });
+  }*/
+    
+});
+
+router.get('/businesses', role.auth, function(req, res){
+  if(req.user.role == 1){
+    Business.find({})
+    .then(function(data){
+      res.json({ recordsTotal: data.length, data: data});
+    })
+    .catch(function(err){
+       console.log(err);
+    });
+  }else{
+    Business.find({
+      user_id : res.locals.user.username
+    })
+    .then(function(data){
+      res.json({ recordsTotal: data.length, data: data});
+    })
+    .catch(function(err){
+       console.log(err);
+    });
   }
     
+});
+
+router.post('/datatables', function(req, res) {
+  console.log(req.body);
+  Business.dataTables({
+    limit: req.body.length,
+    skip: req.body.start,
+    
+    sort: {
+      name: 1
+    }
+  }).then(function (table) {
+    res.json(table); // table.total, table.data
+  })
 });
 
 router.get('/profile', function(req, res){

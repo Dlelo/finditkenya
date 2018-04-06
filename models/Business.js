@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 var superPagination = require('super-pagination').mongoose;
+var dataTables = require('mongoose-datatables');
 var sys = require(__dirname + '/../config/System');
 
 var db = mongoose.connect(sys.db_uri, {useMongoClient: true });
@@ -71,5 +72,7 @@ const bizSchema = new Schema({
 bizSchema.plugin(superPagination, {
     theme : 'bootstrap'
 });
+
+bizSchema.plugin(dataTables);
 
 module.exports = mongoose.model('Business', bizSchema);

@@ -28,6 +28,7 @@
     "moment-opening-times": "^2.6.0",
     "moment-timezone": "^0.5.0",
     "mongoose": "^4.12.3",
+    "mongoose-datatables": "^3.1.0",
     "morgan": "~1.9.0",
     "multer": "^1.3.0",
     "node-suggestive-search": "^1.9.2",

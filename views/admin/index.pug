@@ -19,10 +19,9 @@ block content
         h3.box-title Businesses
         .col-md-12.col-sm-12.col-xs-12
         .table
-          table.table
+          table.table#businesses
             thead
               tr
-                th #
                 th NAME
                 th CATEGORY
                 th CITY
@@ -31,34 +30,5 @@ block content
                 th PACKAGE
                 th ACTIONS
             tbody
-              each biz,i in businesses
-                tr
-                  td #{i+1}
-                  td.txt-oflo 
-                    a(href="/"+biz.slug)
-                      =biz.name
-                  td 
-                    =biz.subcategory
-                  td.txt-oflo 
-                    =biz.city
-                  td
-                    span.text-success
-                      =biz.paid
-                  td
-                    span.text-info
-                      =biz.approved
-                  td
-                    span.text-info
-                      =biz.packagepaid
-                  td
-                    span.text-info
-                      a(href="/admin/edit/"+biz.id)
-                        | Edit 
-                      if(biz.paid == 1)
-                        a(href="/admin/delete/"+biz.id, onclick="return confirm('Are you sure you want to delete this business?')")
-                          | Delete 
-                      if(user.role == 1)
-                        a(href="/admin/approve/"+biz.id)
-                          |  Approve 
-                      a(href="/claim-form/"+biz.id, title="Pay for this business")
-                        | Pay
+
+          

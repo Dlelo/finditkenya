@@ -25,6 +25,8 @@ html(lang='en')
     link(rel='stylesheet', href='/stylesheets/bootstrap-select.min.css')
     link(rel='stylesheet', href='/stylesheets/jquery-gmaps-latlon-picker.css')
     link(rel='stylesheet', href='/stylesheets/bootstrap-datetimepicker.min.css')
+    link(rel='stylesheet', href='https://cdn.datatables.net/v/bs/jszip-2.5.0/dt-1.10.16/af-2.2.2/b-1.5.1/b-html5-1.5.1/b-print-1.5.1/cr-1.4.1/r-2.2.1/sc-1.4.4/sl-1.2.5/datatables.min.css')
+
     script(src='/javascripts/jquery.min.js')
   body.fix-header
     // ==============================================================
@@ -254,8 +256,48 @@ html(lang='en')
     script(src="/javascripts/tinymce.min.js")
     script(src="/javascripts/moment.min.js")
     script(src="/javascripts/bootstrap-datetimepicker.min.js")
+
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js")
+    script(src="https://cdn.datatables.net/v/bs/jszip-2.5.0/dt-1.10.16/af-2.2.2/b-1.5.1/b-html5-1.5.1/b-print-1.5.1/cr-1.4.1/r-2.2.1/sc-1.4.4/sl-1.2.5/datatables.min.js")
+
     script(type='text/javascript').
       $(document).ready(function() {
+
+        $('#businesses').DataTable({
+            "ajax": {
+                "url": "/datatables",
+                "type": "POST"
+            },
+            "bprocessing" : true,
+            "bserverSide" : true,
+            "columns": [
+                { "data": "name" },                
+                { "data": "category" },
+                { "data": "city" },
+                { "data": "paid",
+                  render: function(data, type, row){
+                      return "Coming Soon";
+                  }
+                },
+                { "data": "approved",
+                  render: function(data, type, row){
+                      return "Coming Soon";
+                  }
+                },
+                { "data": "packagepaid",
+                  render: function(data, type, row){
+                      return "Coming Soon";
+                  }
+                },
+                { "data": "actions",
+                  render: function(data, type, row){
+                      return "<a href='/admin/edit/"+row._id+"'>Edit</a>";
+                  }
+                }
+            ],
+            responsive: true
+        });
 
         //********************  TIME FUNCTIONS  ********************
 

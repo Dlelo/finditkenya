@@ -90,7 +90,7 @@ block content
                     a.findit(href="http://"+biz.instagram,target="_blank",style="color:#2862ec;")
                       |  Instagram
               if(biz.youtube)
-                .col-md-12
+                .col-md-12.text-left
                   p 
                     span.fa.fa-youtube.text-info.glyph.border 
                     a.findit(href="http://"+biz.youtube,target="_blank",style="color:#2862ec;")
@@ -212,8 +212,10 @@ block content
                 hr
             
           if biz.youtube
+            h3.text-left
+              | Youtube
             .col-md-6
-              iframe(width='100%', height='315', src="https://"+biz.youtube, allow="autoplay; encrypted-media" allowfullscreen)
+              iframe(width='100%', height='315', src="https://"+biz.youtube, allow=" encrypted-media" allowfullscreen)
           
         .row 
           .col-md-12 

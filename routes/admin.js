@@ -475,7 +475,11 @@ router.get('/user/makeadmin/:id', role.admin, function(req, res){
 	Users.findById(req.params.id)
 	.then(function(data){
 	  	console.log(data);
-	  	data.role = "1";
+	  	if(data.role == "1"){
+	  		data.role = "0";
+	  	}else{
+	  		data.role = "1";
+	  	}	  	
 	  	data.save(function(err){
 	  		if(err){
 	  			req.flash('error',err);

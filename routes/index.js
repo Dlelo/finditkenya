@@ -320,12 +320,11 @@ router.get('/businesses', role.auth, function(req, res){
     
 });
 
-router.post('/datatables', role.auth, function(req, res) {
+router.get('/datatables', role.auth, function(req, res) {
   if(req.user.role == 1){
     Business.dataTables({
       limit: req.body.length,
-      skip: req.body.start,
-      
+      skip: req.body.start,      
       sort: {
         name: 1
       }

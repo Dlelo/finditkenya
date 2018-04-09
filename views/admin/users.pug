@@ -59,9 +59,10 @@ block content
                 th ROLE
                 th ACTIONS
             tbody
-              each user in users
+              each user, i in users
                 tr
-                  td 1
+                  td
+                    =i
                   td 
                     =user.names
                   td.txt-oflo 

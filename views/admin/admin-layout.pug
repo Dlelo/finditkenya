@@ -276,17 +276,29 @@ html(lang='en')
                 { "data": "city" },
                 { "data": "paid",
                   render: function(data, type, row){
-                      return "Coming Soon";
+                    if(typeof row.paid !== 'undefined'){
+                      return row.paid;
+                    }else{
+                      return "Pending";
+                    }
                   }
                 },
                 { "data": "approved",
                   render: function(data, type, row){
-                      return "Coming Soon";
+                    if(typeof row.approved !== 'undefined'){
+                      return row.approved;
+                    }else{
+                      return "Pending";
+                    }
                   }
                 },
                 { "data": "packagepaid",
                   render: function(data, type, row){
-                      return "Coming Soon";
+                    if(typeof row.packagepaid !== 'undefined'){
+                      return row.packagepaid;
+                    }else{
+                      return "Pending";
+                    }
                   }
                 },
                 { "data": "actions",

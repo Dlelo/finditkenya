@@ -99,11 +99,11 @@ block content
 
               if (biz.catalog.length)
                 .col-md-12.text-left
-                  each catalogue in biz.catalog
+                  each catalogue, i in biz.catalog
                     if (catalogue)
                       span.glyphicon.glyphicon-list-alt.glyph.border
                       a.findit(href="/business/catalog/"+catalogue.filename, target="_blank")
-                        |  #{catalogue.filename} 
+                        |  Menu #{i}
                     hr   
               .col-md-12.text-center
                 if biz.paid

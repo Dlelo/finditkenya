@@ -304,7 +304,7 @@ router.get('/businesses', role.auth, function(req, res){
       res.json({ recordsTotal: data.length, data: data});
     })
     .catch(function(err){
-       console.log(err);
+      console.log(err);
     });
   }else{
     Business.find({
@@ -314,7 +314,7 @@ router.get('/businesses', role.auth, function(req, res){
       res.json({ recordsTotal: data.length, data: data});
     })
     .catch(function(err){
-       console.log(err);
+      console.log(err);
     });
   }
     
@@ -390,7 +390,7 @@ router.post('/claim/:id/', role.auth, function(req, res){
   }else if(package == "silver"){
     amount = "5600";
   }else if(package == "gold"){
-    amount = "10";
+    amount = "13200";
   }
   var fields = {
     "live":"1",
@@ -475,7 +475,7 @@ router.get('/receive', function(req, res){
               return;
             }
           });
-    }else if(amount == "10.00"){
+    }else if(amount == "13200.00"){
       b.packagepaid = "gold";
       var holder = emailModel.app;
           var mailer = emailModel.mailer;

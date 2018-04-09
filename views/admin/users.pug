@@ -56,7 +56,8 @@ block content
                 th NAME
                 th PHONE
                 th EMAIL
-                th BUSINESSES
+                th ROLE
+                th ACTIONS
             tbody
               each user in users
                 tr
@@ -70,5 +71,11 @@ block content
                       =user.email
                   td
                     span.text-success
+                      =user.role
+                  td
+                    span.text-success
                       a(href="/admin/user/"+user.username, title="see businesses")
                         i.fa.fa-eye.fa-fw(aria-hidden='true')
+                    span.text-primary
+                      a(href="/admin/user/makeadmin/"+user.id, title="Make admin")
+                        i.fa.fa-user-secret.fa-fw(aria-hidden='true')

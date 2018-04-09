@@ -14,6 +14,7 @@ var Category = require(__dirname + '/../models/Category');
 var Subcategory = require(__dirname + '/../models/Subcategory');
 var Business = require(__dirname + '/../models/Business');
 var Agents = require(__dirname + '/../models/Agent');
+var Users = require(__dirname + '/../models/User');
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -468,6 +469,25 @@ router.get('/agent/number/:number', function(req, res){
      console.log(err);
      res.redirect('/');
   }); 
+});
+
+router.get('/user/makeadmin/:id', role.admin, function(req, res){
+	Users.findById(req.params.id)
+	.then(function(data){
+	  	console.log(data);
+	  	data.role = "1";
+	  	data.save(function(err){
+	  		if(err){
+	  			req.flash('error',err);
+	  			res.redirect('/users');
+	  		}else{
+	  			res.redirect('/users');
+	  		}	  		
+	  	});	    
+	})
+	.catch(function(err){
+	    console.log(err);
+	}); 
 });
 
 router.get('/user/:number', function(req, res){

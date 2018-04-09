@@ -115,7 +115,7 @@ router.get('/fetchCat/:name',function(req, res, next){
 router.get('/', function(req, res, next) {
   Category.find({approved: true})
   .then(function(data){
-    description = "Find it or be found. Kenyas no1 online search for everything and anything";
+    description = "Find It is a leading online directory to find businesses, service providers and their information in one single platform. Find it or be found. Register today and add your business.";
       res.render('index', { title: 'Find It Kenya | Find businesses and service providers in Kenya' , categories: data, description: description});
   })
   .catch(function(err){
@@ -263,7 +263,7 @@ router.post('/register',
                   }
                 });
                 req.flash('success_msg','Registration was Successful. Kindly Login');
-                res.redirect(200, '/login');
+                res.redirect('/login');
               }
             // saved!
             });

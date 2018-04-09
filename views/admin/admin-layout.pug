@@ -271,7 +271,11 @@ html(lang='en')
             "bprocessing" : true,
             "bserverSide" : true,
             "columns": [
-                { "data": "name" },                
+                { "data": "name",
+                  render: function(data, type, row){
+                    return "<a href='/"+row.slug+"'>"+row.name+"</a>";
+                  }
+                },                
                 { "data": "category" },
                 { "data": "city" },
                 { "data": "paid",

@@ -264,7 +264,7 @@ router.get('/subcategory/bizlist/:name',role.auth, function(req, res, next){
   var features = Category.find({ subcategories: {$elemMatch: { name: req.params.name}} });
 
   Promise.all([businesses,features]).then(values => {
-    res.render('admin/index', { 
+    res.render('admin/indexbackup', { 
         title: req.params.cat,
         businesses: values[0],
         features: values[1],

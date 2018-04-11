@@ -37,23 +37,27 @@ block content
               .col-md-12
                 if biz.building
                   p.text-left
-                    span.fa.fa-building.glyph.border
-                    |  #{biz.building}
+                    strong
+                      span.fa.fa-building.glyph.border
+                      |  #{biz.building}
                 if biz.street
                   p.text-left
-                    span.fa.fa-road.glyph.border
-                    |  #{biz.street}
+                    strong
+                      span.fa.fa-road.glyph.border
+                      |  #{biz.street}
               .col-md-12
                 p.text-left
-                  span.glyphicon.glyphicon-th-list.glyph.border
-                  |  #{biz.subcategory}
+                  strong
+                    span.glyphicon.glyphicon-th-list.glyph.border
+                    |  #{biz.subcategory}
                 hr.nomargin
               if(biz.website)
                 .col-md-12
                   p.text-left
-                    span.glyphicon.glyphicon-globe.text-success.glyph.border
-                    a.findit(href="http://"+biz.website,target="_blank",style="color:#2862ec;")
-                      |  #{biz.website}
+                    strong
+                      span.glyphicon.glyphicon-globe.text-success.glyph.border
+                      a.findit(href="http://"+biz.website,target="_blank",style="color:#2862ec;")
+                        |  #{biz.website}
                 hr.nomargin
               .col-md-12
                 p.text-left

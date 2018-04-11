@@ -8,8 +8,9 @@ block content
               .panel-heading.category
                 .text-center
                   a(href="/subcategory/"+subcategory)
-                    i.fa.fa-cog   
-                    =subcategory
+                    strong
+                      i.fa.fa-hashtag   
+                      =subcategory
           
           if subcategory
             if features.length
@@ -18,8 +19,9 @@ block content
                   strong Filter   
                      .panel-heading.category
                        a(href="/nearby/"+features[0].name+"/"+subcategory)
-                        i.fa.fa-cog   
-                        |  Nearby
+                        strong
+                          i.fa.fa-hashtag   
+                          |  Nearby
           .dropdown
             button.btn.btn-default.form-control.dropdown-toggle(type='button', data-toggle='dropdown')
               | Filter Sub Categories  

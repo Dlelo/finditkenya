@@ -33,8 +33,9 @@ block content
                     .panel-heading.category
                       li.text-center
                         a(href="/subcategory/"+item.name)
-                          i.fa.fa-cog   
-                          =item.name
+                          strong
+                            i.fa.fa-hashtag   
+                            =item.name
       .col-md-9
         ul
         each biz in businesses

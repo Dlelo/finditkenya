@@ -130,7 +130,11 @@ router.get('/category/:cat',function(req, res, next){
       $orderby: { starteventdate: -1 },
       "starteventdate": { $gt: new Date() }
     });
-    var features = Category.find({name: req.params.cat }).sort([['name', 1]]);
+    var features = Category.find({
+      $query: {
+          name: req.params.cat 
+        }
+    }).sort([['name', 1]]);
     Promise.all([businesses, features]).then(values => {
       res.render('business/list', { 
           title: req.params.cat,
@@ -146,7 +150,11 @@ router.get('/category/:cat',function(req, res, next){
         approved: true
       }
     }).sort([['paid', -1],['datepaid', 1],['slug', 1]]);
-    var features = Category.find({name: req.params.cat })
+    var features = Category.find({
+        $query: {
+          name: req.params.cat 
+        }
+      })
     .sort([['name', 1]]);
     Promise.all([businesses, features]).then(values => {
       res.render('business/list', { 

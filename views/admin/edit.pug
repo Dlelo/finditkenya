@@ -108,7 +108,10 @@ block content
                 .col-sm-3.text-center
                   |  Tuesday
                 .col-sm-3(id="hoursopen",class="timeopen")
-                  input#hours.form-control-form(type='text', name='hoursopentue', placeholder='Opening Hours Tuesday',class='timepicker hoursopened')
+                  input#hours.form-control-form(type='text', name='hoursopentue', placeholder='Opening Hours Tuesday',class='timepicker hoursopened')                    
+                  span.glyphicon.glyphicon-remove.form-control-feedback(aria-hidden="true")
+                  span#inputError2Status.sr-only 
+                    | (error)
                 .col-sm-3(id="hoursclose",class="hoursclose")
                   input#startdate.form-control-form(type='text', name='hoursclosetue', placeholder='Closing Hours Tuesday',class='timepicker hoursclosed')
               .form-group

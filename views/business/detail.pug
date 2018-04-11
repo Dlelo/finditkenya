@@ -62,52 +62,59 @@ block content
               .col-md-12
                 p.text-left
                   each phone in phones
-                    span.glyphicon.glyphicon-earphone.text-info.glyph.border
-                    a.findit(href="tel:"+phone,style="color:#2862ec;")
-                      |  #{phone}
+                    strong
+                      span.glyphicon.glyphicon-earphone.text-info.glyph.border
+                      a.findit(href="tel:"+phone,style="color:#2862ec;")
+                        |  #{phone}
                     br
                 hr.nomargin
               .col-md-12.text-left
                 p.text-left
                   each email in emails
-                    span.fa.fa-envelope.glyph.border
-                    a.findit(href="mailto:"+email,style="color:#2862ec;")
-                      |  Mail
+                    strong
+                      span.fa.fa-envelope.glyph.border
+                      a.findit(href="mailto:"+email,style="color:#2862ec;")
+                        |  Mail
                     br
                 hr.nomargin
               if(biz.facebook)
                 .col-md-12.text-left
                   p 
-                    span.fa.fa-facebook-official.text-info.glyph.border
-                    a.findit(href="http://"+biz.facebook,target="_blank",style="color:#2862ec;") 
-                      | Facebook
+                    strong
+                      span.fa.fa-facebook-official.text-info.glyph.border
+                      a.findit(href="http://"+biz.facebook,target="_blank",style="color:#2862ec;") 
+                        | Facebook
               if(biz.twitter)
                 .col-md-12.text-left
                   p 
-                    span.fa.fa-twitter.text-info.glyph.border 
-                    a.findit(href="http://"+biz.twitter,target="_blank",style="color:#2862ec;")
-                      |  Twitter
+                    strong
+                      span.fa.fa-twitter.text-info.glyph.border 
+                      a.findit(href="http://"+biz.twitter,target="_blank",style="color:#2862ec;")
+                        |  Twitter
               if(biz.instagram)
                 .col-md-12.text-left
                   p 
-                    span.fa.fa-instagram.text-info.glyph.border 
-                    a.findit(href="http://"+biz.instagram,target="_blank",style="color:#2862ec;")
-                      |  Instagram
+                    strong
+                      span.fa.fa-instagram.text-info.glyph.border 
+                      a.findit(href="http://"+biz.instagram,target="_blank",style="color:#2862ec;")
+                        |  Instagram
               if(biz.youtube)
                 .col-md-12.text-left
                   p 
-                    span.fa.fa-youtube.text-info.glyph.border 
-                    a.findit(href="http://"+biz.youtube,target="_blank",style="color:#2862ec;")
-                      |  Youtube
+                    strong
+                      span.fa.fa-youtube.text-info.glyph.border 
+                      a.findit(href="http://"+biz.youtube,target="_blank",style="color:#2862ec;")
+                        |  Youtube
               
 
               if (biz.catalog.length)
                 .col-md-12.text-left
                   each catalogue, i in biz.catalog
                     if (catalogue)
-                      span.glyphicon.glyphicon-list-alt.glyph.border
-                      a.findit(href="/business/catalog/"+catalogue.filename, target="_blank")
-                        |  Menu #{i+1}
+                      strong
+                        span.glyphicon.glyphicon-list-alt.glyph.border
+                        a.findit(href="/business/catalog/"+catalogue.filename, target="_blank")
+                          |  Menu #{i+1}
                     hr   
               .col-md-12.text-center
                 if biz.paid

@@ -27,8 +27,9 @@ block content
             p.text-left
               each feature in biz.features
                 a(href="/subcategory/"+feature)
-                  span.fa.fa-at.text-default.glyph  
-                  |  #{feature}   
+                  strong
+                    span.fa.fa-at.text-default.glyph |
+                    |  #{feature}   
             
         .row                        
           .col-md-4.padding-map.mapbox.nomargin

@@ -429,7 +429,7 @@ router.get('/agent/add',role.admin, function(req, res){
 	res.render('agents/new', {title: "New Agent"});
 });
 
-router.post('/agent/create',role.admin, function(req, res){
+router.post('/agent/create',role.auth, function(req, res){
 	
 	Agents.findOne({
 	   phone: req.body.phone
@@ -440,7 +440,7 @@ router.post('/agent/create',role.admin, function(req, res){
 			i.name = req.body.name;
 			i.phone = req.body.phone;
 			i.save(function(err){
-				if(role.admin){
+				if(role.admin == '1'){
 					if(err){
 						console.log(err);
 						res.redirect('/admin/agents');

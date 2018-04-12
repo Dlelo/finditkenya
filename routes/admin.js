@@ -457,13 +457,26 @@ router.post('/agent/create',role.auth, function(req, res){
 	
 });
 
-router.get('/agent/number/:number', function(req, res){
+router.get('/agent/number/:number',role.admin, function(req, res){
 	Business.find({
     agentphone: req.params.number
   })
   .then(function(data){
   	console.log(data);
   	res.render('admin/indexbackup', {title: "Find It Dashboard", businesses: data});
+  })
+  .catch(function(err){
+     console.log(err);
+     res.redirect('/');
+  }); 
+});
+
+router.get('/agent/delete/:id',role.admin, function(req, res){
+	Agents.deleteOne({
+    _id: req.params.id
+  })
+  .then(function(data){
+  	res.redirect('/admin/agents');
   })
   .catch(function(err){
      console.log(err);
@@ -488,6 +501,16 @@ router.get('/user/makeadmin/:id', role.admin, function(req, res){
 	  			res.redirect('/users');
 	  		}	  		
 	  	});	    
+	})
+	.catch(function(err){
+	    console.log(err);
+	}); 
+});
+
+router.get('/user/delete/:id', role.admin, function(req, res){
+	Users.deleteOne({_id:req.params.id})
+	.then(function(data){
+  		res.redirect('/users');
 	})
 	.catch(function(err){
 	    console.log(err);

@@ -447,7 +447,7 @@ router.post('/agent/create',role.auth, function(req, res){
 					}
 					res.redirect('/admin/agents');
 				}else{
-					res.render('site/agent',{success_msg: "Agent details successfully submitted"})
+					res.render('/',{success_msg: "Agent details successfully submitted"})
 				}				
 			});
 		}else{

@@ -16,6 +16,9 @@ var bcrypt = require('bcryptjs');
 var cookieSession = require('cookie-session');
 var FacebookStrategy = require('passport-facebook');
 var mailer = require('express-mailer');
+const { check, validationResult } = require('express-validator/check');
+const { matchedData, sanitize } = require('express-validator/filter');
+var slug = require('slug');
 
 var users = require('./routes/users');
 var business = require('./routes/business');
@@ -24,6 +27,7 @@ var User = require('./models/User');
 var admin = require('./routes/admin');
 var Business = require('./models/Business');
 var config = require('./config.json');
+var emailModel = require('./config/Mail');
 
 
 var app = express();
@@ -184,6 +188,97 @@ app.post('/login', passport.authenticate('local', {failureRedirect: '/login',
     }
     res.redirect('/');
 });
+
+app.post('/register',
+  [
+  check('names', 'Full name can not be empty')
+    .exists(),
+  check('phone', 'Phone should have 10 characters')
+    .isLength({ min: 10, max: 10 }),
+  check('username')
+    .isEmail().withMessage('must be an email')
+    .trim()
+    .normalizeEmail(),
+
+  // General error messages can be given as a 2nd argument in the check APIs
+  check('password', 'passwords must be at least 5 chars long and contain one number')
+    .isLength({ min: 4 })
+    .matches(/\d/)
+    .custom((value,{req, loc, path}) => {
+        if (value !== req.body.cpassword) {
+            // trow error if passwords do not match
+            throw new Error("Passwords don't match");
+        } else {
+            return value;
+        }
+    }),  
+  ],
+   (req, res, next) => {
+    // Get the validation result whenever you want; see the Validation Result API for all options!
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      console.log(errors.mapped());
+      res.render('user/register', { validationerrors: errors.mapped() });
+    }else{
+      var names = req.body.names;
+      var phone = req.body.phone;
+      var username = req.body.username;
+      var email = req.body.username;
+      var password = req.body.password;
+      var role = 0;
+      var salt = bcrypt.genSaltSync(10);
+      var hash = bcrypt.hashSync(password, salt);
+
+      User.findOne({username: req.body.email}, function(err, resad){
+          if(err){
+            console.log(err);
+            throw new Error('Something went wrong, kindly try again');
+          }
+          if (!resad){
+            User.create({
+                id: slug(names),
+                username: email,
+                email: email,
+                names: names,
+                password: hash,
+                phone: phone,
+                role: role,
+            }, function (err, user) {
+              if (err) {
+                console.log(err.errmsg);
+                throw new Error(err);
+                //res.json(err);
+                //return handleError(err);
+              }
+              if(user){
+                var holder = emailModel.app;
+                var mailer = emailModel.mailer;
+                holder.mailer.send('email/welcome', {
+                  to: email, // REQUIRED. This can be a comma delimited string just like a normal email to field. 
+                  subject: 'Welcome To FindIt', // REQUIRED.
+                  otherProperty: 'Other Property' // All additional properties are also passed to the template as local variables.
+                }, function (err) {
+                  if (err) {
+                    // handle error
+                    console.log(err);
+                    res.send('There was an error sending the email');
+                    return;
+                  }
+                });
+                req.flash('success_msg','Registration was Successful. Kindly Login');
+                req.login(user, function(err){
+                    if(err) return next(err);
+                    res.redirect('/');
+                });
+              }
+            // saved!
+            });
+          }               
+      });
+    }
+  }
+);
+
 
 app.get('/auth/google', passport.authenticate('google', { scope: [
        'https://www.googleapis.com/auth/plus.login',

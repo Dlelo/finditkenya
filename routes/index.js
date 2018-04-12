@@ -134,7 +134,7 @@ router.get('/category/:cat',function(req, res, next){
       $query: {
           name: req.params.cat 
         }
-    }).sort([['name', 1]]);
+    }).sort({'subcategories.name': -1});
     Promise.all([businesses, features]).then(values => {
       res.render('business/list', { 
           title: req.params.cat,
@@ -155,7 +155,7 @@ router.get('/category/:cat',function(req, res, next){
           name: req.params.cat 
         }
       })
-    .sort([['name', 1]]);
+    .sort({'subcategories.name': -1});
     Promise.all([businesses, features]).then(values => {
       res.render('business/list', { 
           title: req.params.cat,

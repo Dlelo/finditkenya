@@ -397,7 +397,7 @@ router.get('/pay/:id', function(req, res){
   res.render('admin/ipayafrica', {title: "Pay",hash: hash, inputs: fields, datastring: datastring});
 });
 
-router.get('/agents', function(req, res){
+router.get('/agents',role.admin, function(req, res){
 	Agents.find({})
 	.then(function(data){
 	    res.render('agents/index', {title: "Agents", agents: data});
@@ -429,7 +429,7 @@ router.get('/agent/add',role.admin, function(req, res){
 	res.render('agents/new', {title: "New Agent"});
 });
 
-router.post('/agent/create', function(req, res){
+router.post('/agent/create',role.admin, function(req, res){
 	
 	Agents.findOne({
 	   phone: req.body.phone

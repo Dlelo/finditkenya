@@ -308,11 +308,11 @@ router.post('/claim/:id/', role.auth, function(req, res){
   var amount = 0;
   if(package == "bronze"){
     //amount = "2320";
-    amount = "10";
+    amount = "2320";
   }else if(package == "silver"){
-    amount = "11";
+    amount = "5600";
   }else if(package == "gold"){
-    amount = "12";
+    amount = "13920";
   }
   var fields = {
     "live":"1",
@@ -364,7 +364,7 @@ router.get('/receive', function(req, res){
     var ssn = req.session;
     b.agentphone = ssn.agentnumber;
     //if(amount == "2320"){
-    if(amount == "10.00"){
+    if(amount == "2320.00"){
       b.packagepaid = "bronze";
 
           var holder = emailModel.app;
@@ -381,7 +381,7 @@ router.get('/receive', function(req, res){
               return;
             }
           });
-    }else if(amount == "11.00"){
+    }else if(amount == "5600.00"){
       b.packagepaid = "silver";
           var holder = emailModel.app;
           var mailer = emailModel.mailer;
@@ -397,7 +397,7 @@ router.get('/receive', function(req, res){
               return;
             }
           });
-    }else if(amount == "12.00"){
+    }else if(amount == "13920.00"){
       b.packagepaid = "gold";
       var holder = emailModel.app;
           var mailer = emailModel.mailer;

@@ -156,10 +156,7 @@ html(lang='en')
               a.waves-effect(href='/profile')
                 i.fa.fa-user.fa-fw(aria-hidden='true')
                 | Profile
-            li
-                a.waves-effect(href='/admin/category')
-                  i.fa.fa-font.fa-fw(aria-hidden='true')
-                  | Categories
+            
             if(user.role == 1)
               li
                 a.waves-effect(href='/users')
@@ -169,6 +166,10 @@ html(lang='en')
                 a.waves-effect(href='/admin/agents')
                   i.fa.fa-group.fa-fw(aria-hidden='true')
                   | Agents
+              li
+                a.waves-effect(href='/admin/category')
+                  i.fa.fa-font.fa-fw(aria-hidden='true')
+                  | Categories
             if(user.role == 2)
               li
                 a.waves-effect(href='blank.html')

@@ -52,13 +52,13 @@ html(lang='en')
                 // This is dark logo icon
                 img.dark-logo(src='/plugins/images/admin-logo.png', alt='home')
                 // This is light logo icon
-                img.light-logo(src='/plugins/images/admin-logo-dark.png', alt='home')
+                img.light-logo(src='/img/find-it.png', alt='home', style="width:90%")
               // Logo text image you can use text also
               span.hidden-xs
                 // This is dark logo text
                 img.dark-logo(src='/img/find-it.png', alt='home')
                 // This is light logo text
-                img.light-logo(src='/img/find-it.png', alt='home')
+                //img.light-logo(src='/img/find-it.png', alt='home')
 
 
 
@@ -70,22 +70,7 @@ html(lang='en')
                 i.fa.fa-bars
               // /.dropdown-messages
             // .Task dropdown
-            li.dropdown
-              a.dropdown-toggle.waves-effect.waves-light(data-toggle='dropdown', href='#')
-                i.mdi.mdi-check-circle
-                .notify
-                  span.heartbit
-                  span.point
-              ul.dropdown-menu.dropdown-tasks.animated.slideInUp
-                li
-                  a(href='#')
-                    div
-                      p
-                        strong Task 1
-                        span.pull-right.text-muted 40% Complete
-                      .progress.progress-striped.active
-                        .progress-bar.progress-bar-success(role='progressbar', aria-valuenow='40', aria-valuemin='0', aria-valuemax='100', style='width: 40%')
-                          span.sr-only 40% Complete (success)
+            
                 li.divider
             // .Megamenu
             li.mega-dropdown
@@ -156,7 +141,10 @@ html(lang='en')
               a.waves-effect(href='/profile')
                 i.fa.fa-user.fa-fw(aria-hidden='true')
                 | Profile
-            
+            li
+              a.waves-effect(href='/admin/changepassword')
+                i.fa.fa-cog.fa-fw(aria-hidden='true')
+                | Change Password
             if(user.role == 1)
               li
                 a.waves-effect(href='/users')

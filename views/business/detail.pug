@@ -133,26 +133,47 @@ block content
                     .form-group
                       button.btn.btn-danger.form-control(type='submit')                 
                         | Claim Business
-            if (biz.openstatus.isOpen)
+            if (biz.openstatus)
               .row
                 .col-md-12.findit-red.padding20
                   strong
                     |  Opening & Closing Hours
                 .col-md-12
                   each hour in biz.hours.monday
-                    p Mon: #{hour.opens} - #{hour.closes}
+                    if(hour.opens === hour.closes)
+                      |  Closed
+                    else
+                      p Sun: #{hour.opens} - #{hour.closes}
                   each hour in biz.hours.tuesday
-                    p Tue: #{hour.opens} - #{hour.closes}
+                    if(hour.opens === hour.closes)
+                      |  Closed
+                    else
+                      p Sun: #{hour.opens} - #{hour.closes}
                   each hour in biz.hours.wednesday
-                    p Wed: #{hour.opens} - #{hour.closes}
+                    if(hour.opens === hour.closes)
+                      |  Closed
+                    else
+                      p Sun: #{hour.opens} - #{hour.closes}
                   each hour in biz.hours.thursday
-                    p Thu: #{hour.opens} - #{hour.closes}
+                    if(hour.opens === hour.closes)
+                      |  Closed
+                    else
+                      p Sun: #{hour.opens} - #{hour.closes}
                   each hour in biz.hours.friday
-                    p Fri: #{hour.opens} - #{hour.closes}
+                    if(hour.opens === hour.closes)
+                      |  Closed
+                    else
+                      p Sun: #{hour.opens} - #{hour.closes}
                   each hour in biz.hours.saturday
-                    p Sat: #{hour.opens} - #{hour.closes}
+                    if(hour.opens === hour.closes)
+                      |  Closed
+                    else
+                      p Sun: #{hour.opens} - #{hour.closes}
                   each hour in biz.hours.sunday
-                    p Sun: #{hour.opens} - #{hour.closes}
+                    if(hour.opens === hour.closes)
+                      |  Closed
+                    else
+                      p Sun: #{hour.opens} - #{hour.closes}
           .col-md-7.col-xs-12
             
             .row(width="100%")

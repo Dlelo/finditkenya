@@ -530,4 +530,14 @@ router.get('/user/:number', function(req, res){
   }); 
 });
 
+router.get('/changepassword', role.auth, function(req, res){
+	Users.findById(res.locals.user.id)
+	.then(function(data){
+  		console.log(data);
+	})
+	.catch(function(err){
+	    console.log(err);
+	}); 
+});
+
 module.exports = router;

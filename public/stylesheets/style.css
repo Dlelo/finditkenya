@@ -650,13 +650,22 @@ CARD DESIGN
 .bronze{
   background-color: #CD7F32;
   color: #fdfdfd;
+  padding: 2px;
+    border-radius: 15px;
+    margin-bottom: 5px;
 }
 .silver{
   background-color: #C0C0C0;
   color: #fdfdfd;
+  padding: 2px;
+    border-radius: 15px;
+    margin-bottom: 5px;
 }
 .gold{
   background-color: #FFD700;
+  padding: 2px;
+    border-radius: 15px;
+    margin-bottom: 5px;
 }
 
 .addbusiness{
@@ -675,3 +684,65 @@ CARD DESIGN
 END OF CARD DESIGN
 
 *******/
+
+#package {
+  display: flex;
+  flex-flow: row wrap;
+}
+#package > div {
+  flex: 1;
+  padding: 0.5rem;
+}
+input[type="radio"].package {
+  display: none;
+  &:not(:disabled) ~ label {
+    cursor: pointer;
+  }
+  &:disabled ~ label {
+    color: hsla(150, 5%, 75%, 1);
+    border-color: hsla(150, 5%, 75%, 1);
+    box-shadow: none;
+    cursor: not-allowed;
+  }
+}
+#packagelabel {
+  height: 100%;
+  display: block;
+  background: white;
+  border-radius: 20px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  //margin: 1rem;
+  text-align: center;
+  box-shadow: 0px 3px 10px -2px hsla(150, 5%, 65%, 0.5);
+  position: relative;
+}
+input[type="radio"].package:checked + #packagelabel {
+  background: hsla(150, 75%, 50%, 1);
+  color: hsla(215, 0%, 100%, 1);
+  box-shadow: 0px 0px 20px hsla(150, 100%, 50%, 0.75);
+  &::after {
+    color: hsla(215, 5%, 25%, 1);
+    font-family: FontAwesome;
+    border: 2px solid hsla(150, 75%, 45%, 1);
+    content: "\f00c";
+    font-size: 24px;
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 50px;
+    width: 50px;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0px 2px 5px -2px hsla(0, 0%, 0%, 0.25);
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  section {
+    flex-direction: column;
+  }
+}

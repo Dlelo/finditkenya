@@ -685,9 +685,16 @@ END OF CARD DESIGN
 
 *******/
 
-.btn-claim:hover{
-  background-color: #5050ff;
+.btn-claim:hover, .selectpackage:hover{
+  background-color: hsla(150, 75%, 50%, 1);
   color: #fdfdfd !important;
+}
+
+.btn-package{
+    color: #747272;
+    background-color: #fff;
+    border-color: #ccc;
+    padding: 5px 16px;
 }
 
 #package {

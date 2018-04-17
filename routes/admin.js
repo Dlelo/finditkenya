@@ -536,11 +536,11 @@ router.get('/changepassword', role.auth, function(req, res){
 });
 
 router.post('/changepassword', role.auth, function(req, res){
-    console.log(res.locals.user.id);
 	Users.findById(res.locals.user.id)
 	.then(function(data){
   		console.log(data);
   		if(!bcrypt.compareSync(req.body.oldpassword, data.password)){
+  			console.log("wrong password");
   			req.flash("error_msg","Wrong Current Password");
   			res.render("user/changepassword");
   		}else {
@@ -548,17 +548,21 @@ router.post('/changepassword', role.auth, function(req, res){
   				var salt = bcrypt.genSaltSync(10);
       			var hash = bcrypt.hashSync(req.body.newpassword, salt);
       			data.password = hash;
+      			console.log("new password match");
       			data.save(function(err){
       				if(err){
+      					console.log("saving error");
       					req.flash("error_msg","Error Occured");
   						res.render("user/changepassword");
       				}else{
+      					console.log("new password saved");
       					req.flash("success_msg","Password Successfully Changed");
-  						res.render("/");
+  						res.redirect("/");
       				}
 
       			});
   			}else{
+  				console.log("new password dont match");
   				req.flash("error_msg","Password Mismatch");
   				res.render("user/changepassword");
   			}

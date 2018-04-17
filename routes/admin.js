@@ -8,6 +8,7 @@ var moment = require('moment');
 var hmacsha1Generate = require('hmacsha1-generate');
 var crypto = require("crypto");
 var Jimp = require("jimp");
+var bcrypt = require('bcryptjs');
 
 var role = require(__dirname + '/../config/Role');
 var Category = require(__dirname + '/../models/Category');
@@ -531,9 +532,38 @@ router.get('/user/:number', function(req, res){
 });
 
 router.get('/changepassword', role.auth, function(req, res){
+	res.render('user/changepassword'); 
+});
+
+router.post('/changepassword', role.auth, function(req, res){
+    console.log(res.locals.user.id);
 	Users.findById(res.locals.user.id)
 	.then(function(data){
   		console.log(data);
+  		if(!bcrypt.compareSync(req.body.oldpassword, data.password)){
+  			req.flash("error_msg","Wrong Current Password");
+  			res.render("user/changepassword");
+  		}else {
+  			if(req.body.newpassword == req.body.confirmpassword){
+  				var salt = bcrypt.genSaltSync(10);
+      			var hash = bcrypt.hashSync(req.body.newpassword, salt);
+      			data.password = hash;
+      			data.save(function(err){
+      				if(err){
+      					req.flash("error_msg","Error Occured");
+  						res.render("user/changepassword");
+      				}else{
+      					req.flash("success_msg","Password Successfully Changed");
+  						res.render("/");
+      				}
+
+      			});
+      				}
+  			}else{
+  				req.flash("error_msg","Password Mismatch");
+  				res.render("user/changepassword");
+  			}
+  		}
 	})
 	.catch(function(err){
 	    console.log(err);

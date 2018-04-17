@@ -32,6 +32,9 @@ block content
                       | Map Location
                     li
                       | 1 catalog/Menu  
+                  .btn.btn-default
+                    strong
+                      |  Select Package
 
               .col-md-4
                 input.form-control-form.package#silver(name='package', type='radio', value='silver', required)
@@ -54,7 +57,10 @@ block content
                     li
                       | Priority Listing one day per month
                     li
-                      | 1 free news letter adverts per month                                        
+                      | 1 free news letter adverts per month  
+                  .btn.btn-default
+                    strong
+                      |  Select Package                                      
               .col-md-4                                 
                 input.form-control-form.package#gold(name='package', type='radio', value='gold', required)
                 label#packagelabel(for='gold')
@@ -77,7 +83,10 @@ block content
                       | Priority Listing three day per month
                     li
                       | 3 free news letter adverts per month
-                    
+                  .btn.btn-default
+                    strong
+                      |  Select Package
         .form-group
-          button.btn.btn-danger.form-control-form.btn-gp(type='submit')                 
-            | Claim Business
+          button.btn.btn-claim.form-control-form.btn-gp(type='submit', style='color:#5050ff')                 
+            strong
+              | Claim Business

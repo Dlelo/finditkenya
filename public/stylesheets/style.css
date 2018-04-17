@@ -38,13 +38,13 @@
 }
 
 .header-tp .navbar-right {
-    float: right !important;
-    margin-right: 30px;
+  float: right !important;
+  margin-right: 30px;
 }
 
 .header-tp  .nav > li {
-    position: relative;
-    display: inline-block;
+  position: relative;
+  display: inline-block;
 }
 
 .btn-blu {
@@ -684,6 +684,11 @@ CARD DESIGN
 END OF CARD DESIGN
 
 *******/
+
+.btn-claim:hover{
+  background-color: #5050ff;
+  color: #fdfdfd !important;
+}
 
 #package {
   display: flex;

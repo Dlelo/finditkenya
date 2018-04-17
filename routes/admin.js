@@ -558,7 +558,6 @@ router.post('/changepassword', role.auth, function(req, res){
       				}
 
       			});
-      				}
   			}else{
   				req.flash("error_msg","Password Mismatch");
   				res.render("user/changepassword");

@@ -116,7 +116,8 @@ router.get('/', function(req, res, next) {
   Category.find({approved: true})
   .then(function(data){
     description = "Find It is a leading online directory to find businesses, service providers and their information in one single platform. Find it or be found. Register today and add your business.";
-      res.render('index', { title: 'Find It Kenya | Find businesses and service providers in Kenya' , categories: data, description: description});
+    
+    res.render('index', { title: 'Find It Kenya | Find businesses and service providers in Kenya' , categories: data, description: description});
   })
   .catch(function(err){
        console.log(err);

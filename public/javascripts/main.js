@@ -100,7 +100,7 @@ jQuery(document).ready(function($) {
         $('.owl-carousel').owlCarousel({
             rtl:false,
             margin:10,
-            loop:true,
+            loop:false,
             autoWidth:true,
             responsive:{
                 0:{

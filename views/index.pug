@@ -27,9 +27,9 @@ block content
                   input#search2(type='text', placeholder='Restaurants, Businesses, Handymen, Services, Events and More ...',name='search')
     section#bottom-scroll.page-section(style='padding:2px;bottom: 0px;left: 0px;background: black;width:100%;padding:20px')
       //.arrow-up.cat
-      .owl-carousel.owl-theme
+      .owl-carousel.owl-theme.text-center
         each category in categories
-          .item.text-center(style='width:100px')
+          .item(style='width:110px')
             a(href="/category/"+category.name, class="categoryModal", id="Restaurants")
               h5 
                 =category.name

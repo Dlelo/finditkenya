@@ -241,12 +241,10 @@ router.get('/category/edit/:id',role.admin, function(req, res, next){
 router.get('/category/showhome/:id',role.admin, function(req, res, next){
 	Category.findById(req.params.id)
 	.then(function(b){
-		if(b.approved == true){
-			b.approved = false;
-		}else if(b.approved == false){
-			b.approved = true;
+		if(b.approved == "true"){
+			b.approved = "false";
 		}else{
-			b.approved = true;
+			b.approved = "true";
 		}
 	    
 		b.save(function(err){

@@ -284,6 +284,13 @@ script(src="/javascripts/bootstrap-datetimepicker.min.js")
 script(src='/javascripts/bootstrap-select.min.js')
 
 script(type='text/javascript').
+  const mq = window.matchMedia( "(min-width: 450px)" );
+  if (mq.matches) {
+    // window width is at least 450px
+  } else {
+    // window width is less than 450px
+    $('div.dropdown').removeClass('open');
+  }
   lightGallery(document.getElementById('lightgallery'));
 
   $('.datetimepicker').datetimepicker({      

@@ -20,7 +20,7 @@ const bizSchema = new Schema({
 		website: String,
 		phone: String,
 		email: String,
-		keywords: { type: String, index: { sparse: true }},
+		keywords: String,
 		slug: {
 			type: String,
 			unique: true
@@ -68,6 +68,8 @@ const bizSchema = new Schema({
 		agentphone: String,
 		user_id: String
 });
+
+bizSchema.index({ name: 'text', description: 'text', keywords: 'text' });
 
 bizSchema.plugin(superPagination, {
     theme : 'bootstrap'

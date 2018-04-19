@@ -31,13 +31,12 @@ var mailer = require('express-mailer');
 router.get('/nss/:name',function(req, res, next){
 	//wait for the initialization
   //console.log(req.params.name);
-  var search = req.params.name.split(" ");
   Business.find({$or: [
     {
       name: { "$regex": req.params.name, "$options": "i" }
     }, 
     {
-      keywords: { $in: search }
+      keywords: { "$regex": req.params.name, "$options": "i" }
     },
     {
       subcategory: { "$regex": req.params.name, "$options": "i" }
@@ -68,12 +67,13 @@ router.get('/email', function (req, res, next) {
 
 router.get('/search',function(req, res, next){
   //wait for the initialization
+  var search = req.query.search.split(" ");
   var businesses = Business.find({$or: [
     {
       name: { "$regex": req.query.search, "$options": "i" }
     },
     {
-      keywords: { "$regex": req.query.search, "$options": "i" }
+      keywords: { $in: [new RegExp(req.query.search, 'i')] }
     },
     {
       subcategory: { "$regex": req.query.search, "$options": "i" }

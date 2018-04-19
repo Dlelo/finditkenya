@@ -20,7 +20,7 @@ const bizSchema = new Schema({
 		website: String,
 		phone: String,
 		email: String,
-		keywords: { type: String,index: { sparse: true }},
+		keywords: { type: String, index: { sparse: true }},
 		slug: {
 			type: String,
 			unique: true

@@ -31,12 +31,13 @@ var mailer = require('express-mailer');
 router.get('/nss/:name',function(req, res, next){
 	//wait for the initialization
   console.log(req.params.name);
+  var search = req.params.name.split(" ");
   Business.find({$or: [
     {
       name: { "$regex": req.params.name, "$options": "i" }
     }, 
     {
-      keywords: { "$regex": req.params.name, "$options": "i" }
+      keywords: { $in: search }
     },
     {
       subcategory: { "$regex": req.params.name, "$options": "i" }

@@ -30,7 +30,7 @@ var mailer = require('express-mailer');
 /* GET home page. */
 router.get('/nss/:name',function(req, res, next){
 	//wait for the initialization
-  console.log(req.params.name);
+  //console.log(req.params.name);
   var search = req.params.name.split(" ");
   Business.find({$or: [
     {
@@ -91,7 +91,7 @@ router.get('/search',function(req, res, next){
 
   var features = Category.find({name: searchstring });
   Promise.all([businesses, features]).then(values => {
-    console.log(values[1]);
+    //console.log(values[1]);
       res.render('business/list', { 
           title: req.params.search,
           businesses: values[0],
@@ -174,7 +174,7 @@ router.get('/subcategory/:name', function(req, res, next){
   var features = Category.find({ subcategories: {$elemMatch: { name: req.params.name}} });
 
   Promise.all([businesses,features]).then(values => {
-    console.log(values[1]);
+    //console.log(values[1]);
     res.render('business/list', { 
         title: req.params.cat,
         businesses: values[0],

@@ -125,6 +125,16 @@ router.get('/', function(req, res, next) {
   });  
 });
 
+router.get('/with-images', function(req, res, next) {
+  Business.find({ photo: { $ne: null } }).sort([['order', 1]])
+  .then(function(data){
+    res.json(data);
+  })
+  .catch(function(err){
+       console.log(err);
+  });  
+});
+
 router.get('/category/:cat',function(req, res, next){
   if(req.params.cat == 'Events'){
     var businesses = Business.find({

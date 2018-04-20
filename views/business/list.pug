@@ -8,8 +8,7 @@ block content
               .panel-heading.category
                 .text-center
                   a(href="/subcategory/"+subcategory)
-                    strong
-                      i.fa.fa-hashtag   
+                    strong  
                       =subcategory
           
           if subcategory
@@ -19,8 +18,7 @@ block content
                   strong Filter   
                      .panel-heading.category
                        a(href="/nearby/"+features[0].name+"/"+subcategory)
-                        strong
-                          i.fa.fa-hashtag   
+                        strong   
                           |  Nearby
           .dropdown.open.dropdown-category
             button.btn.btn-default.form-control.dropdown-toggle(type='button', data-toggle='dropdown')
@@ -33,8 +31,7 @@ block content
                     .panel-heading.category
                       li.text-center
                         a(href="/subcategory/"+item.name)
-                          strong
-                            i.fa.fa-hashtag   
+                          strong  
                             =item.name
       .col-md-9
         ul

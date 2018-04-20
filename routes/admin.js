@@ -291,6 +291,7 @@ router.post('/category/update/:id',role.admin, function(req, res, next){
 	}).then(function(data){
 		data.name = req.body.name;
 		data.icon = req.body.icon;
+		data.order = req.body.order;
 		data.save(function(err){
 			if(err){
 				console.log(err);
@@ -323,6 +324,7 @@ router.post('/category/add', function(req, res, next){
 	var i = new Category();
 	i.name = req.body.name;
 	i.icon = req.body.icon;
+	i.order = req.body.order;
 	i.slug = slug(req.body.name);
 	i.save(function(err){
 		if(err)

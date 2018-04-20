@@ -126,9 +126,18 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/with-images', function(req, res, next) {
-  Business.find({ photo: { $ne: null } }).select('slug paid').sort([['order', 1]])
+  Business.find({ photo: { $ne: null } }).select('slug photo paid').sort([['order', 1]])
   .then(function(data){
     res.json(data);
+    data.forEach(function(element){
+      console.log(element);
+      element.photo = null;
+      element.gallery = null;
+      element.save(function(err){
+        if(err)
+          console.log(err);       
+      });
+    });
   })
   .catch(function(err){
        console.log(err);

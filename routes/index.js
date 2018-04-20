@@ -114,7 +114,7 @@ router.get('/fetchCat/:name',function(req, res, next){
 });
 
 router.get('/', function(req, res, next) {
-  Category.find({approved: true}).sort([['order', -1]])
+  Category.find({approved: true}).sort([['order', 1]])
   .then(function(data){
     description = "Find It is a leading online directory to find businesses, service providers and their information in one single platform. Find it or be found. Register today and add your business.";
     

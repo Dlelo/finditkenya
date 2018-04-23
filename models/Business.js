@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 var superPagination = require('super-pagination').mongoose;
-var dataTables = require('mongoose-datatables');
+var mongoosastic=require("mongoosastic");
+
 var sys = require(__dirname + '/../config/System');
 
 var db = mongoose.connect(sys.db_uri, {useMongoClient: true });
@@ -9,8 +10,8 @@ mongoose.Promise =require('bluebird');
 const Schema = mongoose.Schema;
 
 const bizSchema = new Schema({
-		name: { type: String,required: true, index: { unique: true, sparse: true }},
-		description: String,
+		name: { type: String,required: true, index: { unique: true, sparse: true }, es_indexed:true, es_boost:4.0},
+		description: { type: String, es_indexed:true, es_boost:1.0 },
 		city: String,
 		map: {
 			lati: String,
@@ -20,7 +21,7 @@ const bizSchema = new Schema({
 		website: String,
 		phone: String,
 		email: String,
-		keywords: String,
+		keywords: { type: String, es_indexed:true,es_boost:3.0 },
 		slug: {
 			type: String,
 			unique: true
@@ -28,7 +29,7 @@ const bizSchema = new Schema({
 		photo: String,
 		catalog: Array,
 		category: String,
-		subcategory: String,
+		subcategory: { type: String, es_indexed:true, es_boost:2.0 },
 		extras: Array,
 		features: Array,
 		street: String,
@@ -75,6 +76,13 @@ bizSchema.plugin(superPagination, {
     theme : 'bootstrap'
 });
 
-bizSchema.plugin(dataTables);
+bizSchema.plugin(mongoosastic, {
+  hosts: [
+    'localhost:9200'
+  ]
+});
 
-module.exports = mongoose.model('Business', bizSchema);
+const Promise = require("bluebird");
+const Business = mongoose.model('Business', bizSchema);
+Business.search = Promise.promisify(Business.search, { context: Business });
+module.exports = Business;

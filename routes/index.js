@@ -17,6 +17,7 @@ const { matchedData, sanitize } = require('express-validator/filter');
 var nodemailer = require('nodemailer');
 var md5 = require('md5');
 var validator = require('validator');
+var elasticsearch = require('elasticsearch');
 
 var sys = require(__dirname + '/../config/System');
 var role = require(__dirname + '/../config/Role');
@@ -67,38 +68,19 @@ router.get('/email', function (req, res, next) {
 
 router.get('/search',function(req, res, next){
   //wait for the initialization
-  var search = req.query.search.split(" ");
-  var businesses = Business.find({$or: [
-    {
-      name: { "$regex": req.query.search, "$options": "i" }
-    },
-    {
-      keywords: { $in: [new RegExp(req.query.search, 'i')] }
-    },
-    {
-      subcategory: { "$regex": req.query.search, "$options": "i" }
-    },
-    {
-      slug: { "$regex": req.query.search, "$options": "i" }
-    },
-    {
-      features: { "$regex": req.query.search, "$options": "i" }
-    }
-    ],approved: true})
-  .sort([['paid', -1],['datepaid', 1],['slug', 1]]);
-
-  var searchstring = req.query.search.charAt(0).toUpperCase() + req.query.search.slice(1)
-
-  var features = Category.find({name: searchstring });
-  Promise.all([businesses, features]).then(values => {
-    //console.log(values[1]);
+  var search = Business.search(
+    {query_string: {query: req.query.search}},
+    {hydrate: true });
+  var features = Category.find({name: req.query.search });
+  Promise.all([search, features]).then(values => {
+    console.log(values[0]);
       res.render('business/list', { 
-          title: req.params.search,
-          businesses: values[0],
+          title: req.query.search,
+          businesses: values[0].hits.hits,
           features: values[1],
           host: req.get('host')
       });
-    });
+  });
 });
 
 router.get('/moment',function(req,res){
@@ -317,6 +299,65 @@ router.get('/claim-form/:id/', role.auth, function(req, res, next){
 
 router.get('/add-agent',role.auth,function(req, res, next){
   res.render('site/agent');
+});
+
+router.get('/elasticmapping', function(req, res){
+  Business.createMapping(function(err, mapping){  
+    if(err){
+      console.log('error creating mapping (you can safely ignore this)');
+      console.log(err);
+    }else{
+      console.log('mapping created!');
+      console.log(mapping);
+    }
+  });
+});
+
+router.get('/indexsearch/:string', function(req, res){
+  console.log(req.params.string);
+  var search = Business.search(
+    {query_string: {query: req.params.string}},
+    {hydrate: true });
+  Promise.all([search]).then(values => {
+    console.log(values[0]);
+      res.render('business/list', { 
+          title: req.params.string,
+          businesses: values[0].hits.hits,
+          host: req.get('host')
+      });
+  });
+});
+
+router.get('/indexall', function(req, res){
+  var stream = Business.synchronize();
+  var count = 0;
+
+  stream.on('data', function(err, doc){
+    count++;
+  });
+  stream.on('close', function(){
+    console.log('indexed ' + count + ' documents!');
+  });
+  stream.on('error', function(err){
+    console.log(err);
+  });
+});
+
+router.get('/elasticsearch', function(req, res){
+  var client = new elasticsearch.Client({
+    host: 'localhost:9200',
+    log: 'trace'
+  });
+  client.ping({
+    // ping usually has a 3000ms timeout
+    requestTimeout: 1000
+  }, function (error) {
+    if (error) {
+      console.trace('elasticsearch cluster is down!');
+    } else {
+      console.log('All is well');
+    }
+  });
 });
 
 router.post('/claim/:id/', role.auth, function(req, res){

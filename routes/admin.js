@@ -57,7 +57,6 @@ router.post('/edit/:id', role.auth, cpUpload, function(req, res, next) {
 		if(req.body.ssubcategory){
 			b.features = req.body.ssubcategory;
 		}	
-		
 		b.keywords = req.body.keywords;
 			
 		if(req.files['gallery']){

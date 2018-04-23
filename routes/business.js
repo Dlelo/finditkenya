@@ -48,7 +48,7 @@ router.post('/add', role.auth, cpUpload, function(req, res, next) {
 	instance.features = req.body.ssubcategory;
 	instance.gallery = req.files['gallery'];		
 	instance.paid = req.body.paid;
-	instance.keywords = req.body.keywords;	
+	instance.keywords = req.body.keywords;
 	instance.extras = req.body.extras;
 	instance.youtube = req.body.youtube;	
 	instance.user_id = res.locals.user.username;

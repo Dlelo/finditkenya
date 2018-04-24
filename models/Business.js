@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 var superPagination = require('super-pagination').mongoose;
 var mongoosastic=require("mongoosastic");
+var dataTables = require('mongoose-datatables');
 
 var sys = require(__dirname + '/../config/System');
 
@@ -71,7 +72,7 @@ const bizSchema = new Schema({
 });
 
 bizSchema.index({ name: 'text', description: 'text', keywords: 'text' });
-
+bizSchema.plugin(dataTables);
 bizSchema.plugin(superPagination, {
     theme : 'bootstrap'
 });

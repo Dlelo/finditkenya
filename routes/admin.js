@@ -200,9 +200,11 @@ router.get('/fakepaid/:id',role.admin, function(req, res, next){
 		    }else if(data.paid == false){
 		    	data.paid = true;
 		    	data.fakepaid = true;
+		    	data.packagepaid = 'silver';
 		    }else{
 		    	data.paid = true;
 		    	data.fakepaid = true;
+		    	data.packagepaid = 'silver';
 		    }
 		    data.save(function(err){
 				if(err)

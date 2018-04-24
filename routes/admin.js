@@ -191,6 +191,30 @@ router.get('/delete/:id',role.auth, function(req, res, next){
 	}
 });
 
+router.get('/fakepaid/:id',role.admin, function(req, res, next){
+		Business.findById(req.params.id)
+		.then(function(data){
+		    if(data.paid == true){
+		    	data.paid = false;
+		    	data.fakepaid = false;
+		    }else if(data.paid == false){
+		    	data.paid = true;
+		    	data.fakepaid = true;
+		    }else{
+		    	data.paid = true;
+		    	data.fakepaid = true;
+		    }
+		    data.save(function(err){
+				if(err)
+					res.redirect('/dashboard');
+				res.redirect('/dashboard');
+			});
+		})
+		.catch(function(err){
+		     console.log(err);
+		});
+});
+
 router.get('/approve/:id',role.admin, function(req, res, next){
 	Business.findById(req.params.id)
 	.then(function(b){

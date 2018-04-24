@@ -62,6 +62,7 @@ const bizSchema = new Schema({
 		starteventdate: Date,
 		endeventdate: Date,
 		paid: Boolean,
+		fakepaid: Boolean,
 		amountpaid: String,
 		packagepaid: String,
 		datepaid: Date,

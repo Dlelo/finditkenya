@@ -421,6 +421,7 @@ router.get('/receive', function(req, res){
   .then(function(b){
     b.paid = true;
     b.amountpaid = amount;
+    data.fakepaid = false;
     b.datepaid = new Date();
     b.user_id = res.locals.user.username;
     var ssn = req.session;

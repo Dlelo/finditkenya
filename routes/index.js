@@ -374,7 +374,7 @@ router.post('/claim/:id/', role.auth, function(req, res){
   }else if(package == "silver"){
     amount = "5600";
   }else if(package == "gold"){
-    amount = "10";
+    amount = "13920";
   }
   var fields = {
     "live":"1",
@@ -454,13 +454,12 @@ router.get('/receive', function(req, res){
             otherProperty: 'Other Property' // All additional properties are also passed to the template as local variables.
           }, function (err) {
             if (err) {
-              // handle error
               console.log(err);
               res.send('There was an error sending the email');
               return;
             }
           });
-    }else if(amount == "10.00"){
+    }else if(amount == "13920.00"){
       b.packagepaid = "gold";
       var holder = emailModel.app;
           var mailer = emailModel.mailer;

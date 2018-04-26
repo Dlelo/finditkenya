@@ -251,7 +251,7 @@ html(lang='en')
     script(src="https://cdn.datatables.net/v/bs/jszip-2.5.0/dt-1.10.16/af-2.2.2/b-1.5.1/b-html5-1.5.1/b-print-1.5.1/cr-1.4.1/r-2.2.1/sc-1.4.4/sl-1.2.5/datatables.min.js")
 
     script(type='text/javascript').
-      $(document).ready(function() {
+      $(function() {
 
         $('#businesses').DataTable({
             "ajax": {
@@ -342,7 +342,8 @@ html(lang='en')
           }
         }
 
-        $("#photo").change(function() {
+        $("#photod").on('change', function() {
+          alert(this);
           readURL(this);
         });
 

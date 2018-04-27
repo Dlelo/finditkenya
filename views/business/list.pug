@@ -42,7 +42,7 @@ block content
                   .col-md-4
                     img(src="/uploads/"+ biz.photo, height="200px")
                 .col-md-8
-                  h3.text-left
+                  h4.text-left
                     =biz.name
                     if (biz.paid == true)
                       small                      
@@ -51,6 +51,11 @@ block content
                     p.padding.text-left  !{biz.description.substr(0, 150) + '..... <strong style="color:#d44457">Read More</strong>'}
                 .col-md-12                  
                   .row
+                    .col-md-2.text-left
+                      p 
+                        span.glyphicon.glyphicon-globe.text-success.glyph.border 
+                        a(href=biz.website,target="_blank")
+                          =biz.subcategory
                     .col-md-2.text-left
                       p 
                         span.glyphicon.glyphicon-globe.text-success.glyph.border 

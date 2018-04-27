@@ -637,19 +637,30 @@ router.get('/:name',function(req, res, next){
     delete data.hours.$init;
     //console.log(data);
     var openingTimesMoment = new OpeningTimes(data.hours, 'Africa/Nairobi');     
-    data.openstatus = openingTimesMoment.getStatus(now);  
-    console.log(data.openstatus.isOpen); 
-    if(data.paid == false || typeof data.paid === 'undefined'){
-      description = data.name + ', '+ data.subcategory + ', ' + data.street +', '+data.city + ' Kenya';
-      console.log(description);
-      res.render('business/freedetail',{title: data.name, biz: data, phones: phones, emails: emails});
-      res.end();
-    }else{
-      description = data.description;
-      console.log(description);
-      res.render('business/detail',{title: data.name, biz: data, phones: phones, emails: emails, description: description});
-      res.end();
-    }    
+    data.openstatus = openingTimesMoment.getStatus(now); 
+
+
+    //SIMILAR BUSINESSES
+    var businesses = Business.find({
+      $query: {
+        subcategory: data.subcategory,
+        approved: true
+      }
+    }).sort([['paid', -1],['datepaid', 1],['slug', 1]]).limit(5)
+    .then(function(similarbiz){
+      //console.log(similarbiz);
+      if(data.paid == false || typeof data.paid === 'undefined'){
+        description = data.name + ', '+ data.subcategory + ', ' + data.street +', '+data.city + ' Kenya';
+        console.log(description);
+        res.render('business/freedetail',{title: data.name, biz: data, phones: phones, emails: emails, similarbiz: similarbiz});
+        res.end();
+      }else{
+        description = data.description;
+        console.log(description);
+        res.render('business/detail',{title: data.name, biz: data, phones: phones, emails: emails, description: description, similarbiz: similarbiz});
+        res.end();
+      } 
+    });
   })
   .catch(function(err){
      console.log(err);

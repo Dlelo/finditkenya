@@ -646,10 +646,10 @@ router.get('/:name',function(req, res, next){
       $query: {
         subcategory: data.subcategory,
         features: { "$in": data.features },
+        slug: { "$ne": data.slug },
         approved: true
       }
     })
-    .where('slug').ne(data.slug)
     .sort([['paid', -1],['datepaid', 1],['slug', 1]])
     .limit(5)
     .then(function(similarbiz){

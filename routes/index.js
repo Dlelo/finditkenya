@@ -648,7 +648,10 @@ router.get('/:name',function(req, res, next){
         features: { "$in": data.features },
         approved: true
       }
-    }).sort([['paid', -1],['datepaid', 1],['slug', 1]]).limit(5)
+    })
+    .where('slug').ne(data.slug)
+    .sort([['paid', -1],['datepaid', 1],['slug', 1]])
+    .limit(5)
     .then(function(similarbiz){
       //console.log(similarbiz);
       if(data.paid == false || typeof data.paid === 'undefined'){

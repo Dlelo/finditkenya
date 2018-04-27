@@ -47,7 +47,7 @@ block content
                     if (biz.paid == true)
                       small                      
                         span.fa.fa-check-circle.strong(style="color:#2862ec;")
-                  if (typeof(biz.description) !== 'undefined')
+                  if (typeof(biz.description) !== 'undefined' && biz.description.length > 150)
                     p.padding.text-left  !{biz.description.substr(0, 150) + '..... <strong style="color:#d44457">Read More</strong>'}
                 .col-md-12                  
                   .row

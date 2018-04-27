@@ -641,9 +641,11 @@ router.get('/:name',function(req, res, next){
 
 
     //SIMILAR BUSINESSES
+    //"author": { "$in": userIds }
     var businesses = Business.find({
       $query: {
         subcategory: data.subcategory,
+        features: { "$in": data.features },
         approved: true
       }
     }).sort([['paid', -1],['datepaid', 1],['slug', 1]]).limit(5)

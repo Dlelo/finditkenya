@@ -28,6 +28,7 @@ block content
                 th #
                 th IP
                 th TIME
+                th CATEGORY
             tbody
               each d, i in data
                 tr
@@ -37,3 +38,5 @@ block content
                     =d.ip
                   td.txt-oflo 
                     =d.time
+                  td.txt-success
+                    =d.category

@@ -639,6 +639,46 @@ router.get('/biz/analytics/:bizid', function(req, res, next){
         console.log("logged");
       }
     });
+  
+});
+
+router.get('/analytics/graph/:bizid', function(req, res, next){
+  Analytics.aggregate([
+    {"$match": {}},
+    {
+      $project: {
+        yearMonthDay: { $dateToString: { format: "%Y-%m-%d", date: "$time" } },
+        category: '$category'
+      }
+    },
+    {"$group":{
+        _id: '$yearMonthDay',
+        contacts: {
+          $sum: {
+            '$cond': [
+                { '$eq': ['$category', '2']},
+                    1,
+                    0
+            ]
+          }
+        },
+        views: {
+          $sum: {
+            '$cond': [
+                { '$eq': ['$category', '3']},
+                    1,
+                    0
+            ]
+          }
+        }
+      }
+    }
+  ], function(err, rst){
+    var result = Object.keys(rst).map(function(key) {
+      return [Number(key), rst[key].views, rst[key].contacts];
+    });
+    res.send(result);
+  });
 });
 
 router.get('/:name',function(req, res, next){

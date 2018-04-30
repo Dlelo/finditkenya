@@ -223,15 +223,52 @@ router.get('/fakepaid/:id',role.admin, function(req, res, next){
 });
 
 router.get('/analytics/:id',role.auth, function(req, res, next){
-		Analytics.find({
-			bizid: req.params.id
-		})
-		.then(function(data){
-		   res.render('admin/analytics', {data: data, title: "Analytics"});
-		})
-		.catch(function(err){
-		    console.log(err);
-		});
+	Analytics.aggregate([
+    {"$match": {}},
+    {
+      $project: {
+        yearMonthDay: { $dateToString: { format: "%Y-%m-%d", date: "$time" } },
+        category: '$category'
+      }
+    },
+    {"$group":{
+        _id: '$yearMonthDay',
+        contacts: {
+          $sum: {
+            '$cond': [
+                { '$eq': ['$category', '2']},
+                    1,
+                    0
+            ]
+          }
+        },
+        views: {
+          $sum: {
+            '$cond': [
+                { '$eq': ['$category', '3']},
+                    1,
+                    0
+            ]
+          }
+        }
+      }
+    }
+  ], function(err, rst){
+    var result = Object.keys(rst).map(function(key) {
+      return [rst[key]._id, rst[key].views, rst[key].contacts];
+    });
+    //END OF RAW DATA COLLECTION
+    console.log(result);
+    Analytics.find({
+		bizid: req.params.id
+	})
+	.then(function(data){
+	   res.render('admin/analytics', {data: data, title: "Analytics", graph: JSON.stringify(result)});
+	})
+	.catch(function(err){
+	    console.log(err);
+	});
+  });
 });
 
 router.get('/approve/:id',role.admin, function(req, res, next){

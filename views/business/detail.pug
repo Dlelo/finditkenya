@@ -66,9 +66,13 @@ block content
                   p.text-left
                     each phone in phones
                       strong
+                        span#biz-id(style="display:none")
+                          =biz.id
                         span.glyphicon.glyphicon-earphone.text-info.glyph.border
-                        a.findit(href="tel:"+phone,style="color:#2862ec;")
+                        a.findit.phoneno(href="tel:"+phone,style="color:#2862ec;display:none")
                           |  #{phone}
+                        a.findit.phonenofake(href="#"color:#2862ec")
+                          |  Get Contacts
                       br
                   hr.nomargin
                 .col-md-12.text-left

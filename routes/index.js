@@ -626,6 +626,21 @@ router.post('/agent/:slug', function(req, res){
   });
 });
 
+router.get('/biz/analytics/:bizid', function(req, res, next){
+  var analytics = new Analytics();
+    analytics.ip = req.headers['x-forwarded-for'];
+    analytics.time = new Date();
+    analytics.bizid = req.params.bizid;
+    analytics.category = "2";
+    analytics.save(function(err){
+      if(err){
+        console.log(err);
+      }else{
+        console.log("logged");
+      }
+    });
+});
+
 router.get('/:name',function(req, res, next){
   Business.findOne({
     slug: req.params.name,

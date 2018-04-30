@@ -38,6 +38,10 @@ block content
                     =d.ip
                   td.txt-oflo 
                     =d.time
-                  td.txt-success
-                    if(d.category == '3')
+                  
+                  if(d.category == '3')
+                    td(style="color: rgb(0, 128, 0)")
                       |  Viewed Business
+                  if(d.category == '2')
+                    td(style="color:#e42727")
+                      |  Got Contacts

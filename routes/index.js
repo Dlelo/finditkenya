@@ -641,7 +641,7 @@ router.get('/:name',function(req, res, next){
     data.openstatus = openingTimesMoment.getStatus(now); 
 
     var analytics = new Analytics();
-    analytics.ip = req.connection.remoteAddress;
+    analytics.ip = req.headers["X-Real-IP"];
     analytics.time = new Date();
     analytics.bizid = data.id;
     analytics.category = "3";

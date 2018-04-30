@@ -7,15 +7,15 @@ mongoose.Promise =require('bluebird');
 
 const Schema = mongoose.Schema;
 
-const subcatSchema = new Schema({
-		name: { type: String,required: true, index: { unique: true, sparse: true }},
-		category:[
-	      {type: Schema.Types.ObjectId, ref: 'Category'}
-	    ]
+const analyticsSchema = new Schema({
+	ip: { type: String},
+	time: Date,
+	bizid: String,
+	category: String
 });
 
-subcatSchema.plugin(superPagination, {
+analyticsSchema.plugin(superPagination, {
     theme : 'bootstrap'
 });
 
-module.exports = mongoose.model('Subcategory', subcatSchema);
+module.exports = mongoose.model('Analytics', analyticsSchema);

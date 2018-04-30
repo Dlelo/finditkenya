@@ -25,6 +25,7 @@ var User = require('./../models/User');
 var Business = require('./../models/Business');
 var Category = require(__dirname + '/../models/Category');
 var emailModel = require(__dirname + '/../config/Mail');
+var Analytics = require(__dirname + '/../models/Analytics');
 
 var mailer = require('express-mailer');
 
@@ -639,6 +640,18 @@ router.get('/:name',function(req, res, next){
     var openingTimesMoment = new OpeningTimes(data.hours, 'Africa/Nairobi');     
     data.openstatus = openingTimesMoment.getStatus(now); 
 
+    var analytics = new Analytics();
+    analytics.ip = req.connection.remoteAddress;
+    analytics.time = new Date();
+    analytics.bizid = data.id;
+    analytics.category = "3";
+    analytics.save(function(err){
+      if(err){
+        console.log(err);
+      }else{
+        console.log("logged");
+      }
+    });
 
     //SIMILAR BUSINESSES
     //"author": { "$in": userIds }

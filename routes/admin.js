@@ -16,6 +16,7 @@ var Subcategory = require(__dirname + '/../models/Subcategory');
 var Business = require(__dirname + '/../models/Business');
 var Agents = require(__dirname + '/../models/Agent');
 var Users = require(__dirname + '/../models/User');
+var Analytics = require(__dirname + '/../models/Analytics');
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -218,6 +219,18 @@ router.get('/fakepaid/:id',role.admin, function(req, res, next){
 		})
 		.catch(function(err){
 		     console.log(err);
+		});
+});
+
+router.get('/analytics/:id',role.auth, function(req, res, next){
+		Analytics.find({
+			bizid: req.params.id
+		})
+		.then(function(data){
+		   res.render('admin/analytics', {data: data, title: "Analytics"});
+		})
+		.catch(function(err){
+		    console.log(err);
 		});
 });
 

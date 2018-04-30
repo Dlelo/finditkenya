@@ -65,14 +65,13 @@ block content
                 .col-md-12
                   p.text-left
                     each phone in phones
-                      strong
-                        span#biz-id(style="display:none")
-                          =biz.id
-                        span.glyphicon.glyphicon-earphone.text-info.glyph.border
-                        a.findit.phoneno(href="tel:"+phone,style="color:#2862ec;display:none")
-                          |  #{phone}
-                        a.findit.phonenofake(href="#"color:#2862ec")
-                          |  Get Contacts
+                      span#biz-id(style="display:none")
+                        =biz.id
+                      span.glyphicon.glyphicon-earphone.text-info.glyph.border
+                      a.findit.phoneno(href="tel:"+phone,style="color:#2862ec;display:none")
+                        |  #{phone}
+                      a.findit.phonenofake(href="#",style="color: #bc1206")
+                        |  Get Contacts
                       br
                   hr.nomargin
                 .col-md-12.text-left

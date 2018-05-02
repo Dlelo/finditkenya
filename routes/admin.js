@@ -9,6 +9,7 @@ var hmacsha1Generate = require('hmacsha1-generate');
 var crypto = require("crypto");
 var Jimp = require("jimp");
 var bcrypt = require('bcryptjs');
+const OpeningTimes = require('moment-opening-times');
 
 var role = require(__dirname + '/../config/Role');
 var Category = require(__dirname + '/../models/Category');
@@ -162,7 +163,12 @@ router.get('/edit/:id',role.auth, function(req, res, next){
 	var categories = Category.find({});
 
 	Promise.all([business, categories]).then(values => {
-	    console.log(values);
+		var now = moment();
+	    delete values[0].hours.$init;
+	    //console.log(data);
+	    var openingTimesMoment = new OpeningTimes(values[0].hours, 'Africa/Nairobi');     
+	    values[0].openstatus = openingTimesMoment.getStatus(now); 
+	    console.log(values[0].openstatus);
 	    res.render('admin/edit', { 
 	        title: "Edit "+values[0].name,
 	        biz: values[0],

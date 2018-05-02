@@ -66,7 +66,6 @@ block content
                         =category.name
               .col-sm-3
                 select#ssubcategoryy.form-control-form-select.ssubcategory.selectpicker(name='ssubcategory',multiple,data-selected-text-format='count > 5', data-live-search="true")
-                  option(data-icon='glyphicon-wrench', value=biz.features) #{biz.features.join()}
                   each category in categories
                     each subcat in category.subcategories
                       option(data-icon='glyphicon-wrench', value=subcat.name, rel=category.name) 
@@ -102,9 +101,19 @@ block content
                   strong
                     |  Monday
                 .col-sm-3(id="hoursopen",class="timeopen")
-                  input#hours.form-control-form(type='text', name='hoursopenmon', placeholder='Opening Hours Monday',class='timepicker hoursopened')
+                  if (biz.hours.monday != '')
+                    each hour in biz.hours.monday
+                      if(hour.opens)
+                        input#hours.form-control-form(type='text', name='hoursopenmon', placeholder='Opening Hours Monday',class='timepicker', value=hour.opens)
+                  else
+                    input#hours.form-control-form(type='text', name='hoursopenmon', placeholder='Opening Hours Monday',class='timepicker hoursopened')
                 .col-sm-3(id="hoursclose",class="timeclose")
-                  input#startdate.form-control-form(type='text', name='hoursclosemon', placeholder='Closing Hours Monday',class='timepicker hoursclosed')
+                  if (biz.hours.monday != '')
+                    each hour in biz.hours.monday
+                      if(hour.closes)
+                        input#hours.form-control-form(type='text', name='hoursclosemon', placeholder='Closes Hours Monday',class='timepicker', value=hour.closes)
+                  else
+                    input#hours.form-control-form(type='text', name='hoursclosemon', placeholder='Closes Hours Monday',class='timepicker hoursclosed')
                 .col-sm-2.text-center
                   button.btn.btn-danger.form-control-form.alert-danger.btnclose
                     |  Closed
@@ -113,9 +122,19 @@ block content
                   strong
                     |  Tuesday
                 .col-sm-3(id="hoursopen",class="timeopen")
-                  input#hours.form-control-form(type='text', name='hoursopentue', placeholder='Opening Hours Tuesday',class='timepicker hoursopened')
+                  if (biz.hours.tuesday != '')
+                    each hour in biz.hours.tuesday
+                      if(hour.opens)
+                        input#hours.form-control-form(type='text', name='hoursopentue', placeholder='Opening Hours Tuesday',class='timepicker', value=hour.opens)
+                  else
+                    input#hours.form-control-form(type='text', name='hoursopentue', placeholder='Opening Hours Tuesday',class='timepicker hoursopened')
                 .col-sm-3(id="hoursclose",class="hoursclose")
-                  input#startdate.form-control-form(type='text', name='hoursclosetue', placeholder='Closing Hours Tuesday',class='timepicker hoursclosed')
+                  if (biz.hours.tuesday != '')
+                    each hour in biz.hours.tuesday
+                      if(hour.closes)
+                        input#hours.form-control-form(type='text', name='hoursclosetue', placeholder='Closes Hours Tuesday',class='timepicker', value=hour.closes)
+                  else
+                    input#hours.form-control-form(type='text', name='hoursclosetue', placeholder='Closes Hours Tuesday',class='timepicker hoursclosed')
                 .col-sm-2.text-center
                   button.btn.btn-danger.form-control-form.alert-danger.btnclose
                     |  Closed
@@ -124,9 +143,19 @@ block content
                   strong
                     |  Wednesday
                 .col-sm-3(id="hoursopen",class="timeopen")
-                  input#hours.form-control-form(type='text', name='hoursopenwed', placeholder='Opening Hours Wednesday',class='timepicker hoursopened')
+                  if(biz.hours.wednesday != '')
+                    each hour in biz.hours.wednesday
+                      if(biz.hours.wednesday != '')
+                        input#hours.form-control-form(type='text', name='hoursopenwed', placeholder='Opening Hours Wednesday',class='timepicker', value=hour.opens)
+                  else
+                    input#hours.form-control-form(type='text', name='hoursopenwed', placeholder='Opening Hours Wednesday',class='timepicker hoursopened')
                 .col-sm-3(id="hoursclose",class="hoursclose")
-                  input#startdate.form-control-form(type='text', name='hoursclosewed', placeholder='Closing Hours Wednesday',class='timepicker hoursclosed')
+                  if(biz.hours.wednesday != '')
+                    each hour in biz.hours.wednesday
+                      if(hour.closes)
+                        input#hours.form-control-form(type='text', name='hoursclosewed', placeholder='Closes Hours Wednesday',class='timepicker', value=hour.closes)
+                  else
+                    input#hours.form-control-form(type='text', name='hoursclosewed', placeholder='Closes Hours Wednesday',class='timepicker hoursclosed')
                 .col-sm-2.text-center
                   button.btn.btn-danger.form-control-form.alert-danger.btnclose
                     |  Closed
@@ -135,9 +164,19 @@ block content
                   strong
                     |  Thursday
                 .col-sm-3(id="hoursopen",class="timeopen")
-                  input#hours.form-control-form(type='text', name='hoursopenthu', placeholder='Opening Hours Thursday',class='timepicker hoursopened')
+                  if(biz.hours.thursday != '')
+                    each hour in biz.hours.thursday
+                      if(biz.hours.thursday != '')
+                        input#hours.form-control-form(type='text', name='hoursopenthu', placeholder='Opening Hours Thursday',class='timepicker', value=hour.opens)
+                  else
+                    input#hours.form-control-form(type='text', name='hoursopenthu', placeholder='Opening Hours Thursday',class='timepicker hoursopened')
                 .col-sm-3(id="hoursclose",class="hoursclose")
-                  input#startdate.form-control-form(type='text', name='hoursclosethu', placeholder='Closing Hours Thursday',class='timepicker hoursclosed')
+                  if(biz.hours.thursday != '')
+                    each hour in biz.hours.thursday
+                      if(hour.closes)
+                        input#hours.form-control-form(type='text', name='hoursclosethu', placeholder='Closes Hours Thursday',class='timepicker', value=hour.closes)
+                  else
+                    input#hours.form-control-form(type='text', name='hoursclosethu', placeholder='Closes Hours Thursday',class='timepicker hoursclosed')
                 .col-sm-2.text-center
                   button.btn.btn-danger.form-control-form.alert-danger.btnclose
                     |  Closed
@@ -146,9 +185,19 @@ block content
                   strong
                     |  Friday
                 .col-sm-3(id="hoursopen",class="timeopen")
-                  input#hours.form-control-form(type='text', name='hoursopenfri', placeholder='Opening Hours Friday',class='timepicker hoursopened')
+                  if(biz.hours.friday != '')
+                    each hour in biz.hours.friday
+                      if(biz.hours.friday != '')
+                        input#hours.form-control-form(type='text', name='hoursopenfri', placeholder='Opening Hours Friday',class='timepicker', value=hour.opens)
+                  else
+                    input#hours.form-control-form(type='text', name='hoursopenfri', placeholder='Opening Hours Friday',class='timepicker hoursopened')
                 .col-sm-3(id="hoursclose",class="hoursclose")
-                  input#startdate.form-control-form(type='text', name='hoursclosefri', placeholder='Closing Hours Friday',class='timepicker hoursclosed')
+                  if(biz.hours.friday != '')
+                    each hour in biz.hours.friday
+                      if(hour.closes)
+                        input#hours.form-control-form(type='text', name='hoursclosefri', placeholder='Closes Hours Friday',class='timepicker', value=hour.closes)
+                  else
+                    input#hours.form-control-form(type='text', name='hoursclosefri', placeholder='Closes Hours Friday',class='timepicker hoursclosed')
                 .col-sm-2.text-center
                   button.btn.btn-danger.form-control-form.alert-danger.btnclose
                     |  Closed
@@ -157,9 +206,19 @@ block content
                   strong
                     |  Saturday
                 .col-sm-3(id="hoursopen",class="timeopen")
-                  input#hours.form-control-form(type='text', name='hoursopensat', placeholder='Opening Hours Saturday',class='timepicker hoursopened')
+                  if(biz.hours.saturday != '')
+                    each hour in biz.hours.saturday
+                      if(biz.hours.saturday != '')
+                        input#hours.form-control-form(type='text', name='hoursopensat', placeholder='Opening Hours Saturday',class='timepicker', value=hour.opens)
+                  else
+                    input#hours.form-control-form(type='text', name='hoursopensat', placeholder='Opening Hours Saturday',class='timepicker hoursopened')
                 .col-sm-3(id="hoursclose",class="hoursclose")
-                  input#startdate.form-control-form(type='text', name='hoursclosesat', placeholder='Closing Hours Saturday',class='timepicker hoursclosed')
+                  if(biz.hours.saturday != '')
+                    each hour in biz.hours.saturday
+                      if(hour.closes)
+                        input#hours.form-control-form(type='text', name='hoursclosesat', placeholder='Closes Hours Saturday',class='timepicker', value=hour.closes)
+                  else
+                    input#hours.form-control-form(type='text', name='hoursclosesat', placeholder='Closes Hours Saturday',class='timepicker hoursclosed')
                 .col-sm-2.text-center
                   button.btn.btn-danger.form-control-form.alert-danger.btnclose
                     |  Closed
@@ -168,9 +227,19 @@ block content
                   strong
                     |  Sunday
                 .col-sm-3(id="hoursopen",class="timeopen")
-                  input#hours.form-control-form(type='text', name='hoursopensun', placeholder='Opening Hours Sunday',class='timepicker hoursopened')
+                  if(biz.hours.sunday != '')
+                    each hour in biz.hours.sunday
+                      if(biz.hours.sunsay != '')
+                        input#hours.form-control-form(type='text', name='hoursopensun', placeholder='Opening Hours Sunday',class='timepicker', value=hour.opens)
+                  else
+                    input#hours.form-control-form(type='text', name='hoursopensun', placeholder='Opening Hours Sunday',class='timepicker hoursopened')
                 .col-sm-3(id="hoursclose",class="hoursclose")
-                  input#startdate.form-control-form(type='text', name='hoursclosesun', placeholder='Closing Hours Sunday',class='timepicker hoursclosed')
+                  if(biz.hours.sunday != '')
+                    each hour in biz.hours.sunday
+                      if(hour.closes)
+                        input#hours.form-control-form(type='text', name='hoursclosesun', placeholder='Closes Hours Sunday',class='timepicker', value=hour.closes)
+                  else
+                    input#hours.form-control-form(type='text', name='hoursclosesun', placeholder='Closes Hours Sunday',class='timepicker hoursclosed')
                 .col-sm-2.text-center
                   button.btn.btn-danger.form-control-form.alert-danger.btnclose
                     |  Closed

@@ -642,9 +642,10 @@ router.get('/biz/analytics/:bizid', function(req, res, next){
   
 });
 
+/*
 router.get('/analytics/graph/:bizid', function(req, res, next){
   Analytics.aggregate([
-    {"$match": {}},
+    {"$match": { "bizid": req.params.bizid}},
     {
       $project: {
         yearMonthDay: { $dateToString: { format: "%Y-%m-%d", date: "$time" } },
@@ -680,7 +681,7 @@ router.get('/analytics/graph/:bizid', function(req, res, next){
     });
     res.send(result);
   });
-});
+});*/
 
 router.get('/:name',function(req, res, next){
   Business.findOne({

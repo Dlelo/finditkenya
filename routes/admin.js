@@ -272,7 +272,7 @@ router.get('/analytics/:id',role.auth, function(req, res, next){
   });
 });
 
-router.get('/analytics',role.auth, function(req, res, next){
+router.get('/allanalytics',role.auth, function(req, res, next){
 	Analytics.aggregate([
     {"$match": {}},
     {

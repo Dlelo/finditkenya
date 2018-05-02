@@ -150,10 +150,23 @@ router.get('/freeadd',role.auth, function(req, res, next){
 	//res.render('business/new');
 });
 
-router.get('/add',role.auth, function(req, res, next){
+router.get('/newpackage',role.auth, function(req, res, next){
+	res.render('business/package');
+});
+
+router.post('/newpackage',role.auth, function(req, res, next){
+	res.redirect('/business/add/'+req.body.package);
+});
+
+router.get('/add/:package',role.auth, function(req, res, next){
 	Category.find({})
 	.then(function(data){
-	    res.render('business/new',{title: "Find It Categories", categories: data});
+		data.packagepaid = req.params.package;
+		if(req.params.package == "free"){
+			res.render('business/newfree',{title: "Find It Categories", categories: data});
+		}else{
+			res.render('business/new',{title: "Find It Categories", categories: data});
+		}
 	})
 	.catch(function(err){
 	     console.log(err);

@@ -667,6 +667,12 @@ CARD DESIGN
     border-radius: 15px;
     margin-bottom: 5px;
 }
+.free{
+      background-color: #d025ef;
+    padding: 2px;
+    border-radius: 15px;
+    margin-bottom: 5px;
+}
 
 .addbusiness{
   background-color: aliceblue;
@@ -694,7 +700,8 @@ END OF CARD DESIGN
     color: #747272;
     background-color: #fff;
     border-color: #ccc;
-    padding: 5px 16px;
+    padding: 15px;
+    border: 1px solid #ccc;
 }
 
 #package {
@@ -730,7 +737,7 @@ input[type="radio"].package {
   position: relative;
 }
 input[type="radio"].package:checked + #packagelabel {
-  background: #5050ff;
+  background: #8b8bfa;
   color: hsla(215, 0%, 100%, 1);
   box-shadow: 0px 0px 20px hsla(150, 100%, 50%, 0.75);
   &::after {

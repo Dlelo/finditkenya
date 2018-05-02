@@ -224,7 +224,7 @@ router.get('/fakepaid/:id',role.admin, function(req, res, next){
 
 router.get('/analytics/:id',role.auth, function(req, res, next){
 	Analytics.aggregate([
-    {"$match": { "bizid": req.params.bizid}},
+    {"$match": { "bizid": req.params.id}},
     {
       $project: {
         yearMonthDay: { $dateToString: { format: "%Y-%m-%d", date: "$time" } },

@@ -672,7 +672,8 @@ router.get('/analytics/graph/:bizid', function(req, res, next){
           }
         }
       }
-    }
+    },
+    { "$sort": { "_id": -1 } }
   ], function(err, rst){
     var result = Object.keys(rst).map(function(key) {
       return [Number(key), rst[key].views, rst[key].contacts];

@@ -252,7 +252,8 @@ router.get('/analytics/:id',role.auth, function(req, res, next){
           }
         }
       }
-    }
+    },
+    { "$sort": { "_id": 1 } }
   ], function(err, rst){
     var result = Object.keys(rst).map(function(key) {
       return [rst[key]._id, rst[key].views, rst[key].contacts];

@@ -6,9 +6,11 @@ block content
       if(biz.pending && user.username == biz.user_id)
         .row.flowerwhite
           .col-md-6
-            button.button.btn.btn-danger.form-control(type='submit') Pay Now
+            a(href='/pay/'+biz.id)
+              button.button.btn.btn-danger.form-control(type='submit') Pay Now
           .col-md-6
-            button.button.btn.btn-primary.form-control(type='submit') Edit
+            a(href='/admin/edit/'+biz.id)
+              button.button.btn.btn-primary.form-control(type='submit') Edit
       .row.flowerwhite
         .col-md-9
           .row

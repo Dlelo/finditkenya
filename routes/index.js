@@ -43,7 +43,10 @@ router.get('/nss/:name',function(req, res, next){
     {
       subcategory: { "$regex": req.params.name, "$options": "i" }
     }
-    ],approved: true})
+    ],
+    approved: true,
+    pending: { $ne: true }
+  })
   .select('-_id slug description name website')
   .then(function(data){
     res.json(data);
@@ -151,7 +154,8 @@ router.get('/category/:cat',function(req, res, next){
     var businesses = Business.find({
       $query: {
         subcategory: req.params.cat,
-        approved: true
+        approved: true,
+        pending: { $ne: true }
       }
     }).sort([['paid', -1],['datepaid', 1],['slug', 1]]);
     var features = Category.find({
@@ -361,6 +365,14 @@ router.get('/elasticsearch', function(req, res){
   });
 });
 
+router.get('/pay/:bizid', function(req, res){
+  Business.findById(req.params.bizid)
+  .then(function(b){
+    console.log(b);
+    res.render('business/pay',{ biz: b });
+  });
+});
+
 router.post('/claim/:id/', role.auth, function(req, res){
   ssn = req.session;
   ssn.hashkey = "852sokompare963001";
@@ -373,9 +385,9 @@ router.post('/claim/:id/', role.auth, function(req, res){
     //amount = "2320";
     amount = "2320";
   }else if(package == "silver"){
-    amount = "5602";
-  }else if(package == "gold"){
     amount = "5600";
+  }else if(package == "gold"){
+    amount = "13920";
   }
   var fields = {
     "live":"1",
@@ -445,7 +457,7 @@ router.get('/receive', function(req, res){
               return;
             }
           });
-    }else if(amount == "5601.00"){
+    }else if(amount == "5600.00"){
       b.packagepaid = "silver";
           var holder = emailModel.app;
           var mailer = emailModel.mailer;
@@ -460,7 +472,7 @@ router.get('/receive', function(req, res){
               return;
             }
           });
-    }else if(amount == "5600.00"){
+    }else if(amount == "13920.00"){
       b.packagepaid = "gold";
       var holder = emailModel.app;
           var mailer = emailModel.mailer;
@@ -686,7 +698,8 @@ router.get('/analytics/graph/:bizid', function(req, res, next){
 router.get('/:name',function(req, res, next){
   Business.findOne({
     slug: req.params.name,
-    approved: true
+    approved: true,
+    pending: { $ne: true }
   })
   .then(function(data){
     var phones = data.phone.split(",");

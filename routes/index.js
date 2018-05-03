@@ -695,6 +695,35 @@ router.get('/analytics/graph/:bizid', function(req, res, next){
   });
 });*/
 
+router.get('/preview/:name',function(req, res, next){
+  Business.findOne({
+    slug: req.params.name,
+    approved: true,
+    pending: { $ne: true }
+  })
+  .then(function(data){
+    var phones = data.phone.split(",");
+    var emails = data.email.split(",");
+
+      //console.log(similarbiz);
+      if(data.paid == false || typeof data.paid === 'undefined'){
+        description = data.name + ', '+ data.subcategory + ', ' + data.street +', '+data.city + ' Kenya';
+        console.log(description);
+        res.render('business/freedetail',{title: data.name, biz: data, phones: phones, emails: emails, similarbiz: similarbiz});
+        res.end();
+      }else{
+        description = data.description;
+        console.log(description);
+        res.render('business/detail',{title: data.name, biz: data, phones: phones, emails: emails, description: description, similarbiz: similarbiz});
+        res.end();
+      }
+  })
+  .catch(function(err){
+     console.log(err);
+     res.redirect('/');
+  });
+});
+
 router.get('/:name',function(req, res, next){
   Business.findOne({
     slug: req.params.name,

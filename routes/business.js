@@ -124,7 +124,7 @@ router.post('/add', role.auth, cpUpload, function(req, res, next) {
 						});
 					}
 					if(req.body.pending){
-						res.redirect('/'+instance.slug);
+						res.redirect('/preview/'+instance.slug);
 					}else{
 						res.redirect('/dashboard');
 					}

@@ -698,8 +698,7 @@ router.get('/analytics/graph/:bizid', function(req, res, next){
 router.get('/preview/:name',function(req, res, next){
   Business.findOne({
     slug: req.params.name,
-    approved: true,
-    pending: { $ne: true }
+    approved: true
   })
   .then(function(data){
     var phones = data.phone.split(",");

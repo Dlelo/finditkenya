@@ -3,6 +3,12 @@ extends ../layout
 block content
   #home.parallax-content-list.baner-content-listing-biz
     .container
+      if(biz.pending && user.username == biz.user_id)
+        .row.flowerwhite
+          .col-md-6
+            button.button.btn.btn-danger.form-control(type='submit') Pay Now
+          .col-md-6
+            button.button.btn.btn-primary.form-control(type='submit') Edit
       .row.flowerwhite
         .col-md-9
           .row

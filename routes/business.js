@@ -82,6 +82,10 @@ router.post('/add', role.auth, cpUpload, function(req, res, next) {
 	if(req.body.hoursopensat){
 		instance.hours.saturday.push({opens: req.body.hoursopensat, closes: req.body.hoursclosesat}); 
 	}
+	if(req.body.pending){
+		instance.pending = true;
+		instance.packagepaid = req.body.packagepaid;
+	}
 	Business.findOne({
 	   slug: instance.slug
 	})
@@ -119,8 +123,11 @@ router.post('/add', role.auth, cpUpload, function(req, res, next) {
 							});
 						});
 					}
-					
-					res.redirect('/dashboard');
+					if(req.body.pending){
+						res.redirect('/'+instance.slug);
+					}else{
+						res.redirect('/dashboard');
+					}
 				}
 				instance.on('es-indexed', function(err, res){
 			    if (err) throw err;
@@ -162,6 +169,7 @@ router.get('/add/:package',role.auth, function(req, res, next){
 	Category.find({})
 	.then(function(data){
 		data.packagepaid = req.params.package;
+		data.pendingstatus = true;
 		if(req.params.package == "free"){
 			res.render('business/newfree',{title: "Find It Categories", categories: data});
 		}else{

@@ -69,6 +69,7 @@ const bizSchema = new Schema({
 		date: Date,
 		approved: Boolean,
 		agentphone: String,
+		pending: Boolean,
 		user_id: String
 });
 

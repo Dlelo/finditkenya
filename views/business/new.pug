@@ -213,7 +213,10 @@ block content
                 input#map.form-control-form(type='text', name='twitter', placeholder='twitter Url')
               .col-sm-6
                 input#map.form-control-form(type='text', name='instagram', placeholder='Instagram Url')
-                
+                if(categories.pendingstatus)
+                  input#map.form-control-form(type='hidden', name='pending', value='true')
+                if(categories.packagepaid)
+                  input#map.form-control-form(type='hidden', name='packagepaid', value=categories.packagepaid)
             .form-group
               .row
                 button.button.btn.btn-warning.form-control-form(type='submit') Update

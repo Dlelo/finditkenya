@@ -60,12 +60,13 @@ block content
                 select#ssubcategory.form-control-form-select.ssubcategory.selectpicker(name='ssubcategory',data-selected-text-format='count > 5', data-live-search="true",multiple)
                   option(data-icon='fa fa-search', value=) 
                     | --Select Subcategories--
-                
-
               input#lat.gllpLatitude(type='hidden', value='0',name='lati')
               input#long.gllpLongitude(type='hidden', value='38.644',name='long')
               input#zoom.gllpZoom(type='hidden', value='6',name='zoom')
-
+              if(categories.pendingstatus)
+                input#map.form-control-form(type='hidden', name='pending', value='true')
+              if(categories.packagepaid)
+                input#map.form-control-form(type='hidden', name='packagepaid', value=categories.packagepaid)
           .form-group
             .row
               button.button.btn.btn-warning.form-control-form(type='submit') Create

@@ -701,19 +701,25 @@ router.get('/preview/:name',function(req, res, next){
     approved: true
   })
   .then(function(data){
+    console.log(data);
     var phones = data.phone.split(",");
     var emails = data.email.split(",");
+    var now = moment();
+    delete data.hours.$init;
+    //console.log(data);
+    var openingTimesMoment = new OpeningTimes(data.hours, 'Africa/Nairobi');     
+    data.openstatus = openingTimesMoment.getStatus(now);
 
       //console.log(similarbiz);
       if(data.paid == false || typeof data.paid === 'undefined'){
         description = data.name + ', '+ data.subcategory + ', ' + data.street +', '+data.city + ' Kenya';
         console.log(description);
-        res.render('business/freedetail',{title: data.name, biz: data, phones: phones, emails: emails, similarbiz: similarbiz});
+        res.render('business/freedetail',{title: data.name, biz: data, phones: phones, emails: emails});
         res.end();
       }else{
         description = data.description;
         console.log(description);
-        res.render('business/detail',{title: data.name, biz: data, phones: phones, emails: emails, description: description, similarbiz: similarbiz});
+        res.render('business/detail',{title: data.name, biz: data, phones: phones, emails: emails, description: description});
         res.end();
       }
   })

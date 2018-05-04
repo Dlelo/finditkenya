@@ -5,10 +5,7 @@ block content
     .container
       if(biz.pending && user.username == biz.user_id)
         .row.flowerwhite
-          .col-md-6
-            a(href='/pay/'+biz.id)
-              button.button.btn.btn-danger.form-control(type='submit') Pay Now
-          .col-md-6
+          .col-md-12
             a(href='/admin/edit/'+biz.id)
               button.button.btn.btn-primary.form-control(type='submit') Edit
       .row.flowerwhite
@@ -94,11 +91,15 @@ block content
                     strong
                       |  Claimed
                   else
-                    h4 Is this your Business?
-                    form(method='get', action='/claim-form/'+biz.id)
-                      .form-group
-                        button.btn.btn-danger.form-control(type='submit')                 
-                          | Claim This Business Now
+                    if(biz.pending && user.username == biz.user_id)
+                      a(href='/pay/'+biz.id)
+                        button.button.btn.btn-danger.form-control(type='submit') Pay Now
+                    else
+                      h4 Is this your Business?
+                      form(method='get', action='/claim-form/'+biz.id)
+                        .form-group
+                          button.btn.btn-danger.form-control(type='submit')                 
+                            | Claim This Business Now
           .row
             .col-md-12
               h3.text-left

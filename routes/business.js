@@ -61,6 +61,12 @@ router.post('/add', role.auth, cpUpload, function(req, res, next) {
 	instance.starteventdate = req.body.starteventdate;
 	instance.endeventdate = req.body.endeventdate;
 	instance.approved = true;
+	//Social links
+    instance.facebook = req.body.facebook;
+    instance.twitter = req.body.twitter;
+    instance.instagram = req.body.instagram;
+    instance.youtube = req.body.youtube;
+    instance.linkedin = req.body.linkedin;
 	if(req.body.hoursopensun){
 		instance.hours.sunday.push({opens: req.body.hoursopensun, closes: req.body.hoursclosesun});
 	}

@@ -713,13 +713,11 @@ router.get('/preview/:name',function(req, res, next){
       //console.log(similarbiz);
       if(data.paid == false || typeof data.paid === 'undefined'){
         description = data.name + ', '+ data.subcategory + ', ' + data.street +', '+data.city + ' Kenya';
-        console.log(description);
-        res.render('business/freedetail',{title: data.name, biz: data, phones: phones, emails: emails});
+        res.render('business/freedetail',{title: data.name, biz: data, phones: phones, emails: emails, preview: true});
         res.end();
       }else{
         description = data.description;
-        console.log(description);
-        res.render('business/detail',{title: data.name, biz: data, phones: phones, emails: emails, description: description});
+        res.render('business/detail',{title: data.name, biz: data, phones: phones, emails: emails, description: description, preview: true});
         res.end();
       }
   })

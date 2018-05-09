@@ -9,12 +9,11 @@ block content
             a(href='/admin/edit/'+biz.id)
               button.button.btn.btn-primary.form-control(type='submit') Edit
       .row.flowerwhite
-        .col-md-9
+        div(class = (preview) ? 'col-md-12' : 'col-md-9')
           .row
             .col-md-9
               h3.text-left 
-                =biz.name
-              
+                =biz.name              
               p.text-left
                 if (biz.openstatus.isOpen)
                   if (biz.openstatus.isOpen == true)
@@ -94,82 +93,86 @@ block content
                     if(biz.pending && user.username == biz.user_id)
                       a(href='/pay/'+biz.id)
                         button.button.btn.btn-danger.form-control(type='submit') Pay Now
+                    else if(biz.packagepaid == "free" && preview == true)
+                      a(href='/pay/'+biz.id)
+                        button.button.btn.btn-danger.form-control(type='submit') Submit Now
                     else
                       h4 Is this your Business?
                       form(method='get', action='/claim-form/'+biz.id)
                         .form-group
                           button.btn.btn-danger.form-control(type='submit')                 
                             | Claim This Business Now
-          .row
-            .col-md-12
-              h3.text-left
-                | Reviews
-              each review in biz.reviews              
-                .row               
-                  .col-md-4.text-left 
-                    span.glyphicon.glyphicon-comment.glyph.border
-                  .col-md-8
-                    .col-md-12(class="rating medium star-icon value-"+review.rate+" label-hidden")
-                      .star-container
-                        .star
-                          i.star-empty
-                          i.star-half
-                          i.star-filled
-                        .star
-                          i.star-empty
-                          i.star-half
-                          i.star-filled
-                        .star
-                          i.star-empty
-                          i.star-half
-                          i.star-filled
-                        .star
-                          i.star-empty
-                          i.star-half
-                          i.star-filled
-                        .star
-                          i.star-empty
-                          i.star-half
-                          i.star-filled
-                  .col-md-10.text-left
-                    | !{review.msg} 
-            .col-md-12 
-              .row
-                hr
-                .col-md-12 
-                  .findit-red.padding10
-                    strong Submit a Review
-                .col-md-12
-                  form.form-horizontal(method="post",action="/business/review/")                
-                    .col-md-12
-                      textarea.form-control-form(name='review')
-                      input#bizid(type='hidden', name='bizid',value=biz.id)
-                    .col-md-12.text-left
-                      strong
-                        | Star Rating
-                      fieldset.ratings
-                        input#star5(type='radio', name='rating', value='5')
-                        label.full(for='star5', title='Awesome - 5 stars')
-                        input#star4half(type='radio', name='rating', value='4 half')
-                        label.half(for='star4half', title='Pretty good - 4.5 stars')
-                        input#star4(type='radio', name='rating', value='4')
-                        label.full(for='star4', title='Pretty good - 4 stars')
-                        input#star3half(type='radio', name='rating', value='3 half')
-                        label.half(for='star3half', title='Meh - 3.5 stars')
-                        input#star3(type='radio', name='rating', value='3')
-                        label.full(for='star3', title='Meh - 3 stars')
-                        input#star2half(type='radio', name='rating', value='2 half')
-                        label.half(for='star2half', title='Kinda bad - 2.5 stars')
-                        input#star2(type='radio', name='rating', value='2')
-                        label.full(for='star2', title='Kinda bad - 2 stars')
-                        input#star1half(type='radio', name='rating', value='1 half')
-                        label.half(for='star1half', title='Meh - 1.5 stars')
-                        input#star1(type='radio', name='rating', value='1')
-                        label.full(for='star1', title='Sucks big time - 1 star')
-                        input#starhalf(type='radio', name='rating', value='half')
-                        label.half(for='starhalf', title='Sucks big time - 0.5 stars')
-                    .col-md-12
-                      button.button.btn.btn-danger.form-control(type='submit') Submit Review
+          if(!preview)
+            .row
+              .col-md-12
+                h3.text-left
+                  | Reviews
+                each review in biz.reviews              
+                  .row               
+                    .col-md-4.text-left 
+                      span.glyphicon.glyphicon-comment.glyph.border
+                    .col-md-8
+                      .col-md-12(class="rating medium star-icon value-"+review.rate+" label-hidden")
+                        .star-container
+                          .star
+                            i.star-empty
+                            i.star-half
+                            i.star-filled
+                          .star
+                            i.star-empty
+                            i.star-half
+                            i.star-filled
+                          .star
+                            i.star-empty
+                            i.star-half
+                            i.star-filled
+                          .star
+                            i.star-empty
+                            i.star-half
+                            i.star-filled
+                          .star
+                            i.star-empty
+                            i.star-half
+                            i.star-filled
+                    .col-md-10.text-left
+                      | !{review.msg} 
+              .col-md-12 
+                .row
+                  hr
+                  .col-md-12 
+                    .findit-red.padding10
+                      strong Submit a Review
+                  .col-md-12
+                    form.form-horizontal(method="post",action="/business/review/")                
+                      .col-md-12
+                        textarea.form-control-form(name='review')
+                        input#bizid(type='hidden', name='bizid',value=biz.id)
+                      .col-md-12.text-left
+                        strong
+                          | Star Rating
+                        fieldset.ratings
+                          input#star5(type='radio', name='rating', value='5')
+                          label.full(for='star5', title='Awesome - 5 stars')
+                          input#star4half(type='radio', name='rating', value='4 half')
+                          label.half(for='star4half', title='Pretty good - 4.5 stars')
+                          input#star4(type='radio', name='rating', value='4')
+                          label.full(for='star4', title='Pretty good - 4 stars')
+                          input#star3half(type='radio', name='rating', value='3 half')
+                          label.half(for='star3half', title='Meh - 3.5 stars')
+                          input#star3(type='radio', name='rating', value='3')
+                          label.full(for='star3', title='Meh - 3 stars')
+                          input#star2half(type='radio', name='rating', value='2 half')
+                          label.half(for='star2half', title='Kinda bad - 2.5 stars')
+                          input#star2(type='radio', name='rating', value='2')
+                          label.full(for='star2', title='Kinda bad - 2 stars')
+                          input#star1half(type='radio', name='rating', value='1 half')
+                          label.half(for='star1half', title='Meh - 1.5 stars')
+                          input#star1(type='radio', name='rating', value='1')
+                          label.full(for='star1', title='Sucks big time - 1 star')
+                          input#starhalf(type='radio', name='rating', value='half')
+                          label.half(for='starhalf', title='Sucks big time - 0.5 stars')
+                      .col-md-12
+                        button.button.btn.btn-danger.form-control(type='submit') Submit Review
         if(similarbiz)
           .col-md-3
             h3

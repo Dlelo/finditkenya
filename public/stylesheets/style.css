@@ -715,6 +715,19 @@ END OF CARD DESIGN
   flex: 1;
   padding: 0.5rem;
 }
+
+.coupon {
+    background: none repeat scroll 0 0 #fff;
+    cursor: pointer;
+    border-radius: 0;
+    border: 1px #ccc solid;
+    position: relative;
+    box-shadow: none;
+    margin: 10px;
+    padding: 11px;
+    border-radius: 5px;
+}
+
 input[type="radio"].package {
   display: none;
   &:not(:disabled) ~ label {

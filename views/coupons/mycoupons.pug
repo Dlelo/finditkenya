@@ -1,0 +1,51 @@
+extends ../admin/admin-layout
+
+block content
+  // /.row
+  // ==============================================================
+  // Different data widgets
+  // ==============================================================
+  // .row
+  .row
+    .col-md-12.col-lg-12.col-sm-12
+      .row
+        .is-island
+          a(href='/admin/mycoupons')
+            span.fa.fa-database.text-default.glyph
+            strong
+              |  My Coupons
+        .is-island 
+          a(href='/admin/coupon/add')
+            span.fa.fa-database.text-default.glyph
+            strong
+              |  Add Coupon
+    .col-md-12.col-lg-12.col-sm-12      
+      .white-box
+        h3.box-title 
+          strong My Coupons
+        .table-responsive
+          table.table
+            thead
+              tr
+                th #
+                th NAME
+                th BUSINESS
+                th OFFER STATUS
+                th MY COUPON STATUS
+                th CODE
+            tbody
+              each coupon,i in mycoupons
+                tr
+                  td #{i+1}
+                  td.txt-oflo
+                    =coupon.name
+                  td 
+                    =coupon.bizid.name
+                  td.txt-oflo
+                    =coupon.status
+                  td
+                    each user, i in coupon.users
+                      =user.status
+                  td
+                    each user, i in coupon.users
+                      =user.code

@@ -26,6 +26,7 @@ var Business = require('./../models/Business');
 var Category = require(__dirname + '/../models/Category');
 var emailModel = require(__dirname + '/../config/Mail');
 var Analytics = require(__dirname + '/../models/Analytics');
+var Coupons = require(__dirname + '/../models/Coupons');
 
 var mailer = require('express-mailer');
 
@@ -652,6 +653,43 @@ router.get('/biz/analytics/:bizid', function(req, res, next){
       }
     });
   
+});
+
+router.get('/coupons', function(req, res){
+  Coupons.find({
+    status: true
+  })
+    .populate('bizid')
+    .then(function(data){
+        res.render('coupons/index', {title: "Coupons", coupons: data});
+    })
+    .catch(function(err){
+         console.log(err);
+    });
+});
+
+router.get('/getcoupon/user/:id', function(req, res){
+  Coupons.findById(req.params.id)
+    .populate('bizid')
+    .then(function(coupon){
+      couponCode = 'coupon-' + Math.random().toString(36).substr(2, 12);
+      coupon.users.push({ 
+        user_id: res.locals.user.id, 
+        code: couponCode,
+        status: true
+      });
+      console.log(coupon);
+      coupon.save(function(err){
+        if(err){
+          res.json({msg: 'You Probably Had a Coupon From This Offer Already'});
+        }else{
+          res.json({msg: 'Coupon Obtained'});
+        }
+      });
+    })
+    .catch(function(err){
+         console.log(err);
+    });
 });
 
 /*

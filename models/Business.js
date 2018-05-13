@@ -71,6 +71,7 @@ const bizSchema = new Schema({
 		approved: Boolean,
 		agentphone: String,
 		pending: Boolean,
+		coupons: [{ type: Schema.Types.ObjectId, ref: 'Coupon' }],
 		user_id: String
 });
 

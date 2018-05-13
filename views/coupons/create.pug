@@ -1,0 +1,31 @@
+extends ../layout
+
+block content
+  #home.parallax-content-list.baner-content-listing-biz
+    .container
+      h3 
+        | Create Coupon
+      form(method='post', action='/admin/coupon/create')
+        .form-group
+          input.form-control(name='name',type='text',placeholder="Name of Coupon") 
+        .form-group
+          textarea.form-control(name='description',type='text',placeholder="Description of Coupon") 
+        .form-group
+          select.selectpicker.form-control(name='bizid')
+            option(data-icon='glyphicon-wrench', value='') -- Select Business --
+            each biz in businesses
+              option(data-icon='glyphicon-gift', value=biz.id) #{biz.name}
+        .form-group
+          select.selectpicker.form-control(name='type')
+            option(data-icon='glyphicon-wrench', value='') -- Select Type --
+            option(data-icon='glyphicon-gift', value='1') Percentage Off
+            option(data-icon='glyphicon-glass',value='2') Buy x Get y Free
+            option(data-icon='glyphicon-glass',value='3') KES x Off
+        .form-group
+          select.selectpicker.form-control(name='status')
+            option(data-icon='glyphicon-wrench', value='') -- Select Status --
+            option(data-icon='glyphicon-gift', value='1') Active
+            option(data-icon='glyphicon glyphicon-glass',value='0') Inactive 
+        .form-group     
+          button.btn.btn-danger.form-control(type='submit')
+            | Create

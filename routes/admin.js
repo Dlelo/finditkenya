@@ -18,6 +18,7 @@ var Business = require(__dirname + '/../models/Business');
 var Agents = require(__dirname + '/../models/Agent');
 var Users = require(__dirname + '/../models/User');
 var Analytics = require(__dirname + '/../models/Analytics');
+var Coupons = require(__dirname + '/../models/Coupons');
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -76,6 +77,7 @@ router.post('/edit/:id', role.auth, cpUpload, function(req, res, next) {
 	    b.twitter = req.body.twitter;
 	    b.instagram = req.body.instagram;
 	    b.youtube = req.body.youtube;
+	    b.linkedin = req.body.linkedin;
 
 	    //Booking and Ordering
 	    b.bookinglink = req.body.bookinglink;
@@ -532,16 +534,6 @@ router.get('/pay/:id', function(req, res){
   res.render('admin/ipayafrica', {title: "Pay",hash: hash, inputs: fields, datastring: datastring});
 });
 
-router.get('/agents',role.admin, function(req, res){
-	Agents.find({})
-	.then(function(data){
-	    res.render('agents/index', {title: "Agents", agents: data});
-	})
-	.catch(function(err){
-	     console.log(err);
-	}); 
-});
-
 router.get('/activate/all',role.admin, function(req, res){
 	Business.find({})
 	.then(function(data){
@@ -554,6 +546,122 @@ router.get('/activate/all',role.admin, function(req, res){
 			});
 		});
 		res.redirect('/dashboard');
+	})
+	.catch(function(err){
+	     console.log(err);
+	}); 
+});
+
+/***************** COUPONS ******************************/
+
+router.get('/coupons', role.auth, function(req, res){
+	if(req.user.role == 1){
+		Coupons.find({})
+		.populate('bizid')
+		.populate('users.user_id')
+		.then(function(data){
+		    res.render('coupons/dashboard', {title: "Coupons", coupons: data});
+		})
+		.catch(function(err){
+		     console.log(err);
+		});
+	}else{
+		Coupons.find({
+			userid: res.locals.user._id
+		})
+		.populate('bizid')
+		.populate('users.user_id')
+		.then(function(data){
+			console.log(data);
+		    res.render('coupons/dashboard', {title: "Coupons", coupons: data});
+		})
+		.catch(function(err){
+		     console.log(err);
+		});
+	}
+});
+
+router.get('/coupon/add', role.auth, function(req, res){
+	Business.find({
+      user_id : res.locals.user.username
+    })
+    .then(function(data){
+      res.render('coupons/create',{title: "Create Coupon", businesses: data});
+    })
+    .catch(function(err){
+       console.log(err);
+    });
+	
+});
+
+router.get('/mycoupons', role.auth, function(req, res){
+	Coupons.find({
+      'users.user_id' : res.locals.user.id,
+      'status': true
+    })
+	.populate('bizid')
+	.populate('users.user_id','status code')
+    .then(function(data){
+      	res.render('coupons/mycoupons',{title: "Create Coupon", mycoupons: data});
+    })
+    .catch(function(err){
+       console.log(err);
+    });
+	
+});
+
+router.get('/coupon/activate/:id', role.auth, function(req, res){
+	Coupons.findById(req.params.id)
+    .then(function(data){
+    	if(data.status == true){
+    		data.status = false;
+    	}else{
+    		data.status = true;
+    	}
+    	data.save(function(err){
+    		res.redirect('/admin/coupons');
+    	});
+    })
+    .catch(function(err){
+       console.log(err);
+    });	
+});
+
+router.get('/coupon/markused/:id', role.auth, function(req, res){
+	
+    Coupons.update({'users.user_id': req.params.id}, {'$set': {
+	    'users.$.status': false
+	}}, function(err) {
+		res.redirect('/admin/coupons');
+	});
+});
+
+router.post('/coupon/create', role.auth, function(req, res){
+	var coupon = new Coupons();
+	//console.log(req.body);
+	coupon.name = req.body.name;
+	coupon.description = req.body.description;
+	coupon.status = req.body.status;
+	coupon.userid = res.locals.user._id;
+	coupon.bizid = req.body.bizid;
+	coupon.type = req.body.type;
+	coupon.save(function(err){
+		if(err){
+			console.log(err);
+			res.render('coupons/create',{title: "Create Coupon", error_msg: "Error occured! Coupon not created. Please try again"});
+		}else{
+			req.flash("success_msg", "Coupon Successfully Created");
+			res.redirect('/admin/coupons');
+		}
+	});
+});
+
+/***************** AGENTS *******************************/
+
+router.get('/agents',role.admin, function(req, res){
+	Agents.find({})
+	.then(function(data){
+	    res.render('agents/index', {title: "Agents", agents: data});
 	})
 	.catch(function(err){
 	     console.log(err);

@@ -1,0 +1,36 @@
+extends ../layout
+
+block content
+  #home.parallax-content-list.baner-content-listing-biz
+    .container
+      .row
+        each coupon, i in coupons
+          .col-md-4.coupon(id=coupon.id)
+            h3(style='color: #08b4df;')
+              = coupon.name
+            h5
+              strong
+                =coupon.bizid.name
+            .row
+              .col-md-10
+                p
+                  =coupon.description
+              .col-md-2
+                i(class="fa fa-plus-circle fa-1x" aria-hidden="true")
+    script(type='text/javascript').
+      $(document).ready(function() {
+        $('.coupon').click(function(event){
+          var couponid = $(this).attr("id");
+          
+
+          $.ajax({
+              type: "GET",
+              url: "/getcoupon/user/"+couponid,
+              success: function(data){
+                  alert(data.msg);
+              }
+          });
+
+
+        });
+      });

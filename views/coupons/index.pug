@@ -3,6 +3,10 @@ extends ../layout
 block content
   #home.parallax-content-list.baner-content-listing-biz
     .container
+      .cart.pull-right
+        span.label.label-primary(style="padding:20px")
+          span.badge#cartno
+          i(class="fa fa-cart-plus fa-2x" aria-hidden="true")
       .row
         each coupon, i in coupons
           .col-md-4.coupon(id=coupon.id)
@@ -31,15 +35,22 @@ block content
                               =coupon.tagline
     script(type='text/javascript').
       $(document).ready(function() {
+        var cartCount = 0;
         $('.coupon').click(function(event){
           var couponid = $(this).attr("id");
-          
+          $(this).addClass('couponclicked');
 
           $.ajax({
               type: "GET",
               url: "/getcoupon/user/"+couponid,
               success: function(data){
-                  alert(data.msg);
+                  Notify.alert(data.msg);
+                  if(data.msg == 'Coupon Obtained'){
+                    cartCount = cartCount + 1;
+                    if(cartCount > 0){
+                      $('#cartno').text(cartCount + ' Coupons');
+                    }
+                  }
               }
           });
 

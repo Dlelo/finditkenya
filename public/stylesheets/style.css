@@ -1115,3 +1115,12 @@ input[type="radio"].package:checked + #packagelabel {
   -moz-transform:translate(1em, 0);
   translate(1em, 0);
 }
+
+.cart{
+  padding-left: 20px;
+    padding-right: 20px;
+}
+
+.couponclicked {
+  background: #c1c1c1;
+}

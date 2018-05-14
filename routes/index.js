@@ -675,7 +675,7 @@ router.get('/getcoupon/user/:id', function(req, res){
     .then(function(coupon){
       console.log();
       if(coupon.users.some(function(x) { return x.user_id == res.locals.user.id })){
-        res.json({msg: 'You Already Have Used This Coupon'});
+        res.json({msg: 'You Have Already Used This Coupon'});
       }else{
         coupon.users.push({ 
           user_id: res.locals.user.id, 
@@ -695,24 +695,6 @@ router.get('/getcoupon/user/:id', function(req, res){
     .catch(function(err){
          console.log(err);
     });
-
-  /*Coupons.findByIdAndUpdate(req.params.id, {$addToSet:
-    {
-      users:
-        {
-          user_id: res.locals.user.id,
-          code: couponCode,
-          status: true
-        }
-    }
-  },{safe: true, new : true}, function(err) {
-    if(err){
-          res.json({msg: 'You Probably Had a Coupon From This Offer Already'});
-        }else{
-          res.json({msg: 'Coupon Obtained'});
-        }
-  });
-  */
 });
 
 /*

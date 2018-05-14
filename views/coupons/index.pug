@@ -9,7 +9,8 @@ block content
           i(class="fa fa-cart-plus fa-2x" aria-hidden="true")
       .row
         each coupon, i in coupons
-          .col-md-4.coupon(id=coupon.id)
+          .col-md-4.coupon(id=coupon.id,class=(coupon.users.some(function(x) { return x.user_id == user.id })) ? 'couponclicked' : '')
+                
             h3(style='color: #08b4df;')
               = coupon.name
             h5
@@ -21,7 +22,10 @@ block content
                 p
                   =coupon.description
               .col-md-2
-                i(class="fa fa-plus-square fa-2x" aria-hidden="true")
+                if(coupon.users.some(function(x) { return x.user_id == user.id }))
+                  i(class="fa fa-window-close fa-2x" aria-hidden="true")
+                else
+                  i(class="fa fa-plus-square fa-2x" aria-hidden="true")
             .row
               a(class = (coupon.type == '1') ? 'starburst5' : 'starburst7')
                 span

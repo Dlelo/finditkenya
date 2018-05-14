@@ -44,7 +44,11 @@ block content
               type: "GET",
               url: "/getcoupon/user/"+couponid,
               success: function(data){
-                  Notify.alert(data.msg);
+                  Notify.toast(data.msg, {
+                    fn: function () {
+                      // custom function here
+                    }
+                  });
                   if(data.msg == 'Coupon Obtained'){
                     cartCount = cartCount + 1;
                     if(cartCount > 0){

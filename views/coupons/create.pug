@@ -11,6 +11,8 @@ block content
         .form-group
           textarea.form-control(name='description',type='text',placeholder="Description of Coupon") 
         .form-group
+          input.form-control(name='tagline',type='text',placeholder="Tagline") 
+        .form-group
           select.selectpicker.form-control(name='bizid')
             option(data-icon='glyphicon-wrench', value='') -- Select Business --
             each biz in businesses

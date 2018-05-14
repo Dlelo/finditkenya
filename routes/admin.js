@@ -567,7 +567,7 @@ router.get('/coupons', role.auth, function(req, res){
 		});
 	}else{
 		Coupons.find({
-			userid: res.locals.user._id
+			ownerid: res.locals.user._id
 		})
 		.populate('bizid')
 		.populate('users.user_id')
@@ -642,11 +642,13 @@ router.post('/coupon/create', role.auth, function(req, res){
 	coupon.name = req.body.name;
 	coupon.description = req.body.description;
 	coupon.status = req.body.status;
-	coupon.userid = res.locals.user._id;
+	coupon.ownerid = res.locals.user._id;
 	coupon.bizid = req.body.bizid;
+	coupon.tagline = req.body.tagline;
 	coupon.type = req.body.type;
 	coupon.save(function(err){
 		if(err){
+			console.log(err);
 			req.flash("error_msg", err);
 			res.redirect('/admin/coupon/add');
 		}else{

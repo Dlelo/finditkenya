@@ -648,7 +648,7 @@ router.post('/coupon/create', role.auth, function(req, res){
 	coupon.save(function(err){
 		if(err){
 			req.flash("error_msg", err);
-			res.redirect('coupons/add');
+			res.redirect('/coupons/add');
 		}else{
 			req.flash("success_msg", "Coupon Successfully Created");
 			res.redirect('/admin/coupons');

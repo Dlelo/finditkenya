@@ -655,7 +655,7 @@ router.get('/biz/analytics/:bizid', function(req, res, next){
   
 });
 
-router.get('/coupons', function(req, res){
+router.get('/coupons',role.auth, function(req, res){
   Coupons.find({
     status: true
   })
@@ -668,7 +668,7 @@ router.get('/coupons', function(req, res){
     });
 });
 
-router.get('/getcoupon/user/:id', function(req, res){
+router.get('/getcoupon/user/:id', role.auth, function(req, res){
   couponCode = 'coupon-' + Math.random().toString(36).substr(2, 8);
   Coupons.findById(req.params.id)
     .populate('bizid')
@@ -695,6 +695,33 @@ router.get('/getcoupon/user/:id', function(req, res){
     .catch(function(err){
          console.log(err);
     });
+});
+
+router.get('/removecoupon/:id', role.auth, function(req, res){
+  console.log(req.params.id);
+  Coupons.findOne({
+    'users.user_id' : req.params.id
+  })
+  .then(function(coupon){
+    if(coupon.users.some(function(x) { return x.user_id == res.locals.user.id })){      
+      newusers = coupon.users.filter(function(el) {
+          return el.user_id != req.params.id;
+      });
+      coupon.users = newusers;
+      coupon.save(function(err){
+        if(err){
+          res.json({msg: 'Kindly try later'});
+        }else{
+          res.json({msg: 'Coupon Removed'});
+        }
+      });
+    }else{
+      res.json({msg: 'You done have this coupon'});
+    }      
+  })
+  .catch(function(err){
+       console.log(err);
+  });
 });
 
 /*

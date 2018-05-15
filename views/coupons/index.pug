@@ -3,13 +3,15 @@ extends ../layout
 block content
   #home.parallax-content-list.baner-content-listing-biz
     .container
-      .cart.pull-right
-        span.label.label-primary(style="padding:20px")
-          span.badge#cartno
-          i(class="fa fa-cart-plus fa-2x" aria-hidden="true")
-      .row
+      .cart.pull-right.row
+        span.label.label-warning(style="padding:20px")
+          a(href='/admin/mycoupons')
+            span.badge#cartno
+            i(class="fa fa-cart-plus fa-2x" aria-hidden="true")
+            |  My Coupons
+      .row(style='margin:40px')
         each coupon, i in coupons
-          .col-md-4.coupon(id=coupon.id,class=(coupon.users.some(function(x) { return x.user_id == user.id })) ? 'couponclicked' : '')
+          .col-md-4.coupon(id=coupon.id,class=(coupon.users.some(function(x) { return x.user_id == user.id })) ? 'couponclicked' : 'couponadd', rel=user.id)
                 
             h3(style='color: #08b4df;')
               = coupon.name
@@ -18,15 +20,17 @@ block content
                 =coupon.bizid.name
               img.img-responsive(src="/uploads/thumbs/cover"+ coupon.bizid.photo,width="80%") 
             .row
-              .col-md-10
+              .col-md-12
                 p
                   =coupon.description
-              .col-md-2
+              .col-md-12
                 if(coupon.users.some(function(x) { return x.user_id == user.id }))
                   i(class="fa fa-window-close fa-2x" aria-hidden="true")
+                  |  Remove Coupon
                 else
                   i(class="fa fa-plus-square fa-2x" aria-hidden="true")
-            .row
+                  |  Add Coupon
+            .row(style='height:100px')
               a(class = (coupon.type == '1') ? 'starburst5' : 'starburst7')
                 span
                   span 
@@ -40,10 +44,10 @@ block content
     script(type='text/javascript').
       $(document).ready(function() {
         var cartCount = 0;
-        $('.coupon').click(function(event){
+        $('.couponadd').click(function(event){
           var couponid = $(this).attr("id");
           $(this).addClass('couponclicked');
-
+          $(this).removeClass('couponadd');
           $.ajax({
               type: "GET",
               url: "/getcoupon/user/"+couponid,
@@ -56,12 +60,32 @@ block content
                   if(data.msg == 'Coupon Obtained'){
                     cartCount = cartCount + 1;
                     if(cartCount > 0){
-                      $('#cartno').text(cartCount + ' Coupons');
+                      $('#cartno').text(cartCount + '');
                     }
                   }
               }
           });
-
-
+        });
+        $('.couponclicked').click(function(event){
+          $(this).removeClass('couponclicked');
+          $(this).addClass('couponadd');
+          var userid = $(this).attr("rel");
+          $.ajax({
+              type: "GET",
+              url: "/removecoupon/"+ userid,
+              success: function(data){
+                  Notify.toast(data.msg, {
+                    fn: function () {
+                      // custom function here
+                    }
+                  });
+                  if(data.msg == 'Coupon Obtained'){
+                    cartCount = cartCount - 1;
+                    if(cartCount > 0){
+                      $('#cartno').text(cartCount + '');
+                    }
+                  }
+              }
+          });
         });
       });

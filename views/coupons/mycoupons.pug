@@ -33,6 +33,7 @@ block content
                 th OFFER STATUS
                 th MY COUPON STATUS
                 th CODE
+                th SEND TO EMAIL
             tbody
               each coupon,i in mycoupons
                 tr
@@ -49,3 +50,8 @@ block content
                   td
                     each user, i in coupon.users
                       =user.code
+                  td
+                    each user, i in coupon.users
+                      a(href="/admin/email/coupon/"+coupon.id)
+                        i.fa.fa-envelope.fa-fw(aria-hidden='true')
+                        |  SEND TO EMAIL

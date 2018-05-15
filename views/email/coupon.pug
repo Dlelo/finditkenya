@@ -1,0 +1,12 @@
+doctype html
+html
+  head
+    title  #{coupon.name} Coupon
+  body
+    h3 Here is your #{coupon.name} Coupon
+    p
+      =coupon.bizid.name
+    each user, i in coupon.users
+        h2(style="color:green")
+          =user.code
+        hr

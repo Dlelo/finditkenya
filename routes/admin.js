@@ -19,6 +19,7 @@ var Agents = require(__dirname + '/../models/Agent');
 var Users = require(__dirname + '/../models/User');
 var Analytics = require(__dirname + '/../models/Analytics');
 var Coupons = require(__dirname + '/../models/Coupons');
+var emailModel = require(__dirname + '/../config/Mail');
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -634,6 +635,36 @@ router.get('/coupon/markused/:id', role.auth, function(req, res){
 	}}, function(err) {
 		res.redirect('/admin/coupons');
 	});
+});
+
+router.get('/email/coupon/:id', role.auth, function(req, res){
+	Coupons.findById(req.params.id)
+	.populate('bizid')
+	.populate('users.user_id','status code')
+    .then(function(data){
+    	console.log(data);
+    	console.log(res.locals.user.email);
+    	var holder = emailModel.app;
+	  	var mailer = emailModel.mailer;
+	  	holder.mailer.send('email/coupon', {
+	    	to: res.locals.user.email, // REQUIRED. This can be a comma delimited string just like a normal email to field. 
+	    	subject: 'Coupon: ' + data.name, // REQUIRED.
+	    	coupon:  data,// All additional properties are also passed to the template as local variables.
+	  	}, function (err) {
+	    	if (err) {
+	      		// handle error
+	      		console.log(err);
+	      		res.send('There was an error sending the email');
+	      		return;
+	    	}else{
+	    		res.redirect('/admin/mycoupons');
+	    	}
+	  	});
+    })
+    .catch(function(err){
+       console.log(err);
+       res.redirect('/admin/mycoupons');
+    });	
 });
 
 router.post('/coupon/create', role.auth, function(req, res){

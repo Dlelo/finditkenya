@@ -59,7 +59,7 @@ block content
                   });
                   if(data.msg == 'Coupon Obtained'){
                     cartCount = cartCount + 1;
-                    if(cartCount > 0){
+                    if(cartCount >= 0){
                       $('#cartno').text(cartCount + '');
                     }
                   }
@@ -79,9 +79,9 @@ block content
                       // custom function here
                     }
                   });
-                  if(data.msg == 'Coupon Obtained'){
+                  if(data.msg == 'Coupon Removed'){
                     cartCount = cartCount - 1;
-                    if(cartCount > 0){
+                    if(cartCount >= 0){
                       $('#cartno').text(cartCount + '');
                     }
                   }

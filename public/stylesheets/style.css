@@ -993,7 +993,7 @@ input[type="radio"].package:checked + #packagelabel {
   display:block;
   width:6em;
   height:6em;
-  background:#7e00df;
+  background:#ea691d;
   position:relative;
   top:2em;
   left:2em;
@@ -1012,7 +1012,7 @@ input[type="radio"].package:checked + #packagelabel {
   display:block;
   width:6em;
   height:6em;
-  background:#7e00df;
+  background:#ea691d;
   -webkit-transform:rotate(-45deg);
   -moz-transform:rotate(-45deg);
   rotation:-45deg;

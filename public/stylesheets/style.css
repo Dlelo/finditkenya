@@ -1002,7 +1002,6 @@ input[type="radio"].package:checked + #packagelabel {
   color:#fff;
   font-weight:bold;
   font-family:Arial, sans-serif;
-  text-shadow:0 0 3em #04b3df, 0 0 4px #ff0;
   font-size:1em;
   -webkit-transform:rotate(-56.5deg);
   -moz-transform:rotate(-56.5deg);
@@ -1021,7 +1020,7 @@ input[type="radio"].package:checked + #packagelabel {
   transition: transform 1s ease;
 }
 .starburst5:hover {
-  background:#7e00df;
+  background:#ea691d;
 }
 .starburst5:hover span {
   -webkit-transform:rotate(11.25deg);

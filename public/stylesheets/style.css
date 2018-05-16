@@ -1022,11 +1022,11 @@ input[type="radio"].package:checked + #packagelabel {
 .starburst5:hover {
   background:#ea691d;
 }
-.starburst5:hover span {
+/*.starburst5:hover span {
   -webkit-transform:rotate(11.25deg);
   -moz-transform:rotate(11.25deg);
   rotation:11.25deg;
-}
+}*/
 
 /* Starburst 6 */
 .starburst6 {

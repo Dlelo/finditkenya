@@ -653,7 +653,8 @@ router.get('/email/coupon/:id', role.auth, function(req, res){
 	    	if (err) {
 	      		// handle error
 	      		console.log(err);
-	      		res.send('There was an error sending the email');
+	      		req.flash('error_msg','There was an error sending the email');
+	      		res.redirect('/admin/mycoupons');
 	      		return;
 	    	}else{
 	    		res.redirect('/admin/mycoupons');

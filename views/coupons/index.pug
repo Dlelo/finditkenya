@@ -15,11 +15,11 @@ block content
                 
             .row
               .col-md-8
-                h3(style='color: #08b4df;')
+                h4(style='color: #08b4df;')
                   = coupon.bizid.name
               .col-md-4
                 if(coupon.bizid.photo)
-                  img.img-responsive(src="/uploads/thumbs/cover"+ coupon.bizid.photo,height="50%") 
+                  img.img-responsive(src="/uploads/thumbs/coupons/"+ coupon.photo,height="50%") 
             h5
               strong
                 =coupon.name

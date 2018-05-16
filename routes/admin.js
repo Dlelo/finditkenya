@@ -642,14 +642,13 @@ router.get('/email/coupon/:id', role.auth, function(req, res){
 	.populate('bizid')
 	.populate('users.user_id','status code')
     .then(function(data){
-    	console.log(data);
     	console.log(res.locals.user.email);
     	var holder = emailModel.app;
 	  	var mailer = emailModel.mailer;
 	  	holder.mailer.send('email/coupon', {
 	    	to: res.locals.user.email, // REQUIRED. This can be a comma delimited string just like a normal email to field. 
 	    	subject: 'Coupon: ' + data.name, // REQUIRED.
-	    	coupon:  data,// All additional properties are also passed to the template as local variables.
+	    	coupon:  data// All additional properties are also passed to the template as local variables.
 	  	}, function (err) {
 	    	if (err) {
 	      		// handle error
@@ -667,9 +666,8 @@ router.get('/email/coupon/:id', role.auth, function(req, res){
     });	
 });
 
-router.post('/coupon/create', role.auth, function(req, res){
+router.post('/coupon/create', role.auth,cpUpload, function(req, res){
 	var coupon = new Coupons();
-	//console.log(req.body);
 	coupon.name = req.body.name;
 	coupon.description = req.body.description;
 	coupon.status = req.body.status;
@@ -677,14 +675,31 @@ router.post('/coupon/create', role.auth, function(req, res){
 	coupon.bizid = req.body.bizid;
 	coupon.tagline = req.body.tagline;
 	coupon.type = req.body.type;
+	if (req.files['photo'] != null){
+		coupon.photo = req.files['photo'][0].filename;
+	}
 	coupon.save(function(err){
 		if(err){
 			console.log(err);
 			req.flash("error_msg", err);
 			res.redirect('/admin/coupon/add');
 		}else{
-			req.flash("success_msg", "Coupon Successfully Created");
-			res.redirect('/admin/coupons');
+			if (req.files['photo'] != null){
+				Jimp.read("./public/uploads/"+coupon.photo).then(function (cover) {
+				    return cover.resize(120, 80)     // resize
+				         .quality(100)                 // set JPEG quality
+				         .greyscale()                 // set greyscale
+				         .write("./public/uploads/thumbs/coupons/"+coupon.photo); // save
+				    req.flash("success_msg", "Coupon Successfully Created");
+					res.redirect('/admin/coupons');
+				}).catch(function (err) {
+				    console.error(err);
+				});
+			}else{
+				req.flash("success_msg", "Coupon Successfully Created");
+				res.redirect('/admin/coupons');
+			}
+			
 		}
 	});
 });

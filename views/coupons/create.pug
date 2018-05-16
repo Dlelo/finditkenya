@@ -5,13 +5,18 @@ block content
     .container
       h3 
         | Create Coupon
-      form(method='post', action='/admin/coupon/create')
+      form(method='post', action='/admin/coupon/create',enctype='multipart/form-data')
         .form-group
           input.form-control(name='name',type='text',placeholder="Name of Coupon") 
         .form-group
           textarea.form-control(name='description',type='text',placeholder="Description of Coupon") 
         .form-group
           input.form-control(name='tagline',type='text',placeholder="Tagline") 
+        .form-group
+          .col-sm-3
+            label(for='photo') Cover Photo
+          .col-sm-9
+            input#photod.form-control-form(type='file', name='photo', placeholder='photo')    
         .form-group
           select.selectpicker.form-control(name='bizid')
             option(data-icon='glyphicon-wrench', value='') -- Select Business --

@@ -3,10 +3,20 @@ html
   head
     title  #{coupon.name} Coupon
   body
-    h3 Here is your #{coupon.name} Coupon
-    p
-      =coupon.bizid.name
-    each user, i in coupon.users
-        h2(style="color:green")
-          =user.code
-        hr
+    .container
+      .row
+        .col-md-8
+          h4(style='color: #08b4df;')
+            = coupon.bizid.name
+        .col-md-4
+          if(coupon.bizid.photo)
+            img.img-responsive(src="/uploads/thumbs/cover"+ coupon.bizid.photo,height="50%") 
+      .row
+        .col-md-12
+          p
+            =coupon.description
+        .col-md-12
+          each user, i in coupon.users
+            h2(style="color:green")
+              =user.code
+            hr

@@ -699,7 +699,6 @@ router.get('/getcoupon/user/:id', role.auth, function(req, res){
 });
 
 router.get('/removecoupon/:id', role.auth, function(req, res){
-  console.log(req.params.id);
   Coupons.findOne({
     'users.user_id' : req.params.id
   })
@@ -723,6 +722,22 @@ router.get('/removecoupon/:id', role.auth, function(req, res){
   .catch(function(err){
        console.log(err);
   });
+});
+
+router.get('/api/mycoupons', role.auth, function(req, res){
+  Coupons.find({
+      'users.user_id' : res.locals.user.id,
+      'status': true
+    })
+  .populate('bizid')
+  .populate('users.user_id','status code')
+    .then(function(data){
+      res.json({mycoupons: data, code: 100});
+    })
+    .catch(function(err){
+      res.json({msg: 'Error Occured', code: 101});
+    });
+  
 });
 
 /*

@@ -3,44 +3,50 @@ extends ../layout
 block content
   #home.parallax-content-list.baner-content-listing-biz
     .container
-      .cart.pull-right.row
-        span.label.label-warning(style="padding:20px")
-          a(href='/admin/mycoupons')
-            span.badge#cartno
-            i(class="fa fa-cart-plus fa-2x" aria-hidden="true")
-            |  My Coupons
-      .row(style='margin:40px')
-        each coupon, i in coupons
-          .col-md-4.coupon(id=coupon.id,class=(coupon.users.some(function(x) { return x.user_id == user.id })) ? 'couponclicked' : 'couponadd', rel=user.id)
-                
-            .row
-              .col-md-8
-                h4(style='color: #08b4df;')
-                  = coupon.bizid.name
-              .col-md-4
-                if(coupon.bizid.photo)
-                  img.img-responsive(src="/uploads/thumbs/cover"+ coupon.bizid.photo,height="50%") 
-            h5
-              strong
-                =coupon.name
-            .row
-              if(coupon.photo)
-                img.img-responsive(src="/uploads/thumbs/coupons/"+ coupon.photo, style='width:100%') 
-            .row
-              .col-md-12
-                p
-                  =coupon.description              
-            .row(style='border: 1px solid #d0cdcd;margin: 1px;border-radius: 5px;')
-              .col-md-10(style="")
-                a(href='#')
+      .row
+        .col-md-9
+          .cart.pull-right.row
+            span.label.label-warning(style="padding:20px")
+              a(href='/admin/mycoupons')
+                span.badge#cartno
+                i(class="fa fa-cart-plus fa-2x" aria-hidden="true")
+                |  My Coupons
+          .row
+            each coupon, i in coupons
+              .col-md-3.coupon(id=coupon.id,class=(coupon.users.some(function(x) { return x.user_id == user.id })) ? 'couponclicked' : 'couponadd', rel=user.id)
+                    
+                .row
+                  .col-md-8
+                    h4(style='color: #08b4df;')
+                      = coupon.bizid.name
+                  .col-md-4
+                    if(coupon.bizid.photo)
+                      img.img-responsive(src="/uploads/thumbs/cover"+ coupon.bizid.photo,height="50%") 
+                h5
                   strong
-                    h4
-                      =coupon.tagline
-              .col-md-2.pull-right.fa-status
-                if(coupon.users.some(function(x) { return x.user_id == user.id }))
-                  i(class="fa fa-window-close fa-2x" aria-hidden="true",style='display:block;text-align:right')
-                else
-                  i(class="fa fa-plus-square fa-2x" aria-hidden="true",style='display:block;text-align:right')
+                    =coupon.name
+                .row
+                  if(coupon.photo)
+                    img.img-responsive(src="/uploads/thumbs/coupons/"+ coupon.photo, style='width:100%') 
+                .row
+                  .col-md-12
+                    p
+                      =coupon.description              
+                .row(style='border: 1px solid #d0cdcd;margin: 1px;border-radius: 5px;')
+                  .col-md-10(style="")
+                    a(href='#')
+                      strong
+                        h4
+                          =coupon.tagline
+                  .col-md-2.pull-right.fa-status
+                    if(coupon.users.some(function(x) { return x.user_id == user.id }))
+                      i(class="fa fa-window-close fa-2x" aria-hidden="true",style='display:block;text-align:right')
+                    else
+                      i(class="fa fa-plus-square fa-2x" aria-hidden="true",style='display:block;text-align:right')
+        .col-md-3
+          h4
+            |  My Coupons
+          .mycoupons
     script(type='text/javascript').
       $(document).ready(function() {
         var cartCount = 0;
@@ -64,10 +70,22 @@ block content
                       $('#cartno').text(cartCount + '');
                     }
                   }
+                  $.ajax({
+                      type: "GET",
+                      url: "/api/mycoupons/",
+                      success: function(data){
+                        var carray = data.mycoupons; 
+                        $('.mycoupons').html('');
+                        carray.forEach(function(el) {
+                          $('.mycoupons').append(
+                            '<p><strong>'+el.name+'</strong><a href="/admin/email/coupon/"+el.id><i class="fa fa-envelope fa-fw" aria-hidden="true"></i> Mail</a><i id=#{user.id} class="fa fa-close fa-fw  del-coupon" aria-hidden="true"></i>'
+                          );
+                        });              
+                        console.log(data.code);
+                      }
+                  });
               }
-          });
-
-          
+          });                    
         });
         $(document).on('click', ".couponclicked", function(event) {
           $(this).removeClass('couponclicked');
@@ -88,8 +106,43 @@ block content
                       $('#cartno').text(cartCount + '');
                     }
                   }
+                  $.ajax({
+                      type: "GET",
+                      url: "/api/mycoupons/",
+                      success: function(data){
+                        $('.mycoupons').html('');
+                        data.mycoupons.forEach(function(el) {
+                          $('.mycoupons').append(
+                            '<p><strong>'+el.name+'</strong><a href="/admin/email/coupon/"+el.id><i class="fa fa-envelope fa-fw" aria-hidden="true"></i> Mail</a><i id=#{user.id} class="fa fa-close fa-fw del-coupon" aria-hidden="true"></i>'
+                          );
+                        });
+                      }
+                  });
               }
           });
+
+
           $(this).find('.fa-status').html('<i class="fa fa-plus-square fa-2x" aria-hidden="true" style="display:block;text-align:right"></i>');
+        });
+
+        $(document).on('click', ".del-coupon", function(event) {
+          $.ajax({
+            type: "GET",
+            url: "/removecoupon/"+$(this).attr("id"),
+            success: function(data){
+              $.ajax({
+                type: "GET",
+                url: "/api/mycoupons/",
+                success: function(data){
+                  $('.mycoupons').html('');
+                  data.mycoupons.forEach(function(el) {
+                    $('.mycoupons').append(
+                      '<p><strong>'+el.name+'</strong><a href="/admin/email/coupon/"+el.id><i class="fa fa-envelope fa-fw" aria-hidden="true"></i> Mail</a><i id=#{user.id} class="fa fa-close fa-fw del-coupon" aria-hidden="true"></i>'
+                    );
+                  });
+                }
+            });
+            }
+          });
         });
       });

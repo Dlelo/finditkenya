@@ -687,10 +687,9 @@ router.post('/coupon/create', role.auth,cpUpload, function(req, res){
 		}else{
 			if (req.files['photo'] != null){
 				Jimp.read("./public/uploads/"+coupon.photo).then(function (cover) {
-				    return cover.resize(150, 110)     // resize
+				    return cover.resize(200, 150)     // resize
 				         .quality(100)              // set greyscale
 				         .write("./public/uploads/thumbs/coupons/"+coupon.photo); // save
-				    
 				}).catch(function (err) {
 				    console.error(err);
 				});

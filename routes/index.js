@@ -622,7 +622,6 @@ router.post('/agent/:slug', function(req, res){
     slug: req.params.slug
   })
   .then(function(data){ 
-    console.log(data);
     data.agentphone = req.body.phone;
     data.save(function(err){
       console.log(err);
@@ -662,6 +661,7 @@ router.get('/coupons',role.auth, function(req, res){
   })
     .populate('bizid')
     .then(function(data){
+        console.log(data);
         res.render('coupons/index', {title: "Coupons", coupons: data});
     })
     .catch(function(err){

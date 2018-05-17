@@ -30,19 +30,13 @@ block content
               .col-md-12
                 p
                   =coupon.description              
-            .row(style='height:100px')
-              a(class = (coupon.type == '1') ? 'starburst5' : 'row')
-                span
-                  span 
-                    span
-                      span
-                        span
-                          span
-                            span
-                              br
-                              strong
-                                =coupon.tagline
-              .col-md-12.pull-right.fa-status
+            .row(style='border: 1px solid #d0cdcd;margin: 1px;border-radius: 5px;')
+              .col-md-10(style="")
+                a(href='#')
+                  strong
+                    h3
+                      =coupon.tagline
+              .col-md-2.pull-right.fa-status
                 if(coupon.users.some(function(x) { return x.user_id == user.id }))
                   i(class="fa fa-window-close fa-2x" aria-hidden="true",style='display:block;text-align:right')
                 else

@@ -34,7 +34,7 @@ block content
               .col-md-10(style="")
                 a(href='#')
                   strong
-                    h3
+                    h4
                       =coupon.tagline
               .col-md-2.pull-right.fa-status
                 if(coupon.users.some(function(x) { return x.user_id == user.id }))

@@ -40,12 +40,13 @@ block content
                           span
                             span
                               br
-                              =coupon.tagline
-              .col-md-12.pull-right
+                              strong
+                                =coupon.tagline
+              .col-md-12.pull-right.fa-status
                 if(coupon.users.some(function(x) { return x.user_id == user.id }))
-                  i(class="fa fa-window-close fa-2x" aria-hidden="true",style='display:block;text-align:center')
+                  i(class="fa fa-window-close fa-2x" aria-hidden="true",style='display:block;text-align:right')
                 else
-                  i(class="fa fa-plus-square fa-2x" aria-hidden="true",style='display:block;text-align:center')
+                  i(class="fa fa-plus-square fa-2x" aria-hidden="true",style='display:block;text-align:right')
     script(type='text/javascript').
       $(document).ready(function() {
         var cartCount = 0;
@@ -53,6 +54,7 @@ block content
           var couponid = $(this).attr("id");
           $(this).addClass('couponclicked');
           $(this).removeClass('couponadd');
+          $(this).find('.fa-status').html('<i class="fa fa-window-close fa-2x" aria-hidden="true" style="display:block;text-align:right"></i>');
           $.ajax({
               type: "GET",
               url: "/getcoupon/user/"+couponid,
@@ -70,6 +72,8 @@ block content
                   }
               }
           });
+
+          
         });
         $(document).on('click', ".couponclicked", function(event) {
           $(this).removeClass('couponclicked');
@@ -92,5 +96,6 @@ block content
                   }
               }
           });
+          $(this).find('.fa-status').html('<i class="fa fa-plus-square fa-2x" aria-hidden="true" style="display:block;text-align:right"></i>');
         });
       });

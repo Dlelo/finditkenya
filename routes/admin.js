@@ -687,12 +687,10 @@ router.post('/coupon/create', role.auth,cpUpload, function(req, res){
 		}else{
 			if (req.files['photo'] != null){
 				Jimp.read("./public/uploads/"+coupon.photo).then(function (cover) {
-				    return cover.resize(120, 80)     // resize
-				         .quality(100)                 // set JPEG quality
-				         .greyscale()                 // set greyscale
+				    return cover.resize(150, 110)     // resize
+				         .quality(100)              // set greyscale
 				         .write("./public/uploads/thumbs/coupons/"+coupon.photo); // save
-				    req.flash("success_msg", "Coupon Successfully Created");
-					res.redirect('/admin/coupons');
+				    
 				}).catch(function (err) {
 				    console.error(err);
 				});
@@ -700,7 +698,8 @@ router.post('/coupon/create', role.auth,cpUpload, function(req, res){
 				req.flash("success_msg", "Coupon Successfully Created");
 				res.redirect('/admin/coupons');
 			}
-			
+			req.flash("success_msg", "Coupon Successfully Created");
+			res.redirect('/admin/coupons');			
 		}
 	});
 });

@@ -2,7 +2,7 @@ extends layout1
 block content
   div#home.banner
     div.banner-text
-     form
+     form(method='get', action='/search')
       div.form-row
         div.col-12.col-md-1
           button.btn.btn-block.btn-lg.btn-danger(type="submit")

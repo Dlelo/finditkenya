@@ -2129,11 +2129,10 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   margin-right: -5px;
   margin-left: -5px;
 }
-
 .form-row > .col,
 .form-row > [class*="col-"] {
-  padding-right: 5px;
-  padding-left: 5px;
+  padding-right: 0px;
+  padding-left: 0px;
 }
 
 .form-check {

@@ -258,8 +258,8 @@ header h1 a span {
 }
 
 .banner-text {
-	max-width: 650px;
-	padding: 20vw 0 0 3vw;
+	max-width: 85%;
+	padding: 20vw 0 0 10vw;
 	box-sizing: border-box;
 }
 
@@ -712,6 +712,8 @@ span.w3-line {
 
 .w3-about {
 	background-size: cover;
+	padding-top: 0px !important;
+	padding-bottom: 0px !important;
 }
 
 .w3-ab-grid {

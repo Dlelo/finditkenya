@@ -48,5 +48,18 @@
     "tinymce": "^4.7.2",
     "underscore": "^1.9.0",
     "validator": "^9.4.1"
-  }
+  },
+  "main": "app.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kievo23/findit.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kievo23/findit/issues"
+  },
+  "homepage": "https://github.com/kievo23/findit#readme",
+  "description": ""
 }

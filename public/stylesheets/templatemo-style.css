@@ -83,7 +83,7 @@ p {
     z-index: 2;
     transition: all 0.2s ease-in-out;
     height: 80px;
-    background: linear-gradient(90deg, #111111 0%, #000000 30%, #000000 20%, #bc1206 65%, #c32006 95%);    
+    background:rgba(255,255,255,0.9);    
     text-align: center;
     line-height: 40px;
 }
@@ -98,7 +98,7 @@ p {
 }
 
 .navbar-nav>li>a {
-	color: #fff!important;
+	color: #bc1206!important;
 	font-size: 13px;
 	font-weight: 300;
 	text-transform: uppercase;

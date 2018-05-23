@@ -11,9 +11,11 @@ head
   link(href="stylesheets/css/style.css" type="text/css" rel="stylesheet" media="all")
  
   //font-awesome icons
+  link(href="stylesheets/css/fontawesome/web-fonts-with-css/css/fontawesome-all.css" rel="stylesheet")
   link(href="stylesheets/css/fontawesome-all.min.css" rel="stylesheet")
   //online-fonts
   link(href="//fonts.googleapis.com/css?family=Josefin+Sans:100,100i,300,300i,400,400i,600,600i,700,700i" rel="stylesheet")
+  link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous")
   
   script(type='text/javascript').
       addEventListener("load", function () {
@@ -42,16 +44,16 @@ body
         ul.navbar-nav.ml-lg-auto.text-center
           li.nav-item.mr-3
             a(href="/").nav-link
-              span.fas.fa-home
-              | Home
+              span.fas.fa-home.fas-menu
+              |  Home
           li.nav-item.mr-3
             a(href="/coupons").nav-link
-              span.fas.fa-gift
-              | Coupons
+              span.fas.fa-gift.fas-menu
+              |  Coupons
           li.nav-item.mr-3
             a.nav-link.dropdown-toggle#navbarDropdown(href="/categories" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
-              span.fas.fa-gift
-                | Categories 
+              span.fas.fa-th-list.fas-menu
+                |  Categories 
             div.dropdown-menu(aria-labelledby="navbarDropdown")
               a.dropdown-item(href="categories.html")
                 | Hospitality
@@ -66,16 +68,16 @@ body
           if user
             li.nav-item.mr-3                  
               a(href='/dashboard')  
-                span.fas.fa-user
+                span.fas.fa-user.fas-menu
                 |  View Profile
             li.nav-item.mr-3
               a(href='/') 
-                span.fas.fa-home
+                span.fas.fa-home.fas-menu
                 |  Home            
           if user                
             li.nav-item.mr-3
               a(href='/logout') 
-                span.fas.fa-sign-out
+                span.fas.fa-sign-out.fas-menu
                 |  Logout
           else
             li.nav-item.mr-3
@@ -230,9 +232,9 @@ body
           div.col-lg-3.col-md-6.m-lg-0.mt-md-5.w3-ab
             div.w3-ab-grid
               div.w3-aicon.py-lg-5.py-md-3.py-5
-                i.fas.fa-ticket-alt.py-md-3
+                i.fas.fa-ambulance.py-md-3
                 h4.my-3
-                  | Medical
+                  | Emergency
                             
               div.w3-ab-captn.p-md-3.py-4
                 i.fas.fa-ticket-alt

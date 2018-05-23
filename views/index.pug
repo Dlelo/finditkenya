@@ -1,3 +1,12 @@
 extends layout1
 block content
-    #home.banner
+  div#home.banner
+    div.banner-text
+     form
+      div.form-row
+        div.col-12.col-md-3
+          button.btn.btn-block.btn-lg.btn-danger(type="submit")
+            | Find It
+        div.col-12.col-md-9.mb-2.mb-md-0
+          input.form-control.form-control-lg(placeholder="Search here...")
+        

@@ -258,17 +258,17 @@ header h1 a span {
 }
 
 .banner-text {
-	max-width: 75%;
-    padding: 6vw 0 2vW 20vw;
+	max-width: 100%;
+    padding: 18vw 0 1vW 5vw;
     box-sizing: border-box;
 }
 .banner-text-top{
-	align-content: right;
+    align-content: right;
     max-width: 100%;
-    padding-top: 7vW;
-	padding-left: 75%;
-	padding-right:1%;
-	box-sizing: border-box;
+    padding-top: 9vW;
+    padding-left: inherit;
+    padding-right: 1%;
+    box-sizing: border-box;
 	
 }
 .nav-bar-addbusiness{
@@ -1635,7 +1635,7 @@ ul.portfolio-area li figure {
 		min-height: 250px;
 	}
 	.banner-text {
-		padding-top: 0;
+		padding-top: 40vw;
 	}
 	.navbar-light {
 		padding: 1em 2em;
@@ -1766,5 +1766,17 @@ ul.portfolio-area li figure {
 		padding-top:24vW;
 	}
 }
+.input-group-addon {
+	border: 0px solid #ccc;
+	padding: 6px 10px;
+}
+.finditbutton {
+    padding: 6px 12px;
+    line-height: 1;
+	color: #c00000;
+    text-align: center;
+	background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 
 /* -- //Responsive code -- */

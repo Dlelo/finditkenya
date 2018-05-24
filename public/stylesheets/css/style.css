@@ -1541,7 +1541,10 @@ ul.portfolio-area li figure {
 		font-size: 1.4rem;
 	}
 	.banner-text {
-		padding: 20vw 0 0 20vw;
+		padding: 10vw 0 0 7vw;
+	}
+	.banner-text-top{
+
 	}
 	.slide-sub h5 {
 		font-size: 1.5em;
@@ -1758,6 +1761,10 @@ ul.portfolio-area li figure {
 		font-size: 2em;
 	}
 }
-
+@media screen and (max-width: 568px){
+	.banner-text-top{
+		padding-top:24vW;
+	}
+}
 
 /* -- //Responsive code -- */

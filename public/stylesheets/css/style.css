@@ -698,7 +698,7 @@ p.sub-para {
 /* about */
 
 h3.agile-title {
-	text-transform: uppercase;
+	text-transform:capitalize;
 	color: #cd2029;
 	font-weight: 600;
 }

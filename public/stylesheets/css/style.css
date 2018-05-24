@@ -258,9 +258,17 @@ header h1 a span {
 }
 
 .banner-text {
-	max-width: 85%;
-	padding: 20vw 0 0 10vw;
+	max-width: 78%;
+    padding: 6vw 0 2vW 20vw;
+    box-sizing: border-box;
+}
+.banner-text-top{
+	align-content: right;
+    max-width: 100%;
+    padding-top: 7vW;
+    padding-left: 80%;
 	box-sizing: border-box;
+	color:#c00;
 }
 
 /*-- text Slider --*/

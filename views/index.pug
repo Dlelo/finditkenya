@@ -1,14 +1,20 @@
 extends layout1
 block content
   div#home.banner
+    div.banner-text-top
+       ul.navbar-nav
+        li.nav-item
+          | Add Business
+        li.nav-item
+          | Apply as an Agent
     div.banner-text
      form(method='get', action='/search')
       div.form-row
         div.col-12.col-md-1
           button.btn.btn-block.btn-lg.btn-danger(type="submit")
-            | Find It
+            | Find
         div.col-12.col-md-11.mb-2.mb-md-0
-          input.form-control.form-control-lg(placeholder="Search here...")
+          input.form-control.form-control-lg(placeholder="Restaurants, Events, Hotels, Holidays, Businesses, Doctors, Advisors, Lawyers ...")
   //search by category
   //center
   section.wthree-row.py-sm-5.py-3.w3-about

@@ -1439,8 +1439,6 @@ ul.portfolio-area li figure {
 	}
 	ul.navbar-nav.ml-lg-auto.text-center {
 		background: rgba(0, 0, 0, 0.8196078431372549);
-		padding: 2em;
-		margin-top: 1em;
 	}
 	.w3-aicon i,
 	.w3-ab-captn i {
@@ -1538,7 +1536,7 @@ ul.portfolio-area li figure {
 		font-size: 1.4rem;
 	}
 	.banner-text {
-		padding: 28vw 0 0 9vw;
+		padding: 20vw 0 0 20vw;
 	}
 	.slide-sub h5 {
 		font-size: 1.5em;
@@ -1626,10 +1624,10 @@ ul.portfolio-area li figure {
 		font-size: 1.5em;
 	}
 	.banner {
-		min-height: 300px;
+		min-height: 250px;
 	}
 	.banner-text {
-		padding-top: 9em;
+		padding-top: 0;
 	}
 	.navbar-light {
 		padding: 1em 2em;

@@ -292,7 +292,6 @@ input[type="datetime-local"],
 input[type="month"] {
   -webkit-appearance: listbox;
 }
-
 textarea {
   overflow: auto;
   resize: vertical;
@@ -2502,8 +2501,8 @@ fieldset:disabled a.btn {
 
 .btn-primary {
   color: #fff;
-  background-color: #171988;
-  border-color: #171988;
+  background-color: #04045a;
+  border-color: #040451;
 }
 
 .btn-primary:hover {
@@ -2672,8 +2671,8 @@ fieldset:disabled a.btn {
 
 .btn-danger {
   color: #fff;
-  background-color: #dc3545;
-  border-color: #dc3545;
+  background-color: #C00000;
+  border-color: #C00000;
 }
 
 .btn-danger:hover {

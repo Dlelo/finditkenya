@@ -242,7 +242,7 @@ header h1 a span {
 	-o-background-size: cover;
 	-ms-background-size: cover;
 	background-size: cover;
-	min-height: 80vh;
+	min-height: 68vh;
 	position: relative;
 }
 

@@ -258,7 +258,7 @@ header h1 a span {
 }
 
 .banner-text {
-	max-width: 78%;
+	max-width: 75%;
     padding: 6vw 0 2vW 20vw;
     box-sizing: border-box;
 }
@@ -266,9 +266,14 @@ header h1 a span {
 	align-content: right;
     max-width: 100%;
     padding-top: 7vW;
-    padding-left: 80%;
+	padding-left: 75%;
+	padding-right:1%;
 	box-sizing: border-box;
-	color:#c00;
+	
+}
+.nav-bar-addbusiness{
+	border-radius: 0.3rem;
+	color:#C00000;
 }
 
 /*-- text Slider --*/

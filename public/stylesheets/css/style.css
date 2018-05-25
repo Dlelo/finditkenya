@@ -1540,7 +1540,7 @@ ul.portfolio-area li figure {
 		font-size: 1.4rem;
 	}
 	.banner-text {
-		padding: 10vw 0 0 7vw;
+		padding: 10vw 3vw 1vw 4vw;
 	}
 	.banner-text-top{
 
@@ -1591,7 +1591,7 @@ ul.portfolio-area li figure {
 		letter-spacing: 1px;
 	}
 	.banner {
-		height: 65vw;
+		height: 70vw;
 	}
 	.captn {
 		left: 17%;
@@ -1634,7 +1634,7 @@ ul.portfolio-area li figure {
 		min-height: 250px;
 	}
 	.banner-text {
-		padding-top: 40vw;
+		padding-top: 25vw;
 	}
 	.navbar-light {
 		padding: 1em 2em;

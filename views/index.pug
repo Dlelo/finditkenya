@@ -2,17 +2,8 @@ extends layout1
 block content
  div.container-fluid
   div#home.banner
-    div.row
-      div.col-md-8.col-sm-8.col-xm-8.my-col
-        div.banner-text
-          form(method='get', action='/search')
-            div.input-group
-              span.input-group-addon#basic-addon1.finditbutton.input-group-addon.text-center
-               h5
-                |  Find
-              input.form-control.form-control-lg(type="text" class="form-control" placeholder="Restaurants, Events, Hotels, Holidays, Businesses, lawyers, Doctors..." aria-describedby="basic-addon1")
-        
-      div.col-md-4.col-sm-8.col-xm-8.my-col
+    div.row.justify-content-end.my-row    
+      div.col-md-4.col-sm-8.col-xm-8.my-col.text-right
         div.banner-text-top
           nav.navbar.navbar-expand-sm.addbusiness.nav-bar-addbusiness.navbar-nav.ml-lg-auto.text-center
             ul.navbar-nav
@@ -22,8 +13,18 @@ block content
                     |  Add Business
               li.nav-item
                 a.nav-link(href="#")
-                  span.fas.fa-user-tie
+                  span.fas.fa-usr
                    |  Apply as an Agent
+    div.row.my-row.justify-content-center
+      div.col-md-8.col-sm-8.col-xm-8.my-col
+        div.banner-text
+          form(method='get', action='/search')
+            div.input-group
+              span.input-group-addon#basic-addon1.finditbutton.input-group-addon.text-center
+               h5
+                |  Find
+              input.form-control.form-control-lg(type="text" class="form-control" placeholder="Restaurants, Events, Hotels, Holidays, Businesses, lawyers, Doctors..." aria-describedby="basic-addon1")
+    
     
   //search by category
   //center

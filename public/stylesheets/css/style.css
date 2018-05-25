@@ -1788,7 +1788,8 @@ ul.portfolio-area li figure {
   }
 }
 .user-fav{
-	padding-left:1em;
+	padding-left:4em;
+	padding-right:4em;
 }
 .coupons-btn{
 	margin-left:10em;
@@ -1855,7 +1856,8 @@ ul.portfolio-area li figure {
     display: flex;
 	box-sizing:border-box;
 	background-color: #eee;
-	margin-top:3em;
+	margin-top:1em;
+	margin-bottom:1em;
 
 }
 .deal-img-wrapper {
@@ -1866,4 +1868,7 @@ ul.portfolio-area li figure {
     position: relative;
     margin: 0 auto;
     overflow: hidden;
+}
+.h-order-margin{
+   margin-bottom:3em;
 }

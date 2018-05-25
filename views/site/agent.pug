@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+  #home.parallax-content-list.baner-content-listing-biz
+    .container
+      h3 
+        | Kindly Input The Name and Phone Number of This Agent
+      form(method='post', action='/admin/agent/create')
+        .form-group
+          input.form-control(name='name',type='text',placeholder="Full Name") 
+        .form-group
+          input.form-control(name='phone',type='text',placeholder="phone") 
+        .form-group     
+          button.btn.btn-danger.form-control(type='submit')
+            | Create

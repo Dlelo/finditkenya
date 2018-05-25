@@ -1,0 +1,77 @@
+extends admin-layout
+
+block content
+  // /.row
+  // ==============================================================
+  // Different data widgets
+  // ==============================================================
+  // .row
+  
+  // ==============================================================
+  // table
+  // ==============================================================
+  .row
+    .col-md-12.col-lg-12.col-sm-12
+      .white-box
+        .col-md-3.col-sm-4.col-xs-6.pull-right
+          select.form-control.pull-right.row.b-none
+            option March 2017
+            option April 2017
+            option May 2017
+            option June 2017
+            option July 2017
+        h3.box-title Business Analytics
+        .table-responsive
+          table.table
+            thead
+              tr
+                th #
+                th IP
+                th TIME
+                th STATUS
+            tbody
+              each d, i in data
+                tr
+                  td
+                    =i
+                  td 
+                    =d.ip
+                  td.txt-oflo 
+                    =d.time
+                  
+                  if(d.category == '3')
+                    td(style="color: rgb(0, 128, 0)")
+                      |  Viewed Business
+                  if(d.category == '2')
+                    td(style="color:#e42727")
+                      |  Got Contacts
+      .white-box
+        script(src="/javascripts/admin/loader.js")
+        script(type='text/javascript').
+          google.charts.load('current', {packages: ['corechart', 'line']});
+          google.charts.setOnLoadCallback(drawLineColors);
+
+          function drawLineColors() {
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'Date (Days)');
+                data.addColumn('number', 'Businesses Viewed');
+                data.addColumn('number', 'Got Contacts');
+
+                data.addRows(!{graph});
+
+                var options = {
+                  hAxis: {
+                    title: 'Time'
+                  },
+                  vAxis: {
+                    title: 'No. of Views'
+                  },
+                  isStacked: true,
+                  legend: { position: 'bottom', alignment: 'end' },
+                  colors: ['#a52714', '#097138']
+                };
+
+                var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+                chart.draw(data, options);
+              }
+        #chart_div

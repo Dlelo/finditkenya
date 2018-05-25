@@ -1,0 +1,17 @@
+extends ../layout
+
+block content
+  #home.parallax-content-list.baner-content-listing-biz
+    .container
+      h4 Pay For This Business
+      form(method='post', action='/claim/'+biz.id)
+        .form-group
+          input.form-control-form(name='phone', type='text', placeholder='phone *', value=user.phone, required)
+          input.form-control-form(name='email', type='hidden', placeholder='email *', value=user.email, required)
+          input.form-control-form(name='package', type='hidden', value=biz.packagepaid, required)
+        .form-group
+          input.form-control-form(name='agentnumber', type='text', value='', placeholder='Agent No(optional)')
+        .form-group
+          button.btn.btn-claim.form-control-form.btn-gp(type='submit', style='color:#5050ff')                 
+            strong
+              | Proceed

@@ -1,0 +1,418 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    link(rel='icon', type='image/png', sizes='16x16', href='../plugins/images/favicon.png')
+    title Find It Dashboard
+    // Custom CSS
+    link(href='/stylesheets/admin/style.css', rel='stylesheet')
+    // Bootstrap Core CSS
+    link(href='/stylesheets/bootstrap.min.css', rel='stylesheet')
+    link(rel='stylesheet', href='/stylesheets/bootstrap-theme.min.css')
+    // Menu CSS
+    link(href='/stylesheets/admin/sidebar-nav.min.css', rel='stylesheet')
+    // toast CSS
+    link(href='/stylesheets/admin/jquery.toast.css', rel='stylesheet')
+    // animation CSS
+    link(href='/stylesheets/admin/animate.css', rel='stylesheet')
+    
+    // color CSS
+    link#theme(href='/stylesheets/default.css', rel='stylesheet')
+    link(rel='stylesheet', href='/stylesheets/bootstrap-select.min.css')
+    link(rel='stylesheet', href='/stylesheets/jquery-gmaps-latlon-picker.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap-datetimepicker.min.css')
+    link(rel='stylesheet', href='https://cdn.datatables.net/v/bs/jszip-2.5.0/dt-1.10.16/af-2.2.2/b-1.5.1/b-html5-1.5.1/b-print-1.5.1/cr-1.4.1/r-2.2.1/sc-1.4.4/sl-1.2.5/datatables.min.css')
+
+    script(src='/javascripts/jquery.min.js')
+  body.fix-header
+    // ==============================================================
+    // Preloader
+    // ==============================================================
+    .preloader
+      svg.circular(viewbox='25 25 50 50')
+        circle.path(cx='50', cy='50', r='20', fill='none', stroke-width='2', stroke-miterlimit='10')
+    // ==============================================================
+    // Wrapper
+    // ==============================================================
+    #wrapper
+      // ==============================================================
+      // Topbar header - style you can find in pages.scss
+      // ==============================================================
+      nav.navbar.navbar-default.navbar-static-top.m-b-0
+        .navbar-header
+          .top-left-part
+            // Logo
+            a.logo(href='/', title="Front View")
+              // Logo icon image, you can use font-icon also
+              b
+                // This is dark logo icon
+                img.dark-logo(src='/plugins/images/admin-logo.png', alt='home')
+                // This is light logo icon
+                img.light-logo(src='/img/find-it.png', alt='home', style="width:90%")
+              // Logo text image you can use text also
+              span.hidden-xs
+                // This is dark logo text
+                img.dark-logo(src='/img/find-it.png', alt='home')
+                // This is light logo text
+                //img.light-logo(src='/img/find-it.png', alt='home')
+
+
+
+
+          // /Logo
+          ul.nav.navbar-top-links.navbar-left
+            li
+              a.open-close.waves-effect.waves-light(href='javascript:void(0)')
+                i.fa.fa-bars
+              // /.dropdown-messages
+            // .Task dropdown
+            
+                li.divider
+            // .Megamenu
+            li.mega-dropdown
+              ul.dropdown-menu.mega-dropdown-menu.animated.bounceInDown
+                li.col-sm-3
+                  ul
+                    li.dropdown-header Forms Elements
+                    li
+                      a(href='form-basic.html') Basic Forms
+                    li
+                      a(href='form-layout.html') Form Layout
+                    li
+                      a(href='form-advanced.html') Form Addons
+                    li
+                      a(href='form-material-elements.html') Form Material
+                    li
+                      a(href='form-float-input.html') Form Float Input
+                    li
+                      a(href='form-upload.html') File Upload
+                    li
+                      a(href='form-mask.html') Form Mask
+                    li
+                      a(href='form-img-cropper.html') Image Cropping
+                    li
+                      a(href='form-validation.html') Form Validation
+            // /.Megamenu
+
+
+
+
+
+          ul.nav.navbar-top-links.navbar-right.pull-right
+            li
+              form.app-search.hidden-sm.hidden-xs.m-r-10(role='search')
+                input.form-control(type='text', placeholder='Search...')
+                a(href='')
+                  i.fa.fa-search
+            li
+              a.profile-pic(href='#')
+                img.img-circle(src='/plugins/images/users/user.png', alt='user-img', width='36')
+                b.hidden-xs 
+                if user
+                  =user.names
+            li
+              a.profile-pic(href='/logout')
+                b.hidden-xs 
+                | logout
+        // /.navbar-header
+        // /.navbar-top-links
+        // /.navbar-static-side
+      // End Top Navigation
+      // ==============================================================
+      // Left Sidebar - style you can find in sidebar.scss
+      // ==============================================================
+      .navbar-default.sidebar(role='navigation')
+        .sidebar-nav.slimscrollsidebar
+          .sidebar-head
+            h3
+              span.fa-fw.open-close
+                i.fa.fa-remove
+              span.hide-menu Navigation
+          ul#side-menu.nav
+            li(style='padding: 70px 0 0;')
+              a.waves-effect(href='/dashboard')
+                i.fa.fa-clock-o.fa-fw(aria-hidden='true')
+                | Dashboard
+            li
+                a.waves-effect(href='/admin/coupons')
+                  i.fa.fa-wrench.fa-fw(aria-hidden='true')
+                  | Coupons
+            li
+              a.waves-effect(href='/profile')
+                i.fa.fa-user.fa-fw(aria-hidden='true')
+                | Profile
+            li
+              a.waves-effect(href='/admin/changepassword')
+                i.fa.fa-cog.fa-fw(aria-hidden='true')
+                | Change Password
+            if(user.role == 1)
+              li
+                a.waves-effect(href='/users')
+                  i.fa.fa-table.fa-fw(aria-hidden='true')
+                  | Users
+              li
+                a.waves-effect(href='/admin/agents')
+                  i.fa.fa-group.fa-fw(aria-hidden='true')
+                  | Agents
+              li
+                a.waves-effect(href='/admin/category')
+                  i.fa.fa-font.fa-fw(aria-hidden='true')
+                  | Categories
+              
+              li
+                a.waves-effect(href='/admin/allanalytics')
+                  i.fa.fa-wrench.fa-fw(aria-hidden='true')
+                  | Analytics
+            if(user.role == 2)
+              li
+                a.waves-effect(href='blank.html')
+                  i.fa.fa-columns.fa-fw(aria-hidden='true')
+                  | Blank Page
+              li
+                a.waves-effect(href='404.html')
+                  i.fa.fa-info-circle.fa-fw(aria-hidden='true')
+                  | Error 404          
+          .center.p-10
+            a.btn.btn-info.btn-block.waves-effect.waves-light(href='/business/freeadd') Add Business
+          if(user.role == 1)
+            .center.p-10
+              a.btn.btn-info.btn-block.waves-effect.waves-light(href='/admin/category/add') Add Category
+            .center.p-10
+              a.btn.btn-info.btn-block.waves-effect.waves-light(href='/admin/subcategory/add') Add Sub Category
+            .center.p-10
+              a.btn.btn-warning.btn-block.waves-effect.waves-light(href='/admin/agent/add') Add Agent
+            .center.p-10
+              a.btn.btn-warning.btn-block.waves-effect.waves-light(href='/admin/activate/all') Activate Businesses
+      // ==============================================================
+      // End Left Sidebar
+      // ==============================================================
+      // ==============================================================
+      // Page Content
+      // ==============================================================
+      #page-wrapper
+        .container-fluid
+          if errors
+            each error in errors
+              .alert.alert-danger
+                = error
+          if message
+            .alert.alert-info wala
+              = message
+          if success_msg.length
+            .alert.alert-success walaa
+              = success_msg
+          if error_msg.length
+            .alert.alert-danger walaaa
+              = error_msg
+          if error.length
+            .alert.alert-danger walaaaa
+              = error
+        .container-fluid          
+          .row.bg-title
+            .col-lg-3.col-md-4.col-sm-4.col-xs-12
+              h4.page-title Dashboard
+            .col-lg-9.col-sm-8.col-md-8.col-xs-12                
+              ul.nav.pull-right.text-right.addbusiness
+                li 
+                  a(href='/business/freeadd')
+                    span.fa.fa-database.text-default.glyph
+                    strong
+                      |  Add Business
+            // /.col-lg-12
+          block content
+        // /.container-fluid
+        footer.footer.text-center  2018 © Admin brought to you by sokompare.com 
+      // ==============================================================
+      // End Page Content
+      // ==============================================================
+    // ==============================================================
+    // End Wrapper
+    // ==============================================================
+    // ==============================================================
+    // All Jquery
+    // ==============================================================
+    script(src='/javascripts/jquery.min.js')
+    // Bootstrap Core JavaScript
+    script(src='/javascripts/admin/tether.min.js')
+    script(src='/javascripts/bootstrap.js')
+    // Menu Plugin JavaScript
+    script(src='/javascripts/admin/sidebar-nav.min.js')
+    // slimscroll JavaScript
+    script(src='/javascripts/admin/jquery.slimscroll.js')
+    // Wave Effects
+    script(src='/javascripts/admin/waves.js')
+    // Custom Theme JavaScript
+    script(src='/javascripts/admin/custom.min.js')
+    script(src='/javascripts/admin/jquery.toast.js')
+    script(src='/javascripts/bootstrap-select.min.js')
+    script(src="https://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyC9MX39yDkMJn6rjWi6vt4Rens5u_cVBQE&format=png&maptype=roadmap&style=feature:administrative%7Celement:geometry%7Cvisibility:off&style=feature:poi%7Cvisibility:off&style=feature:road%7Celement:labels.icon%7Cvisibility:off&style=feature:transit%7Cvisibility:off")
+    script(src="/javascripts/jquery-gmaps-latlon-picker.js")
+    script(src="/javascripts/tinymce.min.js")
+    script(src="/javascripts/moment.min.js")
+    script(src="/javascripts/bootstrap-datetimepicker.min.js")
+
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js")
+    script(src="https://cdn.datatables.net/v/bs/jszip-2.5.0/dt-1.10.16/af-2.2.2/b-1.5.1/b-html5-1.5.1/b-print-1.5.1/cr-1.4.1/r-2.2.1/sc-1.4.4/sl-1.2.5/datatables.min.js")
+    
+    script(type='text/javascript').
+      $(function() {
+
+        $('#businesses').DataTable({
+            "ajax": {
+                "url": "/datatables"
+            },
+            "bprocessing" : true,
+            "bserverSide" : true,
+            "columns": [
+                { "data": "name",
+                  render: function(data, type, row){
+                    return "<a href='/"+row.slug+"'>"+row.name+"</a>";
+                  }
+                },                
+                { "data": "category" },
+                { "data": "city" },
+                { "data": "paid",
+                  render: function(data, type, row){
+                    if(typeof row.paid !== 'undefined'){
+                      return row.paid;
+                    }else{
+                      return "Pending";
+                    }
+                  }
+                },
+                { "data": "approved",
+                  render: function(data, type, row){
+                    if(typeof row.approved !== 'undefined'){
+                      return row.approved;
+                    }else{
+                      return "Pending";
+                    }
+                  }
+                },
+                { "data": "packagepaid",
+                  render: function(data, type, row){
+                    if(typeof row.packagepaid !== 'undefined'){
+                      return row.packagepaid;
+                    }else{
+                      return "Pending";
+                    }
+                  }
+                },
+                { "data": "actions",
+                  render: function(data, type, row){
+                      return "<a href='/admin/edit/"+row._id+"'>Edit</a> | <a href='/admin/delete/"+row._id+"' onclick=\"return confirm('Are you sure you want to delete this business?');\">Delete</a> | <a href='/admin/fakepaid/"+row._id+"'>Paid</a> | <a href='/admin/analytics/"+row._id+"'>Analytics</a>";
+                  }
+                }
+            ],
+            responsive: true
+        });
+
+        //********************  TIME FUNCTIONS  ********************
+
+        $('.datetimepicker').datetimepicker({      
+            sideBySide: true,
+            format: 'DD-MM-YYYY HH:mm:ss'
+        });
+
+        
+        $('.timepicker').datetimepicker({      
+            sideBySide: true,
+            format: 'HH:mm'
+        });
+
+        $('.hoursopened').val('08:00');
+        $('.hoursclosed').val('17:00');
+
+        $('.timepicker').click(function(event){
+          $(this).removeAttr('readonly').select();
+        });
+
+        $('.timepicker').blur(function(event){
+          $(this).attr('readonly', 'readonly');
+        });
+
+        //********************  IMAGE PREVIEW   ********************
+
+        function readURL(input) {
+
+          if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+              $('#coverphotopreview').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+          }
+        }
+
+        $("#photod").on('change', function() {
+          alert(this);
+          readURL(this);
+        });
+
+        $(function() {
+          // Multiple images preview in browser
+          var imagesPreview = function(input, placeToInsertImagePreview) {
+
+              if (input.files) {
+                  var filesAmount = input.files.length;
+                  for (i = 0; i < filesAmount; i++) {
+                      var reader = new FileReader();
+                      reader.onload = function(event) {
+                          $($.parseHTML('<img>')).attr('src', event.target.result).css({'width':'100px','padding':'5px'}).appendTo(placeToInsertImagePreview);
+                      }
+                      reader.readAsDataURL(input.files[i]);
+                  }
+              }
+          };
+
+          $('#gallery').on('change', function() {
+              imagesPreview(this, 'div#gallerypreview');
+          });
+      });
+
+        //*********************** TEXT Editor ***************************
+
+        tinymce.init({ 
+            selector:'#descriptio',
+            height: 150,
+            width: '100%',
+              menubar: false,
+              plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table contextmenu paste code'
+              ],
+              toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+              content_css: '//www.tinymce.com/css/codepen.min.css'
+        });
+        var $cat = $(".subcategory"),
+        $subcat = $(".ssubcategory");
+    
+        $cat.on("change",function(){
+            var _rel = $(this).val();
+            $subcat.find("option").attr("style","");
+            $subcat.val("");
+            if(!_rel) return $subcat.prop("disabled",true);
+            $subcat.find("[rel='"+_rel+"']").show();
+            $subcat.prop("disabled",false);
+
+            if(_rel == 'Events'){
+                $('#startDate').hide();
+                $('.timeopen').hide();
+                $('#endeventDate').show();
+                $('#starteventDate').show();
+            }else{
+                $('#startDate').show();
+                $('.timeopen').show();
+                $('#endeventDate').hide();
+                $('#starteventDate').hide();
+            }
+        });
+      });

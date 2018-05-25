@@ -1,0 +1,67 @@
+extends layout
+
+block content
+    ul.nav.pull-right.text-right.addbusiness
+      li(style="float: left;")
+        a(href='/business/newpackage')
+          span.fa.fa-database.text-default.glyph
+          strong
+            |  Add Business
+      li(style="float: left;")
+        a(href='/add-agent')
+          span.fa.fa-user-circle-o.text-default.glyph
+          strong
+            |  Apply As An Agent 
+    #home.parallax-content.baner-content
+      .container.nopadding
+        .text-content
+          form.form(method='get', action='/search')
+            .row
+              .col-md-10.col-sm-12.col-md-offset-1
+                .input-group
+                  .input-group-addon.findit-red
+                    strong
+                      h4
+                        | Find                      
+                  input#search2(type='text', placeholder='Restaurants, Businesses, Handymen, Services, Events and More ...',name='search', autofocus)
+    section#bottom-scroll.page-section(style='padding:2px;bottom: 0px;left: 0px;background: black;width:100%;padding:20px')
+      //.arrow-up.cat
+      .owl-carousel.owl-theme.text-center
+        each category in categories
+          .item(style='width:110px')
+            a(href="/category/"+category.name, class="categoryModal", id="Restaurants")
+              h5 
+                =category.name
+              i.fa.fa-1x(aria-hidden='true', class=category.icon)
+        
+    footer(style='margin-bottom:0')
+      .container
+        .row
+          .col-md-12.col-sm-12.text-center
+            .connect-us
+              h4 Get Social with us
+              ul
+                li
+                  a(href='https://www.facebook.com/#', target='_parent')
+                    i.fa.fa-facebook
+                li
+                  a(href='https://www.google.com/#', target='_blank')
+                    i.fa.fa-twitter
+                li
+                  a(href='#')
+                    i.fa.fa-linkedin
+                li
+                  a(href='#')
+                    i.fa.fa-rss
+                li
+                  a(href='#')
+                    i.fa.fa-dribbble
+          .col-md-12.col-sm-12.text-center
+            .terms-policy(style="padding: 20px;")
+              ul
+                li
+                  a(href='/terms-and-conditions', target='_parent')
+                    |  Terms and Conditions
+                li
+                  a(href='/privacy-policy', target='_parent')
+                    |  Privacy Policy

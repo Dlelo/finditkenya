@@ -1,0 +1,58 @@
+extends ../layout
+
+block content
+    #home.parallax-content.baner-content-listing
+      .row
+      .col-md-2
+          .panel.panel-warning
+            .panel-body.black
+              strong Categories
+            if features            
+              each feature in features
+                each item in feature.subcategories
+                 .panel-heading.category
+                   a(href="/cuisine/"+item.name)
+                    i.fa.fa-rocket   
+                     =item.name
+            if cuisine
+              .panel-heading.category
+                a(href="/cuisine/"+cuisine)
+                  i.fa.fa-rocket   
+                  =cuisine
+          if cuisine
+            .panel.panel-warning
+              .panel-body.black
+                strong Filter   
+                   .panel-heading.category
+                     a(href="/nearby/"+cuisine)
+                      i.fa.fa-rocket   
+                      |  Nearby
+      .col-md-10
+        ul
+        each biz in businesses
+          .row.flowerwhiteevent                 
+            .card.col-md-4.col-sm-6.col-xs-12
+              .wrapper(style='background: url(http://'+host+'/uploads/'+biz.photo+') center / cover no-repeat;')
+                .headercard
+                  .date
+                    span.day 
+                      =biz.starteventdate
+                  ul.menu-content
+                    li
+                      a.fa.fa-bookmark-o(href="/"+biz.slug)
+                    li
+                      a.fa.fa-heart-o(href="/"+biz.slug)
+                        span 18
+                    li
+                      a.fa.fa-comment-o(href="/"+biz.slug)
+                        span 3
+                .data
+                  .content
+                    span.author 
+                      =biz.name
+                    h1.title
+                      a(href="/"+biz.slug) 
+                        =biz.name
+                    p.text
+                      | !{biz.description}
+                    a.button(href="/"+biz.slug) Read more

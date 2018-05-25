@@ -1,0 +1,58 @@
+extends admin-layout
+
+block content
+  // /.row
+  // ==============================================================
+  // Different data widgets
+  // ==============================================================
+  // .row
+  
+  // ==============================================================
+  // table
+  // ==============================================================
+  .row
+    .col-md-12.col-lg-12.col-sm-12
+      .white-box
+        .col-md-3.col-sm-4.col-xs-6.pull-right
+          select.form-control.pull-right.row.b-none
+            option March 2017
+            option April 2017
+            option May 2017
+            option June 2017
+            option July 2017
+        h3.box-title Businesses
+        .table-responsive
+          table.table
+            thead
+              tr
+                th #
+                th NAME
+                th PHONE
+                th EMAIL
+                th ROLE
+                th ACTIONS
+            tbody
+              each user, i in users
+                tr
+                  td
+                    =i
+                  td 
+                    =user.names
+                  td.txt-oflo 
+                    =user.phone
+                  td
+                    span.text-success
+                      =user.email
+                  td
+                    span.text-success
+                      =user.role
+                  td
+                    span.text-success
+                      a(href="/admin/user/"+user.username, title="see businesses")
+                        i.fa.fa-eye.fa-fw(aria-hidden='true')
+                    span.text-primary
+                      a(href="/admin/user/makeadmin/"+user.id, title="Make admin")
+                        i.fa.fa-user-secret.fa-fw(aria-hidden='true')
+                    span.text-danger
+                      a(href="/admin/user/delete/"+user.id, title="Delete User")
+                        i.fa.fa-trash.fa-fw(aria-hidden='true')

@@ -1,0 +1,520 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+    //
+      Tinker Template
+      http://www.templatemo.com/tm-506-tinker
+    title= title
+    meta(name='description', content=description)
+    meta(name='keywords', content=keywords)
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name="google-site-verification", content="CoXsTMnoIpW_aQqFyEqaFZ4cKbYSrSwUXQca9u_6mMg")
+    link(href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800', rel='stylesheet')
+    link(href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900', rel='stylesheet')
+    link(rel='apple-touch-icon', href='apple-touch-icon.png')
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap-theme.min.css')
+    link(rel='stylesheet', href='/stylesheets/fontAwesome.css')
+    link(rel='stylesheet', href='/stylesheets/hero-slider.css')
+    link(rel='stylesheet', href='/stylesheets/owl.carousel.min.css')
+    link(rel='stylesheet', href='/stylesheets/owl.theme.default.min.css')
+    link(rel='stylesheet', href='/stylesheets/templatemo-style.css')
+    link(rel='stylesheet', href='/stylesheets/lightbox.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap-select.min.css')
+    link(rel='stylesheet', href='/stylesheets/easy-autocomplete.min.css')
+    link(rel='stylesheet', href='/stylesheets/easy-autocomplete.themes.min.css')
+    link(rel='stylesheet', href='/stylesheets/jquery-gmaps-latlon-picker.css')
+    link(rel='stylesheet', href='/stylesheets/star-rating.min.css')
+    link(rel='stylesheet', href='/stylesheets/lightgallery.min.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap-datetimepicker.min.css')
+    link(href='https://fonts.googleapis.com/css?family=Arimo|Montserrat', rel='stylesheet')
+    script(src='/javascripts/vendor/modernizr-2.8.3-respond-1.4.2.min.js')
+    script(src='/javascripts/jquery.min.js')
+  body
+    .header
+      .container
+        nav.navbar.navbar-inverse(role='navigation')
+          .navbar-header
+            button#nav-toggle.navbar-toggle(type='button', data-toggle='collapse', data-target='#main-nav')
+              span.sr-only Toggle navigation
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+            a.navbar-brand(href='/')
+              em 
+                img(src="/img/find-it.png")
+          // /.navbar-header
+          #main-nav.collapse.navbar-collapse
+            ul.nav.navbar-nav
+              li                   
+                a(href='/coupons')  
+                  span.glyphicon.glyphicon-gift.text-default.glyph
+                  |  Coupons
+              if user
+                li                   
+                  a(href='/dashboard')  
+                    span.glyphicon.glyphicon-user.text-default.glyph
+                    |  View Profile
+              else
+                li
+                  a(href='/') 
+                    span.glyphicon.glyphicon-home.text-default.glyph
+                    |  Home            
+              if user                
+                li
+                  a(href='/logout') 
+                    span.fa.fa-sign-out.text-default.glyph
+                    |  Logout
+              else
+                li
+                  a(data-id='login', data-toggle='modal', href='#at-login') 
+                    span.glyphicon.glyphicon-user.text-default.glyph
+                    |  Login
+        
+          // /.navbar-collapse
+        // /.navbar
+      // /.container
+    // /.header
+    .errors.container
+      if errors
+        each error in errors
+          .alert.alert-danger
+            = error
+      
+      if message
+        .alert.alert-info
+          = message
+      if success_msg.length
+        .alert.alert-success 
+          = success_msg
+      if error_msg.length
+        .alert.alert-danger 
+          = error_msg
+      if error.length
+        .alert.alert-danger 
+          = error
+    block content
+    section.at-login-form
+      // MODAL LOGIN
+      #at-login.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
+        .modal-dialog(role='document')
+          .modal-content
+            .modal-header
+              button.close(type='button', data-dismiss='modal', aria-label='Close')
+                span(aria-hidden='true') ×
+            .modal-body
+              a.btn-gp-link(href="/auth/facebook")
+                button.btn-fb
+                  i.fa.fa-fw.fa-facebook.pull-left(aria-hidden='true')
+                  strong
+                    | 								Login with Facebook
+              br
+              a.btn-gp-link(href="/auth/google")
+                button.btn-gp
+                  i.fa.fa-fw.fa-google-plus.pull-left(aria-hidden='true')
+                  strong
+                    | 								Login with Google
+              br
+              .signup-or-separator
+                span.h6.signup-or-separator--text or
+                hr
+              form(method="post", action="/login")
+                .form-group
+                  input#exampleInputEmaillog.form-control-form(type='text', placeholder='username',name='username')
+                .form-group
+                  input#exampleInputPasswordpas.form-control-form(type='password', placeholder='Password',name='password')
+                .row
+                  .col-md-6
+                    .checkbox
+                      label
+                        input(type='checkbox')
+                        |  Remember me
+                  .col-md-4.col-md-offset-2
+                    a(href="/forgotpassword")
+                      p.frgt-pswd() 	Forgot Password ?
+                button.btn-lgin(type='submit') Login
+            .modal-footer
+              .row
+                .col-md-6
+                  p.ta-l Don't have an account ? 
+                .col-md-4.col-md-offset-2
+                  a(href="/register")
+                    button.btn-gst() Sign Up 
+      // MODAL LOGIN ENDS
+      // MODAL SIGNUP
+      #at-signup.modal.fade(tabindex='1', role='dialog', aria-labelledby='myModalLabel')
+        .modal-dialog(role='document')
+          .modal-content
+            .modal-header
+              button.close(type='button', data-dismiss='modal', aria-label='Close')
+                span(aria-hidden='true') ×
+            .modal-body
+              //- button.btn-fb
+                //- i.fa.fa-fw.fa-facebook.pull-left(aria-hidden='true')
+                //- | 											Signup with Facebook
+              //- br
+              button.btn-gp
+                a.btn-gp-link(href="/auth/google")
+                  i.fa.fa-fw.fa-google-plus.pull-left(aria-hidden='true')
+                  | 											Signup with Google
+              br
+              .signup-or-separator
+                span.h6.signup-or-separator--text or
+                hr
+              button.btn-lgin(type='submit', data-toggle='modal', data-dismiss='modal', data-target='#at-signup-filling') Signup with Email
+              hr
+              p
+                | By signing up, I agree to Find It’s , Payments 
+                a(href='#') Terms of Service
+                | , 
+                a(href='#') Privacy Policy
+                | , 
+                a(href='#') Guest Refund Policy
+                | , and 
+                a(href='#') Host Guarantee Terms
+                | .
+            .modal-footer
+              .row
+                .col-md-6
+                  p.ta-l Already a Member? 
+                .col-md-4.col-md-offset-2
+                  button.btn-gst(data-toggle='modal', data-dismiss='modal', data-target='#at-login') Login
+      // MODAL SIGNUP FORM FILLING
+      #at-signup-filling.modal.fade(tabindex='1', role='dialog', aria-labelledby='myModalLabel')
+        .modal-dialog(role='document')
+          .modal-content
+            .modal-header
+              button.close(type='button', data-dismiss='modal', aria-label='Close')
+                span(aria-hidden='true') ×
+            .modal-body 
+               p
+                | Sign up with 
+                //- a(href='#') Facebook
+                //- |   or 
+                a(href="/auth/google") Google
+               .signup-or-separator
+                span.h6.signup-or-separator--text or
+                hr
+               form(method="post", action="/register")
+                .form-group
+                  input#names.form-control-form(type='text', placeholder='Full Name', name='names')
+                .form-group
+                  input#email.form-control-form(type='email', placeholder='Email', name='email')
+                .form-group
+                  input#phone.form-control-form(type='text', placeholder='Phone', name='phone')
+                .form-group
+                  input#password.form-control-form(type='password', placeholder='Password', name='password')
+                .form-group
+                  input#cpassword.form-control-form(type='password', placeholder='Confirm Password', name='cpassword')
+                .row
+                  .col-md-12
+                    .checkbox
+                      label
+                        input(type='checkbox')
+                        | 																	I’d like to receive coupons and inspiration
+                    p
+                      | By signing up, I agree to Find It’s , Payments 
+                      a(href='#') Terms of Service
+                      | , 
+                      a(href='#') Privacy Policy
+                      | , 
+                      a(href='#') Guest Refund Policy
+                      | , and 
+                      a(href='#') Host Guarantee Terms
+                      | .
+                button.btn-lgin(type='submit') Signup
+            .modal-footer
+              .row
+                .col-md-6
+                  p.ta-l Already a Member? 
+                .col-md-4.col-md-offset-2
+                  button.btn-gst(data-toggle='modal', data-dismiss='modal', data-target='#at-login') Login
+      // MODAL SIGNUP FORM FILLING
+      // MODAL FORGOT PASSWORD
+      #at-reset-pswd.modal.fade(tabindex='1', role='dialog', aria-labelledby='myModalLabel')
+        .modal-dialog(role='document')
+          .modal-content
+            .modal-header
+              button.close(type='button', data-dismiss='modal', aria-label='Close')
+                span(aria-hidden='true') ×
+            .modal-body
+              form(method="post", action="/forgotpassword")
+                p
+                  | Enter the email address associated with your account, and we’ll email you a link to reset your password.
+                .form-group
+                  input#exampleInputEmaillo.form-control-form(type='email', placeholder='Email', name="email")
+            .modal-footer
+      // MODAL HELP
+      #at-helping.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
+        .modal-dialog(role='document')
+          .modal-content
+            .modal-header
+              button.close(type='button', data-dismiss='modal', aria-label='Close')
+                span(aria-hidden='true') ×
+            .modal-body
+              form
+                .form-group
+                  input#exampleInputEmaill.form-control-form(type='text', placeholder='Enter Your Searches ')
+            .modal-footer
+              .row
+                button.btn-gst(data-toggle='modal', data-dismiss='modal') Send areset Link
+      #categoriesModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
+        .modal-dialog(role='document')
+          .modal-content
+            .modal-header
+              h5#exampleModalLabel.modal-title.text-center Categories
+              button.close(type='button', data-dismiss='modal', aria-label='Close')
+                span(aria-hidden='true') ×
+            .modal-body#categoriesFetched(style="padding:0px")
+              
+            .modal-footer
+              button.btn.btn-secondary(type='button', data-dismiss='modal') Close
+
+script(src='/javascripts/bootstrap.min.js')
+script(src='/javascripts/plugins.js')
+script(src="/javascripts/owl.carousel.min.js")
+script(src='/javascripts/main.js')
+script(src='/javascripts/axios.min.js')
+script(src='/javascripts/jquery.easy-autocomplete.min.js')
+script(src="/javascripts/jquery-gmaps-latlon-picker.js")
+script(src="/javascripts/tinymce.min.js")
+script(src="/javascripts/jquery-gmaps-latlon-picker.js")
+script(src="/javascripts/jquery.autocomplete.min.js")
+script(src="/javascripts/lightgallery.min.js")
+script(src="/javascripts/moment.min.js")
+script(src="/javascripts/bootstrap-datetimepicker.min.js")
+script(src='/javascripts/bootstrap-select.min.js')
+script(src='/javascripts/notify.js')
+
+script(type='text/javascript').
+  const mq = window.matchMedia( "(min-width: 450px)" );
+  $('.phonenofake').click(function() {
+      $('.phoneno').show();
+      $('.phonenofake').hide();
+      var bizid = $('#biz-id').text();
+      $.ajax({
+          type:'GET',
+          url:'/biz/analytics/'+bizid,
+          success:function(response){
+              if(response == 1 || response == '1'){ 
+
+              }else{
+
+              }
+          }
+      });
+  });
+  if (mq.matches) {
+    // window width is at least 450px
+  } else {
+    // window width is less than 450px
+    $('div.dropdown-category').removeClass('open');
+  }
+  lightGallery(document.getElementById('lightgallery'));
+
+  $('.datetimepicker').datetimepicker({      
+      sideBySide: true,
+      format: 'DD-MM-YYYY HH:mm:ss'
+  });
+
+  $('.timepicker').datetimepicker({      
+      sideBySide: true,
+      format: 'HH:mm'
+  });
+
+  $('.timepicker').click(function(event){
+    $(this).removeAttr('readonly').select();
+  });
+
+  $('.timepicker').blur(function(event){
+    $(this).attr('readonly', 'readonly');
+  });
+
+  $('.hoursopened').val('08:00');
+  $('.hoursclosed').val('17:00');
+
+  $(document).on('click', ".cat", function() {
+      var originalHeight = $('#bottom-scroll').height();
+      $(this).addClass('godown');
+      $(this).removeClass('cat');
+      $(this).removeClass('arrow-up');
+      $(this).addClass('arrow-down');
+      $('#bottom-scroll').animate({height:'40%'})
+  });
+
+  $(document).on('click', ".godown", function() {
+      $(this).removeClass('godown');
+      $(this).addClass('cat');
+      $(this).removeClass('arrow-down');
+      $(this).addClass('arrow-up');
+      $('#bottom-scroll').animate({height: '23%'},500)
+  });
+  $(document).ready(function() {
+
+    $('#spnCharLeft').css('display', 'none');
+    var maxLimit = 100;
+    $(document).ready(function () {
+        $('').keyup(function () {
+            var lengthCount = this.value.length;              
+            if (lengthCount > maxLimit) {
+                this.value = this.value.substring(0, maxLimit);
+                var charactersLeft = maxLimit - lengthCount + 1;                   
+            }
+            else {                   
+                var charactersLeft = maxLimit - lengthCount;                   
+            }
+            $('#spnCharLeft').css('display', 'block');
+            $('#spnCharLeft').text(charactersLeft + ' Characters left');
+        });
+    });
+
+  // navigation click actions
+  $('.scroll-link').on('click', function(event){
+    event.preventDefault();
+    var sectionID = $(this).attr("data-id");
+    scrollToID('#' + sectionID, 750);
+  });
+
+  $('.categoryModal').on("click",function(event){
+    categ = this.id;
+    axios.get('/fetchCat/'+ categ)
+    .then(function (response) {
+      $('#categoriesFetched').html();
+      response.data.subcategories.forEach(function(element) {
+          console.log(element);
+          $('#categoriesFetched').append('<div class="col-md-3 col-xs-6 padding-10"><a href="/subcategory/'+element.name+'"><i class="fa fa-glass fa-1x" aria-hidden="true"></i> '+element.name+'</a></div>');
+      });
+      //$('#categoriesFetched').append('</div>');
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  });
+
+    var $cat = $(".subcategory"),
+        $subcat = $(".ssubcategory");
+    
+    $cat.on("change",function(){
+        var _rel = $(this).find(":selected").val();
+        if(_rel == 'Events'){
+            $('.timeopen').hide();
+            $('#endeventDate').show();
+            $('#starteventDate').show();
+        }else{
+            $('#startDate').show();
+            $('.timeopen').show();
+            $('#endeventDate').hide();
+            $('#starteventDate').hide();
+        }
+        
+
+        $.ajax({
+              type: "GET",
+              url: "/business/fetchcategory/"+_rel,
+              success: function(data){
+                  // Parse the returned json data
+                  //var opts = $.parseJSON(data);
+                  
+                  $subcat.empty();
+                  $.each(data, function(i, d) {
+                      // You will need to alter the below to get the right values from your json object.  Guessing that d.id / d.modelName are columns in your carModels data
+                      console.log(d.name);
+                      $('#ssubcategory').append('<option value="' + d.name + '">' + d.name + '</option>');
+                      $('#ssubcategoryy').append('<option value="' + d.name + '">' + d.name + '</option>');
+                  });
+                  $('.selectpicker').selectpicker('refresh');
+              }
+          });
+      
+    });
+
+  tinymce.init({ 
+            selector:'#review',
+            height: 100,
+            width: '100%',
+              menubar: false,
+              plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table contextmenu paste code'
+              ],
+              toolbar: 'undo redo | insert | styleselect',
+              content_css: '//www.tinymce.com/css/codepen.min.css'
+        });
+  tinymce.init({ 
+            selector:'#descriptionw',
+            height: 150,
+            width: '100%',
+              menubar: false,
+              plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table contextmenu paste code'
+              ],
+              toolbar: 'undo redo',
+              content_css: '//www.tinymce.com/css/codepen.min.css'
+        });
+
+
+
+
+        var options = {
+
+          url: function(phrase) {
+            return "/nss/"+$('#search2').val();
+          },
+
+          getValue: function(element) {
+            return element.slug;
+          },
+          template: {
+            type: "description",
+            fields: {
+              description: "website"
+            }
+          },
+          list: {
+            onClickEvent: function() {
+              self.location = "/"+$("#search2").getSelectedItemData().slug;
+            } 
+          },
+          ajaxSettings: {
+            method: "GET"
+          },
+          theme: "square",
+          requestDelay: 200
+        };
+
+  $("#search2").easyAutocomplete(options);
+  $( "#search2" ).focus();
+  // scroll to top action
+  $('.scroll-top').on('click', function(event) {
+  event.preventDefault();
+  $('html, body').animate({scrollTop:0}, 'slow');
+  });
+  // mobile nav toggle
+  $('#nav-toggle').on('click', function (event) {
+  event.preventDefault();
+  $('#main-nav').toggleClass("open");
+  });
+  });
+  // scroll function
+  function scrollToID(id, speed){
+  var offSet = 50;
+  var targetOffset = $(id).offset().top - offSet;
+  var mainNav = $('#main-nav');
+  $('html,body').animate({scrollTop:targetOffset}, speed);
+  if (mainNav.hasClass("open")) {
+  mainNav.css("height", "1px").removeClass("in").addClass("collapse");
+  mainNav.removeClass("open");
+  }
+  }
+  if (typeof console === "undefined") {
+  console = {
+  log: function() { }
+  };
+
+  }

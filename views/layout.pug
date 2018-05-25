@@ -1,0 +1,529 @@
+doctype html
+html
+head
+  meta(charset="utf-8")
+  title= title
+  title= title
+  meta(name='description', content=description)
+  meta(name='keywords', content=keywords)
+  meta(name='viewport', content='width=device-width, initial-scale=1')
+  meta(name="google-site-verification", content="CoXsTMnoIpW_aQqFyEqaFZ4cKbYSrSwUXQca9u_6mMg")
+  
+  //custom theme files
+  link(href="stylesheets/css/bootstrap.css" type="text/css" rel="stylesheet" media="all")
+  link(href="stylesheets/css/style.css" type="text/css" rel="stylesheet" media="all")
+ 
+  //font-awesome icons
+  link(href="stylesheets/css/fontawesome/web-fonts-with-css/css/fontawesome-all.css" rel="stylesheet")
+  link(href="stylesheets/css/fontawesome-all.min.css" rel="stylesheet")
+  //online-fonts
+  link(href="//fonts.googleapis.com/css?family=Josefin+Sans:100,100i,300,300i,400,400i,600,600i,700,700i" rel="stylesheet")
+  link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous")
+  link(rel='stylesheet', href='/stylesheets/lightbox.css')
+  link(rel='stylesheet', href='/stylesheets/style.css')
+  link(rel='stylesheet', href='/stylesheets/bootstrap-select.min.css')
+  link(rel='stylesheet', href='/stylesheets/easy-autocomplete.min.css')
+  link(rel='stylesheet', href='/stylesheets/easy-autocomplete.themes.min.css')
+  link(rel='stylesheet', href='/stylesheets/jquery-gmaps-latlon-picker.css')
+  link(rel='stylesheet', href='/stylesheets/star-rating.min.css')
+  link(rel='stylesheet', href='/stylesheets/lightgallery.min.css')
+  link(rel='stylesheet', href='/stylesheets/bootstrap-datetimepicker.min.css')
+  script(src='/javascripts/jquery.min.js')
+  script(type='text/javascript').
+      addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+        }, false)
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+  //custom template files
+body
+  ul.navbar-nav.ml-lg-auto.text-center
+  //banner - only on homepage
+  div.container-fluid
+    header
+    //header before navigation items
+    nav.navbar.navbar-expand-lg.navbar-light.bg-gradient-secondary.pt-3
+      h1
+        a.navbar-brand.text-white(href="/")
+          em
+            img(src="/img/find-it.png").img-fluid
+      button.btn.btn-light.coupons-btn.flash-button(type="button")
+        span.fas.fa-gift.coupons-text-color
+          | View deals
+      //site navigation 
+      button.navbar-toggler.ml-md-auto(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+          aria-expanded="false" aria-label="Toggle navigation")
+            span.navbar-toggler-icon
+      div#navbarSupportedContent.collapse.navbar-collapse
+        ul.navbar-nav.ml-lg-auto.text-center
+          li.nav-item.mr-3
+            a(href="/")
+              span.fas.fa-home.fas-menu
+              |  Home
+          //li.nav-item.mr-3
+            a(href="/coupons").nav-link
+              span.fas.fa-gift.fas-menu
+              |  Coupons
+          li.nav-item.mr-3
+            a.dropdown-toggle#navbarDropdown(href="/categories" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+              span.fas.fa-th-list.fas-menu
+                |  Categories 
+            div.dropdown-menu(aria-labelledby="navbarDropdown")
+              a.dropdown-item(href="categories.html")
+                | Hospitality
+              a.dropdown-item(href="categories.html")
+                | Offices
+              div.dropdown-divider
+              a.dropdown-item(href="categories.html")
+                | Emergency
+              a.dropdown-item(href="categories.html")
+                | Others
+                
+          if user
+            li.nav-item.mr-3                  
+              a(href='/dashboard')  
+                span.fas.fa-user.fas-menu
+                |  View Profile            
+          if user                
+            li.nav-item.mr-3
+              a(href='/logout') 
+                span.fas.fa-sign-out.fas-menu
+                |  Logout
+          else
+            li.nav-item.mr-3
+              button.btn.btn-primary.ml-lg-5.w3ls-btn(data-id="login" data-toggle="modal" aria-pressed="false" data-target="#exampleModal")
+                | Login
+
+        
+      // site navbar
+    //navbar
+    // /.header
+    .errors.container
+      if errors
+        each error in errors
+          .alert.alert-danger
+            = error
+      
+      if message
+        .alert.alert-info
+          = message
+      if success_msg.length
+        .alert.alert-success 
+          = success_msg
+      if error_msg.length
+        .alert.alert-danger 
+          = error_msg
+      if error.length
+        .alert.alert-danger 
+          = error
+    //block content for the header
+    block content
+  //registration and login form
+  div(tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true").modal.fade#exampleModal
+    div(role="document").modal-dialog
+      div.modal-content
+        div.modal-header
+          h5#exampleModalLabel.modal-title
+            | Login
+          button(type="button" data-dismiss="modal" aria-label="Close").close
+            span(aria-hidden="true")
+               | &times;
+        div.modal-body
+          form(action="#" method="post")
+            div.form-group
+              label.col-form-label(for="recipient-name")
+                | Username
+              input.form-control#recipient-name(type="text" placeholder="Username" name="Name" required="")
+            div.form-group
+              label.col-form-label(for="passwords")
+                | Password
+              input.form-control#recipient-name(type="password" placeholder="Password" name="password" required="")
+            div.right-w3l
+              input.form-control(type="submit" value="Log in")
+            div.row.sub-w3l.my-3
+              div.col.sub-agile
+                input.brand1(type="checkbox" value="")
+                label.text-white(for="brand1")
+                  span
+                    | Remember me?
+              div.col.forgot-w3l.text-right
+                a.text-white(href="#")
+                  | Forgot Password?
+            p.text-center.dont-do.text-white
+              | Don't have an account?
+              a.text-white(ref="#" data-toggle="modal" data-target="#exampleModal1")
+                | Register
+  div.modal.fade#exampleModal1(tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true")
+    div.modal-dialog(role="document")
+      div.modal-content
+        div.modal-header
+          h5.modal-title(id="exampleModalLabel")
+              | Login
+              div.form-group
+          button.close(type="button" data-dismiss="modal" aria-label="Close")
+              span(aria-hidden="true")
+               | &times;
+        div.modal-body
+           form(action="#" method="post")
+              div.form-group
+                label.col-form-label(for="recipient-name")
+                  | User Name
+                input.form-control#recipient-rname(type="text" class="form-control" placeholder=" " name="Name" required="")
+              div.form-group
+                label.col-form-label(for="recipient-email")
+                  | Email
+                input.form-control#recipient-email(type="email" placeholder=" " name="Email"  required="")
+              div.form-group
+                label.col-form-label(for="password1")
+                  | Password
+                input.form-control#password1(type="password" placeholder=" " name="Password" required="")
+              div.form-group
+                label.col-form-label(for="password2")
+                input.form-control#password2(type="password" placeholder=" " name="Confirm Password" required="")
+              div.sub-w3l
+              div.sub-agile
+                input#brand2(type="checkbox" value="")
+                label.mb-3(for="brand2")
+                 span
+                   | I Accept to the Terms & Conditions
+              div.right-w3l
+                input.form-control(type="submit" value="Register")
+  
+  
+<!--bootstrap 4 javascript-->
+
+script(src='/javascripts/bootstrapjs/jquery.prettyPhoto.js')
+script(src='/javascripts/bootstrapjs/jquery.quicksand.js')
+script(src='/javascripts/bootstrapjs/jquery-1.7.2.js')
+script(src='/javascripts/bootstrapjs/jquery-ui.js')
+script(src='/javascripts/bootstrapjs/script.js')
+script(src='/javascripts/axios.min.js')
+script(src='/javascripts/jquery.easy-autocomplete.min.js')
+script(src="/javascripts/jquery-gmaps-latlon-picker.js")
+script(src="/javascripts/tinymce.min.js")
+script(src="/javascripts/jquery-gmaps-latlon-picker.js")
+script(src="/javascripts/jquery.autocomplete.min.js")
+script(src="/javascripts/lightgallery.min.js")
+script(src="/javascripts/moment.min.js")
+script(src="/javascripts/bootstrap-datetimepicker.min.js")
+script(src='/javascripts/bootstrap-select.min.js')
+script(src='/javascripts/notify.js')
+
+
+
+<!-- //js -->
+script(src='/javascripts/bootstrapjs/jquery-2.2.3.min.js')
+<!-- script for password match -->
+script(type='text/javascript').
+        window.onload = function () {
+            document.getElementById("password1").onchange = validatePassword;
+            document.getElementById("password2").onchange = validatePassword;
+        }
+
+        function validatePassword() {
+            var pass2 = document.getElementById("password2").value;
+            var pass1 = document.getElementById("password1").value;
+            if (pass1 != pass2)
+                document.getElementById("password2").setCustomValidity("Passwords Don't Match");
+            else
+                document.getElementById("password2").setCustomValidity('');
+            //empty string means no validation error
+        }
+   
+<!-- script for password match -->
+
+<!-- Responsiveslides -->
+script(src='/javascripts/bootstrapjs/responsiveslides.min.js')
+script(type='text/javascript').
+        // You can also use "$(window).load(function() {"
+        $(function () {
+            // Slideshow 4
+            $("#slider3").responsiveSlides({
+                auto: true,
+                pager: true,
+                nav: false,
+                speed: 500,
+                namespace: "callbacks",
+                before: function () {
+                    $('.events').append("<li>before event fired.</li>");
+                },
+                after: function () {
+                    $('.events').append("<li>after event fired.</li>");
+                }
+            });
+
+        });
+    
+
+<!-- // Responsiveslides -->
+
+<!-- start-smooth-scrolling -->
+script(src="js/move-top.js")
+script(src='/javascripts/bootstrapjs/easing.js')
+
+script(type='text/javascript').
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+
+                $('html,body').animate({
+                    scrollTop: $(this.hash).offset().top
+                }, 1000);
+            });
+        });
+   
+<!-- //end-smooth-scrolling -->
+<!-- smooth-scrolling-of-move-up -->
+script(type='text/javascript').
+        $(document).ready(function () {
+            /*
+            var defaults = {
+                containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear' 
+            };
+            */
+
+            $().UItoTop({
+                easingType: 'easeOutQuart'
+            });
+
+        });
+script(src='/javascripts/bootstrapjs/SmoothScroll.min.js')
+<!-- //smooth-scrolling-of-move-up -->
+<!-- Bootstrap core JavaScript-->
+<!-- Placed at the end of the document so the pages load faster -->
+script(src='/javascripts/bootstrapjs/bootstrap.js')
+script(type='text/javascript').
+  const mq = window.matchMedia( "(min-width: 450px)" );
+  $('.phonenofake').click(function() {
+      $('.phoneno').show();
+      $('.phonenofake').hide();
+      var bizid = $('#biz-id').text();
+      $.ajax({
+          type:'GET',
+          url:'/biz/analytics/'+bizid,
+          success:function(response){
+              if(response == 1 || response == '1'){ 
+
+              }else{
+
+              }
+          }
+      });
+  });
+  if (mq.matches) {
+    // window width is at least 450px
+  } else {
+    // window width is less than 450px
+    $('div.dropdown-category').removeClass('open');
+  }
+  lightGallery(document.getElementById('lightgallery'));
+
+  $('.datetimepicker').datetimepicker({      
+      sideBySide: true,
+      format: 'DD-MM-YYYY HH:mm:ss'
+  });
+
+  $('.timepicker').datetimepicker({      
+      sideBySide: true,
+      format: 'HH:mm'
+  });
+
+  $('.timepicker').click(function(event){
+    $(this).removeAttr('readonly').select();
+  });
+
+  $('.timepicker').blur(function(event){
+    $(this).attr('readonly', 'readonly');
+  });
+
+  $('.hoursopened').val('08:00');
+  $('.hoursclosed').val('17:00');
+
+  $(document).on('click', ".cat", function() {
+      var originalHeight = $('#bottom-scroll').height();
+      $(this).addClass('godown');
+      $(this).removeClass('cat');
+      $(this).removeClass('arrow-up');
+      $(this).addClass('arrow-down');
+      $('#bottom-scroll').animate({height:'40%'})
+  });
+
+  $(document).on('click', ".godown", function() {
+      $(this).removeClass('godown');
+      $(this).addClass('cat');
+      $(this).removeClass('arrow-down');
+      $(this).addClass('arrow-up');
+      $('#bottom-scroll').animate({height: '23%'},500)
+  });
+  $(document).ready(function() {
+
+    $('#spnCharLeft').css('display', 'none');
+    var maxLimit = 100;
+    $(document).ready(function () {
+        $('').keyup(function () {
+            var lengthCount = this.value.length;              
+            if (lengthCount > maxLimit) {
+                this.value = this.value.substring(0, maxLimit);
+                var charactersLeft = maxLimit - lengthCount + 1;                   
+            }
+            else {                   
+                var charactersLeft = maxLimit - lengthCount;                   
+            }
+            $('#spnCharLeft').css('display', 'block');
+            $('#spnCharLeft').text(charactersLeft + ' Characters left');
+        });
+    });
+
+  // navigation click actions
+  $('.scroll-link').on('click', function(event){
+    event.preventDefault();
+    var sectionID = $(this).attr("data-id");
+    scrollToID('#' + sectionID, 750);
+  });
+
+  $('.categoryModal').on("click",function(event){
+    categ = this.id;
+    axios.get('/fetchCat/'+ categ)
+    .then(function (response) {
+      $('#categoriesFetched').html();
+      response.data.subcategories.forEach(function(element) {
+          console.log(element);
+          $('#categoriesFetched').append('<div class="col-md-3 col-xs-6 padding-10"><a href="/subcategory/'+element.name+'"><i class="fa fa-glass fa-1x" aria-hidden="true"></i> '+element.name+'</a></div>');
+      });
+      //$('#categoriesFetched').append('</div>');
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  });
+
+    var $cat = $(".subcategory"),
+        $subcat = $(".ssubcategory");
+    
+    $cat.on("change",function(){
+        var _rel = $(this).find(":selected").val();
+        if(_rel == 'Events'){
+            $('.timeopen').hide();
+            $('#endeventDate').show();
+            $('#starteventDate').show();
+        }else{
+            $('#startDate').show();
+            $('.timeopen').show();
+            $('#endeventDate').hide();
+            $('#starteventDate').hide();
+        }
+        
+
+        $.ajax({
+              type: "GET",
+              url: "/business/fetchcategory/"+_rel,
+              success: function(data){
+                  // Parse the returned json data
+                  //var opts = $.parseJSON(data);
+                  
+                  $subcat.empty();
+                  $.each(data, function(i, d) {
+                      // You will need to alter the below to get the right values from your json object.  Guessing that d.id / d.modelName are columns in your carModels data
+                      console.log(d.name);
+                      $('#ssubcategory').append('<option value="' + d.name + '">' + d.name + '</option>');
+                      $('#ssubcategoryy').append('<option value="' + d.name + '">' + d.name + '</option>');
+                  });
+                  $('.selectpicker').selectpicker('refresh');
+              }
+          });
+      
+    });
+
+  tinymce.init({ 
+            selector:'#review',
+            height: 100,
+            width: '100%',
+              menubar: false,
+              plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table contextmenu paste code'
+              ],
+              toolbar: 'undo redo | insert | styleselect',
+              content_css: '//www.tinymce.com/css/codepen.min.css'
+        });
+  tinymce.init({ 
+            selector:'#descriptionw',
+            height: 150,
+            width: '100%',
+              menubar: false,
+              plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table contextmenu paste code'
+              ],
+              toolbar: 'undo redo',
+              content_css: '//www.tinymce.com/css/codepen.min.css'
+        });
+
+
+
+
+        var options = {
+
+          url: function(phrase) {
+            return "/nss/"+$('#search2').val();
+          },
+
+          getValue: function(element) {
+            return element.slug;
+          },
+          template: {
+            type: "description",
+            fields: {
+              description: "website"
+            }
+          },
+          list: {
+            onClickEvent: function() {
+              self.location = "/"+$("#search2").getSelectedItemData().slug;
+            } 
+          },
+          ajaxSettings: {
+            method: "GET"
+          },
+          theme: "square",
+          requestDelay: 200
+        };
+
+  $("#search2").easyAutocomplete(options);
+  $( "#search2" ).focus();
+  // scroll to top action
+  $('.scroll-top').on('click', function(event) {
+  event.preventDefault();
+  $('html, body').animate({scrollTop:0}, 'slow');
+  });
+  // mobile nav toggle
+  $('#nav-toggle').on('click', function (event) {
+  event.preventDefault();
+  $('#main-nav').toggleClass("open");
+  });
+  });
+  // scroll function
+  function scrollToID(id, speed){
+  var offSet = 50;
+  var targetOffset = $(id).offset().top - offSet;
+  var mainNav = $('#main-nav');
+  $('html,body').animate({scrollTop:targetOffset}, speed);
+  if (mainNav.hasClass("open")) {
+  mainNav.css("height", "1px").removeClass("in").addClass("collapse");
+  mainNav.removeClass("open");
+  }
+  }
+  if (typeof console === "undefined") {
+  console = {
+  log: function() { }
+  };
+
+  }
+
+  

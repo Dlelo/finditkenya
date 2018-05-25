@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  .row
+    .col-md-8
+      h2(style='color: #08b4df;')
+        = coupon.name
+      h3
+        = coupon.bizid.name
+    .col-md-4
+      if(coupon.bizid.photo)
+        img.img-responsive(src="/uploads/thumbs/cover"+ coupon.bizid.photo,height="50%") 
+  .row
+    .col-md-12
+      p
+        =coupon.description
+    .col-md-12
+      each user, i in coupon.users
+        h2(style="color:green")
+          =user.code
+        br

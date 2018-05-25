@@ -1,0 +1,98 @@
+doctype html
+html
+  head
+    title Custom Markers
+    meta(name='viewport', content='width=device-width, initial-scale=1.0, user-scalable=no')
+    meta(charset='utf-8')
+    link(href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800', rel='stylesheet')
+    link(href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900', rel='stylesheet')
+    link(rel='apple-touch-icon', href='apple-touch-icon.png')
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap-theme.min.css')
+    link(rel='stylesheet', href='/stylesheets/fontAwesome.css')
+    link(rel='stylesheet', href='/stylesheets/templatemo-style.css')
+    style.
+      /* Always set the map height explicitly to define the size of the div
+      * element that contains the map. */
+      #map {
+      height: 90%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      }
+      .header {
+        position: relative;
+      }
+      .navbar-nav>li>a {
+        color: #575757!important;
+      }    
+  body
+    .header
+      .container
+        nav.navbar.navbar-inverse(role='navigation')
+          .navbar-header
+            button#nav-toggle.navbar-toggle(type='button', data-toggle='collapse', data-target='#main-nav')
+              span.sr-only Toggle navigation
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+            a.navbar-brand(href='/')
+              em 
+                img(src="/img/find-it.png")
+          // /.navbar-header
+          #main-nav.collapse.navbar-collapse
+            ul.nav.navbar-nav
+              if user
+                li                   
+                  a(href='/dashboard')  
+                    span.glyphicon.glyphicon-user.text-default.glyph
+                    |  View Profile
+              else
+                li
+                  a.scroll-top(href='#') 
+                    span.glyphicon.glyphicon-home.text-default.glyph
+                    |  Home 
+              li
+                a.scroll-link(href='#', data-id='contact-us') 
+                  span.glyphicon.glyphicon-phone.text-default.glyph
+                  |  Contact Us             
+              if user                
+                li
+                  a(href='/logout') 
+                    span.fa.fa-sign-out.text-default.glyph
+                    |  Logout
+              else
+                li
+                  a(data-id='login', data-toggle='modal', href='#at-login') 
+                    span.glyphicon.glyphicon-user.text-default.glyph
+                    |  Login
+                li
+                  a(data-id='login', data-toggle='modal', href='#at-signup') 
+                    span.glyphicon.glyphicon-send.text-default.glyph
+                    |  Sign Up
+        if errors
+          each error in errors
+            .alert.alert-danger
+              = error
+        if message
+          .alert.alert-info wala
+            = message
+        if success_msg.length
+          .alert.alert-success walaa
+            = success_msg
+        if error_msg.length
+          .alert.alert-danger walaaa
+            = error_msg
+        if error.length
+          .alert.alert-danger walaaaa
+            = error
+          // /.navbar-collapse
+        // /.navbar
+      // /.container
+    // /.header
+    block content
+script(src='/javascripts/jquery.min.js')
+script(src='/javascripts/bootstrap.min.js')

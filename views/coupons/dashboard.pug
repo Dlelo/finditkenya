@@ -1,0 +1,48 @@
+extends ../admin/admin-layout
+
+block content
+  // /.row
+  // ==============================================================
+  // Different data widgets
+  // ==============================================================
+  // .row
+  .row
+    .col-md-12.col-lg-12.col-sm-12
+      .row
+        .is-island
+          a(href='/admin/mycoupons')
+            span.fa.fa-database.text-default.glyph
+            strong
+              |  My Coupons
+        .is-island 
+          a(href='/admin/coupon/add')
+            span.fa.fa-database.text-default.glyph
+            strong
+              |  Add Coupon
+    .col-md-12.col-lg-12.col-sm-12      
+      .white-box
+        h3.box-title 
+          strong My Coupon Offers
+        
+        #accordion.panel-group(role='tablist', aria-multiselectable='true')
+          table.table.dataTable
+            tbody
+              each coupon,i in coupons
+                tr
+                  .panel.panel-default
+                    #headingTwo.panel-heading(role='tab')
+                      h4.panel-title
+                        a.collapsed(role='button', data-toggle='collapse', data-parent='#accordion', href='#collapse'+i, aria-expanded='false', aria-controls='collapse'+i)
+                          strong
+                            | #{coupon.name} | #{coupon.bizid.name} | #{coupon.status} 
+                            a(href="/admin/coupon/activate/"+coupon.id, title="Toggle Coupon Status")
+                              i.fa.fa-eye.fa-fw(aria-hidden='true')
+                            a(href="/admin/coupon/delete/"+coupon.id, title="Delete Coupon", onclick="return confirm('Are you sure You want to Delete this Coupon?')")
+                              i.fa.fa-trash.fa-fw(aria-hidden='true')
+                    .panel-collapse.collapse(role='tabpanel', aria-labelledby='headingTwo', id='collapse'+i)
+                      .panel-body
+                        each usr,i in coupon.users
+                          p
+                            | #{usr.code} | #{usr.status} | #{usr.user_id.names} | #{usr.user_id.email} 
+                            a(href="/admin/coupon/markused/"+user.id, title="Mark This Coupon as Used")
+                              i.fa.fa-check.fa-fw(aria-hidden='true')

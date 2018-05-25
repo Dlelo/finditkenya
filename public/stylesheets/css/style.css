@@ -1788,8 +1788,7 @@ ul.portfolio-area li figure {
   }
 }
 .user-fav{
-	padding-left:4em;
-	padding-right:4em;
+	padding-left:1em;
 }
 .coupons-btn{
 	margin-left:10em;
@@ -1872,3 +1871,9 @@ ul.portfolio-area li figure {
 .h-order-margin{
    margin-bottom:3em;
 }
+.container-margin{
+	padding-left:4em;
+	padding-right:4em;
+}
+
+.

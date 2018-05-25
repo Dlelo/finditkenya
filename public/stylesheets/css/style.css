@@ -265,7 +265,7 @@ header h1 a span {
 .banner-text-top{
     align-content: right;
     max-width: 100%;
-    padding-top: 7vW;
+    padding-top: 8vW;
     padding-left: inherit;
     padding-right: 3%;
     box-sizing: border-box;
@@ -1500,7 +1500,6 @@ ul.portfolio-area li figure {
 		font-size: 1.7em;
 	}
 }
-
 @media screen and (max-width: 667px) {
 	.slide {
 		min-height: 430px;
@@ -1763,7 +1762,7 @@ ul.portfolio-area li figure {
 }
 @media screen and (max-width: 568px){
 	.banner-text-top{
-		padding-top:24vW;
+		padding-top:0vW;
 	}
 }
 .input-group-addon {
@@ -1777,6 +1776,13 @@ ul.portfolio-area li figure {
     text-align: center;
 	background-color: #eee;
     border: 1px solid #ccc;
-    border-radius: 4px;
+	border-radius: 4px;
+}
+@media screen and (max-width: 786px){
+  .banner{
+	  min-height: 25vh;
+  }
+}
+
 
 /* -- //Responsive code -- */

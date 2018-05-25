@@ -1,17 +1,18 @@
 extends layout1
 block content
+ div.container-fluid
   div#home.banner
     div.row
-      div.col-8
+      div.col-md-8.col-sm-8.col-xm-8
         div.banner-text
           form(method='get', action='/search')
             div.input-group
               span.input-group-addon#basic-addon1.finditbutton.input-group-addon.text-center
                h5
                 |  Find
-              input.form-control.form-control-lg(type="text" class="form-control" placeholder="Restaurants, Events, Hotels, Holidays, Businesses..." aria-describedby="basic-addon1")
+              input.form-control.form-control-lg(type="text" class="form-control" placeholder="Restaurants, Events, Hotels, Holidays, Businesses, lawyers, Doctors..." aria-describedby="basic-addon1")
         
-      div.col-4
+      div.col-md-4.col-sm-8.col-xm-8
         div.banner-text-top
           nav.navbar.navbar-expand-sm.bg-light.nav-bar-addbusiness.navbar-nav.ml-lg-auto.text-center
             ul.navbar-nav
@@ -34,6 +35,7 @@ block content
         div.row
           //right sidebar
           div.col-2
+          
           //centre- categories
           div.col-8
             div.row.my-md-5.mt-sm-5.my-4.text-center

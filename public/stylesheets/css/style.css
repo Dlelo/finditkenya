@@ -265,9 +265,9 @@ header h1 a span {
 .banner-text-top{
     align-content: right;
     max-width: 100%;
-    padding-top: 9vW;
+    padding-top: 7vW;
     padding-left: inherit;
-    padding-right: 1%;
+    padding-right: 3%;
     box-sizing: border-box;
 	
 }

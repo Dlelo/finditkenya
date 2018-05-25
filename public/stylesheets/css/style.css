@@ -1638,7 +1638,7 @@ ul.portfolio-area li figure {
 		min-height: 250px;
 	}
 	.banner-text {
-		padding-top: 1vw;
+		padding-top: 6vw;
 	}
 	.navbar-light {
 		padding: 1em 2em;
@@ -1766,7 +1766,7 @@ ul.portfolio-area li figure {
 }
 @media screen and (max-width: 568px){
 	.banner-text-top{
-		padding-top:25vW;
+		padding-top:35vW;
 	}
 }
 .input-group-addon {
@@ -1784,12 +1784,67 @@ ul.portfolio-area li figure {
 }
 @media screen and (max-width: 786px){
   .banner{
-	  min-height: 25vh;
+	  min-height: 50vh;
   }
 }
 .user-fav{
 	padding-left:1em;
 }
+.coupons-btn{
+	margin-left:10em;
+}
+.coupons-text-color{
+	color: #fff;
+}
+.h-order-category{
+	margin-top: 1em;
+	margin-left:1em;
+	text-align:right;
+}
 
 
 /* -- //Responsive code -- */
+.flash-button{
+	background:#04045a;
+	padding:5px 10px;
+	color:#fff;
+	border:none;
+	border-radius:5px;
+	
+	animation-name: flash;
+	animation-duration: 1s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+
+	/*Firefox 1+*/
+	-webkit-animation-name: flash;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-iteration-count: infinite;
+
+	/*Safari 3-4*/
+	-moz-animation-name: flash;
+	-moz-animation-duration: 1s;
+	-moz-animation-timing-function: linear;
+	-moz-animation-iteration-count: infinite;
+}
+
+@keyframes flash {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1.0; }
+}
+
+/*Firefox 1+ */
+@-webkit-keyframes flash {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1.0; }
+}
+
+/*Safari 3-4 */
+@-moz-keyframes flash {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1.0; }
+}

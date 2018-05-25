@@ -1848,3 +1848,22 @@ ul.portfolio-area li figure {
     50% { opacity: 0.5; }
     100% { opacity: 1.0; }
 }
+.deal-main{
+	position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+	box-sizing:border-box;
+	background-color: #eee;
+	margin-top:3em;
+
+}
+.deal-img-wrapper {
+	padding-top: 1em;
+	padding-bottom:1em;
+    width: 196px;
+    height: 196px;
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
+}

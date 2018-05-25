@@ -1787,6 +1787,9 @@ ul.portfolio-area li figure {
 	  min-height: 25vh;
   }
 }
+.user-fav{
+	padding-left:1em;
+}
 
 
 /* -- //Responsive code -- */

@@ -1638,7 +1638,7 @@ ul.portfolio-area li figure {
 		min-height: 250px;
 	}
 	.banner-text {
-		padding-top: 25vw;
+		padding-top: 1vw;
 	}
 	.navbar-light {
 		padding: 1em 2em;
@@ -1766,7 +1766,7 @@ ul.portfolio-area li figure {
 }
 @media screen and (max-width: 568px){
 	.banner-text-top{
-		padding-top:0vW;
+		padding-top:25vW;
 	}
 }
 .input-group-addon {

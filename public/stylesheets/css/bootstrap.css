@@ -8436,11 +8436,11 @@ button.bg-dark:focus {
   }
   .pb-lg-5,
   .py-lg-5 {
-    padding-bottom: 3rem !important;
+    padding-bottom: 0 !important;
   }
   .pl-lg-5,
   .px-lg-5 {
-    padding-left: 3rem !important;
+    padding-left: 0 !important;
   }
   .m-lg-auto {
     margin: auto !important;

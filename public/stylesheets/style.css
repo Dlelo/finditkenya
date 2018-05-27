@@ -1141,3 +1141,6 @@ input[type="radio"].package:checked + #packagelabel {
     margin: 0 auto;
     overflow: hidden;
 }
+.topdeals-bottom{
+  padding-bottom: 1em;
+}

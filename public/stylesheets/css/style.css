@@ -1876,4 +1876,17 @@ ul.portfolio-area li figure {
 	padding-right:4em;
 }
 
-.
+.footer-style{
+	background-color:#000;
+}
+
+.footer-text{
+	padding: 20px;
+	color:#fff
+}
+.morecategories{
+	border-top: 1px solid #eee;
+}
+.background-cat{
+	background-color:transparent;
+}

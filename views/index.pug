@@ -135,7 +135,7 @@ block content
                 //div.w3-ab-grid
                 div.w3-aicon.py-lg-5.py-md-3.py-5
                     img.img-fluid.category-img-wrapper(src="/img/emergency.jpg" alt="Responsive image")
-                    h6.my-3
+                    button.btn.btn-light(onclick="openCategories()" type="button")
                       | More Categories ...
                             
                 div.w3-ab-captn.p-md-3.py-4
@@ -144,6 +144,64 @@ block content
                     | traventure
                   p.px-3
                     | Aenean pulvinar ac enimet posuere tincidunt velit Utin tincidunt
+        //more categories
+        div.row.morecategories#morecategories(style="display:none")
+          div.col-3
+            div
+             a(href="/categories")
+              span.fas.fa-coffee
+                |  Cofee & Tea
+            div
+              a(href="/categories")
+                span.fas.fa-utensils
+                  |  Food  
+            div
+              a(href="/categories")
+                span.fas.fa-smile 
+                 |  Entertainment
+            
+            div
+              a(href="/categories")
+                span.fas.fa-hospital
+                  |  Health Services
+            
+          div.col-3
+            div
+               a(href="/categories")
+                span.fas.fa-globe   
+                  |  Professional Services
+            div
+               a(href="/categories")
+                span.fas.fa-building
+                  |  Offices
+            div
+              a(href="/categories")
+                span.fas.fa-home
+                  |  Real estate
+            div
+              a(href="/categories")
+                span.fas.fa-utensils
+                  |  Hotels
+            
+          div.col-3
+            div
+              a(href="/categories")
+                span.fas.fa-users
+                  |  Government services
+            div
+              a(href="/categories")
+                span.fas.fa-briefcase
+                   |  Finacial Services
+            div
+              a(href="/categories")
+                span.fas.fa-graduation-cap
+                  |  Education
+            div
+              a(href="/categories")
+                span.fas.fa-church
+                  |  Religious Services            
+              
+          
       div.col-lg-4.col-md-4.col-sm-6.col-xs-6
         div
           h2.agile-title.h-order-category.text-center
@@ -218,3 +276,17 @@ block content
              div.topdeals-bottom
                  button.btn.btn-outline-primary(type="button" )
                    |30% OFF
+
+  //footer
+  div.container-fluid
+    .col-md-12.col-sm-12.text-center.footer-style
+            .terms-policy.footer-text
+              ul
+                li
+                  a(href='/terms-and-conditions', target='_parent')
+                    |  Terms and Conditions
+                li
+                  a(href='/privacy-policy', target='_parent')
+                    |  Privacy Policy
+            p
+              | © 2018 Find it Kenya. All rights reserved | FinditKe

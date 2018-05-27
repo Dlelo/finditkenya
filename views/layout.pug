@@ -48,25 +48,16 @@ body
           li.nav-item.mr-3
             a(href="/").nav-link
               span.fas.fa-home.fas-menu
-              |  Home
+               |  Home
           //li.nav-item.mr-3
             a(href="/coupons").nav-link
               span.fas.fa-gift.fas-menu
               |  Coupons
           li.nav-item.mr-3
-            a.nav-link.dropdown-toggle#navbarDropdown(href="/categories" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
-              span.fas.fa-th-list.fas-menu
-                |  Categories 
-            div.dropdown-menu(aria-labelledby="navbarDropdown")
-              a.dropdown-item(href="categories.html")
-                | Hospitality
-              a.dropdown-item(href="categories.html")
-                | Offices
-              div.dropdown-divider
-              a.dropdown-item(href="categories.html")
-                | Emergency
-              a.dropdown-item(href="categories.html")
-                | Others
+            a.nav-link(href="#morecategories" role="button")
+              button.btn.btn-light.background-cat(onclick="openCategories()" type="button")
+                span.fas.fa-th-list.fas-menu
+                  |  Categories 
                 
           if user
             li.nav-item.mr-3                  
@@ -210,6 +201,16 @@ script(type='text/javascript').
                 document.getElementById("password2").setCustomValidity('');
             //empty string means no validation error
         }
+<!-- Script to open more categories-->
+script(type="text/javascript").
+  function openCategories() {
+    var x = document.getElementById("morecategories");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+  }
    
 <!-- script for password match -->
 

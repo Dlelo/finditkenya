@@ -642,6 +642,36 @@ router.get('/coupon/activate/:id', role.auth, function(req, res){
     });
 });
 
+router.get('/coupon/star/:id', role.admin, function(req, res){
+	Coupons.findById(req.params.id)
+    .then(function(data){
+    	if(data.star == true){
+    		data.star = false;
+    	}else{
+    		data.star = true;
+    	}
+    	data.save(function(err){
+    		res.redirect('/admin/coupons');
+    	});
+    })
+    .catch(function(err){
+       console.log(err);
+    });
+});
+
+router.get('/coupon/order/:id/:order', role.auth, function(req, res){
+	Coupons.findById(req.params.id)
+    .then(function(data){
+    	data.order = req.params.order;
+    	data.save(function(err){
+    		res.redirect('/admin/coupons');
+    	});
+    })
+    .catch(function(err){
+       console.log(err);
+    });
+});
+
 router.get('/coupon/delete/:id', role.auth, function(req, res){
     if(req.user.role == 1){
       Coupons.findOneAndRemove({

@@ -1891,5 +1891,7 @@ ul.portfolio-area li figure {
 	background-color:transparent;
 }
 .align-categories{
- float: left;
+  float: left;
+  padding-right: 2em;
+  padding-left: 2em;
 }

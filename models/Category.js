@@ -12,6 +12,7 @@ const catSchema = new Schema({
 		icon: String,
 		approved: String,
 		order: String,
+		photo: String,
 		subcategories: [{
 			name: String
 		}],

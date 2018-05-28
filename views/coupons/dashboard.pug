@@ -37,6 +37,8 @@ block content
                             | #{coupon.name} | #{coupon.bizid.name} | #{coupon.status} 
                             a(href="/admin/coupon/activate/"+coupon.id, title="Toggle Coupon Status")
                               i.fa.fa-eye.fa-fw(aria-hidden='true')
+                            a(href="/admin/coupon/delete/"+coupon.id, title="Delete Coupon", onclick="return confirm('Are you sure You want to Delete this Coupon?')")
+                              i.fa.fa-trash.fa-fw(aria-hidden='true')
                     .panel-collapse.collapse(role='tabpanel', aria-labelledby='headingTwo', id='collapse'+i)
                       .panel-body
                         each usr,i in coupon.users

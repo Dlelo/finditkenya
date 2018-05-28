@@ -1890,3 +1890,6 @@ ul.portfolio-area li figure {
 .background-cat{
 	background-color:transparent;
 }
+.align-categories{
+ float: left;
+}

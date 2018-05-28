@@ -224,7 +224,7 @@ block content
           h2.agile-title.h-order-category.text-center
             | Top deals
             //top deal
-        each coupon in coupons
+        each coupon,i in coupons
           row.deal-main
             div.col-6
               div
@@ -242,7 +242,7 @@ block content
                  p
                   strike
                      |Ksh. 660
-                  |Ksh. 460
+                  |Ksh. 460 
                div.topdeals-bottom
                    button.btn.btn-outline-primary(type="button" )
                      =coupon.tagline

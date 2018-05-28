@@ -18,6 +18,8 @@ const couponSchema = new Schema({
 	type: String,
 	tagline: String,
 	photo: String,
+	star: Boolean,
+	order: String,
 	users: [
 		{
 			user_id: { type: Schema.Types.ObjectId, ref: 'User'},

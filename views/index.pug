@@ -8,11 +8,11 @@ block content
           nav.navbar.navbar-expand-sm.addbusiness.nav-bar-addbusiness.navbar-nav.ml-lg-auto.text-center
             ul.navbar-nav
               li.nav-item
-                a.nav-link(href="#")
+                a.nav-link(href='/business/newpackage')
                   span.fas.fa-database.user-fav
                     |  Add Business
               li.nav-item
-                a.nav-link(href="#")
+                a.nav-link(href='/add-agent')
                   span.fas.fa-user-tie.user-fav
                    |  Apply as an Agent
     div.row.my-row.justify-content-start
@@ -72,9 +72,8 @@ block content
                   p.px-3
                     | Aenean pulvinar ac enimet posuere tincidunt velit Utin tincidunt
               
-          each category,i in categories
-            if(i > 8)
-              div.col-lg-3.col-md-3.w3-ab.my-md-0.my-sm-8.my-4
+          
+          div.col-lg-3.col-md-3.w3-ab.my-md-0.my-sm-8.my-4
                 //div.w3-ab-grid
                 div.w3-aicon.py-lg-5.py-md-3.py-5
                     img.img-fluid.category-img-wrapper(src="/img/more_categories.png" alt="Responsive image")
@@ -89,79 +88,15 @@ block content
                     | Aenean pulvinar ac enimet posuere tincidunt velit Utin tincidunt
         //more categories
         div.row.morecategories#morecategories(style="display:none")
-          
+          each category,i in categories
+           if(i > 8)
             ul
-              div.col-3.col-sm-6.col-xs-6.align-categories
+              div.col-3.col-sm-5.col-xs-5.align-categories
                 li 
                   a(href="/categories")
                    span.fas.fa-coffee
-                     |  Cofee & Tea
-              div.col-3.col-sm-6.col-xs-6.align-categories
-                li
-                  a(href="/categories")
-                   span.fas.fa-utensils
-                    |  Food  
-                  
-              div.col-3.col-sm-6.col-xs-6.align-categories 
-                li
-                 a(href="/categories")
-                  span.fas.fa-smile 
-                   |  Entertainment
-            
-              div.col-3.col-sm-6.col-xs-6.align-categories
-                li
-                 a(href="/categories")
-                  span.fas.fa-hospital
-                    |  Health Services
-            
-          
-            ul
-              div.col-3.col-sm-6.col-xs-6.align-categories
-                li 
-                 a(href="/categories")
-                  span.fas.fa-globe   
-                    |  Professional Services      
-              div.col-3.col-sm-6.col-xs-6.align-categories
-                li 
-                 a(href="/categories")
-                  span.fas.fa-building
-                    |  Offices
-            
-              div.col-3.col-sm-6.col-xs-6.align-categories
-                li
-                 a(href="/categories")
-                   span.fas.fa-home
-                     |  Real estate
-              div.col-3.col-sm-6.col-xs-6.align-categories
-                li
-                 a(href="/categories")
-                  span.fas.fa-utensils
-                   |  Hotels
-            
-          
-            ul
-              div.col-3.col-sm-6.col-xs-6.align-categories
-                li 
-                  a(href="/categories")
-                   span.fas.fa-users
-                    |  Government services
-              div.col-3.col-sm-6.col-xs-6.align-categories
-                li
-                 a(href="/categories")
-                  span.fas.fa-briefcase
-                    |  Finacial Services
-              div.col-3.col-sm-6.col-xs-6.align-categories
-                li
-                 a(href="/categories")
-                  span.fas.fa-graduation-cap
-                    |  Education
-              div.col-3.col-sm-6.col-xs-6.align-categories
-                li
-                 a(href="/categories")
-                  span.fas.fa-church
-                    |  Religious Services            
+                      =category.name
               
-          
       div.col-lg-4.col-md-4.col-sm-6.col-xs-6
         div
           h2.agile-title.h-order-category.text-center

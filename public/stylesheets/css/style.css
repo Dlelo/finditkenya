@@ -1886,6 +1886,7 @@ ul.portfolio-area li figure {
 }
 .morecategories{
 	border-top: 1px solid #eee;
+	padding-top: 1rem;
 }
 .background-cat{
 	background-color:transparent;
@@ -1894,4 +1895,5 @@ ul.portfolio-area li figure {
   float: left;
   padding-right: 2em;
   padding-left: 2em;
+  padding-bottom: 1em;
 }

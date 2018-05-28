@@ -147,59 +147,63 @@ block content
         //more categories
         div.row.morecategories#morecategories(style="display:none")
           div.col-3
-            div
-             a(href="/categories")
-              span.fas.fa-coffee
-                |  Cofee & Tea
-            div
-              a(href="/categories")
-                span.fas.fa-utensils
-                  |  Food  
-            div
-              a(href="/categories")
-                span.fas.fa-smile 
-                 |  Entertainment
+            ul
+              li 
+                a(href="/categories")
+                  span.fas.fa-coffee
+                   |  Cofee & Tea
             
-            div
-              a(href="/categories")
-                span.fas.fa-hospital
-                  |  Health Services
+              li
+                a(href="/categories")
+                  span.fas.fa-utensils
+                    |  Food  
+              li
+                a(href="/categories")
+                  span.fas.fa-smile 
+                   |  Entertainment
+            
+              li
+                a(href="/categories")
+                  span.fas.fa-hospital
+                    |  Health Services
             
           div.col-3
-            div
-               a(href="/categories")
-                span.fas.fa-globe   
-                  |  Professional Services
-            div
+            ul
+              li
+                a(href="/categories")
+                  span.fas.fa-globe   
+                    |  Professional Services
+              li
                a(href="/categories")
                 span.fas.fa-building
                   |  Offices
-            div
-              a(href="/categories")
-                span.fas.fa-home
-                  |  Real estate
-            div
-              a(href="/categories")
-                span.fas.fa-utensils
-                  |  Hotels
+              li
+                a(href="/categories")
+                  span.fas.fa-home
+                   |  Real estate
+              li
+                a(href="/categories")
+                  span.fas.fa-utensils
+                   |  Hotels
             
           div.col-3
-            div
-              a(href="/categories")
+            ul
+              li
+               a(href="/categories")
                 span.fas.fa-users
-                  |  Government services
-            div
-              a(href="/categories")
-                span.fas.fa-briefcase
-                   |  Finacial Services
-            div
-              a(href="/categories")
-                span.fas.fa-graduation-cap
-                  |  Education
-            div
-              a(href="/categories")
-                span.fas.fa-church
-                  |  Religious Services            
+                 |  Government services
+              li
+                a(href="/categories")
+                  span.fas.fa-briefcase
+                    |  Finacial Services
+              li
+                a(href="/categories")
+                  span.fas.fa-graduation-cap
+                    |  Education
+              li
+                a(href="/categories")
+                  span.fas.fa-church
+                    |  Religious Services            
               
           
       div.col-lg-4.col-md-4.col-sm-6.col-xs-6
@@ -283,10 +287,10 @@ block content
             .terms-policy.footer-text
               ul
                 li
-                  a(href='/terms-and-conditions', target='_parent')
+                  a.footer-text(href='/terms-and-conditions', target='_parent')
                     |  Terms and Conditions
                 li
-                  a(href='/privacy-policy', target='_parent')
+                  a.footer-text(href='/privacy-policy', target='_parent')
                     |  Privacy Policy
             p
               | © 2018 Find it Kenya. All rights reserved | FinditKe

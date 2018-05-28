@@ -38,99 +38,42 @@ block content
         h2.agile-title.h-order-category.text-center
           | Search by Category
 
-  
+      
         div.row.my-md-5.mt-sm-8.my-4.text-center
+          each category,i in categories
+            if(i < 4)
               div.col-lg-3.col-md-3.w3-ab.my-md-0.my-sm-8.my-4
                 //div.w3-ab-grid
                 div.w3-aicon.py-lg-5.py-md-3.py-5
                     img.img-fluid.category-img-wrapper(src="/img/restaurant.jpg" alt="Responsive image")
                     h6.my-3
-                     | Restaurants
+                     =category.name
                 div.w3-ab-captn.p-md-3.py-4
                   i.fas.fa-bed
                   h4.my-lg-3.my-md-2.my-3
                     | Professional Services
                   p.px-3
                     | Aenean pulvinar ac enimet posuere tincidunt velit Utin tincidunt
-              div.col-lg-3.col-md-3.w3-ab.my-md-0.my-sm-8.my-4
-                //div.w3-ab-grid
-                div.w3-aicon.py-lg-5.py-md-3.py-5
-                    img.img-fluid.category-img-wrapper(src="/img/finance.jpeg" alt="Responsive image")
-                    h6.my-3
-                      | Financial
-                            
-                div.w3-ab-captn.p-md-3.py-4
-                  i.fab.fa-slideshare
-                  h4.my-lg-3.my-md-2.my-3
-                    | traventure
-                  p.px-3
-                    | Aenean pulvinar ac enimet posuere tincidunt velit Utin tincidunt
-              div.col-lg-3.col-md-3.w3-ab.my-md-0.my-sm-8.my-4
-                //div.w3-ab-grid
-                div.w3-aicon.py-lg-5.py-md-3.py-5
-                    img.img-fluid.category-img-wrapper(src="/img/medical.jpg" alt="Responsive image")
-                    h6.my-3
-                      | Medical
-                            
-                div.w3-ab-captn.p-md-3.py-4
-                  i.fas.fa-ticket-alt
-                  h4.my-lg-3.my-md-2.my-3
-                    | traventure
-                  p.px-3
-                    | Aenean pulvinar ac enimet posuere tincidunt velit Utin tincidunt
-              div.col-lg-3.col-md-3.w3-ab.my-md-0.my-sm-8.my-4
-                //div.w3-ab-grid
-                div.w3-aicon.py-lg-5.py-md-3.py-5
-                    img.img-fluid.category-img-wrapper(src="/img/legal.jpg" alt="Responsive image")
-                    h6.my-3
-                     | Legal
-                            
-                div.w3-ab-captn.p-md-3.py-4
-                  i.fas.fa-ticket-alt
-                  h4.my-lg-3.my-md-2.my-3
-                    | traventure
-                  p.px-3
-                    | Aenean pulvinar ac enimet posuere tincidunt velit Utin tincidunt
+              
         //div.agileabt-w3.py-lg-5
         div.row.my-md-5.mt-sm-8.my-4.text-center
+          each category,i in categories
+            if(i > 4 && i<8)
               div.col-lg-3.col-md-3.w3-ab.my-md-0.my-sm-8.my-4
                 //div.w3-ab-grid
                 div.w3-aicon.py-lg-5.py-md-3.py-5
                     img.img-fluid.category-img-wrapper(src="/img/travel.jpeg" alt="Responsive image")
                     h6.my-3
-                      | Travel
+                      =category.name
                 div.w3-ab-captn.p-md-3.py-4
                   i.fas.fa-bed
                   h4.my-lg-3.my-md-2.my-3
                     | Professional Services
                   p.px-3
                     | Aenean pulvinar ac enimet posuere tincidunt velit Utin tincidunt
-              div.col-lg-3.col-md-3.w3-ab.my-md-0.my-sm-8.my-4
-                //div.w3-ab-grid
-                div.w3-aicon.py-lg-5.py-md-3.py-5
-                    img.img-fluid.category-img-wrapper(src="/img/office.jpeg" alt="Responsive image")
-                    h6.my-3
-                      | Offices
-                            
-                div.w3-ab-captn.p-md-3.py-4
-                  i.fab.fa-slideshare
-                  h4.my-lg-3.my-md-2.my-3
-                    | traventure
-                  p.px-3
-                    | Aenean pulvinar ac enimet posuere tincidunt velit Utin tincidunt
-              div.col-lg-3.col-md-3.w3-ab.my-md-0.my-sm-8.my-4
-                //div.w3-ab-grid
-                div.w3-aicon.py-lg-5.py-md-3.py-5
-                    img.img-fluid.category-img-wrapper(src="/img/shopping.jpg" alt="Responsive image")
-                    h6.my-3
-                      | Shopping
-                            
-                div.w3-ab-captn.p-md-3.py-4
-                  i.fab.fa-slideshare
-                  h4.my-lg-3.my-md-2.my-3
-                    | traventure
-                  p.px-3
-                    | Aenean pulvinar ac enimet posuere tincidunt velit Utin tincidunt
+              
+          each category,i in categories
+            if(i > 7)
               div.col-lg-3.col-md-3.w3-ab.my-md-0.my-sm-8.my-4
                 //div.w3-ab-grid
                 div.w3-aicon.py-lg-5.py-md-3.py-5

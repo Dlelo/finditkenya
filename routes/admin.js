@@ -356,7 +356,7 @@ router.get('/category',role.auth, function(req, res, next) {
   .then(function(data){
     res.render('admin/category', {title: "Find It Categories", categories: data});
   })
-  .catch(function(err){
+  .catch(function(err){cpUpload,
      console.log(err);
   });
 });
@@ -422,18 +422,33 @@ router.get('/subcategory/delete/:id/:name',role.auth, function(req, res, next){
 		});
 });
 
-router.post('/category/update/:id',role.admin, function(req, res, next){
+router.post('/category/update/:id', role.admin, cpUpload, function(req, res, next){
 	var category = Category.findOne({
 	  _id: req.params.id
 	}).then(function(data){
 		data.name = req.body.name;
 		data.icon = req.body.icon;
 		data.order = req.body.order;
+    if (req.files['photo'] != null){
+  		data.photo = req.files['photo'][0].filename;
+  	}
 		data.save(function(err){
 			if(err){
-				console.log(err);
+        req.flash("error", err);
 				res.redirect('/admin/category');
-			}
+      }
+      if (req.files['photo'] != null){
+  				Jimp.read("./public/uploads/"+data.photo).then(function (cover) {
+  				    return cover.resize(200, 150)     // resize
+  				         .quality(100)              // set greyscale
+  				         .write("./public/uploads/thumbs/categories/"+data.photo); // save
+  				}).catch(function (err) {
+  				    console.error(err);
+  				});
+  			}else{
+  				req.flash("success_msg", "Category Successfully Created");
+  				res.redirect('/admin/category');
+  			}
 			res.redirect('/admin/category');
 		});
 	});

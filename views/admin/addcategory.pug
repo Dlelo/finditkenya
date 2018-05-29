@@ -6,13 +6,21 @@ block content
       .col-md-offset-3.col-md-6.col-md-offset-3
           h3.text-center Add Category
       .col-md-offset-0.col-md-12.col-md-offset-0
-        form.form-horizontal(method="post",action="/admin/category/add")
+        form.form-horizontal(method="post",action="/admin/category/add",enctype='multipart/form-data')
           .form-group
             .col-sm-12
               input#name.form-control-form(type='text', name='name', placeholder='Name')
           .form-group
             .col-sm-12
               input#icon.form-control-form(type='text', name='icon', placeholder='icon')
+          .form-group
+            .col-sm-12
+              input#order.form-control-form(type='text', name='order', placeholder='order')
+          .form-group
+            .col-sm-3
+              label(for='photo') Cover Photo
+            .col-sm-9
+              input#photod.form-control-form(type='file', name='photo', placeholder='photo')
           .form-group
             .row
               button.button.btn.btn-warning.form-control-form(type='submit') Create

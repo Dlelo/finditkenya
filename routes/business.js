@@ -11,6 +11,7 @@ const OpeningTimes = require('moment-opening-times');
 var Business = require(__dirname + '/../models/Business');
 var Category = require(__dirname + '/../models/Category');
 var Subcategory = require(__dirname + '/../models/Subcategory');
+var Review = require(__dirname + '/../models/Reviews');
 var role = require(__dirname + '/../config/Role');
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -46,11 +47,11 @@ router.post('/add', role.auth, cpUpload, function(req, res, next) {
 	instance.reviews = req.body.reviews;
 	instance.subcategory = req.body.subcategory;
 	instance.features = req.body.ssubcategory;
-	instance.gallery = req.files['gallery'];		
+	instance.gallery = req.files['gallery'];
 	instance.paid = req.body.paid;
 	instance.keywords = req.body.keywords;
 	instance.extras = req.body.extras;
-	instance.youtube = req.body.youtube;	
+	instance.youtube = req.body.youtube;
 	instance.user_id = res.locals.user.username;
 	instance.date = new Date();
 	instance.startdate = req.body.startdate;
@@ -86,7 +87,7 @@ router.post('/add', role.auth, cpUpload, function(req, res, next) {
 		instance.hours.friday.push({opens: req.body.hoursopenfri, closes: req.body.hoursclosefri});
 	}
 	if(req.body.hoursopensat){
-		instance.hours.saturday.push({opens: req.body.hoursopensat, closes: req.body.hoursclosesat}); 
+		instance.hours.saturday.push({opens: req.body.hoursopensat, closes: req.body.hoursclosesat});
 	}
 	if(req.body.pending){
 		instance.pending = true;
@@ -143,13 +144,13 @@ router.post('/add', role.auth, cpUpload, function(req, res, next) {
 	    }else{
 	    	req.flash('error', 'Business already exists');
 	    	res.redirect('/'+instance.slug);
-	    } 
+	    }
 	})
 	.catch(function(err){
 	    console.log(err);
 	    res.redirect('/');
 	});
-	
+
 });
 
 router.get('/freeadd',role.auth, function(req, res, next){
@@ -207,16 +208,29 @@ router.get('/catalog/:name', function(req, res, next){
 });
 
 router.post('/review',role.auth, function(req, res, next){
-	console.log(req.body);
 	Business.findById(req.body.bizid)
 	.then(function(b){
-		console.log(b);
 		b.reviews.push({rate: req.body.rating, msg: req.body.review});
-		b.user_id = res.locals.user.username;;
+		b.user_id = res.locals.user.username;
 		b.save(function(err){
-			if(err)
-				res.redirect('/'+b.slug);
-			res.redirect('/'+b.slug);
+			if(err){
+          console.log(err);
+          res.redirect('/'+b.slug);
+      }else{
+        var review = new Review();
+        review.message = req.body.review;
+        review.user_id = res.locals.user.username;
+        review.bizid = req.body.bizid;
+        review.star = new Date();
+        review.save(function(err){
+          if(err){
+            req.flash("error_msg",err);
+            res.redirect('/'+b.slug);
+          }else{
+            res.redirect('/'+b.slug);
+          }
+        });
+      }
 		});
 	})
 	.catch(function(err){

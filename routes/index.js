@@ -28,6 +28,7 @@ var Category = require(__dirname + '/../models/Category');
 var emailModel = require(__dirname + '/../config/Mail');
 var Analytics = require(__dirname + '/../models/Analytics');
 var Coupons = require(__dirname + '/../models/Coupons');
+var Review = require(__dirname + '/../models/Reviews');
 
 var mailer = require('express-mailer');
 
@@ -162,17 +163,19 @@ router.get('/', function(req, res, next) {
   var coupons = Coupons.find({
     status: true
   }).populate('bizid').sort([['order', 1],['star', -1]]).limit(5);
+  var reviews = Review.find().populate('bizid').populate('user_id').limit(5);
   var categories = Category.find({approved: true}).sort([['order', 1]]);
   var description = "Find It is a leading online directory to find businesses, service providers and their information in one single platform. Find it or be found. Register today and add your business.";
   var keywords = "Find Restaurants, professional services, Financial help, travel agencies, medical and legal help in Kenya on our platform Findit";
   var title = 'Find It Kenya | Find businesses and service providers in Kenya';
-  Promise.all([categories, toprestaurants, topsearches, coupons ]).then(values => {
+  Promise.all([categories, toprestaurants, topsearches, coupons, reviews ]).then(values => {
     res.render('index', {
         title: title,
         categories: values[0],
         toprestaurants: values[1],
         topsearches: values[2],
         coupons: values[3],
+        reviews: values[4],
         top: req.get('host')
     });
   });

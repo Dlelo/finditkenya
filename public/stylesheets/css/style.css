@@ -1971,5 +1971,8 @@ ul.portfolio-area li figure {
 .latest-reviews-comments{
 	border-top:1px solid #fff;
 }
+.latest-review-clock{
+	float:right;
+}
 
 

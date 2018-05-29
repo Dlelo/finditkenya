@@ -104,12 +104,11 @@ block content
            h2.agile-title.h-order-category.text-center
              | Latest Reviews
           div.col-lg-6.col-md-6.col-sm-8.col-xs-8.latest-review-leftcol
-            div.row
+            div.row.latest-review-container
               img.img-fluid.latest-review-imgwrapper(src="/img/bigsqr.jpeg" alt="Responsive image")
               div.row.latest-review.latest-review-row.latest-review-container
-              
                 div.col-12
-                  | Big square Gigiri
+                  | Big Square
                   div.col-12
                   
                 div.col-12
@@ -185,14 +184,97 @@ block content
                         |  #{reviews.length} Reviews
                       else
                         span.glyphicon.glyphicon-cog.glyph.border
-                        |  Be the first to review              
+                         |  Be the first to review     
+                      
+                         span.far.fa-clock.latest-review-clock
+                           | 2 weeks ago
                           
                 
           div.col-lg-6.col-md-6.col-sm-8.col-xs-8
-            div.row
+            div.row.latest-review-container
               img.img-fluid.latest-review-imgwrapper(src="/img/bigsqr.jpeg" alt="Responsive image")
-            div.row
-            div.row
+              div.row.latest-review.latest-review-row.latest-review-container
+                div.col-12
+                  | Big Square
+                  div.col-12
+                  
+                div.col-12
+                  | 2nd Floor, Yaya Centre Food Court 
+                div.col-8
+                  | Gigiri, Nairobi
+              div.row.latest-review.latest-review-row
+                div.col-12.latest-reviews-comments
+                  |Ann
+                  |Says
+                div.col-12
+                  | I loved the ambience . The sauces are life ! And so is the service .
+                div.col-12
+                  span.fa.fa-star.checked
+                  span.fa.fa-star.checked
+                  span.fa.fa-star.checked
+                  span.fa.fa-star
+                  span.fa.fa-star
+                div.col-12
+
+                   p
+                    
+                    if reviews
+                      if( reviews.length == 1) 
+                        .col-md-6(class="rating medium star-icon value-4 label-hidden")
+                          .star-container
+                            .star
+                              i.star-empty
+                              i.star-half
+                              i.star-filled
+                            .star
+                              i.star-empty
+                              i.star-half
+                              i.star-filled
+                            .star
+                              i.star-empty
+                              i.star-half
+                              i.star-filled
+                            .star
+                              i.star-empty
+                              i.star-half
+                              i.star-filled
+                            .star
+                              i.star-empty
+                              i.star-half
+                              i.star-filled
+                        small
+                          | #{reviews.length} Review
+                      else if( reviews.length > 1)
+                        span.glyphicon.glyphicon-cog.glyph.border
+                          div(class="rating medium star-icon value-4 label-hidden")
+                            .star-container
+                              .star
+                                i.star-empty
+                                i.star-half
+                                i.star-filled
+                              .star
+                                i.star-empty
+                                i.star-half
+                                i.star-filled
+                              .star
+                                i.star-empty
+                                i.star-half
+                                i.star-filled
+                              .star
+                                i.star-empty
+                                i.star-half
+                                i.star-filled
+                              .star
+                                i.star-empty
+                                i.star-half
+                                i.star-filled
+                        |  #{reviews.length} Reviews
+                      else
+                        span.glyphicon.glyphicon-cog.glyph.border
+                         |  Be the first to review     
+                      
+                         span.far.fa-clock.latest-review-clock
+                           | 2 weeks ago
 
               
       div.col-lg-4.col-md-4.col-sm-6.col-xs-6

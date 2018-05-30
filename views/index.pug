@@ -86,16 +86,6 @@ block content
                     | traventure
                   p.px-3
                     | Aenean pulvinar ac enimet posuere tincidunt velit Utin tincidunt
-        //more categories
-        div.row.morecategories#morecategories(style="display:none")
-          each category,i in categories
-           if(i > 8)
-            ul
-              div.col-3.col-sm-5.col-xs-5.align-categories
-                li 
-                  a(href="/categories")
-                   span.fas.fa-coffee
-                      =category.name
         // Latest review
         div.border-bottom
        
@@ -103,23 +93,23 @@ block content
           div.col-12.my-col
            h2.agile-title.h-order-category.text-center
              | Latest Reviews
-          div.col-lg-5.col-md-5.col-sm-8.col-xs-8.latest-review-leftcol.latest-review
+          div.col-lg-5.col-md-5.col-sm-12.col-xs-12.latest-review-leftcol.latest-review
               img.img-fluid.latest-review-imgwrapper(src="/img/bigsqr.jpeg" alt="Responsive image")
               div.latest-review.latest-review-row.latest-review-container
-                div.col-12
+                div.col-lg-12.col-md-12.col-sm-12.col-xs-12
                   | Big Square
-                  div.col-12
+                  div.col-lg-12.col-md-12.col-sm-12.col-xs-12
                   
-                div.col-12
+                div.col-lg-12.col-md-12.col-sm-12.col-xs-12
                   | 2nd Floor, Yaya Centre Food Court 
-                div.col-8
+                div.col-lg-12.col-md-12.col-sm-12.col-xs-12
                   | Gigiri, Nairobi
               div.row.latest-review.latest-review-row
-                div.col-12.latest-reviews-comments
+                div.col-lg-12.col-md-12.col-sm-12.col-xs-12.latest-reviews-comments
                   strong
                     |Ann
                     |Says
-                div.col-12
+                div.col-lg-12.col-md-12.col-sm-12.col-xs-12
                   i
                    | I loved the ambience . The sauces are life ! And so is the service .
                 div.col-12
@@ -191,33 +181,33 @@ block content
                            | 2 weeks ago
                           
                 
-          div.col-lg-5.col-md-5.col-sm-8.col-xs-8.latest-review
+          div.col-lg-5.col-md-5.col-sm-12.col-xs-12.latest-review
               img.img-fluid.latest-review-imgwrapper(src="/img/bigsqr.jpeg" alt="Responsive image")
               
               div.latest-review.latest-review-row.latest-review-container
-                div.col-12
+                div.col-lg-12.col-md-12.col-sm-12.col-xs-12
                   | Big Square
-                  div.col-12
+                  div.col-lg-12.col-md-12.col-sm-12.col-xs-12
                   
-                div.col-12
+                div.col-lg-12.col-md-12.col-sm-12.col-xs-12
                   | 2nd Floor, Yaya Centre Food Court 
-                div.col-8
+                div.col-lg-12.col-md-12.col-sm-12.col-xs-12
                   | Gigiri, Nairobi
               div.row.latest-review.latest-review-row
-                div.col-12.latest-reviews-comments
+                div.col-lg-12.col-md-12.col-sm-12.col-xs-12.latest-reviews-comments
                   strong
                     |Ann
                     |Says
-                div.col-12
+                div.col-lg-12.col-md-12.col-sm-12.col-xs-12
                   i
                     | I loved the ambience . The sauces are life ! And so is the service .
-                div.col-12
+                div.col-lg-12.col-md-12.col-sm-12.col-xs-12
                   span.fa.fa-star.checked
                   span.fa.fa-star.checked
                   span.fa.fa-star.checked
                   span.fa.fa-star
                   span.fa.fa-star
-                div.col-12
+                div.col-lg-12.col-md-12.col-sm-12.col-xs-12
 
                    p
                     
@@ -280,6 +270,17 @@ block content
                            | 2 weeks ago
                           
 
+        //more categories
+        div.row.morecategories#morecategories(style="display:none")
+          each category,i in categories
+           if(i > 8)
+            ul
+              div.col-3.col-sm-5.col-xs-5.align-categories
+                li 
+                  a(href="/categories")
+                   span.fas.fa-coffee
+                      =category.name
+       
               
       div.col-lg-4.col-md-4.col-sm-6.col-xs-6
         div

@@ -4,49 +4,88 @@ block content
   div.container-fluid
   div.main-banner
   #home.parallax-content-list.baner-content-listing-biz
-    .container
-     .row
+    .container-fluid.container-margin
+     .row.couponbg-color
+       .col-md-2.coupon-col-right
+         .div.h2.agile-title
+           i.fas.fa-bars
+         .div.col-md-12
+           .ul
+              .div
+                .li.coupon-category
+                  h5
+                   | Restaurants
+              .div
+                .li.coupon-category
+                  h5
+                   | Hotels
+              .div
+                .li.coupon-category
+                  h5
+                   | Kitchen Items
+              .div
+                .li.coupon-category
+                  h5
+                   | Entertainment
+              .div
+                .li.coupon-category
+                  h5
+                   | Fashion and Beauty
+              .div
+                .li.coupon-category
+                  h5
+                   | Motor
+              .div
+                .li.coupon-category
+                  h5
+                   | Advertising
+              .div
+                .li.coupon-category
+                  h5
+                   | Health Care
+              .div
+                .li.coupon-category
+                  h5
+                   | Financial Services
+
+       .col-md-7.coupon-col
+          img.img-fluid.coupon-img-carousel(src="/img/fries and burger.jpeg" alt="Responsive image")
        .col-md-3
-       .col-md-6
-       .col-md-3
+         h4
+          |  Selected Coupons
+          .mycoupons
      .row
-        .col-md-9
+        .col-md-12
           .row
             each coupon, i in coupons
               .col-md-3.coupon(id=coupon.id,class=(coupon.users.some(function(x) { return x.user_id == user.id })) ? 'couponclicked' : 'couponadd', rel=user.id)
-                    
-                .row
-                  .col-md-8
-                    h4(style='color: #08b4df;')
-                      = coupon.bizid.name
-                  .col-md-4
-                    if(coupon.bizid.photo)
-                      img.img-responsive(src="/uploads/thumbs/cover"+ coupon.bizid.photo,height="50%") 
-                h5
-                  strong
-                    =coupon.name
-                .row
-                  if(coupon.photo)
-                    img.img-responsive(src="/uploads/thumbs/coupons/"+ coupon.photo, style='width:100%') 
-                .row
-                  .col-md-12
+
+
+                .row.deal-main.coupon-list
+                  div.col-6
+                     div
+                       if(coupon.photo)
+                         img.img-fluid.img-responsive(src="/uploads/thumbs/coupons/"+ coupon.photo)
+                         p
+                           h5                   
+                            = coupon.bizid.name
+                  div.col-6  
                     p
-                      =coupon.description              
-                .row(style='border: 1px solid #d0cdcd;margin: 1px;border-radius: 5px;')
-                  .col-md-10(style="")
-                    a(href='#')
-                      strong
-                        h4
-                          =coupon.tagline
-                  .col-md-2.pull-right.fa-status
-                    if(coupon.users.some(function(x) { return x.user_id == user.id }))
-                      i(class="fa fa-window-close fa-2x" aria-hidden="true",style='display:block;text-align:right')
-                    else
-                      i(class="fa fa-plus-square fa-2x" aria-hidden="true",style='display:block;text-align:right')
-        .col-md-3
-          h4
-            |  Selected Coupons
-          .mycoupons
+                      h5.my-3
+                        =coupon.name
+                      p
+                        =coupon.description
+                  div
+                    p
+                      strike
+                        |Ksh. 660
+                      |Ksh. 460 
+                  div.topdeals-bottom
+                     button.btn.btn-outline-primary(type="button" )
+                       =coupon.tagline   
+                
+        
+          
     script(type='text/javascript').
       $(document).ready(function() {
         var cartCount = 0;

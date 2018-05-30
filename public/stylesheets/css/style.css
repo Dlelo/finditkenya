@@ -186,7 +186,7 @@ header h1 a span {
 .navbar-light .navbar-nav .nav-link {
 	font-weight: 600;
 	text-transform: capitalize;
-	color: #343a40;
+	color: #04045a;
 	letter-spacing: 1px;
 }
 
@@ -1774,7 +1774,7 @@ ul.portfolio-area li figure {
 	padding: 6px 10px;
 }
 .finditbutton {
-    padding: 6px 12px;
+    padding: 10px 12px;
     line-height: 1;
 	color: #c00000;
     text-align: center;
@@ -1792,6 +1792,15 @@ ul.portfolio-area li figure {
 }
 .coupons-btn{
 	margin-left:10em;
+}
+.coupons-btn-onscroll{
+	margin-left:0em;
+
+}
+.coupons-btn-col{
+	padding-left: 2px !important;
+	padding-right: 2px !important;
+	flex: 0 0 2%;
 }
 .coupons-text-color{
 	color: #fff;
@@ -1897,3 +1906,79 @@ ul.portfolio-area li figure {
   padding-left: 5em;
   padding-bottom: 1em;
 }
+.banner-texscroll{
+	
+    max-width: 100%;
+    padding-right:1em;
+    box-sizing: border-box;
+}
+.nav-bar-lightmenu{
+	padding: 0em;
+    position: absolute;
+    z-index: 999;
+    width: 100%;
+    left: 0;
+    background: rgba(255,255,255,0.9);
+}
+.flash-btn-menu{
+	padding: 11px 10px !important;
+}
+
+/* The sticky class to the second navbar when it reaches its scroll position */
+.sticky-navigation {
+  position: fixed;
+  z-index: 1;
+  top: -200px;
+  width: 100%;
+  display:block;
+  transition: top 0.01s;
+
+ }
+ .sticky {
+  position: fixed;
+  top: 0;
+  width: 100%
+}
+.sticky + .content {
+  padding-top: 102px;
+}
+.latest-review-imgwrapper{
+    width: 408px;
+    height: 300px;
+    position: relative;
+    margin: 0;
+    overflow: hidden;
+}
+.latest-review-leftcol{
+  padding-left:2px !important;
+ 
+}
+.checked {
+    color: orange;
+}
+  
+.latest-review-container{
+	background-color:#eee transparent;
+}
+.latest-review{
+	margin-left: 0px !important;
+	margin-right: 0px !important;
+	
+
+}
+.latest-review-row{
+	padding-top: 1em;
+	padding-bottom:1em;
+	
+}
+.latest-reviews-comments{
+	border-top:1px solid #eee;
+	
+}
+.latest-review-clock{
+	float:right;
+}
+.latest-review-end{
+	border-bottom:1px solid #eee;
+}
+

@@ -169,6 +169,7 @@ router.get('/', function(req, res, next) {
   var keywords = "Find Restaurants, professional services, Financial help, travel agencies, medical and legal help in Kenya on our platform Findit";
   var title = 'Find It Kenya | Find businesses and service providers in Kenya';
   Promise.all([categories, toprestaurants, topsearches, coupons, reviews ]).then(values => {
+    
     res.render('index', {
         title: title,
         categories: values[0],

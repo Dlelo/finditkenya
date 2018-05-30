@@ -1946,11 +1946,12 @@ ul.portfolio-area li figure {
     width: 408px;
     height: 300px;
     position: relative;
-    margin: 0 auto;
+    margin: 0;
     overflow: hidden;
 }
 .latest-review-leftcol{
-  padding-left:0px !important;
+  padding-left:2px !important;
+ 
 }
 .checked {
     color: orange;
@@ -1960,7 +1961,9 @@ ul.portfolio-area li figure {
 	background-color:#eee transparent;
 }
 .latest-review{
-	margin-left: 3px !important;
+	margin-left: 0px !important;
+	margin-right: 0px !important;
+	
 
 }
 .latest-review-row{
@@ -1969,10 +1972,13 @@ ul.portfolio-area li figure {
 	
 }
 .latest-reviews-comments{
-	border-top:1px solid #fff;
+	border-top:1px solid #eee;
+	
 }
 .latest-review-clock{
 	float:right;
 }
-
+.latest-review-end{
+	border-bottom:1px solid #eee;
+}
 

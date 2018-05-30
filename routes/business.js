@@ -219,11 +219,14 @@ router.post('/review',role.auth, function(req, res, next){
       }else{
         var review = new Review();
         review.message = req.body.review;
-        review.user_id = res.locals.user.username;
+        review.user_id = res.locals.user._id;
         review.bizid = req.body.bizid;
-        review.star = new Date();
+        review.star = req.body.rating;
+        review.created_at = new Date();
         review.save(function(err){
+          console.log(review);
           if(err){
+            console.log(err);
             req.flash("error_msg",err);
             res.redirect('/'+b.slug);
           }else{

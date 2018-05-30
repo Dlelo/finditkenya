@@ -48,13 +48,14 @@ block content
                   h5
                    | Financial Services
 
-       .col-md-7.coupon-col
+       .col-md-8.coupon-col
           img.img-fluid.coupon-img-carousel(src="/img/fries and burger.jpeg" alt="Responsive image")
-       .col-md-3
+       .col-md-2
          h4
           .coupon-title
             |  Selected Coupons
-          .mycoupons
+          div#selectedcoupons
+            .mycoupons
      .row
         .col-md-12
           .row
@@ -84,9 +85,28 @@ block content
                   div.topdeals-bottom
                      button.btn.btn-outline-primary(type="button" )
                        =coupon.tagline   
-                
+
+    //script for sticky coupons on scroll
+    script(type='text/javascript').
+      const nav = document.querySelector('#selectedcoupons');
+      const navTop = nav.offsetTop;
+
+      function stickyNavigation() {
+  
+        if (window.scrollY >= navTop) {
+        // nav offsetHeight = height of nav
+        document.body.style.paddingTop = nav.offsetHeight + 'px';
+        document.body.classList.add('fixed-nav');
+     
+        } else {
+        document.body.style.paddingTop = 0;
+        document.body.classList.remove('fixed-nav');
+        }
+      }
+
+       window.addEventListener('scroll', stickyNavigation);               
         
-          
+    //Script for selecting coupons       
     script(type='text/javascript').
       $(document).ready(function() {
         var cartCount = 0;

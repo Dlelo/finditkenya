@@ -1,41 +1,52 @@
 extends ../layout
 
 block content
+  div.container-fluid
+  div.main-banner
   #home.parallax-content-list.baner-content-listing-biz
     .container
-      .xxx
+      .div.xxx
         a.btn-gp-link(href="/auth/facebook")
-          button.btn-fb
-            i.fa.fa-fw.fa-facebook.pull-left(aria-hidden='true')          
-            |                 Login with Facebook
-        br
+          button.btn.btn-primary.facebook-google-btn
+            i.fas.fa-fw.fa-facebook.pull-left(aria-hidden='true')          
+            |                     Login with Facebook
+        .div
+           
         a.btn-gp-link(href="/auth/google")
-          button.btn-gp
-            i.fa.fa-fw.fa-google-plus.pull-left(aria-hidden='true')          
-            |                 Login with Google
-        br
-        .signup-or-separator
-          span.h6.signup-or-separator--text or
-          hr
+          button.btn.btn-danger.facebook-google-btn
+            i.fas.fa-fw.fa-google-plus.pull-left(aria-hidden='true')          
+            |                     Login with Google  
+        .div
+           
+        .div.signup-or-separator.login-form
+          span.h6.signup-or-separator--text
+          
         form(method="post", action="/login")
-          .form-group
-            input#exampleInputEmaillog.form-control-form(type='text', placeholder='username',name='username')
-          .form-group
-            input#exampleInputPasswordpas.form-control-form(type='password', placeholder='Password',name='password')
-          .row
-            .col-md-6
+           .form-group
+            .input-group
+              .input-group-addon
+                i.fas.fa-user  
+                 input#exampleInputEmaillog.form-control-form.form-control(type='text', placeholder='username',name='username')
+           .form-group
+            .input-group
+              .input-group-addon
+                i.fas.fa-lock  
+                 input#exampleInputPasswordpas.form-control-form(type='password', placeholder='Password',name='password')
+           .row
+            .col-md-6.clearfix
               .checkbox
-                label
+                label.pull-left.checkbox-inline
                   input(type='checkbox')
                   |  Remember me
             .col-md-4.col-md-offset-2
               a(href="/forgotpassword")
-                p.frgt-pswd(data-toggle='modal', data-dismiss='modal', data-target='#at-reset-pswd')  Forgot Password ?
-          button.btn-lgin(type='submit') Login
-          hr
-          .row
+                p.frgt-pswd.pull-right(data-toggle='modal', data-dismiss='modal', data-target='#at-reset-pswd')  Forgot Password ?
+           button.btn-lgin(type='submit') Login
+           hr
+           .row
             .col-md-6
-              p.ta-l Don't have an account ? 
+              p.ta-l.text-center.text-muted.small 
+                | Don't have an account ? 
             .col-md-4.col-md-offset-2
               a(href="/register")
                 .btn.btn-default Sign Up 

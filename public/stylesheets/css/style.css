@@ -2008,4 +2008,9 @@ padding-right:1px;
 .coupon-list{
 	margin-left: 2px;
 }
-
+.coupon-items{
+	min-height:320px;
+	padding-top:10px;
+    padding-left: 10px;
+    padding-right: 5px;
+}

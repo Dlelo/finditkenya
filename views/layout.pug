@@ -18,7 +18,8 @@ head
   //online-fonts
   link(href="//fonts.googleapis.com/css?family=Josefin+Sans:100,100i,300,300i,400,400i,600,600i,700,700i" rel="stylesheet")
   link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous")
-  
+  script(src='/javascripts/jquery.min.js')
+  script(src='/javascripts/notify.js')
   script(type='text/javascript').
       addEventListener("load", function () {
         setTimeout(hideURLbar, 0);
@@ -28,7 +29,7 @@ head
         }
   //custom template files
 body
-  ul.navbar-nav.ml-lg-auto.text-center#first-menu
+  ul.navbar-nav.ml-lg-auto.text-center
   //banner - only on homepage
   div.container-fluid
    header
@@ -48,80 +49,15 @@ body
       div#navbarSupportedContent.collapse.navbar-collapse
         ul.navbar-nav.ml-lg-auto.text-center
           li.nav-item.mr-3
-            a(href="/")
-              span.fas.fa-home.fas-menu
-               |  Home
-          //li.nav-item.mr-3
-            a(href="/coupons").nav-link
-              span.fas.fa-gift.fas-menu
-              |  Coupons
-          li.nav-item.mr-3
             a(href="#morecategories" role="button")
               button.btn.btn-light.background-cat(onclick="openCategories()" type="button")
                 span.fas.fa-th-list.fas-menu
                   |  Categories 
-                
-          if user
-            li.nav-item.mr-3                  
-              a(href='/dashboard')  
-                span.fas.fa-user.fas-menu
-                |  View Profile          
-          if user                
-            li.nav-item.mr-3
-              a(href='/logout') 
-                span.fas.fa-sign-out.fas-menu
-                |  Logout
-          else
-            li.nav-item.mr-3
-              button.btn.btn-primary.ml-lg-5.w3ls-btn(data-id="login" data-toggle="modal" aria-pressed="false" data-target="#exampleModal")
-                | Login
-  //sticky nav bar on scroll
-  //ul.navbar-nav.ml-lg-auto.text-center
-    //banner - only on homepage
-    div.container-fluid
-    header
-     //header before navigation items
-     nav.navbar.navbar-expand-lg.navbar-light.bg-gradient-secondary.pt-3#sticky-navigation
-      row.my-row
-      div.col-3.coupons-btn-col
-         ul.navbar-nav.ml-lg-auto.text-center
-           li.nav-item.mr-3
-            a.dropdown-toggle.nav-link(href="categories" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false")
-                span.fas.fa-th-list.fas-menu
-                  |  Categories 
-            div.dropdown-menu(aria-labelledby="navbarDropdown")
-                a.dropdown-item(href="categories.html")
-                  | Hospitality
-                a.dropdown-item(href="categories.html")
-                  | Offices
-                div.dropdown-divider
-                a.dropdown-item(href="categories.html")
-                a.dropdown-item(href="categories.html")
-                  | Others
-                                
-          
-      div.col-3.coupons-btn-col
-       button.btn.btn-light.coupons-btn-onscroll.flash-button.flash-btn-menu(type="button")
-        span.fas.fa-gift.coupons-text-color
-          | View deals
-      
-      div.col-md-6.col-sm-8.col-xm-8.my-col.banner-texscroll
-          form(method='get', action='/search')
-            div.input-group
-              span.input-group-addon#basic-addon1.finditbutton.input-group-addon.text-center
-               h5
-                |  Find
-              input.form-control.form-control-lg(type="text" class="form-control" placeholder="Restaurants, Events, Hotels, Holidays, Businesses, lawyers, Doctors..." aria-describedby="basic-addon1")
-      ul.navbar-nav.ml-lg-auto.text-center
           li.nav-item.mr-3
             a(href="/")
               span.fas.fa-home.fas-menu
                |  Home
-          //li.nav-item.mr-3
-            a(href="/coupons").nav-link
-              span.fas.fa-gift.fas-menu
-              |  Coupons
+         
           
                 
           if user
@@ -138,7 +74,7 @@ body
             li.nav-item.mr-3
               button.btn.btn-primary.ml-lg-5.w3ls-btn(data-id="login" data-toggle="modal" aria-pressed="false" data-target="#exampleModal")
                 | Login
-        
+  
       // site navbar
     //navbar
     // /.header
@@ -261,20 +197,28 @@ script(type='text/javascript').
                 document.getElementById("password2").setCustomValidity('');
             //empty string means no validation error
         }
-<!-- Script for sticky menu2 on scroll -->
-script(type='text/javascript').
-  window.onscroll = function() {scrollFunction()};
+<!-- Script for hiding search and showng it on the nav on scroll -->
 
-  function scrollFunction() {
-    if (document.body.scrollTop > 60 || document.documentElement.scrollTop > 60) {
-        document.getElementById("sticky-navigation").style.top = "200px";
-        navbar.classList.add("sticky")
+
+<!-- sript for sticky nav on scroll-->
+script(type='text/javascript').
+  const nav = document.querySelector('#navigation');
+  const navTop = nav.offsetTop;
+
+  function stickyNavigation() {
+  
+    if (window.scrollY >= navTop) {
+      // nav offsetHeight = height of nav
+      document.body.style.paddingTop = nav.offsetHeight + 'px';
+      document.body.classList.add('fixed-nav');
+     
     } else {
-        document.getElementById("sticky-navigation").style.top = "-100px";
-        navbar.classList.remove("sticky");
+      document.body.style.paddingTop = 0;
+      document.body.classList.remove('fixed-nav');
     }
   }
 
+  window.addEventListener('scroll', stickyNavigation);
 
 
 <!-- Script to open more categories-->

@@ -1400,6 +1400,7 @@ ul.portfolio-area li figure {
 /*background addbusiness*/
 .addbusiness{
 	background-color:#eee;
+    margin-right: 2em;
 }
 
 /* //error */
@@ -1925,22 +1926,17 @@ ul.portfolio-area li figure {
 }
 
 /* The sticky class to the second navbar when it reaches its scroll position */
-.sticky-navigation {
-  position: fixed;
-  z-index: 1;
-  top: -200px;
+nav {
   width: 100%;
-  display:block;
-  transition: top 0.01s;
-
- }
- .sticky {
-  position: fixed;
-  top: 0;
-  width: 100%
+  background-color:transparent;
+  margin: 0 auto;
 }
-.sticky + .content {
-  padding-top: 102px;
+
+/* applied after scroll height reached */
+.fixed-nav nav {
+  position: fixed;
+  top:0;
+  z-index: 1;
 }
 .latest-review-imgwrapper{
     width: 408px;
@@ -1982,3 +1978,8 @@ ul.portfolio-area li figure {
 	border-bottom:1px solid #eee;
 }
 
+.main-banner{
+	background-size: cover;
+    min-height: 15vh;
+    position: relative;
+}

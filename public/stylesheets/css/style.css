@@ -2014,3 +2014,7 @@ padding-right:1px;
     padding-left: 10px;
     padding-right: 5px;
 }
+.coupon-title{
+	color:#c00000;
+	text-emphasis: bold;
+}

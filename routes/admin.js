@@ -612,7 +612,7 @@ router.get('/coupons', role.auth, function(req, res){
 });
 
 router.get('/coupon/add', role.auth, function(req, res){
-	Business.find({
+	  Business.find({
       user_id : res.locals.user.username
     })
     .then(function(data){
@@ -621,7 +621,6 @@ router.get('/coupon/add', role.auth, function(req, res){
     .catch(function(err){
        console.log(err);
     });
-
 });
 
 router.get('/mycoupons', role.auth, function(req, res){

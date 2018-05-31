@@ -49,7 +49,49 @@ block content
                    | Financial Services
 
        .col-md-8.coupon-col
-          img.img-fluid.coupon-img-carousel(src="/img/fries and burger.jpeg" alt="Responsive image")
+          row.my-row
+             div#dem.carousel.slide(data-ride="carousel")
+               ul.carousel-indicators
+                 li.active(data-target="#demo" data-slide-to="0")
+                 li(data-target="#demo" data-slide-to="1")
+                 li(data-target="#demo" data-slide-to="2")
+  
+               div.carousel-inner
+                 div.carousel-item.active
+                    img.img-fluid.coupon-img-carousel(src="/img/fries and burger.jpeg" alt="Responsive image")
+                    div.carousel-caption
+                      h3
+                        |  Los Angeles
+                      p
+                        |  We had such a great time in LA!
+    
+                 div.carousel-item
+                    img(src="chicago.jpg" alt="Chicago")
+                    div.carousel-caption
+                      h3
+                        | Chicago
+                      p
+                        | Thank you, Chicago!
+      
+                 div.carousel-item
+                   img(src="ny.jpg" alt="New York")
+                   div.carousel-caption
+                      h3
+                        |  New York
+                      p
+                        | We love the Big Apple!
+   
+               a.carousel-control-prev(href="#demo" data-slide="prev")
+                 span.carousel-control-prev-icon
+  
+               a.carousel-control-next(href="#demo" data-slide="next")
+                 span.carousel-control-next-icon
+   
+        
+        
+              
+          
+        
        .col-md-2
          h4
           .coupon-title

@@ -961,7 +961,7 @@ span.w3-line {
 .slide {
 	
 	background-size: cover;
-	min-height: 500px;
+	min-height: 30px;
 }
 
 .slide-right {
@@ -1987,7 +1987,7 @@ nav {
 
 .main-banner{
 	background-size: cover;
-    min-height: 14vh;
+    min-height: 15vh;
 	position: relative;
 	border: 1px solid #eee;
 }
@@ -2101,3 +2101,38 @@ padding-right:1px;
 		margin-bottom:2rem;
 		font-size:20px;
 	}
+@media screen and (max-width: 736px) {
+	
+}
+@media screen and (max-width: 667px) {
+	
+}
+
+@media screen and (max-width: 640px) {
+	
+}
+
+@media screen and (max-width: 600px) {
+	
+}
+
+@media screen and (max-width: 568px) {
+	
+}
+
+@media screen and (max-width: 414px) {
+	
+}
+
+@media screen and (max-width: 384px) {
+	
+}
+
+@media screen and (max-width: 375px) {
+	
+}
+
+@media screen and (max-width: 320px) {
+	
+	
+}

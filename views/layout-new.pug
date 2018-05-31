@@ -1,0 +1,335 @@
+doctype html
+html
+head
+  meta(charset="utf-8")
+  title= title
+  meta(name="viewport" content="width=device-width, initial-scale=1")
+  meta(name="keywords" content=description)
+  
+  //custom theme files
+  link(href="stylesheets/css/bootstrap.css" type="text/css" rel="stylesheet" media="all")
+  link(href="stylesheets/css/style.css" type="text/css" rel="stylesheet" media="all")
+  
+  
+  //font-awesome icons
+  link(href="stylesheets/css/fontawesome/web-fonts-with-css/css/fontawesome-all.css" rel="stylesheet")
+  link(href="stylesheets/css/fontawesome-all.min.css" rel="stylesheet")
+  //star rating
+  link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+  //online-fonts
+  link(href="//fonts.googleapis.com/css?family=Josefin+Sans:100,100i,300,300i,400,400i,600,600i,700,700i" rel="stylesheet")
+  link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous")
+  script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js")
+  script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js")
+  script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
+  script(src='/javascripts/jquery.min.js')
+  script(src='/javascripts/bootstrapjs/sticky-kit.min.js')
+  script(src='/javascripts/notify.js')
+  
+  script(type='text/javascript').
+      addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+        }, false)
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+  //custom template files
+body
+  ul.navbar-nav.ml-lg-auto.text-center
+  //banner - only on homepage
+  div.container-fluid
+   header
+    //header before navigation items
+    nav.navbar.navbar-expand-lg.navbar-light.bg-gradient-secondary.pt-3
+      h1
+        a.navbar-brand.text-white(href="/")
+          em
+            img(src="/img/find-it.png").img-fluid
+      a(href="/coupons")
+       button.btn.btn-light.coupons-btn.flash-button(type="button")
+        span.fas.fa-gift.coupons-text-color
+          | View deals
+      //site navigation 
+  
+      button.navbar-toggler.ml-md-auto(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+          aria-expanded="false" aria-label="Toggle navigation")
+            span.navbar-toggler-icon
+      div#navbarSupportedContent.collapse.navbar-collapse
+        ul.navbar-nav.ml-lg-auto.text-center
+          li.nav-item.mr-3
+            a(href="#morecategories" role="button")
+              button.btn.btn-light.background-cat(onclick="openCategories()" type="button")
+                span.fas.fa-th-list.fas-menu 
+                |  Categories 
+          li.nav-item.mr-3
+            a(href="/")
+              span.fas.fa-home.fas-menu 
+              |  Home
+         
+          
+                
+          if user
+            li.nav-item.mr-3                  
+              a(href='/dashboard')  
+                span.fas.fa-user.fas-menu
+                |  View Profile          
+          if user                
+            li.nav-item.mr-3
+              a(href='/logout') 
+                span.fas.fa-sign-out.fas-menu
+                |  Logout
+          else
+            li.nav-item.mr-3
+              button.btn.btn-primary.ml-lg-5.w3ls-btn(data-id="login" data-toggle="modal" aria-pressed="false" data-target="#exampleModal")
+                | Login
+  
+      // site navbar
+    //navbar
+    // /.header
+  .errors.container
+      if errors
+        each error in errors
+          .alert.alert-danger
+            = error
+      
+      if message
+        .alert.alert-info
+          = message
+      if success_msg.length
+        .alert.alert-success 
+          = success_msg
+      if error_msg.length
+        .alert.alert-danger 
+          = error_msg
+      if error.length
+        .alert.alert-danger 
+          = error
+  //block content for the header
+  block content
+  //registration and login form
+  div(tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true").modal.fade#exampleModal
+    div(role="document").modal-dialog
+      div.modal-content
+        div.modal-header
+          h5#exampleModalLabel.modal-title
+            | Login
+          button(type="button" data-dismiss="modal" aria-label="Close").close
+            span(aria-hidden="true")
+               | &times;
+        div.modal-body
+          
+          div.form-group
+            a.btn-gp-link(href="/auth/facebook")
+              button.btn-fb.form-control.btn.btn-primary.facebook-google-btn
+                i.fa.fa-fw.fa-facebook.pull-left(aria-hidden='true')
+                strong
+                 | 								Login with Facebook
+          
+          div.form-group
+            a.btn-gp-link(href="/auth/google")
+              button.btn-gp.form-control.btn.btn-danger.facebook-google-btn
+                i.fa.fa-fw.fa-google-plus.pull-left(aria-hidden='true')
+                strong
+                 | 								Login with Google
+              
+          form(method="post", action="/login")
+            div.form-group
+              label.col-form-label(for="recipient-name")
+                | Username
+              input.form-control#recipient-name(type="text" placeholder="Username" name="Name" required="")
+            div.form-group
+              label.col-form-label(for="passwords")
+                | Password
+              input.form-control#recipient-name(type="password" placeholder="Password" name="password" required="")
+            div.right-w3l
+              input.form-control(type="submit" value="Log in")
+            div.row.sub-w3l.my-3
+              div.col.sub-agile
+                input.brand1(type="checkbox" value="")
+                label.remem-text(for="brand1")
+                  span
+                    | Remember me?
+              div.col.forgot-w3l.text-right
+                a.remem-text(href="#")
+                  | Forgot Password?
+            p.text-center.dont-do.remem-text
+              | Don't have an account?
+              a.remem-text(ref="#" data-toggle="modal" data-target="#exampleModal1")
+                |   Register
+  div.modal.fade#exampleModal1(tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true")
+    div.modal-dialog(role="document")
+      div.modal-content
+        div.modal-header
+          h5.modal-title(id="exampleModalLabel")
+              | Register
+              div.form-group
+          button.close(type="button" data-dismiss="modal" aria-label="Close")
+              span(aria-hidden="true")
+               | &times;
+        div.modal-body
+           form(method="post", action="/login")
+              div.form-group
+                label.col-form-label(for="recipient-name")
+                  | User Name
+                input.form-control#recipient-rname(type="text" class="form-control" placeholder=" " name="Name" required="")
+
+              div.form-group
+                label.col-form-label(for="password1")
+                  | Password
+                input.form-control#password1(type="password" placeholder=" " name="Password" required="")
+              div.form-group
+                label.col-form-label(for="password2")
+                  | Confirm Password
+                input.form-control#password2(type="password" placeholder=" " name="Confirm Password" required="")
+              div.sub-w3l
+              div.sub-agile
+                input#brand2(type="checkbox" value="")
+                label.mb-3(for="brand2")
+                 span.accept-terms
+                   | I Accept to the Terms & Conditions
+              div.right-w3l
+                input.form-control(type="submit" value="Register")
+              
+  
+  
+<!--bootstrap 4 javascript-->
+
+script(src='/javascripts/bootstrapjs/jquery.prettyPhoto.js')
+script(src='/javascripts/bootstrapjs/jquery.quicksand.js')
+script(src='/javascripts/bootstrapjs/jquery-1.7.2.js')
+script(src='/javascripts/bootstrapjs/jquery-ui.js')
+script(src='/javascripts/bootstrapjs/script.js')
+
+
+<!-- //js -->
+script(src='/javascripts/bootstrapjs/jquery-2.2.3.min.js')
+<!-- script for password match -->
+script(type='text/javascript').
+        window.onload = function () {
+            document.getElementById("password1").onchange = validatePassword;
+            document.getElementById("password2").onchange = validatePassword;
+        }
+
+        function validatePassword() {
+            var pass2 = document.getElementById("password2").value;
+            var pass1 = document.getElementById("password1").value;
+            if (pass1 != pass2)
+                document.getElementById("password2").setCustomValidity("Passwords Don't Match");
+            else
+                document.getElementById("password2").setCustomValidity('');
+            //empty string means no validation error
+        }
+<!-- Script for hiding search and showng it on the nav on scroll -->
+
+
+<!-- script for sticky nav on scroll-->
+script(type='text/javascript').
+  const nav = document.querySelector('#navigation');
+  const navTop = nav.offsetTop;
+
+  function stickyNavigation() {
+  
+    if (window.scrollY >= navTop) {
+      // nav offsetHeight = height of nav
+      document.body.style.paddingTop = nav.offsetHeight + 'px';
+      document.body.classList.add('fixed-nav');
+     
+    } else {
+      document.body.style.paddingTop = 0;
+      document.body.classList.remove('fixed-nav');
+    }
+  }
+
+  window.addEventListener('scroll', stickyNavigation);
+
+
+<!-- Script to open more categories-->
+script(type="text/javascript").
+  function openCategories() {
+    var x = document.getElementById("morecategories");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+  }
+   
+<!-- script for password match -->
+
+<!-- Responsiveslides -->
+script(src='/javascripts/bootstrapjs/responsiveslides.min.js')
+script(type='text/javascript').
+        // You can also use "$(window).load(function() {"
+        $(function () {
+            // Slideshow 4
+            $("#slider3").responsiveSlides({
+                auto: true,
+                pager: true,
+                nav: false,
+                speed: 500,
+                namespace: "callbacks",
+                before: function () {
+                    $('.events').append("<li>before event fired.</li>");
+                },
+                after: function () {
+                    $('.events').append("<li>after event fired.</li>");
+                }
+            });
+
+        });
+    
+
+<!-- // Responsiveslides -->
+
+<!-- start-smooth-scrolling -->
+script(src="js/move-top.js")
+script(src='/javascripts/bootstrapjs/easing.js')
+
+<!--Start of Tawk.to Script-->
+script.
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/5b0e9fa610b99c7b36d47662/default';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+
+script(type='text/javascript').
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+
+                $('html,body').animate({
+                    scrollTop: $(this.hash).offset().top
+                }, 1000);
+            });
+        });
+   
+<!-- //end-smooth-scrolling -->
+<!-- smooth-scrolling-of-move-up -->
+script(type='text/javascript').
+        $(document).ready(function () {
+            /*
+            var defaults = {
+                containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear' 
+            };
+            */
+
+            $().UItoTop({
+                easingType: 'easeOutQuart'
+            });
+
+        });
+script(src='/javascripts/bootstrapjs/SmoothScroll.min.js')
+<!-- //smooth-scrolling-of-move-up -->
+<!-- Bootstrap core JavaScript-->
+<!-- Placed at the end of the document so the pages load faster -->
+script(src='/javascripts/bootstrapjs/bootstrap.js')
+  

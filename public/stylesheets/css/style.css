@@ -2123,10 +2123,66 @@ padding-right:1px;
 }
 
 @media screen and (max-width: 568px) {
+	.latest-review {
+      margin-left: 0px !important;
+      margin-right: 0px !important;
+	}
+	.col-sm-12{
+		padding-right: 0px !important;
+        padding-left: 0px !important;
+	}
+	.col-xm-12{
+		padding-right: 0px !important;
+        padding-left: 0px !important;
+	}
+	.latest-review-leftcol {
+    padding-left: 0px !important;
+   }
+   .latest-review-imgwrapper {
+    width: 300px;
+    height: 200px;
+   
+	}
+	.latest-review-imgwrapper {
+    width: 300px;
+    height: 200px;
+   
+    }
+	
+}
+
 	
 }
 
 @media screen and (max-width: 414px) {
+	.latest-review {
+      margin-left: 0px !important;
+      margin-right: 0px !important;
+	}
+	.col-sm-12{
+		padding-right: 0px !important;
+        padding-left: 0px !important;
+	}
+	.col-xm-12{
+		padding-right: 0px !important;
+        padding-left: 0px !important;
+	}
+	.latest-review-leftcol {
+    padding-left: 0px !important;
+   }
+   .latest-review-imgwrapper {
+    width: 300px;
+    height: 200px;
+   
+	}
+	.latest-review-imgwrapper {
+    width: 300px;
+    height: 200px;
+   
+    }
+	
+}
+
 	
 }
 
@@ -2160,7 +2216,7 @@ padding-right:1px;
 }
 
 	
-}
+
 
 @media screen and (max-width: 375px) {
 	.latest-review {

@@ -8,19 +8,12 @@ html
       http://www.templatemo.com/tm-506-tinker
     title= title
     meta(name='description', content=description)
+    meta(name='keywords', content=keywords)
     meta(name='viewport', content='width=device-width, initial-scale=1')
     meta(name="google-site-verification", content="CoXsTMnoIpW_aQqFyEqaFZ4cKbYSrSwUXQca9u_6mMg")
     link(href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800', rel='stylesheet')
     link(href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900', rel='stylesheet')
     link(rel='apple-touch-icon', href='apple-touch-icon.png')
-    //start bootstrap 4 css
-    link(rel='stylesheet', href='/stylesheets/css/bootstrap.css')
-    link(rel='stylesheet', href='/stylesheets/css/style.css')
-    link(rel='stylesheet', href='/stylesheets/css/bootstrap.css')
-    link(rel='stylesheet', href='/stylesheets/css/fontawesome-all.min.css')
-    link(rel='stylesheet', href='/stylesheets/css/jquery-ui.css')
-    link(rel='stylesheet', href='/stylesheets/css/prettyPhoto.css')
-    //end boostrap 4 css
     link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
     link(rel='stylesheet', href='/stylesheets/bootstrap-theme.min.css')
     link(rel='stylesheet', href='/stylesheets/fontAwesome.css')
@@ -196,7 +189,7 @@ html
             .modal-header
               button.close(type='button', data-dismiss='modal', aria-label='Close')
                 span(aria-hidden='true') ×
-            .modal-body
+            .modal-body 
                p
                 | Sign up with 
                 //- a(href='#') Facebook
@@ -215,7 +208,7 @@ html
                 .form-group
                   input#password.form-control-form(type='password', placeholder='Password', name='password')
                 .form-group
-                  input#password.form-control-form(type='password', placeholder='Confirm Password', name='cpassword')
+                  input#cpassword.form-control-form(type='password', placeholder='Confirm Password', name='cpassword')
                 .row
                   .col-md-12
                     .checkbox
@@ -252,7 +245,7 @@ html
                 p
                   | Enter the email address associated with your account, and we’ll email you a link to reset your password.
                 .form-group
-                  input#exampleInputEmaillog.form-control-form(type='email', placeholder='Email', name="email")
+                  input#exampleInputEmaillo.form-control-form(type='email', placeholder='Email', name="email")
             .modal-footer
       // MODAL HELP
       #at-helping.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
@@ -264,7 +257,7 @@ html
             .modal-body
               form
                 .form-group
-                  input#exampleInputEmaillog.form-control-form(type='text', placeholder='Enter Your Searches ')
+                  input#exampleInputEmaill.form-control-form(type='text', placeholder='Enter Your Searches ')
             .modal-footer
               .row
                 button.btn-gst(data-toggle='modal', data-dismiss='modal') Send areset Link
@@ -296,19 +289,17 @@ script(src="/javascripts/bootstrap-datetimepicker.min.js")
 script(src='/javascripts/bootstrap-select.min.js')
 script(src='/javascripts/notify.js')
 
-<!--bootstrap 4 javascript-->
-script(src='/javascripts/bootstrapjs/bootstrap.js')
-script(src='/javascripts/bootstrapjs/easing.js')
-script(src='/javascripts/bootstrapjs/jquery.prettyPhoto.js')
-script(src='/javascripts/bootstrapjs/jquery.quicksand.js')
-script(src='/javascripts/bootstrapjs/jquery-1.7.2.js')
-script(src='/javascripts/bootstrapjs/jquery-2.2.3.min.js')
-script(src='/javascripts/bootstrapjs/jquery-ui.js')
-script(src='/javascripts/bootstrapjs/move-top.js')
-script(src='/javascripts/bootstrapjs/responsiveslides.min.js')
-script(src='/javascripts/bootstrapjs/script.js')
-script(src='/javascripts/bootstrapjs/SmoothScroll.min.js')
-
+script(type='text/javascript').
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/5b0e9fa610b99c7b36d47662/default';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+  
 script(type='text/javascript').
   const mq = window.matchMedia( "(min-width: 450px)" );
   $('.phonenofake').click(function() {

@@ -13,11 +13,11 @@ block content
         form(method="post", action="/login")
            .form-group
             .input-group
-              .input-group-addon
+              .input-group-addon.form-control
                 input#exampleInputEmaillog.form-control-form.form-control(type='text', placeholder='Username',name='username')
            .form-group
             .input-group
-              .input-group-addon 
+              .input-group-addon.form-control
                 input#exampleInputPasswordpas.form-control-form.form-control(type='password', placeholder='Password',name='password')
            .row
             .col-md-5.clearfix
@@ -42,13 +42,13 @@ block content
           span.h6.signup-or-separator--text
             
         a.btn-gp-link(href="/auth/facebook")
-          button.btn.btn-primary.facebook-google-btn
+          button.btn.btn-primary.facebook-google-btn.form-control
             i.fas.fa-fw.fa-facebook.pull-left(aria-hidden='true')          
             |                     Login with Facebook
         .div
            
         a.btn-gp-link(href="/auth/google")
-          button.btn.btn-danger.facebook-google-btn
+          button.btn.btn-danger.facebook-google-btn.form-control
             i.fas.fa-fw.fa-google-plus.pull-left(aria-hidden='true')          
             |                     Login with Google  
         

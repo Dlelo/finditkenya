@@ -111,6 +111,21 @@ body
             span(aria-hidden="true")
                | &times;
         div.modal-body
+          
+          div.form-group
+            a.btn-gp-link(href="/auth/facebook")
+              button.btn-fb.form-control.btn.btn-primary.facebook-google-btn
+                i.fa.fa-fw.fa-facebook.pull-left(aria-hidden='true')
+                strong
+                 | 								Login with Facebook
+          
+          div.form-group
+            a.btn-gp-link(href="/auth/google")
+              button.btn-gp.form-control.btn.btn-danger.facebook-google-btn
+                i.fa.fa-fw.fa-google-plus.pull-left(aria-hidden='true')
+                strong
+                 | 								Login with Google
+              
           form(method="post", action="/login")
             div.form-group
               label.col-form-label(for="recipient-name")
@@ -125,22 +140,22 @@ body
             div.row.sub-w3l.my-3
               div.col.sub-agile
                 input.brand1(type="checkbox" value="")
-                label.text-white(for="brand1")
+                label.remem-text(for="brand1")
                   span
                     | Remember me?
               div.col.forgot-w3l.text-right
-                a.text-white(href="#")
+                a.remem-text(href="#")
                   | Forgot Password?
-            p.text-center.dont-do.text-white
+            p.text-center.dont-do.remem-text
               | Don't have an account?
-              a.text-white(ref="#" data-toggle="modal" data-target="#exampleModal1")
-                | Register
+              a.remem-text(ref="#" data-toggle="modal" data-target="#exampleModal1")
+                |   Register
   div.modal.fade#exampleModal1(tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true")
     div.modal-dialog(role="document")
       div.modal-content
         div.modal-header
           h5.modal-title(id="exampleModalLabel")
-              | Login
+              | Register
               div.form-group
           button.close(type="button" data-dismiss="modal" aria-label="Close")
               span(aria-hidden="true")
@@ -151,25 +166,24 @@ body
                 label.col-form-label(for="recipient-name")
                   | User Name
                 input.form-control#recipient-rname(type="text" class="form-control" placeholder=" " name="Name" required="")
-              div.form-group
-                label.col-form-label(for="recipient-email")
-                  | Email
-                input.form-control#recipient-email(type="email" placeholder=" " name="Email"  required="")
+
               div.form-group
                 label.col-form-label(for="password1")
                   | Password
                 input.form-control#password1(type="password" placeholder=" " name="Password" required="")
               div.form-group
                 label.col-form-label(for="password2")
+                  | Confirm Password
                 input.form-control#password2(type="password" placeholder=" " name="Confirm Password" required="")
               div.sub-w3l
               div.sub-agile
                 input#brand2(type="checkbox" value="")
                 label.mb-3(for="brand2")
-                 span
+                 span.accept-terms
                    | I Accept to the Terms & Conditions
               div.right-w3l
                 input.form-control(type="submit" value="Register")
+              
   
   
 <!--bootstrap 4 javascript-->

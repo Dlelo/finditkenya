@@ -659,7 +659,7 @@ p.sub-para {
 	pointer-events: auto;
 	background: url() no-repeat center #fff;
 	background-size: cover;
-	border: 10px solid #171988;
+	border: 1px solid #a3a4c3;
 	border-radius: 0.3rem;
 	outline: 0;
 	color: #fff;
@@ -672,9 +672,9 @@ p.sub-para {
 }
 
 .right-w3l input[type="submit"] {
-	background: #cd2029;
+	background: #dcd7d7;
 	border: none;
-	color: #fff;
+	color: #04045a;
 	font-size: 1em;
 	text-transform: uppercase;
 	font-weight: 600;
@@ -686,15 +686,19 @@ p.sub-para {
 .col-form-label {
 	text-transform: uppercase;
 	font-weight: 600;
-	color: #fff;
+	color: #04045a;
 	font-size: 13px;
 	letter-spacing: 1px;
 }
 
 .modal-header {
-	background: #cd2029;
-	color: #fff;
+	background: #eee;
+	color: #04045a;
 	border: none;
+	float:center;
+}
+.accept-terms{
+	color:#c00000;
 }
 
 .modal-body {
@@ -703,7 +707,10 @@ p.sub-para {
 	-ms-flex: 1 1 auto;
 	flex: 1 1 auto;
 	padding: 1rem;
-	background: rgba(0, 0, 0, 0.46);
+	background: #f7f7f7;
+}
+.remem-text{
+	color:#776f6f;
 }
 
 /* //modal */
@@ -2081,7 +2088,8 @@ padding-right:1px;
 		margin-left:30%;
 		margin-right:20%;
 		background: #f7f7f7;
-        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+		box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+	    
 	}
 	.facebook-google-btn{
 		padding-top:0.8rem;

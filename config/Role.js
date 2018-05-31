@@ -13,7 +13,6 @@ function ensureAuthenticated(req, res, next){
 
 function ensureAdmin(req, res, next){
 	if(req.isAuthenticated()){
-		console.log(req.user);
 		if(req.user.role == 1){
 			return next();
 		}else{

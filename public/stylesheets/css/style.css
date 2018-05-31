@@ -2072,12 +2072,12 @@ padding-right:1px;
         z-index: 1;
 	}   
 	.xxx{
-		padding-top: 20px;
-		padding-right:20px;
+		padding-top: 15px;
+		padding-right:10px;
 		padding-left:20px;
 		max-width:400px;
 		max-height:60%;
-		margin-top:30px;
+		margin-top:20px;
 		margin-left:30%;
 		margin-right:20%;
 		background: #f7f7f7;

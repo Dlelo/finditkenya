@@ -6,39 +6,26 @@ block content
   #home.parallax-content-list.baner-content-listing-biz
     .container
       .div.xxx
-        a.btn-gp-link(href="/auth/facebook")
-          button.btn.btn-primary.facebook-google-btn
-            i.fas.fa-fw.fa-facebook.pull-left(aria-hidden='true')          
-            |                     Login with Facebook
-        .div
-           
-        a.btn-gp-link(href="/auth/google")
-          button.btn.btn-danger.facebook-google-btn
-            i.fas.fa-fw.fa-google-plus.pull-left(aria-hidden='true')          
-            |                     Login with Google  
-        .div
-           
-        .div.signup-or-separator.login-form
-          span.h6.signup-or-separator--text
+        div.col-12.my-col
+           h3.agile-title.h-order-category.text-center
+             | Login
           
         form(method="post", action="/login")
            .form-group
             .input-group
               .input-group-addon
-                i.fas.fa-user  
-                 input#exampleInputEmaillog.form-control-form.form-control(type='text', placeholder='username',name='username')
+                input#exampleInputEmaillog.form-control-form.form-control(type='text', placeholder='Username',name='username')
            .form-group
             .input-group
-              .input-group-addon
-                i.fas.fa-lock  
-                 input#exampleInputPasswordpas.form-control-form(type='password', placeholder='Password',name='password')
+              .input-group-addon 
+                input#exampleInputPasswordpas.form-control-form.form-control(type='password', placeholder='Password',name='password')
            .row
-            .col-md-6.clearfix
+            .col-md-5.clearfix
               .checkbox
                 label.pull-left.checkbox-inline
-                  input(type='checkbox')
-                  |  Remember me
-            .col-md-4.col-md-offset-2
+                  input.input-group-addon(type='checkbox')
+                  |    Remember me
+            .col-md-5.col-md-offset-2
               a(href="/forgotpassword")
                 p.frgt-pswd.pull-right(data-toggle='modal', data-dismiss='modal', data-target='#at-reset-pswd')  Forgot Password ?
            button.btn-lgin(type='submit') Login
@@ -49,4 +36,21 @@ block content
                 | Don't have an account ? 
             .col-md-4.col-md-offset-2
               a(href="/register")
-                .btn.btn-default Sign Up 
+                .btn.btn-default Sign Up
+        hr
+        .div.signup-or-separator.login-form
+          span.h6.signup-or-separator--text
+            
+        a.btn-gp-link(href="/auth/facebook")
+          button.btn.btn-primary.facebook-google-btn
+            i.fas.fa-fw.fa-facebook.pull-left(aria-hidden='true')          
+            |                     Login with Facebook
+        .div
+           
+        a.btn-gp-link(href="/auth/google")
+          button.btn.btn-danger.facebook-google-btn
+            i.fas.fa-fw.fa-google-plus.pull-left(aria-hidden='true')          
+            |                     Login with Google  
+        
+             
+        

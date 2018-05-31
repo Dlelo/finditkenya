@@ -1984,7 +1984,10 @@ nav {
 .latest-review-end{
 	border-bottom:1px solid #eee;
 }
-
+.parallax-content-list{
+	margin-top: 13vh;
+	border-top: 1px solid #eee;
+}
 .main-banner{
 	background-size: cover;
     min-height: 15vh;

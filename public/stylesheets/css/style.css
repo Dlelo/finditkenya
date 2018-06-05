@@ -2354,9 +2354,10 @@ padding-right:1px;
 }
 .cat-background{
 	background-color: #eee;
-	margin-top:20px;
+	margin-top:10px;
 	margin-bottom:2px;
-	margin-right:2px;
+	margin-right:1px;
+	margin-left:1px;
 	padding-top:2px;
 	padding-bottom:2px;
 	border-radius: 5px;
@@ -2370,4 +2371,13 @@ padding-right:1px;
 }
 .cat-items-bottom{
 padding-bottom:5px;
+}
+.sub-catbag{
+	background-color: #eee;
+	
+
+}
+.dropdown-menu{
+   margin-top: 5rem !important;
+   margin-right: 1rem !important;
 }

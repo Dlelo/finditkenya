@@ -26,7 +26,7 @@ block content
             button.btn.btn-default.form-control.dropdown-toggle(type='button', data-toggle='dropdown')
               | Filter Sub Categories  
               span.caret
-            ul.dropdown-menu(style="width: -webkit-fill-available;")
+            ul.dropdown-menu.sub-catbag(style="width: -webkit-fill-available;")
               if features 
                 each feature in features
                   each item in feature.subcategories

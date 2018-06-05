@@ -2346,3 +2346,9 @@ padding-right:1px;
 .btn-forget{
 	margin-left:10px;
 }
+.cat-image {
+    vertical-align: middle;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}

@@ -8,7 +8,7 @@ block content
       .col-md-3
           if subcategory
               .panel-heading.category
-                .text-left
+                .text-left.cat-items
                   a(href="/subcategory/"+subcategory)
                     strong  
                       =subcategory
@@ -16,14 +16,14 @@ block content
           if subcategory
             if features.length
               .panel.panel-warning
-                .panel-body.black
+                .panel-body.black.cat-items
                   strong Filter   
-                     .panel-heading.category
+                     .panel-heading.category.cat-items
                        a(href="/nearby/"+features[0].name+"/"+subcategory)
                         strong   
                           |  Nearby
           .dropdown.open.dropdown-category
-            button.btn.btn-default.form-control.dropdown-toggle(type='button', data-toggle='dropdown')
+            button.btn.btn-cat.btn-default.form-control.dropdown-toggle(type='button', data-toggle='dropdown')
               | Filter Sub Categories  
               span.caret
             ul.dropdown-menu.sub-catbag(style="width: -webkit-fill-available;")

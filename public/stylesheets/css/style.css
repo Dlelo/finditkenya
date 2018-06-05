@@ -2354,7 +2354,7 @@ padding-right:1px;
 }
 .cat-background{
 	background-color: #eee;
-	margin-top:10px;
+	margin-top:5px;
 	margin-bottom:2px;
 	margin-right:1px;
 	margin-left:1px;
@@ -2363,7 +2363,7 @@ padding-right:1px;
 	border-radius: 5px;
 }
 .sub-list{
-	padding-left:10px;
+	padding-left:20px;
 }
 .cat-items-top{
 	padding-top:5px;
@@ -2374,10 +2374,18 @@ padding-bottom:5px;
 }
 .sub-catbag{
 	background-color: #eee;
+	min-width: 12.5rem !important;
 	
 
 }
 .dropdown-menu{
-   margin-top: 5rem !important;
+   margin-top: 4.1rem !important;
    margin-right: 1rem !important;
+}
+.btn-cat{
+	width: 95%;
+	margin-left:2px;
+}
+.cat-items{
+padding-left:10px;
 }

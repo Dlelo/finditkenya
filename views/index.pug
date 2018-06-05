@@ -101,12 +101,12 @@ block content
           each review, i in reviews
            if i<2
             div.col-lg-5.col-md-5.col-sm-12.col-xs-12.latest-review.latest-review-row.latest-review-container
-              img.img-fluid.latest-review-imgwrapper(src="/img/bigsqr.jpeg" alt="Responsive image")
+              div.col-lg-12.col-md-12.col-sm-12.col-xs-12
+                h4.agile-title.h-order-category.text-center
+                  =review.bizid.name
+
+              img.img-fluid.latest-review-imgwrapper(src="/uploads/"+ review.bizid.photo)
               
-              div.col-lg-12.col-md-12.col-sm-12.col-xs-12
-                 =review.bizid.name
-              div.col-lg-12.col-md-12.col-sm-12.col-xs-12
-                  
               div.col-lg-12.col-md-12.col-sm-12.col-xs-12
                  =review.bizid.description 
               div.col-lg-12.col-md-12.col-sm-12.col-xs-12

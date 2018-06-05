@@ -31,26 +31,30 @@ block content
                 each feature in features
                   each item in feature.subcategories
                     .panel-heading.category
-                      li.text-center
+                      li.text-left.sub-list
                         a(href="/subcategory/"+item.name)
                           strong  
                             =item.name
       .col-md-9
         each biz in businesses
-          .row
-            .col-md-4
+          .row.cat-background
+            .col-md-3
               a(href="/"+biz.slug)
-                if(biz.photo)
-                img.cat-image(src="/uploads/"+ biz.photo, height="200px")
-                br
-                h6.text-left
+                h6.text-left.cat-items-top
                   =biz.name
                   if (biz.paid == true)
                     small                      
                       span.fa.fa-check-circle.strong(style="color:#2862ec;")
-                    if (typeof(biz.description) !== 'undefined' && biz.description.length > 150)
-                    p.padding.text-left  !{biz.description.substr(0, 150) + '..... <strong style="color:#d44457">Read More</strong>'}
-            .col-md-4                 
+                
+                if(biz.photo)
+                img.cat-image.cat-items-bottom(src="/uploads/"+ biz.photo, height="200px")
+            .col-md-3
+              if (typeof(biz.description) !== 'undefined' && biz.description.length > 150)
+                    p.padding.text-left  !{biz.description.substr(0, 150)+ '..... <strong style="color:#d44457">Read More</strong>'}
+                
+                
+                    
+            .col-md-3                 
                 div
                   p 
                     span.glyphicon.glyphicon-cog.text-success.glyph.border 
@@ -123,7 +127,7 @@ block content
                     else
                       span.glyphicon.glyphicon-cog.glyph.border
                         |  Be the first to review
-            .col-md-4      
+            .col-md-3     
                 if(biz.facebook)
                   br
                   p 

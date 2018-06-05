@@ -2352,3 +2352,22 @@ padding-right:1px;
     height: 150px;
     border-radius: 50%;
 }
+.cat-background{
+	background-color: #eee;
+	margin-top:20px;
+	margin-bottom:2px;
+	margin-right:2px;
+	padding-top:2px;
+	padding-bottom:2px;
+	border-radius: 5px;
+}
+.sub-list{
+	padding-left:10px;
+}
+.cat-items-top{
+	padding-top:5px;
+	
+}
+.cat-items-bottom{
+padding-bottom:5px;
+}

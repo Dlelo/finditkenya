@@ -22,7 +22,6 @@ head
   script(src='/javascripts/jquery.min.js')
   script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js")
   script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js")
-  script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
   link(rel='stylesheet', href='/stylesheets/lightbox.css')
   link(rel='stylesheet', href='/stylesheets/bootstrap-select.min.css')
   link(rel='stylesheet', href='/stylesheets/easy-autocomplete.min.css')
@@ -202,7 +201,6 @@ body
 script(src='/javascripts/bootstrapjs/jquery.prettyPhoto.js')
 script(src='/javascripts/bootstrapjs/jquery.quicksand.js')
 script(src='/javascripts/bootstrapjs/jquery-ui.js')
-script(src='/javascripts/bootstrapjs/script.js')
 script(src='/javascripts/jquery.easy-autocomplete.min.js')
 script(src="/javascripts/lightgallery.min.js")
 script(src="/javascripts/moment.min.js")
@@ -231,25 +229,6 @@ script(type='text/javascript').
 
 
 <!-- script for sticky nav on scroll-->
-script(type='text/javascript').
-  const nav = document.querySelector('#navigation');
-  /*const navTop = nav.offsetTop;
-
-  function stickyNavigation() {
-  
-    if (window.scrollY >= navTop) {
-      // nav offsetHeight = height of nav
-      document.body.style.paddingTop = nav.offsetHeight + 'px';
-      document.body.classList.add('fixed-nav');
-     
-    } else {
-      document.body.style.paddingTop = 0;
-      document.body.classList.remove('fixed-nav');
-    }
-  }
-
-  window.addEventListener('scroll', stickyNavigation);*/
-
 
 <!-- Script to open more categories-->
 script(type="text/javascript").
@@ -272,7 +251,7 @@ script(src='/javascripts/bootstrapjs/responsiveslides.min.js')
 <!-- // Responsiveslides -->
 
 <!-- start-smooth-scrolling -->
-script(src='/javascripts/bootstrapjs/easing.js')
+//script(src='/javascripts/bootstrapjs/easing.js')
 
 <!--Start of Tawk.to Script-->
 script.
@@ -295,7 +274,7 @@ script(src='/javascripts/bootstrapjs/SmoothScroll.min.js')
 script(src='/javascripts/bootstrapjs/bootstrap.js')
   
 script(type='text/javascript').
-  (function($) {
+  $(function() {
     //DONUT STORIES
     
     
@@ -498,7 +477,7 @@ script(type='text/javascript').
     $("#search2").easyAutocomplete(options);
     $("#search2" ).focus();
     $("#search2").on('keyup', function(){
-      alert("clicked");
+      //alert("clicked");
       });
     // scroll to top action
     $('.scroll-top').on('click', function(event) {
@@ -528,5 +507,5 @@ script(type='text/javascript').
     };
 
     }
-  })(jQuery);
+  });
   

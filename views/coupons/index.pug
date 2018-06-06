@@ -131,11 +131,13 @@ block content
       
     //Script for selecting coupons       
     script(type='text/javascript').
-      (function($) {
+      //(function($) {
+      $(function(){
             //script for sticky coupons on scroll
         $("#coupons-sticky").stick_in_parent();
         var cartCount = 0;
-        $(document).on('click', ".couponadd", function(event) {
+        $(document).on('click', '.couponadd', function(event) {
+          //alert("clicked");
           var couponid = $(this).attr("id");
           $(this).addClass('couponclicked');
           $(this).removeClass('couponadd');

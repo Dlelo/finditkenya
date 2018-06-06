@@ -8,47 +8,23 @@ block content
        .col-md-2.coupon-col-right
          .div.h2.agile-title
            i.fas.fa-bars.fa-coupons
-             .row
-                
-                    .div.col-md-12
-                      .ul
-                        .div.catarrow-border
-                        .div
-                          .li.coupon-category
-                            h5
-                            | Restaurants
-                        .div
-                          .li.coupon-category
-                            h5
-                            | Hotels
-                        .div
-                          .li.coupon-category
-                            h5
-                            | Kitchen Items
-                        .div
-                          .li.coupon-category
-                            h5
-                            | Entertainment
-                        .div
-                          .li.coupon-category
-                            h5
-                            | Fashion and Beauty
-                        .div
-                          .li.coupon-category
-                            h5
-                            | Motor
-                        .div
-                          .li.coupon-category
-                            h5
-                            | Advertising
-                        .div
-                          .li.coupon-category
-                            h5
-                            | Health Care
-                        .div
-                          .li.coupon-category
-                            h5
-                            | Financial Services
+             
+           .div.coupon-category
+              .row
+                    each category, i in categories
+                      if(i<11)
+                        .div.col-md-12
+                          .ul
+                            
+                            .div
+                              .li.category-list
+                                h6
+                                  =category.name
+                    
+              .div
+                .li.category-list
+                  h6
+                      | More Categories ...
 
        .col-md-8.coupon-col
           row.my-row

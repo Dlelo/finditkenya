@@ -725,10 +725,11 @@ router.get('/biz/analytics/:bizid', function(req, res, next){
 });
 
 router.get('/coupons',role.auth, function(req, res){
-  Coupons.find({
-    status: true
-  })
+    Coupons.find({
+      status: true
+    })
     .populate('bizid')
+    .sort([['order', 1],['star', -1]])
     .then(function(data){
         res.render('coupons/index', {title: "Coupons", coupons: data});
     })

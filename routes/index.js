@@ -729,7 +729,7 @@ router.get('/coupons',role.auth, function(req, res){
       status: true
     })
     .populate('bizid')
-    .sort([['order', 1],['star', -1]])
+    .sort([['order', -1],['star', -1]])
     .then(function(data){
         res.render('coupons/index', {title: "Coupons", coupons: data});
     })

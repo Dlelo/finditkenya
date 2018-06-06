@@ -79,11 +79,11 @@ block content
 
               
             
-     .row.deal-main.coupon-items
+     .row.deal-main
         each coupon, i in coupons
           if(i>2) 
             .col-md-3
-              row.deal-main
+              row.deal-main.deal-coup.coupon-items
                 div.col-6
                   div
                     img.deal-img-wrapper.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt="Responsive image")

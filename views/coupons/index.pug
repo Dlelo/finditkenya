@@ -98,7 +98,9 @@ block content
                   h5.my-3
                       =coupon.name
                   p
-                      =coupon.description
+                    if (typeof(coupon.description) !== 'undefined' && coupon.description.length > 120)
+                    p.padding.text-left  !{coupon.description.substr(0, 120)+ '..... <strong style="color:#d44457">Read More</strong>'}
+                     
               
           
 

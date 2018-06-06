@@ -259,8 +259,11 @@ header h1 a span {
 
 .banner-text {
 	max-width: 100%;
-    padding: 5vw 0 1vW 5vw;
+    padding: 5vw 0 10vW 15vw;
     box-sizing: border-box;
+}
+#hide-search{
+  padding: 5vw 0 10vW 15vw;
 }
 .banner-text-top{
     align-content: right;

@@ -18,8 +18,9 @@ block content
                             
                             .div
                               .li.category-list
-                                h6
-                                  =category.name
+                                a(href="/category/"+category.name)
+                                  h6
+                                    =category.name
                     
               .div
                 .li.category-list
@@ -82,26 +83,22 @@ block content
         each coupon, i in coupons
           if(i>2) 
             .col-md-3
-              .row.coupon-list
-            
+              row.deal-main
                 div.col-6
-                  if(coupon.photo)
-                    img.img-fluid.img-responsive(src="/uploads/thumbs/coupons/"+ coupon.photo)
+                  div
+                    img.deal-img-wrapper.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt="Responsive image")
                     p
                       h5                   
-                        = coupon.bizid.name
-                    
+                      = coupon.bizid.name
+                  div.col-md-12.col-lg-12.col-sm-12.col-xs-12
+                    button.btn.btn-outline-primary(type="button" )
+                      =coupon.tagline
                 div.col-6  
                   p
-                    h5.my-3
+                  h5.my-3
                       =coupon.name
-                    p
+                  p
                       =coupon.description
-              
-                  div.topdeals-bottom
-                    button.btn.btn-outline-primary(type="button" )
-                      =coupon.tagline   
-
               
           
 

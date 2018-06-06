@@ -47,7 +47,10 @@ block content
                       span.fa.fa-check-circle.strong(style="color:#2862ec;")
                 
                 if(biz.photo)
-                img.cat-image.cat-items-bottom(src="/uploads/"+ biz.photo, height="200px")
+                  img.cat-image.cat-items-bottom(src="/uploads/"+ biz.photo, height="200px")
+                else
+                  p
+                    | No image
             .col-md-3
               if (typeof(biz.description) !== 'undefined' && biz.description.length > 150)
                     p.padding.text-left  !{biz.description.substr(0, 150)+ '..... <strong style="color:#d44457">Read More</strong>'}

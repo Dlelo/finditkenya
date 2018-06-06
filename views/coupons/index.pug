@@ -61,16 +61,16 @@ block content
                     div.carousel-item.active
                         img.coupons-img(src="/uploads/" + coupon.photo)
                         div.carousel-caption
-                          button.btn.btn-outline-primary(type="button" )
-                          =coupon.tagline
+                          button.btn.btn-danger.flash-coupon(type="button" )
+                           =coupon.tagline
                
                 else if (i>0 && i<3)
                   div.carousel-inner
                     div.carousel-item
-                        img(src="/uploads/thumbs/coupons/" + coupon.photo)
+                        img.coupons-img(src="/uploads/" + coupon.photo)
                         div.carousel-caption
-                          button.btn.btn-outline-primary(type="button" )
-                          =coupon.tagline
+                          button.btn.btn-danger.flash-coupon(type="button" )
+                            =coupon.tagline
         
                   
    

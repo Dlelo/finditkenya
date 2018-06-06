@@ -54,31 +54,25 @@ block content
                  li.active(data-target="#demo" data-slide-to="0")
                  li(data-target="#demo" data-slide-to="1")
                  li(data-target="#demo" data-slide-to="2")
-  
-               div.carousel-inner
-                 div.carousel-item.active
-                    img(src="/img/fries and burger.jpeg" alt="Responsive image" width="850" height="350")
-                    div.carousel-caption
-                      h3
-                        |  Los Angeles
-                      p
-                        |  We had such a great time in LA!
-    
-                 div.carousel-item
-                    img(src="/img/fries and burger.jpeg" alt="Responsive image" width="850" height="350")
-                    div.carousel-caption
-                      h3
-                        | Chicago
-                      p
-                        | Thank you, Chicago!
-      
-                 div.carousel-item
-                   img(src="/img/fries and burger.jpeg" alt="Responsive image" width="850" height="350")
-                   div.carousel-caption
-                      h3
-                        |  New York
-                      p
-                        | We love the Big Apple!
+
+               each coupon, i in coupons
+                if (i==0)
+                  div.carousel-inner
+                    div.carousel-item.active
+                        img(src="/uploads/" + coupon.photo)
+                        div.carousel-caption
+                          button.btn.btn-outline-primary(type="button" )
+                          =coupon.tagline
+               
+                else if (i>0 && i<3)
+                  div.carousel-inner
+                    div.carousel-item
+                        img(src="/uploads/thumbs/coupons/" + coupon.photo)
+                        div.carousel-caption
+                          button.btn.btn-outline-primary(type="button" )
+                          =coupon.tagline
+        
+                  
    
                a.carousel-control-prev(href="#demo" data-slide="prev")
                  span.carousel-control-prev-icon
@@ -103,29 +97,27 @@ block content
             each coupon, i in coupons
               .col-md-3.coupon(id=coupon.id,class=(coupon.users.some(function(x) { return x.user_id == user.id })) ? 'couponclicked' : 'couponadd', rel=user.id)
 
-
+              
                 .row.deal-main.coupon-list.coupon-items
-                  div.col-6
-                    div
-                      if(coupon.photo)
-                        img.img-fluid.img-responsive(src="/uploads/thumbs/coupons/"+ coupon.photo)
-                        p
-                          h5                   
-                            = coupon.bizid.name
-                  div.col-6  
-                    p
-                      h5.my-3
-                        =coupon.name
+                  if (i>2)
+                    div.col-6
+                      div
+                        if(coupon.photo)
+                          img.img-fluid.img-responsive(src="/uploads/thumbs/coupons/"+ coupon.photo)
+                          p
+                            h5                   
+                              = coupon.bizid.name
+                          
+                    div.col-6  
                       p
-                        =coupon.description
-                  div
-                    p
-                      strike
-                        |Ksh. 660
-                      |Ksh. 460 
-                  div.topdeals-bottom
-                    button.btn.btn-outline-primary(type="button" )
-                      =coupon.tagline   
+                        h5.my-3
+                          =coupon.name
+                        p
+                          =coupon.description
+                  
+                    div.topdeals-bottom
+                      button.btn.btn-outline-primary(type="button" )
+                        =coupon.tagline   
 
 
       

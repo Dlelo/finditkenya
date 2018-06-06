@@ -2004,7 +2004,7 @@ nav {
 }
 .coupons-img{
 	height:300px;
-	width:1000px;
+	min-width:1100px;
 }
 .coupon-col{
 	padding-left:0px;

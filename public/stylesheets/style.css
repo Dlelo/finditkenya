@@ -12,13 +12,13 @@
 	background-color: #1DB9EC;
 	border-color:transparent!important;
 }
-.header-tp .bdr li:nth-child(odd) 
+.header-tp .bdr li:nth-child(odd)
 {
 	border-left: 1px solid rgba(255, 255, 255, 0.44);
 
 }
 
-.header-tp .bdr li:nth-child(even) 
+.header-tp .bdr li:nth-child(even)
 {
 	border-right: 1px solid rgba(255, 255, 255, 0.44);
 	border-left: 1px solid rgba(255, 255, 255, 0.44);
@@ -69,11 +69,11 @@
 	background-color: #0D4459;
 	border-color: #0D4459;
 	color: #fff;
-}     
+}
 .nomargin{
   margin-top: 0px;
   margin-bottom: 0px;
-} 
+}
 a.findit {
   color: #4d4d4d;
   text-decoration: none;
@@ -119,12 +119,12 @@ div.scrollmenu a:hover {
 {
 	margin-top:15px;
 	margin-right:15px;
-}    
+}
 
 .header-tp
 {
     margin: 10px 0px;
-}    
+}
 
 /*######################## LOGIN/SIGNUP PAGE START ##################################*/
 .at-login-form .btn-fb,.btn-fb
@@ -237,9 +237,9 @@ div.scrollmenu a:hover {
 
 .at-login-form .signup-or-separator hr {
     margin: -25px auto 10px;
-    width: 100%;	
+    width: 100%;
  }
- 
+
 .form-control-form {
     display: block;
     width: 100%;
@@ -259,7 +259,7 @@ div.scrollmenu a:hover {
     -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     margin-top: 3px;
-} 
+}
 .form-control-form-select {
     display: block;
     width: 100%;
@@ -278,7 +278,7 @@ div.scrollmenu a:hover {
     -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     margin-top: 3px;
-}   
+}
  .at-login-form .frgt-pswd
 {
 	margin: 5px 0 10px;
@@ -380,13 +380,13 @@ fieldset, label { margin: 0; padding: 0; }
 
 /****** Style Star Rating Widget *****/
 
-.ratings { 
+.ratings {
   border: none;
   float: left;
 }
 
-.ratings > input { display: none; } 
-.ratings > label:before { 
+.ratings > input { display: none; }
+.ratings > label:before {
   margin: 5px;
   font-size: 1.25em;
   font-family: FontAwesome;
@@ -394,14 +394,14 @@ fieldset, label { margin: 0; padding: 0; }
   content: "\f005";
 }
 
-.ratings > .half:before { 
+.ratings > .half:before {
   content: "\f089";
   position: absolute;
 }
 
-.ratings > label { 
-  color: #ddd; 
- float: right; 
+.ratings > label {
+  color: #ddd;
+ float: right;
 }
 
 /***** CSS Magic to Highlight Stars on Hover *****/
@@ -413,7 +413,7 @@ fieldset, label { margin: 0; padding: 0; }
 .ratings > input:checked + label:hover, /* hover current star when changing rating */
 .ratings > input:checked ~ label:hover,
 .ratings > label:hover ~ input:checked ~ label, /* lighten current selection */
-.ratings > input:checked ~ label:hover ~ label { color: #FFED85;  } 
+.ratings > input:checked ~ label:hover ~ label { color: #FFED85;  }
 
 .col-centered{
     float: none;
@@ -469,10 +469,10 @@ fieldset, label { margin: 0; padding: 0; }
 	padding:10px;
 }
 
-/****** 
+/******
 
 
-CARD DESIGN 
+CARD DESIGN
 
 
 ********/
@@ -636,7 +636,7 @@ CARD DESIGN
 .thumbnail img{
     width:200px;
     height:150px;
-}    
+}
 
 .thumbnail:hover img {
     -webkit-transform: scale(1.4);
@@ -687,12 +687,12 @@ CARD DESIGN
 @media (max-width: 480px){
   .addbusiness{
     box-sizing: border-box;
-    
+
   }
 }
 .package ul li::before {content: " ✔ ";padding: 5px; color: red}
 .input-group-addon {
-  border: 0px solid #ccc; 
+  border: 0px solid #ccc;
 }
 /***********
 
@@ -965,7 +965,7 @@ input[type="radio"].package:checked + #packagelabel {
   font-weight:bold;
   font-family:Arial, sans-serif;
   text-shadow:-1px -1px -1px #fff, 1px 1px 1px #00f;
-  
+
 }
 .starburst4 span {
   display:block;
@@ -1143,4 +1143,16 @@ input[type="radio"].package:checked + #packagelabel {
 }
 .topdeals-bottom{
   padding-bottom: 1em;
+}
+
+.easy-autocomplete{
+  width:100% !important
+}
+
+.easy-autocomplete input{
+  width: 100%;
+}
+
+.form-wrapper{
+  width: 500px;
 }

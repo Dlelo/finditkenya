@@ -725,16 +725,19 @@ router.get('/biz/analytics/:bizid', function(req, res, next){
 });
 
 router.get('/coupons',role.auth, function(req, res){
-    Coupons.find({
+    var coupons = Coupons.find({
       status: true
     })
     .populate('bizid')
-    .sort([['order', -1],['star', -1]])
-    .then(function(data){
-        res.render('coupons/index', {title: "Coupons", coupons: data});
-    })
-    .catch(function(err){
-         console.log(err);
+    .sort([['order', -1],['star', -1]]);
+    var categories = Category.find({approved: true}).sort([['order', 1]]);
+    Promise.all([coupons,categories]).then(values => {
+        res.render('coupons/index', {
+            title: 'Coupons on Findit',
+            coupons: values[0],
+            categories: values[1],
+            host: req.get('host')
+        });
     });
 });
 

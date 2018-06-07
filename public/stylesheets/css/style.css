@@ -2172,7 +2172,7 @@ padding-right:1px;
 
 @media screen and (max-width: 568px) {
 	.btn-coupon {
-    margin-top: 3vh;
+	margin-top: 3vh !important;
      }
 	.latest-review {
       margin-left: 0px !important;
@@ -2223,7 +2223,7 @@ padding-right:1px;
 
 @media screen and (max-width: 414px) {
 	.btn-coupon {
-    margin-top: 3vh;
+	margin-top: 3vh !important;
      }
 	.latest-review {
       margin-left: 0px !important;
@@ -2275,7 +2275,7 @@ padding-right:1px;
 
 @media screen and (max-width: 384px) {
 	.btn-coupon {
-    margin-top: 3vh;
+    margin-top: 3vh !important;
      }
 	.latest-review {
       margin-left: 0px !important;
@@ -2328,7 +2328,7 @@ padding-right:1px;
 
 @media screen and (max-width: 375px) {
 	.btn-coupon {
-    margin-top: 3vh;
+    margin-top: 3vh !important;
      }
 	.latest-review {
       margin-left: 0px !important;
@@ -2378,7 +2378,7 @@ padding-right:1px;
 
 @media screen and (max-width: 320px) {
 	.btn-coupon {
-    margin-top: 3vh;
+    margin-top: 3vh !important;
      }
 	.latest-review {
       margin-left: 0px !important;

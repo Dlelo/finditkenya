@@ -1556,7 +1556,7 @@ ul.portfolio-area li figure {
 		font-size: 1.4rem;
 	}
 	.coupon-items {
-	height: 55vh;
+	height: 55vh !important;
 	}
 	.banner-text {
 		padding: 10vw 3vw 1vw 4vw;
@@ -1592,7 +1592,7 @@ ul.portfolio-area li figure {
 		padding: 0.2rem 0.3rem;
 	}
 	.coupon-items {
-	height: 55vh;
+	height: 55vh !important;
 	}
 	.navbar-toggler-icon {
 		width: 1.3em;
@@ -1665,7 +1665,7 @@ ul.portfolio-area li figure {
 		font-size: 0.8em;
 	}
 	.coupon-items {
-	height: 55vh;
+	height: 55vh !important;
 	}
 	footer h2 a span {
 		font-size: 11px;
@@ -1706,7 +1706,7 @@ ul.portfolio-area li figure {
 		left: 9%;
 	}
 	.coupon-items {
-	height: 55vh;
+	height: 55vh !important;
 	}
 	.slide {
 		min-height: 245px;
@@ -1734,7 +1734,7 @@ ul.portfolio-area li figure {
 		padding: 1em 1em;
 	}
 	.coupon-items {
-	height: 55vh;
+	height: 55vh !important;
 	}
 	.slider-info h3 {
 		letter-spacing: 0.5px;
@@ -2060,7 +2060,7 @@ padding-right:1px;
 	padding-top:5px;
 }
 .coupon-items{
-	height:45vh;
+	height:49vh;
 	padding-top:10px;
     padding-left: 10px;
     padding-right: 5px;
@@ -2241,7 +2241,7 @@ padding-right:1px;
     width: 100vw !important;
      }
 	.btn-coupon {
-	margin-top: 3vh !important;
+	margin-top: 8vh !important;
      }
 	.latest-review {
       margin-left: 0px !important;
@@ -2302,7 +2302,7 @@ padding-right:1px;
     width: 100vw !important;
      }
 	.btn-coupon {
-    margin-top: 3vh !important;
+    margin-top: 8vh !important;
      }
 	.latest-review {
       margin-left: 0px !important;
@@ -2352,7 +2352,6 @@ padding-right:1px;
 
 	
 
-
 @media screen and (max-width: 375px) {
 	#hide-search {
     padding: 5vw 0 2vW 5vw;
@@ -2364,7 +2363,7 @@ padding-right:1px;
     width: 100vw !important;
      }
 	.btn-coupon {
-    margin-top: 3vh !important;
+    margin-top: 8vh !important;
      }
 	.latest-review {
       margin-left: 0px !important;
@@ -2420,7 +2419,7 @@ padding-right:1px;
     width: 78% !important;
        }
 	.btn-coupon {
-    margin-top: 3vh !important;
+    margin-top: 8vh !important;
 	 }
 	.coupons-img {
     width: 100vw !important;

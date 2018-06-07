@@ -2024,8 +2024,8 @@ nav {
 
 }
 .coupons-img{
-	height:298px;
-	min-width: 980px;
+	height: 45vh;
+    width: 63vw;
 }
 .coupon-col{
 	padding-left:0px;
@@ -2060,7 +2060,7 @@ padding-right:1px;
 	padding-top:5px;
 }
 .coupon-items{
-	height:43vh;
+	height:45vh;
 	padding-top:10px;
     padding-left: 10px;
     padding-right: 5px;
@@ -2502,4 +2502,7 @@ padding-left:10px;
     position: relative;
     margin: 0 auto;
     overflow: hidden;
+}
+.btn-coupon{
+	margin-top:7vh;
 }

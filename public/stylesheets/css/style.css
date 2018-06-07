@@ -1555,6 +1555,9 @@ ul.portfolio-area li figure {
 	h3.agile-title {
 		font-size: 1.4rem;
 	}
+	.coupon-items {
+	height: 55vh;
+	}
 	.banner-text {
 		padding: 10vw 3vw 1vw 4vw;
 	}
@@ -1587,6 +1590,9 @@ ul.portfolio-area li figure {
 @media screen and (max-width: 480px) {
 	.navbar-toggler {
 		padding: 0.2rem 0.3rem;
+	}
+	.coupon-items {
+	height: 55vh;
 	}
 	.navbar-toggler-icon {
 		width: 1.3em;
@@ -1658,6 +1664,9 @@ ul.portfolio-area li figure {
 	footer h2 a {
 		font-size: 0.8em;
 	}
+	.coupon-items {
+	height: 55vh;
+	}
 	footer h2 a span {
 		font-size: 11px;
 		letter-spacing: 5px;
@@ -1696,6 +1705,9 @@ ul.portfolio-area li figure {
 	.captn {
 		left: 9%;
 	}
+	.coupon-items {
+	height: 55vh;
+	}
 	.slide {
 		min-height: 245px;
 	}
@@ -1721,6 +1733,9 @@ ul.portfolio-area li figure {
 	.navbar-light {
 		padding: 1em 1em;
 	}
+	.coupon-items {
+	height: 55vh;
+	}
 	.slider-info h3 {
 		letter-spacing: 0.5px;
 	}
@@ -1742,6 +1757,7 @@ ul.portfolio-area li figure {
 	.navbar-light {
 		padding: 1em 0.8em;
 	}
+	
 	a.navbar-brand {
 		font-size: 0.5em;
 		margin-right: 0;
@@ -2044,7 +2060,7 @@ padding-right:1px;
 	padding-top:5px;
 }
 .coupon-items{
-	height:80vh;
+	height:43vh;
 	padding-top:10px;
     padding-left: 10px;
     padding-right: 5px;

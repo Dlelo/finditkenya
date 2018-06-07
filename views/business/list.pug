@@ -50,7 +50,7 @@ block content
                   img.cat-image.cat-items-bottom(src="/uploads/"+ biz.photo, height="200px")
                 else
                   p
-                    | No image
+                    | No image Available
             .col-md-3
               if (typeof(biz.description) !== 'undefined' && biz.description.length > 150)
                     p.padding.text-left  !{biz.description.substr(0, 150)+ '..... <strong style="color:#d44457">Read More</strong>'}
@@ -65,13 +65,13 @@ block content
                       =  biz.subcategory
                 div
                   p 
-                    span.glyphicon.glyphicon-globe.text-success.glyph.border 
+                    span.glyphicon.glyphicon-globe.text-success.glyph
                     a(href=biz.website,target="_blank")
                         |  website
                     if(biz.phone)
                 div
                   p 
-                    span.glyphicon.glyphicon-earphone.text-info.glyph.border 
+                    span.glyphicon.glyphicon-earphone.text-info.glyph.fas.fa-phone-volume 
                         |  #{biz.phone}
                 div
                   p
@@ -128,30 +128,30 @@ block content
                       small
                         |  #{biz.reviews.length} Reviews
                     else
-                      span.glyphicon.glyphicon-cog.glyph.border
+                      span.glyphicon.glyphicon-cog.glyph
                         |  Be the first to review
             .col-md-3     
                 if(biz.facebook)
                   br
                   p 
                     a.findit(href="http://"+biz.facebook,target="_blank",style="color:#2862ec;")
-                      span.fa.fa-facebook-f.text-info.glyph.border 
+                      span.fab.fa-facebook-f.text-info.glyph 
                         |  Facebook
                 if(biz.twitter)
                   br
                   p 
                     a.findit(href="http://"+biz.twitter,target="_blank",style="color:#2862ec;")
-                        span.fa.fa-twitter.text-info.glyph.border 
+                        span.fab.fa-twitter.text-info.glyph
                           |  Twitter
                 if(biz.instagram)
                   br
                   p 
                     a.findit(href="http://"+biz.instagram,target="_blank",style="color:#2862ec;")
-                        span.fa.fa-instagram.text-info.glyph.border 
+                        span.fab.fa-instagram.text-info.glyph 
                           |  Instagram
                 if(biz.youtube)
                   br
                   p 
                     a.findit(href="http://"+biz.youtube,target="_blank",style="color:#2862ec;")
-                        span.fa.fa-youtube.text-info.glyph.border 
+                        span.fab.fa-youtube.text-info.glyph.border 
                           |  Youtube

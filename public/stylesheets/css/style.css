@@ -1993,8 +1993,8 @@ nav {
   z-index: 1;
 }
 .latest-review-imgwrapper{
-    width: 408px;
-    height: 300px;
+    width: 90vw;
+    height: 30vh;
     position: relative;
     margin: 0;
     overflow: hidden;
@@ -2009,6 +2009,7 @@ nav {
   
 .latest-review-container{
 	background-color:#eee transparent;
+	box-shadow: 0 1px 3px 0 rgba(0,0,0,.25);
 }
 .latest-review{
 	margin-left: 20px !important;
@@ -2534,9 +2535,9 @@ padding-right:1px;
 }
 .cat-image {
     vertical-align: middle;
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
+    width: 100%;
+    height: 20vh;
+    border-radius: 2%;
 }
 .cat-background{
 	background-color: #fff;
@@ -2646,4 +2647,7 @@ padding-left:10px;
 }
 .btn-coupon{
 	margin-top:7vh;
+}
+.deal-home{
+	background-color: #eee;
 }

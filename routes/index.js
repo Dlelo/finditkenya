@@ -835,7 +835,7 @@ router.get('/coupons/:cat',role.auth, function(req, res){
         res.render('coupons/index', {
             title: 'Coupons on Findit',
             coupons: values[0],
-            categories: values[1]
+            categories: values[1],
             host: req.get('host')
         });
     });

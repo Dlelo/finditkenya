@@ -74,15 +74,14 @@ block content
      .row
         .col-md-12
           .row
-            each coupon, i in coupons
-              .col-md-3.coupon(id=coupon.id,class=(coupon.users.some(function(x) { return x.user_id == user.id })) ? 'couponclicked' : 'couponadd', rel=user.id)
+            
 
               
             
      .row.deal-main
         each coupon, i in coupons
           if(i>2) 
-            .col-md-3
+            .col-md-3.coupon(id=coupon.id,class=(coupon.users.some(function(x) { return x.user_id == user.id })) ? 'couponclicked' : 'couponadd', rel=user.id)
               row.deal-main.deal-coup.coupon-items
                 div.col-6
                   div

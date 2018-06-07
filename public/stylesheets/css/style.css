@@ -1517,6 +1517,9 @@ ul.portfolio-area li figure {
 	}
 }
 @media screen and (max-width: 667px) {
+	.banner-text-top{	
+    padding-top: 20vh;
+	}
 	.slide {
 		min-height: 430px;
 	}
@@ -1533,12 +1536,18 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 640px) {
+	.banner-text-top{	
+    padding-top: 20vh;
+	}
 	.banner {
-		height: 55vw;
+		height: 60vh;
 	}
 }
 
 @media screen and (max-width: 600px) {
+	.banner-text-top{	
+    padding-top: 20vh;
+	}
 	.slide {
 		min-height: 386px;
 		background-size: contain;
@@ -1549,6 +1558,9 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 568px) {
+	.banner-text-top{	
+    padding-top: 20vh;
+	}
 	.slide {
 		min-height: 366px;
 	}
@@ -1556,14 +1568,12 @@ ul.portfolio-area li figure {
 		font-size: 1.4rem;
 	}
 	.coupon-items {
-	height: 55vh !important;
+	height: 60vh !important;
 	}
 	.banner-text {
 		padding: 10vw 3vw 1vw 4vw;
 	}
-	.banner-text-top{
-
-	}
+	
 	.slide-sub h5 {
 		font-size: 1.5em;
 	}
@@ -1588,11 +1598,14 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 480px) {
+	.banner-text-top{	
+    padding-top: 20vh;
+	}
 	.navbar-toggler {
 		padding: 0.2rem 0.3rem;
 	}
 	.coupon-items {
-	height: 55vh !important;
+	height: 60vh !important;
 	}
 	.navbar-toggler-icon {
 		width: 1.3em;
@@ -1613,7 +1626,7 @@ ul.portfolio-area li figure {
 		letter-spacing: 1px;
 	}
 	.banner {
-		height: 70vw;
+		height: 60vh;
 	}
 	.captn {
 		left: 17%;
@@ -1649,11 +1662,14 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 414px) {
+	.banner-text-top{	
+    padding-top: 20vh;
+	}
 	.slider-info h3 {
 		font-size: 1.5em;
 	}
 	.banner {
-		min-height: 250px;
+		height: 6ovh;
 	}
 	.banner-text {
 		padding-top: 6vw;
@@ -1665,7 +1681,7 @@ ul.portfolio-area li figure {
 		font-size: 0.8em;
 	}
 	.coupon-items {
-	height: 55vh !important;
+	height: 60vh !important;
 	}
 	footer h2 a span {
 		font-size: 11px;
@@ -1702,11 +1718,14 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 384px) {
+	.banner-text-top{	
+    padding-top: 20vh;
+	}
 	.captn {
 		left: 9%;
 	}
 	.coupon-items {
-	height: 55vh !important;
+	height: 60vh !important;
 	}
 	.slide {
 		min-height: 245px;
@@ -1730,11 +1749,14 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 375px) {
+	.banner-text-top{	
+    padding-top: 20vh;
+	}
 	.navbar-light {
 		padding: 1em 1em;
 	}
 	.coupon-items {
-	height: 55vh !important;
+	height: 60vh !important;
 	}
 	.slider-info h3 {
 		letter-spacing: 0.5px;
@@ -1754,6 +1776,9 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 320px) {
+	.banner-text-top{	
+    padding-top: 20vh;
+	}
 	.navbar-light {
 		padding: 1em 0.8em;
 	}
@@ -1793,8 +1818,8 @@ ul.portfolio-area li figure {
 	}
 }
 @media screen and (max-width: 568px){
-	.banner-text-top{
-		padding-top:35vW;
+	.banner-text-top{	
+    padding-top: 20vh;
 	}
 }
 .input-group-addon {
@@ -1811,8 +1836,11 @@ ul.portfolio-area li figure {
 	border-radius: 4px;
 }
 @media screen and (max-width: 786px){
+	.banner-text-top{	
+    padding-top: 20vh;
+	}
   .banner{
-	  min-height: 50vh;
+	  min-height: 60vh;
   }
 }
 .user-fav{
@@ -2173,7 +2201,10 @@ padding-right:1px;
 @media screen and (max-width: 568px) {
 	#hide-search {
     padding: 5vw 0 2vW 5vw;
-    }
+	}
+	.easy-autocomplete {
+    width: 78% !important;
+      }
 	.easy-autocomplete.eac-description {
     width: 78% !important;
        }
@@ -2233,7 +2264,10 @@ padding-right:1px;
 @media screen and (max-width: 414px) {
 	#hide-search {
     padding: 5vw 0 2vW 5vw;
-     }    
+	 }    
+	 .easy-autocomplete {
+    width: 78% !important;
+      }
 	.easy-autocomplete.eac-description {
     width: 78% !important;
        }
@@ -2295,6 +2329,9 @@ padding-right:1px;
 	#hide-search {
     padding: 5vw 0 2vW 5vw;
    }
+   .easy-autocomplete {
+    width: 78% !important;
+      }
 	.easy-autocomplete.eac-description {
     width: 78% !important;
        }
@@ -2355,7 +2392,10 @@ padding-right:1px;
 @media screen and (max-width: 375px) {
 	#hide-search {
     padding: 5vw 0 2vW 5vw;
-     }
+	 }
+	 .easy-autocomplete {
+    width: 78% !important;
+      }
 	.easy-autocomplete.eac-description {
     width: 78% !important;
        }
@@ -2412,6 +2452,9 @@ padding-right:1px;
 }
 
 @media screen and (max-width: 320px) {
+	.easy-autocomplete {
+    width: 78% !important;
+}
 	#hide-search {
     padding: 5vw 0 2vW 5vw;
      }

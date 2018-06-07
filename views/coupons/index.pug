@@ -83,6 +83,7 @@ block content
           if(i>2) 
             .col-md-3.coupon(id=coupon.id,class=(coupon.users.some(function(x) { return x.user_id == user.id })) ? 'couponclicked' : 'couponadd', rel=user.id)
               row.deal-main.deal-coup.coupon-items
+                
                 div.col-6
                   div
                     img.coup-img-wrapper.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt="Responsive image")
@@ -91,7 +92,7 @@ block content
                       = coupon.bizid.name
                   div.col-md-12.col-lg-12.col-sm-12.col-xs-12
                     button.btn.btn-outline-primary(type="button" )
-                      =coupon.tagline
+                      =coupon.tagline   
                 div.col-6  
                   p
                   h5.my-3
@@ -99,7 +100,8 @@ block content
                   p
                     if (typeof(coupon.description) !== 'undefined' && coupon.description.length > 80)
                     p.padding.text-left  !{coupon.description.substr(0, 80)+ '..... <strong style="color:#d44457">Read More</strong>'}
-                     
+              
+                 
               
           
 

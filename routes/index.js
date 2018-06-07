@@ -743,6 +743,7 @@ router.get('/coupons',role.auth, function(req, res){
 
 router.get('/coupons/:cat',role.auth, function(req, res){
   var coupons = Coupons.aggregate([
+    { $match: { status: true } },
     { "$sort": { "order": -1 ,"star": -1} },
     { "$limit": 500},
     {
@@ -777,18 +778,61 @@ router.get('/coupons/:cat',role.auth, function(req, res){
        }
      }
     ]);
+
+    var groups = Coupons.aggregate([
+      { $match: { status: true } },
+      { "$sort": { "order": -1 ,"star": -1} },
+      { "$limit": 500},
+      {
+       $lookup:
+         {
+           from: "businesses",
+           localField: "bizid",
+           foreignField: "_id",
+           as: "biz"
+         }
+       },
+       {
+         $project :{
+           name: '$name',
+           type: '$type',
+           tagline: '$tagline',
+           photo: '$photo',
+           ownerid : '$ownerid',
+           description: '$description',
+           status: '$status',
+           bizid: {
+             $filter: {
+               input: "$biz",
+               as: "biz",
+               cond : [
+                   { '$eq': ['$biz.subcategory', req.params.cat]},
+                       1,
+                       0
+               ]
+             }
+           }
+         }
+       },
+       {"$group":{
+           _id: '$bizid.subcategory',
+           count:{$sum:1}
+         }
+       }
+      ]);
     /*var coupons = Coupons.find({
       status: true
     })
     .populate('bizid')
     .sort([['order', -1],['star', -1]]);*/
     var categories = Category.find({approved: true}).sort([['order', 1]]);
-    Promise.all([coupons,categories]).then(values => {
-        console.log(values[0]);
+    Promise.all([coupons,categories,groups]).then(values => {
+        //console.log(values[2]);
         res.render('coupons/index', {
             title: 'Coupons on Findit',
             coupons: values[0],
             categories: values[1],
+            groups: values[2],
             host: req.get('host')
         });
     });

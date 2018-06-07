@@ -741,6 +741,59 @@ router.get('/coupons',role.auth, function(req, res){
     });
 });
 
+router.get('/coupons/:cat',role.auth, function(req, res){
+  var coupons = Coupons.aggregate([
+    { "$sort": { "order": -1 ,"star": -1} },
+    { "$limit": 500},
+    {
+     $lookup:
+       {
+         from: "businesses",
+         localField: "bizid",
+         foreignField: "_id",
+         as: "biz"
+       }
+     },
+     {
+       $project :{
+         name: '$name',
+         type: '$type',
+         tagline: '$tagline',
+         photo: '$photo',
+         ownerid : '$ownerid',
+         description: '$description',
+         status: '$status',
+         bizid: {
+           $filter: {
+             input: "$biz",
+             as: "biz",
+             cond : [
+                 { '$eq': ['$biz.subcategory', req.params.cat]},
+                     1,
+                     0
+             ]
+           }
+         }
+       }
+     }
+    ]);
+    /*var coupons = Coupons.find({
+      status: true
+    })
+    .populate('bizid')
+    .sort([['order', -1],['star', -1]]);*/
+    var categories = Category.find({approved: true}).sort([['order', 1]]);
+    Promise.all([coupons,categories]).then(values => {
+        console.log(values[0]);
+        res.render('coupons/index', {
+            title: 'Coupons on Findit',
+            coupons: values[0],
+            categories: values[1],
+            host: req.get('host')
+        });
+    });
+});
+
 router.get('/getcoupon/user/:id', role.auth, function(req, res){
   couponCode = 'coupon-' + Math.random().toString(36).substr(2, 8);
   Coupons.findById(req.params.id)

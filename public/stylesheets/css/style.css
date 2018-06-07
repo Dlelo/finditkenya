@@ -2009,7 +2009,7 @@ nav {
 }
 .coupons-img{
 	height:298px;
-	min-width:1100px;
+	min-width: 950px;
 }
 .coupon-col{
 	padding-left:0px;
@@ -2478,4 +2478,12 @@ padding-left:10px;
 	background-color: #eee;
 	box-shadow: 0 1px 3px 0 rgba(0,0,0,.25);
 }
-
+.coup-img-wrapper {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    width: 156px;
+    height: 156px;
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
+}

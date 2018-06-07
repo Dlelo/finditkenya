@@ -2171,10 +2171,24 @@ padding-right:1px;
 }
 
 @media screen and (max-width: 568px) {
+	.btn-coupon {
+    margin-top: 3vh;
+     }
 	.latest-review {
       margin-left: 0px !important;
       margin-right: 0px !important;
 	}
+	.coup-img-wrapper{
+     padding-right: 0.5em;
+	}
+	.container-margin {
+    padding-left: 1em;
+    padding-right: 1em;
+    }
+	.container-margin {
+    padding-left: 1em;
+    padding-right: 1em;
+     }
 	.col-sm-12{
 		padding-right: 0px !important;
         padding-left: 0px !important;
@@ -2208,10 +2222,20 @@ padding-right:1px;
 }
 
 @media screen and (max-width: 414px) {
+	.btn-coupon {
+    margin-top: 3vh;
+     }
 	.latest-review {
       margin-left: 0px !important;
       margin-right: 0px !important;
 	}
+	.coup-img-wrapper{
+     padding-right: 0.5em;
+	}
+	.container-margin {
+    padding-left: 1em;
+    padding-right: 1em;
+    }
 	.col-sm-12{
 		padding-right: 0px !important;
         padding-left: 0px !important;
@@ -2250,10 +2274,20 @@ padding-right:1px;
 
 
 @media screen and (max-width: 384px) {
+	.btn-coupon {
+    margin-top: 3vh;
+     }
 	.latest-review {
       margin-left: 0px !important;
       margin-right: 0px !important;
 	}
+	.coup-img-wrapper{
+     padding-right: 0.5em;
+	}
+	.container-margin {
+    padding-left: 1em;
+    padding-right: 1em;
+     }
 	.col-sm-12{
 		padding-right: 0px !important;
         padding-left: 0px !important;
@@ -2293,10 +2327,20 @@ padding-right:1px;
 
 
 @media screen and (max-width: 375px) {
+	.btn-coupon {
+    margin-top: 3vh;
+     }
 	.latest-review {
       margin-left: 0px !important;
       margin-right: 0px !important;
 	}
+	.coup-img-wrapper{
+     padding-right: 0.5em;
+	}
+	.container-margin {
+    padding-left: 1em;
+    padding-right: 1em;
+   }
 	.col-sm-12{
 		padding-right: 0px !important;
         padding-left: 0px !important;
@@ -2333,10 +2377,20 @@ padding-right:1px;
 }
 
 @media screen and (max-width: 320px) {
+	.btn-coupon {
+    margin-top: 3vh;
+     }
 	.latest-review {
       margin-left: 0px !important;
       margin-right: 0px !important;
 	}
+	.coup-img-wrapper{
+     padding-right: 0.5em;
+	}
+	 .container-margin {
+    padding-left: 1em;
+    padding-right: 1em;
+    }
 	.col-sm-12{
 		padding-right: 0px !important;
         padding-left: 0px !important;

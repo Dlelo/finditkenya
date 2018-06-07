@@ -59,23 +59,14 @@ block content
   
                a.carousel-control-next(href="#demo" data-slide="next")
                  span.carousel-control-next-icon
-   
-        
-        
-              
-          
+      
         
        .col-md-2
-         h4
+         h5
           .coupon-title
             |  Selected Coupons
           div
             .mycoupons#coupons-sticky
-     .row
-        .col-md-12
-          .row
-            
-
               
             
      .row.deal-main
@@ -84,7 +75,7 @@ block content
             .col-md-3.coupon(id=coupon.id,class=(coupon.users.some(function(x) { return x.user_id == user.id })) ? 'couponclicked' : 'couponadd', rel=user.id)
               row.deal-main.deal-coup.coupon-items
                 
-                div.col-6
+                div.col-md-6.col-sm-12.col-xs-12
                   div
                     img.coup-img-wrapper.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt="Responsive image")
                     p
@@ -93,7 +84,7 @@ block content
                   div.col-md-12.col-lg-12.col-sm-12.col-xs-12
                     button.btn.btn-outline-primary.btn-coupon(type="button" )
                       =coupon.tagline   
-                div.col-6  
+                div.col-md-6.col-sm-12.col-xs-12
                   p
                   h5.my-3
                       =coupon.name

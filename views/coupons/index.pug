@@ -144,8 +144,7 @@ block content
                         $('.mycoupons').html('');
                         carray.forEach(function(el) {
                           $('.mycoupons').append(
-                            '<div class="coupon"><strong>'+el.name+'</strong><a href="/admin/email/coupon/'+el._id+'">\
-                            <i class="fa fa-envelope fa-fw" aria-hidden="true"></i> Mail</a>\
+                            '<div class="coupon"><strong>'+el.name+'</strong>\
                             <i id=#{user.id} class="fa fa-close fa-fw  del-coupon" rel='+el._id+' aria-hidden="true"></i></div>'
                           );
                         }); 
@@ -182,8 +181,7 @@ block content
                         $('.mycoupons').html('');
                         data.mycoupons.forEach(function(el) {
                           $('.mycoupons').append(
-                            '<div class="coupon"><strong>'+el.name+'</strong><a href="/admin/email/coupon/'+el._id+'">\
-                            <i class="fa fa-envelope fa-fw" aria-hidden="true"></i> Mail</a>\
+                            '<div class="coupon"><strong>'+el.name+'</strong>\
                             <i id=#{user.id} class="fa fa-close fa-fw  del-coupon" rel='+el._id+' aria-hidden="true"></i></div>'
                           );
                         });
@@ -212,8 +210,7 @@ block content
                   $('.mycoupons').html('');
                   data.mycoupons.forEach(function(el) {
                     $('.mycoupons').append(
-                      '<div class="coupon"><strong>'+el.name+'</strong><a href="/admin/email/coupon/'+el._id+'">\
-                      <i class="fa fa-envelope fa-fw" aria-hidden="true"></i> Mail</a>\
+                      '<div class="coupon"><strong>'+el.name+'</strong>\
                       <i id=#{user.id} class="fa fa-close fa-fw  del-coupon" rel='+el._id+' aria-hidden="true"></i></div>'
                     );
                   });

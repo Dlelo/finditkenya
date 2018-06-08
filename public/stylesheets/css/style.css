@@ -98,7 +98,7 @@ body a:focus {
 
 /* Add an active class to the active dropdown button */
 .active {
-    background-color: #101c56;
+    background-color: white;
     color: white;
 }
 
@@ -1936,8 +1936,8 @@ ul.portfolio-area li figure {
    margin-bottom:3em;
 }
 .container-margin{
-	padding-left:4em;
-	padding-right:4em;
+	padding-left:1em;
+	padding-right:1em;
 }
 
 .footer-style{
@@ -2682,4 +2682,8 @@ padding-left:10px;
     padding-top: 1em;
     padding-bottom: 1em;
     margin-top: 1px;
+}
+.img-logo{
+	width:10vw;
+	height:2hw;
 }

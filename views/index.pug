@@ -199,22 +199,23 @@ block content
             | Top deals
             //top deal
         each coupon,i in coupons
-          row.deal-main.deal-home
-            div.col-6
-              div
-                 img.deal-img-wrapper.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt="Responsive image")
-                 p
-                  h5                   
-                   = coupon.bizid.name
-              div.col-md-12.col-lg-12.col-sm-12.col-xs-12
-                button.btn.btn-outline-primary(type="button" )
-                  =coupon.tagline
-            div.col-6  
-              p
-               h5.my-3
-                  =coupon.name
-               p
-                  =coupon.description
+          a(href="/coupons")
+            row.deal-main.deal-home
+              div.col-6
+                div
+                  img.deal-img-wrapper.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt="Responsive image")
+                  p
+                    h5                   
+                    = coupon.bizid.name
+                div.col-md-12.col-lg-12.col-sm-12.col-xs-12
+                  button.btn.btn-outline-primary(type="button" )
+                    =coupon.tagline
+              div.col-6  
+                p
+                h5.my-3
+                    =coupon.name
+                p
+                    =coupon.description
                 
               
         

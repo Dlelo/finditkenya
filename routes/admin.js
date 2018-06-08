@@ -215,11 +215,11 @@ router.get('/fakepaid/:id/:package',role.admin, function(req, res, next){
 		    	data.paid = true;
 		    	data.fakepaid = true;
           var p = "";
-          if(req.params.package = 'b'){
+          if(req.params.package == 'b'){
             p='bronze'
-          }else if(req.params.package = 's'){
+          }else if(req.params.package == 's'){
             p='silver';
-          }else if(req.params.package = 'g'){
+          }else if(req.params.package == 'g'){
             p='gold';
           }
 		    	data.packagepaid = p;
@@ -227,11 +227,11 @@ router.get('/fakepaid/:id/:package',role.admin, function(req, res, next){
 		    	data.paid = true;
 		    	data.fakepaid = true;
           var p = "";
-          if(req.params.package = 'b'){
+          if(req.params.package == 'b'){
             p='bronze'
-          }else if(req.params.package = 's'){
+          }else if(req.params.package == 's'){
             p='silver';
-          }else if(req.params.package = 'g'){
+          }else if(req.params.package == 'g'){
             p='gold';
           }
 		    	data.packagepaid = p;

@@ -126,7 +126,7 @@ block content
                   
                   if reviews
                     if( reviews.length == 1) 
-                      .col-md-6(class="rating medium star-icon value-"+review.bizid.rate+" label-hidden")
+                      .col-md-6(class="rating medium star-icon value-"+review.star+" label-hidden")
                         .star-container
                           .star
                             i.star-empty
@@ -151,7 +151,7 @@ block content
                       
                     else if( reviews.length > 1)
                       span.glyphicon.glyphicon-cog.glyph.border
-                        div(class="rating medium star-icon value-"+review.bizid.rate+" label-hidden")
+                        div(class="rating medium star-icon value-"+review.star+" label-hidden")
                           .star-container
                             .star
                               i.star-empty
@@ -173,10 +173,15 @@ block content
                               i.star-empty
                               i.star-half
                               i.star-filled
-                      |  #{reviews.length} Reviews
+                    
+                |  #{reviews.length} Reviews
+                .text-right
+                  .small
+                    =review.created_at
+
     
           
-        //more categories
+      //more categories
         div.row.morecategories#morecategories(style="display:none")
           each category,i in categories
            if(i > 8)

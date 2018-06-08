@@ -205,7 +205,7 @@ router.get('/delete/:id',role.auth, function(req, res, next){
 	}
 });
 
-router.get('/fakepaid/:id',role.admin, function(req, res, next){
+router.get('/fakepaid/:id/:package',role.admin, function(req, res, next){
 		Business.findById(req.params.id)
 		.then(function(data){
 		    if(data.paid == true){
@@ -214,11 +214,27 @@ router.get('/fakepaid/:id',role.admin, function(req, res, next){
 		    }else if(data.paid == false){
 		    	data.paid = true;
 		    	data.fakepaid = true;
-		    	data.packagepaid = 'silver';
+          var p = "";
+          if(req.params.package = 'b'){
+            p='bronze'
+          }else if(req.params.package = 's'){
+            p='silver';
+          }else if(req.params.package = 'g'){
+            p='gold';
+          }
+		    	data.packagepaid = p;
 		    }else{
 		    	data.paid = true;
 		    	data.fakepaid = true;
-		    	data.packagepaid = 'silver';
+          var p = "";
+          if(req.params.package = 'b'){
+            p='bronze'
+          }else if(req.params.package = 's'){
+            p='silver';
+          }else if(req.params.package = 'g'){
+            p='gold';
+          }
+		    	data.packagepaid = p;
 		    }
 		    data.save(function(err){
 				if(err)

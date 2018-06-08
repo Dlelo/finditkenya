@@ -163,12 +163,13 @@ router.get('/', function(req, res, next) {
   var coupons = Coupons.find({
     status: true
   }).populate('bizid').sort([['order', 1],['star', -1]]).limit(5);
-  var reviews = Review.find().populate('bizid').populate('user_id').limit(5);
+  var reviews = Review.find().sort([['created_at', -1]]).populate('bizid').populate('user_id').limit(5);
   var categories = Category.find({approved: true}).sort([['order', 1]]);
   var description = "Find It is a leading online directory to find businesses, service providers and their information in one single platform. Find it or be found. Register today and add your business.";
   var keywords = "Find Restaurants, professional services, Financial help, travel agencies, medical and legal help in Kenya on our platform Findit";
   var title = 'Find It Kenya | Find businesses and service providers in Kenya';
   Promise.all([categories, toprestaurants, topsearches, coupons, reviews ]).then(values => {
+    console.log(values[4]);
     res.render('index', {
         title: title,
         categories: values[0],

@@ -205,7 +205,7 @@ router.get('/delete/:id',role.auth, function(req, res, next){
 	}
 });
 
-router.get('/fakepaid/:id',role.admin, function(req, res, next){
+router.get('/fakepaid/:id/:package',role.admin, function(req, res, next){
 		Business.findById(req.params.id)
 		.then(function(data){
 		    if(data.paid == true){
@@ -214,11 +214,27 @@ router.get('/fakepaid/:id',role.admin, function(req, res, next){
 		    }else if(data.paid == false){
 		    	data.paid = true;
 		    	data.fakepaid = true;
-		    	data.packagepaid = 'silver';
+          var p = "";
+          if(req.params.package == 'b'){
+            p='bronze'
+          }else if(req.params.package == 's'){
+            p='silver';
+          }else if(req.params.package == 'g'){
+            p='gold';
+          }
+		    	data.packagepaid = p;
 		    }else{
 		    	data.paid = true;
 		    	data.fakepaid = true;
-		    	data.packagepaid = 'silver';
+          var p = "";
+          if(req.params.package == 'b'){
+            p='bronze'
+          }else if(req.params.package == 's'){
+            p='silver';
+          }else if(req.params.package == 'g'){
+            p='gold';
+          }
+		    	data.packagepaid = p;
 		    }
 		    data.save(function(err){
 				if(err)
@@ -612,15 +628,27 @@ router.get('/coupons', role.auth, function(req, res){
 });
 
 router.get('/coupon/add', role.auth, function(req, res){
-	  Business.find({
-      user_id : res.locals.user.username
-    })
-    .then(function(data){
-      res.render('coupons/create',{title: "Create Coupon", businesses: data});
-    })
-    .catch(function(err){
-       console.log(err);
-    });
+    if(res.locals.user.role == '1'){
+      Business.find({
+      })
+      .then(function(data){
+        res.render('coupons/create',{title: "Create Coupon", businesses: data});
+      })
+      .catch(function(err){
+         console.log(err);
+      });
+    }else{
+      Business.find({
+        user_id : res.locals.user.username
+      })
+      .then(function(data){
+        res.render('coupons/create',{title: "Create Coupon", businesses: data});
+      })
+      .catch(function(err){
+         console.log(err);
+      });
+    }
+
 });
 
 router.get('/mycoupons', role.auth, function(req, res){

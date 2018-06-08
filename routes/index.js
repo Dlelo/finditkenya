@@ -794,6 +794,7 @@ router.get('/coupons',role.auth, function(req, res){
              ownerid : '$ownerid',
              description: '$description',
              status: '$status',
+             biz: '$biz',
              noofcoupons: {$size : '$users'}
            }
          },

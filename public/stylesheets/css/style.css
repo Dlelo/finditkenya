@@ -2651,3 +2651,13 @@ padding-left:10px;
 .deal-home{
 	background-color: #eee;
 }
+.btn-light:not(:disabled):not(.disabled):active, .btn-light:not(:disabled):not(.disabled).active, .show > .btn-light.dropdown-toggle{
+	color: #212529;
+    background-color: #fff !important;
+	border-color: #fff !important;
+	
+}
+.coup-img{
+	width:5vw;
+	height:7vh;
+}

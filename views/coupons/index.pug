@@ -5,21 +5,6 @@ block content
   #home.parallax-content-list.baner-content-listing-biz
     .container-fluid.container-margin
      .row.couponbg-color
-       .col-md-1.coupon-col-right
-         .div.h2.agile-title
-           i.fas.fa-bars.fa-coupons
-             
-           .div.coupon-category
-              .row
-                each group in groups
-                    .div.col-md-12
-                      .ul
-                        
-                        .div
-                          .li.category-list
-                            a(href="/coupons/"+group._id)
-                              h6
-                                =group._id+"(" +group.count +")"
 
        .col-md-9.coupon-col
           row.my-row
@@ -55,24 +40,38 @@ block content
                 span.carousel-control-next-icon
       
         
-       .col-md-2
-         h5
-          .coupon-title
-            |  Selected Coupons
-          div
-            .mycoupons#coupons-sticky
+       .col-md-3
+         row 
+            h5
+              .coupon-title
+                | Popular Coupons
+            row 
+              .col-md-3
+                img.coup-img(src="/img/indian-food.jpeg")
+              .col-md-9
+                  h6
+                    | China Center
+                  p
+                    | The best Chinese food spot in Nairobi
+         row
+            h5
+            .coupon-title
+              |  Selected Coupons
+            div
+              .mycoupons#coupons-sticky
               
-     .div  
-        h2.agile-title.h-order-category.text-center
-              | Search coupons by category
-              
-        each group in groups
-          ul.dropdown-menu   
-            li
-              a(href="/coupons/"+group._id)
+     .div.dropdown.text-center
+        button(type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown")
+          h3.agile-title.h-order-category.text-center
+                | Search coupons by category
+        
+          div.dropdown-menu
+            each group in groups
+              a.dropdown-item(href="/coupons/"+group._id)
                 h6
                   =group._id+"(" +group.count +")"
-
+          
+         
      .row.deal-main
         each coupon, i in coupons
           if(i>2) 

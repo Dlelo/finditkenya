@@ -102,7 +102,7 @@ router.post('/add', role.auth, cpUpload, function(req, res, next) {
 				if(err){
 					Category.find({})
 					.then(function(data){
-					    res.render('business/new',{title: "Find It Categories", categories: data, errors: err});
+					    res.render('business/newfree',{title: "Find It Categories", categories: data, errors: err});
 					})
 					.catch(function(err){
 					     console.log(err);

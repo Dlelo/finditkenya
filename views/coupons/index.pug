@@ -19,27 +19,27 @@ block content
                           .li.category-list
                             a(href="/coupons/"+group._id)
                               h6
-                                =group._id
+                                =group._id+"(" +group.count +")"
 
        .col-md-9.coupon-col
           row.my-row
-             div#demo.carousel.slide(data-ride="carousel")
-               ul.carousel-indicators
-                 li.active(data-target="#demo" data-slide-to="0")
-                 li(data-target="#demo" data-slide-to="1")
-                 li(data-target="#demo" data-slide-to="2")
+            div(id="demo" class="carousel slide" data-ride="carousel")
+              ul.carousel-indicators
+                li.active(data-target="#demo" data-slide-to="0")
+                li(data-target="#demo" data-slide-to="1")
+                li(data-target="#demo" data-slide-to="2")
 
-               each coupon, i in coupons
-                if (i==0)
-                  div.carousel-inner
+               
+              div.carousel-inner
+                each coupon, i in coupons
+                  if (i==0)
                     div.carousel-item.active
                         img.coupons-img(src="/uploads/" + coupon.photo)
                         div.carousel-caption
                           button.btn.btn-danger.flash-coupon(type="button" )
-                           =coupon.tagline
-               
-                else if (i>0 && i<3)
-                  div.carousel-inner
+                            =coupon.tagline
+                each coupon, i in coupons
+                  if (i>0 && i<3)
                     div.carousel-item
                         img.coupons-img(src="/uploads/" + coupon.photo)
                         div.carousel-caption
@@ -48,11 +48,11 @@ block content
         
                   
    
-               a.carousel-control-prev(href="#demo" data-slide="prev")
-                 span.carousel-control-prev-icon
-  
-               a.carousel-control-next(href="#demo" data-slide="next")
-                 span.carousel-control-next-icon
+              a.carousel-control-prev(href="#demo" data-slide="prev")
+                span.carousel-control-prev-icon
+
+              a.carousel-control-next(href="#demo" data-slide="next")
+                span.carousel-control-next-icon
       
         
        .col-md-2
@@ -62,7 +62,17 @@ block content
           div
             .mycoupons#coupons-sticky
               
-            
+     .div  
+        h2.agile-title.h-order-category.text-center
+              | Search coupons by category
+              
+        each group in groups
+          ul.dropdown-menu   
+            li
+              a(href="/coupons/"+group._id)
+                h6
+                  =group._id+"(" +group.count +")"
+
      .row.deal-main
         each coupon, i in coupons
           if(i>2) 

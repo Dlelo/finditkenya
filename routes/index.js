@@ -774,13 +774,43 @@ router.get('/coupons',role.auth, function(req, res){
        }
       ]);
 
+      var populars = Coupons.aggregate([
+        { $match: { status: true } },
+        {
+         $lookup:
+           {
+             from: "businesses",
+             localField: "bizid",
+             foreignField: "_id",
+             as: "biz"
+           }
+         },
+         {
+           $project :{
+             name: '$name',
+             type: '$type',
+             tagline: '$tagline',
+             photo: '$photo',
+             ownerid : '$ownerid',
+             description: '$description',
+             status: '$status',
+             noofcoupons: {$size : '$users'}
+           }
+         },
+         { "$sort": { "noofcoupons": -1 } },
+         { "$limit": 3}
+        ]);
+
+
     var categories = Category.find({approved: true}).sort([['order', 1]]);
-    Promise.all([coupons,categories, groups]).then(values => {
+    Promise.all([coupons,categories, groups,populars]).then(values => {
+        //console.log(values[3]);
         res.render('coupons/index', {
             title: 'Coupons on Findit',
             coupons: values[0],
             categories: values[1],
             groups: values[2],
+            populars: values[3],
             host: req.get('host')
         });
     });

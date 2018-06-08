@@ -136,7 +136,7 @@ block content
                         $('.mycoupons').html('');
                         carray.forEach(function(el) {
                           $('.mycoupons').append(
-                            '<div class="coupon"><strong>'+el.name+'</strong><a href="/admin/email/coupon/"+el.id><i class="fa fa-envelope fa-fw" aria-hidden="true"></i> Mail</a><i id=#{user.id} class="fa fa-close fa-fw  del-coupon" rel='+el._id+' aria-hidden="true"></i></div>'
+                            '<div class="coupon"><strong>'+el.name+'</strong><a href="/admin/email/coupon/"'+el.id+'><i class="fa fa-envelope fa-fw" aria-hidden="true"></i> Mail</a><i id=#{user.id} class="fa fa-close fa-fw  del-coupon" rel='+el._id+' aria-hidden="true"></i></div>'
                           );
                         });              
                         console.log(data.code);
@@ -171,7 +171,7 @@ block content
                         $('.mycoupons').html('');
                         data.mycoupons.forEach(function(el) {
                           $('.mycoupons').append(
-                            '<div class="coupon"><strong>'+el.name+'</strong><a href="/admin/email/coupon/"+el.id><i class="fa fa-envelope fa-fw" aria-hidden="true"></i> Mail</a><i id=#{user.id} class="fa fa-close fa-fw del-coupon" aria-hidden="true"  rel='+el._id+' ></i></div>'
+                            '<div class="coupon"><strong>'+el.name+'</strong><a href="/admin/email/coupon/"'+el.id+'><i class="fa fa-envelope fa-fw" aria-hidden="true"></i> Mail</a><i id=#{user.id} class="fa fa-close fa-fw del-coupon" aria-hidden="true"  rel='+el._id+' ></i></div>'
                           );
                         });
                       }
@@ -198,7 +198,7 @@ block content
                   $('.mycoupons').html('');
                   data.mycoupons.forEach(function(el) {
                     $('.mycoupons').append(
-                      '<div class="coupon"><strong>'+el.name+'</strong><a href="/admin/email/coupon/"+el.id><i class="fa fa-envelope fa-fw" aria-hidden="true"></i> Mail</a><i id=#{user.id} class="fa fa-close fa-fw del-coupon" aria-hidden="true" rel='+el._id+' ></i></div>'
+                      '<div class="coupon"><strong>'+el.name+'</strong><a href="/admin/email/coupon/"'+el.id+'><i class="fa fa-envelope fa-fw" aria-hidden="true"></i> Mail</a><i id=#{user.id} class="fa fa-close fa-fw del-coupon" aria-hidden="true" rel='+el._id+' ></i></div>'
                     );
                   });
                 }

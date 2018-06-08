@@ -52,7 +52,7 @@ body
       h1
         a.navbar-brand.text-white(href="/")
           em
-            img(src="/img/find-it.png").img-fluid
+            img.img-logo(src="/img/find-it.png").img-fluid
       a(href="/coupons")
        button.btn.btn-light.coupons-btn.flash-button(type="button")
         span.fas.fa-gift.coupons-text-color
@@ -64,11 +64,21 @@ body
             span.navbar-toggler-icon
       div#navbarSupportedContent.collapse.navbar-collapse
         ul.navbar-nav.ml-lg-auto.text-center
-          li.nav-item.mr-3
-            a(href="#morecategories" role="button")
-              button.btn.btn-light.background-cat(onclick="openCategories()" type="button")
-                span.fas.fa-th-list.fas-menu 
-                |  Categories 
+          li.nav-item.dropdown.mr-3#morecategories
+            a.nav-link.dropdown-toggle#navbarDropdown(role="button" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false")
+              | Categories
+            
+            div.dropdown-menu(aria-labelledby="navbarDropdown")
+              a.dropdown-item(href="categories.html")
+                | Hospitality
+              a.dropdown-item(href="categories.html")
+                | Offices
+              div.dropdown-divider
+              a.dropdown-item(href="categories.html")
+                | Emergency
+              a.dropdown-item(href="categories.html")
+                | Others
           li.nav-item.mr-3
             a(href="/")
               span.fas.fa-home.fas-menu 

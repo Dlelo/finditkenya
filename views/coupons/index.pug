@@ -45,7 +45,8 @@ block content
             h5
               .coupon-title
                 | Popular Coupons
-            row 
+            row
+              
               .col-md-12
                 img.coup-img(src="/img/indian-food.jpeg")
                 .div
@@ -68,17 +69,16 @@ block content
               |  Selected Coupons
             div
               .mycoupons#coupons-sticky
-              
+           
      .div.dropdown.text-center
         button(type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown")
           h3.agile-title.h-order-category.text-center
                 | Search coupons by category
-        
-        div.dropdown-menu
-          each group in groups
-            a.dropdown-item(href="/coupons/"+group._id)
-              h6
-                =group._id+"(" +group.count +")"
+          div.dropdown-menu
+            a.dropdown-item(href="#")
+              | Link 1
+            
+            
           
          
      .row.deal-main

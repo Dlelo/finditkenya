@@ -45,29 +45,22 @@ block content
             h5
               .coupon-title
                 | popular Coupons
-            each popular in populars
+            each popular, i in populars
               row
-                .col-md-12
-                  h6
-                    =popular.name
-                  img.coup-img(src="/img/indian-food.jpeg")
-                  .div
-                      h6
-                        =popular.biz.name
-                      p
-                        =popular.description
-                  .div
-                      =popular.tagline
-
-                    
-                hr
-                .col-md-12
-                  img.coup-img(src="/img/indian-food.jpeg")
-                  .div
-                      h6
-                        | China Center
-                      p
-                        | The best Chinese food spot in Nairobi
+                if i<2
+                  .col-md-12
+                    h6
+                      =popular.name
+                    img.coup-img(src="/img/indian-food.jpeg")
+                    .div
+                        h6
+                          =popular.biz.name
+                        p
+                          =popular.description
+                    .div
+                        =popular.tagline
+                  hr
+                
 
          row
             h5

@@ -44,24 +44,30 @@ block content
          row 
             h5
               .coupon-title
-                | Popular Coupons
-            row
-              
-              .col-md-12
-                img.coup-img(src="/img/indian-food.jpeg")
-                .div
-                    h6
-                      | China Center
-                    p
-                      | The best Chinese food spot in Nairobi
-              hr
-              .col-md-12
-                img.coup-img(src="/img/indian-food.jpeg")
-                .div
-                    h6
-                      | China Center
-                    p
-                      | The best Chinese food spot in Nairobi
+                | popular Coupons
+            each popular in populars
+              row
+                .col-md-12
+                  h6
+                    =popular.name
+                  img.coup-img(src="/img/indian-food.jpeg")
+                  .div
+                      h6
+                        =popular.biz.name
+                      p
+                        =popular.description
+                  .div
+                      =popular.tagline
+
+                    
+                hr
+                .col-md-12
+                  img.coup-img(src="/img/indian-food.jpeg")
+                  .div
+                      h6
+                        | China Center
+                      p
+                        | The best Chinese food spot in Nairobi
 
          row
             h5

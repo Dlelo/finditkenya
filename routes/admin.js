@@ -612,15 +612,27 @@ router.get('/coupons', role.auth, function(req, res){
 });
 
 router.get('/coupon/add', role.auth, function(req, res){
-	  Business.find({
-      user_id : res.locals.user.username
-    })
-    .then(function(data){
-      res.render('coupons/create',{title: "Create Coupon", businesses: data});
-    })
-    .catch(function(err){
-       console.log(err);
-    });
+    if(res.locals.user.role == '1'){
+      Business.find({
+      })
+      .then(function(data){
+        res.render('coupons/create',{title: "Create Coupon", businesses: data});
+      })
+      .catch(function(err){
+         console.log(err);
+      });
+    }else{
+      Business.find({
+        user_id : res.locals.user.username
+      })
+      .then(function(data){
+        res.render('coupons/create',{title: "Create Coupon", businesses: data});
+      })
+      .catch(function(err){
+         console.log(err);
+      });
+    }
+
 });
 
 router.get('/mycoupons', role.auth, function(req, res){

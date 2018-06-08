@@ -2658,6 +2658,28 @@ padding-left:10px;
 	
 }
 .coup-img{
-	width:5vw;
 	height:7vh;
+	float:left;
+}
+.cover {
+  width:5vw;
+  object-fit: cover;
+}
+.review-color{
+	color:#c0000000;
+}
+.latest-review-row-right {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    margin-top: 1px;
+}
+.latest-review-row-left {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    margin-top: 1px;
+}
+.latest-review-row-main {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    margin-top: 1px;
 }

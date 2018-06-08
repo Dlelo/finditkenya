@@ -8,7 +8,7 @@ block content
 
        .col-md-9.coupon-col
           row.my-row
-            div(id="demo" class="carousel slide" data-ride="carousel")
+            div(id="demo" class="carousel slide carousel-fade" data-ride="carousel")
               ul.carousel-indicators
                 li.active(data-target="#demo" data-slide-to="0")
                 li(data-target="#demo" data-slide-to="1")
@@ -46,13 +46,22 @@ block content
               .coupon-title
                 | Popular Coupons
             row 
-              .col-md-3
+              .col-md-12
                 img.coup-img(src="/img/indian-food.jpeg")
-              .col-md-9
-                  h6
-                    | China Center
-                  p
-                    | The best Chinese food spot in Nairobi
+                .div
+                    h6
+                      | China Center
+                    p
+                      | The best Chinese food spot in Nairobi
+              hr
+              .col-md-12
+                img.coup-img(src="/img/indian-food.jpeg")
+                .div
+                    h6
+                      | China Center
+                    p
+                      | The best Chinese food spot in Nairobi
+
          row
             h5
             .coupon-title
@@ -65,16 +74,15 @@ block content
           h3.agile-title.h-order-category.text-center
                 | Search coupons by category
         
-          div.dropdown-menu
-            each group in groups
-              a.dropdown-item(href="/coupons/"+group._id)
-                h6
-                  =group._id+"(" +group.count +")"
+        div.dropdown-menu
+          each group in groups
+            a.dropdown-item(href="/coupons/"+group._id)
+              h6
+                =group._id+"(" +group.count +")"
           
          
      .row.deal-main
         each coupon, i in coupons
-          if(i>2) 
             .col-md-3.coupon(id=coupon.id,class=(coupon.users.some(function(x) { return x.user_id == user.id })) ? 'couponclicked' : 'couponadd', rel=user.id)
               row.deal-main.deal-coup.coupon-items
                 

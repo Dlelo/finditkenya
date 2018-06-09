@@ -58,27 +58,32 @@ body
         span.fas.fa-gift.coupons-text-color
           | View deals
       //site navigation 
-  
       button.navbar-toggler.ml-md-auto(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
           aria-expanded="false" aria-label="Toggle navigation")
             span.navbar-toggler-icon
       div#navbarSupportedContent.collapse.navbar-collapse
         ul.navbar-nav.ml-lg-auto.text-center
-          li.nav-item.dropdown.mr-3#morecategories
-            a.nav-link.dropdown-toggle#navbarDropdown(role="button" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false")
-              | Categories
-            
-            div.dropdown-menu(aria-labelledby="navbarDropdown")
-              a.dropdown-item(href="categories.html")
-                | Hospitality
-              a.dropdown-item(href="categories.html")
-                | Offices
-              div.dropdown-divider
-              a.dropdown-item(href="categories.html")
-                | Emergency
-              a.dropdown-item(href="categories.html")
-                | Others
+          //li.nav-item.mr-3
+            a(href="/")
+              span.fas.fa-home.fas-menu
+              |  Home
+          //li.nav-item.mr-3
+            a(href="/coupons").nav-link
+              span.fas.fa-gift.fas-menu
+              |  Coupons
+        
+          li.nav-item.mr-3
+            a.dropdown-toggle#navbarDropdown(href="/categories" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+              span.fas.fa-th-list.fas-menu
+                |  Categories 
+            ul.dropdown-menu.dropdown-menu-layout(aria-labelledby="navbarDropdown")
+              if categories
+                each category in categories
+                  li
+                    a.dropdown-item(href="/category/"+category.name)
+                      i.fas.fa-1x(aria-hidden='true', class=category.icon)    
+                      =category.name
+              
           li.nav-item.mr-3
             a(href="/")
               span.fas.fa-home.fas-menu 

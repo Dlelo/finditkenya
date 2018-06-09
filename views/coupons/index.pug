@@ -8,36 +8,37 @@ block content
 
        .col-md-9.coupon-col
           row.my-row
-            div(id="demo" class="carousel slide carousel-fade" data-ride="carousel")
-              ul.carousel-indicators
-                li.active(data-target="#demo" data-slide-to="0")
-                li(data-target="#demo" data-slide-to="1")
-                li(data-target="#demo" data-slide-to="2")
+            .col-md-12
+              div.carousel.slide.carousel-fade(id="demo" data-ride="carousel")
+                ul.carousel-indicators
+                  li.active(data-target="#demo" data-slide-to="0")
+                  li(data-target="#demo" data-slide-to="1")
+                  li(data-target="#demo" data-slide-to="2")
 
-               
-              div.carousel-inner
-                each coupon, i in coupons
-                  if (i==0)
-                    div.carousel-item.active
-                        img.coupons-img(src="/uploads/" + coupon.photo)
-                        div.carousel-caption
-                          button.btn.btn-danger.flash-coupon(type="button" )
-                            =coupon.tagline
-                each coupon, i in coupons
-                  if (i>0 && i<3)
-                    div.carousel-item
-                        img.coupons-img(src="/uploads/" + coupon.photo)
-                        div.carousel-caption
-                          button.btn.btn-danger.flash-coupon(type="button" )
-                            =coupon.tagline
-        
-                  
-   
-              a.carousel-control-prev(href="#demo" data-slide="prev")
-                span.carousel-control-prev-icon
+                
+                div.carousel-inner
+                  each coupon, i in coupons
+                    if (i==0)
+                      div.carousel-item.active
+                          img.d-block.img-fluid.coupons-img(src="/uploads/" + coupon.photo)
+                          div.carousel-caption
+                            button.btn.btn-danger.flash-coupon(type="button" )
+                              =coupon.tagline
+                  each coupon, i in coupons
+                    if (i>0 && i<3)
+                      div.carousel-item
+                          img.coupons-img(src="/uploads/" + coupon.photo)
+                          div.carousel-caption
+                            button.btn.btn-danger.flash-coupon(type="button" )
+                              =coupon.tagline
+          
+                    
+    
+                a.carousel-control-prev(href="#demo" data-slide="prev")
+                  span.carousel-control-prev-icon
 
-              a.carousel-control-next(href="#demo" data-slide="next")
-                span.carousel-control-next-icon
+                a.carousel-control-next(href="#demo" data-slide="next")
+                  span.carousel-control-next-icon
       
         
        .col-md-3
@@ -51,7 +52,7 @@ block content
                   .col-md-12
                     h6
                       =popular.name
-                    img.coup-img(src="/img/indian-food.jpeg")
+                    img.coup-img(src="/uploads/thumbs/coupons/"+ popular.photo)
                     .div
                         h6
                           =popular.biz.name
@@ -68,14 +69,19 @@ block content
               |  Selected Coupons
             div
               .mycoupons#coupons-sticky
-           
-     .div.dropdown.text-center
-        button(type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown")
+        
+     div.dropdown.text-center
+        button(type="button" class="btn btn-light dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
           h3.agile-title.h-order-category.text-center
                 | Search coupons by category
-          div.dropdown-menu
-            a.dropdown-item(href="#")
-              | Link 1
+          ul.dropdown-menu.dropdown-menu-coupon(aria-labelledby="dropdownMenuButton")
+            if groups
+              each group in groups
+                li
+                  a.dropdown-item(href="#")
+                    =group._id + " (" + group.count + ")"
+                    
+            
             
             
           

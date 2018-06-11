@@ -18,7 +18,8 @@ var storage = multer.diskStorage({
     cb(null, './public/uploads/')
   },
   filename: function (req, file, cb) {
-    var fileName = file.originalname + '-' + Date.now() + '.' + mime.extension(file.mimetype);
+    //var fileName = file.originalname + '-' + Date.now() + '.' + mime.extension(file.mimetype);
+    var fileName = Date.now() + slug(file.originalname) +'.'+ mime.extension(file.mimetype);
     //var catalogName = file.originalname + '-' + Date.now() + '.' + mime.extension(file.mimetype);
     cb(null, fileName);
   }

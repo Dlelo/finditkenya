@@ -26,7 +26,7 @@ var storage = multer.diskStorage({
     cb(null, './public/uploads/')
   },
   filename: function (req, file, cb) {
-    var fileName = file.originalname + '-' + Date.now() + '.' + mime.extension(file.mimetype);
+    var fileName = Date.now() + slug(file.originalname) +'.'+ mime.extension(file.mimetype);
     cb(null, fileName);
   }
 });
@@ -821,7 +821,7 @@ router.post('/coupon/create', role.auth,cpUpload, function(req, res){
 	coupon.tagline = req.body.tagline;
 	coupon.type = req.body.type;
 	if (req.files['photo'] != null){
-		coupon.photo = req.files['photo'][0].filename;
+		coupon.photo = slug(req.files['photo'][0].filename);
 	}
 	coupon.save(function(err){
 		if(err){

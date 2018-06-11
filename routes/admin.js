@@ -797,7 +797,9 @@ router.get('/email/coupons', role.auth, function(req, res){
           host: req.get('host') // All additional properties are also passed to the template as local variables.
   	  	}, function (err) {
   	    	if (err) {
+            console.log(err);
   	    	}else{
+            console.log("EMAIL SENT!!");
   	    	}
   	  	});
       });

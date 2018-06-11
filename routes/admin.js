@@ -821,7 +821,8 @@ router.post('/coupon/create', role.auth,cpUpload, function(req, res){
 	coupon.tagline = req.body.tagline;
 	coupon.type = req.body.type;
 	if (req.files['photo'] != null){
-		coupon.photo = slug(req.files['photo'][0].filename);
+    console.log(req.files['photo'][0]);
+		coupon.photo = req.files['photo'][0].filename;
 	}
 	coupon.save(function(err){
 		if(err){

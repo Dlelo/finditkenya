@@ -2566,9 +2566,15 @@ padding-bottom:5px;
 	
 
 }
-.dropdown-menu{
-   margin-top: 4.1rem !important;
+.dropdown-menu-layout{
+   margin-top: 0 !important;
    margin-right: 1rem !important;
+   left: 65% !important;
+}
+.dropdown-menu-coupon{
+    margin-top: 10 !important;
+    margin-right: 1rem !important;
+    left: 6% !important;
 }
 .btn-cat{
 	width: 95%;
@@ -2686,4 +2692,33 @@ padding-left:10px;
 .img-logo{
 	width:10vw;
 	height:2hw;
+}
+.row{
+	margin-right: 0px !important;
+    margin-left: 0px!important;
+}
+.carousel-fade .carousel-inner .item {
+    -webkit-transition-property: opacity;
+    transition-property: opacity;
+}
+.carousel-fade .carousel-inner .item,
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+    opacity: 0;
+}
+.carousel-fade .carousel-inner .active,
+.carousel-fade .carousel-inner .next.left,
+.carousel-fade .carousel-inner .prev.right {
+    opacity: 1;
+}
+.carousel-fade .carousel-inner .next,
+.carousel-fade .carousel-inner .prev,
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+    left: 0;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+.carousel-fade .carousel-control {
+    z-index: 2;
 }

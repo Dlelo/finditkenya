@@ -71,16 +71,15 @@ block content
               .mycoupons#coupons-sticky
 
      .dropdown.open.dropdown-category
-            button.btn.btn-cat.btn-default.form-control.dropdown-toggle(type='button', data-toggle='dropdown')
-              h3.agile-title.h-order-category.text-center
-               |  Search coupons by category  
-               span.caret
-            ul.dropdown-menu.open.sub-catbag(style="width: -webkit-fill-available;")
-              if groups
+            button.btn.btn-cat.btn-light.form-control.dropdown-toggle(type='button', data-toggle='dropdown')
+              | Filter Sub Categories  
+              span.caret
+            ul.dropdown-menu.open.sub-catbag.drop-down-sub.dropdown-menu-coupon
+              if groups 
                 each group in groups
                     .panel-heading.category
                       li.text-left.sub-list
-                        a.dropdown-item(href="#")
+                        a(href="#"+group._id)
                           strong  
                             =group._id + " (" + group.count + ")"   
      //div.dropdown.open.text-center

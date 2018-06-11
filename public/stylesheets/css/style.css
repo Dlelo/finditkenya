@@ -2726,3 +2726,7 @@ padding-left:10px;
 .carousel-fade .carousel-control {
     z-index: 2;
 }
+.drop-down-sub{
+  transform: translate3d(0px, 0px, 0px) !important;
+}
+    

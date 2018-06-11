@@ -36,8 +36,9 @@ block content
                             =feature.subcategories.name
       .col-md-9
         each biz in businesses
-          a(href="/"+biz.slug)
-            .row.cat-background
+          
+          .row.cat-background
+            a(href="/"+biz.slug)
               .col-md-3
                 a(href="/"+biz.slug)
                   h6.text-left.cat-items-top

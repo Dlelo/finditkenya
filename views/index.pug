@@ -101,7 +101,7 @@ block content
           each review, i in reviews
            if i<4
             div.col-lg-5.col-md-5.col-sm-12.col-xs-12.latest-review.latest-review-main.latest-review-container.coupon-col
-              a(href="/"+review.bizid.name)  
+              a(href="/"+review.bizid.slug)  
                 div.col-lg-12.col-md-12.col-sm-12.col-xs-12
                   h6.h-order-category.text-center
                     =review.bizid.name

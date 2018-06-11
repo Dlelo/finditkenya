@@ -208,12 +208,12 @@ router.get('/category/:cat',function(req, res, next){
       $orderby: { starteventdate: -1 },
       "starteventdate": { $gt: new Date() }
     });
-    var features = Category.find({
-      $query: {
-          name: req.params.cat
-        }
-    }).sort({'subcategories.name': -1});
+    var features = Category.aggregate([
+      { $match: { name: req.params.cat } },
+      { "$sort": { "subcategories.name": -1 } }
+    ]);
     Promise.all([businesses, features]).then(values => {
+      console.log(values[1]);
       res.render('business/list', {
           title: req.params.cat,
           businesses: values[0],
@@ -229,13 +229,19 @@ router.get('/category/:cat',function(req, res, next){
         pending: { $ne: true }
       }
     }).sort([['paid', -1],['datepaid', 1],['slug', 1]]);
-    var features = Category.find({
+    /*var features = Category.find({
         $query: {
           name: req.params.cat
         }
       })
     .sort({'subcategories.name': -1});
+    */
+    var features = Category.aggregate([
+      { $match: { name: req.params.cat } },
+      { "$sort": { "subcategories.name": -1 } }
+    ]);
     Promise.all([businesses, features]).then(values => {
+      console.log(values[1]);
       res.render('business/list', {
           title: req.params.cat,
           businesses: values[0],

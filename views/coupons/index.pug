@@ -70,12 +70,12 @@ block content
             div
               .mycoupons#coupons-sticky
   div.container-fluid
-    nav.navbar.navbar-expand-sm.bg-light
+    nav.navbar.navbar-expand-sm.bg-light#navbar
       ul.navbar-nav
-        li.nav-item.dropdown.open.dropdown-category
+        li.nav-item.dropdown.open.dropdown-category.text-center
             button.btn.btn-cat.btn-light.form-control.dropdown-toggle(type='button', data-toggle='dropdown')
-              h3.agile-title.h-order-category.text-center
-                | Filter Sub Categories
+              h4.agile-title.h-order-category.text-center
+                | Search Coupon by Category
                 
               span.caret
             ul.dropdown-menu.open.sub-catbag.drop-down-sub.dropdown-menu-coupon
@@ -87,153 +87,172 @@ block content
                           strong  
                             =group._id + " (" + group.count + ")" 
         li.nav-item
-           button.btn.btn-danger.btn-cat
+           button.btn.btn-danger.btn-cat.selected-coupon-left
+            h3
               | Selected Coupons
            span
            button.btn.btn-danger
              h3
               | 2
           
-    div.container-fluid   
-     .row.deal-main
-        each coupon, i in coupons
-            .col-md-3.coupon(id=coupon.id,class=(coupon.users.some(function(x) { return x.user_id == user.id })) ? 'couponclicked' : 'couponadd', rel=user.id)
-              row.deal-main.deal-coup.coupon-items
-                
-                div.col-md-6.col-sm-12.col-xs-12
-                  div
-                    img.coup-img-wrapper.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt="Responsive image")
-                    p
-                      h5                   
-                      = coupon.bizid.name
-                  div.col-md-12.col-lg-12.col-sm-12.col-xs-12
-                    button.btn.btn-outline-primary.btn-coupon(type="button" )
-                      =coupon.tagline   
-                div.col-md-6.col-sm-12.col-xs-12
-                  p
-                  h5.my-3
-                      =coupon.name
-                  p
-                    if (typeof(coupon.description) !== 'undefined' && coupon.description.length > 80)
-                    p.padding.text-left  !{coupon.description.substr(0, 80)+ '..... <strong style="color:#d44457">Read More</strong>'}
+  div.container-fluid   
+  .row.deal-main
+      each coupon, i in coupons
+          .col-md-3.coupon(id=coupon.id,class=(coupon.users.some(function(x) { return x.user_id == user.id })) ? 'couponclicked' : 'couponadd', rel=user.id)
+            row.deal-main.deal-coup.coupon-items
               
-                 
+              div.col-md-6.col-sm-12.col-xs-12
+                div
+                  img.coup-img-wrapper.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt="Responsive image")
+                  p
+                    h5                   
+                    = coupon.bizid.name
+                div.col-md-12.col-lg-12.col-sm-12.col-xs-12
+                  button.btn.btn-outline-primary.btn-coupon(type="button" )
+                    =coupon.tagline   
+              div.col-md-6.col-sm-12.col-xs-12
+                p
+                h5.my-3
+                    =coupon.name
+                p
+                  if (typeof(coupon.description) !== 'undefined' && coupon.description.length > 80)
+                  p.padding.text-left  !{coupon.description.substr(0, 80)+ '..... <strong style="color:#d44457">Read More</strong>'}
+            
               
+            
           
 
       
-    //Script for selecting coupons       
-    script(type='text/javascript').
-      //(function($) {
-      $(function(){
-            //script for sticky coupons on scroll
-        $("#coupons-sticky").stick_in_parent();
-        var cartCount = 0;
-        $(document).on('click', '.couponadd', function(event) {
-          //alert("clicked");
-          var couponid = $(this).attr("id");
-          $(this).addClass('couponclicked');
-          $(this).removeClass('couponadd');
-          $(this).find('.fa-status').html('<i class="fa fa-window-close fa-2x" aria-hidden="true" style="display:block;text-align:right"></i>');
-          $.ajax({
-              type: "GET",
-              url: "/getcoupon/user/"+couponid,
-              success: function(data){
-                  Notify.toast(data.msg, {
-                    fn: function () {
-                      // custom function here
-                    }
-                  });
-                  if(data.msg == 'Coupon Obtained'){
-                    cartCount = cartCount + 1;
-                    if(cartCount >= 0){
-                      $('#cartno').text(cartCount + '');
-                    }
-                  }
-                  $.ajax({
-                      type: "GET",
-                      url: "/api/mycoupons/",
-                      success: function(data){
-                        var carray = data.mycoupons; 
-                        $('.mycoupons').html('');
-                        carray.forEach(function(el) {
-                          $('.mycoupons').append(
-                            '<div class="coupon"><strong>'+el.name+'</strong>\
-                            <i id=#{user.id} class="fa fa-close fa-fw  del-coupon" rel='+el._id+' aria-hidden="true"></i></div>'
-                          );
-                        }); 
-                        $('.mycoupons').append('<strong><a href="/admin/email/coupons"><i class="fa fa-envelope fa-fw" aria-hidden="true"></i> Mail All</a></strong>');             
-                        console.log(data.code);
-                      }
-                  });
-              }
-          });                    
-        });
-        $(document).on('click', ".couponclicked", function(event) {
-          $(this).removeClass('couponclicked');
-          $(this).addClass('couponadd');
-          var userid = $(this).attr("rel");
-          $.ajax({
-              type: "GET",
-              url: "/removecoupon/"+ userid,
-              success: function(data){
-                  Notify.toast(data.msg, {
-                    fn: function () {
-                      // custom function here
-                    }
-                  });
-                  if(data.msg == 'Coupon Removed'){
-                    cartCount = cartCount - 1;
-                    if(cartCount >= 0){
-                      $('#cartno').text(cartCount + '');
-                    }
-                  }
-                  $.ajax({
-                      type: "GET",
-                      url: "/api/mycoupons/",
-                      success: function(data){
-                        $('.mycoupons').html('');
-                        data.mycoupons.forEach(function(el) {
-                          $('.mycoupons').append(
-                            '<div class="coupon"><strong>'+el.name+'</strong>\
-                            <i id=#{user.id} class="fa fa-close fa-fw  del-coupon" rel='+el._id+' aria-hidden="true"></i></div>'
-                          );
-                        });
-                        $('.mycoupons').append('<strong><a href="/admin/email/coupons"><i class="fa fa-envelope fa-fw" aria-hidden="true"></i> Mail All</a></strong>');
-                      }
-                  });
-              }
-          });
-
-
-          $(this).find('.fa-status').html('<i class="fa fa-plus-square fa-2x" aria-hidden="true" style="display:block;text-align:right"></i>');
-        });
-
-        $(document).on('click', ".del-coupon", function(event) {
-          //alert($(this).attr("rel"));
-          $('#'+$(this).attr("rel")).removeClass('couponclicked');
-          $('#'+$(this).attr("rel")).addClass('couponadd');
-          $.ajax({
+  //Script for selecting coupons       
+  script(type='text/javascript').
+    //(function($) {
+    $(function(){
+          //script for sticky coupons on scroll
+      $("#coupons-sticky").stick_in_parent();
+      var cartCount = 0;
+      $(document).on('click', '.couponadd', function(event) {
+        //alert("clicked");
+        var couponid = $(this).attr("id");
+        $(this).addClass('couponclicked');
+        $(this).removeClass('couponadd');
+        $(this).find('.fa-status').html('<i class="fa fa-window-close fa-2x" aria-hidden="true" style="display:block;text-align:right"></i>');
+        $.ajax({
             type: "GET",
-            url: "/removecoupon/"+$(this).attr("id"),
+            url: "/getcoupon/user/"+couponid,
             success: function(data){
-              $.ajax({
-                type: "GET",
-                url: "/api/mycoupons/",
-                success: function(data){
-                  $('.mycoupons').html('');
-                  data.mycoupons.forEach(function(el) {
-                    $('.mycoupons').append(
-                      '<div class="coupon"><strong>'+el.name+'</strong>\
-                      <i id=#{user.id} class="fa fa-close fa-fw  del-coupon" rel='+el._id+' aria-hidden="true"></i></div>'
-                    );
-                  });
-                  $('.mycoupons').append('<strong><a href="/admin/email/coupons"><i class="fa fa-envelope fa-fw" aria-hidden="true"></i> Mail All</a></strong>');
+                Notify.toast(data.msg, {
+                  fn: function () {
+                    // custom function here
+                  }
+                });
+                if(data.msg == 'Coupon Obtained'){
+                  cartCount = cartCount + 1;
+                  if(cartCount >= 0){
+                    $('#cartno').text(cartCount + '');
+                  }
                 }
-            });
+                $.ajax({
+                    type: "GET",
+                    url: "/api/mycoupons/",
+                    success: function(data){
+                      var carray = data.mycoupons; 
+                      $('.mycoupons').html('');
+                      carray.forEach(function(el) {
+                        $('.mycoupons').append(
+                          '<div class="coupon"><strong>'+el.name+'</strong>\
+                          <i id=#{user.id} class="fa fa-close fa-fw  del-coupon" rel='+el._id+' aria-hidden="true"></i></div>'
+                        );
+                      }); 
+                      $('.mycoupons').append('<strong><a href="/admin/email/coupons"><i class="fa fa-envelope fa-fw" aria-hidden="true"></i> Mail All</a></strong>');             
+                      console.log(data.code);
+                    }
+                });
             }
-          });
+        });                    
+      });
+      $(document).on('click', ".couponclicked", function(event) {
+        $(this).removeClass('couponclicked');
+        $(this).addClass('couponadd');
+        var userid = $(this).attr("rel");
+        $.ajax({
+            type: "GET",
+            url: "/removecoupon/"+ userid,
+            success: function(data){
+                Notify.toast(data.msg, {
+                  fn: function () {
+                    // custom function here
+                  }
+                });
+                if(data.msg == 'Coupon Removed'){
+                  cartCount = cartCount - 1;
+                  if(cartCount >= 0){
+                    $('#cartno').text(cartCount + '');
+                  }
+                }
+                $.ajax({
+                    type: "GET",
+                    url: "/api/mycoupons/",
+                    success: function(data){
+                      $('.mycoupons').html('');
+                      data.mycoupons.forEach(function(el) {
+                        $('.mycoupons').append(
+                          '<div class="coupon"><strong>'+el.name+'</strong>\
+                          <i id=#{user.id} class="fa fa-close fa-fw  del-coupon" rel='+el._id+' aria-hidden="true"></i></div>'
+                        );
+                      });
+                      $('.mycoupons').append('<strong><a href="/admin/email/coupons"><i class="fa fa-envelope fa-fw" aria-hidden="true"></i> Mail All</a></strong>');
+                    }
+                });
+            }
         });
+
+
+        $(this).find('.fa-status').html('<i class="fa fa-plus-square fa-2x" aria-hidden="true" style="display:block;text-align:right"></i>');
       });
 
+      $(document).on('click', ".del-coupon", function(event) {
+        //alert($(this).attr("rel"));
+        $('#'+$(this).attr("rel")).removeClass('couponclicked');
+        $('#'+$(this).attr("rel")).addClass('couponadd');
+        $.ajax({
+          type: "GET",
+          url: "/removecoupon/"+$(this).attr("id"),
+          success: function(data){
+            $.ajax({
+              type: "GET",
+              url: "/api/mycoupons/",
+              success: function(data){
+                $('.mycoupons').html('');
+                data.mycoupons.forEach(function(el) {
+                  $('.mycoupons').append(
+                    '<div class="coupon"><strong>'+el.name+'</strong>\
+                    <i id=#{user.id} class="fa fa-close fa-fw  del-coupon" rel='+el._id+' aria-hidden="true"></i></div>'
+                  );
+                });
+                $('.mycoupons').append('<strong><a href="/admin/email/coupons"><i class="fa fa-envelope fa-fw" aria-hidden="true"></i> Mail All</a></strong>');
+              }
+          });
+          }
+        });
+      });
+    });
+  //sticky nav
+  script(type='text/javascript').
+    // When the user scrolls the page, execute myFunction 
+    window.onscroll = function() {myFunction()};
+
+    // Get the navbar
+    var navbar = document.getElementById("navbar");
+
+    // Get the offset position of the navbar
+    var sticky = navbar.offsetTop;
+
+    // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+    function myFunction() {
+    if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+    } else {
+    navbar.classList.remove("sticky");
+    }
+    }
       

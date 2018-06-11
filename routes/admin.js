@@ -793,10 +793,13 @@ router.get('/email/coupons', role.auth, function(req, res){
   	  	holder.mailer.send('email/coupon', {
   	    	to: res.locals.user.email, // REQUIRED. This can be a comma delimited string just like a normal email to field.
   	    	subject: 'Coupon: ' + cp.name, // REQUIRED.
-  	    	coupon:  cp// All additional properties are also passed to the template as local variables.
+  	    	coupon:  cp,
+          host: req.get('host') // All additional properties are also passed to the template as local variables.
   	  	}, function (err) {
   	    	if (err) {
+            console.log(err);
   	    	}else{
+            console.log("EMAIL SENT!!");
   	    	}
   	  	});
       });

@@ -20,9 +20,11 @@ head
   link(href="//fonts.googleapis.com/css?family=Josefin+Sans:100,100i,300,300i,400,400i,600,600i,700,700i" rel="stylesheet")
   link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous")
   script(src='/javascripts/jquery.min.js')
+  //dropdown
   script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js")
   script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js")
   script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")
+ 
   link(rel='stylesheet', href='/stylesheets/lightbox.css')
   link(rel='stylesheet', href='/stylesheets/bootstrap-select.min.css')
   link(rel='stylesheet', href='/stylesheets/easy-autocomplete.min.css')
@@ -33,6 +35,7 @@ head
   link(rel='stylesheet', href='/stylesheets/bootstrap-datetimepicker.min.css')
   script(src='/javascripts/bootstrapjs/sticky-kit.min.js')
   script(src='/javascripts/notify.js')
+  
   
   script(type='text/javascript').
       addEventListener("load", function () {
@@ -72,8 +75,8 @@ body
               span.fas.fa-gift.fas-menu
               |  Coupons
         
-          li.nav-item.mr-3
-            a.dropdown-toggle#navbarDropdown(href="/categories" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+          //li.dropdown.nav-item.mr-3
+            a.dropdown-toggle#navbarDropdown(href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
               span.fas.fa-th-list.fas-menu
                 |  Categories 
             ul.dropdown-menu.dropdown-menu-layout(aria-labelledby="navbarDropdown")
@@ -83,6 +86,20 @@ body
                     a.dropdown-item(href="/category/"+category.name)
                       i.fas.fa-1x(aria-hidden='true', class=category.icon)    
                       =category.name
+          li.nav-item.mr-3.dropdown.open.dropdown-category
+            button.btn.btn-cat.btn-default.form-control.dropdown-toggle(type='button', data-toggle='dropdown')
+              span.fas.fa-th-list.fas-menu
+              |  Categories  
+              span.caret
+            ul.dropdown-menu.open.sub-catbag(style="width: -webkit-fill-available;")
+              if categories 
+                each category in categories
+                  .panel-heading.category
+                    li.text-left.sub-list
+                      a.dropdown-item(href="/category/"+category.name)
+                        strong  
+                          i.fas.fa-1x(aria-hidden='true', class=category.icon)    
+                          =category.name
               
           li.nav-item.mr-3
             a(href="/")

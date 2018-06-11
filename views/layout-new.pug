@@ -87,19 +87,19 @@ body
                       i.fas.fa-1x(aria-hidden='true', class=category.icon)    
                       =category.name
           li.nav-item.mr-3.dropdown.open.dropdown-category
-            button.btn.btn-cat.btn-default.form-control.dropdown-toggle(type='button', data-toggle='dropdown')
+            button.btn.btn-cat.btn-default.form-control.form-control-btn.dropdown-toggle(type='button', data-toggle='dropdown')
               span.fas.fa-th-list.fas-menu
               |  Categories  
               span.caret
             ul.dropdown-menu.open.sub-catbag(style="width: -webkit-fill-available;")
               if categories 
                 each category in categories
-                  .panel-heading.category
-                    li.text-left.sub-list
-                      a.dropdown-item(href="/category/"+category.name)
-                        strong  
-                          i.fas.fa-1x(aria-hidden='true', class=category.icon)    
-                          =category.name
+                    .panel-heading.category
+                      li.text-left.sub-list
+                        a.dropdown-item(href="/category/"+category.name)
+                          strong  
+                            i.fas.fa-1x(aria-hidden='true', class=category.icon)    
+                            =category.name
               
           li.nav-item.mr-3
             a(href="/")

@@ -2581,7 +2581,7 @@ padding-bottom:5px;
     left: 6% !important;
 }
 .btn-cat{
-	width: 95%;
+	width: auto;
 	margin-left:2px;
 }
 .cat-items{

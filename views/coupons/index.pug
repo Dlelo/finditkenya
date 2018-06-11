@@ -69,10 +69,14 @@ block content
               |  Selected Coupons
             div
               .mycoupons#coupons-sticky
-
-     .dropdown.open.dropdown-category
+  div.container-fluid
+    nav.navbar.navbar-expand-sm.bg-light
+      ul.navbar-nav
+        li.nav-item.dropdown.open.dropdown-category
             button.btn.btn-cat.btn-light.form-control.dropdown-toggle(type='button', data-toggle='dropdown')
-              | Filter Sub Categories  
+              h3.agile-title.h-order-category.text-center
+                | Filter Sub Categories
+                
               span.caret
             ul.dropdown-menu.open.sub-catbag.drop-down-sub.dropdown-menu-coupon
               if groups 
@@ -81,23 +85,16 @@ block content
                       li.text-left.sub-list
                         a(href="#"+group._id)
                           strong  
-                            =group._id + " (" + group.count + ")"   
-     //div.dropdown.open.text-center
-        button(type="button" class="btn btn-light dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
-          h3.agile-title.h-order-category.text-center
-                | Search coupons by category
-          ul.dropdown-menu.dropdown-menu-coupon(aria-labelledby="dropdownMenuButton")
-            if groups
-              each group in groups
-                li
-                  a.dropdown-item(href="#")
-                    =group._id + " (" + group.count + ")"
-                    
-            
-            
-            
+                            =group._id + " (" + group.count + ")" 
+        li.nav-item
+           button.btn.btn-danger.btn-cat
+              | Selected Coupons
+           span
+           button.btn.btn-danger
+             h3
+              | 2
           
-         
+    div.container-fluid   
      .row.deal-main
         each coupon, i in coupons
             .col-md-3.coupon(id=coupon.id,class=(coupon.users.some(function(x) { return x.user_id == user.id })) ? 'couponclicked' : 'couponadd', rel=user.id)

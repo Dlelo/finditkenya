@@ -101,57 +101,33 @@ block content
           each review, i in reviews
            if i<4
             div.col-lg-5.col-md-5.col-sm-12.col-xs-12.latest-review.latest-review-main.latest-review-container.coupon-col
-              div.col-lg-12.col-md-12.col-sm-12.col-xs-12
-                h6.h-order-category.text-center
-                  =review.bizid.name
+              a(href="/"+review.bizid.name)  
+                div.col-lg-12.col-md-12.col-sm-12.col-xs-12
+                  h6.h-order-category.text-center
+                    =review.bizid.name
 
-              img.img-fluid.latest-review-imgwrapper(src="/uploads/"+ review.bizid.photo)
-              
-              div.col-lg-12.col-md-12.col-sm-12.col-xs-12
-                 | location, 
-                 =review.bizid.city
-              div.col-lg-12.col-md-12.col-sm-12.col-xs-12
-                small
-                  |  #{review.length} Reviews
-              div.col-lg-12.col-md-12.col-sm-12.col-xs-12
-                  strong
-                    =review.user_id.names
-                    |  , Says
-                  div.col-lg-12.col-md-12.col-sm-12.col-xs-12
-                    i
-                    =review.message
-              div.col-12
+                img.img-fluid.latest-review-imgwrapper(src="/uploads/"+ review.bizid.photo)
+                
+                div.col-lg-12.col-md-12.col-sm-12.col-xs-12
+                  | location, 
+                  =review.bizid.city
+                div.col-lg-12.col-md-12.col-sm-12.col-xs-12
+                  small
+                    |  #{review.length} Reviews
+                div.col-lg-12.col-md-12.col-sm-12.col-xs-12
+                    strong
+                      =review.user_id.names
+                      |  , Says
+                    div.col-lg-12.col-md-12.col-sm-12.col-xs-12
+                      i
+                      =review.message
+                div.col-12
 
-                p
-                  
-                  if reviews
-                    if( reviews.length == 1) 
-                      .col-md-6(class="rating medium star-icon value-"+review.star+" label-hidden")
-                        .star-container
-                          .star
-                            i.star-empty
-                            i.star-half
-                            i.star-filled
-                          .star
-                            i.star-empty
-                            i.star-half
-                            i.star-filled
-                          .star
-                            i.star-empty
-                            i.star-half
-                            i.star-filled
-                          .star
-                            i.star-empty
-                            i.star-half
-                            i.star-filled
-                          .star
-                            i.star-empty
-                            i.star-half
-                            i.star-filled
-                      
-                    else if( reviews.length > 1)
-                      span.glyphicon.glyphicon-cog.glyph.border
-                        div(class="rating medium star-icon value-"+review.star+" label-hidden")
+                  p
+                    
+                    if reviews
+                      if( reviews.length == 1) 
+                        .col-md-6(class="rating medium star-icon value-"+review.star+" label-hidden")
                           .star-container
                             .star
                               i.star-empty
@@ -173,11 +149,36 @@ block content
                               i.star-empty
                               i.star-half
                               i.star-filled
-                    
-                |  #{reviews.length} Reviews
-                .text-right
-                  .small
-                    =review.created_at
+                        
+                      else if( reviews.length > 1)
+                        span.glyphicon.glyphicon-cog.glyph.border
+                          div(class="rating medium star-icon value-"+review.star+" label-hidden")
+                            .star-container
+                              .star
+                                i.star-empty
+                                i.star-half
+                                i.star-filled
+                              .star
+                                i.star-empty
+                                i.star-half
+                                i.star-filled
+                              .star
+                                i.star-empty
+                                i.star-half
+                                i.star-filled
+                              .star
+                                i.star-empty
+                                i.star-half
+                                i.star-filled
+                              .star
+                                i.star-empty
+                                i.star-half
+                                i.star-filled
+                      
+                  |  #{reviews.length} Reviews
+                  .text-right
+                    .small
+                      =review.created_at
 
     
           

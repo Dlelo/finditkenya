@@ -213,12 +213,14 @@ router.get('/category/:cat',function(req, res, next){
         { "$unwind": "$subcategories" },
       { "$sort": { "subcategories.name": 1 } }
     ]);
+    var categories = Category.find({approved: true}).sort([['order', 1]]);
     Promise.all([businesses, features]).then(values => {
       //console.log(values[1]);
       res.render('business/list', {
           title: req.params.cat,
           businesses: values[0],
           features: values[1],
+          categories: values[2],
           host: req.get('host')
       });
     });
@@ -236,12 +238,15 @@ router.get('/category/:cat',function(req, res, next){
       { "$unwind": "$subcategories" },
       { "$sort": { "subcategories.name": 1 } }
     ]);
+    var categories = Category.find({approved: true}).sort([['order', 1]]);
     Promise.all([businesses, features]).then(values => {
       //console.log(values[1]);
       res.render('business/list', {
           title: req.params.cat,
           businesses: values[0],
-          features: values[1]
+          features: values[1],
+          categories: values[2],
+          host: req.get('host')
       });
     });
   }

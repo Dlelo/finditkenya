@@ -2579,7 +2579,9 @@ padding-bottom:5px;
 }
 .btn-cat{
 	width: auto;
-	margin-left:2px;
+    margin-left: 2px;
+    color: #04045a;
+    min-height: 3px;
 }
 .cat-items{
 padding-left:10px;
@@ -2821,3 +2823,16 @@ border-top:4px solid #eee !important;
 background: #04045a !important;
 }
 
+.dropdown-category{
+  position: relative; /* <-- Added */
+  z-index: 10000; /* <-- Added */
+  overflow: show;
+    
+
+}
+.btn-cat-coupon {
+    width: auto;
+    margin-right: 15px;
+    color: #fff;
+    
+}

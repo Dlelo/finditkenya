@@ -70,52 +70,55 @@ block content
             div
               .mycoupons#coupons-sticky
   div.container-fluid
-    nav.navbar.navbar-expand-sm.bg-light#navbar
-      ul.navbar-nav
-        li.nav-item.dropdown.open.dropdown-category.text-center
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light#navbar
+      ul.navbar-nav.mr-auto
+        li.nav-item.dropdown.open.text-center
             button.btn.btn-cat.btn-light.form-control.dropdown-toggle(type='button', data-toggle='dropdown')
               h4.agile-title.h-order-category.text-center
                 | Search Coupon by Category
                 
               span.caret
-            ul.dropdown-menu.open.sub-catbag.drop-down-sub.dropdown-menu-coupon
+            div.dropdown-menu.open.sub-catbag.drop-down-sub.dropdown-menu-coupon.dropdown-category
               if groups 
                 each group in groups
-                    .panel-heading.category
-                      li.text-left.sub-list
-                        a(href="#"+group._id)
-                          strong  
-                            =group._id + " (" + group.count + ")" 
+                  div.text-left.sub-list
+                    a(href="#"+group._id)
+                      strong  
+                        =group._id + " (" + group.count + ")" 
         li.nav-item
-           button#myBtn.btn.btn-danger.btn-cat.selected-coupon-left
-            h3
-              span.fas.fa-envelope
-                |   Selected Coupons  
-              span
-                |   2
-           div#myModal.modal
-             div.modal-content
-               span.close.text-right
-                 |&times;
-               div 
-                .coupon-title
-                  h3.text-center
-                    |  Selected Coupons
-                div
-                  .mycoupons#coupons-sticky
-    div.coupons-title
-      span.h4.coupon-title-start
-       | Free Coupons & Deals are available for you!
-      span.h6
-        |  Just 
-      span.strong
-        | Click, 
-      span.strong
-        | Save 
-      span
-        | and 
-      span.strong
-        | Email.    
+          row
+            .col-md-12
+              button#myBtn.btn.btn-danger.btn-cat-coupon.selected-coupon-left
+                h4.agile-title.h-order-category.text-center
+                  span.fas.fa-envelope
+                    |   Selected Coupons  
+                  span
+                    |   2
+              div#myModal.modal
+                div.modal-content
+                  span.close.text-right
+                    |&times;
+                  div 
+                    .coupon-title
+                      h3.text-center
+                        |  Selected Coupons
+                    div
+                      .mycoupons#coupons-sticky
+  
+    .col-md-12
+      div.coupons-title
+        span.h4.coupon-title-start
+          | Free Coupons & Deals 
+        span.h6
+          |  are available for you! Just 
+        span.strong
+          | Click, 
+        span.strong
+          | Save 
+        span
+          | and 
+        span.strong
+          | Email.    
   div.container-fluid   
   .row.deal-main
       each coupon, i in coupons

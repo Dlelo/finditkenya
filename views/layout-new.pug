@@ -19,12 +19,10 @@ head
   //online-fonts
   link(href="//fonts.googleapis.com/css?family=Josefin+Sans:100,100i,300,300i,400,400i,600,600i,700,700i" rel="stylesheet")
   link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous")
-  script(src='/javascripts/jquery.min.js')
   //dropdown
-  script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")
+  script(src="/javascripts/jquery-3.3.1.min.js")
   script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js")
-  script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js")
-  
+  script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js")  
  
   link(rel='stylesheet', href='/stylesheets/lightbox.css')
   link(rel='stylesheet', href='/stylesheets/bootstrap-select.min.css')
@@ -70,6 +68,30 @@ body
           li.dropdown.nav-item.mr-3.open
             
             button.btn.btn-cat.btn-default.form-control.dropdown-toggle(type='button', data-toggle='dropdown')
+          //li.nav-item.mr-3
+            a(href="/")
+              span.fas.fa-home.fas-menu
+              |  Home
+          //li.nav-item.mr-3
+            a(href="/coupons").nav-link
+              span.fas.fa-gift.fas-menu
+              |  Coupons
+        
+          //li.dropdown.nav-item.mr-3
+            a.dropdown-toggle#navbarDropdown(href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+              span.fas.fa-th-list.fas-menu
+                |  Categories 
+            ul.dropdown-menu.dropdown-menu-layout(aria-labelledby="navbarDropdown")
+              if categories
+                each category in categories
+                  li
+                    a.dropdown-item(href="/category/"+category.name)
+                      i.fas.fa-1x(aria-hidden='true', class=category.icon)    
+                      =category.name
+                      .dropdown
+          
+          li.dropdown.nav-item.mr-3.dropdown-category           
+            button.btn.btn-cat.btn-default.form-control.dropdown-toggle(type='button', data-toggle='dropdown',aria-expanded="true")
               span.fas.fa-th-list.fas-menu
               |  Categories 
               span.caret

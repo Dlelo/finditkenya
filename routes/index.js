@@ -213,12 +213,14 @@ router.get('/category/:cat',function(req, res, next){
         { "$unwind": "$subcategories" },
       { "$sort": { "subcategories.name": 1 } }
     ]);
-    Promise.all([businesses, features]).then(values => {
+    var categories = Category.find({approved: true}).sort([['order', 1]]);
+    Promise.all([businesses, features, categories]).then(values => {
       //console.log(values[1]);
       res.render('business/list', {
           title: req.params.cat,
           businesses: values[0],
           features: values[1],
+          categories: values[2],
           host: req.get('host')
       });
     });
@@ -236,12 +238,15 @@ router.get('/category/:cat',function(req, res, next){
       { "$unwind": "$subcategories" },
       { "$sort": { "subcategories.name": 1 } }
     ]);
-    Promise.all([businesses, features]).then(values => {
+    var categories = Category.find({approved: true}).sort([['order', 1]]);
+    Promise.all([businesses, features, categories]).then(values => {
       //console.log(values[1]);
       res.render('business/list', {
           title: req.params.cat,
           businesses: values[0],
-          features: values[1]
+          features: values[1],
+          categories: values[2],
+          host: req.get('host')
       });
     });
   }
@@ -1109,6 +1114,9 @@ router.get('/:name',function(req, res, next){
       }
     });
 
+    //coupons
+    var coupons = Coupons.find({bizid: data.id});
+
     //SIMILAR BUSINESSES
     //"author": { "$in": userIds }
     var businesses = Business.find({
@@ -1120,21 +1128,23 @@ router.get('/:name',function(req, res, next){
       }
     })
     .sort([['paid', -1],['datepaid', 1],['slug', 1]])
-    .limit(5)
-    .then(function(similarbiz){
-      //console.log(similarbiz);
+    .limit(5);
+
+    Promise.all([coupons,businesses]).then(values => {
+      var coupons = values[0];
+      var businesses = values[1];
       if(data.paid == false || typeof data.paid === 'undefined'){
         description = data.name + ', '+ data.subcategory + ', ' + data.street +', '+data.city + ' Kenya';
         keywords = data.keywords + " | on Findit Kenya";
-        console.log(description);
-        res.render('business/freedetail',{title: data.name, biz: data, phones: phones, emails: emails, similarbiz: similarbiz, keywords: keywords});
-        res.end();
+        //console.log(description);
+        res.render('business/freedetail',{title: data.name, biz: data, phones: phones, emails: emails, similarbiz: businesses, keywords: keywords, coupons: coupons});
+        //res.end();
       }else{
         description = data.description;
         keywords = data.keywords + " | on Findit Kenya";
-        console.log(description);
-        res.render('business/detail',{title: data.name, biz: data, phones: phones, emails: emails, description: description, similarbiz: similarbiz, keywords: keywords});
-        res.end();
+        //console.log(description);
+        res.render('business/detail',{title: data.name, biz: data, phones: phones, emails: emails, description: description, similarbiz: businesses, keywords: keywords, coupons: coupons});
+        //res.end();
       }
     });
   })

@@ -119,6 +119,35 @@ block content
           | and 
         span.strong
           | Email.    
+           button#myBtn.btn.btn-danger.btn-cat.selected-coupon-left
+            h3
+              span.fas.fa-envelope
+                |   Selected Coupons  
+              span#couponscount(style="padding-left:10px")
+                |   
+           div#myModal.modal
+             div.modal-content
+               span.close.text-right
+                 |&times;
+               div 
+                .coupon-title
+                  h3.text-center
+                    |  Selected Coupons
+                div
+                  .mycoupons#coupons-sticky
+    div.coupons-title
+      span.h4.coupon-title-start
+       | Free Coupons & Deals are available for you!
+      span.h6
+        |  Just 
+      span.strong
+        | Click, 
+      span.strong
+        | Save 
+      span
+        | and 
+      span.strong
+        | Email.    
   div.container-fluid   
   .row.deal-main
       each coupon, i in coupons
@@ -141,24 +170,23 @@ block content
                 p
                   if (typeof(coupon.description) !== 'undefined' && coupon.description.length > 80)
                   p.padding.text-left  !{coupon.description.substr(0, 80)+ '..... <strong style="color:#d44457">Read More</strong>'}
+                div.col-md-6.col-sm-12.col-xs-12.clipped.form-control
+                  | Clipped
             
-              
-            
-          
-
-      
   //Script for selecting coupons       
   script(type='text/javascript').
     //(function($) {
     $(function(){
           //script for sticky coupons on scroll
       $("#coupons-sticky").stick_in_parent();
+      $(".clipped").hide();
       var cartCount = 0;
       $(document).on('click', '.couponadd', function(event) {
         //alert("clicked");
         var couponid = $(this).attr("id");
         $(this).addClass('couponclicked');
         $(this).removeClass('couponadd');
+        $(this).find('.clipped').show();
         $(this).find('.fa-status').html('<i class="fa fa-window-close fa-2x" aria-hidden="true" style="display:block;text-align:right"></i>');
         $.ajax({
             type: "GET",
@@ -172,7 +200,7 @@ block content
                 if(data.msg == 'Coupon Obtained'){
                   cartCount = cartCount + 1;
                   if(cartCount >= 0){
-                    $('#cartno').text(cartCount + '');
+                    $('#couponscount').text(cartCount);
                   }
                 }
                 $.ajax({
@@ -197,6 +225,7 @@ block content
       $(document).on('click', ".couponclicked", function(event) {
         $(this).removeClass('couponclicked');
         $(this).addClass('couponadd');
+        $(this).find('.clipped').hide();
         var userid = $(this).attr("rel");
         $.ajax({
             type: "GET",
@@ -208,9 +237,12 @@ block content
                   }
                 });
                 if(data.msg == 'Coupon Removed'){
+                  if(cartCount < 0){
+                    cartCount = 0;
+                  }
                   cartCount = cartCount - 1;
                   if(cartCount >= 0){
-                    $('#cartno').text(cartCount + '');
+                    $('#couponscount').text(cartCount);
                   }
                 }
                 $.ajax({

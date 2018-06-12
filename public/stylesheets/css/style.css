@@ -218,8 +218,8 @@ header h1 a span {
 /*-- //header --*/
 /* images */
 .deal-image{
-  
-	max-width:100px; 
+
+	max-width:100px;
 	height:100px;
 }
 .category-image{
@@ -272,7 +272,7 @@ header h1 a span {
     padding-left: inherit;
     padding-right: 3%;
     box-sizing: border-box;
-	
+
 }
 .nav-bar-addbusiness{
 	border-radius: 0.3rem;
@@ -962,7 +962,7 @@ span.w3-line {
 /* slide */
 
 .slide {
-	
+
 	background-size: cover;
 	min-height: 30px;
 	box-shadow: 0 1px 2px 0 rgba(0,0,0,.25);
@@ -1517,7 +1517,7 @@ ul.portfolio-area li figure {
 	}
 }
 @media screen and (max-width: 667px) {
-	.banner-text-top{	
+	.banner-text-top{
     padding-top: 20vh;
 	}
 	.slide {
@@ -1536,7 +1536,7 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 640px) {
-	.banner-text-top{	
+	.banner-text-top{
     padding-top: 20vh;
 	}
 	.banner {
@@ -1545,7 +1545,7 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 600px) {
-	.banner-text-top{	
+	.banner-text-top{
     padding-top: 20vh;
 	}
 	.slide {
@@ -1558,7 +1558,7 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 568px) {
-	.banner-text-top{	
+	.banner-text-top{
     padding-top: 20vh;
 	}
 	.slide {
@@ -1573,7 +1573,7 @@ ul.portfolio-area li figure {
 	.banner-text {
 		padding: 10vw 3vw 1vw 4vw;
 	}
-	
+
 	.slide-sub h5 {
 		font-size: 1.5em;
 	}
@@ -1598,7 +1598,7 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 480px) {
-	.banner-text-top{	
+	.banner-text-top{
     padding-top: 20vh;
 	}
 	.navbar-toggler {
@@ -1662,7 +1662,7 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 414px) {
-	.banner-text-top{	
+	.banner-text-top{
     padding-top: 20vh;
 	}
 	.slider-info h3 {
@@ -1718,7 +1718,7 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 384px) {
-	.banner-text-top{	
+	.banner-text-top{
     padding-top: 20vh;
 	}
 	.captn {
@@ -1749,7 +1749,7 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 375px) {
-	.banner-text-top{	
+	.banner-text-top{
     padding-top: 20vh;
 	}
 	.navbar-light {
@@ -1776,13 +1776,13 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 320px) {
-	.banner-text-top{	
+	.banner-text-top{
     padding-top: 20vh;
 	}
 	.navbar-light {
 		padding: 1em 0.8em;
 	}
-	
+
 	a.navbar-brand {
 		font-size: 0.5em;
 		margin-right: 0;
@@ -1818,7 +1818,7 @@ ul.portfolio-area li figure {
 	}
 }
 @media screen and (max-width: 568px){
-	.banner-text-top{	
+	.banner-text-top{
     padding-top: 20vh;
 	}
 }
@@ -1836,7 +1836,7 @@ ul.portfolio-area li figure {
 	border-radius: 4px;
 }
 @media screen and (max-width: 786px){
-	.banner-text-top{	
+	.banner-text-top{
     padding-top: 20vh;
 	}
   .banner{
@@ -1875,7 +1875,7 @@ ul.portfolio-area li figure {
 	color:#fff;
 	border:none;
 	border-radius:5px;
-	
+
 	animation-name: flash;
 	animation-duration: 1s;
 	animation-timing-function: linear;
@@ -1894,21 +1894,21 @@ ul.portfolio-area li figure {
 	-moz-animation-iteration-count: infinite;
 }
 
-@keyframes flash {  
+@keyframes flash {
     0% { opacity: 1.0; }
     50% { opacity: 0.5; }
     100% { opacity: 1.0; }
 }
 
 /*Firefox 1+ */
-@-webkit-keyframes flash {  
+@-webkit-keyframes flash {
     0% { opacity: 1.0; }
     50% { opacity: 0.5; }
     100% { opacity: 1.0; }
 }
 
 /*Safari 3-4 */
-@-moz-keyframes flash {  
+@-moz-keyframes flash {
     0% { opacity: 1.0; }
     50% { opacity: 0.5; }
     100% { opacity: 1.0; }
@@ -1962,7 +1962,7 @@ ul.portfolio-area li figure {
   padding-bottom: 1em;
 }
 .banner-texscroll{
-	
+
     max-width: 100%;
     padding-right:1em;
     box-sizing: border-box;
@@ -2001,12 +2001,12 @@ nav {
 }
 .latest-review-leftcol{
   padding-left:20px !important;
- 
+
 }
 .checked {
     color: orange;
 }
-  
+
 .latest-review-container{
 	background-color:#eee transparent;
 	box-shadow: 0 1px 3px 0 rgba(0,0,0,.25);
@@ -2014,21 +2014,21 @@ nav {
 .latest-review{
 	margin-left: 20px !important;
 	margin-right: 0px !important;
-	
+
 
 }
 .latest-review-row{
 	padding-top: 1em;
 	padding-bottom:1em;
 	margin-top:1px;
-	
+
 }
 .category-list{
 	padding-top:2px;
 }
 .latest-reviews-comments{
 	border-top:1px solid #eee;
-	
+
 }
 .latest-review-clock{
 	float:right;
@@ -2049,7 +2049,7 @@ nav {
 .coupon-img-carousel{
 	padding-top: 0px;
     padding-bottom: 1em;
-    
+
 
 }
 .coupons-img{
@@ -2065,7 +2065,7 @@ nav {
 	text-transform: capitalize;
 	font-size: 100px;
 	font-weight: 900;
-	
+
 }
 .coupon-col-right{
 padding-right:1px;
@@ -2079,7 +2079,7 @@ padding-right:1px;
     padding-bottom: 3px;
     border-radius: 5px;
 	height:300px;
-	background-color:#eee; 
+	background-color:#eee;
 
 }
 .categ-main{
@@ -2102,7 +2102,7 @@ padding-right:1px;
 		width: 385px;
 		margin: 30px auto;
 	}
-    .login-form form {        
+    .login-form form {
     	margin-bottom: 15px;
         background: #f7f7f7;
         box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
@@ -2150,7 +2150,7 @@ padding-right:1px;
         position: relative;
         top: -11px;
         z-index: 1;
-	}   
+	}
 	.xxx{
 		padding-top: 1px;
 		padding-right:10px;
@@ -2162,7 +2162,7 @@ padding-right:1px;
 		margin-right:20%;
 		background: #f7f7f7;
 		box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-	    
+
 	}
 	.facebook-google-btn{
 		padding-top:0.8rem;
@@ -2178,22 +2178,22 @@ padding-right:1px;
       width: 100%;
       height: 100%;
 		  }
-    
-	
-	
+
+
+
 @media screen and (max-width: 736px) {
-	
+
 }
 @media screen and (max-width: 667px) {
-	
+
 }
 
 @media screen and (max-width: 640px) {
-	
+
 }
 
 @media screen and (max-width: 600px) {
-	
+
 }
 
 @media screen and (max-width: 568px) {
@@ -2241,12 +2241,12 @@ padding-right:1px;
    .latest-review-imgwrapper {
     width: 300px;
     height: 200px;
-   
+
 	}
 	.latest-review-imgwrapper {
     width: 300px;
     height: 200px;
-   
+
     }
 	.coupons-btn {
     margin-left: 0;
@@ -2256,13 +2256,13 @@ padding-right:1px;
     margin-right: 0%;
 }
 
-	
+
 }
 
 @media screen and (max-width: 414px) {
 	#hide-search {
     padding: 5vw 0 2vW 5vw;
-	 }    
+	 }
 	 .easy-autocomplete {
     width: 78% !important;
       }
@@ -2300,12 +2300,12 @@ padding-right:1px;
    .latest-review-imgwrapper {
     width: 300px;
     height: 200px;
-   
+
 	}
 	.latest-review-imgwrapper {
     width: 300px;
     height: 200px;
-   
+
     }
 	.coupons-btn {
     margin-left: 0;
@@ -2320,7 +2320,7 @@ padding-right:1px;
 }
 }
 
-	
+
 
 
 @media screen and (max-width: 384px) {
@@ -2364,12 +2364,12 @@ padding-right:1px;
    .latest-review-imgwrapper {
     width: 300px;
     height: 200px;
-   
+
 	}
 	.latest-review-imgwrapper {
     width: 300px;
     height: 200px;
-   
+
 	}
 	.coupons-btn {
     margin-left: 0;
@@ -2382,10 +2382,10 @@ padding-right:1px;
 	margin-left: 0%;
     margin-right: 0%;
 }
-	
+
 }
 
-	
+
 
 @media screen and (max-width: 375px) {
 	#hide-search {
@@ -2428,12 +2428,12 @@ padding-right:1px;
    .latest-review-imgwrapper {
     width: 300px;
     height: 200px;
-   
+
 	}
 	.latest-review-imgwrapper {
     width: 300px;
     height: 200px;
-   
+
 	}
 	.coupons-btn {
     margin-left: 0;
@@ -2446,7 +2446,7 @@ padding-right:1px;
 	margin-left: 0%;
     margin-right: 0%;
 }
-	
+
 }
 
 @media screen and (max-width: 320px) {
@@ -2487,11 +2487,11 @@ padding-right:1px;
 	.latest-review-leftcol {
     padding-left: 0px !important;
 	}
-	
+
 	.latest-review-imgwrapper {
     width: 300px;
     height: 200px;
-   
+
 	}
 	.coupons-btn {
     margin-left: 0;
@@ -2504,7 +2504,7 @@ padding-right:1px;
 	margin-left: 0%;
     margin-right: 0%;
 }
-	
+
 }
 .xxx-forget {
     padding-top: 1px;
@@ -2525,7 +2525,7 @@ padding-right:1px;
     flex: 1 1 auto;
     width: 100%;
 	margin-bottom:30px;
-	
+
 }
 .btn-forget{
 	margin-left:10px;
@@ -2553,7 +2553,7 @@ padding-right:1px;
 }
 .cat-items-top{
 	padding-top:5px;
-	
+
 }
 .cat-items-bottom{
 padding-bottom:5px;
@@ -2561,7 +2561,7 @@ padding-bottom:5px;
 .sub-catbag{
 	background-color: #fff;
 	min-width: 15.5rem !important;
-	
+
 }
 .form-control-btn{
 
@@ -2585,7 +2585,7 @@ padding-bottom:5px;
 padding-left:10px;
 }
 .coupons-banner{
-	 width:900px; 
+	 width:900px;
 	 height:200px;
 }
 .flash-coupon{
@@ -2594,7 +2594,7 @@ padding-left:10px;
 	color:#fff;
 	border:none;
 	border-radius:5px;
-	
+
 	animation-name: flash;
 	animation-duration: 1s;
 	animation-timing-function: linear;
@@ -2613,14 +2613,14 @@ padding-left:10px;
 	-moz-animation-iteration-count: infinite;
 }
 
-@keyframes flash {  
+@keyframes flash {
     0% { opacity: 1.0; }
     50% { opacity: 0.5; }
     100% { opacity: 1.0; }
 }
 
 /*Firefox 1+ */
-@-webkit-keyframes flash {  
+@-webkit-keyframes flash {
     0% { opacity: 1.0; }
     50% { opacity: 0.5; }
     100% { opacity: 1.0; }
@@ -2662,7 +2662,7 @@ padding-left:10px;
 	color: #212529;
     background-color: #fff !important;
 	border-color: #fff !important;
-	
+
 }
 .coup-img{
 	height:7vh;
@@ -2820,4 +2820,8 @@ margin-top:1px !important;
 border-top:4px solid #eee !important;
 background: #04045a !important;
 }
-
+.clipped{
+	background: #e45a18;
+  color: cornsilk;
+  padding: 10px;
+}

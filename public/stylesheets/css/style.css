@@ -2178,10 +2178,7 @@ padding-right:1px;
       width: 100%;
       height: 100%;
 		  }
-    .mycoupons{
-		border: 1px solid  #04045a;
-		background:#04045a;
-	}
+    
 	
 	
 @media screen and (max-width: 736px) {
@@ -2754,6 +2751,9 @@ padding-left:10px;
   padding: 14px;
   text-decoration: none;
 }
+.a-coupon{
+	float: none;
+}
 
 /* Page content */
 .content {
@@ -2792,7 +2792,7 @@ padding-left:10px;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 50%;
+    width: 40%;
 }
 
 /* The Close Button */
@@ -2809,4 +2809,15 @@ padding-left:10px;
     text-decoration: none;
     cursor: pointer;
 }
-    
+.coupons-title{
+	margin-left:3rem;
+}
+.coupon-title-start{
+	color:#04045a;
+}
+.coupon-modal{
+margin-top:1px !important;
+border-top:4px solid #eee !important;
+background: #04045a !important;
+}
+

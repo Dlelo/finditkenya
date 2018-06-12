@@ -89,8 +89,9 @@ block content
         li.nav-item
            button#myBtn.btn.btn-danger.btn-cat.selected-coupon-left
             h3
-              | Selected Coupons  
-              span.fas.fa-gift
+              span.fas.fa-envelope
+                |   Selected Coupons  
+              span
                 |   2
            div#myModal.modal
              div.modal-content
@@ -102,7 +103,19 @@ block content
                     |  Selected Coupons
                 div
                   .mycoupons#coupons-sticky
-          
+    div.coupons-title
+      span.h4.coupon-title-start
+       | Free Coupons & Deals are available for you!
+      span.h6
+        |  Just 
+      span.strong
+        | Click, 
+      span.strong
+        | Save 
+      span
+        | and 
+      span.strong
+        | Email.    
   div.container-fluid   
   .row.deal-main
       each coupon, i in coupons
@@ -167,11 +180,11 @@ block content
                       $('.mycoupons').html('');
                       carray.forEach(function(el) {
                         $('.mycoupons').append(
-                          '<div class="coupon"><strong>'+el.name+'</strong>\
+                          '<div class="coupon coupon-modal"><strong>'+el.name+'</strong>\
                           <i id=#{user.id} class="fa fa-close fa-fw  del-coupon" rel='+el._id+' aria-hidden="true"></i></div>'
                         );
                       }); 
-                      $('.mycoupons').append('<strong><a href="/admin/email/coupons"><i class="fa fa-envelope fa-fw" aria-hidden="true"></i> Mail All</a></strong>');             
+                      $('.mycoupons').append('<strong><a href="/admin/email/coupons" class="text-center"><i class="fa fa-envelope fa-fw" aria-hidden="true"></i> Mail All</a></strong>');             
                       console.log(data.code);
                     }
                 });

@@ -2731,13 +2731,18 @@ padding-left:10px;
 }
 .selected-coupon-left{
 	margin-left: 20rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+.count-coupon{
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 /* Style the navbar */
 #navbar {
   overflow: hidden;
   background-color: #333;
+  z-index:1000;
 }
 
 /* Navbar links */
@@ -2766,4 +2771,5 @@ padding-left:10px;
 .sticky + .content {
   padding-top: 60px;
 }
+
     

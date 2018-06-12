@@ -2764,7 +2764,7 @@ padding-left:10px;
 
 /* The sticky class is added to the navbar with JS when it reaches its scroll position */
 .sticky {
-  position: fixed;
+  position: fixed !important;
   top: 0;
   width: 100%
 }
@@ -2832,12 +2832,12 @@ background: #04045a !important;
 }
 .btn-cat-coupon {
     width: auto;
-    margin-right: 15px;
+    margin-right: auto;
     color: #fff;
     
 }
 .clipped{
-	background: #e45a18;
+	background: #c00000;
   color: cornsilk;
-  padding: 10px;
+  padding: 10px 5px 10px 5px;
 }

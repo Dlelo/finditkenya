@@ -214,7 +214,7 @@ router.get('/category/:cat',function(req, res, next){
       { "$sort": { "subcategories.name": 1 } }
     ]);
     var categories = Category.find({approved: true}).sort([['order', 1]]);
-    Promise.all([businesses, features]).then(values => {
+    Promise.all([businesses, features, categories]).then(values => {
       //console.log(values[1]);
       res.render('business/list', {
           title: req.params.cat,
@@ -239,7 +239,7 @@ router.get('/category/:cat',function(req, res, next){
       { "$sort": { "subcategories.name": 1 } }
     ]);
     var categories = Category.find({approved: true}).sort([['order', 1]]);
-    Promise.all([businesses, features]).then(values => {
+    Promise.all([businesses, features, categories]).then(values => {
       //console.log(values[1]);
       res.render('business/list', {
           title: req.params.cat,

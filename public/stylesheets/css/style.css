@@ -2823,7 +2823,7 @@ padding-left:10px;
 }
 /* Style the navbar */
 #navbar {
-  overflow: hidden;
+  overflow:show;
   background-color: #333;
   z-index:1000;
 }

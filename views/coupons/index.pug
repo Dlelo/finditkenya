@@ -70,52 +70,67 @@ block content
             div
               .mycoupons#coupons-sticky
   div.container-fluid
-    nav.navbar.navbar-expand-sm.bg-light#navbar
-      ul.navbar-nav
-        li.nav-item.dropdown.open.dropdown-category.text-center
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light#navbar
+      ul.navbar-nav.mr-auto
+        li.nav-item.dropdown.open.text-left
             button.btn.btn-cat.btn-light.form-control.dropdown-toggle(type='button', data-toggle='dropdown')
-              h4.agile-title.h-order-category.text-center
+              h4.coupon-title
                 | Search Coupon by Category
                 
               span.caret
-            ul.dropdown-menu.open.sub-catbag.drop-down-sub.dropdown-menu-coupon
+            div.dropdown-menu.open.sub-catbag.drop-down-sub.dropdown-menu-coupon.dropdown-category
               if groups 
                 each group in groups
-                    .panel-heading.category
-                      li.text-left.sub-list
-                        a(href="#"+group._id)
-                          strong  
-                            =group._id + " (" + group.count + ")" 
+                  div.text-left.sub-list
+                    a(href="#"+group._id)
+                      strong  
+                        =group._id + " (" + group.count + ")" 
         li.nav-item
-           button#myBtn.btn.btn-danger.btn-cat.selected-coupon-left
-            h3
-              span.fas.fa-envelope
-                |   Selected Coupons  
-              span#couponscount(style="padding-left:10px")
-                |   
-           div#myModal.modal
-             div.modal-content
-               span.close.text-right
-                 |&times;
-               div 
-                .coupon-title
-                  h3.text-center
-                    |  Selected Coupons
-                div
-                  .mycoupons#coupons-sticky
-    div.coupons-title
-      span.h4.coupon-title-start
-       | Free Coupons & Deals are available for you!
-      span.h6
-        |  Just 
-      span.strong
-        | Click, 
-      span.strong
-        | Save 
-      span
-        | and 
-      span.strong
-        | Email.    
+          row
+            .col-md-6.col-sm-12.col-xs-12
+              button#myBtn.btn.btn-danger.btn-cat-coupon.selected-coupon-left
+                h4.agile-title.h-order-category.text-center
+                  span.fas.fa-envelope
+                    |   Selected Coupons  
+                  span#couponscount(style="padding-left:10px")
+            .col-md-6.col-sm-12.col-xs-12
+              div#myModal.modal
+                div.modal-content
+                  span.close.text-right
+                    |&times;
+                  div 
+                    .coupon-title
+                      h3.text-center
+                        |  Selected Coupons
+                    div
+                      .mycoupons#coupons-sticky
+  
+    .col-md-12.col-sm-12.col-xs-12
+      div.coupons-title
+        span.h4.coupon-title-start
+          | Free Coupons & Deals 
+        span.h6
+          |  are available for you! Just 
+        span.strong
+          | Click, 
+        span.strong
+          | Save 
+        span
+          | and 
+        span.strong
+          | Email.    
+      
+    div#myModal.modal
+      div.modal-content
+        span.close.text-right
+          |&times;
+        div 
+        .coupon-title
+          h3.text-center
+            |  Selected Coupons
+        div
+          .mycoupons#coupons-sticky
+    
   div.container-fluid   
   .row.deal-main
       each coupon, i in coupons
@@ -130,7 +145,9 @@ block content
                     = coupon.bizid.name
                 div.col-md-12.col-lg-12.col-sm-12.col-xs-12
                   button.btn.btn-outline-primary.btn-coupon(type="button" )
-                    =coupon.tagline   
+                    =coupon.tagline 
+                div.col-md-6.col-sm-12.col-xs-12.clipped.form-control
+                  | Clipped  
               div.col-md-6.col-sm-12.col-xs-12
                 p
                 h5.my-3
@@ -138,8 +155,7 @@ block content
                 p
                   if (typeof(coupon.description) !== 'undefined' && coupon.description.length > 80)
                   p.padding.text-left  !{coupon.description.substr(0, 80)+ '..... <strong style="color:#d44457">Read More</strong>'}
-                div.col-md-6.col-sm-12.col-xs-12.clipped.form-control
-                  | Clipped
+                
             
   //Script for selecting coupons       
   script(type='text/javascript').

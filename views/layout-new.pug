@@ -65,6 +65,9 @@ body
             span.navbar-toggler-icon
       div#navbarSupportedContent.collapse.navbar-collapse
         ul.navbar-nav.ml-lg-auto.text-center
+          li.dropdown.nav-item.mr-3.open
+            
+            //button.btn.btn-cat.btn-default.form-control.dropdown-toggle(type='button', data-toggle='dropdown')
           //li.nav-item.mr-3
             a(href="/")
               span.fas.fa-home.fas-menu
@@ -90,13 +93,13 @@ body
           li.dropdown.nav-item.mr-3.dropdown-category           
             button.btn.btn-cat.btn-default.form-control.dropdown-toggle(type='button', data-toggle='dropdown',aria-expanded="true")
               span.fas.fa-th-list.fas-menu
-              |  Categories 
+                |  Categories 
               span.caret
-            ul.dropdown-menu.sub-catbag(style="width: -webkit-fill-available;")
+            div.dropdown-menu.sub-catbag(style="width: -webkit-fill-available;")
               if categories 
                 each category in categories
                   .panel-heading.category
-                    li.text-left.sub-list
+                    div.text-left.sub-list
                       a.dropdown-item(href="/category/"+category.name)
                         strong  
                           i.fas.fa-1x(aria-hidden='true', class=category.icon)    

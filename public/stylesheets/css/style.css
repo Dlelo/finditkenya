@@ -1491,6 +1491,9 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 768px) {
+	.deal-main{
+		margin-top: 2em !important;
+	  }
 	.callbacks_tabs {
 		left: -32px;
 	}
@@ -1517,6 +1520,12 @@ ul.portfolio-area li figure {
 	}
 }
 @media screen and (max-width: 667px) {
+	.deal-main{
+		margin-top: 2em !important;
+	  }
+	.selected-coupon-left {
+	   margin-left: 2rem !important;
+	}
 	.banner-text-top{
     padding-top: 20vh;
 	}
@@ -1536,6 +1545,12 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 640px) {
+	.deal-main{
+		margin-top: 2em !important;
+	  }
+	.selected-coupon-left {
+	   margin-left: 2rem !important;
+	}
 	.banner-text-top{
     padding-top: 20vh;
 	}
@@ -1545,6 +1560,12 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 600px) {
+	.deal-main{
+		margin-top: 2em !important;
+	  }
+	.selected-coupon-left {
+	   margin-left: 2rem !important;
+	}
 	.banner-text-top{
     padding-top: 20vh;
 	}
@@ -1558,6 +1579,12 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 568px) {
+	.deal-main{
+		margin-top: 2em !important;
+	  }
+	.selected-coupon-left {
+	   margin-left: 2rem !important;
+	}
 	.banner-text-top{
     padding-top: 20vh;
 	}
@@ -1598,6 +1625,12 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 480px) {
+	.deal-main{
+		margin-top: 2em !important;
+	  }
+	.selected-coupon-left {
+	   margin-left: 2rem !important;
+	}
 	.banner-text-top{
     padding-top: 20vh;
 	}
@@ -1662,6 +1695,12 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 414px) {
+	.deal-main{
+		margin-top: 2em !important;
+	  }
+	.selected-coupon-left {
+	   margin-left: 2rem !important;
+	}
 	.banner-text-top{
     padding-top: 20vh;
 	}
@@ -1718,6 +1757,12 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 384px) {
+	.deal-main{
+		margin-top: 2em !important;
+	  }
+	.selected-coupon-left {
+	   margin-left: 2rem !important;
+	}
 	.banner-text-top{
     padding-top: 20vh;
 	}
@@ -1749,6 +1794,12 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 375px) {
+	.deal-main{
+		margin-top: 2em !important;
+	  }
+	.selected-coupon-left {
+	   margin-left: 2rem !important;
+	}
 	.banner-text-top{
     padding-top: 20vh;
 	}
@@ -1776,6 +1827,12 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 320px) {
+	.deal-main{
+		margin-top: 2em !important;
+	  }
+	.selected-coupon-left {
+	   margin-left: 2rem !important;
+	}
 	.banner-text-top{
     padding-top: 20vh;
 	}
@@ -1818,6 +1875,12 @@ ul.portfolio-area li figure {
 	}
 }
 @media screen and (max-width: 568px){
+	.deal-main{
+	 margin-top: 2em !important;
+	 }
+	.selected-coupon-left {
+	   margin-left: 2rem!important;
+	}
 	.banner-text-top{
     padding-top: 20vh;
 	}
@@ -1836,6 +1899,12 @@ ul.portfolio-area li figure {
 	border-radius: 4px;
 }
 @media screen and (max-width: 786px){
+	.deal-main{
+		    margin-top: 2em !important;
+	}
+	.selected-coupon-left {
+	   margin-left: 2rem!important;
+	}
 	.banner-text-top{
     padding-top: 20vh;
 	}
@@ -2255,11 +2324,17 @@ padding-right:1px;
 	margin-left: 0%;
     margin-right: 0%;
 }
+.selected-coupon-left {
+	   margin-left: 2rem !important;
+	}
 
 
 }
 
 @media screen and (max-width: 414px) {
+	.selected-coupon-left {
+	   margin-left: 2rem !important;
+	}
 	#hide-search {
     padding: 5vw 0 2vW 5vw;
 	 }
@@ -2324,6 +2399,9 @@ padding-right:1px;
 
 
 @media screen and (max-width: 384px) {
+	.selected-coupon-left {
+	   margin-left:  !important;
+	}
 	#hide-search {
     padding: 5vw 0 2vW 5vw;
    }
@@ -2388,6 +2466,9 @@ padding-right:1px;
 
 
 @media screen and (max-width: 375px) {
+	.selected-coupon-left {
+	   margin-left: 2rem !important;
+	}
 	#hide-search {
     padding: 5vw 0 2vW 5vw;
 	 }
@@ -2450,9 +2531,12 @@ padding-right:1px;
 }
 
 @media screen and (max-width: 320px) {
+	.selected-coupon-left {
+	   margin-left: 2rem !important;
+	}
 	.easy-autocomplete {
     width: 78% !important;
-}
+      }
 	#hide-search {
     padding: 5vw 0 2vW 5vw;
      }
@@ -2579,7 +2663,9 @@ padding-bottom:5px;
 }
 .btn-cat{
 	width: auto;
-	margin-left:2px;
+    margin-left: 2px;
+    color: #04045a;
+    min-height: 3px;
 }
 .cat-items{
 padding-left:10px;
@@ -2737,7 +2823,7 @@ padding-left:10px;
 }
 /* Style the navbar */
 #navbar {
-  overflow: hidden;
+  overflow:show;
   background-color: #333;
   z-index:1000;
 }
@@ -2762,7 +2848,7 @@ padding-left:10px;
 
 /* The sticky class is added to the navbar with JS when it reaches its scroll position */
 .sticky {
-  position: fixed;
+  position: fixed !important;
   top: 0;
   width: 100%
 }
@@ -2820,8 +2906,22 @@ margin-top:1px !important;
 border-top:4px solid #eee !important;
 background: #04045a !important;
 }
+
+.dropdown-category{
+  position: relative; /* <-- Added */
+  z-index: 10000; /* <-- Added */
+  overflow: show;
+    
+
+}
+.btn-cat-coupon {
+    width: auto;
+    margin-right: auto;
+    color: #fff;
+    
+}
 .clipped{
-	background: #e45a18;
+	background: #c00000;
   color: cornsilk;
-  padding: 10px;
+  padding: 10px 5px 10px 5px;
 }

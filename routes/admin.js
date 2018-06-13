@@ -334,14 +334,27 @@ router.get('/allanalytics',role.auth, function(req, res, next){
       return [rst[key]._id, rst[key].views, rst[key].contacts];
     });
     //END OF RAW DATA COLLECTION
-    console.log(result);
-    Analytics.find({})
-	.then(function(data){
-	   res.render('admin/analytics', {data: data, title: "Analytics", graph: JSON.stringify(result)});
-	})
-	.catch(function(err){
-	    console.log(err);
-	});
+    //console.log(result);
+
+      Analytics.aggregate([
+        {"$match": {}},
+        {
+         $lookup:
+           {
+             from: "businesses",
+             localField: "bizid",
+             foreignField: "_id",
+             as: "biz"
+           }
+         }
+      ])
+  	.then(function(data){
+       //console.log(data);
+  	   res.render('admin/analytics', {data: data, title: "Analytics", graph: JSON.stringify(result)});
+  	})
+  	.catch(function(err){
+  	    console.log(err);
+  	});
   });
 });
 

@@ -2327,6 +2327,9 @@ padding-right:1px;
 .selected-coupon-left {
 	   margin-left: 2rem !important;
 	}
+li.list-hor{
+	display: inline-block;
+}
 
 
 }
@@ -2897,6 +2900,7 @@ padding-left:10px;
 }
 .coupons-title{
 	margin-left:3rem;
+	margin-top: 7rem;
 }
 .coupon-title-start{
 	color:#04045a;

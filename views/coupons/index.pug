@@ -99,41 +99,30 @@ block content
                   span.close.text-right
                     |&times;
                   div 
-                    .coupon-title
-                      h3.text-center
-                        |  Selected Coupons
-                    div
-                      .mycoupons#coupons-sticky
-  
-    .col-md-12.col-sm-12.col-xs-12
-      div.coupons-title
-        span.h4.coupon-title-start
-          | Free Coupons & Deals 
-        span.h6
-          |  are available for you! Just 
-        span.strong
-          | Click, 
-        span.strong
-          | Save 
-        span
-          | and 
-        span.strong
-          | Email.    
-      
-    div#myModal.modal
-      div.modal-content
-        span.close.text-right
-          |&times;
-        div 
-        .coupon-title
-          h3.text-center
-            |  Selected Coupons
-        div
-          .mycoupons#coupons-sticky
+                  .coupon-title
+                    h3.text-center
+                      |  Selected Coupons
+                  div
+                    .mycoupons#coupons-sticky
     
-  div.container-fluid   
-  .row.deal-main
+          
+    .row.deal-main
+      .col-md-12.col-sm-12.col-xs-12
+              div.coupons-title
+                span.h4.coupon-title-start
+                  | Free Coupons & Deals 
+                span.h6
+                  |  are available for you! Just 
+                span.strong
+                  | Click, 
+                span.strong
+                  | Save 
+                span
+                  | and 
+                span.strong
+                  | Email. 
       each coupon, i in coupons
+          
           .col-md-3.coupon(id=coupon.id,class=(coupon.users.some(function(x) { return x.user_id == user.id })) ? 'couponclicked' : 'couponadd', rel=user.id)
             row.deal-main.deal-coup.coupon-items
               

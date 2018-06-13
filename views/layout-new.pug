@@ -359,6 +359,7 @@ script(type='text/javascript').
     $('.hoursopened').val('08:00');
     $('.hoursclosed').val('17:00');
 
+    
     $(document).on('click', ".cat", function() {
         var originalHeight = $('#bottom-scroll').height();
         $(this).addClass('godown');
@@ -375,6 +376,7 @@ script(type='text/javascript').
         $(this).addClass('arrow-up');
         $('#bottom-scroll').animate({height: '23%'},500)
     });
+    
     $(document).ready(function() {
 
       $('#spnCharLeft').css('display', 'none');
@@ -513,9 +515,10 @@ script(type='text/javascript').
       //alert("clicked");
       });
     // scroll to top action
+    
     $('.scroll-top').on('click', function(event) {
     event.preventDefault();
-    $('html, body').animate({scrollTop:0}, 'slow');
+    $('html, body').animate({scrollTop:0}, 'fast');
     });
     // mobile nav toggle
     $('#nav-toggle').on('click', function (event) {
@@ -525,14 +528,14 @@ script(type='text/javascript').
     });
     // scroll function
     function scrollToID(id, speed){
-    var offSet = 50;
-    var targetOffset = $(id).offset().top - offSet;
-    var mainNav = $('#main-nav');
-    $('html,body').animate({scrollTop:targetOffset}, speed);
-    if (mainNav.hasClass("open")) {
-    mainNav.css("height", "1px").removeClass("in").addClass("collapse");
-    mainNav.removeClass("open");
-    }
+      var offSet = 50;
+      var targetOffset = $(id).offset().top - offSet;
+      var mainNav = $('#main-nav');
+      $('html,body').animate({scrollTop:targetOffset}, speed);
+      if (mainNav.hasClass("open")) {
+        mainNav.css("height", "1px").removeClass("in").addClass("collapse");
+        mainNav.removeClass("open");
+      }
     }
     if (typeof console === "undefined") {
     console = {

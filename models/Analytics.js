@@ -10,7 +10,7 @@ const Schema = mongoose.Schema;
 const analyticsSchema = new Schema({
 	ip: { type: String},
 	time: Date,
-	bizid: String,
+	bizid: { type: Schema.Types.ObjectId, ref: 'Business' },
 	category: String
 });
 

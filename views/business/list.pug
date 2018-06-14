@@ -29,11 +29,11 @@ block content
               ul.dropdown-menu.open.sub-catbag.drop-down-sub
                 if features 
                   each feature in features
-                      .panel-heading.category
-                        li.text-left.sub-list
-                          a(href="/subcategory/"+feature.subcategories.name)
-                            strong  
-                              =feature.subcategories.name
+                    .panel-heading.category
+                      li.text-left.sub-list
+                        a(href="/subcategory/"+feature.subcategories.name)
+                          strong  
+                            =feature.subcategories.name
         .col-md-9
           each biz in businesses
             

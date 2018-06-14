@@ -8,7 +8,7 @@ block content
 
        .col-md-9.coupon-col
           row.my-row
-            .col-md-12
+            
               div.carousel.slide.carousel-fade(id="demo" data-ride="carousel")
                 ul.carousel-indicators
                   li.active(data-target="#demo" data-slide-to="0")
@@ -79,19 +79,26 @@ block content
                 
               span.caret
             div.dropdown-menu.open.sub-catbag.drop-down-sub.dropdown-menu-coupon.dropdown-category
+              
               if groups 
+                button(class="btn" onclick="filterSelection('all')")
+                  strong
+                    |  all Categories (
+                  span
+                    =groups.length + ')'
                 each group in groups
-                  div.text-left.sub-list
-                    a(href="#"+group._id)
+                  div.text-left.sub-list#myBtnContainer
+                    //a(href="#"+group._id)
+                    button(class="btn" onclick="filterSelection('"+group._id+"')")
                       strong  
                         =group._id + " (" + group.count + ")" 
         li.nav-item
           row
             .col-md-6.col-sm-12.col-xs-12
               button#myBtn.btn.btn-danger.btn-cat-coupon.selected-coupon-left
-                h4.agile-title.h-order-category.text-center
+                h4.agile-title.text-center
                   span.fas.fa-envelope
-                    |   Selected Coupons  
+                  |   Selected Coupons  
                   span#couponscount(style="padding-left:10px")
             .col-md-6.col-sm-12.col-xs-12
               div#myModal.modal
@@ -99,62 +106,57 @@ block content
                   span.close.text-right
                     |&times;
                   div 
-                    .coupon-title
-                      h3.text-center
-                        |  Selected Coupons
-                    div
-                      .mycoupons#coupons-sticky
-  
-    .col-md-12.col-sm-12.col-xs-12
-      div.coupons-title
-        span.h4.coupon-title-start
-          | Free Coupons & Deals 
-        span.h6
-          |  are available for you! Just 
-        span.strong
-          | Click, 
-        span.strong
-          | Save 
-        span
-          | and 
-        span.strong
-          | Email.    
-      
-    div#myModal.modal
-      div.modal-content
-        span.close.text-right
-          |&times;
-        div 
-        .coupon-title
-          h3.text-center
-            |  Selected Coupons
-        div
-          .mycoupons#coupons-sticky
+                  .coupon-title
+                    h3.text-center
+                      |  Selected Coupons
+                  div
+                    .mycoupons#coupons-sticky
     
-  div.container-fluid   
-  .row.deal-main
+          
+    .row.deal-main
+      .col-md-12.col-sm-12.col-xs-12
+              div.coupons-title
+                span.h4.coupon-title-start
+                  | Free Coupons & Deals 
+                span.h6
+                  |  are available for you! Just 
+                span.strong
+                  | Click, 
+                span.strong
+                  | Save 
+                span
+                  | and 
+                span.strong
+                  | Email. 
       each coupon, i in coupons
+          
           .col-md-3.coupon(id=coupon.id,class=(coupon.users.some(function(x) { return x.user_id == user.id })) ? 'couponclicked' : 'couponadd', rel=user.id)
-            row.deal-main.deal-coup.coupon-items
+            row.deal-main.deal-coup.coupon-items.filterDiv(class=coupon.bizid.subcategory)
               
-              div.col-md-6.col-sm-12.col-xs-12
+              div.col-md-12.col-sm-12.col-xs-12
                 div
-                  img.coup-img-wrapper.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt="Responsive image")
                   p
-                    h5                   
-                    = coupon.bizid.name
-                div.col-md-12.col-lg-12.col-sm-12.col-xs-12
-                  button.btn.btn-outline-primary.btn-coupon(type="button" )
-                    =coupon.tagline 
-                div.col-md-6.col-sm-12.col-xs-12.clipped.form-control
-                  | Clipped  
-              div.col-md-6.col-sm-12.col-xs-12
-                p
-                h5.my-3
-                    =coupon.name
-                p
-                  if (typeof(coupon.description) !== 'undefined' && coupon.description.length > 80)
-                  p.padding.text-left  !{coupon.description.substr(0, 80)+ '..... <strong style="color:#d44457">Read More</strong>'}
+                    h3                  
+                    = coupon.name
+                  img.coup-img-wrapper.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt="Responsive image")
+                  .div 
+                    h6
+                      strong
+                        =coupon.bizid.name
+                  
+                  .div
+                     =coupon.description
+                  .div
+                    
+                  .div.col-md-12.col-lg-12.col-sm-12.col-xs-12.float-left
+                    button.btn.btn-outline-primary.btn-coupon(type="button" )
+                      =coupon.tagline 
+                  .div.col-md-6.col-sm-12.col-xs-12.clipped.float-center
+                    button.btn.btn.danger
+                      | Clipped  
+              
+                  //if (typeof(coupon.description) !== 'undefined' && coupon.description.length > 80)
+                  //p.padding.text-left  !{coupon.description.substr(0, 80)+ '..... <strong style="color:#d44457">Read More</strong>'}
                 
             
   //Script for selecting coupons       
@@ -323,5 +325,48 @@ block content
             modal.style.display = "none";
         }
     }
+  //script for opening modal
+  script(type='text/javascript').
+    filterSelection("all")
+    function filterSelection(c) {
+      var x, i;
+      x = document.getElementsByClassName("filterDiv");
+      if (c == "all") c = "";
+      for (i = 0; i < x.length; i++) {
+        w3RemoveClass(x[i], "show");
+        if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+      }
+    }
 
-      
+    function w3AddClass(element, name) {
+      var i, arr1, arr2;
+      arr1 = element.className.split(" ");
+      arr2 = name.split(" ");
+      for (i = 0; i < arr2.length; i++) {
+        if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+      }
+    }
+
+    function w3RemoveClass(element, name) {
+      var i, arr1, arr2;
+      arr1 = element.className.split(" ");
+      arr2 = name.split(" ");
+      for (i = 0; i < arr2.length; i++) {
+        while (arr1.indexOf(arr2[i]) > -1) {
+          arr1.splice(arr1.indexOf(arr2[i]), 1);     
+        }
+      }
+      element.className = arr1.join(" ");
+    }
+
+    // Add active class to the current button (highlight it)
+    var btnContainer = document.getElementById("myBtnContainer");
+    var btns = btnContainer.getElementsByClassName("btn");
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].addEventListener("click", function(){
+        var current = document.getElementsByClassName("active");
+        current[0].className = current[0].className.replace(" active", "");
+        this.className += " active";
+      });
+    }
+        

@@ -498,12 +498,12 @@ script(type='text/javascript').
               method: "GET"
             }
           };
-
-    $("#search2").easyAutocomplete(options);
+    var timer;
+    $('#search2').on("keyup",function(event){      
+        $("#search2").easyAutocomplete(options); 
+    });
+    
     $("#search2" ).focus();
-    $("#search2").on('keyup', function(){
-      //alert("clicked");
-      });
     // scroll to top action
     
     $('.scroll-top').on('click', function(event) {

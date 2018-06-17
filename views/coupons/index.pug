@@ -6,42 +6,50 @@ block content
     .container-fluid.container-margin
      .row.couponbg-color
 
-       .col-md-9.coupon-col
+       div.col-md-9.coupon-col
           row.my-row
             
-              div.carousel.slide.carousel-fade(id="demo" data-ride="carousel")
-                ul.carousel-indicators
-                  li.active(data-target="#demo" data-slide-to="0")
-                  li(data-target="#demo" data-slide-to="1")
-                  li(data-target="#demo" data-slide-to="2")
+              div#carouselExampleFade.carousel.slide.carousel-fade(data-ride="carousel")
+                ol.carousel-indicators
+                  li.active(data-target="#carouselExampleIndicators" data-slide-to="0")
+                  li(data-target="#carouselExampleIndicators" data-slide-to="1")
+                  li(data-target="#carouselExampleIndicators" data-slide-to="2")
 
                 
                 div.carousel-inner
                   each coupon, i in coupons
                     if (i==0)
                       div.carousel-item.active
-                          img.d-block.img-fluid.coupons-img(src="/uploads/" + coupon.photo)
-                          div.carousel-caption
+                          img.d-block.w-100.coupons-img(src="/uploads/" + coupon.photo)
+                          div.carousel-caption.d-none.d-md-block
+                            h5
+                              =coupon.bizid.name
+                            p 
+                              =coupon.description
                             button.btn.btn-danger.flash-coupon(type="button" )
                               =coupon.tagline
                   each coupon, i in coupons
                     if (i>0 && i<3)
                       div.carousel-item
-                          img.coupons-img(src="/uploads/" + coupon.photo)
-                          div.carousel-caption
+                          img.d-block.w-100.coupons-img(src="/uploads/" + coupon.photo)
+                          div.carousel-caption.d-none.d-md-block
+                            h5
+                              =coupon.bizid.name
+                            p 
+                              =coupon.description
                             button.btn.btn-danger.flash-coupon(type="button" )
                               =coupon.tagline
           
                     
     
-                a.carousel-control-prev(href="#demo" data-slide="prev")
-                  span.carousel-control-prev-icon
+                a.carousel-control-prev(href="#carouselExampleFade" role="button" data-slide="prev")
+                  span.carousel-control-prev-icon(aria-hidden="true")
 
-                a.carousel-control-next(href="#demo" data-slide="next")
-                  span.carousel-control-next-icon
+                a.carousel-control-next(href="#carouselExampleFade" role="button" data-slide="next")
+                  span.carousel-control-next-icon(aria-hidden="true")
       
         
-       .col-md-3
+       div.col-md-3
          row 
             h5
               .coupon-title

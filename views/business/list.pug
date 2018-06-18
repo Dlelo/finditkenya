@@ -35,9 +35,8 @@ block content
                           strong  
                             =feature.subcategories.name
         .col-md-9
-          if(businesses)
-            each biz in businesses
-              
+          if businesses
+            each biz in businesses              
               .row.cat-background
                 a(href="/"+biz.slug)
                   .col-md-3

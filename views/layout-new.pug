@@ -58,7 +58,7 @@ body
       a(href="/coupons")
        button.btn.btn-light.coupons-btn.flash-button(type="button")
         span.fas.fa-gift.coupons-text-color
-          | View deals
+        | View deals
       //site navigation 
       button.navbar-toggler.ml-md-auto(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
           aria-expanded="false" aria-label="Toggle navigation")
@@ -93,7 +93,8 @@ body
           li.dropdown.nav-item.mr-3.dropdown-category           
             button.btn.btn-cat.btn-default.form-control.dropdown-toggle(type='button', data-toggle='dropdown',aria-expanded="true")
               span.fas.fa-th-list.fas-menu
-                |  Categories 
+              strong
+               |  Categories 
               span.caret
             div.dropdown-menu.sub-catbag(style="width: -webkit-fill-available;")
               if categories 
@@ -108,21 +109,25 @@ body
           li.nav-item.mr-3
             a(href="/")
               span.fas.fa-home.fas-menu 
+              strong
               |  Home
           if user
             li.nav-item.mr-3                  
               a(href='/dashboard')  
                 span.fas.fa-user.fas-menu
+                strong
                 |  View Profile          
           if user                
             li.nav-item.mr-3
               a(href='/logout') 
                 span.fas.fa-sign-out-alt.fas-menu
+                strong
                 |  Logout
           else
             li.nav-item.mr-3
               a(href='/login')
                 button.btn.btn-primary.ml-lg-5.w3ls-btn
+                strong
                   | Login
               
   

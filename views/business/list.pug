@@ -35,10 +35,10 @@ block content
                           strong  
                             =feature.subcategories.name
         .col-md-9
-          if businesses
+          - if businesses
             each biz in businesses              
               .row.cat-background
-                if (typeof(biz.slug) !== 'undefined')
+               - if (typeof(biz.slug) !== 'undefined')
                   a(href="/"+biz.slug)
                     .col-md-3
                       a(href="/"+biz.slug)

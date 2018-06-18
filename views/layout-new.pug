@@ -58,7 +58,8 @@ body
       a(href="/coupons")
        button.btn.btn-light.coupons-btn.flash-button(type="button")
         span.fas.fa-gift.coupons-text-color
-        | View deals
+        strong
+          |  View deals
       //site navigation 
       button.navbar-toggler.ml-md-auto(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
           aria-expanded="false" aria-label="Toggle navigation")
@@ -110,19 +111,19 @@ body
             a(href="/")
               span.fas.fa-home.fas-menu 
               strong
-              |  Home
+                |  Home
           if user
             li.nav-item.mr-3                  
               a(href='/dashboard')  
                 span.fas.fa-user.fas-menu
                 strong
-                |  View Profile          
+                  |  View Profile          
           if user                
             li.nav-item.mr-3
               a(href='/logout') 
                 span.fas.fa-sign-out-alt.fas-menu
                 strong
-                |  Logout
+                  |  Logout
           else
             li.nav-item.mr-3
               a(href='/login')

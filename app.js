@@ -112,7 +112,7 @@ passport.use(new GoogleStrategy({
           var holder = email.app;
           var mailer = email.mailer;
           holder.mailer.send('email/welcome', {
-            to: email, // REQUIRED. This can be a comma delimited string just like a normal email to field. 
+            to: email, // REQUIRED. This can be a comma delimited string just like a normal email to field.
             subject: 'Welcome To FindIt', // REQUIRED.
             otherProperty: 'Other Property' // All additional properties are also passed to the template as local variables.
           }, function (err) {
@@ -125,9 +125,9 @@ passport.use(new GoogleStrategy({
           });
           return done(err, user);
         })
-      }else{        
+      }else{
         return done(null, user);
-      }      
+      }
     }).catch(function(err){
       console.log(err);
     });
@@ -150,7 +150,7 @@ passport.use(new FacebookStrategy({
         },function(err, user){
           return done(err, user);
         })
-      }else{        
+      }else{
         return done(null, user);
       }
     }).catch(function(err){
@@ -212,7 +212,7 @@ app.post('/register',
         } else {
             return value;
         }
-    }),  
+    }),
   ],
    (req, res, next) => {
     // Get the validation result whenever you want; see the Validation Result API for all options!
@@ -234,6 +234,8 @@ app.post('/register',
           if(err){
             console.log(err);
             throw new Error('Something went wrong, kindly try again');
+            req.flash("error_msg","User already registered with that email address");
+            res.render('user/register');
           }
           if (!resad){
             User.create({
@@ -255,7 +257,7 @@ app.post('/register',
                 var holder = emailModel.app;
                 var mailer = emailModel.mailer;
                 holder.mailer.send('email/welcome', {
-                  to: email, // REQUIRED. This can be a comma delimited string just like a normal email to field. 
+                  to: email, // REQUIRED. This can be a comma delimited string just like a normal email to field.
                   subject: 'Welcome To FindIt', // REQUIRED.
                   otherProperty: 'Other Property' // All additional properties are also passed to the template as local variables.
                 }, function (err) {
@@ -274,7 +276,7 @@ app.post('/register',
               }
             // saved!
             });
-          }               
+          }
       });
     }
   }
@@ -283,7 +285,7 @@ app.post('/register',
 
 app.get('/auth/google', passport.authenticate('google', { scope: [
        'https://www.googleapis.com/auth/plus.login',
-       'https://www.googleapis.com/auth/plus.profile.emails.read'] 
+       'https://www.googleapis.com/auth/plus.profile.emails.read']
 }));
 
 // GET /auth/google/callback
@@ -291,8 +293,8 @@ app.get('/auth/google', passport.authenticate('google', { scope: [
 //   request.  If authentication fails, the user will be redirected back to the
 //   login page.  Otherwise, the primary route function function will be called,
 //   which, in this example, will redirect the user to the home page.
-app.get( '/auth/google/callback', 
-      passport.authenticate( 'google', { 
+app.get( '/auth/google/callback',
+      passport.authenticate( 'google', {
         failureRedirect: '/login'
   }),
   function(req, res) {

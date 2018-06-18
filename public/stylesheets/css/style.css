@@ -2145,6 +2145,10 @@ nav {
 	font-weight: 900;
 
 }
+.the-review{
+  font-style: italic;
+}
+}
 .coupon-col-right{
 padding-right:1px;
 }

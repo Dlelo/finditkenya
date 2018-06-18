@@ -109,8 +109,9 @@ block content
                 img.img-fluid.latest-review-imgwrapper(src="/uploads/thumbs/cover"+ review.bizid.photo)
                 
                 div.col-lg-12.col-md-12.col-sm-12.col-xs-12
-                  h6.h-order-category
-                    =review.bizid.name
+                  h6.text-left
+                    strong
+                      =review.bizid.name
                   | Location, 
                   =review.bizid.city
                 div.col-lg-12.col-md-12.col-sm-12.col-xs-12
@@ -121,8 +122,8 @@ block content
                       =review.user_id.names
                       |  , Says
                     div.col-lg-12.col-md-12.col-sm-12.col-xs-12
-                      i
-                      =review.message
+                      i.the-review
+                        =review.message
                 div.col-12
 
                   p

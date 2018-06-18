@@ -29,6 +29,7 @@ h5,
 h6 {
 	margin: 0;
 	font-family: 'Source Sans Pro','Lato','open sans','Roboto', sans-serif;
+	text-transform: capitalize;
 }
 .fa, .far, .fas {
     font-family:  'Source Sans Pro','Lato','open sans','Roboto', sans-serif;

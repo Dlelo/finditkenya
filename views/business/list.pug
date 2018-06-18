@@ -38,125 +38,126 @@ block content
           if businesses
             each biz in businesses              
               .row.cat-background
-                a(href="/"+biz.slug)
-                  .col-md-3
-                    a(href="/"+biz.slug)
-                      h6.text-left.cat-items-top
-                        =biz.name
-                        if (biz.paid == true)
-                          small                      
-                            span.fa.fa-check-circle.strong(style="color:#2862ec;")
-                      
-                      if(biz.photo)
-                        img.cat-image.cat-items-bottom(src="/uploads/thumbs/cover"+ biz.photo, height="200px")
-                      else
-                        p
-                          | No image Available
-                  .col-md-3
-                    if (typeof(biz.description) !== 'undefined' && biz.description.length > 150)
-                          p.padding.text-left  !{biz.description.substr(0, 150)+ '..... <strong style="color:#d44457">Read More</strong>'}
-                      
-                      
-                          
-                  .col-md-3                 
-                      div
-                        p 
-                          span.glyphicon.glyphicon-cog.text-success.glyph.border 
-                          a(href=biz.website,target="_blank")
-                            =  biz.subcategory
-                      div
-                        p 
-                          span.glyphicon.glyphicon-globe.text-success.glyph
-                          a(href=biz.website,target="_blank")
-                              |  website
-                          if(biz.phone)
-                      div
-                        p 
-                          span.glyphicon.glyphicon-earphone.text-info.glyph.fas.fa-phone-volume 
-                              |  #{biz.phone}
-                      div
-                        p
-                          if biz.reviews
-                          if( biz.reviews.length == 1) 
-                              .col-md-6(class="rating medium star-icon value-4 label-hidden")
-                                .star-container
-                                  .star
-                                    i.star-empty
-                                    i.star-half
-                                    i.star-filled
-                                  .star
-                                    i.star-empty
-                                    i.star-half
-                                    i.star-filled
-                                  .star
-                                    i.star-empty
-                                    i.star-half
-                                    i.star-filled
-                                  .star
-                                    i.star-empty
-                                    i.star-half
-                                    i.star-filled
-                                  .star
-                                    i.star-empty
-                                    i.star-half
-                                    i.star-filled
+                if (biz.slug != '' || biz.slug != 'undefined')
+                  a(href="/"+biz.slug)
+                    .col-md-3
+                      a(href="/"+biz.slug)
+                        h6.text-left.cat-items-top
+                          =biz.name
+                          if (biz.paid == true)
+                            small                      
+                              span.fa.fa-check-circle.strong(style="color:#2862ec;")
+                        
+                        if(biz.photo)
+                          img.cat-image.cat-items-bottom(src="/uploads/thumbs/cover"+ biz.photo, height="200px")
+                        else
+                          p
+                            | No image Available
+                    .col-md-3
+                      if (typeof(biz.description) !== 'undefined' && biz.description.length > 150)
+                            p.padding.text-left  !{biz.description.substr(0, 150)+ '..... <strong style="color:#d44457">Read More</strong>'}
+                        
+                        
+                            
+                    .col-md-3                 
+                        div
+                          p 
+                            span.glyphicon.glyphicon-cog.text-success.glyph.border 
+                            a(href=biz.website,target="_blank")
+                              =  biz.subcategory
+                        div
+                          p 
+                            span.glyphicon.glyphicon-globe.text-success.glyph
+                            a(href=biz.website,target="_blank")
+                                |  website
+                            if(biz.phone)
+                        div
+                          p 
+                            span.glyphicon.glyphicon-earphone.text-info.glyph.fas.fa-phone-volume 
+                                |  #{biz.phone}
+                        div
+                          p
+                            if biz.reviews
+                            if( biz.reviews.length == 1) 
+                                .col-md-6(class="rating medium star-icon value-4 label-hidden")
+                                  .star-container
+                                    .star
+                                      i.star-empty
+                                      i.star-half
+                                      i.star-filled
+                                    .star
+                                      i.star-empty
+                                      i.star-half
+                                      i.star-filled
+                                    .star
+                                      i.star-empty
+                                      i.star-half
+                                      i.star-filled
+                                    .star
+                                      i.star-empty
+                                      i.star-half
+                                      i.star-filled
+                                    .star
+                                      i.star-empty
+                                      i.star-half
+                                      i.star-filled
+                                small
+                                  | #{biz.reviews.length} Review
+                            else if( biz.reviews.length > 1)
+                              span.glyphicon.glyphicon-cog.glyph.border
+                                div(class="rating medium star-icon value-4 label-hidden")
+                                  .star-container
+                                    .star
+                                      i.star-empty
+                                      i.star-half
+                                      i.star-filled
+                                    .star
+                                      i.star-empty
+                                      i.star-half
+                                      i.star-filled
+                                    .star
+                                      i.star-empty
+                                      i.star-half
+                                      i.star-filled
+                                    .star
+                                      i.star-empty
+                                      i.star-half
+                                      i.star-filled
+                                    .star
+                                      i.star-empty
+                                      i.star-half
+                                      i.star-filled
                               small
-                                | #{biz.reviews.length} Review
-                          else if( biz.reviews.length > 1)
-                            span.glyphicon.glyphicon-cog.glyph.border
-                              div(class="rating medium star-icon value-4 label-hidden")
-                                .star-container
-                                  .star
-                                    i.star-empty
-                                    i.star-half
-                                    i.star-filled
-                                  .star
-                                    i.star-empty
-                                    i.star-half
-                                    i.star-filled
-                                  .star
-                                    i.star-empty
-                                    i.star-half
-                                    i.star-filled
-                                  .star
-                                    i.star-empty
-                                    i.star-half
-                                    i.star-filled
-                                  .star
-                                    i.star-empty
-                                    i.star-half
-                                    i.star-filled
-                            small
-                              |  #{biz.reviews.length} Reviews
-                          else
-                            span.glyphicon.glyphicon-cog.glyph
-                              |  Be the first to review
-                  .col-md-3     
-                      if(biz.facebook)
-                        br
-                        p 
-                          a.findit(href="http://"+biz.facebook,target="_blank",style="color:#2862ec;")
-                            span.fab.fa-facebook-f.text-info.glyph 
-                              |  Facebook
-                      if(biz.twitter)
-                        br
-                        p 
-                          a.findit(href="http://"+biz.twitter,target="_blank",style="color:#2862ec;")
-                              span.fab.fa-twitter.text-info.glyph
-                                |  Twitter
-                      if(biz.instagram)
-                        br
-                        p 
-                          a.findit(href="http://"+biz.instagram,target="_blank",style="color:#2862ec;")
-                              span.fab.fa-instagram.text-info.glyph 
-                                |  Instagram
-                      if(biz.youtube)
-                        br
-                        p 
-                          a.findit(href="http://"+biz.youtube,target="_blank",style="color:#2862ec;")
-                              span.fab.fa-youtube.text-info.glyph.border 
-                                |  Youtube
-        
+                                |  #{biz.reviews.length} Reviews
+                            else
+                              span.glyphicon.glyphicon-cog.glyph
+                                |  Be the first to review
+                    .col-md-3     
+                        if(biz.facebook)
+                          br
+                          p 
+                            a.findit(href="http://"+biz.facebook,target="_blank",style="color:#2862ec;")
+                              span.fab.fa-facebook-f.text-info.glyph 
+                                |  Facebook
+                        if(biz.twitter)
+                          br
+                          p 
+                            a.findit(href="http://"+biz.twitter,target="_blank",style="color:#2862ec;")
+                                span.fab.fa-twitter.text-info.glyph
+                                  |  Twitter
+                        if(biz.instagram)
+                          br
+                          p 
+                            a.findit(href="http://"+biz.instagram,target="_blank",style="color:#2862ec;")
+                                span.fab.fa-instagram.text-info.glyph 
+                                  |  Instagram
+                        if(biz.youtube)
+                          br
+                          p 
+                            a.findit(href="http://"+biz.youtube,target="_blank",style="color:#2862ec;")
+                                span.fab.fa-youtube.text-info.glyph.border 
+                                  |  Youtube
+          
       //script to put navitems open by default
       script(type='text/javascript').
         $(document).ready(function(){

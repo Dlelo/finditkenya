@@ -245,8 +245,9 @@ header h1 a span {
 	-o-background-size: cover;
 	-ms-background-size: cover;
 	background-size: cover;
-	min-height: 70vh;
+	height: 75vh;
 	position: relative;
+	background-image:center no-repeat;
 }
 
 .inner-banner {
@@ -2065,11 +2066,12 @@ nav {
   z-index: 1;
 }
 .latest-review-imgwrapper{
-    width: 90vw;
+	width: fit-content;
     height: 30vh;
     position: relative;
     margin: 0;
-    overflow: hidden;
+	overflow: hidden;
+	border-bottom: 1px solid #eee;
 }
 .latest-review-leftcol{
   padding-left:20px !important;
@@ -2081,12 +2083,12 @@ nav {
 
 .latest-review-container{
 	background-color:#eee transparent;
-	box-shadow: 0 1px 3px 0 rgba(0,0,0,.25);
+	box-shadow: 1px 1px 1px 1px rgba(2, 2, 2, 0.25)
 }
 .latest-review{
-	margin-left: 20px !important;
-	margin-right: 0px !important;
-
+	margin-left: 30px !important;
+    margin-right: 0px !important;
+    margin-bottom: 30px;
 
 }
 .latest-review-row{

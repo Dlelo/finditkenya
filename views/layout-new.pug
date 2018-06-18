@@ -376,19 +376,7 @@ script(type='text/javascript').
     $(document).ready(function() {
 
       $('#spnCharLeft').css('display', 'none');
-      var maxLimit = 100;
-      $('').keyup(function () {
-          var lengthCount = this.value.length;              
-          if (lengthCount > maxLimit) {
-              this.value = this.value.substring(0, maxLimit);
-              var charactersLeft = maxLimit - lengthCount + 1;                   
-          }
-          else {                   
-              var charactersLeft = maxLimit - lengthCount;                   
-          }
-          $('#spnCharLeft').css('display', 'block');
-          $('#spnCharLeft').text(charactersLeft + ' Characters left');
-      });
+      
 
     // navigation click actions
     $('.scroll-link').on('click', function(event){
@@ -504,12 +492,10 @@ script(type='text/javascript').
               method: "GET"
             }
           };
-    var timer;
-    $('#search2').on("keyup",function(event){      
-        $("#search2").easyAutocomplete(options); 
-    });
+    var timer;      
     
     $("#search2" ).focus();
+    $("#search2").easyAutocomplete(options);
     // scroll to top action
     
     $('.scroll-top').on('click', function(event) {

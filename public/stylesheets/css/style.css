@@ -239,13 +239,13 @@ header h1 a span {
 /* banner */
 
 .banner {
-	background: url(/img/best-banner.jpg) center no-repeat;
+
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	-ms-background-size: cover;
 	background-size: cover;
-	min-height: 68vh;
+	min-height: 70vh;
 	position: relative;
 }
 

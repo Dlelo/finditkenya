@@ -2068,11 +2068,11 @@ nav {
 }
 .latest-review-imgwrapper{
 	width: fit-content;
-    height: 30vh;
+    height: fit-content;
     position: relative;
-    margin: 0;
-	overflow: hidden;
-	border-bottom: 1px solid #eee;
+    margin-left: 4rem;
+    margin-right: 4rem;
+    overflow: hidden;
 }
 .latest-review-leftcol{
   padding-left:20px !important;

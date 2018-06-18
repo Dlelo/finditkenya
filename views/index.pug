@@ -105,16 +105,16 @@ block content
             div.col-lg-5.col-md-5.col-sm-12.col-xs-12.latest-review.latest-review-main.latest-review-container.coupon-col
               a(href="/"+review.bizid.slug)  
                 div.col-lg-12.col-md-12.col-sm-12.col-xs-12
-                  h6.h-order-category.text-center
-                    =review.bizid.name
-
+                  
                 img.img-fluid.latest-review-imgwrapper(src="/uploads/thumbs/cover"+ review.bizid.photo)
                 
                 div.col-lg-12.col-md-12.col-sm-12.col-xs-12
+                  h6.h-order-category.text-center
+                    =review.bizid.name
                   | location, 
                   =review.bizid.city
                 div.col-lg-12.col-md-12.col-sm-12.col-xs-12
-                  small
+                  small.text-center
                     |  #{review.length} Reviews
                 div.col-lg-12.col-md-12.col-sm-12.col-xs-12
                     strong

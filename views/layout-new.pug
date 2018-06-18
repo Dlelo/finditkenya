@@ -492,12 +492,10 @@ script(type='text/javascript').
               method: "GET"
             }
           };
-    var timer;
-    $('#search2').on("keyup",function(event){      
-        $("#search2").easyAutocomplete(options); 
-    });
+    var timer;      
     
     $("#search2" ).focus();
+    $("#search2").easyAutocomplete(options);
     // scroll to top action
     
     $('.scroll-top').on('click', function(event) {

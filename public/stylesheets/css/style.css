@@ -2070,9 +2070,11 @@ nav {
 	width: fit-content;
     height: fit-content;
     position: relative;
-    margin-left: 4rem;
-    margin-right: 4rem;
+    margin-left: 20%;
+    margin-right: 10%;
     overflow: hidden;
+	border-radius: 1%;
+	padding-top: 1rem;
 }
 .latest-review-leftcol{
   padding-left:20px !important;
@@ -2132,6 +2134,7 @@ nav {
     width: 70vw;
 }
 .coupon-col{
+	margin-top: 1rem;
 	padding-left:0px;
 	padding-right:0px;
 }

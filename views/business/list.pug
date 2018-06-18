@@ -38,7 +38,7 @@ block content
           if businesses
             each biz in businesses              
               .row.cat-background
-                if (biz.slug != '' || biz.slug != 'undefined')
+                if (typeof(biz.slug) !== 'undefined')
                   a(href="/"+biz.slug)
                     .col-md-3
                       a(href="/"+biz.slug)

@@ -2925,8 +2925,8 @@ background: #04045a !important;
 }
 
 .banner-background{
-	background-color: #c00000;
-	opacity: 0.5;
+	background-color: #04045a;
+    opacity: 0.1;
     filter: alpha(opacity=50); /* For IE8 and earlier */
 }
 .carousel-caption{

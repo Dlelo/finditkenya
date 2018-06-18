@@ -109,9 +109,9 @@ block content
                 img.img-fluid.latest-review-imgwrapper(src="/uploads/thumbs/cover"+ review.bizid.photo)
                 
                 div.col-lg-12.col-md-12.col-sm-12.col-xs-12
-                  h6.h-order-category.text-center
+                  h6.h-order-category
                     =review.bizid.name
-                  | location, 
+                  | Location, 
                   =review.bizid.city
                 div.col-lg-12.col-md-12.col-sm-12.col-xs-12
                   small.text-center
@@ -178,9 +178,9 @@ block content
                                 i.star-filled
                       
                   
-                  .text-right
-                    .small
-                      =review.created_at
+                .col-12.text-left
+                  .small
+                    =review.created_at
 
     
           

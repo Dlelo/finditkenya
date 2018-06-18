@@ -2279,6 +2279,9 @@ padding-right:1px;
 }
 
 @media screen and (max-width: 568px) {
+	.modal-content{
+		width: 70% !important;
+	}
 	#hide-search {
     padding: 5vw 0 2vW 5vw;
 	}
@@ -2340,6 +2343,9 @@ li.list-hor{
 }
 
 @media screen and (max-width: 414px) {
+	.modal-content{
+		width: 70% !important;
+	}
 	.selected-coupon-left {
 	   margin-left: 2rem !important;
 	}
@@ -2398,8 +2404,8 @@ li.list-hor{
 
 
 @media screen and (max-width: 384px) {
-	.selected-coupon-left {
-	   margin-left:  !important;
+	.modal-content{
+		width: 70% !important;
 	}
 	#hide-search {
     padding: 5vw 0 2vW 5vw;
@@ -2456,6 +2462,9 @@ li.list-hor{
 
 
 @media screen and (max-width: 375px) {
+	.modal-content{
+		width: 70% !important;
+	}
 	.selected-coupon-left {
 	   margin-left: 2rem !important;
 	}
@@ -2512,6 +2521,9 @@ li.list-hor{
 }
 
 @media screen and (max-width: 320px) {
+	.modal-content{
+		width: 70% !important;
+	}
 	.selected-coupon-left {
 	   margin-left: 2rem !important;
 	}

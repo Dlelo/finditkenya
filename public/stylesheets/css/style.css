@@ -171,7 +171,7 @@ footer h2 {
 }
 
 a.navbar-brand {
-	font-family: 'Josefin Sans', sans-serif;
+	font-family: 'Source Sans Pro','Lato','open sans','Roboto', sans-serif;
 	text-transform: uppercase;
 	font-weight: 800;
 	font-size: 0.7em;
@@ -239,14 +239,15 @@ header h1 a span {
 /* banner */
 
 .banner {
-	background: url(/img/best-banner.jpg) center no-repeat;
+
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	-ms-background-size: cover;
 	background-size: cover;
-	min-height: 68vh;
+	height: 75vh;
 	position: relative;
+	background-image:center no-repeat;
 }
 
 .inner-banner {
@@ -669,11 +670,11 @@ p.sub-para {
 	border-radius: 0.3rem;
 	outline: 0;
 	color: #fff;
-	font-family: 'Josefin Sans', sans-serif;
+	font-family: 'Source Sans Pro','Lato','open sans','Roboto', sans-serif;
 }
 
 .form-control {
-	font-family: 'Josefin Sans', sans-serif;
+	font-family: 'Source Sans Pro','Lato','open sans','Roboto', sans-serif;
 	font-weight: 600;
 }
 
@@ -685,7 +686,7 @@ p.sub-para {
 	text-transform: uppercase;
 	font-weight: 600;
 	letter-spacing: 1px;
-	font-family: 'Josefin Sans', sans-serif;
+	font-family: 'Source Sans Pro','Lato','open sans','Roboto', sans-serif;
 	cursor: pointer;
 }
 
@@ -1059,7 +1060,7 @@ span.w3-line {
 	-webkit-appearance: none;
 	margin-bottom: 1em;
 	background: none;
-	font-family: 'Josefin Sans', sans-serif;
+	font-family: 'Source Sans Pro','Lato','open sans','Roboto', sans-serif;
 }
 
 .book-form input[type="text"] {
@@ -1165,7 +1166,7 @@ footer h2 a span {
 }
 
 footer h2 a {
-	font-family: 'Josefin Sans', sans-serif;
+	font-family: 'Source Sans Pro','Lato','open sans','Roboto', sans-serif;
 	text-transform: uppercase;
 	font-weight: 800;
 	font-size: 0.9em;
@@ -1188,7 +1189,7 @@ footer h2 a {
 	padding: 14px 0 0;
 	position: relative;
 	text-transform: capitalize;
-	font-family: 'Josefin Sans', sans-serif;
+	font-family: 'Source Sans Pro','Lato','open sans','Roboto', sans-serif;
 }
 
 .footv3-left h2 a {
@@ -2065,11 +2066,12 @@ nav {
   z-index: 1;
 }
 .latest-review-imgwrapper{
-    width: 90vw;
+	width: fit-content;
     height: 30vh;
     position: relative;
     margin: 0;
-    overflow: hidden;
+	overflow: hidden;
+	border-bottom: 1px solid #eee;
 }
 .latest-review-leftcol{
   padding-left:20px !important;
@@ -2081,12 +2083,12 @@ nav {
 
 .latest-review-container{
 	background-color:#eee transparent;
-	box-shadow: 0 1px 3px 0 rgba(0,0,0,.25);
+	box-shadow: 1px 1px 1px 1px rgba(2, 2, 2, 0.25)
 }
 .latest-review{
-	margin-left: 20px !important;
-	margin-right: 0px !important;
-
+	margin-left: 30px !important;
+    margin-right: 0px !important;
+    margin-bottom: 30px;
 
 }
 .latest-review-row{

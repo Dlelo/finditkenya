@@ -10,11 +10,13 @@ block content
               li.nav-item
                 a.nav-link(href='/business/newpackage')
                   span.fas.fa-database.user-fav
-                  |  Add Business
+                  strong
+                    |  Add Business
               li.nav-item
                 a.nav-link(href='/add-agent')
                   span.fas.fa-user-tie.user-fav
-                  |  Apply as an Agent
+                  strong
+                    |  Apply as an Agent
     div.row.my-row.justify-content-start
       div.col-md-8.col-sm-8.col-xm-8.my-col
         div.banner-text#hide-search
@@ -233,3 +235,10 @@ block content
                     |  Privacy Policy
             p
               | © 2018 Find it Kenya. All rights reserved | FinditKe
+  
+    script(type="text/javascript").
+      $(function() {
+        var images = ['best-banner.jpg', 'doctor.jpg','office.jpg'];
+        $('.banner').css({'background-image': 'url(banner-img/' + images[Math.floor(Math.random() * images.length)] + ')'});
+      });
+   

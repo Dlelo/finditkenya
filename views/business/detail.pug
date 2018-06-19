@@ -1,27 +1,27 @@
-extends ../layout
+extends ../layout-new
 
 block content
   #home.parallax-content-list.baner-content-listing-biz
     .container
       .row.flowerwhite
         .col-md-9
-          .row          
-            if(biz.photo)
-              .col-md-3
+          .row    
+            .col-md-4      
+              if(biz.photo)
                 img.img-responsive(src="/uploads/thumbs/cover"+ biz.photo,width="80%") 
-            .col-md-9
+            .col-md-8
               h3.text-left 
                 =biz.name
               
               p.text-left
                 if (biz.openstatus.isOpen)
                   if (biz.openstatus.isOpen == true)
-                    span.label.label-success
-                      span.glyphicon.glyphicon-ok-circle.glyph
+                    span.badge.badge-success
+                      span.fas.fa-check-circle  
                       |  Now Open
                   else
-                    span.label.label-danger
-                      span.glyphicon.glyphicon-ban-circle.glyph
+                    span.badge.badge-danger
+                      span.fas.fa-times-circle  
                       |  Now Closed
                 - var list = [1,2,3,4,5]
                 - list.sort((a,b)=>{return Math.random()-0.5})
@@ -202,14 +202,15 @@ block content
                 if(biz.deliverylink)
                   .col-md-6.col-md-offset-3(style="background-color:#00aabb;padding:5px;border-radius:25px;")
                     p 
-                      span.fa.fa-motorcycle.text-info.glyph.border(style="color:#fdfdfd;")
+                      span.fas.fa-motorcycle(style="color:#fdfdfd;")
                       a.findit(href="http://"+biz.deliverylink,target="_blank",style="color:#fdfdfd;font-size:18px")
                         strong
                           |  Place Your Order Now
+               
                 if(biz.bookinglink)
                   .col-md-6.col-md-offset-3(style="background-color:#00aabb;padding:5px;border-radius:25px;")
                     p 
-                      span.fa.fa-plane.text-info.glyph.border(style="color:#fdfdfd;")
+                      span.fas.fa-plane(style="color:#fdfdfd;")
                       a.findit(href="http://"+biz.bookinglink,target="_blank",style="color:#fdfdfd;font-size:18px;")
                         strong
                           |  Book or Reserve Now
@@ -271,7 +272,7 @@ block content
               .row
                 hr
                 .col-md-12 
-                  .findit-red.padding10
+                  .findit-red.padding10.text-center
                     strong Submit a Review
                 .col-md-12
                   form.form-horizontal(method="post",action="/business/review/")                
@@ -306,23 +307,40 @@ block content
                       button.button.btn.btn-danger.form-control(type='submit') Submit Review
         if(coupons)
         .col-md-3
-          h3
+          h4
             strong
-              | Coupons in This Business         
-          each coupon in coupons 
-            =coupon.name
-        if(similarbiz)
-          .col-md-3
-            h3
-              strong
-                | Similar Businesses          
-            each bizna in similarbiz            
-              a(href="/"+bizna.slug)
-                .row.is-island
-                  h5
-                    =bizna.name
-                  p
-                    =bizna.subcategory
-      .row
+              | Coupons in This Business  
+          div       
+            each coupon in coupons 
+              a(href="/coupons")
+                row
+                  .col-md-12.is-island
+                      h6
+                        =coupon.name
+                      img.coup-img.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt="Responsive image")
+                      .div
+                          h6
+                            =coupon.bizid.name
+                          p
+                            =coupon.description
+                      .div
+                          =coupon.tagline
+                
+              
+          if(similarbiz)
+            div.col-md-12
+              h4
+                strong.text-center
+                  | Similar Businesses  
+            div.col-md-12       
+              each bizna in similarbiz            
+                a(href="/"+bizna.slug)
+                  row 
+                    div.col-md-12.is-island
+                      h6
+                        =bizna.name
+                      p
+                        =bizna.subcategory
+      
 
         

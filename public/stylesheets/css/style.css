@@ -1998,6 +1998,10 @@ ul.portfolio-area li figure {
 	margin-bottom:1em;
 
 }
+.deal-img-wrapper:hover {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
 .deal-img-wrapper {
 	padding-top: 1em;
 	padding-bottom:1em;
@@ -3035,5 +3039,9 @@ div.scrollmenu a {
     -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     margin-top: 3px;
+}
+
+.modal-content{
+  color: #04045a;
 }
 

@@ -115,6 +115,7 @@ block content
                   |   Selected Coupons  
                   span.badge.badge-light
                     span#couponscount(style="color:#c00000")
+                      =mycoupons.length
             .col-md-6.col-sm-12.col-xs-12
               div#myModal.modal
                 div.modal-content
@@ -126,8 +127,16 @@ block content
                       |  Selected Coupons
                   div
                     .mycoupons#coupons-sticky
-    
-          
+                      each mycoupon in mycoupons
+                        .coupon.coupon-modal
+                          strong 
+                            =mycoupon.name
+                          i.fa.fa-close.fa-fw.text-right.del-coupon(rel=mycoupon._id, aria-hidden='true',id=user.id)
+                      strong
+                        a.text-center(href='/admin/email/coupons')
+                          i.fa.fa-envelope.fa-fw(aria-hidden='true')
+                          |  Mail All
+            
     .row.deal-main
       .col-md-12.col-sm-12.col-xs-12
               div.coupons-title
@@ -181,7 +190,7 @@ block content
           //script for sticky coupons on scroll
       $("#coupons-sticky").stick_in_parent();
       $(".clipped").hide();
-      var cartCount = 0;
+      var cartCount = #{mycoupons.length};
       $(document).on('click', '.couponadd', function(event) {
         //alert("clicked");
         var couponid = $(this).attr("id");
@@ -238,9 +247,6 @@ block content
                   }
                 });
                 if(data.msg == 'Coupon Removed'){
-                  if(cartCount < 0){
-                    cartCount = 0;
-                  }
                   cartCount = cartCount - 1;
                   if(cartCount >= 0){
                     $('#couponscount').text(cartCount);

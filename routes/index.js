@@ -745,6 +745,13 @@ router.get('/coupons',role.auth, function(req, res){
     .populate('bizid')
     .sort([['order', -1],['star', -1]]);
 
+    var mycoupons = Coupons.find({
+        'users.user_id' : res.locals.user.id,
+        'status': true
+      })
+    .populate('bizid')
+    .populate('users.user_id','status code')
+
     var groups = Coupons.aggregate([
       { $match: { status: true } },
       { "$sort": { "order": -1 ,"star": -1} },
@@ -817,14 +824,15 @@ router.get('/coupons',role.auth, function(req, res){
 
 
     var categories = Category.find({approved: true}).sort([['order', 1]]);
-    Promise.all([coupons,categories, groups,populars]).then(values => {
-        //console.log(values[3]);
+    Promise.all([ coupons, categories, groups, populars, mycoupons]).then(values => {
+        //console.log("Mycoupons Size:"+values[4].length);
         res.render('coupons/index', {
             title: 'Coupons on Findit',
             coupons: values[0],
             categories: values[1],
             groups: values[2],
             populars: values[3],
+            mycoupons: values[4],
             host: req.get('host')
         });
     });

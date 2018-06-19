@@ -327,21 +327,22 @@ block content
                               =coupon.description
                         .div
                             =coupon.tagline
-                  
+          else
+             div        
               
           if(similarbiz)
+            div.col-md-12
+              h4
+                strong.text-center
+                  | Similar Businesses
             div.col-md-12       
-              each bizna in similarbiz 
-                h4
-                  strong.text-center
-                    | Similar Businesses           
+              each bizna in similarbiz            
                 a(href="/"+bizna.slug) 
                   div.col-md-12.is-island
                     h6.findit-red
                       =bizna.name
                     p
                       =bizna.subcategory
-          else
-             div
+          
 
         

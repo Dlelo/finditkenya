@@ -23,24 +23,28 @@ block content
                           img.d-block.w-100.coupons-img(src="/uploads/" + coupon.photo)
                           a(href="/"+coupon.bizid.slug)
                             div.carousel-caption.d-none.d-md-block.banner-background
-                              h5
-                                =coupon.bizid.name
-                              h6
-                                =coupon.description
-                              button.btn.btn-danger.flash-coupon(type="button" )
-                                =coupon.tagline
+                              button.btn
+                                h5
+                                  =coupon.bizid.name
+                                h6
+                                  =coupon.description
+                                p
+                                  button.btn.btn-danger.flash-coupon(type="button" )
+                                    =coupon.tagline
                   each coupon, i in coupons
                     if (i>0 && i<3)
                       div.carousel-item
                           img.d-block.w-100.coupons-img(src="/uploads/" + coupon.photo)
                           a(href="/"+coupon.bizid.slug)
                             div.carousel-caption.d-none.d-md-block.banner-background
-                              h5
-                                =coupon.bizid.name
-                              h6 
-                                =coupon.description
-                              button.btn.btn-danger.flash-coupon(type="button" )
-                                =coupon.tagline
+                              button.btn
+                                h5
+                                  =coupon.bizid.name
+                                h6 
+                                  =coupon.description
+                                p
+                                  button.btn.btn-danger.flash-coupon(type="button" )
+                                    =coupon.tagline
           
                     
     

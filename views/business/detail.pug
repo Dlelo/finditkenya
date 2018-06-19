@@ -125,9 +125,10 @@ block content
                     each catalogue, i in biz.catalog
                       if (catalogue)
                         strong
-                          span.glyphicon.glyphicon-list-alt.glyph.border
+                          span.fas.fa-bars
+                          
                           a.findit(href="/business/catalog/"+catalogue.filename, target="_blank")
-                            |  Menu #{i+1}
+                            |  View Menu #{i+1}
                       hr   
                 .col-md-12.text-center
                   if biz.paid
@@ -305,27 +306,28 @@ block content
                         label.half(for='starhalf', title='Sucks big time - 0.5 stars')
                     .col-md-12
                       button.button.btn.btn-danger.form-control(type='submit') Submit Review
-        if(coupons)
+        
         .col-md-3
-          h4
-            strong
-              | Coupons in This Business  
-          div       
-            each coupon in coupons 
-              a(href="/coupons")
-                row
-                  .col-md-12.is-island
-                      h6
-                        =coupon.name
-                      img.coup-img.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt="Responsive image")
-                      .div
-                          h6
-                            =coupon.bizid.name
-                          p
-                            =coupon.description
-                      .div
-                          =coupon.tagline
-                
+          if(coupons)
+            h4
+              strong
+                | Coupons in This Business  
+            div       
+              each coupon in coupons 
+                a(href="/coupons")
+                  row
+                    .col-md-12.is-island
+                        h6
+                          =coupon.name
+                        img.coup-img.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt="Responsive image")
+                        .div
+                            h6
+                              =coupon.bizid.name
+                            p
+                              =coupon.description
+                        .div
+                            =coupon.tagline
+                  
               
           if(similarbiz)
             div.col-md-12

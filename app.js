@@ -50,7 +50,7 @@ app.use(cookieSession({
   keys: ['m@ckl3mor3!sth#b0mb'],
 
   // Cookie Options
-  // maxAge: 24 * 60 * 60 * 1000 // 24 hours
+  maxAge: 24 * 60 * 60 * 1000 // 24 hours
 }))
 app.use(flash());
 app.use(passport.initialize());
@@ -60,7 +60,7 @@ app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public'), { maxage: '1d' }));
+app.use(express.static(path.join(__dirname, 'public'), { maxAge: 86400000 }));
 
 passport.serializeUser(function(user, done) {
   done(null, user.id);
@@ -161,7 +161,6 @@ passport.use(new FacebookStrategy({
 
 app.use(function(req, res, next){
   res.setHeader('Access-Control-Allow-Origin', req.get('host'));
-  res.setHeader('Cache-Control', 'public, max-age=86400');
   res.locals.success_msg = req.flash('success_msg') || null;
   res.locals.error_msg = req.flash('error_msg') || null;
   res.locals.error = req.flash('error') || null;

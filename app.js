@@ -161,6 +161,7 @@ passport.use(new FacebookStrategy({
 
 app.use(function(req, res, next){
   res.setHeader('Access-Control-Allow-Origin', req.get('host'));
+  res.setHeader('Cache-Control', 'public, max-age=86400');
   res.locals.success_msg = req.flash('success_msg') || null;
   res.locals.error_msg = req.flash('error_msg') || null;
   res.locals.error = req.flash('error') || null;

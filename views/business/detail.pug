@@ -330,18 +330,18 @@ block content
                   
               
           if(similarbiz)
-            div.col-md-12
-              h4
-                strong.text-center
-                  | Similar Businesses  
             div.col-md-12       
-              each bizna in similarbiz            
+              each bizna in similarbiz 
+                h4
+                  strong.text-center
+                    | Similar Businesses           
                 a(href="/"+bizna.slug) 
                   div.col-md-12.is-island
                     h6.findit-red
                       =bizna.name
                     p
                       =bizna.subcategory
-      
+          else
+             div
 
         

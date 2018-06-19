@@ -60,7 +60,7 @@ body
             span.navbar-toggler-icon
       div#navbarSupportedContent.collapse.navbar-collapse
         ul.navbar-nav.ml-lg-auto.text-center
-          li.dropdown.nav-item.mr-3.open
+          li.dropdown.nav-item.mr-3
             
             //button.btn.btn-cat.btn-default.form-control.dropdown-toggle(type='button', data-toggle='dropdown')
           //li.nav-item.mr-3
@@ -299,7 +299,7 @@ script.
 <!-- //smooth-scrolling-of-move-up -->
 <!-- Bootstrap core JavaScript-->
 <!-- Placed at the end of the document so the pages load faster -->
-script(src='/javascripts/bootstrapjs/bootstrap.js')
+//script(src='/javascripts/bootstrapjs/bootstrap.js')
   
 script(type='text/javascript').
   $(function() {
@@ -492,8 +492,9 @@ script(type='text/javascript').
           };
     var timer;      
     
-    $("#search2" ).focus();
+    
     $("#search2").easyAutocomplete(options);
+    $("#search2" ).focus();
     // scroll to top action
     
     $('.scroll-top').on('click', function(event) {

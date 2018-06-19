@@ -58,7 +58,7 @@ block content
                   .col-md-12
                     p.text-left
                       strong
-                        span.glyphicon.glyphicon-globe.text-success.glyph.border
+                        span.fas.fa-globe
                         a.findit(href="http://"+biz.website,target="_blank",style="color:#2862ec;")
                           |  Website
                   hr.nomargin
@@ -67,7 +67,7 @@ block content
                     each phone in phones
                       span#biz-id(style="display:none")
                         =biz.id
-                      span.glyphicon.glyphicon-earphone.text-info.glyph.border
+                      span.fas.fa-phone
                       a.findit.phoneno(href="tel:"+phone,style="color:#2862ec;display:none")
                         |  #{phone}
                       a.findit.phonenofake(href="#",style="color: #bc1206")
@@ -78,7 +78,7 @@ block content
                   p.text-left
                     each email in emails
                       strong
-                        span.fa.fa-envelope.glyph.border
+                        span.fas.fa-envelope
                         a.findit(href="mailto:"+email,style="color:#2862ec;")
                           |  Mail
                       br
@@ -87,35 +87,35 @@ block content
                   .col-md-12.text-left
                     p 
                       strong
-                        span.fa.fa-facebook-official.text-info.glyph.border
+                        span.fas.fa-facebook-official.text-info
                         a.findit(href="http://"+biz.facebook,target="_blank",style="color:#2862ec;") 
                           | Facebook
                 if(biz.twitter)
                   .col-md-12.text-left
                     p 
                       strong
-                        span.fa.fa-twitter.text-info.glyph.border 
+                        span.fas.fa-twitter.text-info
                         a.findit(href="http://"+biz.twitter,target="_blank",style="color:#2862ec;")
                           |  Twitter
                 if(biz.instagram)
                   .col-md-12.text-left
                     p 
                       strong
-                        span.fa.fa-instagram.text-info.glyph.border 
+                        span.fas.fa-instagram.text-info
                         a.findit(href="http://"+biz.instagram,target="_blank",style="color:#2862ec;")
                           |  Instagram
                 if(biz.linkedin)
                   .col-md-12.text-left
                     p 
                       strong
-                        span.fa.fa-linkedin.text-info.glyph.border 
+                        span.fas.fa-linkedin.text-info 
                         a.findit(href="http://"+biz.linkedin,target="_blank",style="color:#2862ec;")
                           |  LinkedIn
                 if(biz.youtube)
                   .col-md-12.text-left
                     p 
                       strong
-                        span.fa.fa-youtube.text-info.glyph.border 
+                        span.fas.fa-youtube.text-info 
                         a.findit(href="http://"+biz.youtube,target="_blank",style="color:#2862ec;")
                           |  Youtube
                 
@@ -232,7 +232,7 @@ block content
                 each review in biz.reviews              
                   .row               
                     .col-md-1.text-left 
-                      span.glyphicon.glyphicon-comment.glyph.border
+                      span.fas.fa-comment-alt
                     .col-md-3
                       .col-md-12(class="rating medium star-icon value-"+review.rate+" label-hidden")
                         .star-container
@@ -334,13 +334,12 @@ block content
                   | Similar Businesses  
             div.col-md-12       
               each bizna in similarbiz            
-                a(href="/"+bizna.slug)
-                  row 
-                    div.col-md-12.is-island
-                      h6
-                        =bizna.name
-                      p
-                        =bizna.subcategory
+                a(href="/"+bizna.slug) 
+                  div.col-md-12.is-island
+                    h6.findit-red
+                      =bizna.name
+                    p
+                      =bizna.subcategory
       
 
         

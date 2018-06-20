@@ -207,6 +207,7 @@ header h1 a span {
 
 .dropdown-item {
 	color: #fff;
+	padding: 1px 1px 1px 1px;
 }
 
 .dropdown-item {
@@ -3106,4 +3107,7 @@ fieldset, label {
 	.mega-menu{
 		width: 300px;
 	}
+}
+.nav-link, .navbar{
+	    padding: 0 !important;
 }

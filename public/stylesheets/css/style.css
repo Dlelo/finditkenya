@@ -2729,6 +2729,14 @@ padding-left:10px;
 	background-color: #eee;
 	box-shadow: 0 1px 3px 0 rgba(0,0,0,.25);
 }
+.coup-img-wrapper:hover {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+.category-img-wrapper:hover {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
 .coup-img-wrapper {
     border: 1px solid transparent;
     width: 156px;
@@ -2918,7 +2926,7 @@ padding-left:10px;
 .coupon-modal{
 margin-top: 1px !important;
 border-top: 4px solid #eee !important;
-background: #878788 !important;
+background: #eee !important;
 padding-left: 5px;
 }
 
@@ -3044,4 +3052,6 @@ div.scrollmenu a {
 .modal-content{
   color: #04045a;
 }
-
+.mail-coup{
+	margin-left:20%
+}

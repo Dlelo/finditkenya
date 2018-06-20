@@ -23,13 +23,13 @@ block content
                           img.d-block.w-100.coupons-img(src="/uploads/" + coupon.photo)
                           a(href="/"+coupon.bizid.slug)
                             div.carousel-caption.d-none.d-md-block.banner-background
-                              button.btn
+                              button.btn.btn-danger.flash-coupon(type="button" )
                                 h5
                                   =coupon.bizid.name
                                 h6
                                   =coupon.description
-                                p
-                                  button.btn.btn-danger.flash-coupon(type="button" )
+                                span.badge.badge-light
+                                  h6
                                     =coupon.tagline
                   each coupon, i in coupons
                     if (i>0 && i<3)
@@ -37,13 +37,13 @@ block content
                           img.d-block.w-100.coupons-img(src="/uploads/" + coupon.photo)
                           a(href="/"+coupon.bizid.slug)
                             div.carousel-caption.d-none.d-md-block.banner-background
-                              button.btn
+                              button.btn.btn-danger.flash-coupon(type="button" )
                                 h5
                                   =coupon.bizid.name
-                                h6 
+                                h6
                                   =coupon.description
-                                p
-                                  button.btn.btn-danger.flash-coupon(type="button" )
+                                span.badge.badge-light
+                                  h6
                                     =coupon.tagline
           
                     
@@ -62,19 +62,24 @@ block content
                 | Popular Coupons
             each popular, i in populars
               row
-                if i<2
-                  .col-md-12
-                    h6
-                      =popular.name
+                if i<3
+                  .col-md-12.is-island
+                    small
+                      h6
+                        =popular.name
                     img.coup-img(src="/uploads/thumbs/coupons/"+ popular.photo)
                     .div
-                        h6
-                          =popular.biz.name
-                        p
-                          =popular.description
+                       small
+                          h6
+                            =popular.biz.name
+                          p
+                            =popular.description
                     .div
-                        =popular.tagline
-                  hr
+                       small.findit-red 
+                         =popular.tagline
+                         
+                          
+                  
                 
 
          //row
@@ -132,11 +137,13 @@ block content
                           strong 
                             =mycoupon.name
                           i.fa.fa-close.fa-fw.text-right.del-coupon(rel=mycoupon._id, aria-hidden='true',id=user.id)
+                  div.text-center
+                    a.text-center(href='/admin/email/coupons')
                       strong
-                        a.text-center(href='/admin/email/coupons')
-                          i.fa.fa-envelope.fa-fw(aria-hidden='true')
-                          |  Mail All
-            
+                        h4.text-center
+                          span.fas.fa-envelope.fa-fw(aria-hidden='true')   
+                          |     Mail All
+              
     .row.deal-main
       .col-md-12.col-sm-12.col-xs-12
               div.coupons-title

@@ -3108,6 +3108,6 @@ fieldset, label {
 		width: 300px;
 	}
 }
-.nav-link, .navbar{
-	padding: .4rem 1rem !important;
+.nav-link{
+	padding: .3rem 1rem !important;
 }

@@ -3091,9 +3091,10 @@ fieldset, label {
 }
 /* Mega Menu CSS */
 .mega-menu{
-	width: 880px !important; 
+	width: 900px !important; 
 	overflow: hidden; 
-	padding: 3px;
+	padding-left: 2px;
+	padding-right:2px;
 }
 .mega-menu a{
 	text-decoration: none; 

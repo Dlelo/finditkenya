@@ -447,9 +447,11 @@ router.get('/indexall', function(req, res){
   });
   stream.on('close', function(){
     console.log('indexed ' + count + ' documents!');
+    res.send('indexed ' + count + ' documents!');
   });
   stream.on('error', function(err){
     console.log(err);
+    res.send(err);
   });
 });
 

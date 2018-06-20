@@ -309,26 +309,28 @@ block content
         
         .col-md-3
           if(coupons)
-            h4
-              strong
-                | Coupons in This Business  
-            div       
-              each coupon in coupons 
-                a(href="/coupons")
-                  row
-                    .col-md-12.is-island
-                        h6
-                          =coupon.name
-                        img.coup-img.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt="Responsive image")
-                        .div
+            each coupon, i in coupons
+              if i>0
+                h4
+                  strong
+                    | Coupons in This Business  
+                div       
+                  each coupon in coupons 
+                    a(href="/coupons")
+                      row
+                        .col-md-12.is-island
                             h6
-                              =coupon.bizid.name
-                            p
-                              =coupon.description
-                        .div
-                            =coupon.tagline
-          else
-             div        
+                              =coupon.name
+                            img.coup-img.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt="Responsive image")
+                            .div
+                                h6
+                                  =coupon.bizid.name
+                                p
+                                  =coupon.description
+                            .div
+                                =coupon.tagline
+              else
+                div        
               
           if(similarbiz)
             div.col-md-12

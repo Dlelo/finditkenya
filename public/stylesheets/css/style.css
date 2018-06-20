@@ -3055,3 +3055,54 @@ div.scrollmenu a {
 .mail-coup{
 	margin-left:20%
 }
+.ratings {
+    border: none;
+    float: left;
+}
+fieldset, label {
+    margin: 0;
+    padding: 0;
+}
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+.starrating > input {display: none;}  /* Remove radio buttons */
+
+.starrating > label:before { 
+  content: "\f005"; /* Star */
+  margin: 2px;
+  font-size: 8em;
+  font-family: FontAwesome;
+  display: inline-block; 
+}
+
+.starrating > label
+{
+  color: #222222; /* Start color when not clicked */
+}
+
+.starrating > input:checked ~ label
+{ color: #ffca08 ; } /* Set yellow color when star checked */
+
+.starrating > input:hover ~ label
+{ color: #ffca08 ;  } /* Set yellow color when star hover */
+
+.cat-dropdown li{
+	display: inline;
+
+}
+/* Mega Menu CSS */
+.mega-menu{
+	width: 800px !important; 
+	overflow: hidden; 
+	padding: 3px;
+}
+.mega-menu a{
+	text-decoration: none; 
+	color: cadetblue;}
+.mega-menu .sub-menu-heading{ 
+	color: darkcyan;
+}
+@media(max-width:500px){
+	.mega-menu{
+		width: 300px;
+	}
+}

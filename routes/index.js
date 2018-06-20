@@ -79,7 +79,7 @@ router.get('/search',function(req, res, next){
     {query_string: {query: req.query.search}},
     {
       from : 0,
-      size : 50,
+      size : 200,
       hydrate: true
     });
   var features = Category.find({name: req.query.search });
@@ -284,7 +284,7 @@ router.get('/nearby/:category/', function(req, res, next){
       { "$unwind": "$subcategories" },
     { "$sort": { "subcategories.name": 1 } }
   ]);
-  
+
   Promise.all([businesses, features]).then(values => {
     console.log(values[1]);
     res.render('business/nearby', {

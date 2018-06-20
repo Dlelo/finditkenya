@@ -466,8 +466,10 @@ router.get('/elasticsearch', function(req, res){
   }, function (error) {
     if (error) {
       console.trace('elasticsearch cluster is down!');
+      res.send('elasticsearch cluster is down!');
     } else {
       console.log('All is well');
+      res.send('All is well');
     }
   });
 });

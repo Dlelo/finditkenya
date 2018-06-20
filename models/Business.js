@@ -75,7 +75,7 @@ const bizSchema = new Schema({
 		user_id: String
 });
 
-bizSchema.index({ name: 'text', description: 'text', keywords: 'text',subcategory: 'text' });
+bizSchema.index({ name: 'text',subcategory: 'text', keywords: 'text', description: 'text' });
 bizSchema.plugin(dataTables);
 bizSchema.plugin(superPagination, {
     theme : 'bootstrap'

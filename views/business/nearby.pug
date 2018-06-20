@@ -8,13 +8,13 @@ block content
           | Filter Sub Categories  
           span.caret
         ul.dropdown-menu(style="width: -webkit-fill-available;")
-          if features
-            each item in features.subcategories
+          if features 
+            each feature in features
               .panel-heading.category
-                .text-center
-                  a(href="/subcategory/"+item.name)
-                    i.fa.fa-cog   
-                    =item.name
+                li.text-left.sub-list
+                  a(href="/subcategory/"+feature.subcategories.name)
+                    strong  
+                      =feature.subcategories.name
     .col-md-10(style="height: 100%;")
       #map
       script.
@@ -61,7 +61,7 @@ block content
                   map: map
                 });
                 marker.info = new google.maps.InfoWindow({
-                  content: '<b>'+ biz.name +'</b> <p><strong>'+biz.subcategory+'</strong></p>'
+                  content: '<b>'+ biz.name +'</b> <p>'+biz.subcategory+'</p>'
                 });
 
                 google.maps.event.addListener(marker, 'click', function() {

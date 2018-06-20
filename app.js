@@ -50,7 +50,7 @@ app.use(cookieSession({
   keys: ['m@ckl3mor3!sth#b0mb'],
 
   // Cookie Options
-  maxAge: 7 * 24 * 60 * 60 * 1000 // 24 hours
+  //maxAge: 7 * 24 * 60 * 60 * 1000 // 24 hours
 }))
 app.use(flash());
 app.use(passport.initialize());

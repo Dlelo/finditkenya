@@ -22,6 +22,10 @@ block content
                         a(href="/nearby/"+features[0].name+"/"+subcategory)
                           strong   
                             |  Nearby
+            .panel.panel-warning
+              a(href="/nearby/"+title)
+                strong   
+                  |  Nearby #{title}
             .dropdown.open.dropdown-category
               button.btn.btn-cat.btn-default.form-control.dropdown-toggle(type='button', data-toggle='dropdown')
                 | Filter Sub Categories  

@@ -275,6 +275,26 @@ router.get('/subcategory/:name', function(req, res, next){
   });
 });
 
+router.get('/nearby/:category/', function(req, res, next){
+  var businesses = Business.find({subcategory: req.params.category});
+  //var features = Category.find({ subcategories: {$elemMatch: { name: req.params.category}} });
+
+  var features = Category.aggregate([
+    { $match: { name: req.params.category } },
+      { "$unwind": "$subcategories" },
+    { "$sort": { "subcategories.name": 1 } }
+  ]);
+  
+  Promise.all([businesses, features]).then(values => {
+    console.log(values[1]);
+    res.render('business/nearby', {
+        title: req.params.category,
+        businesses: values[0],
+        features: values[1]
+    });
+  });
+});
+
 router.get('/nearby/:category/:name', function(req, res, next){
   var businesses = Business.find({subcategory: req.params.category, features: req.params.name});
   var features = Category.find({ subcategories: {$elemMatch: { name: req.params.name}} });

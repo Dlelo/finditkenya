@@ -85,7 +85,7 @@ router.get('/search',function(req, res, next){
   var features = Category.find({name: req.query.search });
   Promise.all([search, features]).then(values => {
     console.log(values[0]);
-      res.render('business/list', {
+      res.render('business/search', {
           title: req.query.search,
           businesses: values[0].hits.hits,
           features: values[1],

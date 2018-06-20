@@ -30,9 +30,9 @@ const bizSchema = new Schema({
 		photo: String,
 		catalog: Array,
 		category: String,
-		subcategory: { type: String, es_indexed:true, es_boost:2.0 },
+		subcategory: { type: String},
 		extras: Array,
-		features: Array,
+		features: { type: Array, es_indexed:true, es_boost:2.0 },
 		street: String,
 		building: String,
 		youtube: String,
@@ -75,7 +75,7 @@ const bizSchema = new Schema({
 		user_id: String
 });
 
-bizSchema.index({ name: 'text', description: 'text', keywords: 'text' });
+bizSchema.index({ name: 'text',subcategory: 'text', keywords: 'text', description: 'text' });
 bizSchema.plugin(dataTables);
 bizSchema.plugin(superPagination, {
     theme : 'bootstrap'

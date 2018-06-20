@@ -4,41 +4,8 @@ block content
   div.container-fluid
   #home.parallax-content-list.baner-content-listing-biz
     .container-fluid.container-margin
-      .row
-        .col-md-3
-            if subcategory
-                .panel-heading.category
-                  .text-left.cat-items
-                    a(href="/subcategory/"+subcategory)
-                      strong  
-                        =subcategory
-            
-            if subcategory
-              if features.length
-                .panel.panel-warning
-                  .panel-body.black.cat-items
-                    strong Filter   
-                      .panel-heading.category.cat-items
-                        a(href="/nearby/"+features[0].name+"/"+subcategory)
-                          strong   
-                            |  Nearby
-            .panel.panel-warning
-              a(href="/nearby/"+title)
-                strong   
-                  |  Nearby #{title}
-            .dropdown.open.dropdown-category
-              button.btn.btn-cat.btn-default.form-control.dropdown-toggle(type='button', data-toggle='dropdown')
-                | Filter Sub Categories  
-                span.caret
-              ul.dropdown-menu.open.sub-catbag.drop-down-sub
-                if features 
-                  each feature in features
-                    .panel-heading.category
-                      li.text-left.sub-list
-                        a(href="/subcategory/"+feature.subcategories.name)
-                          strong  
-                            =feature.subcategories.name
-        .col-md-9
+      .row          
+        .col-md-12
           if businesses
             each biz in businesses              
               .row.cat-background
@@ -161,7 +128,9 @@ block content
                             a.findit(href="http://"+biz.youtube,target="_blank",style="color:#2862ec;")
                                 span.fab.fa-youtube.text-info.glyph.border 
                                   |  Youtube
-          
+          else
+            strong
+              | No Results
       //script to put navitems open by default
       script(type='text/javascript').
         $(document).ready(function(){

@@ -79,13 +79,13 @@ router.get('/search',function(req, res, next){
     {query_string: {query: req.query.search}},
     {
       from : 0,
-      size : 50,
+      size : 200,
       hydrate: true
     });
   var features = Category.find({name: req.query.search });
   Promise.all([search, features]).then(values => {
     console.log(values[0]);
-      res.render('business/list', {
+      res.render('business/search', {
           title: req.query.search,
           businesses: values[0].hits.hits,
           features: values[1],
@@ -275,6 +275,26 @@ router.get('/subcategory/:name', function(req, res, next){
   });
 });
 
+router.get('/nearby/:category/', function(req, res, next){
+  var businesses = Business.find({subcategory: req.params.category});
+  //var features = Category.find({ subcategories: {$elemMatch: { name: req.params.category}} });
+
+  var features = Category.aggregate([
+    { $match: { name: req.params.category } },
+      { "$unwind": "$subcategories" },
+    { "$sort": { "subcategories.name": 1 } }
+  ]);
+
+  Promise.all([businesses, features]).then(values => {
+    console.log(values[1]);
+    res.render('business/nearby', {
+        title: req.params.category,
+        businesses: values[0],
+        features: values[1]
+    });
+  });
+});
+
 router.get('/nearby/:category/:name', function(req, res, next){
   var businesses = Business.find({subcategory: req.params.category, features: req.params.name});
   var features = Category.find({ subcategories: {$elemMatch: { name: req.params.name}} });
@@ -427,9 +447,11 @@ router.get('/indexall', function(req, res){
   });
   stream.on('close', function(){
     console.log('indexed ' + count + ' documents!');
+    res.send('indexed ' + count + ' documents!');
   });
   stream.on('error', function(err){
     console.log(err);
+    res.send(err);
   });
 });
 
@@ -444,8 +466,10 @@ router.get('/elasticsearch', function(req, res){
   }, function (error) {
     if (error) {
       console.trace('elasticsearch cluster is down!');
+      res.send('elasticsearch cluster is down!');
     } else {
       console.log('All is well');
+      res.send('All is well');
     }
   });
 });

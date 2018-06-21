@@ -6,7 +6,7 @@ block content
     .container
       .div.xxx
         div.col-12.my-col
-           h3.agile-title.h-order-category.text-center
+           h3.agile-title.login-title.text-center
              | Login
 
             
@@ -22,7 +22,7 @@ block content
             i.fab.fa-google.pull-left(aria-hidden='true')          
             |  &nbsp;   Login with Google
 
-        hr
+        
         .div.signup-or-separator.login-form
           span.h6.signup-or-separator--text
           
@@ -44,7 +44,9 @@ block content
             .col-md-5.col-md-offset-2
               a(href="/forgotpassword")
                 p.frgt-pswd.pull-right(data-toggle='modal', data-dismiss='modal', data-target='#at-reset-pswd') Forgot Password ?
-           button.btn-lgin(type='submit') Login
+           .row
+             .col-md-12
+               button.btn-lgin(type='submit') Login
            hr
            .row
             .col-md-6

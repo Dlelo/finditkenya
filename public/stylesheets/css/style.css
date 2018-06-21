@@ -2246,18 +2246,17 @@ padding-right:1px;
         z-index: 1;
 	}
 	.xxx{
-		padding-top: 1px;
-		padding-right:10px;
-		padding-left:20px;
-		max-width:400px;
-		max-height:60%;
-		margin-top:10px;
-		margin-left:30%;
-		margin-right:20%;
-		background: #f7f7f7;
-		box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-
-	}
+    padding-top: 1px;
+    padding-right: 20px;
+    padding-left: 20px;
+    max-width: 500px;
+    max-height: 60%;
+    margin-top: 10px;
+    margin-left: 25%;
+    margin-right: 10%;
+    background: #f7f7f7;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    }
 	.facebook-google-btn{
 		padding-top:0.8rem;
 		padding-bottom:0.8rem;
@@ -3110,4 +3109,12 @@ fieldset, label {
 }
 .nav-link{
 	padding: .3rem 1rem !important;
+}
+.login-title{
+	padding-top:1px;
+	padding-bottom:1px;
+}
+.panel{
+	padding-top: 1em;
+    padding-bottom: 1em;
 }

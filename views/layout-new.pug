@@ -62,34 +62,8 @@ body
       div#navbarSupportedContent.collapse.navbar-collapse
         ul.navbar-nav.ml-lg-auto.text-center
           li.dropdown.nav-item.mr-3
-            
-            //button.btn.btn-cat.btn-default.form-control.dropdown-toggle(type='button', data-toggle='dropdown')
-          //li.nav-item.mr-3
-            a(href="/")
-              span.fas.fa-home.fas-menu
-              |  Home
-          //li.nav-item.mr-3
-            a(href="/coupons").nav-link
-              span.fas.fa-gift.fas-menu
-              |  Coupons
-        
-          //li.dropdown.nav-item.mr-3
-            a.dropdown-toggle#navbarDropdown(href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
-              span.fas.fa-th-list.fas-menu
-                |  Categories 
-            ul.dropdown-menu.dropdown-menu-layout(aria-labelledby="navbarDropdown")
-              if categories
-                each category in categories
-                  li
-                    a.dropdown-item(href="/category/"+category.name)
-                      i.fas.fa-1x(aria-hidden='true', class=category.icon)    
-                      =category.name
-                      .dropdown
-          
-          li.dropdown.nav-item.mr-3.dropdown-category 
             a.nav-link.dropdown-toggle(href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")    
               span.fas.fa-th-list.fas-menu
-              strong
               |  Categories 
               span.caret
             div.dropdown-menu.dropdown-menu-right.mega-menu(aria-labelledby="navbarDropdown" style="width: -webkit-fill-available;")
@@ -124,7 +98,7 @@ body
           else
             li.nav-item.mr-3
               a(href='/login')
-                button.btn.btn-primary.ml-lg-5.w3ls-btn
+                button.btn.btn-primary.w3ls-btn
                   strong
                     | Login
               
@@ -303,6 +277,34 @@ script.
 <!-- Bootstrap core JavaScript-->
 <!-- Placed at the end of the document so the pages load faster -->
 //script(src='/javascripts/bootstrapjs/bootstrap.js')
+
+script(type='text/javascript').
+  $(document).ready(function() {
+  // executes when HTML-Document is loaded and DOM is ready
+
+  // breakpoint and up  
+  $(window).resize(function(){
+  if ($(window).width() >= 980){	
+
+    // when you hover a toggle show its dropdown menu
+    $(".navbar .dropdown-toggle").hover(function () {
+        $(this).parent().toggleClass("show");
+        $(this).parent().find(".dropdown-menu").toggleClass("show"); 
+      });
+
+      // hide the menu when the mouse leaves the dropdown
+    $( ".navbar .dropdown-menu" ).mouseleave(function() {
+      $(this).removeClass("show");  
+    });
+
+  // do something here
+  }	
+  });  
+
+
+
+  // document ready  
+  });
   
 script(type='text/javascript').
   $(function() {

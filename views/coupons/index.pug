@@ -139,10 +139,7 @@ block content
                           i.fa.fa-close.fa-fw.text-right.del-coupon(rel=mycoupon._id, aria-hidden='true',id=user.id)
                   div.text-center
                     a.text-center(href='/admin/email/coupons')
-                      strong
-                        h4.text-center
-                          span.fas.fa-envelope.fa-fw(aria-hidden='true')   
-                          |     Mail All
+                      
               
     .row.deal-main
       .col-md-12.col-sm-12.col-xs-12
@@ -232,7 +229,7 @@ block content
                           <i id=#{user.id} class="fa fa-close fa-fw text-right  del-coupon" rel='+el._id+' aria-hidden="true"></i></div>'
                         );
                       }); 
-                      $('.mycoupons').append('<strong><a href="/admin/email/coupons" class="text-center"><i class="fa fa-envelope fa-fw" aria-hidden="true"></i> Mail All</a></strong>');             
+                      $('.mycoupons').append('<strong><a href="/admin/email/coupons" class="text-center"><h4><i class="fa fa-envelope fa-fw text-center" aria-hidden="true"></i>Mail All</h4></a></strong>');             
                       console.log(data.code);
                     }
                 });

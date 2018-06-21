@@ -207,6 +207,7 @@ header h1 a span {
 
 .dropdown-item {
 	color: #fff;
+	padding: 1px 1px 1px 1px;
 }
 
 .dropdown-item {
@@ -2245,18 +2246,17 @@ padding-right:1px;
         z-index: 1;
 	}
 	.xxx{
-		padding-top: 1px;
-		padding-right:10px;
-		padding-left:20px;
-		max-width:400px;
-		max-height:60%;
-		margin-top:10px;
-		margin-left:30%;
-		margin-right:20%;
-		background: #f7f7f7;
-		box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-
-	}
+    padding-top: 1px;
+    padding-right: 20px;
+    padding-left: 20px;
+    max-width: 500px;
+    max-height: 60%;
+    margin-top: 10px;
+    margin-left: 25%;
+    margin-right: 10%;
+    background: #f7f7f7;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    }
 	.facebook-google-btn{
 		padding-top:0.8rem;
 		padding-bottom:0.8rem;
@@ -3054,4 +3054,67 @@ div.scrollmenu a {
 }
 .mail-coup{
 	margin-left:20%
+}
+.ratings {
+    border: none;
+    float: left;
+}
+fieldset, label {
+    margin: 0;
+    padding: 0;
+}
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+.starrating > input {display: none;}  /* Remove radio buttons */
+
+.starrating > label:before { 
+  content: "\f005"; /* Star */
+  margin: 2px;
+  font-size: 8em;
+  font-family: FontAwesome;
+  display: inline-block; 
+}
+
+.starrating > label
+{
+  color: #222222; /* Start color when not clicked */
+}
+
+.starrating > input:checked ~ label
+{ color: #ffca08 ; } /* Set yellow color when star checked */
+
+.starrating > input:hover ~ label
+{ color: #ffca08 ;  } /* Set yellow color when star hover */
+
+.cat-dropdown li{
+	display: inline;
+
+}
+/* Mega Menu CSS */
+.mega-menu{
+	width: 900px !important; 
+	overflow: hidden; 
+	padding-left: 2px;
+	padding-right:2px;
+}
+.mega-menu a{
+	text-decoration: none; 
+	color: cadetblue;}
+.mega-menu .sub-menu-heading{ 
+	color: darkcyan;
+}
+@media(max-width:500px){
+	.mega-menu{
+		width: 300px;
+	}
+}
+.nav-link{
+	padding: .3rem 1rem !important;
+}
+.login-title{
+	padding-top:1px;
+	padding-bottom:1px;
+}
+.panel{
+	padding-top: 1em;
+    padding-bottom: 1em;
 }

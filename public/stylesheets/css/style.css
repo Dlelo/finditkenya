@@ -320,10 +320,8 @@ header h1 a span {
 	width: auto;
 	line-height: 20px;
 	padding: 9px 20px;
-	height: auto;
 	background: transparent;
-	display: inline;
-}
+	
 
 .rslides_tabs li:first-child {
 	margin-left: 0;
@@ -2650,7 +2648,7 @@ padding-bottom:5px;
 }
 .form-control-btn{
 
-    color: #04045a; !important
+    color: #04045a !important;
 }
 .dropdown-menu-layout{
    margin-top: 0 !important;

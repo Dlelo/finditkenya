@@ -2633,7 +2633,8 @@ li.list-hor{
 }
 .sub-list{
 	padding-left: 1rem;
-    padding-right: 5rem;
+	padding-right: 5rem;
+	width: max-content;
 }
 .cat-items-top{
 	padding-top:5px;

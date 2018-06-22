@@ -97,7 +97,7 @@ block content
                 | Search Coupon by Category
                 
               span.caret
-            div.dropdown-menu.open.sub-catbag.drop-down-sub.dropdown-menu-coupon.dropdown-category
+            div#myBtnContainer.dropdown-menu.open.sub-catbag.drop-down-sub.dropdown-menu-coupon.dropdown-category
               
               if groups 
                 button(class="btn" onclick="filterSelection('all')")
@@ -106,7 +106,7 @@ block content
                   span
                     =groups.length + ')'
                 each group in groups
-                  div.text-left.sub-list#myBtnContainer
+                  div.text-left.sub-list
                     //a(href="#"+group._id)
                     button(class="btn" onclick="filterSelection('"+group._id+"')")
                       strong  
@@ -137,12 +137,13 @@ block content
                           strong 
                             =mycoupon.name
                           i.fa.fa-close.fa-fw.text-right.del-coupon(rel=mycoupon._id, aria-hidden='true',id=user.id)
-                  div.text-center
-                    a.text-center(href='/admin/email/coupons')
-                      strong
-                        h4.text-center
-                          span.fas.fa-envelope.fa-fw(aria-hidden='true')   
-                          |     Mail All
+                  div
+                     strong
+                      a(href="/admin/email/coupons" class="text-center")
+                        h4
+                          i(class="fa fa-envelope fa-fw" aria-hidden="true")
+                          | Mail All
+                      
               
     .row.deal-main
       .col-md-12.col-sm-12.col-xs-12
@@ -160,34 +161,32 @@ block content
                 span.strong
                   | Email. 
       each coupon, i in coupons
-          
-          .col-md-3.coupon(id=coupon.id,class=(coupon.users.some(function(x) { return x.user_id == user.id })) ? 'couponclicked' : 'couponadd', rel=user.id)
-            row.deal-main.deal-coup.coupon-items.filterDiv(class=coupon.bizid.subcategory)
-              
-              div.col-md-12.col-sm-12.col-xs-12
-                div
-                  p
-                    h3                  
-                    = coupon.name
+        div.col-md-3(class=coupon.bizid.subcategory)
+          div.row.deal-main.deal-coup.coupon-items.column.coupon(id=coupon.id,class=(coupon.users.some(function(x) { return x.user_id == user.id })) ? 'couponclicked' : 'couponadd', rel=user.id)
+            div.content  
+              .div.col-md-12.col-sm-12.col-xs-12
+                strong
+                  h3                  
+                  = coupon.name
+              .div.col-md-12.col-lg-12.col-sm-12.col-xs-12
                   img.coup-img-wrapper.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt="Responsive image")
-                  .div 
-                    h6
-                      strong
-                        =coupon.bizid.name
-                  
-                  .div
-                     =coupon.description
-                  .div
-                    
-                  .div.col-md-12.col-lg-12.col-sm-12.col-xs-12.float-left
-                    button.btn.btn-outline-primary.btn-coupon(type="button" )
-                      =coupon.tagline 
-                  .div.col-md-6.col-sm-12.col-xs-12.clipped.float-center
-                    button.btn.btn.danger
-                      | Clipped  
+              .div.col-md-12.col-lg-12.col-sm-12.col-xs-12.float-left 
+                h6
+                  small
+                    strong
+                      | @       
+                      =coupon.bizid.name
               
-                  //if (typeof(coupon.description) !== 'undefined' && coupon.description.length > 80)
-                  //p.padding.text-left  !{coupon.description.substr(0, 80)+ '..... <strong style="color:#d44457">Read More</strong>'}
+              .div.col-md-12.col-lg-12.col-sm-12.col-xs-12
+                  =coupon.description
+                
+              .div.col-md-12.col-lg-12.col-sm-12.col-xs-12.center-left
+                button.btn.btn-outline-primary(type="button" )
+                  =coupon.tagline 
+              .div.col-md-6.col-sm-12.col-xs-12.clipped.float-center
+                button.btn.btn.danger
+                  | Clipped  
+                
                 
             
   //Script for selecting coupons       
@@ -232,7 +231,7 @@ block content
                           <i id=#{user.id} class="fa fa-close fa-fw text-right  del-coupon" rel='+el._id+' aria-hidden="true"></i></div>'
                         );
                       }); 
-                      $('.mycoupons').append('<strong><a href="/admin/email/coupons" class="text-center"><i class="fa fa-envelope fa-fw" aria-hidden="true"></i> Mail All</a></strong>');             
+                      $('.mycoupons').append( '<br><strong><span class="coup-msg">Click "Mail All" then, check your email to get coupon codes<span></strong>');             
                       console.log(data.code);
                     }
                 });
@@ -270,7 +269,7 @@ block content
                           <i id=#{user.id} class="fa fa-close fa-fw  del-coupon" rel='+el._id+' aria-hidden="true"></i></div>'
                         );
                       });
-                      $('.mycoupons').append('<strong><a href="/admin/email/coupons"><i class="fa fa-envelope fa-fw" aria-hidden="true"></i> Mail All</a></strong>');
+                      $('.mycoupons').append('<br><strong><span class="coup-msg">Click "Mail All" then, check your email to get coupon codes<span></strong>');
                     }
                 });
             }
@@ -299,7 +298,7 @@ block content
                     <i id=#{user.id} class="fa fa-close fa-fw  del-coupon" rel='+el._id+' aria-hidden="true"></i></div>'
                   );
                 });
-                $('.mycoupons').append('<strong><a href="/admin/email/coupons"><i class="fa fa-envelope fa-fw" aria-hidden="true"></i> Mail All</a></strong>');
+                $('.mycoupons').append('<br><strong><span class="coup-msg">Click "Mail All" then, check your email to get coupon codes<span></strong>');
               }
           });
           }

@@ -2183,10 +2183,13 @@ padding-right:1px;
 	padding-top:5px;
 }
 .coupon-items{
-	height:50vh;
+	display: table;
 	padding-top:10px;
     padding-left: 10px;
     padding-right: 5px;
+}
+.content{
+	display: table-cell;
 }
 .coupon-title{
 	color:#c00000;
@@ -2633,7 +2636,8 @@ li.list-hor{
 }
 .sub-list{
 	padding-left: 1rem;
-    padding-right: 5rem;
+	padding-right: 1rem;
+	width: max-content;
 }
 .cat-items-top{
 	padding-top:5px;
@@ -2649,7 +2653,7 @@ padding-bottom:5px;
 }
 .form-control-btn{
 
-    color: #04045a; !important
+    color: #04045a; 
 }
 .dropdown-menu-layout{
    margin-top: 0 !important;
@@ -2739,8 +2743,8 @@ padding-left:10px;
 }
 .coup-img-wrapper {
     border: 1px solid transparent;
-    width: 156px;
-    height: 156px;
+    width: fit-content;
+    height: fit-content;
     position: relative;
     margin: 0 auto;
     overflow: hidden;
@@ -2749,14 +2753,12 @@ padding-left:10px;
 	border-right: 1em;
 	border-radius: 0.25rem;
 }
-.btn-coupon{
-	margin-top:6vh;
-}
+
 .deal-home{
 	background-color: #eee;
 	box-shadow: 0 1px 2px 0 rgba(0,0,0,.04);
 }
-}
+
 .btn-light:not(:disabled):not(.disabled):active, .btn-light:not(:disabled):not(.disabled).active, .show > .btn-light.dropdown-toggle{
 	color: #212529;
     background-color: #fff !important;
@@ -3117,4 +3119,10 @@ fieldset, label {
 .panel{
 	padding-top: 1em;
     padding-bottom: 1em;
+}
+.coup-msg{
+	color:black;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	font-style: italic; 
 }

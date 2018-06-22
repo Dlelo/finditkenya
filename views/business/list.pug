@@ -24,14 +24,20 @@ block content
                             |  Nearby
             .panel.panel-warning
               a(href="/nearby/"+title)
-                strong   
-                  |  Nearby #{title}
+                strong  
+                  span.findit-red 
+                    span.fas.fa-map-marker   
+                  |    See Nearby  #{title}
             .dropdown.open.dropdown-category
-              button.btn.btn-cat.btn-default.form-control.dropdown-toggle(type='button', data-toggle='dropdown')
+              a.nav-link.dropdown-toggle(href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
                 | Filter Sub Categories  
                 span.caret
+                
               ul.dropdown-menu.open.sub-catbag.drop-down-sub
                 if features 
+                  li.text-left.sub-list
+                      h6.findit-red
+                         | Filter #{title} by Subcategory
                   each feature in features
                     .panel-heading.category
                       li.text-left.sub-list

@@ -86,11 +86,12 @@ router.get('/search',function(req, res, next){
       {$text: {$search: req.query.search}}
       , {score: {$meta: "textScore"}}
     )
-     .limit(20)
+    .sort({ score:{$meta:'textScore'}})
+    .limit(20)
      //.sort([['paid', -1]]);
   var features = Category.find({name: req.query.search });
   Promise.all([search, features]).then(values => {
-    //console.log(values[0]);
+      //console.log(values[0]);
       res.render('business/search', {
           title: req.query.search,
           //businesses: values[0].hits.hits,
@@ -1134,16 +1135,17 @@ router.get('/preview/:name',function(req, res, next){
 router.get('/stemming/:name', function(req, res, next){
   Business.find(
     {$text: {$search: req.params.name}}
+    , {score: {$meta: "textScore"}}
   )
    .limit(50)
-   .sort([['paid', -1]])
+   .sort({ score:{$meta:'textScore'}})
    .exec(function(err, docs) {
-     console.log(docs);
+     //console.log(docs);
      res.send(docs);
     });
 });
 
-router.get('/:name',function(req, res, next){
+router.get('/biz/:name',function(req, res, next){
   Business.findOne({
     slug: req.params.name,
     approved: true,

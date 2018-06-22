@@ -21,7 +21,7 @@ block content
                     if (i==0)
                       div.carousel-item.active
                           img.d-block.w-100.coupons-img(src="/uploads/" + coupon.photo)
-                          a(href="/"+coupon.bizid.slug)
+                          a(href="/biz/"+coupon.bizid.slug)
                             div.carousel-caption.d-none.d-md-block.banner-background
                               button.btn.btn-danger.flash-coupon(type="button" )
                                 h5
@@ -35,7 +35,7 @@ block content
                     if (i>0 && i<3)
                       div.carousel-item
                           img.d-block.w-100.coupons-img(src="/uploads/" + coupon.photo)
-                          a(href="/"+coupon.bizid.slug)
+                          a(href="/biz/"+coupon.bizid.slug)
                             div.carousel-caption.d-none.d-md-block.banner-background
                               button.btn.btn-danger.flash-coupon(type="button" )
                                 h5

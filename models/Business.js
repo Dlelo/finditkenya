@@ -75,7 +75,7 @@ const bizSchema = new Schema({
 });
 
 bizSchema.index(
-	{ name: 'text',features: 'array',subcategory: 'text', keywords: 'text', description: 'text' },
+	{ name: 'text',features: 'text',subcategory: 'text', keywords: 'text', description: 'text' },
 	{weights: {name: 5, features: 4,subcategory: 1, keywords: 2, description: 1}}
 );
 bizSchema.plugin(dataTables);

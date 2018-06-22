@@ -10,9 +10,9 @@ block content
             each biz in businesses              
               .row.cat-background
                if (typeof(biz.slug) !== 'undefined')
-                  a(href="/"+biz.slug)
+                  a(href="/biz/"+biz.slug)
                     .col-md-3
-                      a(href="/"+biz.slug)
+                      a(href="/biz/"+biz.slug)
                         h6.text-left.cat-items-top
                           =biz.name
                           if (biz.paid == true)

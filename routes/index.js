@@ -86,7 +86,7 @@ router.get('/search',function(req, res, next){
       {$text: {$search: req.query.search}}
       , {score: {$meta: "textScore"}}
     )
-    .sort({ score:{$meta:'textScore'}})
+    .sort({ score:{$meta:'textScore'}, paid: -1})
     .limit(20)
      //.sort([['paid', -1]]);
   var features = Category.find({name: req.query.search });

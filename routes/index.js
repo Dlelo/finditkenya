@@ -85,8 +85,8 @@ router.get('/search',function(req, res, next){
   var search = Business.find(
       {$text: {$search: req.query.search}}
     )
-     .limit(50)
-     //.sort([['paid', -1]]);
+     .limit(20)
+     .sort([['paid', -1]]);
   var features = Category.find({name: req.query.search });
   Promise.all([search, features]).then(values => {
     //console.log(values[0]);

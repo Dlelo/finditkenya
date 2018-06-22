@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-var superPagination = require('super-pagination').mongoose;
 var sys = require(__dirname + '/../config/System');
 
 var db = mongoose.connect(sys.db_uri, {useMongoClient: true });
@@ -16,10 +15,6 @@ const catSchema = new Schema({
 		subcategories: [{
 			name: String
 		}],
-});
-
-catSchema.plugin(superPagination, {
-    theme : 'bootstrap'
 });
 
 module.exports = mongoose.model('Category', catSchema);

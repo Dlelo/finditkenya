@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-var superPagination = require('super-pagination').mongoose;
 var sys = require(__dirname + '/../config/System');
 const _ = require('underscore');
 
@@ -28,10 +27,6 @@ const couponSchema = new Schema({
 		}
 	],
 	status: Boolean
-});
-
-couponSchema.plugin(superPagination, {
-    theme : 'bootstrap'
 });
 
 couponSchema.pre('save', function (next) {

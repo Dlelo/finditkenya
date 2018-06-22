@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-var superPagination = require('super-pagination').mongoose;
 var sys = require(__dirname + '/../config/System');
 
 var db = mongoose.connect(sys.db_uri, {useMongoClient: true });
@@ -13,10 +12,6 @@ const reviewSchema = new Schema({
 		star: String,
 		message: String,
 		created_at: Date
-});
-
-reviewSchema.plugin(superPagination, {
-    theme : 'bootstrap'
 });
 
 module.exports = mongoose.model('Review', reviewSchema);

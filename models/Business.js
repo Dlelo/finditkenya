@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-var superPagination = require('super-pagination').mongoose;
 var mongoosastic=require("mongoosastic");
 var dataTables = require('mongoose-datatables');
 
@@ -75,11 +74,12 @@ const bizSchema = new Schema({
 		user_id: String
 });
 
-bizSchema.index({ name: 'text',subcategory: 'text', keywords: 'text', description: 'text' });
+bizSchema.index(
+	{ name: 'text',subcategory: 'text', keywords: 'text', description: 'text' },
+	{weights: {name: 5, subcategory: 4, keywords: 2, description: 1}}
+);
 bizSchema.plugin(dataTables);
-bizSchema.plugin(superPagination, {
-    theme : 'bootstrap'
-});
+
 
 bizSchema.plugin(mongoosastic, {
   hosts: [

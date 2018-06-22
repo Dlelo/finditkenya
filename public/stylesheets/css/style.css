@@ -2183,10 +2183,13 @@ padding-right:1px;
 	padding-top:5px;
 }
 .coupon-items{
-	height:50vh;
+	display: table;
 	padding-top:10px;
     padding-left: 10px;
     padding-right: 5px;
+}
+.content{
+	display: table-cell;
 }
 .coupon-title{
 	color:#c00000;
@@ -2740,8 +2743,8 @@ padding-left:10px;
 }
 .coup-img-wrapper {
     border: 1px solid transparent;
-    width: 156px;
-    height: 156px;
+    width: fit-content;
+    height: fit-content;
     position: relative;
     margin: 0 auto;
     overflow: hidden;
@@ -2750,14 +2753,12 @@ padding-left:10px;
 	border-right: 1em;
 	border-radius: 0.25rem;
 }
-.btn-coupon{
-	margin-top:6vh;
-}
+
 .deal-home{
 	background-color: #eee;
 	box-shadow: 0 1px 2px 0 rgba(0,0,0,.04);
 }
-}
+
 .btn-light:not(:disabled):not(.disabled):active, .btn-light:not(:disabled):not(.disabled).active, .show > .btn-light.dropdown-toggle{
 	color: #212529;
     background-color: #fff !important;

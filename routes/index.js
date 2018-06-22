@@ -84,6 +84,7 @@ router.get('/search',function(req, res, next){
     });*/
   var search = Business.find(
       {$text: {$search: req.query.search}}
+      , {score: {$meta: "textScore"}}
     )
      .limit(20)
      //.sort([['paid', -1]]);

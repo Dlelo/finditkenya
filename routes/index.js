@@ -83,7 +83,7 @@ router.get('/search',function(req, res, next){
       hydrate: true
     });*/
   var search = Business.find(
-      {$text: {$search: req.params.name}}
+      {$text: {$search: req.query.search}}
     )
      .limit(50)
      .sort([['paid', -1]]);
@@ -92,7 +92,8 @@ router.get('/search',function(req, res, next){
     //console.log(values[0]);
       res.render('business/search', {
           title: req.query.search,
-          businesses: values[0].hits.hits,
+          //businesses: values[0].hits.hits,
+          businesses: values[0],
           features: values[1],
           host: req.get('host')
       });

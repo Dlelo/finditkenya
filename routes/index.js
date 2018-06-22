@@ -19,7 +19,6 @@ var md5 = require('md5');
 var validator = require('validator');
 var elasticsearch = require('elasticsearch');
 var Jimp = require("jimp");
-var snowball = require('node-snowball');
 
 var sys = require(__dirname + '/../config/System');
 var role = require(__dirname + '/../config/Role');

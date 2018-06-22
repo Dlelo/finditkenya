@@ -34,7 +34,6 @@
     "mongoose-datatables": "^3.1.0",
     "morgan": "~1.9.0",
     "multer": "^1.3.0",
-    "node-snowball": "^0.2.0",
     "node-suggestive-search": "^1.9.2",
     "nodemailer": "^4.4.2",
     "passport": "^0.3.2",

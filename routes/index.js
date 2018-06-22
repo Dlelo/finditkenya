@@ -75,16 +75,21 @@ router.get('/email', function (req, res, next) {
 
 router.get('/search',function(req, res, next){
   //wait for the initialization
-  var search = Business.search(
+  /*var search = Business.search(
     {query_string: {query: req.query.search}},
     {
       from : 0,
       size : 200,
       hydrate: true
-    });
+    });*/
+  var search = Business.find(
+      {$text: {$search: req.params.name}}
+    )
+     .limit(50)
+     .sort([['paid', -1]]);
   var features = Category.find({name: req.query.search });
   Promise.all([search, features]).then(values => {
-    console.log(values[0]);
+    //console.log(values[0]);
       res.render('business/search', {
           title: req.query.search,
           businesses: values[0].hits.hits,
@@ -1128,7 +1133,8 @@ router.get('/stemming/:name', function(req, res, next){
   Business.find(
     {$text: {$search: req.params.name}}
   )
-   .limit(10)
+   .limit(50)
+   .sort([['paid', -1]])
    .exec(function(err, docs) {
      console.log(docs);
      res.send(docs);

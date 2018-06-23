@@ -46,47 +46,49 @@ block content
                             =feature.subcategories.name
         .col-md-9
           if businesses
-            each biz in businesses              
-              .row.cat-background
-               if (typeof(biz.slug) !== 'undefined')
-                  a(href="/biz/"+biz.slug)
-                    .col-md-3
-                      a(href="/biz/"+biz.slug)
+            each biz in businesses 
+              if (typeof(biz.slug) !== 'undefined')
+                a(href="/biz/"+biz.slug)  
+                  div.cat-background      
+                    .row
+                      .col-md-6
                         h6.text-left.cat-items-top
-                          =biz.name
+                          =biz.name  
                           if (biz.paid == true)
                             small                      
-                              span.fa.fa-check-circle.strong(style="color:#2862ec;")
-                        
+                              span.fa.fa-check-circle.strong       
+                          span.glyphicon.glyphicon-cog.text-success.glyph.border 
+                              a(href=biz.website,target="_blank")
+                                =  biz.subcategory
+                      .col-md-6.text-right.findit-blue 
+                          if(biz.facebook)
+                              a.findit(href="http://"+biz.facebook,target="_blank")
+                                span.fab.fa-facebook-f.text-info.glyph           
+                          if(biz.twitter)
+                            a.findit(href="http://"+biz.twitter,target="_blank")
+                                span.fab.fa-twitter.text-info.glyph      
+                          if(biz.instagram)
+                            a.findit(href="http://"+biz.instagram,target="_blank")
+                                span.fab.fa-instagram.text-info.glyph          
+                          if(biz.youtube)
+                            a.findit(href="http://"+biz.youtube,target="_blank")
+                                span.fab.fa-youtube.text-info.glyph.border         
+                          
+                    .row 
+                      .col-md-3         
                         if(biz.photo)
                           img.cat-image.cat-items-bottom(src="/uploads/thumbs/cover"+ biz.photo, height="200px")
                         else
                           p
                             | No image Available
-                    .col-md-3
-                      if (typeof(biz.description) !== 'undefined' && biz.description.length > 150)
-                            p.padding.text-left  !{biz.description.substr(0, 150)+ '..... <strong style="color:#d44457">Read More</strong>'}
-                        
-                        
-                            
-                    .col-md-3                 
-                        div
-                          p 
-                            span.glyphicon.glyphicon-cog.text-success.glyph.border 
-                            a(href=biz.website,target="_blank")
-                              =  biz.subcategory
-                        div
-                          p 
-                            span.glyphicon.glyphicon-globe.text-success.glyph
-                            a(href=biz.website,target="_blank")
-                                |  website
-                            if(biz.phone)
-                        div
-                          p 
-                            span.glyphicon.glyphicon-earphone.text-info.glyph.fas.fa-phone-volume 
-                                |  #{biz.phone}
-                        div
-                          p
+                      .col-md-9
+                        if (typeof(biz.description) !== 'undefined' && biz.description.length > 150)
+                              p.padding.text-left.findit-blue  !{biz.description.substr(0, 150)+ '..... <strong style="color:#d44457">Read More</strong>'}
+                        br
+                        div.findit-blue 
+                          span.glyphicon.glyphicon-earphone.text-info.glyph.fas.fa-phone-volume 
+                              |  #{biz.phone}
+                        div.text-right
                             if biz.reviews
                             if( biz.reviews.length == 1) 
                                 .col-md-6(class="rating medium star-icon value-4 label-hidden")
@@ -142,31 +144,8 @@ block content
                             else
                               span.glyphicon.glyphicon-cog.glyph
                                 |  Be the first to review
-                    .col-md-3     
-                        if(biz.facebook)
-                          br
-                          p 
-                            a.findit(href="http://"+biz.facebook,target="_blank",style="color:#2862ec;")
-                              span.fab.fa-facebook-f.text-info.glyph 
-                                |  Facebook
-                        if(biz.twitter)
-                          br
-                          p 
-                            a.findit(href="http://"+biz.twitter,target="_blank",style="color:#2862ec;")
-                                span.fab.fa-twitter.text-info.glyph
-                                  |  Twitter
-                        if(biz.instagram)
-                          br
-                          p 
-                            a.findit(href="http://"+biz.instagram,target="_blank",style="color:#2862ec;")
-                                span.fab.fa-instagram.text-info.glyph 
-                                  |  Instagram
-                        if(biz.youtube)
-                          br
-                          p 
-                            a.findit(href="http://"+biz.youtube,target="_blank",style="color:#2862ec;")
-                                span.fab.fa-youtube.text-info.glyph.border 
-                                  |  Youtube
+                         
+                        
           
       //script to put navitems open by default
       script(type='text/javascript').

@@ -55,9 +55,9 @@ block content
                     a(href="/biz/"+biz.slug)
                       div.cat-backgroundeven.border.border-light    
                         .row
-                          .col-md-6
+                          .col-md-12
                             strong
-                              h4.text-left.cat-items-top
+                              h5.text-left.cat-items-top
                                 =biz.name  
                                 if (biz.paid == true)
                                   small                      
@@ -89,14 +89,14 @@ block content
                             row
                               .col-md-12
                                 if (typeof(biz.description) !== 'undefined' && biz.description.length > 150)
-                                      p.padding.text-left.findit-blue  !{biz.description.substr(0, 150)+ '..... <strong style="color:#d44457">Read More</strong>'}
+                                      p.padding.text-left.findit-blue  !{biz.description.substr(0, 150)+ '..... <strong style="background-color:#d44457; color:#fff">Read More</strong>'}
                             row
                               .col-md-12   
                                 div.findit-blue 
                                   if(biz.website)
                                     a.findit(href=biz.website,target="_blank" class="fa-layers fa-2x")
                                       i.fas.fa-globe 
-                                      =biz.website
+                                    =biz.website
                                       
                                   else
                                     |
@@ -160,7 +160,7 @@ block content
                                           i.star-half
                                           i.star-filled
                                   small
-                                    |  #{biz.reviews.length} Reviews
+                                    | #{biz.reviews.length} Reviews
                                 else
                                   span.glyphicon.glyphicon-cog.glyph
                                     |  Be the first to review
@@ -170,8 +170,8 @@ block content
                         div.cat-backgroundodd.border.border-light     
                           .row
                             .col-md-12
-                              stron6
-                                h4.text-left.cat-items-top
+                              strong
+                                h5.text-left.cat-items-top
                                   =biz.name  
                                   if (biz.paid == true)
                                     small                      
@@ -200,70 +200,86 @@ block content
                                 p
                                   | No image Available
                             .col-md-9
-                              if (typeof(biz.description) !== 'undefined' && biz.description.length > 150)
-                                    p.padding.text-left.findit-blue  !{biz.description.substr(0, 150)+ '..... <strong style="color:#d44457">Read More</strong>'}
-                              br
-                              div.findit-blue 
-                                span.list-social.findit-blue.fas.fa-phone-volume 
-                                    |  #{biz.phone}
-                              div.text-right
-                                  if biz.reviews
-                                  if( biz.reviews.length == 1) 
-                                      .col-md-6(class="rating medium star-icon value-4 label-hidden")
-                                        .star-container
-                                          .star
-                                            i.star-empty
-                                            i.star-half
-                                            i.star-filled
-                                          .star
-                                            i.star-empty
-                                            i.star-half
-                                            i.star-filled
-                                          .star
-                                            i.star-empty
-                                            i.star-half
-                                            i.star-filled
-                                          .star
-                                            i.star-empty
-                                            i.star-half
-                                            i.star-filled
-                                          .star
-                                            i.star-empty
-                                            i.star-half
-                                            i.star-filled
-                                      small
-                                        | #{biz.reviews.length} Review
-                                  else if( biz.reviews.length > 1)
-                                    span.glyphicon.glyphicon-cog.glyph.border
-                                      div(class="rating medium star-icon value-4 label-hidden")
-                                        .star-container
-                                          .star
-                                            i.star-empty
-                                            i.star-half
-                                            i.star-filled
-                                          .star
-                                            i.star-empty
-                                            i.star-half
-                                            i.star-filled
-                                          .star
-                                            i.star-empty
-                                            i.star-half
-                                            i.star-filled
-                                          .star
-                                            i.star-empty
-                                            i.star-half
-                                            i.star-filled
-                                          .star
-                                            i.star-empty
-                                            i.star-half
-                                            i.star-filled
-                                    small
-                                      |  #{biz.reviews.length} Reviews
-                                  else
-                                    span.glyphicon.glyphicon-cog.glyph
-                                      |  Be the first to review    
-                              
-                        
+                              row
+                                .col-md-12
+                                  if (typeof(biz.description) !== 'undefined' && biz.description.length > 150)
+                                        p.padding.text-left.findit-blue  !{biz.description.substr(0, 150)+ '..... <strong style="color:#d44457">Read More</strong>'}
+                              row
+                                .col-md-12   
+                                  div.findit-blue 
+                                    if(biz.website)
+                                      a.findit(href=biz.website,target="_blank" class="fa-layers fa-2x")
+                                        i.fas.fa-globe 
+                                        =biz.website
+                                        
+                                    else
+                                      |
+                                    if(biz.phone)
+                                      a.findit(class="fa-layers fa-2x")
+                                        i.fas.fa-phone-volume 
+                                      |  #{biz.phone}
+                                    else
+                                      | 
+                              row
+                                .col-md-12 
+                                  div.text-right
+                                      if biz.reviews
+                                      if( biz.reviews.length == 1) 
+                                          .col-md-6(class="rating medium star-icon value-4 label-hidden")
+                                            .star-container
+                                              .star
+                                                i.star-empty
+                                                i.star-half
+                                                i.star-filled
+                                              .star
+                                                i.star-empty
+                                                i.star-half
+                                                i.star-filled
+                                              .star
+                                                i.star-empty
+                                                i.star-half
+                                                i.star-filled
+                                              .star
+                                                i.star-empty
+                                                i.star-half
+                                                i.star-filled
+                                              .star
+                                                i.star-empty
+                                                i.star-half
+                                                i.star-filled
+                                          small
+                                            | #{biz.reviews.length} Review
+                                      else if( biz.reviews.length > 1)
+                                        span.glyphicon.glyphicon-cog.glyph.border
+                                          div(class="rating medium star-icon value-4 label-hidden")
+                                            .star-container
+                                              .star
+                                                i.star-empty
+                                                i.star-half
+                                                i.star-filled
+                                              .star
+                                                i.star-empty
+                                                i.star-half
+                                                i.star-filled
+                                              .star
+                                                i.star-empty
+                                                i.star-half
+                                                i.star-filled
+                                              .star
+                                                i.star-empty
+                                                i.star-half
+                                                i.star-filled
+                                              .star
+                                                i.star-empty
+                                                i.star-half
+                                                i.star-filled
+                                        small
+                                          |  #{biz.reviews.length} Reviews
+                                      else
+                                        span.glyphicon.glyphicon-cog.glyph
+                                          |  Be the first to review    
+                                
+                          
           
       //script to put navitems open by default
       script(type='text/javascript').

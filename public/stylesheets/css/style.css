@@ -3139,6 +3139,7 @@ fieldset, label {
 	 padding-left:1em;
 }
 .fa-2x {
-	font-size: 1.5em !important;
-	padding-right: 1em;
+	font-size: 1.4em !important;
+	padding-right: 0.5em;
+	padding-left: 0.5em;
 }

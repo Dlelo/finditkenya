@@ -100,7 +100,7 @@ block content
             div#items.dropdown-menu.open.sub-catbag.drop-down-sub.dropdown-menu-coupon.dropdown-category
               
               if groups 
-                button(class="btn category-button" data-filter = "all")
+                button(class="btn btn-light category-button" data-filter = "all")
                   strong
                     |  All Categories (
                   span
@@ -108,7 +108,7 @@ block content
                 each group in groups
                   div.text-left.sub-list
                     //a(href="#"+group._id)
-                    button(class="btn category-button" data-filter = ''+group._id+'')
+                    button(class="btn btn-light category-button" data-filter = ''+group._id+'')
                       strong  
                         =group._id + " (" + group.count + ")" 
         li.nav-item

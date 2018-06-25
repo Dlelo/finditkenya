@@ -3135,5 +3135,10 @@ fieldset, label {
 	padding-left:1px !important;
 }
 .cathead-background{
-     background-color:#b0b2b3;
+	 background-color: #eee;
+	 padding-left:1em;
+}
+.fa-2x {
+	font-size: 1.5em !important;
+	padding-right: 1em;
 }

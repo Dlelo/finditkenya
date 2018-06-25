@@ -64,7 +64,7 @@ block content
                                     span.list-social.fa.fa-check-circle.strong       
                                 
             
-                          .col-md-6.text-right.findit-blue 
+                          .col-md-10.text-right.findit-blue 
                               if(biz.facebook)
                                 a.findit(href="http://"+biz.facebook,target="_blank" class="fa-layers fa-2x")
                                     i.list-social.fab.fa-facebook-f                  
@@ -79,7 +79,7 @@ block content
                                     i.list-social.fab.fa-youtube                   
                               
                         .row 
-                          .col-md-3         
+                          .col-md-12        
                             if(biz.photo)
                               img.cat-image.cat-items-bottom(src="/uploads/thumbs/cover"+ biz.photo, height="200px")
                             else
@@ -177,7 +177,7 @@ block content
                                     small                      
                                       span.list-social.fa.fa-check-circle.strong       
                                   
-                            .col-md-6.text-right.findit-blue 
+                            .col-md-10.text-right.findit-blue 
                                 if(biz.facebook)
                                   a.findit(href="http://"+biz.facebook,target="_blank" class="fa-layers fa-2x")
                                       i.list-social.fab.fa-facebook-f                  
@@ -193,7 +193,7 @@ block content
                                                   
                                 
                           .row 
-                            .col-md-3         
+                            .col-md-12        
                               if(biz.photo)
                                 img.cat-image.cat-items-bottom(src="/uploads/thumbs/cover"+ biz.photo, height="200px")
                               else
@@ -203,7 +203,7 @@ block content
                               row
                                 .col-md-12
                                   if (typeof(biz.description) !== 'undefined' && biz.description.length > 150)
-                                        p.padding.text-left.findit-blue  !{biz.description.substr(0, 150)+ '..... <strong style="color:#d44457">Read More</strong>'}
+                                        p.padding.text-left.findit-blue  !{biz.description.substr(0, 150)+ '..... <strong style="background-color:#c00000; color:#fff">Read More</strong>'}
                               row
                                 .col-md-12   
                                   div.findit-blue 

@@ -55,7 +55,7 @@ block content
                     a(href="/biz/"+biz.slug)
                       div.cat-backgroundeven.border.border-light    
                         .row
-                          .col-md-12
+                          .col-md-9
                             strong
                               h2.text-left.cat-items-top
                                 =biz.name  
@@ -64,7 +64,7 @@ block content
                                     span.list-social.fa.fa-check-circle.strong       
                                 
             
-                          .col-md-12.text-right.findit-blue 
+                          .col-md-4.text-right.findit-blue 
                               if(biz.facebook)
                                 a.findit(href="http://"+biz.facebook,target="_blank" class="fa-layers fa-2x")
                                     i.list-social.fab.fa-facebook-f                  
@@ -165,15 +165,13 @@ block content
                                   small
                                     | #{biz.reviews.length} Reviews
                                 else
-                                  span.glyphicon.glyphicon-cog.glyph
-                                    small.text-right
-                                      |  Be the first to review
+                                  | 
               else
                 if (typeof(biz.slug) !== 'undefined')
                     a(href="/biz/"+biz.slug)
                         div.cat-backgroundodd.border.border-light     
                           .row
-                            .col-md-12
+                            .col-md-9
                               strong
                                 h2.text-left.cat-items-top
                                   =biz.name  
@@ -181,7 +179,7 @@ block content
                                     small                      
                                       span.list-social.fa.fa-check-circle.strong       
                                   
-                              .text-right.findit-blue 
+                            .col-md-4.text-right.findit-blue 
                                 if(biz.facebook)
                                   a.findit(href="http://"+biz.facebook,target="_blank" class="fa-layers fa-2x")
                                       i.list-social.fab.fa-facebook-f                  
@@ -283,10 +281,7 @@ block content
                                         small
                                           |  #{biz.reviews.length} Reviews
                                       else
-                                        small.text-right
-                                          span.glyphicon.glyphicon-cog.glyph
-                                            |  Be the first to review   
-                                
+                                        | 
                           
           
       //script to put navitems open by default

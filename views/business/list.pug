@@ -46,105 +46,205 @@ block content
                             =feature.subcategories.name
         .col-md-9
           if businesses
-            each biz in businesses 
+            div.cathead-background.border.border-light
+                | CATEGORY:  
+                =title
+            each biz,i in businesses
               if (typeof(biz.slug) !== 'undefined')
-                a(href="/biz/"+biz.slug)  
-                  div.cat-background      
-                    .row
-                      .col-md-6
-                        h6.text-left.cat-items-top
-                          =biz.name  
-                          if (biz.paid == true)
-                            small                      
-                              span.fa.fa-check-circle.strong       
-                          span.glyphicon.glyphicon-cog.text-success.glyph.border 
-                              a(href=biz.website,target="_blank")
-                                =  biz.subcategory
-                      .col-md-6.text-right.findit-blue 
-                          if(biz.facebook)
-                              a.findit(href="http://"+biz.facebook,target="_blank")
-                                span.fab.fa-facebook-f.text-info.glyph           
-                          if(biz.twitter)
-                            a.findit(href="http://"+biz.twitter,target="_blank")
-                                span.fab.fa-twitter.text-info.glyph      
-                          if(biz.instagram)
-                            a.findit(href="http://"+biz.instagram,target="_blank")
-                                span.fab.fa-instagram.text-info.glyph          
-                          if(biz.youtube)
-                            a.findit(href="http://"+biz.youtube,target="_blank")
-                                span.fab.fa-youtube.text-info.glyph.border         
-                          
-                    .row 
-                      .col-md-3         
-                        if(biz.photo)
-                          img.cat-image.cat-items-bottom(src="/uploads/thumbs/cover"+ biz.photo, height="200px")
-                        else
-                          p
-                            | No image Available
-                      .col-md-9
-                        if (typeof(biz.description) !== 'undefined' && biz.description.length > 150)
-                              p.padding.text-left.findit-blue  !{biz.description.substr(0, 150)+ '..... <strong style="color:#d44457">Read More</strong>'}
-                        br
-                        div.findit-blue 
-                          span.glyphicon.glyphicon-earphone.text-info.glyph.fas.fa-phone-volume 
-                              |  #{biz.phone}
-                        div.text-right
-                            if biz.reviews
-                            if( biz.reviews.length == 1) 
-                                .col-md-6(class="rating medium star-icon value-4 label-hidden")
-                                  .star-container
-                                    .star
-                                      i.star-empty
-                                      i.star-half
-                                      i.star-filled
-                                    .star
-                                      i.star-empty
-                                      i.star-half
-                                      i.star-filled
-                                    .star
-                                      i.star-empty
-                                      i.star-half
-                                      i.star-filled
-                                    .star
-                                      i.star-empty
-                                      i.star-half
-                                      i.star-filled
-                                    .star
-                                      i.star-empty
-                                      i.star-half
-                                      i.star-filled
+                a(href="/biz/"+biz.slug)
+                  if (i % 2 === 0)
+                    div.cat-backgroundeven.border.border-light    
+                      .row
+                        .col-md-6
+                          h6.text-left.cat-items-top
+                            =biz.name  
+                            if (biz.paid == true)
+                              small                      
+                                span.list-social.fa.fa-check-circle.strong       
+                            span.glyphicon.glyphicon-cog.text-success.glyph.border 
+                                a(href=biz.website,target="_blank")
+                                  =biz.subcategory
+                        .col-md-6.text-right.findit-blue 
+                            if(biz.facebook)
+                                a.findit(href="http://"+biz.facebook,target="_blank")
+                                  span.list-social.fab.fa-facebook-f                  
+                            if(biz.twitter)
+                              a.findit(href="http://"+biz.twitter,target="_blank")
+                                  span.list-social.fab.fa-twitter            
+                            if(biz.instagram)
+                              a.findit(href="http://"+biz.instagram,target="_blank")
+                                  span.list-social.fab.fa-instagram                   
+                            if(biz.youtube)
+                              a.findit(href="http://"+biz.youtube,target="_blank")
+                                  span.list-social.fab.fa-youtube                   
+                            
+                      .row 
+                        .col-md-3         
+                          if(biz.photo)
+                            img.cat-image.cat-items-bottom(src="/uploads/thumbs/cover"+ biz.photo, height="200px")
+                          else
+                            p
+                              | No image Available
+                        .col-md-9
+                          if (typeof(biz.description) !== 'undefined' && biz.description.length > 150)
+                                p.padding.text-left.findit-blue  !{biz.description.substr(0, 150)+ '..... <strong style="color:#d44457">Read More</strong>'}
+                          br
+                          div.findit-blue 
+                            span.list-social.findit-blue.fas.fa-phone-volume 
+                                |  #{biz.phone}
+                          div.text-right
+                              if biz.reviews
+                              if( biz.reviews.length == 1) 
+                                  .col-md-6(class="rating medium star-icon value-4 label-hidden")
+                                    .star-container
+                                      .star
+                                        i.star-empty
+                                        i.star-half
+                                        i.star-filled
+                                      .star
+                                        i.star-empty
+                                        i.star-half
+                                        i.star-filled
+                                      .star
+                                        i.star-empty
+                                        i.star-half
+                                        i.star-filled
+                                      .star
+                                        i.star-empty
+                                        i.star-half
+                                        i.star-filled
+                                      .star
+                                        i.star-empty
+                                        i.star-half
+                                        i.star-filled
+                                  small
+                                    | #{biz.reviews.length} Review
+                              else if( biz.reviews.length > 1)
+                                span.glyphicon.glyphicon-cog.glyph.border
+                                  div(class="rating medium star-icon value-4 label-hidden")
+                                    .star-container
+                                      .star
+                                        i.star-empty
+                                        i.star-half
+                                        i.star-filled
+                                      .star
+                                        i.star-empty
+                                        i.star-half
+                                        i.star-filled
+                                      .star
+                                        i.star-empty
+                                        i.star-half
+                                        i.star-filled
+                                      .star
+                                        i.star-empty
+                                        i.star-half
+                                        i.star-filled
+                                      .star
+                                        i.star-empty
+                                        i.star-half
+                                        i.star-filled
                                 small
-                                  | #{biz.reviews.length} Review
-                            else if( biz.reviews.length > 1)
-                              span.glyphicon.glyphicon-cog.glyph.border
-                                div(class="rating medium star-icon value-4 label-hidden")
-                                  .star-container
-                                    .star
-                                      i.star-empty
-                                      i.star-half
-                                      i.star-filled
-                                    .star
-                                      i.star-empty
-                                      i.star-half
-                                      i.star-filled
-                                    .star
-                                      i.star-empty
-                                      i.star-half
-                                      i.star-filled
-                                    .star
-                                      i.star-empty
-                                      i.star-half
-                                      i.star-filled
-                                    .star
-                                      i.star-empty
-                                      i.star-half
-                                      i.star-filled
-                              small
-                                |  #{biz.reviews.length} Reviews
-                            else
-                              span.glyphicon.glyphicon-cog.glyph
-                                |  Be the first to review
-                         
+                                  |  #{biz.reviews.length} Reviews
+                              else
+                                span.glyphicon.glyphicon-cog.glyph
+                                  |  Be the first to review
+                  else
+                    div.cat-backgroundodd.border.border-light     
+                      .row
+                        .col-md-6
+                          h6.text-left.cat-items-top
+                            =biz.name  
+                            if (biz.paid == true)
+                              small                      
+                                span.list-social.fa.fa-check-circle.strong       
+                            span.glyphicon.glyphicon-cog.text-success.glyph.border 
+                                a(href=biz.website,target="_blank")
+                                  =biz.subcategory
+                        .col-md-6.text-right.findit-blue 
+                            if(biz.facebook)
+                                a.findit(href="http://"+biz.facebook,target="_blank")
+                                  span.list-social.fab.fa-facebook-f                  
+                            if(biz.twitter)
+                              a.findit(href="http://"+biz.twitter,target="_blank")
+                                  span.list-social.fab.fa-twitter            
+                            if(biz.instagram)
+                              a.findit(href="http://"+biz.instagram,target="_blank")
+                                  span.list-social.fab.fa-instagram                   
+                            if(biz.youtube)
+                              a.findit(href="http://"+biz.youtube,target="_blank")
+                                  span.list-social.fab.fa-youtube                   
+                            
+                      .row 
+                        .col-md-3         
+                          if(biz.photo)
+                            img.cat-image.cat-items-bottom(src="/uploads/thumbs/cover"+ biz.photo, height="200px")
+                          else
+                            p
+                              | No image Available
+                        .col-md-9
+                          if (typeof(biz.description) !== 'undefined' && biz.description.length > 150)
+                                p.padding.text-left.findit-blue  !{biz.description.substr(0, 150)+ '..... <strong style="color:#d44457">Read More</strong>'}
+                          br
+                          div.findit-blue 
+                            span.list-social.findit-blue.fas.fa-phone-volume 
+                                |  #{biz.phone}
+                          div.text-right
+                              if biz.reviews
+                              if( biz.reviews.length == 1) 
+                                  .col-md-6(class="rating medium star-icon value-4 label-hidden")
+                                    .star-container
+                                      .star
+                                        i.star-empty
+                                        i.star-half
+                                        i.star-filled
+                                      .star
+                                        i.star-empty
+                                        i.star-half
+                                        i.star-filled
+                                      .star
+                                        i.star-empty
+                                        i.star-half
+                                        i.star-filled
+                                      .star
+                                        i.star-empty
+                                        i.star-half
+                                        i.star-filled
+                                      .star
+                                        i.star-empty
+                                        i.star-half
+                                        i.star-filled
+                                  small
+                                    | #{biz.reviews.length} Review
+                              else if( biz.reviews.length > 1)
+                                span.glyphicon.glyphicon-cog.glyph.border
+                                  div(class="rating medium star-icon value-4 label-hidden")
+                                    .star-container
+                                      .star
+                                        i.star-empty
+                                        i.star-half
+                                        i.star-filled
+                                      .star
+                                        i.star-empty
+                                        i.star-half
+                                        i.star-filled
+                                      .star
+                                        i.star-empty
+                                        i.star-half
+                                        i.star-filled
+                                      .star
+                                        i.star-empty
+                                        i.star-half
+                                        i.star-filled
+                                      .star
+                                        i.star-empty
+                                        i.star-half
+                                        i.star-filled
+                                small
+                                  |  #{biz.reviews.length} Reviews
+                              else
+                                span.glyphicon.glyphicon-cog.glyph
+                                  |  Be the first to review    
+                          
                         
           
       //script to put navitems open by default

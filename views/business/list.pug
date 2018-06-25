@@ -57,14 +57,14 @@ block content
                         .row
                           .col-md-12
                             strong
-                              h5.text-left.cat-items-top
+                              h2.text-left.cat-items-top
                                 =biz.name  
                                 if (biz.paid == true)
                                   small                      
                                     span.list-social.fa.fa-check-circle.strong       
                                 
             
-                          .col-md-10.text-right.findit-blue 
+                          .col-md-12.text-right.findit-blue 
                               if(biz.facebook)
                                 a.findit(href="http://"+biz.facebook,target="_blank" class="fa-layers fa-2x")
                                     i.list-social.fab.fa-facebook-f                  
@@ -103,7 +103,10 @@ block content
                                   if(biz.phone)
                                     a.findit(class="fa-layers fa-2x")
                                       i.fas.fa-phone-volume 
-                                    |  #{biz.phone}
+                                    a.findit.phoneno(href="tel:"+phone,style="color:#2c155a;display:none")
+                                      |  #{biz.phone}
+                                    a.findit.phonenofake(href="#",style="color: #c0000")
+                                      |  Get Phone Number
                                   else
                                     | 
                             row
@@ -163,7 +166,8 @@ block content
                                     | #{biz.reviews.length} Reviews
                                 else
                                   span.glyphicon.glyphicon-cog.glyph
-                                    |  Be the first to review
+                                    small.text-right
+                                      |  Be the first to review
               else
                 if (typeof(biz.slug) !== 'undefined')
                     a(href="/biz/"+biz.slug)
@@ -171,13 +175,13 @@ block content
                           .row
                             .col-md-12
                               strong
-                                h5.text-left.cat-items-top
+                                h2.text-left.cat-items-top
                                   =biz.name  
                                   if (biz.paid == true)
                                     small                      
                                       span.list-social.fa.fa-check-circle.strong       
                                   
-                            .col-md-10.text-right.findit-blue 
+                              .text-right.findit-blue 
                                 if(biz.facebook)
                                   a.findit(href="http://"+biz.facebook,target="_blank" class="fa-layers fa-2x")
                                       i.list-social.fab.fa-facebook-f                  
@@ -201,9 +205,9 @@ block content
                                   | No image Available
                             .col-md-9
                               row
-                                .col-md-12
+                                .col-md-12.description-cat
                                   if (typeof(biz.description) !== 'undefined' && biz.description.length > 150)
-                                        p.padding.text-left.findit-blue  !{biz.description.substr(0, 150)+ '..... <strong style="background-color:#c00000; color:#fff">Read More</strong>'}
+                                        p.padding.text-left.description-cat  !{biz.description.substr(0, 150)+ '..... <strong style="background-color:#c00000; color:#fff">Read More</strong>'}
                               row
                                 .col-md-12   
                                   div.findit-blue 
@@ -217,7 +221,10 @@ block content
                                     if(biz.phone)
                                       a.findit(class="fa-layers fa-2x")
                                         i.fas.fa-phone-volume 
-                                      |  #{biz.phone}
+                                      a.findit.phoneno(href="tel:"+phone,style="color:#2c155a;display:none")
+                                        |  #{biz.phone}
+                                      a.findit.phonenofake(href="#",style="color: #c0000")
+                                        |  Get Phone Number
                                     else
                                       | 
                               row
@@ -276,8 +283,9 @@ block content
                                         small
                                           |  #{biz.reviews.length} Reviews
                                       else
-                                        span.glyphicon.glyphicon-cog.glyph
-                                          |  Be the first to review    
+                                        small.text-right
+                                          span.glyphicon.glyphicon-cog.glyph
+                                            |  Be the first to review   
                                 
                           
           

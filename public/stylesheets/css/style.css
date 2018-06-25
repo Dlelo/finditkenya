@@ -2624,12 +2624,15 @@ li.list-hor{
     border-radius: 2%;
 }
 .cat-backgroundodd{
-	background-color: #f5f5f5;
+	background-color: #efeff196;
+	padding-top:1px;
+	padding-bottom:1px
 	
 }
 .cat-backgroundeven{
 	background-color: #fff;
-	
+	padding-top:1px;
+	padding-bottom:1px
 }
 
 .sub-list{

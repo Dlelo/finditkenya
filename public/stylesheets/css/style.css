@@ -2296,6 +2296,9 @@ padding-right:1px;
 	.modal-content{
 		width: 70% !important;
 	}
+	.mega-menu{
+		width:0;
+	}
 	#hide-search {
     padding: 5vw 0 2vW 5vw;
 	}
@@ -2360,6 +2363,9 @@ li.list-hor{
 	.modal-content{
 		width: 70% !important;
 	}
+	.mega-menu{
+		width:0;
+	}
 	.selected-coupon-left {
 	   margin-left: 2rem !important;
 	}
@@ -2421,6 +2427,9 @@ li.list-hor{
 	.modal-content{
 		width: 70% !important;
 	}
+	.mega-menu{
+		width:0;
+	}
 	#hide-search {
     padding: 5vw 0 2vW 5vw;
    }
@@ -2476,6 +2485,9 @@ li.list-hor{
 
 
 @media screen and (max-width: 375px) {
+	.mega-menu{
+		width:0;
+	}
 	.modal-content{
 		width: 70% !important;
 	}
@@ -2535,6 +2547,9 @@ li.list-hor{
 }
 
 @media screen and (max-width: 320px) {
+	.mega-menu{
+		width:0;
+	}
 	.modal-content{
 		width: 70% !important;
 	}
@@ -3111,7 +3126,7 @@ fieldset, label {
 	}
 }
 .nav-link{
-	padding: .3rem 1rem !important;
+	padding:0!important;
 }
 .login-title{
 	padding-top:1px;

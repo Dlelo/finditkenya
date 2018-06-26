@@ -3147,5 +3147,9 @@ fieldset, label {
 	color:#252627;
 }
 .catbiz-name{
-	margin-right:34vw;
+	float:left !important;
+}
+.cat-header{
+    display: flex;
+    justify-content: space-between;
 }

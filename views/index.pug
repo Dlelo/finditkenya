@@ -78,19 +78,21 @@ block content
               
           
           div.col-lg-3.col-md-3.w3-ab.my-md-0.my-sm-8.my-4
-                //div.w3-ab-grid
+            a(href="#expandcategories"  onclick="toggle_visibility('expandcategories');")
                 div.w3-aicon.py-lg-5.py-md-3.py-5
-                    img.img-fluid.category-img-wrapper(src="/img/more_categories.png" alt="Responsive image")
-                    button.btn.btn-light(class="toggle-btn toggle-btn-visible" data-toggle-target="#box3" data-toggle-text"read="" less"="")
-                         | More Categories
+                  button.btn.btn-light(type="button")
+                    span.findit-blue
+                      | More Categories
+                  img.img-fluid.category-img-wrapper(src="/img/more_categories.png" alt="Responsive image")
+                  
                 
                         
                             
-        div.row(id="box3" class="box toggle-target-hidden toggle-target-expanded" style="")
+        div.row#expandcategories( style="display:none;")
           each category,i in categories
             if(i > 7)
               div.col-md-4.col-sm-12.col-xs-12
-                a.dropdown-item(href="/category/"+category.name)
+                a(href="/category/"+category.name)
                     strong.findit-blue
                       i.fas.fa-1x(aria-hidden='true', class=category.icon) 
                       small.findit-blue
@@ -190,17 +192,7 @@ block content
 
     
           
-      //more categories
-        div.row.morecategories#morecategories(style="display:none")
-          each category,i in categories
-           if(i > 8)
-            ul
-              div.col-md-3.col-sm-8.col-xs-8.align-categories
-                li 
-                  a(href="/category/"+category.name)  
-                   i.fas.fa-1x(aria-hidden='true', class=category.icon)    
-                   =category.name
-       
+     
               
       div.col-lg-4.col-md-4.col-sm-6.col-xs-6
         div
@@ -247,6 +239,11 @@ block content
         var images = ['best-banner.jpg', 'doctor.jpg','office.jpg', 'find.jpeg'];
         $('.banner').css({'background-image': 'url(banner-img/' + images[Math.floor(Math.random() * images.length)] + ')'});
       });
-    
+    //script to toggle more category
+    script(type="text/javascript").
+      function toggle_visibility(id) {
+        var e = document.getElementById(id);
+        e.style.display = ((e.style.display!='none') ? 'none' : '');
+      }
 
    

@@ -70,12 +70,13 @@ body
               if categories 
                 div.row
                   each category,i in categories
-                    div.col-md-3.col-sm-12.col-xs-12
+                    div.col-md-4.col-sm-12.col-xs-12
                       a.dropdown-item(href="/category/"+category.name)
-                          strong  
+                          strong.findit-blue
                             i.fas.fa-1x(aria-hidden='true', class=category.icon) 
-                            small   
-                              =category.name
+                            small.findit-blue
+                              strong   
+                                =category.name
                   
                       
           li.nav-item.mr-3

@@ -63,16 +63,16 @@ block content
                                     span.list-social.far.fa-check-square  
                               div.nav   
                                 if(biz.facebook)
-                                  a.findit.catsocial-name(href="http://"+biz.facebook,target="_blank" class="fa-layers fa-2x")
+                                  a.findit(href="http://"+biz.facebook,target="_blank" class="fa-layers fa-2x")
                                       i.list-social.fab.fa-facebook-f                  
                                 if(biz.twitter)
-                                  a.findit.catsocial-name(href="http://"+biz.twitter,target="_blank" class="fa-layers fa-2x")
+                                  a.findit(href="http://"+biz.twitter,target="_blank" class="fa-layers fa-2x")
                                       i.list-social.fab.fa-twitter            
                                 if(biz.instagram)
-                                  a.findit.catsocial-name(href="http://"+biz.instagram,target="_blank" class="fa-layers fa-2x")
+                                  a.findit(href="http://"+biz.instagram,target="_blank" class="fa-layers fa-2x")
                                       i.list-social.fab.fa-instagram                   
                                 if(biz.youtube)
-                                  a.findit.catsocial-name(href="http://"+biz.youtube,target="_blank" class="fa-layers fa-2x")
+                                  a.findit(href="http://"+biz.youtube,target="_blank" class="fa-layers fa-2x")
                                       i.list-social.fab.fa-youtube  
                                     
                               
@@ -171,26 +171,27 @@ block content
                     a(href="/biz/"+biz.slug)
                         div.cat-backgroundodd.border.border-light     
                           .row
-                            .col-md-12.findit-blue.cat-items-top 
+                            .col-md-12.findit-blue.cat-items-top.cat-header 
                               h3.findit-blue.catbiz-name
                                 =biz.name  
                                 if (biz.paid == true)
                                   small.findit-red                    
-                                    span.list-social.far.fa-check-square     
-                              if(biz.facebook)
-                                a.findit.catsocial-name(href="http://"+biz.facebook,target="_blank" class="fa-layers fa-2x")
-                                    i.list-social.fab.fa-facebook-f                  
-                              if(biz.twitter)
-                                a.findit.catsocial-name(href="http://"+biz.twitter,target="_blank" class="fa-layers fa-2x")
-                                    i.list-social.fab.fa-twitter            
-                              if(biz.instagram)
-                                a.findit.catsocial-name(href="http://"+biz.instagram,target="_blank" class="fa-layers fa-2x")
-                                    i.list-social.fab.fa-instagram                   
-                              if(biz.youtube)
-                                a.findit.catsocial-name(href="http://"+biz.youtube,target="_blank" class="fa-layers fa-2x")
-                                    i.list-social.fab.fa-youtube  
-                                          
-                                                  
+                                    span.list-social.far.fa-check-square  
+                              div.nav   
+                                if(biz.facebook)
+                                  a.findit(href="http://"+biz.facebook,target="_blank" class="fa-layers fa-2x")
+                                      i.list-social.fab.fa-facebook-f                  
+                                if(biz.twitter)
+                                  a.findit(href="http://"+biz.twitter,target="_blank" class="fa-layers fa-2x")
+                                      i.list-social.fab.fa-twitter            
+                                if(biz.instagram)
+                                  a.findit(href="http://"+biz.instagram,target="_blank" class="fa-layers fa-2x")
+                                      i.list-social.fab.fa-instagram                   
+                                if(biz.youtube)
+                                  a.findit(href="http://"+biz.youtube,target="_blank" class="fa-layers fa-2x")
+                                      i.list-social.fab.fa-youtube  
+                                    
+                              
                                 
                           .row 
                             .col-md-3       

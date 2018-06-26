@@ -2619,28 +2619,29 @@ li.list-hor{
 }
 .cat-image {
     vertical-align: middle;
-    width: 100%;
-    height: 20vh;
+    width: auto;
+    height: auto;
     border-radius: 2%;
 }
-.cat-background{
-	background-color: #fff;
-	margin-top:5px;
-	margin-bottom:2px;
-	margin-right:1px;
-	margin-left:1px;
-	padding-top:2px;
-	padding-bottom:2px;
-	border-radius: 5px;
-	box-shadow: 0 1px 3px 0 rgba(0,0,0,.25);
+.cat-backgroundodd{
+	background-color: #e6e6e6;
+	padding-top:1px;
+	padding-bottom:1px
+	
 }
+.cat-backgroundeven{
+	background-color: #fff;
+	padding-top:1px;
+	padding-bottom:1px
+}
+
 .sub-list{
 	padding-left: 1rem;
 	padding-right: 1rem;
 	width: max-content;
 }
 .cat-items-top{
-	padding-top:5px;
+	display:inherit;
 
 }
 .cat-items-bottom{
@@ -3125,4 +3126,30 @@ fieldset, label {
 	padding-top: 2px;
 	padding-bottom: 2px;
 	font-style: italic; 
+}
+.findit-blue{
+	color: #04045a;
+}
+.list-social{
+	padding-right:1px !important;
+	padding-left:1px !important;
+}
+.cathead-background{
+	 background-color: #eee;
+	 padding-left:1em;
+}
+.fa-2x {
+	font-size: 1.4em !important;
+	padding-right: 0.5em;
+	padding-left: 0.5em;
+}
+.description-cat{
+	color:#252627;
+}
+.catbiz-name{
+	float:left !important;
+}
+.cat-header{
+    display: flex;
+    justify-content: space-between;
 }

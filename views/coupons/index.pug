@@ -97,18 +97,18 @@ block content
                 | Search Coupon by Category
                 
               span.caret
-            div#myBtnContainer.dropdown-menu.open.sub-catbag.drop-down-sub.dropdown-menu-coupon.dropdown-category
+            div#items.dropdown-menu.open.sub-catbag.drop-down-sub.dropdown-menu-coupon.dropdown-category
               
               if groups 
-                button(class="btn" onclick="filterSelection('all')")
+                button(class="btn btn-light category-button" data-filter = "all")
                   strong
-                    |  all Categories (
+                    |  All Categories (
                   span
                     =groups.length + ')'
                 each group in groups
                   div.text-left.sub-list
                     //a(href="#"+group._id)
-                    button(class="btn" onclick="filterSelection('"+group._id+"')")
+                    button(class="btn btn-light category-button" data-filter = ''+group._id+'')
                       strong  
                         =group._id + " (" + group.count + ")" 
         li.nav-item
@@ -161,7 +161,7 @@ block content
                 span.strong
                   | Email. 
       each coupon, i in coupons
-        div.col-md-3(class=coupon.bizid.subcategory)
+        div.col-md-3.all.well(class=coupon.bizid.subcategory)
           div.row.deal-main.deal-coup.coupon-items.column.coupon(id=coupon.id,class=(coupon.users.some(function(x) { return x.user_id == user.id })) ? 'couponclicked' : 'couponadd', rel=user.id)
             div.content  
               .div.col-md-12.col-sm-12.col-xs-12
@@ -188,7 +188,7 @@ block content
                   | Clipped  
                 
                 
-            
+  script(src='/javascripts/bootstrapjs/filter-gallery.js')          
   //Script for selecting coupons       
   script(type='text/javascript').
     //(function($) {

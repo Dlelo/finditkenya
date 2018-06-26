@@ -80,27 +80,23 @@ block content
           div.col-lg-3.col-md-3.w3-ab.my-md-0.my-sm-8.my-4
                 //div.w3-ab-grid
                 div.w3-aicon.py-lg-5.py-md-3.py-5
-                  div.navbar
-                    div.dropdown
-                         button.btn.btn-light(onclick="openCategories()" type="button")
-                           | More Categories ...
-                           img.img-fluid.category-img-wrapper(src="/img/more_categories.png" alt="Responsive image")
-                    .dropdown-content
-                      .header
-                        h2
-                          | More Categories
-                        if categories 
-                          div.row.the-row
-                            each category,i in categories
-                              div.col-md-4.col-sm-12.col-xs-12
-                                a.dropdown-item(href="/category/"+category.name)
-                                    strong.findit-blue
-                                      i.fas.fa-1x(aria-hidden='true', class=category.icon) 
-                                      small.findit-blue
-                                        strong   
-                                          =category.name
-                          
-                     
+                    img.img-fluid.category-img-wrapper(src="/img/more_categories.png" alt="Responsive image")
+                    button.btn.btn-light(class="toggle-btn toggle-btn-visible" data-toggle-target="#box3" data-toggle-text"read="" less"="")
+                         | More Categories
+                
+                        
+                            
+        div.row(id="box3" class="box toggle-target-hidden toggle-target-expanded" style="")
+          each category,i in categories
+            if(i > 7)
+              div.col-md-4.col-sm-12.col-xs-12
+                a.dropdown-item(href="/category/"+category.name)
+                    strong.findit-blue
+                      i.fas.fa-1x(aria-hidden='true', class=category.icon) 
+                      small.findit-blue
+                        strong   
+                          =category.name
+                                      
                             
                 
         // Latest review
@@ -251,4 +247,6 @@ block content
         var images = ['best-banner.jpg', 'doctor.jpg','office.jpg', 'find.jpeg'];
         $('.banner').css({'background-image': 'url(banner-img/' + images[Math.floor(Math.random() * images.length)] + ')'});
       });
+    
+
    

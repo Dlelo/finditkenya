@@ -3228,3 +3228,14 @@ fieldset, label {
     display: table;
     clear: both;
 }
+.toggle-btn {display: none;}
+
+@media screen and (max-width: 767px) {
+	.toggle-btn-visible {display: block;}
+	.toggle-target-hidden {display: none;}
+	.toggle-target-expanded {display: block;}
+}
+
+.main-area .toggle-btn-visible {display: block;}
+.main-area .toggle-target-hidden {display: none;}
+.main-area .toggle-target-expanded {display: block;}

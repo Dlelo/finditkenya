@@ -2624,7 +2624,7 @@ li.list-hor{
     border-radius: 2%;
 }
 .cat-backgroundodd{
-	background-color: #efeff196;
+	background-color: #e6e6e6;
 	padding-top:1px;
 	padding-bottom:1px
 	
@@ -2641,7 +2641,7 @@ li.list-hor{
 	width: max-content;
 }
 .cat-items-top{
-	padding-top:5px;
+	display:inherit;
 
 }
 .cat-items-bottom{
@@ -3145,4 +3145,7 @@ fieldset, label {
 }
 .description-cat{
 	color:#252627;
+}
+.catbiz-name{
+	margin-right:34vw;
 }

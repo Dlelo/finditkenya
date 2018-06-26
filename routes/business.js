@@ -144,7 +144,7 @@ router.post('/add', role.auth, cpUpload, function(req, res, next) {
 			});
 	    }else{
 	    	req.flash('error', 'Business already exists');
-	    	res.redirect('/'+instance.slug);
+	    	res.redirect('/biz/'+instance.slug);
 	    }
 	})
 	.catch(function(err){

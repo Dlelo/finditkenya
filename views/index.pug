@@ -80,18 +80,29 @@ block content
           div.col-lg-3.col-md-3.w3-ab.my-md-0.my-sm-8.my-4
                 //div.w3-ab-grid
                 div.w3-aicon.py-lg-5.py-md-3.py-5
-                  a(href="#morecategories" role="button")
-                    img.img-fluid.category-img-wrapper(src="/img/more_categories.png" alt="Responsive image")
-                    a(href="#morecategories" role="button")
-                     button.btn.btn-light(onclick="openCategories()" type="button")
-                       | More Categories ...
+                  div.navbar
+                    div.dropdown
+                         button.btn.btn-light(onclick="openCategories()" type="button")
+                           | More Categories ...
+                           img.img-fluid.category-img-wrapper(src="/img/more_categories.png" alt="Responsive image")
+                    .dropdown-content
+                      .header
+                        h2
+                          | More Categories
+                        if categories 
+                          div.row.the-row
+                            each category,i in categories
+                              div.col-md-4.col-sm-12.col-xs-12
+                                a.dropdown-item(href="/category/"+category.name)
+                                    strong.findit-blue
+                                      i.fas.fa-1x(aria-hidden='true', class=category.icon) 
+                                      small.findit-blue
+                                        strong   
+                                          =category.name
+                          
+                     
                             
-                div.w3-ab-captn.p-md-3.py-4
-                  i.fab.fa-slideshare
-                  h4.my-lg-3.my-md-2.my-3
-                    | traventure
-                  p.px-3
-                    | Aenean pulvinar ac enimet posuere tincidunt velit Utin tincidunt
+                
         // Latest review
         div.border-bottom
        

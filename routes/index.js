@@ -91,13 +91,15 @@ router.get('/search',function(req, res, next){
     .limit(20)
      //.sort([['paid', -1]]);
   var features = Category.find({name: req.query.search });
-  Promise.all([search, features]).then(values => {
+  var categories = Category.find({approved: true}).sort([['order', 1]]);
+  Promise.all([search, features, categories]).then(values => {
       console.log(values[0]);
       res.render('business/search', {
           title: req.query.search,
           //businesses: values[0].hits.hits,
           businesses: values[0],
           features: values[1],
+          categories: values[2],
           host: req.get('host')
       });
   });

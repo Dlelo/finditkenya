@@ -83,15 +83,16 @@ router.get('/search',function(req, res, next){
       hydrate: true
     });*/
   var search = Business.find(
-      {$text: {$search: req.query.search}}
-      , {score: {$meta: "textScore"}}
+      {$text: {$search: req.query.search}},
+      {score: {$meta: "textScore"}},
+      { score: { $gt: 18 }  }
     )
     .sort({ score:{$meta:'textScore'}, paid: -1})
     .limit(20)
      //.sort([['paid', -1]]);
   var features = Category.find({name: req.query.search });
   Promise.all([search, features]).then(values => {
-      //console.log(values[0]);
+      console.log(values[0]);
       res.render('business/search', {
           title: req.query.search,
           //businesses: values[0].hits.hits,

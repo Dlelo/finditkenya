@@ -1,6 +1,8 @@
-extends layout
+extends layout-new
 
 block content
-  h1= message
-  h2= error.status
-  pre #{error.stack}
+  div.container-fluid
+  #home.parallax-content-list.baner-content-listing-biz
+    h1= message
+    h2= error.status
+    pre #{error.stack}

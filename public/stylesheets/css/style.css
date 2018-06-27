@@ -3246,3 +3246,39 @@ fieldset, label {
 .container-margin-top{
 	margin-top:7vh;
 }
+/****** Style Star Rating Widget *****/
+
+.ratings {
+  border: none;
+  float: left;
+}
+
+.ratings > input { display: none; }
+.ratings > label:before {
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.ratings > .half:before {
+  content: "\f089";
+  position: absolute;
+}
+
+.ratings > label {
+  color: #ddd;
+ float: right;
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.ratings > input:checked ~ label, /* show gold star when clicked */
+.ratings:not(:checked) > label:hover, /* hover current star */
+.ratings:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.ratings > input:checked + label:hover, /* hover current star when changing rating */
+.ratings > input:checked ~ label:hover,
+.ratings > label:hover ~ input:checked ~ label, /* lighten current selection */
+.ratings > input:checked ~ label:hover ~ label { color: #FFED85;  }

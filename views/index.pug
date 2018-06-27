@@ -78,20 +78,29 @@ block content
               
           
           div.col-lg-3.col-md-3.w3-ab.my-md-0.my-sm-8.my-4
-                //div.w3-ab-grid
+            a(href="#expandcategories"  onclick="toggle_visibility('expandcategories');")
                 div.w3-aicon.py-lg-5.py-md-3.py-5
-                  a(href="#morecategories" role="button")
-                    img.img-fluid.category-img-wrapper(src="/img/more_categories.png" alt="Responsive image")
-                    a(href="#morecategories" role="button")
-                     button.btn.btn-light(onclick="openCategories()" type="button")
-                       | More Categories ...
+                  button.btn.btn-light(type="button")
+                    span.findit-blue
+                      | More Categories
+                  img.img-fluid.category-img-wrapper(src="/img/more_categories.png" alt="Responsive image")
+                  
+                
+                        
                             
-                div.w3-ab-captn.p-md-3.py-4
-                  i.fab.fa-slideshare
-                  h4.my-lg-3.my-md-2.my-3
-                    | traventure
-                  p.px-3
-                    | Aenean pulvinar ac enimet posuere tincidunt velit Utin tincidunt
+        div.row#expandcategories( style="display:none; border-top: 1px solid #eee")
+          each category,i in categories
+            if(i > 7)
+              div.col-md-4.col-sm-12.col-xs-12.morecat
+                a(href="/category/"+category.name)
+                    strong.findit-blue
+                      i.fas.fa-1x(aria-hidden='true', class=category.icon) 
+                      small.findit-blue
+                        strong   
+                          =category.name
+                                      
+                            
+                
         // Latest review
         div.border-bottom
        
@@ -183,17 +192,7 @@ block content
 
     
           
-      //more categories
-        div.row.morecategories#morecategories(style="display:none")
-          each category,i in categories
-           if(i > 8)
-            ul
-              div.col-md-3.col-sm-8.col-xs-8.align-categories
-                li 
-                  a(href="/category/"+category.name)  
-                   i.fas.fa-1x(aria-hidden='true', class=category.icon)    
-                   =category.name
-       
+     
               
       div.col-lg-4.col-md-4.col-sm-6.col-xs-6
         div
@@ -240,4 +239,11 @@ block content
         var images = ['best-banner.jpg', 'doctor.jpg','office.jpg', 'find.jpeg'];
         $('.banner').css({'background-image': 'url(banner-img/' + images[Math.floor(Math.random() * images.length)] + ')'});
       });
+    //script to toggle more category
+    script(type="text/javascript").
+      function toggle_visibility(id) {
+        var e = document.getElementById(id);
+        e.style.display = ((e.style.display!='none') ? 'none' : '');
+      }
+
    

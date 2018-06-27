@@ -94,18 +94,16 @@ block content
                                   if(biz.website)
                                     a.findit(href=biz.website,target="_blank" class="fa-layers fa-2x")
                                       i.fas.fa-globe
-                                    | website
-                                    
-                                     
+                                    | website 
                                       
                                   else
                                     |
                                   if(biz.phone)
                                     a.findit(class="fa-layers fa-2x")
                                       i.fas.fa-mobile-alt 
-                                    a.findit.phoneno(href="tel:"+phone,style="color:#2c155a;display:none")
-                                      |  #{biz.phone}
-                                    a.findit.phonenofake(href="#",style="color: #c0000")
+                                    //a.findit.phoneno(href="tel:"+phone,style="color:#2c155a;display:none")
+                                        |  #{biz.phone}
+                                    a(href="/biz/"+biz.slug)
                                       |  Get Phone Number
                                   else
                                     | 
@@ -218,9 +216,9 @@ block content
                                     if(biz.phone)
                                       a.findit(class="fa-layers fa-2x")
                                         i.fas.fa-mobile-alt 
-                                      a.findit.phoneno(href="tel:"+phone,style="color:#2c155a;display:none")
+                                      //a.findit.phoneno(href="tel:"+phone,style="color:#2c155a;display:none")
                                         |  #{biz.phone}
-                                      a.findit.phonenofake(href="#",style="color: #c0000")
+                                      a(href="/biz/"+biz.slug)
                                         |  Get Phone Number
                                     else
                                       | 

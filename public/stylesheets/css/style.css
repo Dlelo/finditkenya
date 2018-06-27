@@ -2291,14 +2291,12 @@ padding-right:1px;
         z-index: 1;
 	}
 	.xxx{
-    padding-top: 1px;
+    padding-top: 5px;
     padding-right: 20px;
     padding-left: 20px;
-    max-width: 500px;
     max-height: 60%;
-    margin-top: 10px;
-    margin-left: 25%;
-    margin-right: 10%;
+    margin-left: 18%;
+    margin-right: 18%;
     background: #f7f7f7;
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
     }

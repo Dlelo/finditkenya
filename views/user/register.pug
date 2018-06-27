@@ -1,4 +1,4 @@
-extends ../layout
+extends ../layout-new
 
 block content
   #home.parallax-content-list.baner-content-listing-biz
@@ -13,11 +13,9 @@ block content
           //- a(href='#') Facebook
           //- |   or 
           a.btn-gp-link(href="/auth/google")
-            button.btn-gp
-              i.fa.fa-fw.fa-google-plus(aria-hidden='true')          
-                |                 Sign Up with Google
-         .signup-or-separator
-          span.h6.signup-or-separator--text or
+            button.btn.btn-danger.facebook-google-btn.form-control
+              i.fab.fa-google.pull-left(aria-hidden='true')          
+              |  &nbsp;   Sign up with Google
           hr
          form(method="post", action="/register")
           .form-group
@@ -46,10 +44,10 @@ block content
                 | , and 
                 a(href='#') Host Guarantee Terms
                 | .
-          button.btn-lgin(type='submit') Signup
-      .modal-footer
-        .row
-          .col-md-6
-            p.ta-l Already a Member? 
-          .col-md-4.col-md-offset-2
-            button.btn-gst(data-toggle='modal', data-dismiss='modal', data-target='#at-login') Login
+          .form-group
+            button.btn.btn-primary.w3ls-btn(type='submit') Signup
+      
+          .row
+            .col-md-12.text-center
+              p.ta-l Already a Member? 
+              button.btn.btn-primary.w3ls-btn(data-toggle='modal', data-dismiss='modal', data-target='#at-login') Login

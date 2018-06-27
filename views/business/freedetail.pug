@@ -1,8 +1,8 @@
-extends ../layout
+extends ../layout-new
 
 block content
   #home.parallax-content-list.baner-content-listing-biz
-    .container
+    .container.container-margin-top
       if(biz.pending && user.username == biz.user_id)
         .row.flowerwhite
           .col-md-12
@@ -179,7 +179,7 @@ block content
               strong
                 | Similar Businesses          
             each bizna in similarbiz            
-              a(href="/"+bizna.slug)
+              a(href="/biz/"+bizna.slug)
                 .row.is-island
                   h5
                     =bizna.name

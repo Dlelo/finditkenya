@@ -1,4 +1,4 @@
-extends ../layout-new
+extends ../layout-min
 
 block content
   #home.parallax-content-list.baner-content-listing-biz
@@ -54,4 +54,5 @@ block content
             .col-md-6.text-center
               p.ta-l Already a Member? 
             .col-md-6.text-center
-              .btn.btn-default.findit-blue(data-toggle='modal', data-dismiss='modal', data-target='#at-login') Login Here
+              a(href='/login')
+               .btn.btn-default(data-toggle='modal', data-dismiss='modal', data-target='#at-login') Login Here

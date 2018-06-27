@@ -2684,18 +2684,21 @@ li.list-hor{
 .cat-backgroundodd{
 	background-color: #fff;
 	padding-top:5px;
-	padding-bottom:5px		
+	padding-bottom:5px;
+	margin-bottom:5px;	
+	border-bottom:10px solid #f8f9fa !important;	
+	box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)!important;
 }
-.cat-box{
-	border-bottom:10px solid #f8f9fa !important;
-}
-.cat-shadow{
-	    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)!important;
-}
+
 .cat-backgroundeven{
 	background-color: #fff;
 	padding-top:5px;
-	padding-bottom:5x	
+	padding-bottom:5x;	
+	margin-bottom:5px;	
+	border-bottom:10px solid #f8f9fa !important;	
+	box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)!important;
+
+
 }
 
 .sub-list{
@@ -3198,8 +3201,9 @@ fieldset, label {
 	padding-left:1px !important;
 }
 .cathead-background{
-	 background-color: #eee;
+	 background-color: #fff;
 	 padding-left:1em;
+	 margin: 5px;
 }
 .fa-2x {
 	font-size: 1.4em !important;

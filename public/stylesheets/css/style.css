@@ -2683,14 +2683,14 @@ li.list-hor{
 }
 .cat-backgroundodd{
 	background-color: #e6e6e6;
-	padding-top:1px;
-	padding-bottom:1px
+	padding-top:5px;
+	padding-bottom:5px
 	
 }
 .cat-backgroundeven{
-	background-color: #fff;
-	padding-top:1px;
-	padding-bottom:1px
+	background-color: #f1dddd;
+	padding-top:5px;
+	padding-bottom:35x
 }
 
 .sub-list{

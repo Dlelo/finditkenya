@@ -196,7 +196,7 @@ app.post('/register',
     .exists(),
   check('phone', 'Phone should have 10 characters')
     .isLength({ min: 10, max: 10 }),
-  check('username')
+  check('email')
     .isEmail().withMessage('must be an email')
     .trim()
     .normalizeEmail(),
@@ -223,8 +223,8 @@ app.post('/register',
     }else{
       var names = req.body.names;
       var phone = req.body.phone;
-      var username = req.body.username;
-      var email = req.body.username;
+      var username = req.body.email;
+      var email = req.body.email;
       var password = req.body.password;
       var role = 0;
       var salt = bcrypt.genSaltSync(10);
@@ -233,9 +233,9 @@ app.post('/register',
       User.findOne({username: req.body.email}, function(err, resad){
           if(err){
             console.log(err);
-            throw new Error('Something went wrong, kindly try again');
+            //throw new Error('Something went wrong, kindly try again');
             req.flash("error_msg","User already registered with that email address");
-            res.render('user/register');
+            res.redirect('/register');
           }
           if (!resad){
             User.create({
@@ -276,6 +276,9 @@ app.post('/register',
               }
             // saved!
             });
+          }else{
+            req.flash('error_msg','User with this: ('+ req.body.email +') email already exists');
+            res.redirect('/register');
           }
       });
     }

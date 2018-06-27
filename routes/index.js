@@ -406,6 +406,10 @@ router.get('/register', function(req, res){
   res.render('user/register', {title: "Login"});
 });
 
+router.get('/welcome', function(req, res){
+  res.render('welcome', {title: "email welcome"});
+});
+
 router.get('/terms-and-conditions',function(req, res, next){
   res.render('site/terms');
 });

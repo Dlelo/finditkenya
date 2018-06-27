@@ -1204,13 +1204,13 @@ router.get('/biz/:name',function(req, res, next){
         description = data.name + ', '+ data.subcategory + ', ' + data.street +', '+data.city + ' Kenya';
         keywords = data.keywords + " | on Findit Kenya";
         //console.log(description);
-        res.render('business/freedetail',{title: data.name, biz: data, phones: phones, emails: emails, similarbiz: businesses, keywords: keywords, coupons: coupons});
+        res.render('business/freedetail',{title: data.name, biz: data, phones: phones, emails: emails, similarbiz: businesses, keywords: keywords, coupons: coupons,categories:categories});
         //res.end();
       }else{
         description = data.description;
         keywords = data.keywords + " | on Findit Kenya";
         //console.log(description);
-        res.render('business/detail',{title: data.name, biz: data, phones: phones, emails: emails, description: description, similarbiz: businesses, keywords: keywords, coupons: coupons});
+        res.render('business/detail',{title: data.name, biz: data, phones: phones, emails: emails, description: description, similarbiz: businesses, keywords: keywords, coupons: coupons,categories:categories});
         //res.end();
       }
     });

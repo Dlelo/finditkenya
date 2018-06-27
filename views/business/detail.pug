@@ -193,7 +193,7 @@ block content
                     if biz.gallery
                       each image in biz.gallery
                         a.nopadding(href='/uploads/'+image.filename, width="", alt='#{biz.slug}')
-                          .thumbnail
+                          .thumbnail.bizdetail-photo
                             img.img-thumbnail.img-responsive(src='/uploads/thumbs/gallery-'+image.filename,  alt='')
                       .pull-left
                         small

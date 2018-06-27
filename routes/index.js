@@ -1182,7 +1182,7 @@ router.get('/biz/:name',function(req, res, next){
 
     //coupons
     var coupons = Coupons.find({bizid: data.id});
-
+    var categories = Category.find({approved: true}).sort([['order', 1]]);
     //SIMILAR BUSINESSES
     //"author": { "$in": userIds }
     var businesses = Business.find({
@@ -1196,9 +1196,10 @@ router.get('/biz/:name',function(req, res, next){
     .sort([['paid', -1],['datepaid', 1],['slug', 1]])
     .limit(5);
 
-    Promise.all([coupons,businesses]).then(values => {
+    Promise.all([coupons,businesses,categories]).then(values => {
       var coupons = values[0];
       var businesses = values[1];
+      var categories = values[2];
       if(data.paid == false || typeof data.paid === 'undefined'){
         description = data.name + ', '+ data.subcategory + ', ' + data.street +', '+data.city + ' Kenya';
         keywords = data.keywords + " | on Findit Kenya";

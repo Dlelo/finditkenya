@@ -46,14 +46,14 @@ block content
                               =feature.subcategories.name
           .col-md-9
             if businesses
-              div.cathead-background.border.border-light.findit-blue
+              div.cathead-background.cat-box.findit-blue
                   | CATEGORY:  
                   =title
               each biz,i in businesses
                 if (i % 2 === 0)
                   if (typeof(biz.slug) !== 'undefined')
                       a(href="/biz/"+biz.slug)
-                        div.cat-backgroundeven.border.cat-border    
+                        div.cat-backgroundeven.cat-box.cat-shadow   
                           .row
                             .col-md-12.findit-blue.cat-items-top.cat-header 
                                 h4.findit-blue.catbiz-name
@@ -167,7 +167,7 @@ block content
                 else
                   if (typeof(biz.slug) !== 'undefined')
                       a(href="/biz/"+biz.slug)
-                          div.cat-backgroundodd.border.cat-border     
+                          div.cat-backgroundodd.cat-box.cat-shadow     
                             .row
                               .col-md-12.findit-blue.cat-items-top.cat-header 
                                 h4.findit-blue.catbiz-name

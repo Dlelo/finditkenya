@@ -270,11 +270,15 @@ block content
             
           .row 
             .col-md-12 
+              .row 
+            .col-md-12 
               .row
                 hr
                 .col-md-12 
-                  .findit-red.padding10.text-center
-                    strong Submit a Review
+                  .findit-red.padding10
+                    strong 
+                      span.fa.fa-comment.text-info.glyph.border
+                      | Submit a Review
                 .col-md-12
                   form.form-horizontal(method="post",action="/business/review/")                
                     .col-md-12
@@ -283,7 +287,7 @@ block content
                     .col-md-12.text-left
                       strong
                         | Star Rating
-                      fieldset.ratings.starrating
+                      fieldset.ratings
                         input#star5(type='radio', name='rating', value='5')
                         label.full(for='star5', title='Awesome - 5 stars')
                         input#star4half(type='radio', name='rating', value='4 half')

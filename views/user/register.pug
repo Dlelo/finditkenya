@@ -16,7 +16,8 @@ block content
             button.btn.btn-danger.facebook-google-btn.form-control
               i.fab.fa-google.pull-left(aria-hidden='true')          
               |  &nbsp;   Sign up with Google
-          hr
+         .text-center
+            | Or     
          form(method="post", action="/register")
           .form-group
             input#names.form-control-form(type='text', placeholder='Full Name', name='names')
@@ -33,21 +34,24 @@ block content
               .checkbox
                 label
                   input(type='checkbox')
-                  |                                   I’d like to receive coupons and inspiration
+                  small
+                   |                                   I’d like to receive coupons and inspiration
               p
-                | By signing up, I agree to Find It’s , Payments 
-                a(href='#') Terms of Service
-                | , 
-                a(href='#') Privacy Policy
-                | , 
-                a(href='#') Guest Refund Policy
-                | , and 
-                a(href='#') Host Guarantee Terms
-                | .
+                small
+                  | By signing up, I agree to Find It’s , Payments 
+                  a(href='#') Terms of Service
+                  | , 
+                  a(href='#') Privacy Policy
+                  | , 
+                  a(href='#') Guest Refund Policy
+                  | , and 
+                  a(href='#') Host Guarantee Terms
+                  | .
           .form-group
             button.btn.btn-primary.w3ls-btn(type='submit') Sign Up
-      
+          hr
           .row
-            .col-md-12.text-center
+            .col-md-6.text-center
               p.ta-l Already a Member? 
-              .btn.btn-default(data-toggle='modal', data-dismiss='modal', data-target='#at-login') Login
+            .col-md-6.text-center
+              .btn.btn-default.findit-blue(data-toggle='modal', data-dismiss='modal', data-target='#at-login') Login Here

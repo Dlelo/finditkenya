@@ -2688,11 +2688,13 @@ li.list-hor{
 	
 }
 .cat-backgroundeven{
-	background-color: #f1dddd;
+	background-color: #f9f9f9;
 	padding-top:5px;
-	padding-bottom:35x
+	padding-bottom:5x
 }
-
+.cat-border{
+	border:4px solid #f8f9fa !important;
+}
 .sub-list{
 	padding-left: 1rem;
 	padding-right: 1rem;

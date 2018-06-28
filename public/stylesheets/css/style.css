@@ -5,11 +5,16 @@
  --*/
 
 body {
+	font-family: 'Ubuntu';
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 20px;
 	margin: 0;
-	font-family:'Source Sans Pro','Lato','open sans','Roboto', sans-serif;
 	background:#fafbfc;
 }
-
+/*font-family:'Source Sans Pro','Lato','open sans','Roboto', sans-serif;*/
 body a,
 .slider-info a {
 	transition: 0.5s all;

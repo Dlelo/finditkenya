@@ -346,7 +346,8 @@ router.get('/allanalytics',role.auth, function(req, res, next){
              foreignField: "_id",
              as: "biz"
            }
-         }
+         },
+         { "$sort": { "time": -1 } }
       ])
   	.then(function(data){
        //console.log(data);

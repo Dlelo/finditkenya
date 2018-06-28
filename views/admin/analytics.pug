@@ -27,6 +27,7 @@ block content
               tr
                 th #
                 th IP
+                th Business Name
                 th TIME
                 th STATUS
             tbody
@@ -36,6 +37,10 @@ block content
                     =i
                   td 
                     =d.ip
+                  td 
+                    each b in d.biz
+                      a(href="/biz/"+b.slug,'title'=b.name,target="_blank")
+                        =b.name
                   td.txt-oflo 
                     =d.time
                   

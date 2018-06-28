@@ -3007,7 +3007,7 @@ padding-left: 5px;
 
 .dropdown-category{
   position: relative; /* <-- Added */
-  z-index: 10000; /* <-- Added */
+  z-index: 90; /* <-- Added */
   overflow: show;
     
 
@@ -3294,3 +3294,8 @@ fieldset, label {
 .form-class{
 	flex-grow: 1;
 }
+#navbarCoup {
+    position: -webkit-sticky;  /* required for Safari*/
+    position: sticky;
+    top: 0; /* required as well.*/
+}  

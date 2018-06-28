@@ -3,7 +3,7 @@ extends ../layout-new
 block content
   div.container-fluid
   #home.parallax-content-list.baner-content-listing-biz
-    .container-fluid.container-margin
+    .container-fluid.container-margin-top
      .row.couponbg-color
 
        div.col-md-9.coupon-col
@@ -89,7 +89,7 @@ block content
             div
               .mycoupons#coupons-sticky
   div.container-fluid
-    nav.navbar.navbar-expand-lg.navbar-light.bg-light#navbar
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light#navbarCoup
       ul.navbar-nav.mr-auto
         li.nav-item.dropdown.open.text-left
             button.btn.btn-cat.btn-light.form-control.dropdown-toggle(type='button', data-toggle='dropdown')
@@ -305,26 +305,31 @@ block content
         });
       });
     });
-  //sticky nav
+  
+  //script to hide main menu on coupons page
   script(type='text/javascript').
-    // When the user scrolls the page, execute myFunction 
-    window.onscroll = function() {myFunction()};
+    $(window).scroll(function() {
 
-    // Get the navbar
-    var navbar = document.getElementById("navbar");
-
-    // Get the offset position of the navbar
-    var sticky = navbar.offsetTop;
-
-    // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
-    function myFunction() {
-    if (window.pageYOffset >= sticky) {
-    navbar.classList.add("sticky")
-    } else {
-    navbar.classList.remove("sticky");
-    }
-    }
-
+      if ($(this).scrollTop()>0)
+      {
+          $(function() {
+            $("#homenavbar").hide();
+            $("#showSearch").hide();
+            $("#coupbtn").hide();
+            
+          });
+          
+      }
+      else
+      {
+        $(function() {
+            $("#homenavbar").show();
+            $("#showSearch").hide();
+            $("#coupbtn").hide();
+          });
+        
+      }
+    });
   //script for opening modal
   script(type='text/javascript').
     // Get the modal

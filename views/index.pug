@@ -200,24 +200,27 @@ block content
             //top deal
         each coupon,i in coupons
           a(href="/coupons")
-            row.deal-main.deal-home
-              div.col-6
-                div
-                  img.deal-img-wrapper.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt="Responsive image")
-                  p
-                    h5                   
-                    = coupon.bizid.name
-                div.col-md-12.col-lg-12.col-sm-12.col-xs-12
-                  button.btn.btn-outline-primary(type="button" )
-                    =coupon.tagline
-              div.col-6  
-                p
-                h5.my-3
-                    =coupon.name
-                p
+            row.deal-main.deal-home.deal-coup
+              div.content  
+                .div.col-md-12.col-sm-12.col-xs-12
+                  strong
+                    h3                  
+                    = coupon.name
+                .div.col-md-12.col-lg-12.col-sm-12.col-xs-12
+                    img.deal-img-wrapper.deal-img-wrapper-home(src="/uploads/thumbs/coupons/"+ coupon.photo, alt="Responsive image")
                     =coupon.description
-                
-              
+                    p 
+                     h6
+                      small
+                        strong
+                          | @       
+                          =coupon.bizid.name
+                  
+                .div.col-md-12.col-lg-12.col-sm-12.col-xs-12.center-left
+                  button.btn.btn-outline-primary(type="button" )
+                    =coupon.tagline 
+                        
+                  
         
   //footer
   div.container-fluid

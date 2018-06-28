@@ -116,20 +116,20 @@ body
     .errors
       if errors
         each error in errors
-          .alert.xxx.alert-danger
+          .alert.xxx-error.alert-danger
             = error
       
       if message
-        .alert.xxx.alert-info
+        .alert.xxx-error.alert-info
           = message
       if success_msg.length
-        .alert.xxx.alert-success 
+        .alert.xxx-error.alert-success 
           = success_msg
       if error_msg.length
-        .alert.xxx.alert-danger 
+        .alert.xxx-error.alert-danger 
           = error_msg
       if error.length
-        .alert.xxx.alert-danger 
+        .alert.xxx-error.alert-danger 
           = error
   block content
   //registration and login form

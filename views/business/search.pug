@@ -44,8 +44,14 @@ block content
                             if(biz.phone)
                         div
                           p 
-                            span.glyphicon.glyphicon-earphone.text-info.glyph.fas.fa-phone-volume 
-                                |  #{biz.phone}
+                            if(biz.phone)
+                              a.findit(class="fa-layers fa-1x")
+                                  i.fas.fa-mobile-alt 
+                              a(href="/biz/"+biz.slug)
+                                  |  Get Phone Number
+                            else 
+                                |  
+                                //#{biz.phone}
                         div
                           p
                             if biz.reviews

@@ -6,12 +6,13 @@ head
   meta(name="viewport" content="width=device-width, initial-scale=1")
   meta(name="description" content=description)
   meta(name="keywords" content=keywords)
-  link(rel='shortcut icon', type='image/png', href='/img/favicon.ico')
+ 
   //custom theme files
   link(href="/stylesheets/css/bootstrap.css" type="text/css" rel="stylesheet" media="all")
   link(href="/stylesheets/css/style.css" type="text/css" rel="stylesheet" media="all")
-  
-  
+  //Site favicon
+  link(rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32")
+  link(rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16")
   //font-awesome icons
   link(href="/stylesheets/css/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css" rel="stylesheet")
   link(href="/stylesheets/css/fontawesome-all.min.css" rel="stylesheet")
@@ -46,15 +47,22 @@ body
   div.container-fluid
     header
       //header before navigation items
-      nav.navbar.navbar-expand-lg.navbar-light.bg-gradient-secondary.pt-3
+      nav#homenavbar.navbar.navbar-expand-lg.navbar-light.bg-gradient-secondary.pt-3
         h1
           a.navbar-brand.text-white(href="/")
             em
               img.img-logo(src="/img/findit-red-logo.png").img-fluid
+        #showSearch
+          form.form-class(method='get', action='/search')
+            div.input-group
+              input#search2.form-control.form-control-lg(type="text" placeholder="Restaurants, Businesses, Doctors..." ,name='search', autofocus)
+              span.input-group-addon#basic-addon1.finditbutton.input-group-addon.text-center(autofocus)
+               span.fas.fa-search.findit-red
         a(href="/coupons")
-          button.btn.btn-light.coupons-btn.flash-button(type="button")
+          button.btn.btn-light.coupons-btn.flash-button#coupbtn(type="button")
             span.fas.fa-gift.coupons-text-color
             | View deals
+        
         //site navigation 
         button.navbar-toggler.ml-md-auto(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
             aria-expanded="false" aria-label="Toggle navigation")
@@ -92,20 +100,20 @@ body
     .errors
       if errors
         each error in errors
-          .alert.xxx.alert-danger
+          .alert.xxx-error.alert-danger
             = error
       
       if message
-        .alert.xxx.alert-info
+        .alert.xxx-error.alert-info
           = message
       if success_msg.length
-        .alert.xxx.alert-success 
+        .alert.xxx-error.alert-success 
           = success_msg
       if error_msg.length
-        .alert.xxx.alert-danger 
+        .alert.xxx-error.alert-danger 
           = error_msg
       if error.length
-        .alert.xxx.alert-danger 
+        .alert.xxx-error.alert-danger 
           = error
   block content
   //registration and login form
@@ -199,6 +207,44 @@ script(src='/javascripts/notify.js')
 script(src='/javascripts/bootstrapjs/filter-gallery.js')
 script(src='/javascripts/bootstrapjs/jquery.declarativeToggle.min.js')
 <!-- //js -->
+<!--sript to show search on menu on scroll -->
+script(type='text/javascript').
+  $(window).scroll(function() {
+
+    if ($(this).scrollTop()>0)
+     {
+        $(function() {
+           $("#showSearch").css("visibility", "visible");
+        });
+     }
+    else
+     {
+      $(function() {
+           $("#showSearch").css("visibility", "hidden");
+        });
+     }
+  });
+  
+<!-- sticky navbar -->
+  //sticky nav
+  script(type='text/javascript').
+    // When the user scrolls the page, execute myFunction 
+    window.onscroll = function() {myFunction()};
+
+    // Get the navbar
+    var navbar = document.getElementById("homenavbar");
+
+    // Get the offset position of the navbar
+    var sticky = navbar.offsetTop;
+
+    // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+    function myFunction() {
+    if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+    } else {
+    navbar.classList.remove("sticky");
+    }
+    }
 <!-- script for password match -->
 script(type='text/javascript').
         window.onload = function () {
@@ -473,7 +519,7 @@ script(type='text/javascript').
             },
             list: {
               onClickEvent: function() {
-                self.location = "/"+$('#search2').getSelectedItemData().slug;
+                self.location = "/biz/"+$('#search2').getSelectedItemData().slug;
               } 
             },
             ajaxSettings: {

@@ -54,11 +54,11 @@ body
         #showSearch
           form.form-class(method='get', action='/search')
             div.input-group
-              input#search2.form-control.form-control-lg(type="text" placeholder="Restaurants, Holidays, Doctors..." ,name='search', autofocus)
+              input#search2.form-control.form-control-lg(type="text" placeholder="Restaurants, Businesses, Doctors..." ,name='search', autofocus)
               span.input-group-addon#basic-addon1.finditbutton.input-group-addon.text-center(autofocus)
                span.fas.fa-search.findit-red
         a(href="/coupons")
-          button.btn.btn-light.coupons-btn.flash-button(type="button")
+          button.btn.btn-light.coupons-btn.flash-button#coupbtn(type="button")
             span.fas.fa-gift.coupons-text-color
             | View deals
         
@@ -116,20 +116,20 @@ body
     .errors
       if errors
         each error in errors
-          .alert.xxx.alert-danger
+          .alert.xxx-error.alert-danger
             = error
       
       if message
-        .alert.xxx.alert-info
+        .alert.xxx-error.alert-info
           = message
       if success_msg.length
-        .alert.xxx.alert-success 
+        .alert.xxx-error.alert-success 
           = success_msg
       if error_msg.length
-        .alert.xxx.alert-danger 
+        .alert.xxx-error.alert-danger 
           = error_msg
       if error.length
-        .alert.xxx.alert-danger 
+        .alert.xxx-error.alert-danger 
           = error
   block content
   //registration and login form

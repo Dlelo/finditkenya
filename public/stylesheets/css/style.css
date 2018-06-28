@@ -5,11 +5,11 @@
  --*/
 
 body {
+	font-family: 'Ubuntu';
 	margin: 0;
-	font-family:'Source Sans Pro','Lato','open sans','Roboto', sans-serif;
 	background:#fafbfc;
 }
-
+/*font-family:'Source Sans Pro','Lato','open sans','Roboto', sans-serif;*/
 body a,
 .slider-info a {
 	transition: 0.5s all;
@@ -2058,6 +2058,20 @@ ul.portfolio-area li figure {
     margin-left: auto;
     margin-right: auto;
 }
+.deal-img-wrapper-home {
+	float: left;
+	padding-right:1em;
+	padding-top: 1em;
+	padding-bottom:1em;
+    width: 150px;
+    height: 150px;
+    position: relative;
+	overflow: hidden;
+	display: table-cell;
+    margin-left: auto;
+    margin-right: auto;
+}
+    
 .h-order-margin{
    margin-bottom:3em;
 }
@@ -3007,7 +3021,7 @@ padding-left: 5px;
 
 .dropdown-category{
   position: relative; /* <-- Added */
-  z-index: 10000; /* <-- Added */
+  z-index: 90; /* <-- Added */
   overflow: show;
     
 
@@ -3293,4 +3307,22 @@ fieldset, label {
 }
 .form-class{
 	flex-grow: 1;
+}
+#navbarCoup {
+    position: -webkit-sticky;  /* required for Safari*/
+    position: sticky;
+    top: 0; /* required as well.*/
+}  
+.xxx-error {
+    padding-top: 1px;
+    padding-bottom: 2px;
+    padding-right: 20px;
+    padding-left: 20px;
+    max-height: 60%;
+    margin-left: 40%;
+    margin-right: 40%;
+    z-index: 2000;
+    margin-top: 2px;
+    background: #f7f7f7;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
 }

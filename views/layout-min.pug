@@ -62,11 +62,6 @@ body
         div#navbarSupportedContent.collapse.navbar-collapse
           ul.navbar-nav.ml-lg-auto.text-left
             
-            li.nav-item.mr-3
-              a(href="/")
-                span.fas.fa-home.fas-menu 
-                strong
-                |  Home
             if user
               li.nav-item.mr-3                  
                 a(href='/dashboard')  
@@ -85,6 +80,11 @@ body
                   button.btn.btn-primary.w3ls-btn
                     strong
                       | Login
+              li.nav-item.mr-3
+              a(href="/register")
+                button.btn.btn-outline-primary.w3ls-btn.findit-blue
+                  strong
+                  |  Sign Up
                 
     
    

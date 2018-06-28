@@ -19,7 +19,7 @@ block content
                     |  Apply as an Agent
     div.row.my-row.justify-content-start
       div.col-md-8.col-sm-8.col-xm-8.my-col
-        div.banner-text#hide-search
+        div.banner-text#hideSearch
           form(method='get', action='/search')
             div.input-group
               span.input-group-addon#basic-addon1.finditbutton.input-group-addon.text-center
@@ -234,11 +234,13 @@ block content
             p
               | © 2018 Find it Kenya. All rights reserved | FinditKe
   
+    //script to change background image on refresh
     script(type="text/javascript").
       $(function() {
         var images = ['best-banner.jpg', 'doctor.jpg','office.jpg', 'find.jpeg'];
         $('.banner').css({'background-image': 'url(banner-img/' + images[Math.floor(Math.random() * images.length)] + ')'});
       });
+    
     //script to toggle more category
     script(type="text/javascript").
       function toggle_visibility(id) {
@@ -246,4 +248,20 @@ block content
         e.style.display = ((e.style.display!='none') ? 'none' : '');
       }
 
-   
+    //sript to hide search on menu on scroll
+    script(type='text/javascript').
+      $(window).scroll(function() {
+
+        if ($(this).scrollTop()>0)
+        {
+            $(function() {
+              $("#hideSearch").css("visibility", "hidden");
+            });
+        }
+        else
+        {
+          $(function() {
+              $("#hideSearch").css("visibility", "visible");
+            });
+        }
+      });

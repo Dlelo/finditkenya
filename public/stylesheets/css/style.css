@@ -1965,7 +1965,8 @@ ul.portfolio-area li figure {
 	padding-left:1em;
 }
 .coupons-btn{
-	margin-left:10em;
+	margin-left:5em;
+	margin-right:2em;
 }
 .coupons-btn-onscroll{
 	margin-left:0em;
@@ -3285,3 +3286,7 @@ fieldset, label {
 .ratings > input:checked ~ label:hover,
 .ratings > label:hover ~ input:checked ~ label, /* lighten current selection */
 .ratings > input:checked ~ label:hover ~ label { color: #FFED85;  }
+
+#showSearch{
+	visibility:hidden;
+}

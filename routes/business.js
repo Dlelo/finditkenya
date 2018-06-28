@@ -229,9 +229,9 @@ router.post('/review',role.auth, function(req, res, next){
           if(err){
             console.log(err);
             req.flash("error_msg",err);
-            res.redirect('/'+b.slug);
+            res.redirect('/biz/'+b.slug);
           }else{
-            res.redirect('/'+b.slug);
+            res.redirect('/biz/'+b.slug);
           }
         });
       }

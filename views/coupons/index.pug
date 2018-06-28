@@ -310,12 +310,12 @@ block content
   script(type='text/javascript').
     $(window).scroll(function() {
 
-      if ($(this).scrollTop()>0)
+      if ($(this).scrollTop()>10)
       {
           $(function() {
             $("#homenavbar").hide();
             $("#showSearch").hide();
-            $("#coupbtn").hide();
+            
             
           });
           
@@ -325,11 +325,17 @@ block content
         $(function() {
             $("#homenavbar").show();
             $("#showSearch").hide();
-            $("#coupbtn").hide();
+           
           });
         
       }
     });
+
+   //hide coupons button on coupons page 
+   script(type='text/javascript').
+    $("#coupbtn").hide();
+  //end of hide coupons buttons on coupons page
+
   //script for opening modal
   script(type='text/javascript').
     // Get the modal

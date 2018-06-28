@@ -1965,8 +1965,9 @@ ul.portfolio-area li figure {
 	padding-left:1em;
 }
 .coupons-btn{
-	margin-left:5em;
-	margin-right:2em;
+	margin-left:1em;
+	margin-right:1em;
+	float:right;
 }
 .coupons-btn-onscroll{
 	margin-left:0em;
@@ -3289,4 +3290,7 @@ fieldset, label {
 
 #showSearch{
 	visibility:hidden;
+}
+.form-class{
+	flex-grow: 1;
 }

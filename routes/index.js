@@ -242,7 +242,7 @@ router.get('/category/:cat',function(req, res, next){
         approved: true,
         pending: { $ne: true }
       }
-    }).sort([['paid', -1],['datepaid', 1],['slug', 1]]);
+    }).sort([['paid', -1],['datepaid', 1]]);
 
     var features = Category.aggregate([
       { $match: { name: req.params.cat } },

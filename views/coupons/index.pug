@@ -73,8 +73,9 @@ block content
                           p
                             =popular.description
                           p
+                          each bz in biz.biz
                             | @  
-                            =popular.biz.name
+                            =bz.name
                           strong.findit-red
                             =popular.tagline 
                             

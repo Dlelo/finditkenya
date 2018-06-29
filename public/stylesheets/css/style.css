@@ -3072,10 +3072,18 @@ padding-left: 5px;
 }
 .is-island {
     padding: 11px;
-    background: #f5f5f5;
+    background: #f9f9f9;
     border: 1px solid #e6e6e6;
     border-radius: 4px;
     margin: 10px;
+}
+.is-islandfree{
+	padding: 11px;
+    background: #f9f9f9;
+    border: 1px solid #e6e6e6;
+    border-radius: 4px;
+	margin: 10px;
+	box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)!important;
 }
 .padding20 {
     padding: 20px;
@@ -3340,4 +3348,18 @@ fieldset, label {
 }
 .column-row{
    display: table-cell !important;
+}
+.search-padding{
+	padding-left:5rem;
+	padding-top: 5rem;
+}
+.unclaimedbiz{
+	box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)!important;
+    flex-grow: 1;
+    flex-direction: column;
+	display: flex;
+	background-color: #ffffff;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 5px;
 }

@@ -205,15 +205,19 @@ block content
                 strong
                   h3                  
                   = coupon.name
-              .div.col-md-12.col-lg-12.col-sm-12.col-xs-12.column-row
-                  img.deal-img-wrapper.deal-img-wrapper-home(src="/uploads/thumbs/coupons/"+ coupon.photo, alt="Responsive image")
-                  =coupon.description
-                  p 
-                    h6
-                    small
-                      strong
-                        | @       
-                        =coupon.bizid.name
+              row.row-equal
+                .div.col-md-6.col-lg-6.col-sm-12.col-xs-12.column-row
+                    img.deal-img-wrapper.deal-img-wrapper-home(src="/uploads/thumbs/coupons/"+ coupon.photo, alt="Responsive image")
+
+                .div.col-md-6.col-lg-6.col-sm-12.col-xs-12.column-row    
+                    =coupon.description
+                    br
+                    p 
+                      h6
+                      small
+                        strong
+                          | @       
+                          =coupon.bizid.name
                 
               .div.col-md-12.col-lg-12.col-sm-12.col-xs-12.center-left.column-row
                 button.btn.btn-outline-primary(type="button" )

@@ -82,13 +82,12 @@ block content
                               if(biz.photo)
                                 img.cat-image.cat-items-bottom(src="/uploads/thumbs/cover"+ biz.photo, height="200px")
                               else
-                                p
-                                  | No image Available
+                                img.cat-image.cat-items-bottom(src="/img/noimageavailable.png" , height="200px")
                             .col-md-9
                               row
                                 .col-md-12.description-cat
-                                  if (typeof(biz.description) !== 'undefined'&& biz.description.length < 200)
-                                        p.padding.text-left.description-cat !{biz.description.substr(0, 200)+ '..... <strong style="background-color:#c00000; color:#fff; padding:1px">Read More</strong>'}
+                                  if (typeof(biz.description) !== 'undefined'&& biz.description.length < 250)
+                                        p.padding.text-left.description-cat !{biz.description.substr(0, 250)+ '..... <strong style="background-color:#c00000; color:#fff; padding:1px">Read More</strong>'}
                               row
                                 .col-md-12   
                                   div.findit-blue 
@@ -197,8 +196,7 @@ block content
                                 if(biz.photo)
                                   img.cat-image.cat-items-bottom(src="/uploads/thumbs/cover"+ biz.photo, height="200px")
                                 else
-                                  p
-                                    | No image Available
+                                  img.cat-image.cat-items-bottom(src="/img/noimageavailable.png" , height="200px")
                               .col-md-9
                                 row
                                   .col-md-12.description-cat

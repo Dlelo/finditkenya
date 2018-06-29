@@ -239,8 +239,8 @@ router.get('/category/:cat',function(req, res, next){
     var businesses = Business.find({
       $query: {
         subcategory: req.params.cat,
-        approved: true,
-        pending: { $ne: true }
+        approved: true
+        //pending: { $ne: true }
       }
     }).sort([['paid', -1],['datepaid', 1],['slug', 1]]);
 

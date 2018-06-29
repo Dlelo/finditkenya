@@ -3329,3 +3329,10 @@ fieldset, label {
 .content-col{
 	color:#000 !important;
 }
+
+.row-equal{
+	display:table !important;
+}
+.column-row{
+   display: table-cell !important;
+}

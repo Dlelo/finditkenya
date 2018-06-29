@@ -3289,14 +3289,10 @@ fieldset, label {
   content: "\f089";
   position: absolute;
 }
-noimage{
-	width:259px;
-	height:196px;
-}
 
 .ratings > label {
   color: #ddd;
- float: right;
+  float: right;
 }
 
 /***** CSS Magic to Highlight Stars on Hover *****/

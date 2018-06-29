@@ -112,7 +112,7 @@ block content
                                 div.text-right
                                   if biz.reviews
                                   if( biz.reviews.length == 1) 
-                                      .col-md-6(class="rating medium star-icon value-4 label-hidden")
+                                      .col-md-6.ratingsonCat(class="rating medium star-icon value-4 label-hidden" style="margin-left: 430px !important")
                                         .star-container
                                           .star
                                             i.star-empty
@@ -138,7 +138,7 @@ block content
                                         | #{biz.reviews.length} Review
                                   else if( biz.reviews.length > 1)
                                     span.glyphicon.glyphicon-cog.glyph.border
-                                      div(class="rating medium star-icon value-4 label-hidden")
+                                      div(class="rating medium star-icon value-4 label-hidden" style="margin-left: 430px !important")
                                         .star-container
                                           .star
                                             i.star-empty
@@ -200,8 +200,8 @@ block content
                               .col-md-9
                                 row
                                   .col-md-12.description-cat
-                                    if (typeof(biz.description) !== 'undefined' && biz.description.length > 150)
-                                          p.padding.text-left.description-cat  !{biz.description.substr(0, 150)+ '..... <strong style="background-color:#c00000; color:#fff; padding:1px">Read More</strong>'}
+                                    if (typeof(biz.description) !== 'undefined' && biz.description.length < 250)
+                                          p.padding.text-left.description-cat  !{biz.description.substr(0, 250)+ '..... <strong style="background-color:#c00000; color:#fff; padding:1px">Read More</strong>'}
                                 row
                                   .col-md-12   
                                     div.findit-blue 
@@ -226,7 +226,7 @@ block content
                                     div.text-right
                                         if biz.reviews
                                         if( biz.reviews.length == 1) 
-                                            .col-md-6(class="rating medium star-icon value-4 label-hidden")
+                                            .col-md-6.ratingsonCat(class="rating medium star-icon value-4 label-hidden" style="margin-left: 430px !important")
                                               .star-container
                                                 .star
                                                   i.star-empty
@@ -252,7 +252,7 @@ block content
                                               | #{biz.reviews.length} Review
                                         else if( biz.reviews.length > 1)
                                           span.glyphicon.glyphicon-cog.glyph.border
-                                            div(class="rating medium star-icon value-4 label-hidden")
+                                            div(class="rating medium star-icon value-4 label-hidden" style="margin-left: 430px !important")
                                               .star-container
                                                 .star
                                                   i.star-empty

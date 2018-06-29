@@ -218,7 +218,7 @@ router.get('/category/:cat',function(req, res, next){
       $query: {subcategory: req.params.cat, approved: true},
       $orderby: { starteventdate: -1 },
       "starteventdate": { $gt: new Date() }
-    });
+    }).sort([['paid', -1],['datepaid', 1]]);
     var features = Category.aggregate([
       { $match: { name: req.params.cat } },
         { "$unwind": "$subcategories" },

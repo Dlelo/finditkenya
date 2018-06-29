@@ -3332,6 +3332,7 @@ fieldset, label {
 
 .row-equal{
 	display:table !important;
+	width: 100% !important;
 }
 .column-row{
    display: table-cell !important;

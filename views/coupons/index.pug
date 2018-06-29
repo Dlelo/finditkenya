@@ -149,7 +149,7 @@ block content
               
     .row.deal-main
       .col-md-12.col-sm-12.col-xs-12
-              div.coupons-title
+              div.text-center
                 span.h4.coupon-title-start
                   | Free Coupons & Deals 
                 span.h6
@@ -335,7 +335,10 @@ block content
 
    //hide coupons button on coupons page 
    script(type='text/javascript').
-    $("#coupbtn").hide();
+    $(document).ready(function() {
+      $("#coupbtn").hide();
+    });
+    
   //end of hide coupons buttons on coupons page
 
   //script for opening modal

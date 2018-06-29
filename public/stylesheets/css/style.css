@@ -2241,7 +2241,10 @@ padding-right:1px;
 	padding-top:5px;
 }
 .coupon-items{
-	display: table;
+	display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display:         flex;
 	padding-top:10px;
     padding-left: 10px;
     padding-right: 5px;

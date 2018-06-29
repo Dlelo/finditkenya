@@ -56,29 +56,29 @@ block content
       
         
        div.col-md-3
-         row 
+         row
             h5
               .coupon-title
                 | Popular Coupons
             each popular, i in populars
-              row
-                if i<3
-                  .col-md-12.is-island
+              row.deal-main.deal-home.deal-coup
+                if i<2
+                  .col-md-12
                     small
                       h6
                         =popular.name
                     img.coup-img(src="/uploads/thumbs/coupons/"+ popular.photo)
-                    .div
+                    p
                        small
-                          h6
-                            =popular.biz.name
-                          br
                           p
                             =popular.description
-                    .div
-                       small.findit-red 
-                         br
-                         =popular.tagline
+                          p
+                            | @  
+                            =popular.biz.name
+                          strong.findit-red
+                            =popular.tagline 
+                            
+                             
                          
                           
                   
@@ -164,8 +164,8 @@ block content
                   | Email. 
       each coupon, i in coupons
         div.col-md-3.all.well(class=coupon.bizid.subcategory)
-          div.row.deal-main.deal-coup.coupon-items.column.coupon(id=coupon.id,class=(coupon.users.some(function(x) { return x.user_id == user.id })) ? 'couponclicked' : 'couponadd', rel=user.id)
-            div.content  
+          div.row.deal-main.deal-coup.coupon-items.row-eq-height.coupon(id=coupon.id,class=(coupon.users.some(function(x) { return x.user_id == user.id })) ? 'couponclicked' : 'couponadd', rel=user.id)
+            div 
               .div.col-md-12.col-sm-12.col-xs-12
                 strong
                   h3                  

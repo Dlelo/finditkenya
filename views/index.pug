@@ -76,8 +76,8 @@ block content
                     p.px-3
                       | Aenean pulvinar ac enimet posuere tincidunt velit Utin tincidunt
               
-            a(href="#expandcategories")
-              div.col-lg-3.col-md-3.w3-ab.my-md-0.my-sm-8.my-4( onclick="toggle_visibility('expandcategories');")
+          
+          div.col-lg-3.col-md-3.w3-ab.my-md-0.my-sm-8.my-4( onclick="toggle_visibility('expandcategories');")
                 div.w3-aicon.py-lg-5.py-md-3.py-5
                   button.btn.btn-light(type="button")
                     span.findit-blue
@@ -88,8 +88,6 @@ block content
                         
                             
         div.row#expandcategories( style="display:none; border-top: 1px solid #eee")
-          h5
-           | More Categories
           each category,i in categories
             if(i > 7)
               div.col-md-4.col-sm-12.col-xs-12.morecat

@@ -121,14 +121,14 @@ block content
                     strong
                       =review.bizid.name
                 div.col-lg-12.col-md-12.col-sm-12.col-xs-12
-                  small.text-center
+                  small.text-center.content-col
                     |  #{review.length} Reviews
                 div.col-lg-12.col-md-12.col-sm-12.col-xs-12
                     strong
                       =review.user_id.names
                       |  , Says
                     div.col-lg-12.col-md-12.col-sm-12.col-xs-12
-                      i.the-review
+                      i.the-review.content-col.content-col
                         =review.message
                 div.col-12
 
@@ -185,7 +185,7 @@ block content
                                 i.star-filled
                       
                   
-                .col-12.text-left
+                .col-12.text-left.content-col
                   .small
                     =review.created_at
 
@@ -200,26 +200,27 @@ block content
             //top deal
         each coupon,i in coupons
           a(href="/coupons")
-            row.deal-main.deal-home.deal-coup
-              div.content  
-                .div.col-md-12.col-sm-12.col-xs-12
-                  strong
-                    h3                  
-                    = coupon.name
+            row.deal-main.deal-home.deal-coup.row-equal
+              .div.col-md-12.col-sm-12.col-xs-12
+                strong
+                  h3                  
+                  = coupon.name
+              row.row-equal
                 .div.col-md-12.col-lg-12.col-sm-12.col-xs-12
-                    img.deal-img-wrapper.deal-img-wrapper-home(src="/uploads/thumbs/coupons/"+ coupon.photo, alt="Responsive image")
+                    img.deal-img-wrapper.deal-img-wrapper-home(src="/uploads/thumbs/coupons/"+ coupon.photo, alt="Responsive image")   
                     =coupon.description
+                    br
                     p 
-                     h6
+                      h6
                       small
                         strong
                           | @       
                           =coupon.bizid.name
-                  
-                .div.col-md-12.col-lg-12.col-sm-12.col-xs-12.center-left
-                  button.btn.btn-outline-primary(type="button" )
-                    =coupon.tagline 
-                        
+                
+              .div.col-md-12.col-lg-12.col-sm-12.col-xs-12.center-left
+                button.btn.btn-outline-primary(type="button" )
+                  =coupon.tagline 
+                      
                   
         
   //footer
@@ -254,7 +255,7 @@ block content
     script(type='text/javascript').
       $(window).scroll(function() {
 
-        if ($(this).scrollTop()>0)
+        if ($(this).scrollTop()>2)
         {
             $(function() {
               $("#hideSearch").css("visibility", "hidden");

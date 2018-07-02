@@ -54,7 +54,7 @@ body
         #showSearch
           form.form-class(method='get', action='/search')
             div.input-group
-              input#search2.form-control.form-control-lg(type="text" placeholder="Restaurants, Businesses, Doctors..." ,name='search', autofocus)
+              input.search2.form-control.form-control-lg(type="text" placeholder="Restaurants, Businesses, Doctors..." ,name='search', autofocus)
               span.input-group-addon#basic-addon1.finditbutton.input-group-addon.text-center(autofocus)
                span.fas.fa-search.findit-red
         a(href="/coupons")
@@ -522,7 +522,7 @@ script(type='text/javascript').
           var options = {
 
             url: function(phrase) {
-              return "/nss/"+$('#search2').val();
+              return "/nss/"+$('.search2').val();
             },
 
             getValue: function(element) {
@@ -536,7 +536,7 @@ script(type='text/javascript').
             },
             list: {
               onClickEvent: function() {
-                self.location = "/biz/"+$('#search2').getSelectedItemData().slug;
+                self.location = "/biz/"+$('.search2').getSelectedItemData().slug;
               } 
             },
             ajaxSettings: {
@@ -546,8 +546,8 @@ script(type='text/javascript').
     var timer;      
     
     
-    $("#search2").easyAutocomplete(options);
-    $("#search2" ).focus();
+    $(".search2").easyAutocomplete(options);
+    $(".search2" ).focus();
     // scroll to top action
     
     $('.scroll-top').on('click', function(event) {

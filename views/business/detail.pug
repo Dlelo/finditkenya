@@ -39,31 +39,31 @@ block content
               .row.is-island
                 .col-md-12
                   if biz.building
-                    p.text-left
+                    p.text-left.findit-blue
                       strong
                         span.fas.fa-building
                         |  #{biz.building}
                   if biz.street
-                    p.text-left
+                    p.text-left.findit-blue
                       strong
                         span.fas.fa-road
                         |  #{biz.street}
                 .col-md-12
-                  p.text-left
+                  p.text-left.findit-blue
                     strong
                       span.fas.fa-th-list
                       |  #{biz.subcategory}
                   hr.nomargin
                 if(biz.website)
                   .col-md-12
-                    p.text-left
+                    p.text-left.findit-blue
                       strong
                         span.fas.fa-globe
                         a.findit(href="http://"+biz.website,target="_blank",style="color:#2862ec;")
                           |  Website
                   hr.nomargin
                 .col-md-12
-                  p.text-left
+                  p.text-left.findit-blue
                     each phone in phones
                       span#biz-id(style="display:none")
                         =biz.id
@@ -75,7 +75,7 @@ block content
                       br
                   hr.nomargin
                 .col-md-12.text-left
-                  p.text-left
+                  p.text-left.findit-blue
                     each email in emails
                       strong
                         span.fas.fa-envelope
@@ -85,35 +85,35 @@ block content
                   hr.nomargin
                 if(biz.facebook)
                   .col-md-12.text-left
-                    p 
+                    p.findit-blue
                       strong
                         span.fab.fa-facebook-f
                         a.findit(href="http://"+biz.facebook,target="_blank",style="color:#2862ec;") 
                           | Facebook
                 if(biz.twitter)
                   .col-md-12.text-left
-                    p 
+                    p.findit-blue 
                       strong
                         span.fab.fa-twitter
                         a.findit(href="http://"+biz.twitter,target="_blank",style="color:#2862ec;")
                           |  Twitter
                 if(biz.instagram)
                   .col-md-12.text-left
-                    p 
+                    p.findit-blue 
                       strong
                         span.fab.fa-instagram
                         a.findit(href="http://"+biz.instagram,target="_blank",style="color:#2862ec;")
                           |  Instagram
                 if(biz.linkedin)
                   .col-md-12.text-left
-                    p 
+                    p.findit-blue 
                       strong
                         span.fab.fa-linkedin 
                         a.findit(href="http://"+biz.linkedin,target="_blank",style="color:#2862ec;")
                           |  LinkedIn
                 if(biz.youtube)
                   .col-md-12.text-left
-                    p 
+                    p.findit-blue
                       strong
                         span.fab.fa-youtube
                         a.findit(href="http://"+biz.youtube,target="_blank",style="color:#2862ec;")
@@ -130,10 +130,10 @@ block content
                           a.findit(href="/business/catalog/"+catalogue.filename, target="_blank")
                             |  View Menu #{i+1}
                       hr   
-                .col-md-12.text-center
+                .col-md-12.text-center.findit-red
                   if biz.paid
                     span.fa.fa-check-circle.strong(style="color:#2862ec;")
-                    strong
+                    strong.findit-blue
                       |  Claimed
                   else
                     h4 Claim This Business
@@ -274,9 +274,9 @@ block content
                 hr
                 .col-md-12.text-center
                   .findit-red.padding10
-                    strong 
+                    strong.findit-red 
                       span.fas.fa-comment.text-info
-                      | Submit a Review
+                      |   Submit a Review
                 .col-md-12
                   form.form-horizontal(method="post",action="/business/review/")                
                     .col-md-12

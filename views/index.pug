@@ -41,8 +41,8 @@ block content
           | Search by Category
         div.row.my-md-5.mt-sm-8.my-4.text-center
           ins.adsbygoogle(style='display:block', data-ad-client='ca-pub-9965055906014205', data-ad-slot='7358207938', data-ad-format='auto')
-            script.
-              (adsbygoogle = window.adsbygoogle || []).push({});
+          script.
+            window.onload = function() {  (adsbygoogle = window.adsbygoogle || []).push({});}
         div.row.my-md-5.mt-sm-8.my-4.text-center
           each category,i in categories
             if(i < 4)
@@ -90,7 +90,7 @@ block content
                 
                         
                             
-        div.row#expandcategories( style="display:none; border-top: 1px solid #eee; padding-top:10vh")
+        div.row#expandcategories( style="display:none; border-top: 1px solid #eee")
           each category,i in categories
             if(i > 7)
               div.col-md-4.col-sm-12.col-xs-12.morecat

@@ -2354,6 +2354,9 @@ padding-right:1px;
 }
 
 @media screen and (max-width: 568px) {
+	.container-margin-top {
+    margin-top: 12vh !important;
+      }
 	.img-logo {
 	  width: 20vw;
 	}
@@ -2424,6 +2427,9 @@ li.list-hor{
 }
 
 @media screen and (max-width: 414px) {
+	.container-margin-top {
+    margin-top: 12vh !important;
+     }
 	.img-logo {
 	  width: 20vw;
 	}
@@ -2439,12 +2445,7 @@ li.list-hor{
 	#hide-search {
     padding: 5vw 0 2vW 5vw;
 	 }
-	 .easy-autocomplete {
-    width: 78% !important;
-      }
-	.easy-autocomplete.eac-description {
-    width: 78% !important;
-       }
+	 
 	.coupons-img {
     width: 100vw !important;
      }
@@ -2491,6 +2492,9 @@ li.list-hor{
 
 
 @media screen and (max-width: 384px) {
+	.container-margin-top {
+    margin-top: 12vh !important;
+       }
 	.img-logo {
 	  width: 20vw;
 	}
@@ -2503,12 +2507,6 @@ li.list-hor{
 	#hide-search {
     padding: 5vw 0 2vW 5vw;
    }
-   .easy-autocomplete {
-    width: 78% !important;
-      }
-	.easy-autocomplete.eac-description {
-    width: 78% !important;
-       }
 	.coupons-img {
     width: 100vw !important;
      }
@@ -2555,6 +2553,9 @@ li.list-hor{
 
 
 @media screen and (max-width: 375px) {
+	.container-margin-top {
+    margin-top: 12vh !important;
+   }
 	.img-logo {
 	  width: 20vw;
 	}
@@ -2570,12 +2571,7 @@ li.list-hor{
 	#hide-search {
     padding: 5vw 0 2vW 5vw;
 	 }
-	 .easy-autocomplete {
-    width: 78% !important;
-      }
-	.easy-autocomplete.eac-description {
-    width: 78% !important;
-       }
+	
 	.coupons-img {
     width: 100vw !important;
      }
@@ -2620,6 +2616,9 @@ li.list-hor{
 }
 
 @media screen and (max-width: 320px) {
+	.container-margin-top {
+    margin-top: 12vh !important;
+   }
 	.img-logo {
 	  width: 20vw;
 	}
@@ -2632,15 +2631,11 @@ li.list-hor{
 	.selected-coupon-left {
 	   margin-left: 2rem !important;
 	}
-	.easy-autocomplete {
-    width: 78% !important;
-      }
+	
 	#hide-search {
     padding: 5vw 0 2vW 5vw;
      }
-	.easy-autocomplete.eac-description {
-    width: 78% !important;
-       }
+	
 	.btn-coupon {
     margin-top: 8vh !important;
 	 }

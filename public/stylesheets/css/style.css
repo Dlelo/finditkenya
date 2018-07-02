@@ -3363,3 +3363,7 @@ fieldset, label {
     padding: 10px;
     border-radius: 5px;
 }
+.container-fluidpadding{
+	padding-left: 15px;
+	padding-right:5px;
+}

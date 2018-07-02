@@ -33,7 +33,7 @@ block content
                   | Filter Sub Categories  
                   span.caret
                   
-                ul.dropdown-menu.open.sub-catbag.drop-down-sub
+                ul.dropdown-menu.open.sub-catbag.drop-down-sub(style="z-index: 100 !important; overflow: hidden; border: 0px solid rgba(0,0,0,.15) !important")
                   if features 
                     li.text-left.sub-list
                         h6.findit-red
@@ -44,7 +44,7 @@ block content
                           a(href="/subcategory/"+feature.subcategories.name)
                             strong  
                               =feature.subcategories.name
-          .col-md-9
+          .col-md-9.category-zindex
             if businesses
               div.cathead-background.cat-box.findit-blue
                 h6

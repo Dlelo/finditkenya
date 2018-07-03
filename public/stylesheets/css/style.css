@@ -1146,8 +1146,8 @@ span.w3-line {
 }
 
 option {
-	background: #000000;
-	border-color: #fff;
+	background: #fff;
+	border-color: rgb(155, 151, 151);
 }
 
 /*-- //banner-form--*/

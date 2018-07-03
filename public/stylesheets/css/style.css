@@ -1539,6 +1539,9 @@ ul.portfolio-area li figure {
 	}
 }
 @media screen and (max-width: 667px) {
+	section {
+    flex-direction: column;
+}
 	.dropdown-item {
 		text-align:left;
 	}
@@ -2355,7 +2358,7 @@ padding-right:1px;
 
 @media screen and (max-width: 568px) {
 	.container-margin-top {
-    margin-top: 12vh !important;
+    margin-top: 13vh !important;
       }
 	.img-logo {
 	  width: 20vw;
@@ -2428,7 +2431,7 @@ li.list-hor{
 
 @media screen and (max-width: 414px) {
 	.container-margin-top {
-    margin-top: 12vh !important;
+    margin-top: 13vh !important;
      }
 	.img-logo {
 	  width: 20vw;
@@ -2493,7 +2496,7 @@ li.list-hor{
 
 @media screen and (max-width: 384px) {
 	.container-margin-top {
-    margin-top: 12vh !important;
+    margin-top: 13vh !important;
        }
 	.img-logo {
 	  width: 20vw;
@@ -2554,7 +2557,7 @@ li.list-hor{
 
 @media screen and (max-width: 375px) {
 	.container-margin-top {
-    margin-top: 12vh !important;
+    margin-top: 13vh !important;
    }
 	.img-logo {
 	  width: 20vw;
@@ -2617,7 +2620,7 @@ li.list-hor{
 
 @media screen and (max-width: 320px) {
 	.container-margin-top {
-    margin-top: 12vh !important;
+    margin-top: 13vh !important;
    }
 	.img-logo {
 	  width: 20vw;
@@ -3390,4 +3393,70 @@ fieldset, label {
     padding:10px 15px 10px 40px !important;
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
+}
+.basic-content {
+    width: 100%;
+    padding-top: 10vh;
+    text-align: center;
+    vertical-align: middle;
+}
+#package {
+    display: flex;
+    flex-flow: row wrap;
+}
+#packagelabel {
+    height: 100%;
+    display: block;
+    background: white;
+    border-radius: 20px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    box-shadow: 0px 3px 10px -2px hsla(150, 5%, 65%, 0.5);
+    position: relative;
+}
+fieldset, label {
+    margin: 0;
+    padding: 0;
+}
+.free {
+    background-color: #d025ef;
+    padding: 2px;
+    border-radius: 15px;
+    margin-bottom: 5px;
+}
+.bronze {
+    background-color: #CD7F32;
+    color: #fdfdfd;
+    padding: 2px;
+    border-radius: 15px;
+    margin-bottom: 5px;
+}
+.silver {
+    background-color: #C0C0C0;
+    color: #fdfdfd;
+    padding: 2px;
+    border-radius: 15px;
+    margin-bottom: 5px;
+}
+.gold {
+    background-color: #FFD700;
+    padding: 2px;
+    border-radius: 15px;
+    margin-bottom: 5px;
+}
+.btn-package {
+    color: #747272;
+    background-color: #fff;
+    border-color: #ccc;
+    padding: 15px;
+	border: 1px solid #ccc;
+	border-radius: 2px;
+}
+input[type="radio"].package {
+    display: none;
+}
+.packages-padding{
+	padding-top: 3px;
+    padding-bottom: 3px;
 }

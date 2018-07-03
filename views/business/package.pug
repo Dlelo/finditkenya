@@ -1,100 +1,103 @@
-extends ../layout
+extends ../layout-new
 
 block content
-  .page_body.basic-content
-    .container
-      h4 Select A Package For Your Business
-      form(method='post', action='/business/newpackage')
-        .form-group
-          .row
-            section#package
-              .col-md-3
-                input.form-control-form.package#free(name='package', type='radio', value='free', required)
-                label#packagelabel(for='free')
-                  .free
-                    h3
-                      strong
-                        |  Free (KES: 0)
-                  ul
-                    li
-                      | Basic Information Only
-                    
-                  .btn-package.selectpackage
-                    strong
-                      |  Select Package
-              .col-md-3
-                input.form-control-form.package#bronze(name='package', type='radio', value='bronze', required)
-                label#packagelabel(for='bronze')
-                  .bronze
-                    h3
-                      strong
-                        |  Bronze (KES: 2320)
-                  ul
-                    li
-                      | Upto 6 Images
-                    li
-                      | 50 Words to describe your business  
-                    li
-                      | 10 keywords
-                    li
-                      | Map Location
-                    li
-                      | 1 catalog/Menu  
-                  .btn-package.selectpackage
-                    strong
-                      |  Select Package
+  #home.parallax-content-list.baner-content-listing-biz
+    .container.container-margin-top
+      .page_body.basic-content
+        .container
+          h4 Select A Package For Your Business
+          form(method='post', action='/business/newpackage')
+            .form-group
+              .row
+                section#package
+                  .col-md-3.packages-padding
+                    input.form-control-form.package#free(name='package', type='radio', value='free', required)
+                    label#packagelabel(for='free')
+                      .free
+                        h3
+                          strong
+                            |  Free (KES: 0)
+                      ul
+                        li
+                          | Basic Information Only
+                        
+                      .btn-package.selectpackage
+                        strong
+                          |  Select Package
+                  .col-md-3.packages-padding
+                    input.form-control-form.package#bronze(name='package', type='radio', value='bronze', required)
+                    label#packagelabel(for='bronze')
+                      .bronze
+                        h3
+                          strong
+                            |  Bronze (KES: 2320)
+                      ul
+                        li
+                          | Upto 6 Images
+                        li
+                          | 50 Words to describe your business  
+                        li
+                          | 10 keywords
+                        li
+                          | Map Location
+                        li
+                          | 1 catalog/Menu  
+                      .btn-package.selectpackage
+                        strong
+                          |  Select Package
 
-              .col-md-3
-                input.form-control-form.package#silver(name='package', type='radio', value='silver', required)
-                label#packagelabel(for='silver')
-                  .silver
-                    h3
-                      strong
-                      |  Silver (KES: 5600)
-                  ul
-                    li
-                      | Upto 15 Images
-                    li
-                      | 120 Words to describe your business  
-                    li
-                      | Upto 25 keywords
-                    li
-                      | Map Location
-                    li
-                      | Upto 3 catalog/Menu(s)
-                    li
-                      | Priority Listing one day per month
-                    li
-                      | 1 free news letter adverts per month  
-                  .btn-package.selectpackage
-                    strong
-                      |  Select Package                                      
-              .col-md-3                                
-                input.form-control-form.package#gold(name='package', type='radio', value='gold', required)
-                label#packagelabel(for='gold')
-                  .gold 
-                    h3
-                      strong
-                      |  Gold (KES: 13920)
-                  ul
-                    li
-                      | Unlimited Images
-                    li
-                      | 250 Words to describe your business  
-                    li
-                      | Upto 100 keywords
-                    li
-                      | Map Location
-                    li
-                      | Unlimited catalog/Menu(s)
-                    li
-                      | Priority Listing three day per month
-                    li
-                      | 3 free news letter adverts per month
-                  .btn-package.selectpackage
-                    strong
-                      |  Select Package
-        .form-group
-          button.btn.btn-claim.form-control-form.btn-gp(type='submit', style='color:#5050ff')                 
-            strong
-              | Select Package
+                  .col-md-3.packages-padding
+                    input.form-control-form.package#silver(name='package', type='radio', value='silver', required)
+                    label#packagelabel(for='silver')
+                      .silver
+                        h3
+                          strong
+                          |  Silver (KES: 5600)
+                      ul
+                        li
+                          | Upto 15 Images
+                        li
+                          | 120 Words to describe your business  
+                        li
+                          | Upto 25 keywords
+                        li
+                          | Map Location
+                        li
+                          | Upto 3 catalog/Menu(s)
+                        li
+                          | Priority Listing one day per month
+                        li
+                          | 1 free news letter adverts per month  
+                      .btn-package.selectpackage
+                        strong
+                          |  Select Package                                      
+                  .col-md-3.packages-padding                                
+                    input.form-control-form.package#gold(name='package', type='radio', value='gold', required)
+                    label#packagelabel(for='gold')
+                      .gold 
+                        h3
+                          strong
+                          |  Gold (KES: 13920)
+                      ul
+                        li
+                          | Unlimited Images
+                        li
+                          | 250 Words to describe your business  
+                        li
+                          | Upto 100 keywords
+                        li
+                          | Map Location
+                        li
+                          | Unlimited catalog/Menu(s)
+                        li
+                          | Priority Listing three day per month
+                        li
+                          | 3 free news letter adverts per month
+                      .btn-package.selectpackage
+                        strong
+                          |  Select Package
+            .form-group
+              button.btn.btn-claim.form-control-form.btn-gp(type='submit', style='color:#5050ff')                 
+                strong
+                h4.findit-blue
+                  | Select Package

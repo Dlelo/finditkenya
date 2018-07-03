@@ -3460,3 +3460,57 @@ input[type="radio"].package {
 	padding-top: 3px;
     padding-bottom: 3px;
 }
+input[type="radio"].package:checked + #packagelabel {
+    background: #04045a;
+    color: hsla(215, 0%, 100%, 1);
+    box-shadow: 0px 0px 20px #c00000;
+}
+select:not(:-internal-list-box) {
+    background-color: buttonface;
+}
+input:focus, textarea:focus, select:focus {
+    outline-offset: -2px;
+}
+select:not(:-internal-list-box) {
+    overflow: visible !important;
+}
+:focus {
+    outline: -webkit-focus-ring-color auto 5px;
+}
+select {
+    border-radius: 0px;
+    border-color: rgb(169, 169, 169);
+}
+select {
+    -webkit-appearance: menulist;
+    box-sizing: border-box;
+    align-items: center;
+    white-space: pre;
+    -webkit-rtl-ordering: logical;
+    color: black;
+    background-color: white;
+    cursor: default;
+    border-width: 1px;
+    border-style: solid;
+    border-color: initial;
+    border-image: initial;
+}
+select {
+    border-radius: 5px;
+}
+input, textarea, select, button {
+    text-rendering: auto;
+    color: initial;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    margin: 0em;
+    font: 400 13.3333px Arial;
+}
+input, textarea, select, button, meter, progress {
+    -webkit-writing-mode: horizontal-tb !important;
+}

@@ -2358,7 +2358,7 @@ padding-right:1px;
 
 @media screen and (max-width: 568px) {
 	.search2{
-	  background-position: 11px 12px;
+	  background-position: 11px 12px !important;
       padding: 0px 1px 0px 35px !important;
 	}
 	.container-margin-top {
@@ -3418,10 +3418,10 @@ fieldset, label {
   font-family:'Ubuntu' FontAwesome !important;
 }
 .search2{
-	background-image: url('/../img/search.png');
-	background-position: 11px 14px; 
+	background-image: url('/../img/search.png'); 
 	background-repeat: no-repeat;
-    padding:10px 15px 10px 40px !important;
+	background-position: 11px 12px !important;
+    padding: 0px 1px 0px 35px !important;
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
 }

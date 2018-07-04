@@ -19,6 +19,8 @@ var md5 = require('md5');
 var validator = require('validator');
 var elasticsearch = require('elasticsearch');
 var Jimp = require("jimp");
+var Typo = require("typo-js");
+var dictionary = new Typo("en_US");
 
 var sys = require(__dirname + '/../config/System');
 var role = require(__dirname + '/../config/Role');
@@ -31,6 +33,7 @@ var Coupons = require(__dirname + '/../models/Coupons');
 var Review = require(__dirname + '/../models/Reviews');
 
 var mailer = require('express-mailer');
+
 
 /* GET home page. */
 router.get('/nss/:name',function(req, res, next){
@@ -92,6 +95,7 @@ router.get('/search',function(req, res, next){
      //.sort([['paid', -1]]);
   var features = Category.find({name: req.query.search });
   var categories = Category.find({approved: true}).sort([['order', 1]]);
+  var array_of_suggestions = dictionary.suggest(req.query.search);
   Promise.all([search, features, categories]).then(values => {
       console.log(values[0]);
       res.render('business/search', {
@@ -100,6 +104,7 @@ router.get('/search',function(req, res, next){
           businesses: values[0],
           features: values[1],
           categories: values[2],
+          suggestion: array_of_suggestions[0],          
           host: req.get('host')
       });
   });

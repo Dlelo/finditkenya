@@ -3613,4 +3613,7 @@ input, textarea, select, button {
     
     margin-bottom: 0.2rem !important;
 }
-
+.listItems-home{
+	font-size: 22px;
+    padding-left: 20px;
+}

@@ -26,8 +26,15 @@ block content
                h5
                 |  Find
               input#search2.form-control.form-control-lg(type="text" placeholder="Restaurants, Holidays, Businesses, Lawyers, Doctors..." ,name='search', autofocus)
-    
-    
+          .nav
+            each category,i in categories
+             ul
+               if i <5
+                  li.findit-red
+                    i.fas.fa-1x(aria-hidden='true', class=category.icon)
+                    strong   
+                      =category.name
+
   //search by category
   //center
   //section.wthree-row.py-sm-5.py-3.w3-about

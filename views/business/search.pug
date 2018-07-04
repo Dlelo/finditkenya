@@ -136,9 +136,8 @@ block content
             .row
               if(suggestions.length)
                 | Did you mean: 
-                each word in suggestions
-                  a(href="search?search="+word)
-                    |  #{word}, 
+                  a(href="search?search="+suggestion)
+                    |  #{suggestion}, 
       //script to put navitems open by default
       script(type='text/javascript').
         $(document).ready(function(){

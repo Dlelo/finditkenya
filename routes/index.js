@@ -104,7 +104,7 @@ router.get('/search',function(req, res, next){
           businesses: values[0],
           features: values[1],
           categories: values[2],
-          suggestions: array_of_suggestions,          
+          suggestion: array_of_suggestions[0],          
           host: req.get('host')
       });
   });

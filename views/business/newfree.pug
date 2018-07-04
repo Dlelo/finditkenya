@@ -1,4 +1,4 @@
-extends ../layout-new
+extends ../layout
 
 block content
   #home.parallax-content-list.baner-content-listing-biz
@@ -17,8 +17,8 @@ block content
                   textarea#description.form-control-form(name='description',placeholder="Describe your business (Max 120 words)", maxlength="150")
               .form-group
                 .row
-                  .col-md-6
-                    select#city.form-control-form(name='city')
+                  .col-sm-6.col-xs-6
+                    select.selectpicker#city.form-control-form(name='city')
                       option(data-icon='glyphicon-wrench', value='') --Select City--
                       option(data-icon='glyphicon glyphicon-globe', value='Nairobi') Nairobi
                       option(data-icon='glyphicon glyphicon-globe',value='Mombasa') Mombasa 
@@ -37,35 +37,35 @@ block content
                       option(data-icon='glyphicon glyphicon-globe', value='Nyahururu') Nyahururu
                       option(data-icon='glyphicon glyphicon-globe', value='Malindi') Malindi
                       option(data-icon='glyphicon glyphicon-globe', value='Kiambu') Kiambu
-                  .col-md-6
+                  .col-sm-6.col-xs-6
                     input#map.form-control-form(type='text', name='website', placeholder='website')  
-                  .col-md-6
+                  .col-sm-6.col-xs-6
                     input#map.form-control-form(type='text', name='phone', placeholder='phone1,phone2')            
-                  .col-md-6
+                  .col-sm-6.col-xs-6
                     input#map.form-control-form(type='text', name='street', placeholder='street')
-                  .col-md-6
+                  .col-sm-6.col-xs-6
                     input#map.form-control-form(type='text', name='building', placeholder='building')
-                  .col-md-6
+                  .col-sm-6.col-xs-6
                     input#map.form-control-form(type='text', name='email', placeholder='email1,email2')
                 .row
-                  .col-md-6
+                  .col-sm-6.col-xs-6
                     select.selectpicker.form-control(name='category', data-selected-text-format='count > 5',class='category')
                       option(data-icon='glyphicon-wrench', value='') --Select Business or Service--
                       option(data-icon='glyphicon-gift', value='business') Business
                       option(data-icon='glyphicon glyphicon-glass',value='service') Service 
-                  .col-md-2
+                  .col-sm-2.col-xs-6
                     select#subcategory.selectpicker.form-control-form-select(name='subcategory', data-selected-text-format='count > 5', class='subcategory')
                       option(data-icon='glyphicon-wrench', value='') --Select Category--
                       each category in categories
                         option(data-icon='fa '+category.icon, value=category.name) 
                           =category.name
-                  .col-md-4
+                  .col-sm-4.col-xs-6
                     .input-group
-                      .col-md-6
+                      .col-sm-6
                         .input-group-addon.findit-red
                           strong
                             |Select Subcategories 
-                      .col-md-6
+                      .col-sm-6
                         select#ssubcategory.form-control-form-select.ssubcategory.selectpicker(name='ssubcategory',data-selected-text-format='count > 5', data-live-search="true",multiple)
                           option(data-icon='fa fa-search', value=) 
                           | --Select Subcategories--
@@ -80,4 +80,3 @@ block content
                 .row
                   button.button.btn.btn-warning.form-control-form(type='submit') Create
       script(src="http://maps.googleapis.com/maps/api/js?key=AIzaSyC9MX39yDkMJn6rjWi6vt4Rens5u_cVBQE") 
-      

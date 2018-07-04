@@ -6,7 +6,12 @@ block content
     .container-fluid.container-margin-top
       .row          
         .col-md-12.search-padding
-          if businesses
+          if(suggestions.length)
+            | Did you mean: 
+            each word in suggestions
+              a(href="search?search="+word)
+                |  #{word}, 
+          if(businesses.length)
             each biz in businesses              
               .row
                if (typeof(biz.slug) !== 'undefined')
@@ -129,8 +134,9 @@ block content
                                 else
                                   | 
           else
-            strong
-              | No Results Found
+            .row
+              strong
+                | No Results Found
       //script to put navitems open by default
       script(type='text/javascript').
         $(document).ready(function(){

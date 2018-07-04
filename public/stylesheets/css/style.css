@@ -3614,6 +3614,13 @@ input, textarea, select, button {
     margin-bottom: 0.2rem !important;
 }
 .listItems-home{
-	font-size: 22px;
-    padding-left: 20px;
+	font-size: 18px;
+	padding-left: 8px;
+	padding-right:8px;
+	
+}
+.listhome-nav{
+	background-color: #fff;
+	opacity: 0.5;
+	filter: alpha(opacity=60); /* For IE8 and earlier */
 }

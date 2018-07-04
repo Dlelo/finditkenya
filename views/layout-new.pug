@@ -62,27 +62,27 @@ body
   div.container-fluid
     header
       //header before navigation items
-      nav#homenavbar.navbar.navbar-expand-lg.navbar-light.bg-gradient-secondary.pt-3
-        h1
+      nav#homenavbar.nav.navbar-expand-lg.navbar-light.bg-gradient-secondary.pt-3
+        div(style="display:inline-flex")
           a.navbar-brand.text-white(href="/")
-            em
-              img.img-logo(src="/img/findit-red-logo.png").img-fluid
-        #showSearch
-          form.form-class(method='get', action='/search')
-            div.input-group
-              input.search2.form-control.form-control-lg(type="text" placeholder="Restaurants, Businesses..." ,name='search', autofocus)
+            img.img-logo(src="/img/findit-red-logo.png").img-fluid
+          #showSearch
+            form.form-class(method='get', action='/search')
+              div.input-group
+                input.search2.form-control.form-control-lg(type="text" placeholder="" ,name='search', autofocus)
               
-        a(href="/coupons")
-          button.btn.btn-light.coupons-btn.flash-button#coupbtn(type="button")
-            span.fas.fa-gift.coupons-text-color
-            | View deals
-        
+          a(href="/coupons")
+            button.btn.btn-light.w3ls-btn.coupons-btn.flash-button#coupbtn(type="button")
+              span.fas.fa-gift.coupons-text-color
+              | View deals
+          
         //site navigation 
         button.navbar-toggler.ml-md-auto(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
             aria-expanded="false" aria-label="Toggle navigation")
               span.navbar-toggler-icon
         div#navbarSupportedContent.collapse.navbar-collapse
-          ul.navbar-nav.ml-lg-auto.text-left
+        
+          ul.nav.navbar-nav.ml-lg-auto.nav.justify-content-end
             li.dropdown.nav-item.mr-3
               a.nav-link.dropdown-toggle(href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")    
                 span.fas.fa-th-list.fas-menu
@@ -129,7 +129,7 @@ body
                 button.btn.btn-outline-primary.w3ls-btn.findit-blue
                   strong
                   |  Sign Up
-    
+
    
     //display errors
     .errors

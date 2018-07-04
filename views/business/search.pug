@@ -134,10 +134,10 @@ block content
               strong
                 | No Results Found
             .row
-              if(suggestions.length)
+              if(suggestion)
                 | Did you mean: 
-                  a(href="search?search="+suggestion)
-                    |  #{suggestion}, 
+                a(href="search?search="+suggestion)
+                    |  #{suggestion}
       //script to put navitems open by default
       script(type='text/javascript').
         $(document).ready(function(){

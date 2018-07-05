@@ -5,10 +5,11 @@ block content
   #home.parallax-content-list.baner-content-listing-biz
     .container-fluid.container-margin-top
     .row
-      if(suggestion)
-        | Did you mean: 
-        a(href="search?search="+suggestion)
-            |  #{suggestion}
+      .col-md-12.search-padding
+        if(suggestion)
+          | Did you mean: 
+          a(href="search?search="+suggestion)
+              |  #{suggestion}
       .row          
         .col-md-12.search-padding
           

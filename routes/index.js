@@ -21,6 +21,7 @@ var elasticsearch = require('elasticsearch');
 var Jimp = require("jimp");
 var Typo = require("typo-js");
 var dictionary = new Typo("en_US");
+var Fuse = require("fuse.js");
 
 var sys = require(__dirname + '/../config/System');
 var role = require(__dirname + '/../config/Role');
@@ -34,7 +35,42 @@ var Review = require(__dirname + '/../models/Reviews');
 
 var mailer = require('express-mailer');
 
-
+router.get('/fuse/:name', function(req, res, next){
+  var businesses = Business.find({
+      $query: { approved: true},
+    },
+    {
+      name:1,subcategory:1,keywords:1,description:1,features:1,reviews:1,slug:1,paid:1,
+      website:1,photo: 1,instagram: 1,youtube:1,twitter:1,facebook:1, _id:0
+    }
+  ).sort([['paid', -1],['datepaid', 1]]);
+  Promise.all([businesses]).then(values => {
+    var list = values[0];
+    //console.log(list);
+    var options = {
+      shouldSort: true,
+      includeScore: true,
+      threshold: 0.3,
+      location: 0,
+      distance: 100,
+      maxPatternLength: 32,
+      minMatchCharLength: 2,
+      keys: [
+        "name",
+        "subcategory",
+        "keywords"
+    ]
+    };
+    var fuse = new Fuse(list, options); // "list" is the item array
+    var result = fuse.search(req.params.name);
+    //console.log(result);
+    res.render('business/searchfuse', {
+        title: req.params.name,
+        businesses: result,
+        host: req.get('host')
+    });
+  });
+});
 /* GET home page. */
 router.get('/nss/:name',function(req, res, next){
 	//wait for the initialization
@@ -104,7 +140,7 @@ router.get('/search',function(req, res, next){
           businesses: values[0],
           features: values[1],
           categories: values[2],
-          suggestion: array_of_suggestions[0],          
+          suggestion: array_of_suggestions[0],
           host: req.get('host')
       });
   });

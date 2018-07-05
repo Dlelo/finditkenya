@@ -4,6 +4,11 @@ block content
   div.container-fluid
   #home.parallax-content-list.baner-content-listing-biz
     .container-fluid.container-margin-top
+    .row
+      if(suggestion)
+        | Did you mean: 
+        a(href="search?search="+suggestion)
+            |  #{suggestion}
       .row          
         .col-md-12.search-padding
           
@@ -132,11 +137,7 @@ block content
             .row
               strong
                 | No Results Found
-            .row
-              if(suggestion)
-                | Did you mean: 
-                a(href="search?search="+suggestion)
-                    |  #{suggestion}
+            
       //script to put navitems open by default
       script(type='text/javascript').
         $(document).ready(function(){

@@ -44,6 +44,7 @@ router.get('/fuse/:name', function(req, res, next){
       website:1,photo: 1,instagram: 1,youtube:1,twitter:1,facebook:1, _id:0
     }
   ).sort([['paid', -1],['datepaid', 1]]);
+  var array_of_suggestions = dictionary.suggest(req.params.name);
   Promise.all([businesses]).then(values => {
     var list = values[0];
     //console.log(list);
@@ -67,6 +68,7 @@ router.get('/fuse/:name', function(req, res, next){
     res.render('business/searchfuse', {
         title: req.params.name,
         businesses: result,
+        suggestion: array_of_suggestions[0],
         host: req.get('host')
     });
   });

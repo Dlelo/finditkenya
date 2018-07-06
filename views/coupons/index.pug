@@ -335,11 +335,12 @@ block content
       }
     });
 
-   //hide coupons button on coupons page 
+    //hide coupons button on coupons page 
    script(type='text/javascript').
-    $(document).ready(function() {
-      $("#coupbtn").hide();
-    });
+     window.onload = function() {
+      document.getElementById('coupbtn').className = 'hide-coupbtn';
+    };
+    
     
   //end of hide coupons buttons on coupons page
 

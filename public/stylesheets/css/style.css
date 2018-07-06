@@ -3633,3 +3633,6 @@ input, textarea, select, button {
 	margin-right:1rem;
 	margin-left: 1rem;
 }
+.hide-coupbtn{
+	visibility:hidden !important;
+}

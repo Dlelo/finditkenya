@@ -35,17 +35,16 @@ block content
             .input-group
               .input-group-addon.form-control
                 input#exampleInputPasswordpas.form-control-form.form-control(type='password', placeholder='Password',name='password')
-           .row
-            .col-md-5.clearfix
-              .form-group
-                div.input-group
-                  div.input-group-prepend
-                    div.input-group-text.pull-left
-                      input(type="checkbox" aria-label="Checkbox for following text input")
-                      |    Remember me
-            .col-md-5.col-md-offset-2
-              a(href="/forgotpassword")
-                p.frgt-pswd.pull-right(data-toggle='modal', data-dismiss='modal', data-target='#at-reset-pswd') Forgot Password ?
+           .form-group
+              .row
+                .col-md-6.pull-left
+                  input(type="checkbox" class="custom-control-input custom-control form-control-lg custom-checkbox" id="customCheck1")
+                  label(class="custom-control-label" for="customCheck1" style="margin-left:5px")
+                    |      Remember me   
+          
+                .col-md-6.col-md-offset-2.pull-right
+                  a(href="/forgotpassword")
+                    p.frgt-pswd(data-toggle='modal', data-dismiss='modal', data-target='#at-reset-pswd') Forgot Password ?
            .row
              .col-md-12
                button.btn.btn-primary.w3ls-btn(type='submit') Login

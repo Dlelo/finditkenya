@@ -29,24 +29,22 @@ block content
             input#password.form-control-form(type='password', placeholder='Password', name='password')
           .form-group
             input#password.form-control-form(type='password', placeholder='Confirm Password', name='cpassword')
-          .row
-            .col-md-12
-              .checkbox
-                label
-                  input(type='checkbox')
-                  small
-                   |                                   I’d like to receive coupons and inspiration
-              p
-                small
-                  | By signing up, I agree to Find It’s , Payments 
-                  a(href='#') Terms of Service
-                  | , 
-                  a(href='#') Privacy Policy
-                  | , 
-                  a(href='#') Guest Refund Policy
-                  | , and 
-                  a(href='#') Host Guarantee Terms
-                  | .
+          .form-group
+            .row
+              .col-md-12
+                .input-group
+                  .checkbox
+                    label
+                      input(type='checkbox')
+                      small
+                      |                                   I’d like to receive coupons and inspiration
+                  p
+                    small
+                      | By signing up, I agree to Find It’s, 
+                      a(href='#') Terms of Service
+                      | , 
+                      a(href='#') Privacy Policy
+                      | .
           .form-group
             button.btn.btn-primary.w3ls-btn(type='submit') Sign Up
           hr

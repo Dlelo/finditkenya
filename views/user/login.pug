@@ -37,10 +37,12 @@ block content
                 input#exampleInputPasswordpas.form-control-form.form-control(type='password', placeholder='Password',name='password')
            .row
             .col-md-5.clearfix
-              .checkbox
-                label.pull-left.checkbox-inline
-                  input.input-group-addon(type='checkbox')
-                  |    Remember me
+              .form-group
+                div.input-group
+                  div.input-group-prepend
+                    div.input-group-text.pull-left
+                      input(type="checkbox" aria-label="Checkbox for following text input")
+                      |    Remember me
             .col-md-5.col-md-offset-2
               a(href="/forgotpassword")
                 p.frgt-pswd.pull-right(data-toggle='modal', data-dismiss='modal', data-target='#at-reset-pswd') Forgot Password ?

@@ -1,0 +1,469 @@
+{{> meta/head}}
+
+<div class="row">
+  <div class="col-lg-3">
+
+    {{> nav/secondary options=true }}
+
+  </div>
+  <div class="col-lg-9">
+
+    <div class="page-header">
+      <h1>{{name}} <small>for Bootstrap 4</small></h1>
+    </div>
+    <p class="lead">A jQuery plugin for Bootstrap 4 that converts <code>&lt;select&gt;</code> and <code>&lt;select multiselect&gt;</code> elements to dropdowns. Uses fuse.js for fuzzy search and Bootstrap's dropdown plugin.</p>
+
+    <div class="page-header">
+      <h2 id="options">Options</h2>
+    </div>
+
+    <h3>Defaults</h3>
+
+    <p>Plugin defaults:</p>
+
+<pre><code>{{{ htmlentities
+'$(document).ready(function(){
+  $("#multiselect").selectDropdown({
+    // Behaviour
+    hideSelect: true,
+    search: true,
+    maxHeight: "300px",
+    keyboard: true,
+    badges: true,
+    badgesDismissable: true,
+    maxListLength: 0,
+    // Text
+    textNoneSelected: "Select",
+    textMultipleSelected: "%count_selected% selected",
+    textNoResults: "No results",
+    // Controls
+    deselectAll: true,
+    selectAll: true,
+    showSelected: true,
+    // Buttons
+    selectButtons: false,
+    classBtnDeselectAll : "btn btn-outline-secondary",
+    classBtnSelectAll : "btn btn-outline-secondary",
+    // HTML
+    htmlClear: "Clear search",
+    htmlDeselectAll: "Deselect all",
+    htmlSelectAll: "Select all",
+    htmlBadgeRemove: "[X]",
+    // Classes
+    classBtnSelect : "btn btn-primary",
+    classBadge: "badge badge-dark mr-1",
+    classBadgeLink: "text-white",
+    classBadgeContainer : "mt-2 mb-3"
+  })
+});'
+}}}</code></pre>
+
+    <div class="page-header">
+      <h3>Behaviour</h3>
+    </div>
+
+    <h4>hideSelect</h4>
+
+    <dl class="row">
+      <dt class="col-sm-2">Default</dt>
+      <dd class="col-sm-10"><code>true</code></dd>
+    </dl>
+
+    <p>Hide the {{{htmlentities '<select>'}}} element. This is expected. However, you may wish to unhide the {{{htmlentities '<select>'}}} element for testing.</p>
+
+    <h4>search</h4>
+
+    <dl class="row">
+      <dt class="col-sm-2">Default</dt>
+      <dd class="col-sm-10"><code>true</code></dd>
+    </dl>
+
+    <p>
+      Convert the dropdown button to an <code>input-group</code> with a search form control.
+    </p>
+
+    <h4>maxHeight</h4>
+
+    <dl class="row">
+      <dt class="col-sm-2">Default</dt>
+      <dd class="col-sm-10"><code>"300px"</code></dd>
+    </dl>
+
+    <p>
+      Set a max height on the dropdown, making it scrollable. This can be disabled by setting to <code>false</code>.
+    </p>
+
+    <h4>keyboard</h4>
+
+    <dl class="row">
+      <dt class="col-sm-2">Default</dt>
+      <dd class="col-sm-10"><code>true</code></dd>
+    </dl>
+
+    <p>
+      Enable keyboard navigation. While the search control is focused, cursor keys/the enter key can be used to select options.
+    </p>
+
+    <h4>badges</h4>
+
+    <dl class="row">
+      <dt class="col-sm-2">Default</dt>
+      <dd class="col-sm-10"><code>true</code></dd>
+
+      <dt class="col-sm-2">Conditions</dt>
+      <dd class="col-sm-10">
+        {{conditions.multiselect}}
+      </dd>
+    </dl>
+
+    <p>
+      Display badges below the element that represent selected options.
+    </p>
+
+    <h4>badgesDismissable</h4>
+
+    <dl class="row">
+      <dt class="col-sm-2">Default</dt>
+      <dd class="col-sm-10"><code>true</code></dd>
+
+      <dt class="col-sm-2">Conditions</dt>
+      <dd class="col-sm-10">
+        {{{conditions.badges}}}<br />
+        {{conditions.multiselect}}
+      </dd>
+    </dl>
+
+    <p>
+      Badges can be dismissed to deselect options.
+    </p>
+
+    <h4>maxListLength</h4>
+
+    <dl class="row">
+      <dt class="col-sm-2">Default</dt>
+      <dd class="col-sm-10"><code>0</code></dd>
+    </dl>
+
+    <p>
+      Set button text to a list of comma separated selected values. If the number of selected options exceeds this limit, the value of <code>textMultipleSelected</code> will be displayed.
+    </p>
+
+    <p>
+      The default of <code>0</code> disables this feature.
+    </p>
+
+    <div class="page-header">
+      <h3>Text</h3>
+    </div>
+
+    <h4>textNoneSelected</h4>
+
+    <dl class="row">
+      <dt class="col-sm-2">Default</dt>
+      <dd class="col-sm-10"><code>"None selected"</code></dd>
+
+      <dt class="col-sm-2">Conditions</dt>
+      <dd class="col-sm-10">
+        {{conditions.multiselect}}
+      </dd>
+    </dl>
+
+    <p>
+      Dropdown button text when no items are selected.
+    </p>
+
+    <h4>textMultipleSelected</h4>
+
+    <dl class="row">
+      <dt class="col-sm-2">Default</dt>
+      <dd class="col-sm-10"><code>"%count_selected% selected"</code></dd>
+
+      <dt class="col-sm-2">Conditions</dt>
+      <dd class="col-sm-10">
+        {{conditions.multiselect}}
+      </dd>
+    </dl>
+
+    <p>
+       Dropdown button text when multiple items are selected and <code>maxListLength</code> is exceeded.
+    </p>
+
+    <p>
+      The <code>%count_selected%</code> keyword is available to display the number of selected items.
+    </p>
+
+    <h4>textNoResults</h4>
+
+    <dl class="row">
+      <dt class="col-sm-2">Default</dt>
+      <dd class="col-sm-10"><code>"No results"</code></dd>
+
+      <dt class="col-sm-2">Conditions</dt>
+      <dd class="col-sm-10">
+        {{{conditions.search}}}
+      </dd>
+    </dl>
+
+    <p>
+      This text appears when a search yields no results.
+    </p>
+
+    <div class="page-header">
+      <h3>Controls</h3>
+    </div>
+
+    <h4>deselectAll</h4>
+
+    <dl class="row">
+      <dt class="col-sm-2">Default</dt>
+      <dd class="col-sm-10"><code>true</code></dd>
+
+      <dt class="col-sm-2">Conditions</dt>
+      <dd class="col-sm-10">
+        {{conditions.multiselect}}
+      </dd>
+    </dl>
+
+    <p>
+      Include a deselect all option in the dropdown menu.
+    </p>
+
+    <p>
+      Alternatively, if <code>selectButtons</code> is <code>true</code>, a deselect all button will be included in the input group.
+    </p>
+
+    <h4>selectAll</h4>
+
+    <dl class="row">
+      <dt class="col-sm-2">Default</dt>
+      <dd class="col-sm-10"><code>true</code></dd>
+
+      <dt class="col-sm-2">Conditions</dt>
+      <dd class="col-sm-10">
+        {{conditions.multiselect}}
+      </dd>
+    </dl>
+
+    <p>
+      Include a select all option in the dropdown menu.
+    </p>
+
+    <p>
+      Alternatively, if <code>selectButtons</code> is <code>true</code>, a select all button will be included in the input group.
+    </p>
+
+    <div class="page-header">
+      <h3>Buttons</h3>
+    </div>
+
+    <h4>selectButtons</h4>
+
+    <dl class="row">
+      <dt class="col-sm-2">Default</dt>
+      <dd class="col-sm-10"><code>false</code></dd>
+
+      <dt class="col-sm-2">Conditions</dt>
+      <dd class="col-sm-10">
+        {{conditions.multiselect}}
+      </dd>
+    </dl>
+
+    <p>
+      Include 'deselect all' and 'select all' controls as buttons within the input group rather than as dropdown menu items.
+    </p>
+
+    <h4>classBtnDeselectAll</h4>
+
+    <dl class="row">
+      <dt class="col-sm-2">Default</dt>
+      <dd class="col-sm-10"><code>"btn btn-outline-secondary"</code></dd>
+
+      <dt class="col-sm-2">Conditions</dt>
+      <dd class="col-sm-10">
+        {{conditions.multiselect}}<br />
+        {{{conditions.selectButtons}}}
+      </dd>
+    </dl>
+
+    <p>
+      The class applied to the deselect all button.
+    </p>
+
+    <h4>classBtnSelectAll</h4>
+
+    <dl class="row">
+      <dt class="col-sm-2">Default</dt>
+      <dd class="col-sm-10"><code>"btn btn-outline-secondary"</code></dd>
+
+      <dt class="col-sm-2">Conditions</dt>
+      <dd class="col-sm-10">
+        {{conditions.multiselect}}<br />
+        {{{conditions.selectButtons}}}
+      </dd>
+    </dl>
+
+    <p>
+      The class applied to the select all button.
+    </p>
+
+    <div class="page-header">
+      <h3>HTML</h3>
+    </div>
+
+    <p class="highlight">
+      Include your own text/HTML values for:
+    </p>
+
+    <ul>
+      <li>
+        The deselect all button.
+      </li>
+      <li>
+        The select all button.
+      </li>
+      <li>
+        The dismiss/deselect link within badges.
+      </li>
+    </ul>
+
+    <p>
+      The example below use SVG sprite icons from <a href="https://rastasheep.github.io/ionicons-sprite/">Ionicons sprite</a> by <a href="https://rastasheep.github.io/">rastasheep</a> who created sprites from <a href="http://ionicons.com/">ionicons</a>, the premium icon font for <a href="http://ionicframework.com/">Ionic Framework</a>.
+    </p>
+
+    <div class="form-group">
+      <label for="demo_options_html">Select one or more of your favourite foods</label>
+      <select id="demo_options_html" class="form-control" multiple>
+        {{#each food}}
+        <option value="{{@key}}">{{this}}</option>
+        {{/each}}
+      </select>
+    </div>
+
+<pre><code>{{{ htmlentities
+'<div class="form-group">
+  <label for="demo_options_html">Select one or more of your favourite foods</label>
+  <select id="demo_overview_example" class="form-control" multiple>
+    <!-- options -->
+  </select>
+</div>
+
+<script>
+  $(document).ready(function(){
+    $("select#demo_options_html").selectDropdown({
+      \'selectButtons\': true,
+      \'htmlDeselectAll\': \'<svg class="ion"><use xlink:href="#ion-close-circled"></use></svg>\',
+      \'htmlSelectAll\': \'<svg class="ion"><use xlink:href="#ion-checkmark-circled"></use></svg>\',
+      \'htmlBadgeRemove\': \'<svg class="ion"><use xlink:href="#ion-close"></use></svg>\'
+    });
+  });
+</script>'
+}}}</code></pre>
+
+    <h4>htmlClear</h4>
+
+    <dl class="row">
+      <dt class="col-sm-2">Default</dt>
+      <dd class="col-sm-10"><code>"Clear search"</code></dd>
+
+      <dt class="col-sm-2">Conditions</dt>
+      <dd class="col-sm-10">
+        {{{conditions.search}}}<br />
+        {{conditions.multiselect}}
+      </dd>
+    </dl>
+
+    <h4>htmlDeselectAll</h4>
+
+    <dl class="row">
+      <dt class="col-sm-2">Default</dt>
+      <dd class="col-sm-10"><code>"Deselect all"</code></dd>
+
+      <dt class="col-sm-2">Conditions</dt>
+      <dd class="col-sm-10">
+        {{{conditions.search}}}<br />
+        {{{conditions.deselect}}}<br />
+        {{conditions.multiselect}}
+      </dd>
+    </dl>
+
+    <h4>htmlSelectAll</h4>
+
+    <dl class="row">
+      <dt class="col-sm-2">Default</dt>
+      <dd class="col-sm-10"><code>"Select all"</code></dd>
+
+      <dt class="col-sm-2">Conditions</dt>
+      <dd class="col-sm-10">
+        {{{conditions.search}}}<br />
+        {{{conditions.select}}}<br />
+        {{conditions.mutliselect}}
+      </dd>
+    </dl>
+
+    <h4>htmlBadgeRemove</h4>
+
+    <dl class="row">
+      <dt class="col-sm-2">Default</dt>
+      <dd class="col-sm-10"><code>"[x]"</code></dd>
+
+      <dt class="col-sm-2">Conditions</dt>
+      <dd class="col-sm-10">
+        {{{conditions.badges}}}<br />
+        {{conditions.multiselect}}
+      </dd>
+    </dl>
+
+    <div class="page-header">
+      <h3>Classes</h3>
+    </div>
+
+    <h4>classBtnSelect</h4>
+
+    <dl class="row">
+      <dt class="col-sm-2">Default</dt>
+      <dd class="col-sm-10"><code>"btn btn-primary"</code></dd>
+    </dl>
+
+    <p>
+      The class applied to the dropdown button.
+    </p>
+
+    <h4>classBadge</h4>
+
+    <dl class="row">
+      <dt class="col-sm-2">Default</dt>
+      <dd class="col-sm-10"><code>"badge badge-dark mr-1"</code></dd>
+
+      <dt class="col-sm-2">Conditions</dt>
+      <dd class="col-sm-10">
+        {{{conditions.badges}}}<br />
+        {{conditions.multiselect}}
+      </dd>
+    </dl>
+
+    <p>
+      The class applied to badges.
+    </p>
+
+    <h4>classBadgeContainer</h4>
+
+    <dl class="row">
+      <dt class="col-sm-2">Default</dt>
+      <dd class="col-sm-10"><code>"mt-2 mb-3"</code></dd>
+
+      <dt class="col-sm-2">Conditions</dt>
+      <dd class="col-sm-10">
+        {{{conditions.badges}}}<br />
+        {{conditions.multiselect}}
+      </dd>
+    </dl>
+
+    <p>
+      The class applied to the badge container.
+    </p>
+
+  </div><!-- /.col-md-9 -->
+</div><!-- /.row -->
+
+{{> meta/foot}}
+{{> meta/end}}

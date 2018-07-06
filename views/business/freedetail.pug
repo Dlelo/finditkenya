@@ -56,20 +56,20 @@ block content
                 if(biz.website)
                   .col-md-12
                     p.text-left.findit-blue
-                      strong
+                      strong,style="color:#2862ec;"
                         span.fas.fa-globe
-                        a.findit(href="http://"+biz.website,target="_blank",style="color:#2862ec;")
+                        a.findit(href="http://"+biz.website,target="_blank")
                           |  Website
                   hr.nomargin
                 .col-md-12
-                  p.text-left.findit-blue
+                  p.text-left.findit-red
                     each phone in phones
                       span#biz-id(style="display:none")
                         =biz.id
                       span.fas.fa-phone
-                      a.findit.phoneno(href="tel:"+phone,style="color:#2862ec;display:none")
+                      a.findit.phoneno(href="tel:"+phone,style="display:none")
                         |  #{phone}
-                      a.findit.phonenofake(href="#",style="color: #bc1206")
+                      a.findit.phonenofake(href="#",style="color: #c0000")
                         |  Get Contacts
                       br
                   hr.nomargin
@@ -92,9 +92,10 @@ block content
                       hr
                 .col-md-12.text-center
                     if biz.paid
-                      span.fa.fa-check-circle.strong(style="color:#2862ec;")
-                      strong
-                        |  Claimed
+                      span.badge.badge-success
+                        span.fa.fa-check-circle.strong
+                        strong
+                          |  Claimed
                     else
                       if(biz.pending && user.username == biz.user_id)
                         a(href='/pay/'+biz.id)

@@ -10,11 +10,14 @@ head
   meta(name="google-site-verification", content="CoXsTMnoIpW_aQqFyEqaFZ4cKbYSrSwUXQca9u_6mMg")
   link(href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800', rel='stylesheet')
   link(href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900', rel='stylesheet')
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.0/fuse.min.js")
   link(rel='apple-touch-icon', href='apple-touch-icon.png')
   link(rel="icon" type="image/png" sizes="32x32" href="/img/favicon.png")
   //custom theme files
   link(href="/stylesheets/css/bootstrap.css" type="text/css" rel="stylesheet" media="all")
   link(href="/stylesheets/css/style.css" type="text/css" rel="stylesheet" media="all")
+  
+
   
   
   //font-awesome icons
@@ -26,6 +29,8 @@ head
   link(href="//fonts.googleapis.com/css?family=Josefin+Sans:100,100i,300,300i,400,400i,600,600i,700,700i" rel="stylesheet")
   script(src="/javascripts/jquery-3.3.1.min.js") 
   script(src='/javascripts/jquery.easy-autocomplete.min.js')
+  //selector css
+  link(rel='stylesheet', href='/stylesheets/css/bootstrap-select.min.css')
  
   link(rel='stylesheet', href='/stylesheets/lightbox.css')
   link(rel='stylesheet', href='/stylesheets/bootstrap-select.min.css')
@@ -34,6 +39,7 @@ head
   link(rel='stylesheet', href='/stylesheets/jquery-gmaps-latlon-picker.css')
   link(rel='stylesheet', href='/stylesheets/star-rating.min.css')
   link(rel='stylesheet', href='/stylesheets/lightgallery.min.css')
+  link(href="/stylesheets/css/bootstrap-multiselect.css" type="text/css" rel="stylesheet" media="all")
 
   //added css from layout
   link(rel='stylesheet', href='/stylesheets/fontAwesome.css')
@@ -42,7 +48,7 @@ head
   link(rel='stylesheet', href='/stylesheets/owl.theme.default.min.css')
   //link(rel='stylesheet', href='/stylesheets/templatemo-style.css')
   link(rel='stylesheet', href='/stylesheets/lightbox.css')
-  link(rel='stylesheet', href='/stylesheets/bootstrap-select.min.css')
+  //old selector css//link(rel='stylesheet', href='/stylesheets/bootstrap-select.min.css')
   link(rel='stylesheet', href='/stylesheets/bootstrap-datetimepicker.min.css')
   
   
@@ -224,7 +230,9 @@ body
                         
   
 <!--bootstrap 4 javascript-->
-
+script(src='/javascripts/bootstrapjs/bootstrap-select-dropdown.min.js')
+//script(src='/javascripts/bootstrapjs/bootstrap-select.min.js')
+//not working//script(src='/javascripts/bootstrapjs/bootstrap-multiselect.js')
 script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js")
 script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js") 
 script(src='/javascripts/bootstrapjs/jquery.prettyPhoto.js')
@@ -255,7 +263,7 @@ script(src="/javascripts/jquery.autocomplete.min.js")
 script(src="/javascripts/lightgallery.min.js")
 script(src="/javascripts/moment.min.js")
 script(src="/javascripts/bootstrap-datetimepicker.min.js")
-script(src='/javascripts/bootstrap-select.min.js')
+//old selector css//script(src='/javascripts/bootstrap-select.min.js')
 
 <!--End of Js from old  layout -->
 <!--sript to show search on menu on scroll -->

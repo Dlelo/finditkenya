@@ -1,0 +1,111 @@
+extends ../layout-new
+
+block content
+  #home.parallax-content-list.baner-content-listing-biz
+    .container.container-margin-top
+      .page_body.basic-content
+        .container
+          .col-md-offset-12.col-md-12.col-md-offset-12
+              h3.text-center Add Business
+          .col-md-offset-0.col-md-12.col-md-offset-0
+            form.form-horizontal(method="post",action="/business/add",enctype="multipart/form-data")
+              .form-group
+                .col-md-12
+                  input#name.form-control-form(type='text', name='name', placeholder='Name')
+              .form-group
+                .col-md-12
+                  textarea#description.form-control-form(name='description',placeholder="Describe your business (Max 120 words)", maxlength="150")
+              .form-group
+                .row
+                  .col-sm-6.col-xs-6
+                    //select.selectpicker#city.form-control(mutiple='multiple'  name='city' data-size="7" data-live-search="true" class="selectpicker btn-primary fill_selectbtn_in own_selectbox" data-title="Location")
+                    select#demo_overview_minimal_multiselect(class="form-control" data-role="select-dropdown")  
+                      option(data-icon='glyphicon-wrench', value='') --Select City--
+                      option(data-icon='glyphicon glyphicon-globe', value='Nairobi') Nairobi
+                      option(data-icon='glyphicon glyphicon-globe',value='Mombasa') Mombasa 
+                      option(data-icon='glyphicon glyphicon-globe', value='Kisumu') Kisumu
+                      option(data-icon='glyphicon glyphicon-globe',value='Eldoret') Eldoret 
+                      option(data-icon='glyphicon glyphicon-globe', value='Nakuru') Nakuru
+                      option(data-icon='glyphicon glyphicon-globe',value='Meru') Meru 
+                      option(data-icon='glyphicon glyphicon-globe', value='Nyeri') Nyeri
+                      option(data-icon='glyphicon glyphicon-globe',value='Thika') Thika 
+                      option(data-icon='glyphicon glyphicon-globe', value='Nanyuki') Nanyuki
+                      option(data-icon='glyphicon glyphicon-globe', value='Watamu') Watamu
+                      option(data-icon='glyphicon glyphicon-globe', value='Kitale') Kitale 
+                      option(data-icon='glyphicon glyphicon-globe', value='Narok') Narok
+                      option(data-icon='glyphicon glyphicon-globe', value='Samburu') Samburu
+                      option(data-icon='glyphicon glyphicon-globe', value='Machakos') Machakos 
+                      option(data-icon='glyphicon glyphicon-globe', value='Nyahururu') Nyahururu
+                      option(data-icon='glyphicon glyphicon-globe', value='Malindi') Malindi
+                      option(data-icon='glyphicon glyphicon-globe', value='Kiambu') Kiambu
+                  .col-sm-6.col-xs-6
+                    input#map.form-control-form(type='text', name='website', placeholder='website')  
+                  .col-sm-6.col-xs-6
+                    input#map.form-control-form(type='text', name='phone', placeholder='phone1,phone2')            
+                  .col-sm-6.col-xs-6
+                    input#map.form-control-form(type='text', name='street', placeholder='street')
+                  .col-sm-6.col-xs-6
+                    input#map.form-control-form(type='text', name='building', placeholder='building')
+                  .col-sm-6.col-xs-6
+                    input#map.form-control-form(type='text', name='email', placeholder='email1,email2')
+                .row
+                  .col-sm-6.col-xs-6
+                    //select.selectpicker.form-control(name='category', data-selected-text-format='count > 5',class='category')
+                    select#demo_overview_minimal.category(name='category' class="form-control" data-role="select-dropdown" data-profile="minimal")   
+                      option(data-icon='glyphicon-wrench', value='') --Select Business or Service--
+                      option(data-icon='glyphicon-gift', value='business') Business
+                      option(data-icon='glyphicon glyphicon-glass',value='service') Service 
+                  .col-sm-2.col-xs-6
+                    //select#subcategory.selectpicker.form-control-form-select(name='subcategory', data-selected-text-format='count > 5', class='subcategory')
+                    select#demo_overview.category(name='category')
+                      option(data-icon='glyphicon-wrench', value='') --Select Category--
+                      each category in categories
+                        option(data-icon='fa '+category.icon, value=category.name) 
+                          =category.name
+                  .col-sm-4.col-xs-6
+                    .form-group
+                      .col-sm-6
+                        .input-group-addon.findit-red
+                          strong
+                            |Select Subcategories 
+                    .form-group  
+                      .col-sm-6
+                          select.demo_overview_example.subcategory(name='subcategory' class="form-control" multiple)
+                            option(data-icon='fa fa-search', value=) 
+                            each category in categories
+                              each subcat in category.subcategories
+                                option(data-icon='glyphicon-wrench', value=subcat.name, rel=category.name) 
+                                  =subcat.name
+                          
+                              
+                    input#lat.gllpLatitude(type='hidden', value='0',name='lati')
+                    input#long.gllpLongitude(type='hidden', value='38.644',name='long')
+                    input#zoom.gllpZoom(type='hidden', value='6',name='zoom')
+                    if(categories.pendingstatus)
+                      input#map.form-control-form(type='hidden', name='pending', value='true')
+                    if(categories.packagepaid)
+                      input#map.form-control-form(type='hidden', name='packagepaid', value=categories.packagepaid)
+              .form-group
+                .row
+                  button.button.btn.btn-warning.form-control-form(type='submit') Create
+      script(src="http://maps.googleapis.com/maps/api/js?key=AIzaSyC9MX39yDkMJn6rjWi6vt4Rens5u_cVBQE") 
+      
+    //script to allow multiselect on dropdown
+      script(type="text/javascript").
+        var carsAndModels = {};
+        function ChangeCarList() {
+            var carList = document.getElementByClass("category");
+            var modelList = document.getElementByClass("subcategory");
+            var selCar = carList.options[carList.selectedIndex].value;
+            while (modelList.options.length) {
+                modelList.remove(0);
+            }
+            var cars = carsAndModels[selCar];
+            if (cars) {
+                var i;
+                for (i = 0; i < cars.length; i++) {
+                    var car = new Option(cars[i], i);
+                    modelList.options.add(car);
+                }
+            }
+        } 

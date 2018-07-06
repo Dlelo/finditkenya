@@ -1,4 +1,4 @@
-extends ../layout
+extends ../layout-new
 
 block content
   #home.parallax-content-list.baner-content-listing-biz
@@ -72,7 +72,8 @@ block content
                       strong
                         h6.findit-red
                           | Select SubCategory
-                      select#ssubcategoryy.form-control-form-select.ssubcategory.selectpicker(name='ssubcategory',multiple,data-selected-text-format='count > 5', data-live-search="true")
+                      //select#ssubcategoryy.form-control-form.form-control-form-select(name='ssubcategory',multiple,data-selected-text-format='count > 5', class='ssubcategory')
+                      select#ssubcategory.form-control-form.form-control-form-select(name='ssubcategory',data-selected-text-format='count > 5', class='ssubcategory')  
                         each category in categories
                           each subcat in category.subcategories
                             option(data-icon='glyphicon-wrench', value=subcat.name, rel=category.name) 
@@ -87,12 +88,25 @@ block content
                         h6.findit-red
                           | End Event Date
                       input#startdate.form-control-form(type='text', name='endeventdate', placeholder='End Event Date',class='datetimepicker') 
-                .form-group.opening-closingform
-                  .col-md-12
-                    .input-group
-                      .input-group-addon.findit-red
-                        strong
-                            | Select Amenities
+                .form-group
+                  .row
+                    .col-sm-12
+                      label(for="extras")
+                        strong.findit-red
+                         |Select Amenities (select multiple if applicable):
+                      //select(multiple class="form-control" id="extras" name="extras")
+                      select#ssubcategory.form-control-form.form-control-form-select(name='ssubcategory',data-selected-text-format='count > 5', class='ssubcategory') 
+                        option(data-icon='glyphicon glyphicon-signal', value='wifi') Wifi
+                        option(data-icon='glyphicon-credit-card', value='creditcards') Credits Cards
+                        option(data-icon='glyphicon-cutlery', value='buffet') Buffet
+                        option(data-icon='glyphicon glyphicon-glass', value='full_bar') Full Bar
+                        option(data-icon='glyphicon-gift', value='takeaway') Take Away
+                        option(data-icon='glyphicon-ok-circle', value='parking') Parking
+                        option(data-icon='glyphicon-tent', value='camping') Camping
+                        option(data-icon='glyphicon-bed', value='accomodation') Accomodation  
+                  //.col-md-12
+                      strong.findit-red
+                        | Select Amenities
                       select.form-control-form-select.selectpicker(name='extras', multiple='', data-selected-text-format='count > 10')
                         option(data-icon='glyphicon glyphicon-signal', value='wifi') Wifi
                         option(data-icon='glyphicon-credit-card', value='creditcards') Credits Cards

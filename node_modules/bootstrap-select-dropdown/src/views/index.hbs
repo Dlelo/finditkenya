@@ -1,0 +1,195 @@
+{{> meta/head}}
+
+<div class="row">
+  <div class="col-lg-3">
+
+    {{> nav/secondary overview=true }}
+
+  </div>
+  <div class="col-lg-9">
+
+    <div class="page-header">
+      <h1>Bootstrap Select Dropdown <small>for Bootstrap 4</small></h1>
+    </div>
+    <p class="lead">A jQuery plugin for Bootstrap 4 that converts <code>&lt;select&gt;</code> and <code>&lt;select multiselect&gt;</code> elements to dropdowns. Uses Bootstrap's dropdown plugin and fuse.js for fuzzy search.</p>
+
+    <p>Use Bootstrap Select Dropdown to improve the user experience for long option lists. Compared to a regular multiselect, this plugin adds:</p>
+
+    <p>
+      <ul>
+        <li>a search box;</li>
+        <li>keyboard navigation for search; and</li>
+        <li>select/deselect all controls.</li>
+      </ul>
+    </p>
+
+    <div class="page-header">
+      <h2>Example: Default</h2>
+    </div>
+
+    <div class="form-group">
+      <label for="demo_overview">Select a country</label>
+      <select id="demo_overview" class="form-control" data-role="select-dropdown">
+        {{#each countries}}
+        <option value="{{@key}}">{{this}}</option>
+        {{/each}}
+      </select>
+    </div>
+
+<pre><code>{{{ htmlentities
+'<div class="form-group">
+  <label for="demo_overview">Select one or more countries</label>
+    <select id="demo_overview" class="form-control" data-role="select-dropdown">
+    <!-- options -->
+  </select>
+</div>'
+}}}</code></pre>
+
+    <div class="page-header">
+      <h2>Example: Default (multiselect)</h2>
+    </div>
+
+    <div class="form-group">
+      <label for="demo_overview">Select one or more countries</label>
+      <select id="demo_overview" class="form-control" data-role="select-dropdown" multiple>
+        {{#each countries}}
+        <option value="{{@key}}">{{this}}</option>
+        {{/each}}
+      </select>
+    </div>
+
+<pre><code>{{{ htmlentities
+'<div class="form-group">
+  <label for="demo_overview">Select one or more countries</label>
+    <select id="demo_overview" class="form-control" data-role="select-dropdown" multiple>
+    <!-- options -->
+  </select>
+</div>'
+}}}</code></pre>
+
+    <div class="page-header">
+      <h2>Example: Minimal</h2>
+    </div>
+
+    <p>
+      An example of a minimal configuration. A <code>profile: minimal</code> option is offered as a shortcut that sets a range of options to disable search, disable badges and remove any extra controls.
+    </p>
+
+    <div class="form-group">
+      <label for="demo_overview_minimal">Select a food</label>
+      <select id="demo_overview_minimal" class="form-control" data-role="select-dropdown" data-profile="minimal">
+        {{#each food}}
+        <option value="{{@key}}">{{this}}</option>
+        {{/each}}
+      </select>
+    </div>
+
+<pre><code>{{{ htmlentities
+'<div class="form-group">
+<label for="demo_overview_minimal">Select a food</label>
+<select id="demo_overview_minimal" class="form-control" data-role="select-dropdown" data-profile="minimal">
+<!-- options -->
+</select>
+</div>'
+}}}</code></pre>
+
+    <div class="page-header">
+      <h2>Example: Minimal (multiselect)</h2>
+    </div>
+
+    <p>
+      An example of a minimal configuration on a <code>{{{htmlentities '<select multiselect>'}}}</code> element. Individual configuration options are set in this example rather than using the <code>profile: minimal</code> shortcut.
+    </p>
+
+    <div class="form-group">
+      <label for="demo_overview_minimal_multiselect">Select a food</label>
+      <select id="demo_overview_minimal_multiselect" class="form-control" multiple>
+        {{#each food}}
+        <option value="{{@key}}">{{this}}</option>
+        {{/each}}
+      </select>
+    </div>
+
+<pre><code>{{{ htmlentities
+'<div class="form-group">
+<label for="demo_overview_minimal_multiselect">Select a food</label>
+<select id="demo_overview_minimal_multiselect" class="form-control">
+<!-- options -->
+</select>
+</div>
+
+<script>
+  $(document).ready(function(){
+    $("#demo_multiselect").selectDropdown({
+      \'search\': false,
+      \'badges\': false,
+      \'deselectAll\': false,
+      \'selectAll\': false,
+      \'showSelected\': false
+    });
+  });
+</script>'
+}}}</code></pre>
+
+    <div class="page-header">
+      <h2>Example: Icons, input group buttons and button text values (multiselect)</h2>
+    </div>
+
+    <p>
+      An example to demonstrate available options. For a full list of options, consult the <a href="options.html">options documentation</a>.
+    </p>
+
+    <div class="form-group">
+      <label for="demo_overview_icons_badges">Select one or more countries</label>
+      <select id="demo_overview_icons_badges" class="form-control" multiple>
+        {{#each countries}}
+        <option value="{{@key}}">{{this}}</option>
+        {{/each}}
+      </select>
+    </div>
+
+<pre><code>{{{ htmlentities
+'<div class="form-group">
+  <label for="demo_overview_icons_badges">Select one or more countries</label>
+  <select id="demo_overview_example" class="form-control" multiple>
+    <!-- options -->
+  </select>
+</div>
+
+<script>
+  $(document).ready(function(){
+    $("#demo_multiselect").selectDropdown({
+      \'maxListLength\': 4,
+      \'badges\': false,
+      \'selectButtons\' : true,
+      \'htmlDeselectAll\': \'<svg class="ion"><use xlink:href="#ion-close-circled"></use></svg>\',
+      \'htmlSelectAll\': \'<svg class="ion"><use xlink:href="#ion-checkmark-circled"></use></svg>\'
+    });
+  });
+</script>'
+}}}</code></pre>
+
+  <p>
+    In this example, the following options have been set.
+  </p>
+
+  <ul>
+    <li>
+      <strong>maxListLength</strong> is set to <code>4</code>, adding up to 4 comma separated selected options to the button text. For 5 or more selections, the button text reverts to <code>%count_selected% selected</code>.
+    </li>
+    <li>
+      <strong>badges</strong> are disabled for a more compact mutliselect.
+    </li>
+    <li>
+      <strong>selectButtons</strong> is set to <code>true</code>, which transforms the 'Deselect all' and 'Select all' dropdown options into input group buttons.
+    </li>
+    <li>
+      <code>htmlDeselectAll</code> and <code>htmlSelectAll</code> contain SVG icons. Bootstrap does not ship with an icon framework by default, so some integration may be required. In this example, SCSS/CSS has been applied to make SVG icons work (height, width, fill) within buttons and badges.
+    </li>
+  </ul>
+
+  </div><!-- /.col-md-9 -->
+</div><!-- /.row -->
+
+{{> meta/foot}}
+{{> meta/end}}

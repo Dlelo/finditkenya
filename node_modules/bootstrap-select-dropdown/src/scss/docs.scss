@@ -1,0 +1,89 @@
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1600px
+);
+
+@import "~bootstrap/scss/bootstrap";
+@import "~highlight.js/styles/default.css";
+
+/**
+ * Styles for docs only (not for dist).
+ */
+.hljs {
+  padding: $spacer;
+}
+.nav-secondary {
+  margin-top: map-get($spacers, 5);
+}
+.page-header {
+  margin: map-get($spacers, 5) 0 map-get($spacers, 3);
+  border-bottom: 1px solid $gray-400;
+  small {
+    @extend .text-muted;
+  }
+}
+.btn,
+.nav-link {
+  .ion {
+    display: inline-block;
+    width: $font-size-base;
+    height: $font-size-base;
+    stroke-width: 0;
+    stroke: $body-color;
+    fill: $body-color;
+    transition: $transition-base;
+  }
+  @include hover {
+    .ion {
+      stroke: $white;
+      fill: $white;
+    }
+    &.disabled .ion,
+    &:disabled .ion {
+      stroke: $body-color;
+      fill: $body-color;
+    }
+  }
+}
+.nav-link {
+  .ion {
+    width: $font-size-base * 1.4;
+    height: $font-size-base * 1.4;
+    fill: $white;
+  }
+  &:hover {
+    .ion {
+      fill: $gray-200;
+    }
+  }
+}
+.badge {
+  .ion {
+    width: $font-size-base * 0.75;
+    height: $font-size-base * 0.75;
+    position: relative;
+    top: 1px;
+  }
+}
+@each $color, $value in $theme-colors {
+  .badge-#{$color} .ion {
+    fill: color-yiq($value);
+    &:hover {
+      fill: darken( color-yiq( $value ), 10% );
+    }
+  }
+}
+dl {
+  padding: $spacer;
+  background-color: $gray-100;
+  dd:last-child {
+    margin-bottom: 0;
+  }
+}
+p.highlight {
+  background-color: $gray-100;
+  padding: $spacer;
+  border: 1px solid $gray-200;
+}

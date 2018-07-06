@@ -247,7 +247,7 @@ header h1 a span {
 	-o-background-size: cover;
 	-ms-background-size: cover;
 	background-size: cover;
-	height: 75vh;
+	height: 73vh;
 	position: relative;
 	background-image:center no-repeat;
 }
@@ -1985,8 +1985,9 @@ ul.portfolio-area li figure {
 	color: #fff;
 }
 .h-order-category{
-	margin-top: 1em;
-	margin-left:1em;
+	margin-top: 1px;
+	margin-bottom: 4px;
+	margin-left:1px;
 	text-align:right;
 }
 
@@ -3617,10 +3618,17 @@ input, textarea, select, button {
 	font-size: 18px;
 	padding-left: 4px;
 	padding-right:4px;
+	color:#212529;
 	
 }
 .listhome-nav{
-	background-color: #fff;
-	opacity: 1;
-	filter: alpha(opacity=60); /* For IE8 and earlier */
+	background:transparent;
+}
+/*multiselect style*/
+.padding10top{
+	padding-top: 10px
+}
+.extra-space{
+	margin-right:1rem;
+	margin-left: 1rem;
 }

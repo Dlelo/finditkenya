@@ -26,12 +26,12 @@ block content
                h5
                 |  Find
               input#search2.form-control.form-control-lg(type="text" placeholder="Restaurants, Holidays, Businesses, Lawyers, Doctors..." ,name='search', autofocus)
-          .nav.listhome-nav
+          //.nav.listhome-nav
             each category,i in categories
               ul
-                if i <5
+                if i <4
                   a(href="/category/"+category.name)
-                    li.findit-red.listItems-home
+                    li.listItems-home
                       i.fas.fa-1x(aria-hidden='true', class=category.icon)
                       strong   
                         =category.name 
@@ -47,11 +47,11 @@ block content
       div.col-md-8.col-lg-8.col-sm-12.col-sm-12.my-col
         h2.agile-title.h-order-category.text-center
           | Search by Category
-        div.row.my-md-5.mt-sm-8.my-4.text-center
+        div.row.mt-sm-8.text-center
           ins.adsbygoogle(style='display:block', data-ad-client='ca-pub-9965055906014205', data-ad-slot='7358207938', data-ad-format='auto')
           script.
             window.onload = function() {  (adsbygoogle = window.adsbygoogle || []).push({});}
-        div.row.my-md-5.mt-sm-8.my-4.text-center
+        div.row.mt-sm-8.text-center
           each category,i in categories
             if(i < 4)
               div.col-lg-3.col-md-3.col-sm-12.col-xm-12.w3-ab.my-md-0.my-sm-12.my-4
@@ -69,7 +69,7 @@ block content
                         | Aenean pulvinar ac enimet posuere tincidunt velit Utin tincidunt
               
         //div.agileabt-w3.py-lg-5
-        div.row.my-md-5.mt-sm-8.my-4.text-center
+        div.row.mt-sm-8.text-center
           each category,i in categories
             if(i > 4 && i<8)
               div.col-lg-3.col-md-3.col-sm-12.col-xm-12.w3-ab.my-md-0.my-sm-12.my-4

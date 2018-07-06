@@ -1,14 +1,15 @@
-extends ../layout
+extends ../layout-min
 
 block content
   #home.parallax-content-list.baner-content-listing-biz
-    .container
-      h4 Claim This Business
+    .container.container-margin-top
+      h4.text-center
+        | Claim This Business
       form(method='post', action='/claim/'+bizid)
         .form-group
-          input.form-control-form(name='phone', type='text', value='', placeholder='phone *', required)
+          input.form-control-form(name='phone', type='text', value='', placeholder='Phone *', required)
         .form-group
-          input.form-control-form(name='email', type='text', value='', placeholder='email *', required)
+          input.form-control-form(name='email', type='text', value='', placeholder='Email *', required)
         .form-group
           input.form-control-form(name='agentnumber', type='text', value='', placeholder='Agent No(optional)')
         .form-group

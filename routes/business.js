@@ -137,10 +137,6 @@ router.post('/add', role.auth, cpUpload, function(req, res, next) {
 						res.redirect('/dashboard');
 					}
 				}
-				instance.on('es-indexed', function(err, res){
-			    if (err) throw err;
-			    /* Document is indexed */
-			    });
 			});
 	    }else{
 	    	req.flash('error', 'Business already exists');

@@ -147,10 +147,6 @@ router.post('/edit/:id', role.auth, cpUpload, function(req, res, next) {
 				}
 				res.redirect('/dashboard');
 			}
-			b.on('es-indexed', function(err, res){
-		    if (err) throw err;
-		    /* Document is indexed */
-		    });
 		});
 	})
 	.catch(function(err){

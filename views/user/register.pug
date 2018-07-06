@@ -16,6 +16,12 @@ block content
             button.btn.btn-danger.facebook-google-btn.form-control
               i.fab.fa-google.pull-left(aria-hidden='true')          
               |  &nbsp;   Sign up with Google
+          .div
+          a.btn-gp-link(href="/auth/facebook")
+          button.btn.btn-primary.facebook-google-btn.form-control
+            i.fab.fa-facebook-f.pull-left(aria-hidden='true') 
+                       
+            | &nbsp; Login with Facebook
          .text-center
             | Or     
          form(method="post", action="/register")
@@ -36,9 +42,9 @@ block content
                   .checkbox
                     label
                       input(type="checkbox" class="custom-control-input custom-control form-control-lg custom-checkbox" id="customCheck1")
-                      label(class="custom-control-label" for="customCheck1" style="margin-left:5px")
-                        small
-                          |                                   I’d like to receive coupons and inspiration
+                      label(class="custom-control-label" for="customCheck1")
+                        small(style="margin-left:25px")
+                          | I’d like to receive coupons and inspiration
                   p
                     small
                       | By signing up, I agree to Find It’s, 

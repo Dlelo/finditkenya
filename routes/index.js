@@ -821,7 +821,7 @@ router.get('/biz/analytics/:bizid', function(req, res, next){
 
 });
 
-router.get('/coupons',role.auth, function(req, res){
+router.get('/coupons', function(req, res){
     var coupons = Coupons.find({
       status: true
     })

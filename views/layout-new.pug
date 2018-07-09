@@ -112,13 +112,13 @@ body
                 span.fas.fa-home.fas-menu 
                 strong
                 |  Home
-            if user
+            if (loggedin)
               li.nav-item.mr-3                  
                 a(href='/dashboard')  
                   span.fas.fa-user.fas-menu
                   strong
                   |  View Profile          
-            if user                
+            if (loggedin)                
               li.nav-item.mr-3
                 a(href='/logout') 
                   span.fas.fa-sign-out-alt.fas-menu

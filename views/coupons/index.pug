@@ -212,6 +212,11 @@ block content
             type: "GET",
             url: "/getcoupon/user/"+couponid,
             success: function(data){
+                if(data.msg == null){
+                  //alert("not logged in");
+                  window.location.href = "/login";
+                  throw new Error("kindly login!");
+                }
                 Notify.toast(data.msg, {
                   fn: function () {
                     // custom function here

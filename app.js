@@ -160,11 +160,18 @@ passport.use(new FacebookStrategy({
 ));
 
 app.use(function(req, res, next){
+  //INITIALIZE EMPTY USER OBJECT FOR USERS NOT LOGGED
+  var emptyUser = {};
+  var loggedin = false;
+  if(req.user){
+    loggedin = true;
+  }
   res.setHeader('Access-Control-Allow-Origin', req.get('host'));
   res.locals.success_msg = req.flash('success_msg') || null;
   res.locals.error_msg = req.flash('error_msg') || null;
   res.locals.error = req.flash('error') || null;
-  res.locals.user = req.user || null;
+  res.locals.user = req.user || emptyUser;
+  res.locals.loggedin = loggedin;
   res.locals.forgotpassword = req.get('host');
   if(req.user != null){
     next();

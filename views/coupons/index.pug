@@ -61,8 +61,8 @@ block content
               .coupon-title
                 | Popular Coupons
             each popular, i in populars
-              row.deal-main.deal-home.deal-coup
-                if i<2
+              if i<2  
+                row.deal-main.deal-home.deal-coup
                   .col-md-12
                     small
                       h6
@@ -181,7 +181,7 @@ block content
                       | @       
                       =coupon.bizid.name
               
-              .div.col-md-12.col-lg-12.col-sm-12.col-xs-12
+              .div.col-md-12.col-lg-12.col-sm-12.col-xs-12.float-left
                   =coupon.description
                 
               .div.col-md-12.col-lg-12.col-sm-12.col-xs-12.center-left

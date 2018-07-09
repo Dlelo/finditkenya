@@ -211,28 +211,28 @@ block content
             //top deal
         each coupon,i in coupons
           a(href="/coupons")
-            row.deal-main.deal-home.deal-coup
-              div.row.deal-main.coupon-items.column
-                div.content  
-                  .div.col-md-12.col-sm-12.col-xs-12
-                    strong
-                      h3                  
+            row.deal-main.deal-home.deal-coup.coupon-items.column
+              div.content  
+                .div.col-md-12.col-sm-12.col-xs-12
+                  strong
+                    h5                 
                       = coupon.name
-                  .div.col-md-12.col-lg-12.col-sm-12.col-xs-12
-                      img.coup-img-wrapper.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt="Responsive image")
-                  .div.col-md-12.col-lg-12.col-sm-12.col-xs-12.float-left 
                     h6
-                      small
-                        strong
-                          | @       
-                          =coupon.bizid.name
+                    small.findit-red
+                      strong
+                        | @       
+                        =coupon.bizid.name
+                .div.col-md-12.col-lg-12.col-sm-12.col-xs-12
+                    img.coup-img-wrapper.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt="Responsive image")
+                //.div.col-md-12.col-lg-12.col-sm-12.col-xs-12.float-left 
                   
-                  .div.col-md-12.col-lg-12.col-sm-12.col-xs-12
-                      =coupon.description
-                    
-                  .div.col-md-12.col-lg-12.col-sm-12.col-xs-12.center-left
-                    button.btn.btn-outline-primary(type="button" )
-                      =coupon.tagline 
+                
+                .div.col-md-12.col-lg-12.col-sm-12.col-xs-12(style="color:#212529 !important")
+                    =coupon.description
+                  
+                .div.col-md-12.col-lg-12.col-sm-12.col-xs-12.center-left
+                  button.btn.btn-outline-primary(type="button" )
+                    =coupon.tagline 
   //footer
   div.container-fluid
     .col-md-12.col-sm-12.text-center.footer-style

@@ -1,0 +1,121 @@
+doctype html
+html
+  head
+    title Custom Markers
+    meta(name='viewport', content='width=device-width, initial-scale=1.0, user-scalable=no')
+    meta(charset='utf-8')
+    link(href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800', rel='stylesheet')
+    link(href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900', rel='stylesheet')
+    link(rel='apple-touch-icon', href='apple-touch-icon.png')
+    //custom theme files
+    link(href="/stylesheets/css/bootstrap.css" type="text/css" rel="stylesheet" media="all")
+    link(href="/stylesheets/css/style.css" type="text/css" rel="stylesheet" media="all")
+    
+    //site css
+    link(href="/stylesheets/css/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css" rel="stylesheet")
+    link(href="/stylesheets/css/fontawesome-all.min.css" rel="stylesheet")
+
+    //link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+    //link(rel='stylesheet', href='/stylesheets/bootstrap-theme.min.css')
+    //link(rel='stylesheet', href='/stylesheets/fontAwesome.css')
+    //link(rel='stylesheet', href='/stylesheets/templatemo-style.css')
+    style.
+      /* Always set the map height explicitly to define the size of the div
+      * element that contains the map. */
+      #map {
+      height: 90%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      }
+      .header {
+        position: relative;
+      }
+      .navbar-nav>li>a {
+        color: #575757!important;
+      }    
+  body
+    .header
+      .container
+        nav.navbar.navbar-inverse(role='navigation')
+          .navbar-header
+            button#nav-toggle.navbar-toggle(type='button', data-toggle='collapse', data-target='#main-nav')
+              span.sr-only Toggle navigation
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+            a.navbar-brand(href='/')
+              em 
+                img(src="/img/find-it.png")
+          // /.navbar-header
+          nav#homenavbar.nav.navbar-expand-lg.navbar-light.bg-gradient-secondary.pt-3
+            div(style="display:inline-flex")
+            a.navbar-brand.text-white(href="/")
+                img.img-logo(src="/img/findit-red-logo.png").img-fluid
+            #showSearch
+                form.form-class(method='get', action='/search')
+                div.input-group
+                    input.search2.form-control.form-control-lg(type="text" placeholder="" ,name='search', autofocus)
+                
+            a(href="/coupons")
+                button.btn.btn-light.w3ls-btn.coupons-btn.flash-button#coupbtn(type="button")
+                span.fas.fa-gift.coupons-text-color
+                | View deals
+            
+            //site navigation 
+            button.navbar-toggler.ml-md-auto(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation")
+                span.navbar-toggler-icon
+            div#navbarSupportedContent.collapse.navbar-collapse
+            ul.navbar-nav.ml-lg-auto.text-left
+                
+                if user
+                    li.nav-item.mr-3                  
+                        a(href='/dashboard')  
+                        span.fas.fa-user.fas-menu
+                        strong
+                        |  View Profile          
+                if user                
+                    li.nav-item.mr-3
+                        a(href='/logout') 
+                        span.fas.fa-sign-out-alt.fas-menu
+                        strong
+                        |  Logout
+                else
+                    li.nav-item.mr-3
+                        a(href='/login')
+                        button.btn.btn-primary.w3ls-btn
+                            strong
+                            | Login
+                    li.nav-item.mr-3
+                    a(href="/register")
+                        button.btn.btn-outline-primary.w3ls-btn.findit-blue
+                        strong
+                        |  Sign Up
+        .errors
+            if errors
+                each error in errors
+                    .alert.xxx-error.alert-danger
+                        = error
+            
+            if message
+                .alert.xxx-error.alert-info
+                = message
+            if success_msg.length
+                .alert.xxx-error.alert-success 
+                = success_msg
+            if error_msg.length
+                .alert.xxx-error.alert-danger 
+                = error_msg
+            if error.length
+                .alert.xxx-error.alert-danger 
+                = error
+            
+    block content
+script(src='/javascripts/jquery.min.js')
+script(src="/javascripts/jquery-3.3.1.min.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js")
+script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js")

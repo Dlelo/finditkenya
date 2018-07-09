@@ -324,9 +324,8 @@ router.get('/allanalytics',role.auth, function(req, res, next){
         }
       }
     },
-    { "$sort": { "_id": 1 } },
-    { "allowDiskUse" : true }
-  ], function(err, rst){
+    { "$sort": { "_id": 1 } }
+  ],{ allowDiskUse: true }, function(err, rst){
     var result = Object.keys(rst).map(function(key) {
       return [rst[key]._id, rst[key].views, rst[key].contacts];
     });
@@ -345,7 +344,7 @@ router.get('/allanalytics',role.auth, function(req, res, next){
            }
          },
          { "$sort": { "time": -1 } }
-      ])
+      ],{ allowDiskUse: true })
   	.then(function(data){
        //console.log(data);
   	   res.render('admin/analytics', {data: data, title: "Analytics", graph: JSON.stringify(result)});

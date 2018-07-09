@@ -1494,6 +1494,12 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 800px) {
+	.banner{
+		min-height: 100vh !important;
+	}
+	.banner-text {
+		padding: 2vw 4vw 7vW 3vw;
+	}
 	.dropdown-item {
 		text-align:left;
 	}
@@ -1504,6 +1510,18 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 768px) {
+	.banner{
+		min-height: 100vh !important;
+	}
+	 
+    .img-logo {
+    width: 17vw !important;
+    height: 4vh !important;
+       }
+    
+	.banner-text {
+		padding: 2vw 4vw 7vW 3vw;
+	}
 	.dropdown-item {
 		text-align:left;
 	}
@@ -1525,6 +1543,9 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 736px) {
+	.banner-text {
+		padding: 2vw 4vw 7vW 3vw;
+	}
 	.dropdown-item {
 		text-align:left;
 	}
@@ -1539,6 +1560,13 @@ ul.portfolio-area li figure {
 	}
 }
 @media screen and (max-width: 667px) {
+	.img-logo {
+    width: 40vw !important;
+    height: 10vh !important;
+      }
+	.banner-text {
+		padding: 2vw 4vw 7vW 3vw;
+	}
 	section {
     flex-direction: column;
 }
@@ -1570,6 +1598,9 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 640px) {
+	.banner-text {
+		padding: 2vw 4vw 7vW 3vw;
+	}
 	.dropdown-item {
 		text-align:left;
 	}
@@ -1583,11 +1614,18 @@ ul.portfolio-area li figure {
     padding-top: 23vh;
 	}
 	.banner {
-		height: 60vh;
+		min-height: 100vh !important;
 	}
 }
 
 @media screen and (max-width: 600px) {
+	.img-logo {
+    width: 40vw !important;
+    height: 10vh !important;
+    }
+	.banner-text {
+		padding: 2vw 4vw 7vW 3vw;
+	}
 	.dropdown-item {
 		text-align:left;
 	}
@@ -1632,7 +1670,7 @@ ul.portfolio-area li figure {
 	height: 55vh !important;
 	}
 	.banner-text {
-		padding: 10vw 3vw 1vw 4vw;
+		padding: 2vw 4vw 7vW 3vw;
 	}
 
 	.slide-sub h5 {
@@ -1951,6 +1989,13 @@ ul.portfolio-area li figure {
 	border-radius: 4px;
 }
 @media screen and (max-width: 786px){
+	.eac-description {
+    width: 80% !important;
+		  }
+	.easy-autocomplete {
+    position: relative;
+    width: 80% !important;
+          }
 	.deal-main{
 		    margin-top: 2em !important;
 	}
@@ -1958,7 +2003,7 @@ ul.portfolio-area li figure {
 	   margin-left: 2rem!important;
 	}
 	.banner-text-top{
-    padding-top: 23vh;
+    padding-top: 15vh;
 	}
   .banner{
 	  min-height: 60vh;
@@ -2368,13 +2413,10 @@ padding-right:1px;
     margin-top: 13vh !important;
       }
 	.img-logo {
-	  width: 40vw !important;
-	  height: 3vh !important;
-	}
-	.search2{
-	  background-position: 11px 12px;
-      padding: 0px 1px 0px 35px !important;
-	}
+    width: 40vw !important;
+    height: 10vh !important;
+      }
+	
 	.modal-content{
 		width: 70% !important;
 	}

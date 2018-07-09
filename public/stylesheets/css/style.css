@@ -163,7 +163,7 @@ footer h2 {
 }
 
 .navbar-light {
-	padding: 1em 5em;
+	padding: 1em 2em;
 	position: absolute;
 	z-index: 999;
 	width: 100%;
@@ -1995,7 +1995,7 @@ ul.portfolio-area li figure {
 /* -- //Responsive code -- */
 .flash-button{
 	background:#04045a;
-	padding:5px 10px;
+	padding: 1px 2px 1px 2px;
 	color:#fff;
 	border:none;
 	border-radius:5px;
@@ -3632,4 +3632,7 @@ input, textarea, select, button {
 }
 .hide-coupbtn{
 	visibility:hidden !important;
+}
+.navbar-brand {
+	padding-top: .1125rem !important;
 }

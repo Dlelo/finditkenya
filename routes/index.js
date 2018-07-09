@@ -978,7 +978,7 @@ router.get('/coupons/:cat',role.auth, function(req, res){
 });
 
 router.get('/getcoupon/user/:id', function(req, res){
-  if(req.loggedin){
+  if(res.locals.loggedin){
     couponCode = 'coupon-' + Math.random().toString(36).substr(2, 8);
     Coupons.findById(req.params.id)
       .populate('bizid')

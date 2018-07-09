@@ -1211,7 +1211,7 @@ router.get('/biz/:name',function(req, res, next){
     var openingTimesMoment = new OpeningTimes(data.hours, 'Africa/Nairobi');
     data.openstatus = openingTimesMoment.getStatus(now);
 
-    if(_.includes(req.headers['x-forwarded-for'], "66.249")){
+    if(req.headers['x-forwarded-for'].includes("66.249")){
 
     }else{
       var analytics = new Analytics();

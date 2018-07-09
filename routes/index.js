@@ -977,33 +977,39 @@ router.get('/coupons/:cat',role.auth, function(req, res){
     });
 });
 
-router.get('/getcoupon/user/:id', role.auth, function(req, res){
-  couponCode = 'coupon-' + Math.random().toString(36).substr(2, 8);
-  Coupons.findById(req.params.id)
-    .populate('bizid')
-    .then(function(coupon){
-      console.log();
-      if(coupon.users.some(function(x) { return x.user_id == res.locals.user.id })){
-        res.json({msg: 'You Have Already Used This Coupon'});
-      }else{
-        coupon.users.push({
-          user_id: res.locals.user.id,
-          code: couponCode,
-          status: true
-        });
-        coupon.save(function(err){
-          if(err){
-            res.json({msg: 'You Probably Had a Coupon From This Offer Already'});
-          }else{
-            res.json({msg: 'Coupon Obtained'});
-          }
-        });
-      }
+router.get('/getcoupon/user/:id', function(req, res){
+  if(req.loggedin){
+    couponCode = 'coupon-' + Math.random().toString(36).substr(2, 8);
+    Coupons.findById(req.params.id)
+      .populate('bizid')
+      .then(function(coupon){
+        console.log();
+        if(coupon.users.some(function(x) { return x.user_id == res.locals.user.id })){
+          res.json({msg: 'You Have Already Used This Coupon'});
+        }else{
+          coupon.users.push({
+            user_id: res.locals.user.id,
+            code: couponCode,
+            status: true
+          });
+          coupon.save(function(err){
+            if(err){
+              res.json({msg: 'You Probably Had a Coupon From This Offer Already'});
+            }else{
+              res.json({msg: 'Coupon Obtained'});
+            }
+          });
+        }
 
-    })
-    .catch(function(err){
-         console.log(err);
-    });
+      })
+      .catch(function(err){
+           console.log(err);
+      });
+  }else{
+    ssn = req.session;
+		ssn.returnUrl = "/coupons";
+    res.json({});
+  }
 });
 
 router.get('/removecoupon/:id', role.auth, function(req, res){

@@ -67,19 +67,21 @@ body
   div.container-fluid
     header
       //header before navigation items
-      nav#homenavbar.nav.navbar-expand-lg.navbar-light.bg-gradient-secondary.pt-3
+      nav#homenavbar.navbar.navbar-expand-lg.navbar-light.bg-gradient-secondary
         div(style="display:inline-flex")
-          a.navbar-brand.text-white(href="/")
-            img.img-logo(src="/img/findit-red-logo.png").img-fluid
-          #showSearch
-            form.form-class(method='get', action='/search')
-              div.input-group
-                input.search2.form-control.form-control-lg(type="text" placeholder="" ,name='search', autofocus)
-              
-          a(href="/coupons")
-            button.btn.btn-light.w3ls-btn.coupons-btn.flash-button#coupbtn(type="button")
-              span.fas.fa-gift.coupons-text-color
-              | View deals
+          div(style="flex-grow:0.1 !important")
+            a.navbar-brand.text-white(href="/")
+              img.img-logo(src="/img/findit-red-logo.png").img-fluid
+          div(style="flex-grow:0.3 !important")
+            #showSearch
+              form.form-class(method='get', action='/search')
+                div.input-group
+                  input.search2.form-control.form-control-lg(type="text" placeholder="" ,name='search', autofocus)
+          div(style="flex-grow:0.1 !important")      
+            a(href="/coupons")
+              button.btn.btn-light.w3ls-btn.coupons-btn.flash-button#coupbtn(type="button")
+                span.fas.fa-gift.coupons-text-color
+                | View deals
         
         //site navigation 
         button.navbar-toggler.ml-md-auto(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"

@@ -72,13 +72,13 @@ html
             div#navbarSupportedContent.collapse.navbar-collapse
             ul.navbar-nav.ml-lg-auto.text-left
                 
-                if user
+                if loggedin
                     li.nav-item.mr-3                  
                         a(href='/dashboard')  
                         span.fas.fa-user.fas-menu
                         strong
                         |  View Profile          
-                if user                
+                if loggedin               
                     li.nav-item.mr-3
                         a(href='/logout') 
                         span.fas.fa-sign-out-alt.fas-menu

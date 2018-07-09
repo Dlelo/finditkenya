@@ -2251,7 +2251,8 @@ padding-right:1px;
     display:         flex;
 	padding-top:10px;
     padding-left: 10px;
-    padding-right: 5px;
+	padding-right: 5px;
+	flex-direction: column;
 }
 .content{
 	display: table-cell;
@@ -2864,8 +2865,8 @@ padding-left:10px;
 }
 
 .deal-coup{
-	background-color: #eee;
-	box-shadow: 0 1px 3px 0 rgba(0,0,0,.25);
+	border: 1px solid #eee;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.02);
 }
 .coup-img-wrapper:hover {
     -webkit-transform: scaleX(-1);
@@ -2889,7 +2890,7 @@ padding-left:10px;
 }
 
 .deal-home{
-	background-color: #eee;
+	
 	box-shadow: 0 1px 3px 0 rgba(0,0,0,.25);
 
 }

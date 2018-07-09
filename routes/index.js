@@ -22,6 +22,7 @@ var Jimp = require("jimp");
 var Typo = require("typo-js");
 var dictionary = new Typo("en_US");
 var Fuse = require("fuse.js");
+var _ = require('lodash');
 
 var sys = require(__dirname + '/../config/System');
 var role = require(__dirname + '/../config/Role');
@@ -820,7 +821,7 @@ router.get('/biz/analytics/:bizid', function(req, res, next){
 
 });
 
-router.get('/coupons',role.auth, function(req, res){
+router.get('/coupons', function(req, res){
     var coupons = Coupons.find({
       status: true
     })
@@ -1210,18 +1211,22 @@ router.get('/biz/:name',function(req, res, next){
     var openingTimesMoment = new OpeningTimes(data.hours, 'Africa/Nairobi');
     data.openstatus = openingTimesMoment.getStatus(now);
 
-    var analytics = new Analytics();
-    analytics.ip = req.headers['x-forwarded-for'];
-    analytics.time = new Date();
-    analytics.bizid = data.id;
-    analytics.category = "3";
-    analytics.save(function(err){
-      if(err){
-        console.log(err);
-      }else{
-        console.log("logged");
-      }
-    });
+    if(req.headers['x-forwarded-for'].includes("66.249")){
+
+    }else{
+      var analytics = new Analytics();
+      analytics.ip = req.headers['x-forwarded-for'];
+      analytics.time = new Date();
+      analytics.bizid = data.id;
+      analytics.category = "3";
+      analytics.save(function(err){
+        if(err){
+          console.log(err);
+        }else{
+          console.log("logged");
+        }
+      });
+    }
 
     //coupons
     var coupons = Coupons.find({bizid: data.id});

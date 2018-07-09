@@ -2039,8 +2039,9 @@ ul.portfolio-area li figure {
 
 /* -- //Responsive code -- */
 .flash-button{
+	margin-top:3px;
 	background:#04045a;
-	padding: 1px 2px 1px 2px;
+	padding: 2px 2px 2px 2px;
 	color:#fff;
 	border:none;
 	border-radius:5px;
@@ -2268,7 +2269,7 @@ nav {
 .the-review{
   font-style: italic;
 }
-}
+
 .coupon-col-right{
 padding-right:1px;
 }

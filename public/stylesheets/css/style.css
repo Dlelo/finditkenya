@@ -1466,7 +1466,7 @@ ul.portfolio-area li figure {
 		font-size: 1.8em;
 	}
 	.img-logo {
-    width: 10vw !important;
+    width: 9vw !important;
     height: 2vh !important;
 	 }
 	 .banner{
@@ -1513,9 +1513,23 @@ ul.portfolio-area li figure {
 	.captn {
 		left: 20%;
 	}
+	.banner {
+    height: 63vh !important;
+	}
+	.img-logo {
+    width: 12vw !important;
+    height: 7vh !important;
+    }
 }
 
 @media screen and (max-width: 800px) {
+	.img-logo {
+    width: 20vw !important;
+    height: 9vh !important;
+		}
+		.banner {
+    height: 70vh !important;
+       }
 	.banner{
 		min-height: 80vh !important;
 	}
@@ -1568,6 +1582,19 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 736px) {
+	.banner {
+    height: 60vh !important;
+	  }
+	  .banner {
+    min-height: 60vh !important;
+		}
+	.banner-text-top {
+    padding-top: 20vh !important;
+	}
+	.img-logo {
+    width: 15vw !important;
+    height: 9vh !important;
+     }
 	.banner-text {
 		padding: 2vw 4vw 7vW 3vw;
 	}
@@ -1636,7 +1663,7 @@ ul.portfolio-area li figure {
 	   margin-left: 2rem !important;
 	}
 	.banner-text-top{
-    padding-top: 23vh;
+    padding-top: 23vh!important;
 	}
 	.banner {
 		min-height: 80vh !important;
@@ -2027,7 +2054,7 @@ ul.portfolio-area li figure {
 	   margin-left: 2rem!important;
 	}
 	.banner-text-top{
-    padding-top: 10vh;
+    padding-top: 10vh !important;
 	}
   .banner{
 	  min-height: 60vh;

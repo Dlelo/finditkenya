@@ -87,7 +87,12 @@ body a:focus {
     cursor: pointer;
     outline: none;
 }
-
+.navbar-toggler {
+	margin-top: 1px;
+	padding:0 !important;
+    margin-right: 1px;
+	font-size: 1.45rem;
+}
 /* On mouse-over */
 .sidenav a:hover, .dropdown-btn:hover {
     color: #f1f1f1;
@@ -163,7 +168,7 @@ footer h2 {
 }
 
 .navbar-light {
-	padding: 1em 2em;
+	padding: 1em 1em;
 	position: absolute;
 	z-index: 999;
 	width: 100%;
@@ -250,6 +255,7 @@ header h1 a span {
 	height: 73vh;
 	position: relative;
 	background-image:center no-repeat;
+	object-fit: contain !important;
 }
 
 .inner-banner {
@@ -1494,6 +1500,12 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 800px) {
+	.banner{
+		min-height: 80vh !important;
+	}
+	.banner-text {
+		padding: 2vw 4vw 7vW 3vw;
+	}
 	.dropdown-item {
 		text-align:left;
 	}
@@ -1504,6 +1516,21 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 768px) {
+	.banner{
+		height:80vh !important;
+	}
+	.banner{
+		min-height: 80vh !important;
+	}
+	 
+    .img-logo {
+    width: 17vw !important;
+    height: 4vh !important;
+       }
+    
+	.banner-text {
+		padding: 2vw 4vw 7vW 3vw;
+	}
 	.dropdown-item {
 		text-align:left;
 	}
@@ -1525,6 +1552,9 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 736px) {
+	.banner-text {
+		padding: 2vw 4vw 7vW 3vw;
+	}
 	.dropdown-item {
 		text-align:left;
 	}
@@ -1539,6 +1569,13 @@ ul.portfolio-area li figure {
 	}
 }
 @media screen and (max-width: 667px) {
+	.img-logo {
+    width: 15vw !important;
+    height: 7vh !important;
+      }
+	.banner-text {
+		padding: 2vw 4vw 7vW 3vw;
+	}
 	section {
     flex-direction: column;
 }
@@ -1552,13 +1589,13 @@ ul.portfolio-area li figure {
 	   margin-left: 2rem !important;
 	}
 	.banner-text-top{
-    padding-top: 23vh;
+    padding-top: 32vh;
 	}
 	.slide {
 		min-height: 430px;
 	}
 	.navbar-light {
-		padding: 1em 3em;
+		padding: 1px 1px;
 	}
 	.slide-right button {
 		padding: 3px 14px;
@@ -1570,6 +1607,9 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 640px) {
+	.banner-text {
+		padding: 2vw 4vw 7vW 3vw;
+	}
 	.dropdown-item {
 		text-align:left;
 	}
@@ -1583,11 +1623,21 @@ ul.portfolio-area li figure {
     padding-top: 23vh;
 	}
 	.banner {
-		height: 60vh;
+		min-height: 80vh !important;
+	}
+	.bannner{
+		height:80vh !important;
 	}
 }
 
 @media screen and (max-width: 600px) {
+	.img-logo {
+    width: 15vw !important;
+    height: 7vh !important;
+    }
+	.banner-text {
+		padding: 2vw 4vw 7vW 3vw;
+	}
 	.dropdown-item {
 		text-align:left;
 	}
@@ -1632,7 +1682,7 @@ ul.portfolio-area li figure {
 	height: 55vh !important;
 	}
 	.banner-text {
-		padding: 10vw 3vw 1vw 4vw;
+		padding: 2vw 4vw 7vW 3vw;
 	}
 
 	.slide-sub h5 {
@@ -1696,7 +1746,7 @@ ul.portfolio-area li figure {
 		letter-spacing: 1px;
 	}
 	.banner {
-		height: 60vh;
+		min-height: 20vh !important;
 	}
 	.captn {
 		left: 17%;
@@ -1747,15 +1797,11 @@ ul.portfolio-area li figure {
 	.slider-info h3 {
 		font-size: 1.5em;
 	}
-	.banner {
-		height: 6ovh;
-	}
+	
 	.banner-text {
 		padding-top: 6vw;
 	}
-	.navbar-light {
-		padding: 1em 2em;
-	}
+	
 	footer h2 a {
 		font-size: 0.8em;
 	}
@@ -1836,7 +1882,10 @@ ul.portfolio-area li figure {
 	}
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 375px){
+      .banner{
+	    min-height:20vh !important;
+           }
 	.dropdown-item {
 		text-align:left;
 	}
@@ -1847,11 +1896,9 @@ ul.portfolio-area li figure {
 	   margin-left: 2rem !important;
 	}
 	.banner-text-top{
-    padding-top: 23vh;
+    padding-top: 23vh!important;
 	}
-	.navbar-light {
-		padding: 1em 1em;
-	}
+	
 	.coupon-items {
 	height: 55vh !important;
 	}
@@ -1883,11 +1930,9 @@ ul.portfolio-area li figure {
 	   margin-left: 2rem !important;
 	}
 	.banner-text-top{
-    padding-top: 23vh;
+    padding-top: 23vh !important;
 	}
-	.navbar-light {
-		padding: 1em 0.8em;
-	}
+	
 
 	a.navbar-brand {
 		font-size: 0.5em;
@@ -1951,6 +1996,13 @@ ul.portfolio-area li figure {
 	border-radius: 4px;
 }
 @media screen and (max-width: 786px){
+	.eac-description {
+    width: 80% !important;
+		  }
+	.easy-autocomplete {
+    position: relative;
+    width: 80% !important;
+          }
 	.deal-main{
 		    margin-top: 2em !important;
 	}
@@ -1958,11 +2010,17 @@ ul.portfolio-area li figure {
 	   margin-left: 2rem!important;
 	}
 	.banner-text-top{
-    padding-top: 23vh;
+    padding-top: 35vh;
 	}
   .banner{
 	  min-height: 60vh;
-  }
+   }
+   .eac-description{
+	   width: 76% !important;
+	   }
+	.easy-autocomplete{
+	  width: 76% !important;
+	}
 }
 .user-fav{
 	padding-left:1em;
@@ -1994,8 +2052,9 @@ ul.portfolio-area li figure {
 
 /* -- //Responsive code -- */
 .flash-button{
+	margin-top:3px;
 	background:#04045a;
-	padding: 1px 2px 1px 2px;
+	padding: 2px 2px 2px 2px;
 	color:#fff;
 	border:none;
 	border-radius:5px;
@@ -2223,7 +2282,7 @@ nav {
 .the-review{
   font-style: italic;
 }
-}
+
 .coupon-col-right{
 padding-right:1px;
 }
@@ -2368,13 +2427,10 @@ padding-right:1px;
     margin-top: 13vh !important;
       }
 	.img-logo {
-	  width: 40vw !important;
-	  height: 3vh !important;
-	}
-	.search2{
-	  background-position: 11px 12px;
-      padding: 0px 1px 0px 35px !important;
-	}
+    width: 40vw !important;
+    height: 10vh !important;
+      }
+	
 	.modal-content{
 		width: 70% !important;
 	}
@@ -2446,8 +2502,8 @@ li.list-hor{
     margin-top: 13vh !important;
      }
 	.img-logo {
-	  width: 40vw !important;
-	  height: 3vh !important;
+	  width: 10vw !important;
+	  height: 5vh !important;
 	}
 	.search2{
 	  background-position: 11px 12px;
@@ -2516,8 +2572,8 @@ li.list-hor{
     margin-top: 13vh !important;
        }
 	.img-logo {
-	  width: 40vw !important;
-	  height: 3vh !important;
+	  width: 10vw !important;
+	  height: 5vh !important;
 	}
 	.search2{
 	  background-position: 11px 12px;
@@ -2582,8 +2638,8 @@ li.list-hor{
     margin-top: 13vh !important;
    }
 	.img-logo {
-	  width: 40vw !important;
-	  height: 3vh !important;
+	  width: 10vw !important;
+	  height: 5vh !important;
 	}
 	.search2{
 	  background-position: 11px 12px;
@@ -2650,7 +2706,7 @@ li.list-hor{
     margin-top: 13vh !important;
    }
 	.img-logo {
-	  width: 40vw !important;
+	  width: 10vw !important;
 	  height: 3vh !important;
 	}
 	.search2{

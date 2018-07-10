@@ -1465,6 +1465,19 @@ ul.portfolio-area li figure {
 	.slider-info h3 {
 		font-size: 1.8em;
 	}
+	.img-logo {
+    width: 10vw !important;
+    height: 2vh !important;
+	 }
+	 .banner{
+		 height: 23vh !important;
+	 }
+	 .eac-description{
+		 width:80% !important;
+	 }
+	 .easy-autocomplete{
+		  width:80% !important;
+	 }
 }
 
 @media screen and (max-width: 991px) {
@@ -1520,10 +1533,10 @@ ul.portfolio-area li figure {
 
 @media screen and (max-width: 768px) {
 	.banner{
-		height:80vh !important;
+		height:30vh !important;
 	}
 	.banner{
-		min-height: 80vh !important;
+		min-height: 30vh !important;
 	}
 	 
     .img-logo {
@@ -2014,7 +2027,7 @@ ul.portfolio-area li figure {
 	   margin-left: 2rem!important;
 	}
 	.banner-text-top{
-    padding-top: 35vh;
+    padding-top: 10vh;
 	}
   .banner{
 	  min-height: 60vh;
@@ -2431,7 +2444,7 @@ padding-right:1px;
     margin-top: 13vh !important;
       }
 	.img-logo {
-    width: 40vw !important;
+    width: 20vw !important;
     height: 10vh !important;
       }
 	
@@ -2445,10 +2458,10 @@ padding-right:1px;
     padding: 5vw 0 2vW 5vw;
 	}
 	.easy-autocomplete {
-    width: 78% !important;
+    width: 72% !important;
       }
 	.easy-autocomplete.eac-description {
-    width: 78% !important;
+    width: 72% !important;
        }
 	.coupons-img {
     width: 100vw !important;
@@ -2711,8 +2724,8 @@ li.list-hor{
     margin-top: 13vh !important;
    }
 	.img-logo {
-	  width: 10vw !important;
-	  height: 3vh !important;
+	  width: 30vw !important;
+     height: 5vh !important;
 	}
 	.search2{
 	  background-position: 11px 12px;

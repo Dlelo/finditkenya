@@ -252,10 +252,12 @@ header h1 a span {
 	-o-background-size: cover;
 	-ms-background-size: cover;
 	background-size: cover;
+	background-attachment: fixed;
+    background-position: bottom;
 	height: 73vh;
 	position: relative;
 	background-image:center no-repeat;
-	object-fit: contain !important;
+	
 }
 
 .inner-banner {
@@ -1747,6 +1749,7 @@ ul.portfolio-area li figure {
 	}
 	.banner {
 		min-height: 20vh !important;
+		height: 55vh !important;
 	}
 	.captn {
 		left: 17%;
@@ -1792,7 +1795,7 @@ ul.portfolio-area li figure {
 	   margin-left: 2rem !important;
 	}
 	.banner-text-top{
-    padding-top: 23vh;
+    padding-top: 17vh !important;
 	}
 	.slider-info h3 {
 		font-size: 1.5em;
@@ -2054,7 +2057,7 @@ ul.portfolio-area li figure {
 .flash-button{
 	margin-top:3px;
 	background:#04045a;
-	padding: 2px 2px 2px 2px;
+	padding: 2px 3px 2px 3px;
 	color:#fff;
 	border:none;
 	border-radius:5px;
@@ -2502,8 +2505,8 @@ li.list-hor{
     margin-top: 13vh !important;
      }
 	.img-logo {
-	  width: 10vw !important;
-	  height: 5vh !important;
+	  width: 15vw !important;
+    height: 3vh !important;
 	}
 	.search2{
 	  background-position: 11px 12px;
@@ -2523,7 +2526,8 @@ li.list-hor{
 	 }
 	 
 	.coupons-img {
-    width: 100vw !important;
+	width: 100vw !important;
+	height: 80vh !important;
      }
 	.btn-coupon {
 	margin-top: 8vh !important;
@@ -2572,8 +2576,8 @@ li.list-hor{
     margin-top: 13vh !important;
        }
 	.img-logo {
-	  width: 10vw !important;
-	  height: 5vh !important;
+	  width: 16vw !important;
+	  height: 4vh !important;
 	}
 	.search2{
 	  background-position: 11px 12px;

@@ -26,10 +26,10 @@ block content
         
         #accordion.panel-group(role='tablist', aria-multiselectable='true')
           table.table.dataTable
-            tbody
+            tbody#couponssort
               each coupon,i in coupons
                 tr
-                  .panel.panel-default
+                  .panel.panel-default(id=coupon.id)
                     #headingTwo.panel-heading(role='tab')
                       h4.panel-title
                         a.collapsed(role='button', data-toggle='collapse', data-parent='#accordion', href='#collapse'+i, aria-expanded='false', aria-controls='collapse'+i)

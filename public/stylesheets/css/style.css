@@ -7,8 +7,9 @@
 body {
 	font-family: 'Ubuntu';
 	margin: 0;
-	background:#fafbfc;
+	background:#fff;
 }
+/*background:#fafbfc;*/
 /*font-family:'Source Sans Pro','Lato','open sans','Roboto', sans-serif;*/
 body a,
 .slider-info a {
@@ -3479,7 +3480,7 @@ fieldset, label {
 .search2{
 	background-image: url('/../img/search.png'); 
 	background-repeat: no-repeat;
-	background-position: 11px 12px !important;
+	background-position:8px 7px !important;
     padding: 0px 1px 0px 35px !important;
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
@@ -3696,3 +3697,4 @@ input, textarea, select, button {
 .navbar-brand {
 	padding-top: .1125rem !important;
 }
+

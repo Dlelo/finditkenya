@@ -36,7 +36,7 @@ var Review = require(__dirname + '/../models/Reviews');
 
 var mailer = require('express-mailer');
 
-router.get('/fuse/:name', function(req, res, next){
+router.get('/search', function(req, res, next){
   var businesses = Business.find({
       $query: { approved: true},
     },
@@ -45,7 +45,7 @@ router.get('/fuse/:name', function(req, res, next){
       website:1,photo: 1,instagram: 1,youtube:1,twitter:1,facebook:1, _id:0
     }
   ).sort([['paid', -1],['datepaid', 1]]);
-  var array_of_suggestions = dictionary.suggest(req.params.name);
+  var array_of_suggestions = dictionary.suggest(req.query.search);
   Promise.all([businesses]).then(values => {
     var list = values[0];
     //console.log(list);
@@ -64,10 +64,10 @@ router.get('/fuse/:name', function(req, res, next){
     ]
     };
     var fuse = new Fuse(list, options); // "list" is the item array
-    var result = fuse.search(req.params.name);
+    var result = fuse.search(req.query.search);
     //console.log(result);
     res.render('business/searchfuse', {
-        title: req.params.name,
+        title: req.query.search,
         businesses: result,
         suggestion: array_of_suggestions[0],
         host: req.get('host')
@@ -115,7 +115,7 @@ router.get('/email', function (req, res, next) {
   });
 });
 
-router.get('/search',function(req, res, next){
+router.get('/searchold',function(req, res, next){
   //wait for the initialization
   /*var search = Business.search(
     {query_string: {query: req.query.search}},

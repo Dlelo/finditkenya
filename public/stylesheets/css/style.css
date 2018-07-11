@@ -255,7 +255,7 @@ header h1 a span {
 	background-size: cover;
 	background-attachment: fixed;
     background-position: bottom;
-	height: 73vh;
+	height: 70vh;
 	position: relative;
 	background-image:center no-repeat;
 	
@@ -2694,8 +2694,8 @@ li.list-hor{
     margin-top: 13vh !important;
    }
 	.img-logo {
-	  width: 30vw !important;
-      height: 5vh !important;
+	  width: 20vw !important;
+      height: 2vh !important;
 	}
 	.search2{
 	  background-position: 11px 12px;
@@ -2762,8 +2762,8 @@ li.list-hor{
     margin-top: 13vh !important;
    }
 	.img-logo {
-	  width: 30vw !important;
-     height: 5vh !important;
+	  width: 20vw !important;
+     height: 3vh !important;
 	}
 	.search2{
 	  background-position: 11px 12px;

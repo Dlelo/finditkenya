@@ -174,6 +174,7 @@ router.get('/add/:package',role.auth, function(req, res, next){
 	.then(function(data){
 		data.packagepaid = req.params.package;
 		data.pendingstatus = true;
+    //console.log(data);
 		if(req.params.package == "free"){
 			res.render('business/newfree',{title: "Find It Categories", categories: data});
 		}else{
@@ -187,10 +188,10 @@ router.get('/add/:package',role.auth, function(req, res, next){
 });
 
 router.get('/fetchcategory/:name', function(req, res, next){
-	console.log(req.params.name);
+	//console.log(req.params.name);
 	Category.findOne({name: req.params.name})
 	.then(function(data){
-		console.log(data.subcategories);
+		//console.log(data.subcategories);
 	    res.json(data.subcategories);
 	})
 	.catch(function(err){

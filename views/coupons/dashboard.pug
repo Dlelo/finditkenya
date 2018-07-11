@@ -60,62 +60,95 @@ block content
                             a(href="/admin/coupon/markused/"+user.id, title="Mark This Coupon as Used")
                               i.fa.fa-check.fa-fw(aria-hidden='true')
     script(src="/javascripts/admin/Sortable.min.js")
+    script(src="/javascripts/axios.min.js")
+    script(src='/javascripts/notify.js')
     script(type='text/javascript').
-      var el = document.getElementById('accordion');
-      var sortable = Sortable.create(el, {
-        // Element dragging ended
-        onEnd: function (/**Event*/evt) {
-          //alert("sorting done: "+evt.to);
-          var couponId = evt.newIndex;
-          var order = evt.newIndex;
-          //console.log(evt);
-          //alert(evt.item.id)
-          var itemEl = evt.item;  // dragged HTMLElement
-          evt.to;    // target list
-          evt.from;  // previous list
-          evt.oldIndex;  // element's old index within old parent
-          evt.newIndex;  // element's new index within new parent
-        },
-
-        // Element is dropped into the list from another list
-        onAdd: function (/**Event*/evt) {
-          // same properties as onEnd
-        },
-
-        // Changed sorting within list
-        onUpdate: function (/**Event*/evt) {
-          // same properties as onEnd
-        },
-
-        // Called by any change to the list (add / update / remove)
-        onSort: function (/**Event*/evt) {
-          // same properties as onEnd
-        },
-
-        // Element is removed from the list into another list
-        onRemove: function (/**Event*/evt) {
-          // same properties as onEnd
-        },
-
-        // Attempt to drag a filtered element
-        onFilter: function (/**Event*/evt) {
-          var itemEl = evt.item;  // HTMLElement receiving the `mousedown|tapstart` event.
-        },
-
-        // Event when you move an item in the list or between lists
-        onMove: function (/**Event*/evt, /**Event*/originalEvent) {
-          // Example: http://jsbin.com/tuyafe/1/edit?js,output
-          evt.dragged; // dragged HTMLElement
-          evt.draggedRect; // TextRectangle {left, top, right и bottom}
-          evt.related; // HTMLElement on which have guided
-          evt.relatedRect; // TextRectangle
-          originalEvent.clientY; // mouse position
-          // return false; — for cancel
-        },
-
-        // Called when creating a clone of element
-        onClone: function (/**Event*/evt) {
-          var origEl = evt.item;
-          var cloneEl = evt.clone;
+      $(function() {
+        var el = document.getElementById('accordion');
+        function reorder(couponId,order){
+          alert(order);
+          $.ajax({
+              type:'GET',
+              url:'/admin/coupon/reorder/'+couponId+'/'+order,
+              success:function(response){
+                  console.log(response);
+              }
+          });
         }
+        var sortable = Sortable.create(el, {
+          onEnd: function (/**Event*/evt) {
+            //alert("sorting done: "+evt.to);
+            var couponId = evt.item.id;
+            var order = evt.newIndex;
+            reorder(couponId,order);
+            /*axios.get('/admin/coupon/reorder/'+couponId+'/'+order)
+            .then(function (response) {
+              // handle success
+              alert(response);
+              Notify.toast(response, {
+                fn: function () {
+                  // custom function here
+                }
+              });
+              console.log(response);
+            })
+            .catch(function (error) {
+              // handle error
+              console.log(error);
+            })
+            .then(function () {
+              // always executed
+            });
+            */
+            //console.log(evt);
+            //alert(evt.item.id)
+            var itemEl = evt.item;  // dragged HTMLElement
+            evt.to;    // target list
+            evt.from;  // previous list
+            evt.oldIndex;  // element's old index within old parent
+            evt.newIndex;  // element's new index within new parent
+          },
+
+          // Element is dropped into the list from another list
+          onAdd: function (/**Event*/evt) {
+            // same properties as onEnd
+          },
+
+          // Changed sorting within list
+          onUpdate: function (/**Event*/evt) {
+            // same properties as onEnd
+          },
+
+          // Called by any change to the list (add / update / remove)
+          onSort: function (/**Event*/evt) {
+            // same properties as onEnd
+          },
+
+          // Element is removed from the list into another list
+          onRemove: function (/**Event*/evt) {
+            // same properties as onEnd
+          },
+
+          // Attempt to drag a filtered element
+          onFilter: function (/**Event*/evt) {
+            var itemEl = evt.item;  // HTMLElement receiving the `mousedown|tapstart` event.
+          },
+
+          // Event when you move an item in the list or between lists
+          onMove: function (/**Event*/evt, /**Event*/originalEvent) {
+            // Example: http://jsbin.com/tuyafe/1/edit?js,output
+            evt.dragged; // dragged HTMLElement
+            evt.draggedRect; // TextRectangle {left, top, right и bottom}
+            evt.related; // HTMLElement on which have guided
+            evt.relatedRect; // TextRectangle
+            originalEvent.clientY; // mouse position
+            // return false; — for cancel
+          },
+
+          // Called when creating a clone of element
+          onClone: function (/**Event*/evt) {
+            var origEl = evt.item;
+            var cloneEl = evt.clone;
+          }
+        });
       });

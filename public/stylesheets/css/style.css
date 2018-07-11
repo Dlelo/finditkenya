@@ -283,7 +283,7 @@ header h1 a span {
 .banner-text-top{
     align-content: right;
     max-width: 100%;
-    padding-top: 8vW;
+    padding-top: 13vh;
     padding-left: inherit;
     padding-right: 3%;
     box-sizing: border-box;
@@ -1466,17 +1466,20 @@ ul.portfolio-area li figure {
 		font-size: 1.8em;
 	}
 	.img-logo {
-    width: 9vw !important;
-    height: 2vh !important;
+    width: 14vw !important;
+    height: 5vh !important;
 	 }
 	 .banner{
-		 height: 23vh !important;
+		 height: 45vh !important;
 	 }
 	 .eac-description{
 		 width:80% !important;
 	 }
 	 .easy-autocomplete{
 		  width:80% !important;
+	 }
+	 .banner-text-top{
+		     padding-top: 16vh !important;
 	 }
 }
 
@@ -1507,6 +1510,9 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 900px) {
+	.banner-text-top {
+    padding-top: 19vh !important;
+     }
 	.dropdown-item {
 		text-align:left;
 	}
@@ -1524,15 +1530,16 @@ ul.portfolio-area li figure {
 
 @media screen and (max-width: 800px) {
 	.img-logo {
-    width: 20vw !important;
-    height: 9vh !important;
+		width: 10vw !important;
+		height: 2vh !important;
 		}
 		.banner {
-    height: 70vh !important;
+    height: 40vh !important;
        }
 	.banner{
-		min-height: 80vh !important;
+		min-height: 40vh !important;
 	}
+	
 	.banner-text {
 		padding: 2vw 4vw 7vW 3vw;
 	}
@@ -1547,10 +1554,10 @@ ul.portfolio-area li figure {
 
 @media screen and (max-width: 768px) {
 	.banner{
-		height:30vh !important;
+		height:40vh !important;
 	}
 	.banner{
-		min-height: 30vh !important;
+		min-height: 40vh !important;
 	}
 	 
     .img-logo {
@@ -1666,17 +1673,17 @@ ul.portfolio-area li figure {
     padding-top: 23vh!important;
 	}
 	.banner {
-		min-height: 80vh !important;
+		min-height: 40vh !important;
 	}
 	.bannner{
-		height:80vh !important;
+		height:40vh !important;
 	}
 }
 
 @media screen and (max-width: 600px) {
 	.img-logo {
     width: 15vw !important;
-    height: 7vh !important;
+    height: 4vh !important;
     }
 	.banner-text {
 		padding: 2vw 4vw 7vW 3vw;
@@ -1713,7 +1720,7 @@ ul.portfolio-area li figure {
 	   margin-left: 2rem !important;
 	}
 	.banner-text-top{
-    padding-top: 23vh;
+    padding-top: 23vh !important;
 	}
 	.slide {
 		min-height: 366px;
@@ -1752,6 +1759,10 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 480px) {
+	.img-logo {
+    width: 10vw !important;
+    height: 3vh !important;
+      }
 	.dropdown-item {
 		text-align:left;
 	}
@@ -1762,7 +1773,7 @@ ul.portfolio-area li figure {
 	   margin-left: 2rem !important;
 	}
 	.banner-text-top{
-    padding-top: 23vh;
+    padding-top: 23vh !important;
 	}
 	.navbar-toggler {
 		padding: 0.2rem 0.3rem;
@@ -1790,7 +1801,7 @@ ul.portfolio-area li figure {
 	}
 	.banner {
 		min-height: 20vh !important;
-		height: 55vh !important;
+		height: 65vh !important;
 	}
 	.captn {
 		left: 17%;
@@ -2054,7 +2065,7 @@ ul.portfolio-area li figure {
 	   margin-left: 2rem!important;
 	}
 	.banner-text-top{
-    padding-top: 10vh !important;
+    padding-top: 20vh !important;
 	}
   .banner{
 	  min-height: 60vh;
@@ -2471,8 +2482,8 @@ padding-right:1px;
     margin-top: 13vh !important;
       }
 	.img-logo {
-    width: 20vw !important;
-    height: 10vh !important;
+    width: 12vw !important;
+    height: 3vh !important;
       }
 	
 	.modal-content{

@@ -51,31 +51,24 @@ block content
                 .row
                   .col-sm-6.col-xs-6
                     //select.selectpicker.form-control(name='category', data-selected-text-format='count > 5',class='category')
-                    select#demo_overview_minimal.category(name='category' class="form-control" data-role="select-dropdown" data-profile="minimal")   
+                    select#demo_overview_minimal(class="form-control" data-role="select-dropdown" data-profile="minimal")   
                       option(data-icon='glyphicon-wrench', value='') --Select Business or Service--
                       option(data-icon='glyphicon-gift', value='business') Business
                       option(data-icon='glyphicon glyphicon-glass',value='service') Service 
-                  .col-sm-2.col-xs-6
+                  .col-sm-3.col-xs-6
                     //select#subcategory.selectpicker.form-control-form-select(name='subcategory', data-selected-text-format='count > 5', class='subcategory')
-                    select#demo_overview.category(name='category')
+                    select#demo_overview.subcategory(class="form-control" data-role="select-dropdown")
                       option(data-icon='glyphicon-wrench', value='') --Select Category--
                       each category in categories
                         option(data-icon='fa '+category.icon, value=category.name) 
                           =category.name
-                  .col-sm-4.col-xs-6
-                    .form-group
-                      .col-sm-6
-                        .input-group-addon.findit-red
-                          strong
-                            |Select Subcategories 
-                    .form-group  
-                      .col-sm-6
-                          select.demo_overview_example.subcategory(name='subcategory' class="form-control" multiple)
-                            option(data-icon='fa fa-search', value=) 
-                            each category in categories
-                              each subcat in category.subcategories
-                                option(data-icon='glyphicon-wrench', value=subcat.name, rel=category.name) 
-                                  =subcat.name
+                  .col-sm-3.col-xs-6
+                    select#demo_default_multiselect.ssubcategoryy(class="form-control" data-role="select-dropdown" multiple)
+                      option(data-icon='fa fa-search', value='') --Select Sub Category--
+                      each category in categories
+                        each subcat in category.subcategories
+                          option(data-icon='glyphicon-wrench', value=subcat.name, class=category.name) 
+                            =subcat.name
                           
                               
                     input#lat.gllpLatitude(type='hidden', value='0',name='lati')
@@ -90,22 +83,39 @@ block content
                   button.button.btn.btn-warning.form-control-form(type='submit') Create
       script(src="http://maps.googleapis.com/maps/api/js?key=AIzaSyC9MX39yDkMJn6rjWi6vt4Rens5u_cVBQE") 
       
-    //script to allow multiselect on dropdown
+      //script to allow dependable dropdowns
       script(type="text/javascript").
-        var carsAndModels = {};
-        function ChangeCarList() {
-            var carList = document.getElementByClass("category");
-            var modelList = document.getElementByClass("subcategory");
-            var selCar = carList.options[carList.selectedIndex].value;
-            while (modelList.options.length) {
-                modelList.remove(0);
+       $(document).ready(function() {
+         each category in categories
+           
+            if category{
+              category = category.name;
             }
-            var cars = carsAndModels[selCar];
-            if (cars) {
-                var i;
-                for (i = 0; i < cars.length; i++) {
-                    var car = new Option(cars[i], i);
-                    modelList.options.add(car);
-                }
-            }
-        } 
+
+          populateSelect();
+
+          $(function() {
+
+                $('#demo_overview').change(function(){
+                  populateSelect();
+              });
+              
+          });
+
+
+          function populateSelect(){
+              category=$('#demo_overview').val();
+              $('#demo_default_multiselect').html('');
+              
+              
+              if(cat == category.name){
+                  category.forEach(function(t) { 
+                      $('#demo_default_multiselect').append('<option>'+t+'</option>');
+                  });
+              }
+              
+          } 
+
+       }
+      
+      

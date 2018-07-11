@@ -615,7 +615,7 @@ router.get('/coupons', role.auth, function(req, res){
 		Coupons.find({})
 		.populate('bizid')
 		.populate('users.user_id')
-    .sort([['order', -1]])
+    .sort([['order', 1]])
 		.then(function(data){
 		    res.render('coupons/dashboard', {title: "Coupons", coupons: data});
 		})
@@ -866,9 +866,9 @@ router.get('/coupon/reorder/:id/:order', role.admin, function(req, res){
     	data.order = req.params.order;
     	data.save(function(err){
         Coupons.find({ order: { $gte: req.params.order }})
-        .sort([['order', -1]])
+        .sort([['order', 1]])
         .then(function(data){
-          var count = 0;
+          var count = 1;
           data.forEach(function(d){
             d.order = parseInt(req.params.order) + count;
             d.save(function(err){

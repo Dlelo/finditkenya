@@ -826,7 +826,7 @@ router.get('/coupons', function(req, res){
       status: true
     })
     .populate('bizid')
-    .sort([['order', -1],['star', -1]]);
+    .sort([['order', 1],['star', -1]]);
 
     var mycoupons = Coupons.find({
         'users.user_id' : res.locals.user.id,

@@ -615,6 +615,7 @@ router.get('/coupons', role.auth, function(req, res){
 		Coupons.find({})
 		.populate('bizid')
 		.populate('users.user_id')
+    .sort([['order', -1]])
 		.then(function(data){
 		    res.render('coupons/dashboard', {title: "Coupons", coupons: data});
 		})
@@ -627,6 +628,7 @@ router.get('/coupons', role.auth, function(req, res){
 		})
 		.populate('bizid')
 		.populate('users.user_id')
+    .sort([['order', -1]])
 		.then(function(data){
 			console.log(data);
 		    res.render('coupons/dashboard', {title: "Coupons", coupons: data});
@@ -856,6 +858,32 @@ router.post('/coupon/create', role.auth,cpUpload, function(req, res){
 			res.redirect('/admin/coupons');
 		}
 	});
+});
+
+router.get('/coupon/reorder/:id/:order', role.admin, function(req, res){
+  Coupons.findById(req.params.id)
+    .then(function(data){
+    	data.order = req.params.order;
+    	data.save(function(err){
+        Coupons.find({ order: { $gte: req.params.order }})
+        .sort([['order', -1]])
+        .then(function(data){
+          var count = 0;
+          data.forEach(function(d){
+            d.order = parseInt(req.params.order) + count;
+            d.save(function(err){
+              console.log("reordered");
+            });
+            count = count + 1;
+          });
+          res.json('reordered');
+        })
+    		//res.redirect('/admin/coupons');
+    	});
+    })
+    .catch(function(err){
+       console.log(err);
+    });
 });
 
 /***************** AGENTS *******************************/

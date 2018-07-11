@@ -18,7 +18,7 @@ const couponSchema = new Schema({
 	tagline: String,
 	photo: String,
 	star: Boolean,
-	order: String,
+	order: Number,
 	users: [
 		{
 			user_id: { type: Schema.Types.ObjectId, ref: 'User'},

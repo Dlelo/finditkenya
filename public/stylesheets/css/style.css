@@ -1939,8 +1939,8 @@ ul.portfolio-area li figure {
 
 @media screen and (max-width: 375px){
       .banner{
-		min-height:40vh !important;
-		height: 40vh !important;
+		min-height:45vh !important;
+		height: 15vh !important;
            }
 	.dropdown-item {
 		text-align:left;

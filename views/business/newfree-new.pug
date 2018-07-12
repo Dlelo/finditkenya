@@ -57,19 +57,20 @@ block content
                       option(data-icon='glyphicon glyphicon-glass',value='service') Service 
                   .col-sm-3.col-xs-6
                     //select#subcategory.selectpicker.form-control-form-select(name='subcategory', data-selected-text-format='count > 5', class='subcategory')
-                    select#demo_overview.subcategory(class="form-control" data-role="select-dropdown")
+                    select#demo_overview.categories(name='categories' class="form-control" data-role="select-dropdown")
                       option(data-icon='glyphicon-wrench', value='') --Select Category--
                       each category in categories
-                        option(data-icon='fa '+category.icon, value=category.name) 
+                        option(data-icon='fas '+category.icon, value=category.name) 
                           =category.name
                   .col-sm-3.col-xs-6
-                    select#demo_default_multiselect.ssubcategoryy(class="form-control" data-role="select-dropdown" multiple)
-                      option(data-icon='fa fa-search', value='') --Select Sub Category--
+                    select#demo_default_multiselect.subcategories(name='subcategories' class="form-control" data-role="select-dropdown" multiple)
+                      option(data-icon='glyphicon-wrench', value='') --Select SubCategory--
                       each category in categories
-                        each subcat in category.subcategories
-                          option(data-icon='glyphicon-wrench', value=subcat.name, class=category.name) 
-                            =subcat.name
-                          
+                        option(data-icon='fas fa-search', value='' rel=category.name) 
+                        
+                        
+                           
+                                
                               
                     input#lat.gllpLatitude(type='hidden', value='0',name='lati')
                     input#long.gllpLongitude(type='hidden', value='38.644',name='long')
@@ -81,41 +82,4 @@ block content
               .form-group
                 .row
                   button.button.btn.btn-warning.form-control-form(type='submit') Create
-      script(src="http://maps.googleapis.com/maps/api/js?key=AIzaSyC9MX39yDkMJn6rjWi6vt4Rens5u_cVBQE") 
-      
-      //script to allow dependable dropdowns
-      script(type="text/javascript").
-       $(document).ready(function() {
-         each category in categories
-           
-            if category{
-              category = category.name;
-            }
-
-          populateSelect();
-
-          $(function() {
-
-                $('#demo_overview').change(function(){
-                  populateSelect();
-              });
-              
-          });
-
-
-          function populateSelect(){
-              category=$('#demo_overview').val();
-              $('#demo_default_multiselect').html('');
-              
-              
-              if(cat == category.name){
-                  category.forEach(function(t) { 
-                      $('#demo_default_multiselect').append('<option>'+t+'</option>');
-                  });
-              }
-              
-          } 
-
-       }
-      
-      
+      script(src="http://maps.googleapis.com/maps/api/js?key=AIzaSyC9MX39yDkMJn6rjWi6vt4Rens5u_cVBQE")

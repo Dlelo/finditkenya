@@ -474,6 +474,27 @@ script(type='text/javascript').
       });
     });
 
+      $("select[name='categories']").change(function() {
+        $.ajax({
+            type: "GET",
+            url: "/business/fetchcategory/"+_rel,
+            success: function(data){
+                // Parse the returned json data
+                //var opts = $.parseJSON(data);
+                
+                console.log(data);
+                $("select[name='subcategories']").empty();
+                $.each(data, function(i, d) {
+                    // You will need to alter the below to get the right values from your json object.  Guessing that d.id / d.modelName are columns in your carModels data
+                    console.log(d.name);
+                    $("select[name='subcategories']").append('<option value="' + d.name + '">' + d.name + '</option>');
+                    //old $('#ssubcategoryy').append('<option value="' + d.name + '">' + d.name + '</option>');
+                });
+                
+            }
+        });
+      });
+      $("select[name='categories']").change();
       var $cat = $(".subcategory"),
           $subcat = $(".ssubcategory");
       
@@ -491,7 +512,7 @@ script(type='text/javascript').
           }
           
 
-          $.ajax({
+          /*$.ajax({
                 type: "GET",
                 url: "/business/fetchcategory/"+_rel,
                 success: function(data){
@@ -507,7 +528,7 @@ script(type='text/javascript').
                     });
                     $('.selectpicker').selectpicker('refresh');
                 }
-            });
+            }); */
         
       });
 

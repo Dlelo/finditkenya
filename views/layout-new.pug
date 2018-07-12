@@ -398,7 +398,33 @@ script(type='text/javascript').
   // document ready  
   });
   
+// Script to populate dependable dropdown on add business
 script(type='text/javascript').
+  //When the page has loaded.
+  $(document).on('change', '.categories', function(){
+    //old //$(".categories").change(function() 
+    var _rel= $(this).val();
+    alert(_rel);
+    $.ajax({
+        type: "GET",
+        url: "/business/fetchcategory/"+_rel,
+        success: function(data){
+            // Parse the returned json data
+            //var opts = $.parseJSON(data);
+            console.log(data);
+            $(".subcategories").empty();
+            $.each(data, function(i, d) {
+                // You will need to alter the below to get the right values from your json object.  Guessing that d.id / d.modelName are columns in your carModels data
+                console.log(d.name);
+                $(".subcategories").append('<option value="' + d.name + '">' + d.name + '</option>');
+                //old $('#ssubcategoryy').append('<option value="' + d.name + '">' + d.name + '</option>');
+            });
+        }
+    });
+  });
+  $(".categories").change();
+
+    
   $(function() {
     //DONUT STORIES
     
@@ -496,6 +522,8 @@ script(type='text/javascript').
       });
     });
 
+     
+
       var $cat = $(".subcategory"),
           $subcat = $(".ssubcategory");
       
@@ -512,8 +540,8 @@ script(type='text/javascript').
               $('#starteventDate').hide();
           }
           
-
-          $.ajax({
+          
+          /*$.ajax({
                 type: "GET",
                 url: "/business/fetchcategory/"+_rel,
                 success: function(data){
@@ -529,7 +557,7 @@ script(type='text/javascript').
                     });
                     $('.selectpicker').selectpicker('refresh');
                 }
-            });
+            });*/
         
       });
 

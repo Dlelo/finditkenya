@@ -262,7 +262,10 @@ block content
                   .col-sm-12
                     if biz.gallery
                       each photo in biz.gallery
-                        img(src="/uploads/"+ photo.filename, width="150px", class='col-md-4')                  
+                        div(style='width:150px',class='row')
+                          img(src="/uploads/"+ photo.filename, width="100%", class='col-md-11') 
+                          a(href="#",id=photo.filename)
+                            i.fa.fa-trash(aria-hidden="true",class='col-md-1')                 
                   #gallerypreview.col-md-12
                 .form-group
                   .col-sm-4

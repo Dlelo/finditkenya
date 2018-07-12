@@ -1908,7 +1908,7 @@ ul.portfolio-area li figure {
 	   margin-left: 2rem !important;
 	}
 	.banner-text-top{
-    padding-top: 23vh;
+    padding-top: 10vh!important;
 	}
 	.captn {
 		left: 9%;
@@ -1939,8 +1939,8 @@ ul.portfolio-area li figure {
 
 @media screen and (max-width: 375px){
       .banner{
-		min-height:20rem !important;
-		height: 15rem !important;
+		min-height:25vh !important;
+		height:35vh !important;
            }
 	.dropdown-item {
 		text-align:left;
@@ -1952,7 +1952,7 @@ ul.portfolio-area li figure {
 	   margin-left: 2rem !important;
 	}
 	.banner-text-top{
-    padding-top: 23vh!important;
+    padding-top: 10vh!important;
 	}
 	
 	.coupon-items {

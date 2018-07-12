@@ -1940,7 +1940,7 @@ ul.portfolio-area li figure {
 @media screen and (max-width: 375px){
       .banner{
 		min-height:40vh !important;
-		height:47vh !important;
+		height:50vh !important;
            }
 	.dropdown-item {
 		text-align:left;

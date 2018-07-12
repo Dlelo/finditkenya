@@ -167,7 +167,7 @@ router.get('/edit/:id',role.auth, function(req, res, next){
 	    //console.log(data);
 	    var openingTimesMoment = new OpeningTimes(values[0].hours, 'Africa/Nairobi');
 	    values[0].openstatus = openingTimesMoment.getStatus(now);
-	    console.log(values[0].openstatus);
+	    //console.log(values[0]);
 	    res.render('admin/edit', {
 	        title: "Edit "+values[0].name,
 	        biz: values[0],

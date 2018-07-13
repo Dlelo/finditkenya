@@ -218,8 +218,8 @@ router.get('/deletephoto/:id/',role.auth, function(req, res, next){
       data.gallery = result;
       data.save(function(err){
   			if(err)
-  				res.redirect('/dashboard');
-  			res.redirect('/dashboard');
+  				res.redirect('/admin/edit/'+data.id);
+  			res.redirect('/admin/edit/'+data.id);
   		});
 		  //res.redirect('/dashboard');
 		})
@@ -238,8 +238,8 @@ router.get('/deletephoto/:id/',role.auth, function(req, res, next){
       data.gallery = result;
       data.save(function(err){
         if(err)
-          res.redirect('/dashboard');
-        res.redirect('/dashboard');
+          res.redirect('/admin/edit/'+data.id);
+        res.redirect('/admin/edit/'+data.id);
       });
 		})
 		.catch(function(err){

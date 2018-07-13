@@ -206,14 +206,14 @@ router.get('/delete/:id',role.auth, function(req, res, next){
 });
 
 //DELETE PHOTO FROM GALLERY
-router.get('/deletephoto/:id/:photoname',role.auth, function(req, res, next){
+router.get('/deletephoto/:id/',role.auth, function(req, res, next){
 	if(req.user.role == 1){
 		Business.findOne({
 		  _id: req.params.id
 		})
 		.then(function(data){
       var result = data.gallery.filter(function(e, i) {
-        return e.filename != req.params.photoname
+        return e.filename != req.query.photo
       });
       data.gallery = result;
       data.save(function(err){
@@ -233,7 +233,7 @@ router.get('/deletephoto/:id/:photoname',role.auth, function(req, res, next){
 		})
 		.then(function(data){
       var result = data.gallery.filter(function(e, i) {
-        return e.filename != req.params.photoname
+        return e.filename != req.query.photo
       });
       data.gallery = result;
       data.save(function(err){

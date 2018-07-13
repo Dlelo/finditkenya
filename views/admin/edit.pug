@@ -265,7 +265,7 @@ block content
                         .row
                           div(class='col-md-3')
                             img(src="/uploads/"+ photo.filename, width="100%", class='col-md-11') 
-                            a(href="/admin/deletephoto/"+biz.id+"/"+photo.filename, id=photo.filename)
+                            a(href="/admin/deletephoto/"+biz.id+"?photo="+photo.filename, id=photo.filename)
                               i.fa.fa-trash(aria-hidden="true",class='col-md-1')                 
                   #gallerypreview.col-md-12
                 .form-group

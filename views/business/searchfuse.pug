@@ -2,142 +2,142 @@ extends ../layout-new
 
 block content
   div.container-fluid
-  #home.parallax-content-list.baner-content-listing-biz
-    .container-fluid.container-margin-top
-      .row
-        .col-md-12.search-padding
-          if(suggestion)
-            | Did you mean: 
-            a(href="search?search="+suggestion)
-                |  #{suggestion}
-      .row          
-        .col-md-12          
-          if(businesses.length)
-            each biz in businesses              
-              .row
-               if (typeof(biz.item.slug) !== 'undefined')
-                  a(href="/biz/"+biz.item.slug)
-                    div.cat-backgroundeven.cat-box.cat-shadow 
-                      a(href="/biz/"+biz.item.slug)
-                        .row
-                          .col-md-12.findit-blue.cat-items-top.cat-header 
-                              h4.findit-blue.catbiz-name
-                                =biz.item.name  
-                                if (biz.item.paid == true)
-                                  small.findit-red                    
-                                    span.list-social.far.fa-check-square  
-                              div.nav   
-                                if(biz.item.facebook)
-                                  a.findit(href="http://"+biz.item.facebook,target="_blank" class="fa-layers fa-2x")
-                                      i.list-social.fab.fa-facebook-f                  
-                                if(biz.item.twitter)
-                                  a.findit(href="http://"+biz.item.twitter,target="_blank" class="fa-layers fa-2x")
-                                      i.list-social.fab.fa-twitter            
-                                if(biz.item.instagram)
-                                  a.findit(href="http://"+biz.item.instagram,target="_blank" class="fa-layers fa-2x")
-                                      i.list-social.fab.fa-instagram                   
-                                if(biz.item.youtube)
-                                  a.findit(href="http://"+biz.item.youtube,target="_blank" class="fa-layers fa-2x")
-                                      i.list-social.fab.fa-youtube  
-                                    
-                              
-                        .row 
-                          .col-md-3       
-                            if(biz.item.photo)
-                              img.cat-image.cat-items-bottom(src="/uploads/thumbs/cover"+ biz.item.photo, height="200px")
-                            else
-                              img.cat-image.cat-items-bottom(src="/img/noimageavailable.png" , height="200px")
-                          .col-md-9
-                            row
-                              .col-md-12.description-cat
-                                if (typeof(biz.item.description) !== 'undefined')
-                                  if biz.item.description.length > 250
-                                    p.padding.text-left.description-cat  !{biz.item.description.substr(0, 250)+ '..... <strong style="background-color:#c00000; color:#fff; padding:1px">Read More</strong>'}
+    #home.parallax-content-list.baner-content-listing-biz
+      .container-fluid.container-margin-top
+        .row
+          .col-md-12.search-padding
+            if(suggestion)
+              | Did you mean: 
+              a(href="search?search="+suggestion)
+                  |  #{suggestion}
+        .row          
+          .col-md-12          
+            if(businesses.length)
+              each biz in businesses              
+                .row
+                 if (typeof(biz.item.slug) !== 'undefined')
+                    a(href="/biz/"+biz.item.slug)
+                      div.cat-backgroundeven.cat-box.cat-shadow 
+                        a(href="/biz/"+biz.item.slug)
+                          .row
+                            .col-md-12.findit-blue.cat-items-top.cat-header 
+                                h4.findit-blue.catbiz-name
+                                  =biz.item.name  
+                                  if (biz.item.paid == true)
+                                    small.findit-red                    
+                                      span.list-social.far.fa-check-square  
+                                div.nav   
+                                  if(biz.item.facebook)
+                                    a.findit(href="http://"+biz.item.facebook,target="_blank" class="fa-layers fa-2x")
+                                        i.list-social.fab.fa-facebook-f                  
+                                  if(biz.item.twitter)
+                                    a.findit(href="http://"+biz.item.twitter,target="_blank" class="fa-layers fa-2x")
+                                        i.list-social.fab.fa-twitter            
+                                  if(biz.item.instagram)
+                                    a.findit(href="http://"+biz.item.instagram,target="_blank" class="fa-layers fa-2x")
+                                        i.list-social.fab.fa-instagram                   
+                                  if(biz.item.youtube)
+                                    a.findit(href="http://"+biz.item.youtube,target="_blank" class="fa-layers fa-2x")
+                                        i.list-social.fab.fa-youtube  
                                       
-                                  else
-                                    =biz.item.description
+                                
+                          .row 
+                            .col-md-3       
+                              if(biz.item.photo)
+                                img.cat-image.cat-items-bottom(src="/uploads/thumbs/cover"+ biz.item.photo, height="200px")
+                              else
+                                img.cat-image.cat-items-bottom(src="/img/noimageavailable.png" , height="200px")
+                            .col-md-9
+                              row
+                                .col-md-12.description-cat
+                                  if (typeof(biz.item.description) !== 'undefined')
+                                    if biz.item.description.length > 250
+                                      p.padding.text-left.description-cat  !{biz.item.description.substr(0, 250)+ '..... <strong style="background-color:#c00000; color:#fff; padding:1px">Read More</strong>'}
+                                        
+                                    else
+                                      =biz.item.description
 
-                                  
-                            row
-                              .col-md-12   
-                                div.findit-blue 
-                                  if(biz.item.website)
-                                    a.findit(href=biz.item.website,target="_blank" class="fa-layers fa-1x")
-                                      i.fas.fa-globe
-                                    | website 
-                                      
-                                  else
-                                    |
-                                  if(biz.item.phone)
-                                    a.findit(class="fa-layers fa-1x")
-                                      i.fas.fa-mobile-alt 
-                                    //a.findit.phoneno(href="tel:"+phone,style="color:#2c155a;display:none")
-                                        |  #{biz.phone}
-                                    a(href="/biz/"+biz.item.slug)
-                                      |  Get Phone Number
+                                    
+                              row
+                                .col-md-12   
+                                  div.findit-blue 
+                                    if(biz.item.website)
+                                      a.findit(href=biz.item.website,target="_blank" class="fa-layers fa-1x")
+                                        i.fas.fa-globe
+                                      | website 
+                                        
+                                    else
+                                      |
+                                    if(biz.item.phone)
+                                      a.findit(class="fa-layers fa-1x")
+                                        i.fas.fa-mobile-alt 
+                                      //a.findit.phoneno(href="tel:"+phone,style="color:#2c155a;display:none")
+                                          |  #{biz.phone}
+                                      a(href="/biz/"+biz.item.slug)
+                                        |  Get Phone Number
+                                    else
+                                      | 
+                              row
+                              .col-md-12     
+                                div.text-right
+                                  if biz.item.reviews
+                                  if( biz.item.reviews.length == 1) 
+                                      .col-md-6.ratingsonCat(class="rating medium star-icon value-4 label-hidden" style="margin-left: 430px !important")
+                                        .star-container
+                                          .star
+                                            i.star-empty
+                                            i.star-half
+                                            i.star-filled
+                                          .star
+                                            i.star-empty
+                                            i.star-half
+                                            i.star-filled
+                                          .star
+                                            i.star-empty
+                                            i.star-half
+                                            i.star-filled
+                                          .star
+                                            i.star-empty
+                                            i.star-half
+                                            i.star-filled
+                                          .star
+                                            i.star-empty
+                                            i.star-half
+                                            i.star-filled
+                                      small
+                                        | #{biz.item.reviews.length} Review
+                                  else if( biz.item.reviews.length > 1)
+                                    span.glyphicon.glyphicon-cog.glyph.border
+                                      div(class="rating medium star-icon value-4 label-hidden" style="margin-left: 430px !important")
+                                        .star-container
+                                          .star
+                                            i.star-empty
+                                            i.star-half
+                                            i.star-filled
+                                          .star
+                                            i.star-empty
+                                            i.star-half
+                                            i.star-filled
+                                          .star
+                                            i.star-empty
+                                            i.star-half
+                                            i.star-filled
+                                          .star
+                                            i.star-empty
+                                            i.star-half
+                                            i.star-filled
+                                          .star
+                                            i.star-empty
+                                            i.star-half
+                                            i.star-filled
+                                    
                                   else
                                     | 
-                            row
-                            .col-md-12     
-                              div.text-right
-                                if biz.item.reviews
-                                if( biz.item.reviews.length == 1) 
-                                    .col-md-6.ratingsonCat(class="rating medium star-icon value-4 label-hidden" style="margin-left: 430px !important")
-                                      .star-container
-                                        .star
-                                          i.star-empty
-                                          i.star-half
-                                          i.star-filled
-                                        .star
-                                          i.star-empty
-                                          i.star-half
-                                          i.star-filled
-                                        .star
-                                          i.star-empty
-                                          i.star-half
-                                          i.star-filled
-                                        .star
-                                          i.star-empty
-                                          i.star-half
-                                          i.star-filled
-                                        .star
-                                          i.star-empty
-                                          i.star-half
-                                          i.star-filled
-                                    small
-                                      | #{biz.item.reviews.length} Review
-                                else if( biz.item.reviews.length > 1)
-                                  span.glyphicon.glyphicon-cog.glyph.border
-                                    div(class="rating medium star-icon value-4 label-hidden" style="margin-left: 430px !important")
-                                      .star-container
-                                        .star
-                                          i.star-empty
-                                          i.star-half
-                                          i.star-filled
-                                        .star
-                                          i.star-empty
-                                          i.star-half
-                                          i.star-filled
-                                        .star
-                                          i.star-empty
-                                          i.star-half
-                                          i.star-filled
-                                        .star
-                                          i.star-empty
-                                          i.star-half
-                                          i.star-filled
-                                        .star
-                                          i.star-empty
-                                          i.star-half
-                                          i.star-filled
-                                  
-                                else
-                                  | 
-          else
-            .row
-              strong
-                | No Results Found
-            
+            else
+              .row
+                strong
+                  | No Results Found
+              
       //script to put navitems open by default
       script(type='text/javascript').
         $(document).ready(function(){

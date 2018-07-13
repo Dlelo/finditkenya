@@ -257,15 +257,16 @@ block content
                   .col-sm-3
                     label(for='gallery') Gallery
                   .col-sm-4
-                    input#gallery.form-control-form.imagegallery(type='file', name='gallery', placeholder='gallery', multiple, onchange="preview_images();")
+                    input#gallery.form-control-form.imagegallery(type='file', name='gallery', placeholder='gallery', multiple)
                 .form-group
                   .col-sm-12
                     if biz.gallery
                       each photo in biz.gallery
-                        div(style='width:150px',class='row')
-                          img(src="/uploads/"+ photo.filename, width="100%", class='col-md-11') 
-                          a(href="#",id=photo.filename)
-                            i.fa.fa-trash(aria-hidden="true",class='col-md-1')                 
+                        .row
+                          div(class='col-md-3')
+                            img(src="/uploads/"+ photo.filename, width="100%", class='col-md-11') 
+                            a(href="/admin/deletephoto/"+biz.id+"/"+photo.filename, id=photo.filename)
+                              i.fa.fa-trash(aria-hidden="true",class='col-md-1')                 
                   #gallerypreview.col-md-12
                 .form-group
                   .col-sm-4
@@ -330,21 +331,25 @@ block content
         var packagename = "#{biz.packagepaid}";
         $(".imagegallery").on("change", function() { 
               //alert(packagename);
+              preview_images();
               if(packagename == "bronze"){
                 if($(".imagegallery")[0].files.length > 5) {
                   $(".imagegallery").val('');
+                  $('#gallerypreview').html('');
                   alert("You can select only 5 images");
                  }
               }
               else if(packagename == "silver"){
                 if($(".imagegallery")[0].files.length > 15) {
                   $(".imagegallery").val('');
+                  $('#gallerypreview').html('');
                   alert("You can select only 10 images");
                  }
               }
               else if(packagename == "" && packagename != "gold"){
                 if($(".imagegallery")[0].files.length > 0) {
                   $(".imagegallery").val('');
+                  $('#gallerypreview').html('');
                   alert("This free package doesnt allow you this feature");
                  }
               }

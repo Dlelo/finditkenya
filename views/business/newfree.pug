@@ -9,13 +9,13 @@ block content
         form.form-horizontal(method="post",action="/business/add",enctype="multipart/form-data")
           .form-group
             .col-sm-12
-              input#name.form-control-form(type='text', name='name', placeholder='Name')
+              input#name.form-control-form(type='text', name='name', placeholder='Name' required)
           .form-group
             .col-sm-12
               textarea#description.form-control-form(name='description',placeholder="Describe your business (Max 120 words)", maxlength="150")
           .form-group
             .col-sm-6
-              select#city.form-control-form(name='city')
+              select#city.form-control-form(name='city' required)
                 option(data-icon='glyphicon-wrench', value='') Select City
                 option(data-icon='glyphicon glyphicon-globe', value='Nairobi') Nairobi
                 option(data-icon='glyphicon glyphicon-globe',value='Mombasa') Mombasa 
@@ -33,7 +33,7 @@ block content
             .col-sm-6
               input#map.form-control-form(type='text', name='website', placeholder='website')  
             .col-sm-6
-              input#map.form-control-form(type='text', name='phone', placeholder='phone1,phone2')            
+              input#map.form-control-form(type='text', name='phone', placeholder='phone1,phone2' required)            
             .col-sm-6
               input#map.form-control-form(type='text', name='street', placeholder='street')
             .col-sm-6
@@ -42,24 +42,21 @@ block content
               input#map.form-control-form(type='text', name='email', placeholder='email1,email2')
             
             .col-sm-6
-              select.selectpicker.form-control(name='category', data-selected-text-format='count > 5',class='category')
+              select.selectpicker.form-control(name='category', data-selected-text-format='count > 5',class='category' required)
                 option(data-icon='glyphicon-wrench', value='') Select Business or Service
                 option(data-icon='glyphicon-gift', value='business') Business
                 option(data-icon='glyphicon glyphicon-glass',value='service') Service 
-            .col-sm-2
-              select#subcategory.selectpicker.form-control-form-select(name='subcategory', data-selected-text-format='count > 5', class='subcategory')
+            .col-sm-3
+              select#subcategory.selectpicker.form-control-form-select(name='subcategory', data-selected-text-format='count > 5', class='subcategory' required)
                 option(data-icon='glyphicon-wrench', value='') Select Category
                 each category in categories
                   option(data-icon='fa '+category.icon, value=category.name) 
                     =category.name
-            .col-sm-4
+            .col-sm-3
               .input-group
-                .input-group-addon
-                  strong.findit-blue
-                      | Select Subcategories 
-                select#ssubcategory.form-control-form-select.ssubcategory.selectpicker(name='ssubcategory',data-selected-text-format='count > 5', data-live-search="true",multiple)
-                  option(data-icon='fa fa-search', value=) 
-                    | Select one or more Subcategories
+                select#ssubcategory.form-control-form-select.ssubcategory.selectpicker(name='ssubcategory',data-selected-text-format='count > 5', data-live-search="true", required,  title="Select one or more Subcategories" ,multiple)
+                  option(data-icon='fa fa-search', value=)
+                    
               input#lat.gllpLatitude(type='hidden', value='0',name='lati')
               input#long.gllpLongitude(type='hidden', value='38.644',name='long')
               input#zoom.gllpZoom(type='hidden', value='6',name='zoom')

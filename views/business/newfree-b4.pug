@@ -19,7 +19,8 @@ block content
                 .row
                   .col-sm-6.col-xs-6
                     //select.selectpicker#city.form-control(mutiple='multiple'  name='city' data-size="7" data-live-search="true" class="selectpicker btn-primary fill_selectbtn_in own_selectbox" data-title="Location")
-                    select#demo_overview_minimal_multiselect(class="form-control" data-role="select-dropdown")  
+                    //select#demo_overview_minimal_multiselect(class="form-control" data-role="select-dropdown") 
+                    select#city(class="form-control" multiple="multiple" style="display:none;") 
                       option(data-icon='glyphicon-wrench', value='') --Select City--
                       option(data-icon='glyphicon glyphicon-globe', value='Nairobi') Nairobi
                       option(data-icon='glyphicon glyphicon-globe',value='Mombasa') Mombasa 
@@ -51,19 +52,22 @@ block content
                 .row
                   .col-sm-6.col-xs-6
                     //select.selectpicker.form-control(name='category', data-selected-text-format='count > 5',class='category')
-                    select#demo_overview_minimal(class="form-control" data-role="select-dropdown" data-profile="minimal")   
+                    //select#demo_overview_minimal(class="form-control" data-role="select-dropdown" data-profile="minimal")   
+                    select#type(name="type" class="form-control" style="display:none;")
                       option(data-icon='glyphicon-wrench', value='') --Select Business or Service--
                       option(data-icon='glyphicon-gift', value='business') Business
                       option(data-icon='glyphicon glyphicon-glass',value='service') Service 
                   .col-sm-3.col-xs-6
                     //select#subcategory.selectpicker.form-control-form-select(name='subcategory', data-selected-text-format='count > 5', class='subcategory')
-                    select#demo_overview.categories(name='categories' class="form-control" data-role="select-dropdown")
+                    //select#demo_overview.category(name='category' class="form-control" data-role="select-dropdown")
+                    select#category(name='category' class="form-control"  multiple="multiple" style="display: none;")
                       option(data-icon='glyphicon-wrench', value='') --Select Category--
                       each category in categories
                         option(data-icon='fas '+category.icon, value=category.name) 
                           =category.name
                   .col-sm-3.col-xs-6
-                    select#demo_default_multiselect.subcategories(name='subcategories' class="form-control" data-role="select-dropdown" multiple)
+                    //select#demo_default_multiselect.subcategory(name='subcategory' class="form-control" data-role="select-dropdown" multiple)
+                    select#subcategory(class="form-control"  multiple="multiple" style="display: none;")
                       option(data-icon='glyphicon-wrench', value='') --Select SubCategory--
                       each category in categories
                         option(data-icon='fas fa-search', value='' rel=category.name) 
@@ -82,4 +86,41 @@ block content
               .form-group
                 .row
                   button.button.btn.btn-warning.form-control-form(type='submit') Create
+      
+      //script(type='text/javascript').
+        $(document).ready(function(){  
+            $(".category").change(function(){
+              var _rel = (".category").val();
+              alert(_rel);
+                $.ajax({
+                    type: 'GET',
+                    url:  "/business/fetchcategory/"+ _rel,
+                    success: function(data){
+                        // Parse the returned json data
+                        //var opts = $.parseJSON(data);
+                        console.log(data);
+                        $(".subcategory").empty();
+                        $.each(data, function(i, d) {
+                            // You will need to alter the below to get the right values from your json object.  Guessing that d.id / d.modelName are columns in your carModels data
+                            console.log(d.name);
+                            $(".subcategory").append('<option value="' + d.name + '">' + d.name + '</option>');
+                            //old $('#ssubcategoryy').append('<option value="' + d.name + '">' + d.name + '</option>');
+                        });
+                    } 
+                });
+
+              if(_rel == 'Events'){
+                  $('.timeopen').hide();
+                  $('#endeventDate').show();
+                  $('#starteventDate').show();
+              }else{
+                    $('#startDate').show();
+                    $('.timeopen').show();
+                    $('#endeventDate').hide();
+                    $('#starteventDate').hide();
+              }
+              
+            });
+            
+        });
       script(src="http://maps.googleapis.com/maps/api/js?key=AIzaSyC9MX39yDkMJn6rjWi6vt4Rens5u_cVBQE")

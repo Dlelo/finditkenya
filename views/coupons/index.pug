@@ -125,6 +125,7 @@ block content
                   span.badge.badge-light
                     span#couponscount(style="color:#c00000")
                       =mycoupons.length
+        
             .col-md-6.col-sm-12.col-xs-12
               div#myModal.modal
                 div.modal-content
@@ -147,7 +148,11 @@ block content
                         h4
                           i(class="fa fa-envelope fa-fw" aria-hidden="true")
                           | Mail All
-                      
+        li.nav-item
+          div#searchCoup
+            form.form-class(method='get', action='/search')
+              div.input-group
+                input.search2.form-control-lg(type="text" placeholder="Businesses, Doctors, Lawyers, Hotels" ,style="width:100% !important" ,name='search', autofocus)              
               
     .row.deal-main
       .col-md-12.col-sm-12.col-xs-12
@@ -323,7 +328,7 @@ block content
       {
           $(function() {
             $("#homenavbar").hide();
-            $("#showSearch").hide();
+            $("#searchCoup").show();
             
             
           });
@@ -333,7 +338,7 @@ block content
       {
         $(function() {
             $("#homenavbar").show();
-            $("#showSearch").hide();
+            $("#searchCoup").hide();
            
           });
         

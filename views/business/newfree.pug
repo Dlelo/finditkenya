@@ -1,10 +1,10 @@
 extends ../layout
 
 block content
-  .page_body.basic-content
-    .container
+  #home.parallax-content-list.baner-content-listing-biz
+    .container.container-margin-top
       .col-md-offset-3.col-md-6.col-md-offset-3
-          h3.text-center Add Business
+          h3.text-center.findit-blue Add Business
       .col-md-offset-0.col-md-12.col-md-offset-0
         form.form-horizontal(method="post",action="/business/add",enctype="multipart/form-data")
           .form-group
@@ -16,7 +16,7 @@ block content
           .form-group
             .col-sm-6
               select#city.form-control-form(name='city')
-                option(data-icon='glyphicon-wrench', value='') --Select City--
+                option(data-icon='glyphicon-wrench', value='') Select City
                 option(data-icon='glyphicon glyphicon-globe', value='Nairobi') Nairobi
                 option(data-icon='glyphicon glyphicon-globe',value='Mombasa') Mombasa 
                 option(data-icon='glyphicon glyphicon-globe', value='Kisumu') Kisumu
@@ -43,23 +43,23 @@ block content
             
             .col-sm-6
               select.selectpicker.form-control(name='category', data-selected-text-format='count > 5',class='category')
-                option(data-icon='glyphicon-wrench', value='') --Select Business or Service--
+                option(data-icon='glyphicon-wrench', value='') Select Business or Service
                 option(data-icon='glyphicon-gift', value='business') Business
                 option(data-icon='glyphicon glyphicon-glass',value='service') Service 
             .col-sm-2
               select#subcategory.selectpicker.form-control-form-select(name='subcategory', data-selected-text-format='count > 5', class='subcategory')
-                option(data-icon='glyphicon-wrench', value='') --Select Category--
+                option(data-icon='glyphicon-wrench', value='') Select Category
                 each category in categories
                   option(data-icon='fa '+category.icon, value=category.name) 
                     =category.name
             .col-sm-4
               .input-group
-                .input-group-addon.findit-red
-                  strong
+                .input-group-addon
+                  strong.findit-blue
                       | Select Subcategories 
                 select#ssubcategory.form-control-form-select.ssubcategory.selectpicker(name='ssubcategory',data-selected-text-format='count > 5', data-live-search="true",multiple)
                   option(data-icon='fa fa-search', value=) 
-                    | --Select Subcategories--
+                    | Select one or more Subcategories
               input#lat.gllpLatitude(type='hidden', value='0',name='lati')
               input#long.gllpLongitude(type='hidden', value='38.644',name='long')
               input#zoom.gllpZoom(type='hidden', value='6',name='zoom')

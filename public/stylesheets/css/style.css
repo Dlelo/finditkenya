@@ -1507,6 +1507,7 @@ ul.portfolio-area li figure {
 	.portfolio-area li {
 		width: 230px;
 	}
+	
 }
 
 @media screen and (max-width: 900px) {
@@ -3076,7 +3077,7 @@ padding-left:10px;
   transform: translate3d(0px, 0px, 0px) !important;
 }
 .selected-coupon-left{
-	margin-left: 18rem;
+	margin-left: 8rem;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
 }
@@ -3716,7 +3717,7 @@ input, textarea, select, button {
     display: inline-block;
     text-align: start;
     margin: 0em;
-    font: 400 13.3333px Arial;
+    font: 400 13.3333px Ubuntu;
 }
 .opening-closingform{
 	width:100%;

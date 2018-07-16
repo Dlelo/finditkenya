@@ -17,8 +17,6 @@ html(lang='en')
     link(href="/stylesheets/css/bootstrap.css" type="text/css" rel="stylesheet" media="all")
     link(href="/stylesheets/css/style.css" type="text/css" rel="stylesheet" media="all")
     
-
-    
     
     //font-awesome icons
     link(href="/stylesheets/css/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css" rel="stylesheet")
@@ -29,8 +27,7 @@ html(lang='en')
     link(href="//fonts.googleapis.com/css?family=Josefin+Sans:100,100i,300,300i,400,400i,600,600i,700,700i" rel="stylesheet")
     script(src="/javascripts/jquery-3.3.1.min.js") 
     script(src='/javascripts/jquery.easy-autocomplete.min.js')
-    //selector css
-    link(rel='stylesheet', href='/stylesheets/css/bootstrap-select.min.css')
+    
    
     link(rel='stylesheet', href='/stylesheets/lightbox.css')
     link(rel='stylesheet', href='/stylesheets/bootstrap-select.min.css')
@@ -39,7 +36,7 @@ html(lang='en')
     link(rel='stylesheet', href='/stylesheets/jquery-gmaps-latlon-picker.css')
     link(rel='stylesheet', href='/stylesheets/star-rating.min.css')
     link(rel='stylesheet', href='/stylesheets/lightgallery.min.css')
-    link(href="/stylesheets/css/bootstrap-multiselect.css" type="text/css" rel="stylesheet" media="all")
+    
 
     //added css from layout
     link(rel='stylesheet', href='/stylesheets/fontAwesome.css')
@@ -69,7 +66,7 @@ body
     header
       //header before navigation items
       nav#homenavbar.navbar.navbar-expand-lg.navbar-light.bg-gradient-secondary
-        div(style="display:inline-flex")
+        div(style="display:flex !important; flex-direction:row !important; width: 100% !important;")
           div(style="flex-grow:0.1 !important")
             a.navbar-brand.text-white(href="/")
               img.img-logo(src="/img/findit-red-logo.png").img-fluid
@@ -77,66 +74,66 @@ body
             #showSearch
               form.form-class(method='get', action='/search')
                 div.input-group
-                  input.search2.form-control-lg(type="text" placeholder="" ,style="width:100% !important" ,name='search', autofocus)
+                  input.search2.form-control-lg(type="text" placeholder="Restaurants, Businesses, Doctors..." ,style="width:100% !important" ,name='search', autofocus)
           div(style="flex-grow:0.1 !important")      
             a(href="/coupons")
               button.btn.btn-light.w3ls-btn.coupons-btn.flash-button#coupbtn(type="button")
                 span.fas.fa-gift.coupons-text-color
                 | View deals
-          
-        //site navigation 
-        button.navbar-toggler.ml-md-auto(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-            aria-expanded="false" aria-label="Toggle navigation")
-              span.navbar-toggler-icon
-        div#navbarSupportedContent.collapse.navbar-collapse
-        
-          ul.nav.navbar-nav.ml-lg-auto.nav.justify-content-end(style="float:right")
-            li.dropdown.nav-item.mr-3
-              a.nav-link.dropdown-toggle(href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")    
-                span.fas.fa-th-list.fas-menu
-                |  Categories 
-                span.caret
-              div.dropdown-menu.dropdown-menu-right.mega-menu(aria-labelledby="navbarDropdown" style="width: -webkit-fill-available;")
-                if categories 
-                  div.row
-                    each category,i in categories
-                      div.col-md-4.col-sm-12.col-xs-12
-                        a.dropdown-item(href="/category/"+category.name)
-                            strong.findit-blue
-                              i.fas.fa-1x(aria-hidden='true', class=category.icon) 
-                              small.findit-blue
-                                strong   
-                                  =category.name
-                    
+          div(style="flex-grow:0.5 !important")
+            //site navigation 
+            button.navbar-toggler.ml-md-auto(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation")
+                  span.navbar-toggler-icon
+            div#navbarSupportedContent.collapse.navbar-collapse
+            
+              ul.nav.navbar-nav.ml-lg-auto.justify-content-end(style="float:right")
+                li.dropdown.nav-item.mr-3
+                  a.nav-link.dropdown-toggle(href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")    
+                    span.fas.fa-th-list.fas-menu
+                    |  Categories 
+                    span.caret
+                  div.dropdown-menu.dropdown-menu-right.mega-menu(aria-labelledby="navbarDropdown" style="width: -webkit-fill-available;")
+                    if categories 
+                      div.row
+                        each category,i in categories
+                          div.col-md-4.col-sm-12.col-xs-12
+                            a.dropdown-item(href="/category/"+category.name)
+                                strong.findit-blue
+                                  i.fas.fa-1x(aria-hidden='true', class=category.icon) 
+                                  small.findit-blue
+                                    strong   
+                                      =category.name
                         
-            //li.nav-item.mr-3
-              a(href="/")
-                span.fas.fa-home.fas-menu 
-                strong
-                |  Home
-            if (loggedin)
-              li.nav-item.mr-3                  
-                a(href='/dashboard')  
-                  span.fas.fa-user.fas-menu
-                  strong
-                  |  View Profile          
-            if (loggedin)                
-              li.nav-item.mr-3
-                a(href='/logout') 
-                  span.fas.fa-sign-out-alt.fas-menu
-                  strong
-                  |  Logout
-            else
-              li.nav-item.mr-3
-                a(href='/login')
-                  button.btn.btn-primary.w3ls-btn
+                            
+                //li.nav-item.mr-3
+                  a(href="/")
+                    span.fas.fa-home.fas-menu 
                     strong
-                      | Login
-              li.nav-item.mr-3
-              a(href="/register")
-                button.btn.btn-outline-primary.w3ls-btn.findit-blue
-                  strong
-                  |  Sign Up
+                    |  Home
+                if (loggedin)
+                  li.nav-item.mr-3                  
+                    a(href='/dashboard')  
+                      span.fas.fa-user.fas-menu
+                      strong
+                      |  View Profile          
+                if (loggedin)                
+                  li.nav-item.mr-3
+                    a(href='/logout') 
+                      span.fas.fa-sign-out-alt.fas-menu
+                      strong
+                      |  Logout
+                else
+                  li.nav-item.mr-3
+                    a(href='/login')
+                      button.btn.btn-primary.w3ls-btn
+                        strong
+                          | Login
+                  li.nav-item.mr-3
+                  a(href="/register")
+                    button.btn.btn-outline-primary.w3ls-btn.findit-blue
+                      strong
+                      |  Sign Up
 
    
     //display errors
@@ -233,6 +230,9 @@ body
   
 <!--bootstrap 4 javascript-->
 script(src='/javascripts/bootstrapjs/bootstrap-select-dropdown.min.js')
+script(src='/javascripts/bootstrapjs/BsMultiSelect.min.js')
+
+//select picker js
 //script(src='/javascripts/bootstrapjs/bootstrap-select.min.js')
 //not working//script(src='/javascripts/bootstrapjs/bootstrap-multiselect.js')
 script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js")
@@ -392,38 +392,14 @@ script(type='text/javascript').
   // do something here
   }	
   });  
-
-
-
+     
   // document ready  
   });
+
   
 // Script to populate dependable dropdown on add business
 script(type='text/javascript').
-  //When the page has loaded.
-  $(document).on('change', '.categories', function(){
-    //old //$(".categories").change(function() 
-    var _rel= $(this).val();
-    alert(_rel);
-    $.ajax({
-        type: "GET",
-        url: "/business/fetchcategory/"+_rel,
-        success: function(data){
-            // Parse the returned json data
-            //var opts = $.parseJSON(data);
-            console.log(data);
-            $(".subcategories").empty();
-            $.each(data, function(i, d) {
-                // You will need to alter the below to get the right values from your json object.  Guessing that d.id / d.modelName are columns in your carModels data
-                console.log(d.name);
-                $(".subcategories").append('<option value="' + d.name + '">' + d.name + '</option>');
-                //old $('#ssubcategoryy').append('<option value="' + d.name + '">' + d.name + '</option>');
-            });
-        }
-    });
-  });
-  $(".categories").change();
-
+ 
     
   $(function() {
     //DONUT STORIES
@@ -493,6 +469,7 @@ script(type='text/javascript').
         $(this).addClass('arrow-up');
         $('#bottom-scroll').animate({height: '23%'},500)
     });
+  
     
     $(document).ready(function() {
 
@@ -523,12 +500,33 @@ script(type='text/javascript').
     });
 
      
-
-      var $cat = $(".subcategory"),
+    
+     /*  var $cat = $(".subcategory"),
           $subcat = $(".ssubcategory");
       
       $cat.on("change",function(){
           var _rel = $(this).find(":selected").val();
+          alert(_rel);
+              url= "/business/fetchcategory/"+ _rel;
+          alert(url);
+          $.ajax({
+              type: "GET",
+              url: url,
+              success: function(data){
+                  // Parse the returned json data
+                  //var opts = $.parseJSON(data);
+                  console.log(data);
+                  $(".ssubcategory").empty();
+                  $.each(data, function(i, d) {
+                      // You will need to alter the below to get the right values from your json object.  Guessing that d.id / d.modelName are columns in your carModels data
+                      console.log(d.name);
+                      $(".ssubcategory").append('<option value="' + d.name + '">' + d.name + '</option>');
+                      //old $('#ssubcategoryy').append('<option value="' + d.name + '">' + d.name + '</option>');
+                  });
+              }
+          });
+
+
           if(_rel == 'Events'){
               $('.timeopen').hide();
               $('#endeventDate').show();
@@ -538,28 +536,12 @@ script(type='text/javascript').
               $('.timeopen').show();
               $('#endeventDate').hide();
               $('#starteventDate').hide();
-          }
-          
-          
-          /*$.ajax({
-                type: "GET",
-                url: "/business/fetchcategory/"+_rel,
-                success: function(data){
-                    // Parse the returned json data
-                    //var opts = $.parseJSON(data);
-                    
-                    $subcat.empty();
-                    $.each(data, function(i, d) {
-                        // You will need to alter the below to get the right values from your json object.  Guessing that d.id / d.modelName are columns in your carModels data
-                        console.log(d.name);
-                        $('#ssubcategory').append('<option value="' + d.name + '">' + d.name + '</option>');
-                        $('#ssubcategoryy').append('<option value="' + d.name + '">' + d.name + '</option>');
-                    });
-                    $('.selectpicker').selectpicker('refresh');
-                }
-            });*/
+          }*/
+
         
       });
+     
+      
 
     tinymce.init({ 
               selector:'#review',
@@ -649,7 +631,7 @@ script(type='text/javascript').
     };
 
     }
-  });
+  
 // Global site tag (gtag.js) - Google Analytics
 script(async src="https://www.googletagmanager.com/gtag/js?id=UA-102320208-3")
 script.

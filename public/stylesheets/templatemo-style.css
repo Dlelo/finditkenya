@@ -10,7 +10,11 @@ http://www.templatemo.com/tm-506-tinker
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Roboto', arial, sans-serif;
+	font-family: 'Ubuntu';
+    font-weight: 600;
+	line-height: 1.5;
+	color: #212529;
+	background-color: #fff;
 }
 
 body {
@@ -22,11 +26,11 @@ ul {
 	margin: 0px;
 }
 
-p {
+/*p {
 	color: #2c343b;
 	font-size: 14px;
 	line-height: 24px;
-}
+}*/
 
 .parallax-content {
   width: 100%;
@@ -98,12 +102,9 @@ p {
 }
 
 .navbar-nav>li>a {
-	color: #bc1206!important;
-	font-size: 13px;
-	font-weight: 300;
-	text-transform: uppercase;
+	color: #04045a !important;
 	text-shadow: none;
-	line-height: 80px;
+	line-height: inherit;
 	padding: 0px;
 	letter-spacing: 0.5px;
 }
@@ -113,10 +114,8 @@ p {
 }
 
 .header.active .navbar-nav>li>a {
-	font-family: 'Open Sans', arial, sans-serif;
-	font-size: 13px;
-	font-weight: 300;
-	letter-spacing: 0.5px;
+	font-family: 'Ubuntu';
+	font-weight: 600;
 	text-transform: uppercase;
 	text-shadow: none;
 	color: #121212!important;
@@ -167,7 +166,7 @@ p {
 .navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
 	background-color: #f7c552;
 }
-bootstrap.min.css:5
+/*bootstrap.min.css:5?*/
 .navbar-toggle {
     position: relative;
     float: right;
@@ -337,7 +336,7 @@ bootstrap.min.css:5
 	padding: 30px 15px 0px 15px;
 }
 
-.filter-categories {;
+.filter-categories {
   margin-top: 60px;
 }
 
@@ -972,7 +971,7 @@ footer .terms-policy ul li a {
 
 
 	.navbar-inverse .navbar-nav>li>a {
-		font-family: 'Roboto', sans-serif!important;
+		font-family: 'Ubuntu' serif!important;
 		line-height: 55px;
 		color: #343434!important;
 	}

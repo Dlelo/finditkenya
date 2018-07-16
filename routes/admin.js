@@ -64,7 +64,11 @@ router.post('/edit/:id', role.auth, cpUpload, function(req, res, next) {
 		b.keywords = req.body.keywords;
 
 		if(req.files['gallery']){
-			b.gallery = req.files['gallery'];
+			//b.gallery = req.files['gallery'];
+      req.files['gallery'].forEach(function(x){
+        b.gallery.push(x);
+      })
+      //b.gallery.push(req.files['gallery']);
 		}
 		b.user_id = res.locals.user.username;
 	    b.hoursopen = req.body.hoursopen;
@@ -196,10 +200,54 @@ router.get('/delete/:id',role.auth, function(req, res, next){
 		    res.redirect('/dashboard');
 		})
 		.catch(function(err){
-		     console.log(err);
+		    console.log(err);
 		});
 	}
 });
+
+//DELETE PHOTO FROM GALLERY
+router.get('/deletephoto/:id/',role.auth, function(req, res, next){
+	if(req.user.role == 1){
+		Business.findOne({
+		  _id: req.params.id
+		})
+		.then(function(data){
+      var result = data.gallery.filter(function(e, i) {
+        return e.filename != req.query.photo
+      });
+      data.gallery = result;
+      data.save(function(err){
+  			if(err)
+  				res.redirect('/admin/edit/'+data.id);
+  			res.redirect('/admin/edit/'+data.id);
+  		});
+		  //res.redirect('/dashboard');
+		})
+		.catch(function(err){
+		    console.log(err);
+		});
+	}else{
+		Business.findOne({
+		  _id: req.params.id,
+		  user_id : res.locals.user.username
+		})
+		.then(function(data){
+      var result = data.gallery.filter(function(e, i) {
+        return e.filename != req.query.photo
+      });
+      data.gallery = result;
+      data.save(function(err){
+        if(err)
+          res.redirect('/admin/edit/'+data.id);
+        res.redirect('/admin/edit/'+data.id);
+      });
+		})
+		.catch(function(err){
+		    console.log(err);
+		});
+	}
+});
+
 
 router.get('/fakepaid/:id/:package',role.admin, function(req, res, next){
 		Business.findById(req.params.id)

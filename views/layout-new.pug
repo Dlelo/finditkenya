@@ -66,7 +66,7 @@ body
     header
       //header before navigation items
       nav#homenavbar.navbar.navbar-expand-lg.navbar-light.bg-gradient-secondary
-        div(style="display:inline-flex")
+        div(style="display:flex !important; flex-direction:row !important; width: 100% !important;")
           div(style="flex-grow:0.1 !important")
             a.navbar-brand.text-white(href="/")
               img.img-logo(src="/img/findit-red-logo.png").img-fluid
@@ -80,60 +80,60 @@ body
               button.btn.btn-light.w3ls-btn.coupons-btn.flash-button#coupbtn(type="button")
                 span.fas.fa-gift.coupons-text-color
                 | View deals
-          
-        //site navigation 
-        button.navbar-toggler.ml-md-auto(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-            aria-expanded="false" aria-label="Toggle navigation")
-              span.navbar-toggler-icon
-        div#navbarSupportedContent.collapse.navbar-collapse
-        
-          ul.nav.navbar-nav.ml-lg-auto.nav.justify-content-end(style="float:right")
-            li.dropdown.nav-item.mr-3
-              a.nav-link.dropdown-toggle(href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")    
-                span.fas.fa-th-list.fas-menu
-                |  Categories 
-                span.caret
-              div.dropdown-menu.dropdown-menu-right.mega-menu(aria-labelledby="navbarDropdown" style="width: -webkit-fill-available;")
-                if categories 
-                  div.row
-                    each category,i in categories
-                      div.col-md-4.col-sm-12.col-xs-12
-                        a.dropdown-item(href="/category/"+category.name)
-                            strong.findit-blue
-                              i.fas.fa-1x(aria-hidden='true', class=category.icon) 
-                              small.findit-blue
-                                strong   
-                                  =category.name
-                    
+          div(style="flex-grow:0.5 !important")
+            //site navigation 
+            button.navbar-toggler.ml-md-auto(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation")
+                  span.navbar-toggler-icon
+            div#navbarSupportedContent.collapse.navbar-collapse
+            
+              ul.nav.navbar-nav.ml-lg-auto.justify-content-end(style="float:right")
+                li.dropdown.nav-item.mr-3
+                  a.nav-link.dropdown-toggle(href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")    
+                    span.fas.fa-th-list.fas-menu
+                    |  Categories 
+                    span.caret
+                  div.dropdown-menu.dropdown-menu-right.mega-menu(aria-labelledby="navbarDropdown" style="width: -webkit-fill-available;")
+                    if categories 
+                      div.row
+                        each category,i in categories
+                          div.col-md-4.col-sm-12.col-xs-12
+                            a.dropdown-item(href="/category/"+category.name)
+                                strong.findit-blue
+                                  i.fas.fa-1x(aria-hidden='true', class=category.icon) 
+                                  small.findit-blue
+                                    strong   
+                                      =category.name
                         
-            //li.nav-item.mr-3
-              a(href="/")
-                span.fas.fa-home.fas-menu 
-                strong
-                |  Home
-            if (loggedin)
-              li.nav-item.mr-3                  
-                a(href='/dashboard')  
-                  span.fas.fa-user.fas-menu
-                  strong
-                  |  View Profile          
-            if (loggedin)                
-              li.nav-item.mr-3
-                a(href='/logout') 
-                  span.fas.fa-sign-out-alt.fas-menu
-                  strong
-                  |  Logout
-            else
-              li.nav-item.mr-3
-                a(href='/login')
-                  button.btn.btn-primary.w3ls-btn
+                            
+                //li.nav-item.mr-3
+                  a(href="/")
+                    span.fas.fa-home.fas-menu 
                     strong
-                      | Login
-              li.nav-item.mr-3
-              a(href="/register")
-                button.btn.btn-outline-primary.w3ls-btn.findit-blue
-                  strong
-                  |  Sign Up
+                    |  Home
+                if (loggedin)
+                  li.nav-item.mr-3                  
+                    a(href='/dashboard')  
+                      span.fas.fa-user.fas-menu
+                      strong
+                      |  View Profile          
+                if (loggedin)                
+                  li.nav-item.mr-3
+                    a(href='/logout') 
+                      span.fas.fa-sign-out-alt.fas-menu
+                      strong
+                      |  Logout
+                else
+                  li.nav-item.mr-3
+                    a(href='/login')
+                      button.btn.btn-primary.w3ls-btn
+                        strong
+                          | Login
+                  li.nav-item.mr-3
+                  a(href="/register")
+                    button.btn.btn-outline-primary.w3ls-btn.findit-blue
+                      strong
+                      |  Sign Up
 
    
     //display errors

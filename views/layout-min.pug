@@ -68,7 +68,7 @@ body
     header
       //header before navigation items
       nav#homenavbar.navbar.navbar-expand-lg.navbar-light.bg-gradient-secondary
-        div(style="display:inline-flex")
+        div(style="display:flex !important; flex-direction:row !important; width: 100% !important;")
           div(style="flex-grow:0.1 !important")
             a.navbar-brand.text-white(href="/")
               img.img-logo(src="/img/findit-red-logo.png").img-fluid
@@ -82,40 +82,40 @@ body
               button.btn.btn-light.w3ls-btn.coupons-btn.flash-button#coupbtn(type="button")
                 span.fas.fa-gift.coupons-text-color
                 | View deals
-        
-        //site navigation 
-        button.navbar-toggler.ml-md-auto(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-          aria-expanded="false" aria-label="Toggle navigation")
-            span.navbar-toggler-icon
-        div#navbarSupportedContent.collapse.navbar-collapse
-        
-          ul.nav.navbar-nav.ml-lg-auto.nav.justify-content-end(style="float:right")
+          div(style="flex-grow:0.5 !important")
+            //site navigation 
+            button.navbar-toggler.ml-md-auto(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+              aria-expanded="false" aria-label="Toggle navigation")
+                span.navbar-toggler-icon
+            div#navbarSupportedContent.collapse.navbar-collapse
             
-            if loggedin
-              li.nav-item.mr-3                  
-                a(href='/dashboard')  
-                  span.fas.fa-user.fas-menu
-                  strong
-                  |  View Profile          
-            if loggedin                
-              li.nav-item.mr-3
-                a(href='/logout') 
-                  span.fas.fa-sign-out-alt.fas-menu
-                  strong
-                  |  Logout
-            else
-              li.nav-item.mr-3
-                a(href='/login')
-                  button.btn.btn-primary.w3ls-btn
-                    strong
-                      | Login
-              li.nav-item.mr-3
-              a(href="/register")
-                button.btn.btn-outline-primary.w3ls-btn.findit-blue
-                  strong
-                  |  Sign Up
+              ul.nav.navbar-nav.ml-lg-auto.nav.justify-content-end(style="float:right")
                 
-    
+                if loggedin
+                  li.nav-item.mr-3                  
+                    a(href='/dashboard')  
+                      span.fas.fa-user.fas-menu
+                      strong
+                      |  View Profile          
+                if loggedin                
+                  li.nav-item.mr-3
+                    a(href='/logout') 
+                      span.fas.fa-sign-out-alt.fas-menu
+                      strong
+                      |  Logout
+                else
+                  li.nav-item.mr-3
+                    a(href='/login')
+                      button.btn.btn-primary.w3ls-btn
+                        strong
+                          | Login
+                  li.nav-item.mr-3
+                  a(href="/register")
+                    button.btn.btn-outline-primary.w3ls-btn.findit-blue
+                      strong
+                      |  Sign Up
+                    
+        
    
     //display errors
     .errors

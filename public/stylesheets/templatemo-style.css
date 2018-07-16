@@ -10,7 +10,11 @@ http://www.templatemo.com/tm-506-tinker
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Roboto', arial, sans-serif;
+	font-family: 'Ubuntu', arial, sans-serif;
+    font-weight: 400;
+	line-height: 1.5;
+	color: #212529;
+	background-color: #fff;
 }
 
 body {
@@ -22,11 +26,11 @@ ul {
 	margin: 0px;
 }
 
-p {
+/*p {
 	color: #2c343b;
 	font-size: 14px;
 	line-height: 24px;
-}
+}*/
 
 .parallax-content {
   width: 100%;
@@ -98,12 +102,9 @@ p {
 }
 
 .navbar-nav>li>a {
-	color: #bc1206!important;
-	font-size: 13px;
-	font-weight: 300;
-	text-transform: uppercase;
+	color: #04045a !important;
 	text-shadow: none;
-	line-height: 80px;
+	line-height: inherit;
 	padding: 0px;
 	letter-spacing: 0.5px;
 }

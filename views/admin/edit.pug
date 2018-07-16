@@ -259,11 +259,10 @@ block content
                   .col-sm-4
                     input#gallery.form-control-form.imagegallery(type='file', name='gallery', placeholder='gallery', multiple)
                 .form-group
-                  .col-sm-12
+                  .col-sm-12#accordion
                     if biz.gallery
                       each photo in biz.gallery
-                        .row
-                          div(class='col-md-3')
+                          div(class='col-md-3 ',id=photo.filename)
                             img(src="/uploads/"+ photo.filename, width="100%", class='col-md-11') 
                             a(href="/admin/deletephoto/"+biz.id+"?photo="+photo.filename, id=photo.filename)
                               i.fa.fa-trash(aria-hidden="true",class='col-md-1')                 
@@ -310,6 +309,92 @@ block content
                 button.button.btn.btn-warning.form-control-form(type='submit') Update
     script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9MX39yDkMJn6rjWi6vt4Rens5u_cVBQE")
     script(type='text/javascript').
+    script(type='text/javascript').
+      $(function() {
+        var gallery = "#{biz.gallery}";
+        var el = document.getElementById('accordion');
+        function reordergallery(photoid,order){
+          //alert(photoid);          
+          console.log(gallery);
+        }
+        var sortable = Sortable.create(el, {
+          onEnd: function (/**Event*/evt) {
+            //alert("sorting done: "+evt.to);
+            var couponId = evt.item.id;
+            var order = evt.newIndex;
+            reordergallery(couponId,order);
+            /*axios.get('/admin/coupon/reorder/'+couponId+'/'+order)
+            .then(function (response) {
+              // handle success
+              alert(response);
+              Notify.toast(response, {
+                fn: function () {
+                  // custom function here
+                }
+              });
+              console.log(response);
+            })
+            .catch(function (error) {
+              // handle error
+              console.log(error);
+            })
+            .then(function () {
+              // always executed
+            });
+            */
+            //console.log(evt);
+            //alert(evt.item.id)
+            var itemEl = evt.item;  // dragged HTMLElement
+            evt.to;    // target list
+            evt.from;  // previous list
+            evt.oldIndex;  // element's old index within old parent
+            evt.newIndex;  // element's new index within new parent
+          },
+
+          // Element is dropped into the list from another list
+          onAdd: function (/**Event*/evt) {
+            // same properties as onEnd
+          },
+
+          // Changed sorting within list
+          onUpdate: function (/**Event*/evt) {
+            // same properties as onEnd
+          },
+
+          // Called by any change to the list (add / update / remove)
+          onSort: function (/**Event*/evt) {
+            // same properties as onEnd
+          },
+
+          // Element is removed from the list into another list
+          onRemove: function (/**Event*/evt) {
+            // same properties as onEnd
+          },
+
+          // Attempt to drag a filtered element
+          onFilter: function (/**Event*/evt) {
+            var itemEl = evt.item;  // HTMLElement receiving the `mousedown|tapstart` event.
+          },
+
+          // Event when you move an item in the list or between lists
+          onMove: function (/**Event*/evt, /**Event*/originalEvent) {
+            // Example: http://jsbin.com/tuyafe/1/edit?js,output
+            evt.dragged; // dragged HTMLElement
+            evt.draggedRect; // TextRectangle {left, top, right и bottom}
+            evt.related; // HTMLElement on which have guided
+            evt.relatedRect; // TextRectangle
+            originalEvent.clientY; // mouse position
+            // return false; — for cancel
+          },
+
+          // Called when creating a clone of element
+          onClone: function (/**Event*/evt) {
+            var origEl = evt.item;
+            var cloneEl = evt.clone;
+          }
+        });
+      });
+
       function preview_images() 
       {
        var total_file=document.getElementById("gallery").files.length;

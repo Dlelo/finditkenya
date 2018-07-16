@@ -56,7 +56,7 @@ html
             div(style="flex-grow:0.1 !important")      
               a(href="/coupons")
                 button.btn.btn-light.w3ls-btn.coupons-btn.flash-button#coupbtn(type="button")
-                  span.fas.fa-gift.coupons-text-color
+                  span.fa.fa-gift.coupons-text-color
                   | View deals
             div(style="flex-grow:0.5 !important")
               button#nav-toggle.navbar-toggle(type='button', data-toggle='collapse', data-target='#main-nav')
@@ -71,9 +71,9 @@ html
                 ul.nav.navbar-nav.ml-lg-auto.nav.justify-content-end(style="float:right")
                   li.dropdown.nav-item.mr-3
                     a.nav-link.dropdown-toggle(href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")    
-                      span.fas.fa-th-list.fas-menu
+                      span.findit-blue.fa.fa-th-list
                       |  Categories 
-                      span.caret
+                      span.findit-blue.caret
                     div.dropdown-menu.dropdown-menu-right.mega-menu(aria-labelledby="navbarDropdown" style="width: -webkit-fill-available;")
                       if categories 
                         div.row
@@ -81,7 +81,7 @@ html
                             div.col-md-4.col-sm-12.col-xs-12
                               a.dropdown-item(href="/category/"+category.name)
                                   strong.findit-blue
-                                    i.fas.fa-1x(aria-hidden='true', class=category.icon) 
+                                    //i.fas.fa-1x(aria-hidden='true', class=category.icon) 
                                     small.findit-blue
                                       strong   
                                         =category.name
@@ -95,13 +95,13 @@ html
                   if (loggedin)
                     li.nav-item.mr-3                  
                       a(href='/dashboard')  
-                        span.fas.fa-user.fas-menu
+                        span.findit-blue.fa.fa-user
                         strong
                         |  View Profile          
                   if (loggedin)                
                     li.nav-item.mr-3
                       a(href='/logout') 
-                        span.fas.fa-sign-out-alt.fas-menu
+                        span.findit-blue.fa.fa-sign-out-alt
                         strong
                         |  Logout
                   else
@@ -123,20 +123,20 @@ html
     .errors.container
       if errors
         each error in errors
-          .alert.alert-danger
+          .alert.xxx-error.alert-danger
             = error
       
       if message
         .alert.alert-info
           = message
       if success_msg.length
-        .alert.alert-success 
+        .alert.xxx-error.alert-success 
           = success_msg
       if error_msg.length
-        .alert.alert-danger 
+        .alert.xxx-error.alert-danger 
           = error_msg
       if error.length
-        .alert.alert-danger 
+        .alert.xxx-error.alert-danger 
           = error
     block content
     section.at-login-form

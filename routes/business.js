@@ -239,6 +239,36 @@ router.post('/review',role.auth, function(req, res, next){
 	});
 });
 
+router.get('/gallery/reorder/:bizid',role.auth,function(req, res, next){
+	//res.json(req.query.order);
+  if(req.user.role == 1){
+    Business.findById(req.params.bizid)
+    .then(function(data){
+      data.gallery = JSON.parse(req.query.order);
+      data.save(function(rst){
+        res.send("Gallery reordered");
+      });
+    })
+    .catch(function(err){
+       console.log(err);
+    });
+  }else{
+    Business.findOne({
+      _id: req.params.bizid,
+      user_id : res.locals.user.username
+    })
+    .then(function(data){
+      data.gallery = JSON.parse(req.query.order);
+      data.save(function(rst){
+        res.send("Gallery reordered");
+      });
+    })
+    .catch(function(err){
+       console.log(err);
+    });
+  }
+});
+
 router.get('/:name',function(req, res, next){
 	res.render('business/new');
 });

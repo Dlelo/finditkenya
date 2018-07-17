@@ -171,10 +171,11 @@ router.get('/edit/:id',role.auth, function(req, res, next){
 	    //console.log(data);
 	    var openingTimesMoment = new OpeningTimes(values[0].hours, 'Africa/Nairobi');
 	    values[0].openstatus = openingTimesMoment.getStatus(now);
-	    //console.log(values[0]);
+	    console.log(JSON.stringify(values[0].gallery));
 	    res.render('admin/edit', {
 	        title: "Edit "+values[0].name,
 	        biz: values[0],
+          gallery: JSON.stringify(values[0].gallery),
 	        categories: values[1]
 	    });
 	  });

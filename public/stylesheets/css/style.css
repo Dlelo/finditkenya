@@ -2979,6 +2979,7 @@ padding-left:10px;
 	left:-10;
 }
 
+
 .deal-coup{
 	border: 1px solid #eee;
     box-shadow: 0 1px 3px 0 rgba(0,0,0,.02);
@@ -3749,5 +3750,15 @@ input, textarea, select, button {
 }
 .navbar-brand {
 	padding-top: .1125rem !important;
+}
+.fa-style{
+	background-color: #04045a;
+	color:#fff !important;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #04045a;
+	border-color: #040450;
+	background-image: linear-gradient(to bottom,#04045a 0,#040450 100%) !important;
 }
 

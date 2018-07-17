@@ -3,264 +3,261 @@ extends ../layout
 block content
   #home.parallax-content-list.baner-content-listing-biz
     .container.container-margin-top
-      .page_body.basic-content
-        .container
-          .row
-            .col-md-offset-12.col-md-12.col-md-offset-12
-                h3.text-center Add Business
-            .col-md-offset-0.col-md-12.col-md-offset-0
-              form.form-horizontal(method="post",action="/business/add",enctype="multipart/form-data")
-                .form-group
-                  .col-md-12
-                    input#name.form-control-form(type='text', name='name', placeholder='Name')
-                .form-group
-                  .col-md-12
-                    textarea#description.form-control-form(name='description',rows=20,cols=30,placeholder="Describe your business")
-                .form-group
-                  .col-md-12
-                    textarea#keywords.form-control-form(name='keywords',placeholder="Type your business' comma separated 'KEYWORDS' (NOTE: Keywords are words and phrases that define your business e.g. shoes in Kenya )")
-                    span.spnCharLeft
-                .form-group
-                  .row
-                    .col-sm-6
-                      select#city.form-control-form(name='city')
-                        option(data-icon='glyphicon glyphicon-globe', value='Nairobi') Nairobi
-                        option(data-icon='glyphicon glyphicon-globe',value='Mombasa') Mombasa 
-                        option(data-icon='glyphicon glyphicon-globe', value='Kisumu') Kisumu
-                        option(data-icon='glyphicon glyphicon-globe',value='Eldoret') Eldoret 
-                        option(data-icon='glyphicon glyphicon-globe', value='Nakuru') Nakuru
-                        option(data-icon='glyphicon glyphicon-globe',value='Meru') Meru 
-                        option(data-icon='glyphicon glyphicon-globe', value='Nyeri') Nyeri
-                        option(data-icon='glyphicon glyphicon-globe',value='Thika') Thika 
-                        option(data-icon='glyphicon glyphicon-globe', value='Nanyuki') Nanyuki 
-                        option(data-icon='glyphicon glyphicon-globe', value='Watamu') Watamu   
-                        option(data-icon='glyphicon glyphicon-globe', value='Kitale') Kitale 
-                        option(data-icon='glyphicon glyphicon-globe', value='Narok') Narok  
-                        option(data-icon='glyphicon glyphicon-globe', value='Samburu') Samburu
-                        option(data-icon='glyphicon glyphicon-globe', value='Machakos') Machakos 
-                        option(data-icon='glyphicon glyphicon-globe', value='Nyahururu') Nyahururu
-                        option(data-icon='glyphicon glyphicon-globe', value='Malindi') Malindi      
-                    .col-sm-6
-                      input#map.form-control-form(type='text', name='phone', placeholder='Phone')
-                    .col-sm-6
-                      input#map.form-control-form(type='text', name='website', placeholder='Website')
-                    .col-sm-6
-                      input#map.form-control-form(type='text', name='email', placeholder='Email')            
-                    .col-sm-6
-                      input#map.form-control-form(type='text', name='deliverylink', placeholder='Delivery or Takeaway Link')
-                    .col-sm-6
-                      input#map.form-control-form(type='text', name='bookinglink', placeholder='Booking or Reservation Link')
-                    .col-sm-6
-                      input#map.form-control-form(type='text', name='street', placeholder='Street')
-                    .col-sm-6
-                      input#map.form-control-form(type='text', name='building', placeholder='Building')
-                    .col-sm-6
-                      select.form-control-form(name='category', data-selected-text-format='count > 5')
-                        option(data-icon='glyphicon-gift', value='business') Business
-                        option(data-icon='glyphicon glyphicon-glass',value='service') Service 
-                    .col-sm-3
-                      select#subcategory.selectpicker.form-control-form-select(name='subcategory', data-selected-text-format='count > 5', class='subcategory' required)
-                        option(data-icon='glyphicon-wrench', value='') Select Category
-                        each category in categories
-                          option(data-icon='fa '+category.icon, value=category.name) 
-                            =category.name
-                    .col-sm-3
-                      .input-group
-                        select#ssubcategory.form-control-form-select.ssubcategory.selectpicker(name='ssubcategory',data-selected-text-format='count > 5', data-live-search="true", required,  title="Select one or more Subcategories" ,multiple)
-                          option(data-icon='fa fa-search', value=)
-                     
-                    .col-sm-6(style="display:none",id="starteventDate")
-                      strong
-                        h6.findit-red
-                          | Start Event Date
-                      input#startdate.form-control-form(type='text', name='starteventdate', placeholder='Start Event Date',class='datetimepicker')
-                    .col-sm-6(style="display:none",id="endeventDate")
-                      strong
-                        h6.findit-red
-                          | End Event Date
-                      input#startdate.form-control-form(type='text', name='endeventdate', placeholder='End Event Date',class='datetimepicker') 
-                .form-group
-                  .row
-                    .col-sm-12
-                      label(for="extras")
-                        strong.findit-blue
-                         |Select Amenities (select multiple if applicable):
-                      //select(multiple class="form-control" id="extras" name="extras")
-                      select#ssubcategory.form-control-form.form-control-form-select(name='ssubcategory',data-selected-text-format='count > 5', class='ssubcategory') 
-                        option(data-icon='glyphicon glyphicon-signal', value='wifi') Wifi
-                        option(data-icon='glyphicon-credit-card', value='creditcards') Credits Cards
-                        option(data-icon='glyphicon-cutlery', value='buffet') Buffet
-                        option(data-icon='glyphicon glyphicon-glass', value='full_bar') Full Bar
-                        option(data-icon='glyphicon-gift', value='takeaway') Take Away
-                        option(data-icon='glyphicon-ok-circle', value='parking') Parking
-                        option(data-icon='glyphicon-tent', value='camping') Camping
-                        option(data-icon='glyphicon-bed', value='accomodation') Accomodation  
-                  //.col-md-12
-                      strong.findit-red
-                        | Select Amenities
-                      select.form-control-form-select.selectpicker(name='extras', multiple='', data-selected-text-format='count > 10')
-                        option(data-icon='glyphicon glyphicon-signal', value='wifi') Wifi
-                        option(data-icon='glyphicon-credit-card', value='creditcards') Credits Cards
-                        option(data-icon='glyphicon-cutlery', value='buffet') Buffet
-                        option(data-icon='glyphicon glyphicon-glass', value='full_bar') Full Bar
-                        option(data-icon='glyphicon-gift', value='takeaway') Take Away
-                        option(data-icon='glyphicon-ok-circle', value='parking') Parking
-                        option(data-icon='glyphicon-tent', value='camping') Camping
-                        option(data-icon='glyphicon-bed', value='accomodation') Accomodation
+        .col-md-offset-3.col-md-6.col-md-offset-3
+            h3.text-center.findit-blue Add Business
+        .col-md-offset-0.col-md-12.col-md-offset-0
+          form.form-horizontal(method="post",action="/business/add",enctype="multipart/form-data")
+            .form-group
+              .col-md-12
+                input#name.form-control-form(type='text', name='name', placeholder='Name', required)
+            .form-group
+              .col-md-12
+                textarea#description.form-control-form(name='description',rows=20,cols=30,placeholder="Describe your business")
+            .form-group
+              .col-md-12
+                textarea#keywords.form-control-form(name='keywords',placeholder="Type your business' comma separated 'KEYWORDS' (NOTE: Keywords are words and phrases that define your business e.g. shoes, men shoes, shoes in Kenya )")
+                span.spnCharLeft
+            .form-group
+              .row
+                .col-sm-6
+                  select#city.form-control-form(name='city' required)
+                    option(data-icon='glyphicon glyphicon-globe', value='Nairobi') Nairobi
+                    option(data-icon='glyphicon glyphicon-globe',value='Mombasa') Mombasa 
+                    option(data-icon='glyphicon glyphicon-globe', value='Kisumu') Kisumu
+                    option(data-icon='glyphicon glyphicon-globe',value='Eldoret') Eldoret 
+                    option(data-icon='glyphicon glyphicon-globe', value='Nakuru') Nakuru
+                    option(data-icon='glyphicon glyphicon-globe',value='Meru') Meru 
+                    option(data-icon='glyphicon glyphicon-globe', value='Nyeri') Nyeri
+                    option(data-icon='glyphicon glyphicon-globe',value='Thika') Thika 
+                    option(data-icon='glyphicon glyphicon-globe', value='Nanyuki') Nanyuki 
+                    option(data-icon='glyphicon glyphicon-globe', value='Watamu') Watamu   
+                    option(data-icon='glyphicon glyphicon-globe', value='Kitale') Kitale 
+                    option(data-icon='glyphicon glyphicon-globe', value='Narok') Narok  
+                    option(data-icon='glyphicon glyphicon-globe', value='Samburu') Samburu
+                    option(data-icon='glyphicon glyphicon-globe', value='Machakos') Machakos 
+                    option(data-icon='glyphicon glyphicon-globe', value='Nyahururu') Nyahururu
+                    option(data-icon='glyphicon glyphicon-globe', value='Malindi') Malindi      
+                .col-sm-6
+                  input#map.form-control-form(type='text', name='phone', placeholder='Phone', required)
+                .col-sm-6
+                  input#map.form-control-form(type='text', name='website', placeholder='Website')
+                .col-sm-6
+                  input#map.form-control-form(type='text', name='email', placeholder='Email')            
+                .col-sm-6
+                  input#map.form-control-form(type='text', name='deliverylink', placeholder='Delivery or Takeaway Link')
+                .col-sm-6
+                  input#map.form-control-form(type='text', name='bookinglink', placeholder='Booking or Reservation Link')
+                .col-sm-6
+                  input#map.form-control-form(type='text', name='street', placeholder='Street')
+                .col-sm-6
+                  input#map.form-control-form(type='text', name='building', placeholder='Building')
+                .col-sm-6
+                  select.form-control-form(name='category', data-selected-text-format='count > 5', required)
+                    option(data-icon='glyphicon-gift', value='business') Business
+                    option(data-icon='glyphicon glyphicon-glass',value='service') Service 
+                .col-sm-3
+                  select#subcategory.selectpicker.form-control-form-select(name='subcategory', data-selected-text-format='count > 5', class='subcategory', required)
+                    option(data-icon='glyphicon-wrench', value='') Select Category
+                    each category in categories
+                      option(data-icon='fa '+category.icon, value=category.name) 
+                        =category.name
+                .col-sm-3
+                  .input-group
+                    select#ssubcategory.form-control-form-select.ssubcategory.selectpicker(name='ssubcategory',data-selected-text-format='count > 5', data-live-search="true", required,  title="Select one or more Subcategories" ,multiple)
+                      option(data-icon='fa fa-search', value=)
+                  
+                .col-sm-6(style="display:none",id="starteventDate")
+                  strong
+                    h6.findit-red
+                      | Start Event Date
+                  input#startdate.form-control-form(type='text', name='starteventdate', placeholder='Start Event Date',class='datetimepicker')
+                .col-sm-6(style="display:none",id="endeventDate")
+                  strong
+                    h6.findit-red
+                      | End Event Date
+                  input#startdate.form-control-form(type='text', name='endeventdate', placeholder='End Event Date',class='datetimepicker') 
+            .form-group
+              .row
+                .col-sm-12
+                  label(for="extras")
+                    strong.findit-blue
+                      |Select Amenities (select multiple if applicable):
+                  //select(multiple class="form-control" id="extras" name="extras")
+                  select#ssubcategory.form-control-form.form-control-form-select(name='ssubcategory',data-selected-text-format='count > 5', class='ssubcategory') 
+                    option(data-icon='glyphicon glyphicon-signal', value='wifi') Wifi
+                    option(data-icon='glyphicon-credit-card', value='creditcards') Credits Cards
+                    option(data-icon='glyphicon-cutlery', value='buffet') Buffet
+                    option(data-icon='glyphicon glyphicon-glass', value='full_bar') Full Bar
+                    option(data-icon='glyphicon-gift', value='takeaway') Take Away
+                    option(data-icon='glyphicon-ok-circle', value='parking') Parking
+                    option(data-icon='glyphicon-tent', value='camping') Camping
+                    option(data-icon='glyphicon-bed', value='accomodation') Accomodation  
+              //.col-md-12
+                  strong.findit-red
+                    | Select Amenities
+                  select.form-control-form-select.selectpicker(name='extras', multiple='', data-selected-text-format='count > 10')
+                    option(data-icon='glyphicon glyphicon-signal', value='wifi') Wifi
+                    option(data-icon='glyphicon-credit-card', value='creditcards') Credits Cards
+                    option(data-icon='glyphicon-cutlery', value='buffet') Buffet
+                    option(data-icon='glyphicon glyphicon-glass', value='full_bar') Full Bar
+                    option(data-icon='glyphicon-gift', value='takeaway') Take Away
+                    option(data-icon='glyphicon-ok-circle', value='parking') Parking
+                    option(data-icon='glyphicon-tent', value='camping') Camping
+                    option(data-icon='glyphicon-bed', value='accomodation') Accomodation
+            .row
+              .col-sm-12.text-center
+                strong
+                  |  Opening & Closing Hours
+              .form-group.opening-closingform
                 .row
-                  .col-sm-12.text-center
+                  .col-sm-4.text-center
                     strong
-                      |  Opening & Closing Hours
-                  .form-group.opening-closingform
-                    .row
-                      .col-sm-4.text-center
-                        strong
-                          |  Monday
-                      .col-sm-3(id="hoursopen",class="timeopen")
-                          input#hours.form-control-form(type='text', name='hoursopenmon', placeholder='Opening Hours Monday',class='timepicker hoursopened hoursopencloseoption')
-                      .col-sm-3(id="hoursclose",class="timeclose")                  
-                          input#hours.form-control-form(type='text', name='hoursclosemon', placeholder='Closes Hours Monday',class='timepicker hoursclosed hoursopencloseoption')
-                      .col-sm-2.text-center
-                        button.btn.btn-danger.form-control-form.alert-danger.btnclose
-                          |  Closed
-                  .form-group.opening-closingform
-                    .row
-                      .col-sm-4.text-center
-                        strong
-                          |  Tuesday
-                      .col-sm-3(id="hoursopen",class="timeopen")                  
-                          input#hours.form-control-form(type='text', name='hoursopentue', placeholder='Opening Hours Tuesday',class='timepicker hoursopened hoursopencloseoption')
-                      .col-sm-3(id="hoursclose",class="hoursclose")
-                        input#hours.form-control-form(type='text', name='hoursclosetue', placeholder='Closes Hours Tuesday',class='timepicker hoursclosed hoursopencloseoption')
-                      .col-sm-2.text-center
-                        button.btn.btn-danger.form-control-form.alert-danger.btnclose
-                          |  Closed
-                  .form-group.opening-closingform
-                    .row
-                      .col-sm-4.text-center
-                        strong
-                          |  Wednesday
-                      .col-sm-3(id="hoursopen",class="timeopen")
-                        input#hours.form-control-form(type='text', name='hoursopenwed', placeholder='Opening Hours Wednesday',class='timepicker hoursopened hoursopencloseoption')
-                      .col-sm-3(id="hoursclose",class="hoursclose")
-                        input#hours.form-control-form(type='text', name='hoursclosewed', placeholder='Closes Hours Wednesday',class='timepicker hoursclosed hoursopencloseoption')
-                      .col-sm-2.text-center
-                        button.btn.btn-danger.form-control-form.alert-danger.btnclose
-                          |  Closed
-                  .form-group.opening-closingform
-                    .row
-                      .col-sm-4.text-center
-                        strong
-                          |  Thursday
-                      .col-sm-3(id="hoursopen",class="timeopen")
-                        input#hours.form-control-form(type='text', name='hoursopenthu', placeholder='Opening Hours Thursday',class='timepicker hoursopened hoursopencloseoption')
-                      .col-sm-3(id="hoursclose",class="hoursclose")
-                        input#hours.form-control-form(type='text', name='hoursclosethu', placeholder='Closes Hours Thursday',class='timepicker hoursclosed hoursopencloseoption')
-                      .col-sm-2.text-center
-                        button.btn.btn-danger.form-control-form.alert-danger.btnclose
-                          |  Closed
-                  .form-group.opening-closingform
-                    .row
-                      .col-sm-4.text-center
-                        strong
-                          |  Friday
-                      .col-sm-3(id="hoursopen",class="timeopen")
-                        input#hours.form-control-form(type='text', name='hoursopenfri', placeholder='Opening Hours Friday',class='timepicker hoursopened hoursopencloseoption')
-                      .col-sm-3(id="hoursclose",class="hoursclose")
-                        input#hours.form-control-form(type='text', name='hoursclosefri', placeholder='Closes Hours Friday',class='timepicker hoursclosed hoursopencloseoption')
-                      .col-sm-2.text-center
-                        button.btn.btn-danger.form-control-form.alert-danger.btnclose
-                          |  Closed
-                  .form-group.opening-closingform
-                    .row
-                      .col-sm-4.text-center
-                        strong
-                          |  Saturday
-                      .col-sm-3(id="hoursopen",class="timeopen")
-                        input#hours.form-control-form(type='text', name='hoursopensat', placeholder='Opening Hours Saturday',class='timepicker hoursopened hoursopencloseoption')
-                      .col-sm-3(id="hoursclose",class="hoursclose")
-                        input#hours.form-control-form(type='text', name='hoursclosesat', placeholder='Closes Hours Saturday',class='timepicker hoursclosed hoursopencloseoption')
-                      .col-sm-2.text-center
-                        button.btn.btn-danger.form-control-form.alert-danger.btnclose
-                          |  Closed
-                  .form-group.opening-closingform
-                    .row
-                      .col-sm-4.text-center
-                        strong
-                          |  Sunday
-                      .col-sm-3(id="hoursopen",class="timeopen")
-                        input#hours.form-control-form(type='text', name='hoursopensun', placeholder='Opening Hours Sunday',class='timepicker hoursopened hoursopencloseoption')
-                      .col-sm-3(id="hoursclose",class="hoursclose")
-                        input#hours.form-control-form(type='text', name='hoursclosesun', placeholder='Closes Hours Sunday',class='timepicker hoursclosed hoursopencloseoption')
-                      .col-sm-2.text-center
-                        button.btn.btn-danger.form-control-form.alert-danger.btnclose
-                          |  Closed
+                      |  Monday
+                  .col-sm-3(id="hoursopen",class="timeopen")
+                      input#hours.form-control-form(type='text', name='hoursopenmon', placeholder='Opening Hours Monday',class='timepicker hoursopened hoursopencloseoption')
+                  .col-sm-3(id="hoursclose",class="timeclose")                  
+                      input#hours.form-control-form(type='text', name='hoursclosemon', placeholder='Closes Hours Monday',class='timepicker hoursclosed hoursopencloseoption')
+                  .col-sm-2.text-center
+                    button.btn.btn-danger.form-control-form.alert-danger.btnclose
+                      |  Closed
+              .form-group.opening-closingform
                 .row
-                  .col-md-6
-                    .form-group
-                      .row
-                        .col-sm-3
-                          label(for='photo') Cover Photo
-                        .col-sm-5
-                          img(src="",id="coverphotopreview", width="200px")
-                        .col-sm-4
-                          input#photod.form-control-form(type='file', name='photo', placeholder='photo')                  
-                    .form-group
-                      .row
-                        .col-sm-3
-                          label(for='gallery') Gallery
-                        .col-sm-5
-                          if gallery
-                            each photo in biz.gallery
-                              img(src="/uploads/"+ photo.filename, width="200px")
-                          #gallerypreview
-                        .col-sm-4
-                          input#gallery.form-control-form.imagegallery(type='file', name='gallery', placeholder='gallery', multiple='')
-                    .form-group
-                      .row
-                        .col-sm-4
-                          label(for='catalog') Catalog/Menu (pdf)*
-                        .col-sm-8
-                          input#catalog.form-control-form.catalogmenu(type='file', name='catalog', placeholder='catalog/menu', multiple='')
-                    
-                  .col-md-6
-                    .form-group
-                      fieldset.gllpLatlonPicker
-                        .row
-                          .col-md-8
-                            input.gllpSearchField.form-control(type='text')
-                          .col-md-4
-                            input.gllpSearchButton.form-control.btn.btn-info(type='button', value='search', placeholder="search your city")
-                          br
-                        .row
-                          .col-md-8
-                            .gllpMap Google Maps
-                            input#lati.gllpLatitude(type='hidden',name='lati')
-                            input#long.gllpLongitude(type='hidden',name='long')
-                            input#zoom.gllpZoom(type='hidden',,name='zoom')
-                .row
-                  .col-sm-12.text-center
+                  .col-sm-4.text-center
                     strong
-                      |  Social Links
-                  .form-group
-                    .row
-                      .col-sm-6
-                        input#map.form-control-form(type='text', name='youtube', placeholder='youtube url')
-                      .col-sm-6
-                        input#map.form-control-form(type='text', name='facebook', placeholder='facebook Url')
-                      .col-sm-6
-                        input#map.form-control-form(type='text', name='twitter', placeholder='twitter Url')
-                      .col-sm-6
-                        input#map.form-control-form(type='text', name='instagram', placeholder='Instagram Url')
-                      .col-sm-6
-                        input#map.form-control-form(type='text', name='linkedin', placeholder='linkedin Url')
-                        if(categories.pendingstatus)
-                          input#map.form-control-form(type='hidden', name='pending', value='true')
-                        if(categories.packagepaid)
-                          input#map.form-control-form(type='hidden', name='packagepaid', value=categories.packagepaid)
+                      |  Tuesday
+                  .col-sm-3(id="hoursopen",class="timeopen")                  
+                      input#hours.form-control-form(type='text', name='hoursopentue', placeholder='Opening Hours Tuesday',class='timepicker hoursopened hoursopencloseoption')
+                  .col-sm-3(id="hoursclose",class="hoursclose")
+                    input#hours.form-control-form(type='text', name='hoursclosetue', placeholder='Closes Hours Tuesday',class='timepicker hoursclosed hoursopencloseoption')
+                  .col-sm-2.text-center
+                    button.btn.btn-danger.form-control-form.alert-danger.btnclose
+                      |  Closed
+              .form-group.opening-closingform
+                .row
+                  .col-sm-4.text-center
+                    strong
+                      |  Wednesday
+                  .col-sm-3(id="hoursopen",class="timeopen")
+                    input#hours.form-control-form(type='text', name='hoursopenwed', placeholder='Opening Hours Wednesday',class='timepicker hoursopened hoursopencloseoption')
+                  .col-sm-3(id="hoursclose",class="hoursclose")
+                    input#hours.form-control-form(type='text', name='hoursclosewed', placeholder='Closes Hours Wednesday',class='timepicker hoursclosed hoursopencloseoption')
+                  .col-sm-2.text-center
+                    button.btn.btn-danger.form-control-form.alert-danger.btnclose
+                      |  Closed
+              .form-group.opening-closingform
+                .row
+                  .col-sm-4.text-center
+                    strong
+                      |  Thursday
+                  .col-sm-3(id="hoursopen",class="timeopen")
+                    input#hours.form-control-form(type='text', name='hoursopenthu', placeholder='Opening Hours Thursday',class='timepicker hoursopened hoursopencloseoption')
+                  .col-sm-3(id="hoursclose",class="hoursclose")
+                    input#hours.form-control-form(type='text', name='hoursclosethu', placeholder='Closes Hours Thursday',class='timepicker hoursclosed hoursopencloseoption')
+                  .col-sm-2.text-center
+                    button.btn.btn-danger.form-control-form.alert-danger.btnclose
+                      |  Closed
+              .form-group.opening-closingform
+                .row
+                  .col-sm-4.text-center
+                    strong
+                      |  Friday
+                  .col-sm-3(id="hoursopen",class="timeopen")
+                    input#hours.form-control-form(type='text', name='hoursopenfri', placeholder='Opening Hours Friday',class='timepicker hoursopened hoursopencloseoption')
+                  .col-sm-3(id="hoursclose",class="hoursclose")
+                    input#hours.form-control-form(type='text', name='hoursclosefri', placeholder='Closes Hours Friday',class='timepicker hoursclosed hoursopencloseoption')
+                  .col-sm-2.text-center
+                    button.btn.btn-danger.form-control-form.alert-danger.btnclose
+                      |  Closed
+              .form-group.opening-closingform
+                .row
+                  .col-sm-4.text-center
+                    strong
+                      |  Saturday
+                  .col-sm-3(id="hoursopen",class="timeopen")
+                    input#hours.form-control-form(type='text', name='hoursopensat', placeholder='Opening Hours Saturday',class='timepicker hoursopened hoursopencloseoption')
+                  .col-sm-3(id="hoursclose",class="hoursclose")
+                    input#hours.form-control-form(type='text', name='hoursclosesat', placeholder='Closes Hours Saturday',class='timepicker hoursclosed hoursopencloseoption')
+                  .col-sm-2.text-center
+                    button.btn.btn-danger.form-control-form.alert-danger.btnclose
+                      |  Closed
+              .form-group.opening-closingform
+                .row
+                  .col-sm-4.text-center
+                    strong
+                      |  Sunday
+                  .col-sm-3(id="hoursopen",class="timeopen")
+                    input#hours.form-control-form(type='text', name='hoursopensun', placeholder='Opening Hours Sunday',class='timepicker hoursopened hoursopencloseoption')
+                  .col-sm-3(id="hoursclose",class="hoursclose")
+                    input#hours.form-control-form(type='text', name='hoursclosesun', placeholder='Closes Hours Sunday',class='timepicker hoursclosed hoursopencloseoption')
+                  .col-sm-2.text-center
+                    button.btn.btn-danger.form-control-form.alert-danger.btnclose
+                      |  Closed
+            .row
+              .col-md-6
                 .form-group
                   .row
-                    button.button.btn.btn-warning.form-control-form(type='submit') Create
+                    .col-sm-3
+                      label(for='photo') Cover Photo
+                    .col-sm-5
+                      img(src="",id="coverphotopreview", width="200px")
+                    .col-sm-4
+                      input#photod.form-control-form(type='file', name='photo', placeholder='photo')                  
+                .form-group
+                  .row
+                    .col-sm-3
+                      label(for='gallery') Gallery
+                    .col-sm-5
+                      if gallery
+                        each photo in biz.gallery
+                          img(src="/uploads/"+ photo.filename, width="200px")
+                      #gallerypreview
+                    .col-sm-4
+                      input#gallery.form-control-form.imagegallery(type='file', name='gallery', placeholder='gallery', multiple='')
+                .form-group
+                  .row
+                    .col-sm-4
+                      label(for='catalog') Catalog/Menu (pdf)*
+                    .col-sm-8
+                      input#catalog.form-control-form.catalogmenu(type='file', name='catalog', placeholder='catalog/menu', multiple='')
+                
+              .col-md-6
+                .form-group
+                  fieldset.gllpLatlonPicker
+                    .row
+                      .col-md-8
+                        input.gllpSearchField.form-control(type='text')
+                      .col-md-4
+                        input.gllpSearchButton.form-control.btn.btn-primary(type='button', value='search', placeholder="search your city")
+                      br
+                    .row
+                      .col-md-8
+                        .gllpMap Google Maps
+                        input#lati.gllpLatitude(type='hidden',name='lati')
+                        input#long.gllpLongitude(type='hidden',name='long')
+                        input#zoom.gllpZoom(type='hidden',,name='zoom')
+            .row
+              .col-sm-12.text-center
+                strong
+                  |  Social Links
+              .form-group
+                .row
+                  .col-sm-6
+                    input#map.form-control-form(type='text', name='youtube', placeholder='youtube url')
+                  .col-sm-6
+                    input#map.form-control-form(type='text', name='facebook', placeholder='facebook Url')
+                  .col-sm-6
+                    input#map.form-control-form(type='text', name='twitter', placeholder='twitter Url')
+                  .col-sm-6
+                    input#map.form-control-form(type='text', name='instagram', placeholder='Instagram Url')
+                  .col-sm-6
+                    input#map.form-control-form(type='text', name='linkedin', placeholder='linkedin Url')
+                    if(categories.pendingstatus)
+                      input#map.form-control-form(type='hidden', name='pending', value='true')
+                    if(categories.packagepaid)
+                      input#map.form-control-form(type='hidden', name='packagepaid', value=categories.packagepaid)
+            .form-group
+              .row
+                button.button.btn.btn-warning.form-control-form(type='submit') Create
     script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9MX39yDkMJn6rjWi6vt4Rens5u_cVBQE")
     script(type='text/javascript').
       $(document).ready(function() {

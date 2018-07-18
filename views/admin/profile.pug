@@ -9,14 +9,42 @@ block content
   .row
     .col-lg-12.col-sm-12.col-xs-12
       .white-box.analytics-info
+       
         p 
-          =user.names
+          strong Your Name: 
+          if(user.name) 
+            =user.names
+          else
+              | N/A
+            
+        
+        p 
+          strong Phone Number: 
+          if(user.phone)   
+            =user.phone
+          else
+             | N/A
+        
+        p 
+          strong Email Address: 
+          if(user.email) 
+            =user.email
+          else
+             | N/A
+         
+        
+        p 
+          strong Website: 
+          if(user.website) 
+            =user.website
+          else
+             | N/A
         p
-          =user.phone
-        p
-          =user.email
-        p
-          =user.website
-        p
+          a(href='/admin/changepassword')
+            Strong
+              span.fa.fa-lock    
+              |    Change Password
+        
+        //p
           =user.role
         

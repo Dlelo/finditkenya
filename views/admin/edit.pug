@@ -38,19 +38,19 @@ block content
                   option(data-icon='glyphicon glyphicon-globe', value='Narok') Narok  
                   option(data-icon='glyphicon glyphicon-globe', value='Samburu') Samburu      
               .col-sm-6
-                input#map.form-control-form(type='text', name='phone', placeholder='phone',value=biz.phone)
+                input.form-control-form(type='text', name='phone', placeholder='phone',value=biz.phone)
               .col-sm-6
-                input#map.form-control-form(type='text', name='website', placeholder='website',value=biz.website)
+                input.form-control-form(type='text', name='website', placeholder='website',value=biz.website)
               .col-sm-6
-                input#map.form-control-form(type='text', name='email', placeholder='email',value=biz.email)            
+                input.form-control-form(type='text', name='email', placeholder='email',value=biz.email)            
               .col-sm-6
-                input#map.form-control-form(type='text', name='deliverylink', placeholder='Delivery or Takeaway Link',value=biz.deliverylink)
+                input.form-control-form(type='text', name='deliverylink', placeholder='Delivery or Takeaway Link',value=biz.deliverylink)
               .col-sm-6
-                input#map.form-control-form(type='text', name='bookinglink', placeholder='Booking or Reservation Link',value=biz.bookinglink)
+                input.form-control-form(type='text', name='bookinglink', placeholder='Booking or Reservation Link',value=biz.bookinglink)
               .col-sm-6
-                input#map.form-control-form(type='text', name='street', placeholder='street',value=biz.street)
+                input.form-control-form(type='text', name='street', placeholder='street',value=biz.street)
               .col-sm-6
-                input#map.form-control-form(type='text', name='building', placeholder='building',value=biz.building)
+                input.form-control-form(type='text', name='building', placeholder='building',value=biz.building)
               .col-sm-6
                 select.form-control-form(name='category', data-selected-text-format='count > 5')
                   option(data-icon='glyphicon-wrench', value=biz.category) #{biz.category}
@@ -262,7 +262,7 @@ block content
                   .col-sm-12#accordion
                     if biz.gallery
                       each photo in biz.gallery
-                          div(class='col-md-3 ',id=photo.filename)
+                          div(class='col-md-3 ',id=photo.filename,rel=biz.id)
                             img(src="/uploads/"+ photo.filename, width="100%", class='col-md-11') 
                             a(href="/admin/deletephoto/"+biz.id+"?photo="+photo.filename, id=photo.filename)
                               i.fa.fa-trash(aria-hidden="true",class='col-md-1')                 
@@ -294,40 +294,45 @@ block content
                 strong
                   |  Social Links
               .col-sm-6
-                input#map.form-control-form(type='text', name='youtube', placeholder='youtube url',value=biz.youtube)
+                input.form-control-form(type='text', name='youtube', placeholder='youtube url',value=biz.youtube)
               .col-sm-6
-                input#map.form-control-form(type='text', name='facebook', placeholder='facebook Url',value=biz.facebook)
+                input.form-control-form(type='text', name='facebook', placeholder='facebook Url',value=biz.facebook)
               .col-sm-6
-                input#map.form-control-form(type='text', name='twitter', placeholder='twitter Url',value=biz.twitter)
+                input.form-control-form(type='text', name='twitter', placeholder='twitter Url',value=biz.twitter)
               .col-sm-6
-                input#map.form-control-form(type='text', name='instagram', placeholder='Instagram Url',value=biz.instagram)
+                input.form-control-form(type='text', name='instagram', placeholder='Instagram Url',value=biz.instagram)
               .col-sm-6
-                input#map.form-control-form(type='text', name='linkedin', placeholder='Linkedin Url',value=biz.linkedin)
+                input.form-control-form(type='text', name='linkedin', placeholder='Linkedin Url',value=biz.linkedin)
                 
             .form-group
               .row
                 button.button.btn.btn-warning.form-control-form(type='submit') Update
     script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9MX39yDkMJn6rjWi6vt4Rens5u_cVBQE")
     script(type='text/javascript').
-    script(type='text/javascript').
       $(function() {
-        var gallery = "#{biz.gallery}";
+        var gallery = "#{gallery}";
+        gallery = JSON.parse(gallery.replace(/&quot;/g,'"'));
         var el = document.getElementById('accordion');
         function reordergallery(photoid,order){
-          //alert(photoid);          
-          console.log(gallery);
+          gallery.forEach(function(n,i){
+            if(n.filename == photoid){
+              gallery.splice(i, 1);
+              gallery.splice(order, 0, n);
+            }
+          });
+          return JSON.stringify(gallery);
         }
         var sortable = Sortable.create(el, {
           onEnd: function (/**Event*/evt) {
-            //alert("sorting done: "+evt.to);
+            //console.log(evt.item);
             var couponId = evt.item.id;
             var order = evt.newIndex;
-            reordergallery(couponId,order);
-            /*axios.get('/admin/coupon/reorder/'+couponId+'/'+order)
+            var newgallery = reordergallery(couponId,order);
+            axios.get('/business/gallery/reorder/'+$(evt.item).attr('rel')+'?order='+newgallery)
             .then(function (response) {
               // handle success
-              alert(response);
-              Notify.toast(response, {
+              //alert(response);
+              Notify.toast(response.data, {
                 fn: function () {
                   // custom function here
                 }
@@ -341,7 +346,7 @@ block content
             .then(function () {
               // always executed
             });
-            */
+            
             //console.log(evt);
             //alert(evt.item.id)
             var itemEl = evt.item;  // dragged HTMLElement

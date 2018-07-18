@@ -19,9 +19,21 @@
 }
 /*Just change your choise color here its theme Colors*/
 body {
-  background: #fff;
+  background: #fff !important;
+	font-family: 'Ubuntu';
+  margin: 0;
+  font-weight:400;
+
 }
-.top-left-part {
+a{
+  color:#04045a;
+}
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #04045a;
+    border-color: #04045a;
 }
 .top-left-part .dark-logo {
   display: none;
@@ -34,10 +46,11 @@ body {
   color: #ffffff;
 }
 .navbar-header {
-  background: #2f323e;
+  background: rgba(255,255,255,0.9);
 }
 .navbar-top-links > li > a {
-  color: #ffffff;
+  color: #04045a;
+  font-weight: 600;
 }
 .sidebar .sidebar-head {
   background: #ffffff;
@@ -78,7 +91,7 @@ body {
 #side-menu > li > a.active {
   background: transperant;
   color: #54667a;
-  border-left: 3px solid #41b3f9;
+  border-left: 3px solid #c00000;
   font-weight: 500;
 }
 #side-menu ul > li > a:hover {
@@ -99,6 +112,16 @@ body {
   background-color: #41b3f9 !important;
 }
 /*Button*/
+.btn-info {
+    background-image: -webkit-linear-gradient(top,#04045a 0,#04045a 100%);
+    background-image: -o-linear-gradient(top,#04045a 0,#04045a 100%);
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#04045a),to(#04045a));
+    background-image: linear-gradient(to bottom,#04045a 0,#04045a 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5bc0de', endColorstr='#ff2aabd2', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+    background-repeat: repeat-x;
+    border-color: #04045a;
+}
 .btn-custom {
   background: #41b3f9;
   border: 1px solid #41b3f9;

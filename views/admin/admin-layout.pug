@@ -6,7 +6,7 @@ html(lang='en')
     meta(name='viewport', content='width=device-width, initial-scale=1')
     meta(name='description', content='')
     meta(name='author', content='')
-    link(rel='icon', type='image/png', sizes='16x16', href='../plugins/images/favicon.png')
+    link(rel='icon', type='image/png', sizes='32x32', href='../plugins/images/favicon.png')
     title Find It Dashboard
     // Custom CSS
     link(href='/stylesheets/admin/style.css', rel='stylesheet')
@@ -50,15 +50,14 @@ html(lang='en')
               // Logo icon image, you can use font-icon also
               b
                 // This is dark logo icon
-                img.dark-logo(src='/plugins/images/admin-logo.png', alt='home')
+                img.dark-logo(src='../plugins/images/findit-red-logo.png', alt='home', style="width:70%; margin-top:20px;")
                 // This is light logo icon
-                img.light-logo(src='/img/find-it.png', alt='home', style="width:90%")
+                img.light-logo(src='../plugins/images/findit-red-logo.png', alt='home', style="width:70%; margin-top:20px;")
               // Logo text image you can use text also
               span.hidden-xs
                 // This is dark logo text
-                img.dark-logo(src='/img/find-it.png', alt='home')
-                // This is light logo text
-                //img.light-logo(src='/img/find-it.png', alt='home')
+                img.dark-logo(src='../plugins/images/findit-red-logo.png', alt='home', style="width:70%; margin-top:20px;")
+                
 
 
 
@@ -225,7 +224,7 @@ html(lang='en')
             // /.col-lg-12
           block content
         // /.container-fluid
-        footer.footer.text-center  2018 © Admin brought to you by sokompare.com 
+        footer.footer.text-center  © 2018 Find it Kenya. All rights reserved | FinditKe 
       // ==============================================================
       // End Page Content
       // ==============================================================
@@ -307,11 +306,11 @@ html(lang='en')
                 { "data": "actions",
                   render: function(data, type, row){
                       return "<a href='/admin/edit/"+row._id+"'>Edit</a> \
-                      | <a href='/admin/delete/"+row._id+"' onclick=\"return confirm('Are you sure you want to delete this business?');\">Delete</a> \
-                      | <a href='/admin/fakepaid/"+row._id+"/b'>B Paid</a> |\
-                      | <a href='/admin/fakepaid/"+row._id+"/s'>S Paid</a> |\
-                      | <a href='/admin/fakepaid/"+row._id+"/g'>G Paid</a> |\
-                       <a href='/admin/analytics/"+row._id+"'>Analytics</a>";
+                      | <a style='color:#c00000;', href='/admin/delete/"+row._id+"' onclick=\"return confirm('Are you sure you want to delete this business?');\">Delete</a> \
+                      | <a style='color:#CD7F32;', href='/admin/fakepaid/"+row._id+"/b'>Bronze Paid</a> |\
+                      | <a style='color:#7b7b7b;', href='/admin/fakepaid/"+row._id+"/s'>Silver Paid</a> |\
+                      | <a style='color:darkgoldenrod;', href='/admin/fakepaid/"+row._id+"/g'>Gold Paid</a> |\
+                       <a href='/admin/analytics/"+row._id+"'>View Analytics</a>";
                   }
                 }
             ],

@@ -3764,3 +3764,7 @@ input, textarea, select, button {
 	background-image: linear-gradient(to bottom,#04045a 0,#040450 100%) !important;
 }
 
+.dash-padding{
+	padding-left:0px;
+	padding-right:0px;
+}

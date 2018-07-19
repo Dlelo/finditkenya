@@ -76,7 +76,7 @@ block content
                 //div.w3-ab-grid
                 a(href="/category/"+category.name)
                   div.w3-aicon.py-lg-5.py-md-3.py-5
-                      img.img-fluid.category-img-wrapper(src="/uploads/thumbs/categories/"+category.photo, alt="Responsive image")
+                      img.img-fluid.category-img-wrapper.wow.fadeInUp(src="/uploads/thumbs/categories/"+category.photo, alt="Responsive image")
                       h6.my-3
                         =category.name
                   div.w3-ab-captn.p-md-3.py-4
@@ -93,7 +93,7 @@ block content
                   button.btn.btn-light(type="button")
                     span.findit-blue
                       | More Categories
-                  img.img-fluid.category-img-wrapper(src="/img/more_categories.png" alt="Responsive image")
+                  img.img-fluid.category-img-wrapper.wow.fadeInUp(src="/img/more_categories.png" alt="Responsive image")
                   
                 
                         
@@ -253,7 +253,10 @@ block content
         var images = ['best-banner.jpg', 'doctor.jpg','office.jpg', 'find.jpeg','furnitures.jpg'];
         $('.banner').css({'background-image': 'url(banner-img/' + images[Math.floor(Math.random() * images.length)] + ')'});
       });
-    
+    //animation
+    script(type="text/javascript").
+      new WOW().init();
+
     //script to toggle morecategories
     script(type="text/javascript").
       function toggle_visibility(id) {

@@ -5,7 +5,7 @@ block content
     #home.parallax-content-list.baner-content-listing-biz
       .container-fluid.container-margin-top
         .row
-          .col-md-12.search-padding
+          .col-md-12.search-padding.text-center
             if(suggestion)
               | Did you mean: 
               a(href="search?search="+suggestion)
@@ -135,9 +135,11 @@ block content
                                     | 
             else
               .row
-                strong
-                  | No Results Found
-              
+                .col-md-12.search-padding.text-center
+                  span.far.fa-frown    
+                  strong.findit-red
+                    |    No Results Found
+                
       //script to put navitems open by default
       script(type='text/javascript').
         $(document).ready(function(){

@@ -175,6 +175,7 @@ footer h2 {
 	width: 100%;
 	left: 0;
 	background: rgba(255,255,255,0.9);
+	box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.1);
 }
 
 a.navbar-brand {
@@ -186,15 +187,16 @@ a.navbar-brand {
 }
 
 header h1 a span {
-	color: #171988;;
+	color: #04045a;
 	display: block;
 	font-size: 12px;
 	letter-spacing: 5px;
 	word-spacing: 5px;
 }
 
+
 .navbar-light .navbar-nav .nav-link {
-	font-weight: 600;
+	font-weight: 500;
 	text-transform: capitalize;
 	color: #04045a;
 	letter-spacing: 1px;
@@ -3115,7 +3117,7 @@ padding-left:10px;
 .sticky {
   position: fixed !important;
   top: 0;
-  width: 100%
+  width: 100%;
 }
 
 /* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */

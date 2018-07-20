@@ -3080,9 +3080,9 @@ padding-left:10px;
   transform: translate3d(0px, 0px, 0px) !important;
 }
 .selected-coupon-left{
-	margin-left: 8rem;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
+	margin-left: 7rem;
+    padding-top: 0.1rem;
+    padding-bottom: 0.1rem;
 }
 .count-coupon{
   padding-top: 0.5rem;

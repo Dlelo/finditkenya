@@ -2,37 +2,45 @@ extends ../layout
 
 block content
   #home.parallax-content-list.baner-content-listing-biz
-    .container
-      h3 
-        | Create Coupon
-      form(method='post', action='/admin/coupon/create',enctype='multipart/form-data')
-        .form-group
-          input.form-control(name='name',type='text',placeholder="Name of Coupon") 
-        .form-group
-          textarea.form-control(name='description',type='text',placeholder="Description of Coupon" maxlength="50") 
-        .form-group
-          input.form-control(name='tagline',type='text',placeholder="Tagline") 
-        .form-group
-          .col-sm-3
-            label(for='photo') Cover Photo
-          .col-sm-9
-            input#photod.form-control-form(type='file', name='photo', placeholder='photo')    
-        .form-group
-          select.selectpicker.form-control(name='bizid',data-live-search="true")
-            option(data-icon='glyphicon-wrench', value='') -- Select Business --
-            each biz in businesses
-              option(data-icon='glyphicon-gift', value=biz.id) #{biz.name}
-        .form-group
-          select.selectpicker.form-control(name='type')
-            option(data-icon='glyphicon-wrench', value='') -- Select Type --
-            option(data-icon='glyphicon-gift', value='1') Percentage Off
-            option(data-icon='glyphicon-glass',value='2') Buy x Get y Free
-            option(data-icon='glyphicon-glass',value='3') KES x Off
-        .form-group
-          select.selectpicker.form-control(name='status')
-            option(data-icon='glyphicon-wrench', value='') -- Select Status --
-            option(data-icon='glyphicon-gift', value='1') Active
-            option(data-icon='glyphicon glyphicon-glass',value='0') Inactive 
-        .form-group     
-          button.btn.btn-danger.form-control(type='submit')
-            | Create
+    .container-fluid.container-margin-top.container-fluidpadding
+    
+        h3 
+          | Create Coupon
+        form(method='post', action='/admin/coupon/create',enctype='multipart/form-data')
+          .form-group
+            .col-sm-12
+              input.form-control-form(name='name',type='text',placeholder="Name of Coupon", maxlength="30") 
+          .form-group
+            .col-sm-12
+              textarea.form-control-form(name='description',type='text',placeholder="Coupon description", maxlength="50") 
+          .form-group
+            .col-sm-12
+              input.form-control-form(name='tagline',type='text',placeholder="Tagline") 
+          .form-group
+            .col-sm-4
+              label(for='photo') Cover Photo
+            .col-sm-2
+              input#photod.form-control-form(type='file', name='photo', placeholder='photo')    
+          .form-group
+            .col-sm-6
+              select.selectpicker.form-control(name='bizid',data-live-search="true")
+                option(data-icon='glyphicon-wrench', value='') -- Select Business --
+                each biz in businesses
+                  option(data-icon='glyphicon-gift', value=biz.id) #{biz.name}
+          .form-group
+            .col-sm-6
+              select.selectpicker.form-control(name='type')
+                option(data-icon='glyphicon-wrench', value='') -- Select Type --
+                option(data-icon='glyphicon-gift', value='1') Percentage Off
+                option(data-icon='glyphicon-glass',value='2') Buy x Get y Free
+                option(data-icon='glyphicon-glass',value='3') KES x Off
+          .form-group
+            .col-sm-6
+              select.selectpicker.form-control(name='status')
+                option(data-icon='glyphicon-wrench', value='') -- Select Status --
+                option(data-icon='glyphicon-gift', value='1') Active
+                option(data-icon='glyphicon glyphicon-glass',value='0') Inactive 
+          .form-group   
+            .col-sm-12  
+              button.btn.btn-primary.form-control(type='submit' style ="margin-top:15px;")
+                | Create

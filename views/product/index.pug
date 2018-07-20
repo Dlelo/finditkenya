@@ -3,6 +3,7 @@ extends ../layout
 block content
   div.container-fluid
   #home.parallax-content-list.baner-content-listing-biz
+<<<<<<< HEAD
     each product in products
       .col-md-3
         h4
@@ -12,3 +13,14 @@ block content
           =product.description
         .alert.alert-danger
           =product.price
+=======
+    .container-fluid.container-margin-top.container-fluidpadding
+      each product in products
+        .col-md-3
+          h4
+            =product.name
+          p
+            =product.description
+          .alert.alert-danger
+            =product.price
+>>>>>>> 43f59bdd1238cad10bfc06b388807b1798332dcc

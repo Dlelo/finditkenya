@@ -1,0 +1,29 @@
+extends ../layout
+
+block content
+  #home.parallax-content-list.baner-content-listing-biz
+    .container
+      h3 
+        | Create Product
+      form(method='post', action='/product/create',enctype='multipart/form-data')
+        .form-group
+          input.form-control(name='name',type='text',placeholder="Name of Product") 
+        .form-group
+          textarea.form-control(name='description',type='text',placeholder="Description of Product" maxlength="50") 
+        .form-group
+          .col-sm-3
+            label(for='photo') Cover Photo
+          .col-sm-9
+            input#photod.form-control-form(type='file', name='photo', placeholder='photo')    
+        .form-group
+          select.selectpicker.form-control(name='bizid',data-live-search="true")
+            option(data-icon='glyphicon-wrench', value='') -- Select Business --
+            each biz in businesses
+              option(data-icon='glyphicon-gift', value=biz.id) #{biz.name}
+        .form-group
+          input.form-control(name='price',type='text',placeholder="Price of Product")
+        .form-group
+          input.form-control(name='quantity',type='text',placeholder="Quantity of Products")
+        .form-group     
+          button.btn.btn-danger.form-control(type='submit')
+            | Create

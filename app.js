@@ -28,6 +28,7 @@ var admin = require('./routes/admin');
 var Business = require('./models/Business');
 var config = require('./config.json');
 var emailModel = require('./config/Mail');
+var product = require('./routes/product');
 
 
 var app = express();
@@ -332,8 +333,8 @@ app.get('/auth/facebook/callback',
 app.use('/users', users);
 app.use('/business', business);
 app.use('/admin', admin);
+app.use('/product', product);
 app.use('/', index);
-
 
 
 // catch 404 and forward to error handler

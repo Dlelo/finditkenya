@@ -7,10 +7,12 @@ block content
       section.the-products
         .row
           each product in products
-            .col-md-3.item
+            .col-md-3
               h4
                 =product.name
+              img(src='/uploads/product/thumbs/'+product.photo)
               p
                 =product.description
               .alert.alert-danger
                 =product.price
+

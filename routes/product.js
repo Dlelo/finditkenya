@@ -36,9 +36,11 @@ var upload = multer({ storage: storage });
 var cpUpload = upload.fields([{ name: 'photo', maxCount: 1 }, { name: 'catalog', maxCount: 5 }, { name: 'gallery', maxCount: 20 }])
 
 router.get('/',function(req, res){
+  console.log(req.session.cart);
   Product.find({
   })
   .then(function(data){
+    //console.log(data);
     res.render('product/index',{title: "Products on Findit", products: data});
   })
   .catch(function(err){
@@ -94,11 +96,25 @@ router.post('/create',role.auth, cpUpload, function(req, res){
   });
 });
 
+router.get('/cart',function(req, res){
+  if(req.session.cart){
+    res.redirect('/product/cart',{cart: req.session.cart});
+  }else{
+    res.redirect('/product/cart',{cart: []});
+  }
+});
+
 router.get('/api/:slug',function(req, res){
   Product.findOne({
     slug: req.params.slug,
-    status: true
+    //status: true
   }).then(function(d){
+    if(req.session.cart){
+      req.session.cart.push(d);
+    }else{
+      req.session.cart = [];
+      req.session.cart.push(d);
+    }
     res.json(d);
   })
 });
@@ -106,7 +122,7 @@ router.get('/api/:slug',function(req, res){
 router.get('/:slug',function(req, res){
   Product.findOne({
     slug: req.params.slug,
-    status: true
+    //status: true
   }).then(function(d){
     res.render('/product/detail',{product: d,title: d.name});
   })

@@ -164,8 +164,12 @@ app.use(function(req, res, next){
   //INITIALIZE EMPTY USER OBJECT FOR USERS NOT LOGGED
   var emptyUser = {};
   var loggedin = false;
+  var cartExists = false;
   if(req.user){
     loggedin = true;
+  }
+  if(req.session.cart){
+    cartExists = true;
   }
   res.setHeader('Access-Control-Allow-Origin', req.get('host'));
   res.locals.success_msg = req.flash('success_msg') || null;
@@ -173,6 +177,8 @@ app.use(function(req, res, next){
   res.locals.error = req.flash('error') || null;
   res.locals.user = req.user || emptyUser;
   res.locals.loggedin = loggedin;
+  res.locals.cart = req.session.cart || null;
+  res.locals.cartexists = cartExists;
   res.locals.forgotpassword = req.get('host');
   if(req.user != null){
     next();

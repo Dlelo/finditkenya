@@ -98,7 +98,6 @@ router.get('/api/:slug',function(req, res){
   Product.findOne({
     slug: req.params.slug,
     status: true
-    //pending: { $ne: true }
   }).then(function(d){
     res.json(d);
   })
@@ -108,7 +107,6 @@ router.get('/:slug',function(req, res){
   Product.findOne({
     slug: req.params.slug,
     status: true
-    //pending: { $ne: true }
   }).then(function(d){
     res.render('/product/detail',{product: d,title: d.name});
   })

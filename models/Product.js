@@ -11,6 +11,10 @@ const ObjectId = Schema.ObjectId;
 
 const productSchema = new Schema({
 	name: { type: String,required: true},
+	slug: {
+		type: String,
+		unique: true
+	},
 	bizid: { type: Schema.Types.ObjectId, ref: 'Business' },
 	description: String,
 	photo: String,

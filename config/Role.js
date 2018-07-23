@@ -4,8 +4,7 @@ function ensureAuthenticated(req, res, next){
 		return next();
 	}else{
 		req.flash('error_msg','You must be logged in');
-		ssn = req.session;
-		ssn.returnUrl = req.originalUrl;
+		req.session.returnUrl = req.originalUrl;
 		res.redirect('/login');
 	}
 }

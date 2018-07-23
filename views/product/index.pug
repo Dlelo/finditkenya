@@ -1,18 +1,43 @@
 extends ../layout
 
 block content
-  div.container-fluid
   #home.parallax-content-list.baner-content-listing-biz
     .container-fluid.container-margin-top.container-fluidpadding
       section.the-products
-          .row
-            each product in products
-              .col-md-3.item
-                img.item-image(src='/uploads/product/thumbs/'+product.photo)
-                .item-info
-                  =product.name
-                p.item-info
-                  =product.description
-                .price
-                  =product.price
-
+        .row
+          if cart
+            #cart.row.alert-danger
+              i.fa.fa-shopping-basket
+              |  Items  #{cart.length}
+          each product in products
+            .col-md-3.item(id=product.slug,class="productid")
+              h4
+                =product.name
+              img.item-image(src='/uploads/product/thumbs/'+product.photo)
+              p
+                =product.description
+              .alert.alert-info
+                | KES #{product.price}  
+                button.btn.btn-warning.addtocart(id=product.slug)
+                  | Add to Cart
+  script(type='text/javascript').
+    $(function(){
+      var count = 0;
+      if(#{cartexists}){
+        count = #{cart.length};
+      }
+      //alert("cart count: "+count );
+      $(document).on('click', '.addtocart', function(event) {
+        console.log(event.target.id);
+        $.ajax({
+            type: "GET",
+            url: "/product/api/"+event.target.id,
+            success: function(res){
+              //console.log(res);
+              
+              cart.push(res);
+            }
+        });
+      });
+    })
+>>>>>>> 03c8324b3b3f8cdd451e1f90f7937b50f9cbf1b2

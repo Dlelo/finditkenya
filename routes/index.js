@@ -60,7 +60,8 @@ router.get('/search', function(req, res, next){
       keys: [
         "name",
         "subcategory",
-        "keywords"
+        "keywords",
+        "features"
     ]
     };
     var fuse = new Fuse(list, options); // "list" is the item array

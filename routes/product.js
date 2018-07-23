@@ -36,9 +36,11 @@ var upload = multer({ storage: storage });
 var cpUpload = upload.fields([{ name: 'photo', maxCount: 1 }, { name: 'catalog', maxCount: 5 }, { name: 'gallery', maxCount: 20 }])
 
 router.get('/',function(req, res){
+  console.log(req.session.cart);
   Product.find({
   })
   .then(function(data){
+    //console.log(data);
     res.render('product/index',{title: "Products on Findit", products: data});
   })
   .catch(function(err){
@@ -72,12 +74,14 @@ router.get('/new',role.auth, function(req, res){
 router.post('/create',role.auth, cpUpload, function(req, res){
   var p = new Product();
   p.name = req.body.name;
+  p.slug = slug(req.body.name);
   p.description = req.body.description;
   if (req.files['photo'] != null){
 		p.photo = req.files['photo'][0].filename;
 	}
   p.price = req.body.price;
   p.quantity = req.body.quantity;
+  p.status = req.body.status;
   p.save(function(err){
     if(err)
       console.log("err");
@@ -90,6 +94,38 @@ router.post('/create',role.auth, cpUpload, function(req, res){
     });
     res.redirect('/product/new');
   });
+});
+
+router.get('/cart',function(req, res){
+  if(req.session.cart){
+    res.redirect('/product/cart',{cart: req.session.cart});
+  }else{
+    res.redirect('/product/cart',{cart: []});
+  }
+});
+
+router.get('/api/:slug',function(req, res){
+  Product.findOne({
+    slug: req.params.slug,
+    //status: true
+  }).then(function(d){
+    if(req.session.cart){
+      req.session.cart.push(d);
+    }else{
+      req.session.cart = [];
+      req.session.cart.push(d);
+    }
+    res.json(d);
+  })
+});
+
+router.get('/:slug',function(req, res){
+  Product.findOne({
+    slug: req.params.slug,
+    //status: true
+  }).then(function(d){
+    res.render('/product/detail',{product: d,title: d.name});
+  })
 });
 
 module.exports = router;

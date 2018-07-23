@@ -2,17 +2,14 @@ extends ../layout
 
 block content
   div.container-fluid
+  #cart.parallax-content-list.baner-content-listing-biz
   #home.parallax-content-list.baner-content-listing-biz
-    .container-fluid.container-margin-top.container-fluidpadding
-      section.the-products
-        .row
-          each product in products
-            .col-md-3
-              h4
-                =product.name
-              img(src='/uploads/product/thumbs/'+product.photo)
-              p
-                =product.description
-              .alert.alert-danger
-                =product.price
-
+    each product in products
+      .col-md-3(id=product.slug,class="productid")
+        h4
+          =product.name
+        img(src='/uploads/product/thumbs/'+product.photo)
+        p
+          =product.description
+        .alert.alert-danger
+          | KES #{product.price}

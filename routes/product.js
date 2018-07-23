@@ -72,12 +72,14 @@ router.get('/new',role.auth, function(req, res){
 router.post('/create',role.auth, cpUpload, function(req, res){
   var p = new Product();
   p.name = req.body.name;
+  p.slug = slug(req.body.name);
   p.description = req.body.description;
   if (req.files['photo'] != null){
 		p.photo = req.files['photo'][0].filename;
 	}
   p.price = req.body.price;
   p.quantity = req.body.quantity;
+  p.status = req.body.status;
   p.save(function(err){
     if(err)
       console.log("err");
@@ -90,6 +92,26 @@ router.post('/create',role.auth, cpUpload, function(req, res){
     });
     res.redirect('/product/new');
   });
+});
+
+router.get('/api/:slug',function(req, res){
+  Product.findOne({
+    slug: req.params.slug,
+    status: true
+    //pending: { $ne: true }
+  }).then(function(d){
+    res.json(d);
+  })
+});
+
+router.get('/:slug',function(req, res){
+  Product.findOne({
+    slug: req.params.slug,
+    status: true
+    //pending: { $ne: true }
+  }).then(function(d){
+    res.render('/product/detail',{product: d,title: d.name});
+  })
 });
 
 module.exports = router;

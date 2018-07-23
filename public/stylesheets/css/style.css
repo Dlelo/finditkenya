@@ -3768,6 +3768,19 @@ input, textarea, select, button {
 	padding-left:0px;
 	padding-right:0px;
 }
-.the-products{
-	background: #f5f5f5;
+
+section.the-products {
+    background: #f5f5f5;
+}
+section.the-products.items .item .item-image {
+    padding: 70px;
+    background: #fff;
+    position: relative;
+}
+section.the-products.items .item .item-info {
+    padding: 15px 0 0;
+}
+section.the-products.items .item .item-info ul.price {
+    font-size: 1.3em;
+    font-weight: 500;
 }

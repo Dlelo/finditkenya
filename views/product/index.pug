@@ -1,24 +1,25 @@
 extends ../layout
 
 block content
-  div.container-fluid
-       
-  #home.parallax-content-list.baner-content-listing-biz(style="margin-top:80px")
-    if cartexists
-      #cart.row.alert-danger
-        i.fa.fa-shopping-basket
-        |  Items  #{cart.length}
-    each product in products
-      .col-md-3(id=product.slug,class="productid")
-        h4
-          =product.name
-        img(src='/uploads/product/thumbs/'+product.photo)
-        p
-          =product.description
-        .alert.alert-info
-          | KES #{product.price}  
-          button.btn.btn-warning.addtocart(id=product.slug)
-            | Add to Cart
+  #home.parallax-content-list.baner-content-listing-biz
+    .container-fluid.container-margin-top.container-fluidpadding
+      section.the-products
+        .row
+          if cart
+            #cart.row.alert-danger
+              i.fa.fa-shopping-basket
+              |  Items  #{cart.length}
+          each product in products
+            .col-md-3.item(id=product.slug,class="productid")
+              h4
+                =product.name
+              img.item-image(src='/uploads/product/thumbs/'+product.photo)
+              p
+                =product.description
+              .alert.alert-info
+                | KES #{product.price}  
+                button.btn.btn-warning.addtocart(id=product.slug)
+                  | Add to Cart
   script(type='text/javascript').
     $(function(){
       var count = 0;

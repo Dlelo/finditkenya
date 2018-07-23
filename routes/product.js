@@ -104,6 +104,11 @@ router.get('/cart',function(req, res){
   }
 });
 
+router.get('/clearcart',function(req, res){
+  req.session.cart = [];
+  res.redirect('/product');
+});
+
 router.get('/api/:slug',function(req, res){
   Product.findOne({
     slug: req.params.slug,

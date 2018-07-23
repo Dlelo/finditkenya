@@ -4,7 +4,7 @@ block content
   div.container-fluid
        
   #home.parallax-content-list.baner-content-listing-biz(style="margin-top:80px")
-    if cart
+    if cartexists
       #cart.row.alert-danger
         i.fa.fa-shopping-basket
         |  Items  #{cart.length}

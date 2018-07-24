@@ -1,31 +1,34 @@
-extends ../layout
+extends ../layout-new
 
 block content
   #home.parallax-content-list.baner-content-listing-biz
     .container-fluid.container-margin-top.container-fluidpadding
       section.the-products
         .row
-          if cart
-            #cart.row.alert-danger
-              i.fa.fa-shopping-basket
-              |  Items  #{cart.length}
+          .col-md-12.text-right
+            if cart
+              #cart.row.alert-danger
+                i.fa.fa-shopping-basket
+                |  Items  #{cart.length}
           each product in products
-            .col-md-3.item(id=product.slug,class="productid")
-              h4
-                =product.name
-              img.item-image(src='/uploads/product/thumbs/'+product.photo)
-              p
-                =product.description
-              .alert.alert-info
-                | KES #{product.price}  
-                button.btn.btn-warning.addtocart(id=product.slug)
-                  | Add to Cart
+            row.item
+              .col-md-12(id=product.slug,class="productid")
+                row
+                  .col-sm-12.col-xs-12
+                    h4
+                      =product.name
+                    img.item-image(src='/uploads/product/thumbs/'+product.photo)
+                    p
+                      =product.description
+                    .div
+                      .findit-red
+                        | KES #{product.price}  
+                      button.btn.btn-primary.addtocart(id=product.slug)
+                        | Add to Cart
   script(type='text/javascript').
     $(function(){
       var count = 0;
-      if(#{cartexists}){
-        count = #{cart.length};
-      }
+      
       //alert("cart count: "+count );
       $(document).on('click', '.addtocart', function(event) {
         console.log(event.target.id);

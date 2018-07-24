@@ -3784,3 +3784,14 @@ section.the-products.items .item .item-info ul.price {
     font-size: 1.3em;
     font-weight: 500;
 }
+.item{
+	padding: 5px 0px 5px 0px;
+	margin-left: 2px !important;
+	margin-right: 2px !important;
+	margin-top:5px;
+    border: 1px solid rgba(123, 122, 121, 0.1);
+    padding-bottom: 5px;
+	padding-top: 5px;
+	background-color: #fff;
+	display: inline-flex;
+}

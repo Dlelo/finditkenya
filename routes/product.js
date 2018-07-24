@@ -104,6 +104,11 @@ router.get('/cart',function(req, res){
   }
 });
 
+router.get('/clearcart',function(req, res){
+  req.session.cart = [];
+  res.redirect('/product');
+});
+
 router.get('/api/:slug',function(req, res){
   Product.findOne({
     slug: req.params.slug,
@@ -115,7 +120,7 @@ router.get('/api/:slug',function(req, res){
       req.session.cart = [];
       req.session.cart.push(d);
     }
-    res.json(d);
+    res.json(req.session.cart.length);
   })
 });
 
@@ -124,7 +129,8 @@ router.get('/:slug',function(req, res){
     slug: req.params.slug,
     //status: true
   }).then(function(d){
-    res.render('/product/detail',{product: d,title: d.name});
+    //console.log(d);
+    res.render('product/detail',{product: d,title: d.name});
   })
 });
 

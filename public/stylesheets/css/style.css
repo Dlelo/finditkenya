@@ -3598,7 +3598,7 @@ input[type="radio"].package {
 	margin-top:5px;
 }
 input[type="radio"].package:checked + #packagelabel {
-    background: #5a5a5a;
+    background: #eee;
     color: hsla(215, 0%, 100%, 1);
     box-shadow: 0px 0px 20px #c00000;
 }

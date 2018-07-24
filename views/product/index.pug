@@ -40,7 +40,7 @@ block content
             url: "/product/api/"+event.target.id,
             success: function(res){
               console.log(res);
-              $('#cartcount').text(res);
+              $('#cartcount').text(res+')');
             }
         });
       });

@@ -129,7 +129,8 @@ router.get('/:slug',function(req, res){
     slug: req.params.slug,
     //status: true
   }).then(function(d){
-    res.render('/product/detail',{product: d,title: d.name});
+    //console.log(d);
+    res.render('product/detail',{product: d,title: d.name});
   })
 });
 

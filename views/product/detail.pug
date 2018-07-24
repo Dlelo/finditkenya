@@ -4,7 +4,8 @@ block content
   #home.parallax-content-list.baner-content-listing-biz
     .container-fluid.container-margin-top.container-fluidpadding
       .card-single-product
-         .row
+        if product
+          .row
             aside.col-sm-2
               div.img-small-wrap
                 div.item-gallery
@@ -20,20 +21,22 @@ block content
                 .img-big-wrap
                   div
                     a(href="#")
-                      img(src="https://s9.postimg.org/tupxkvfj3/image.jpg")
+                      img(src='/uploads/product/'+product.photo)
             aside.col-sm-6
               article.card-body.p-5
                 h3.title.mb-3
-                  | Original Version of Some product name
+                  =product.name
                 p.price-detail-wrap
                   span.price.h3.text-warning
                     span.currency Ksh.
-                    span.num 798
+                    span.num
+                     =product.price
                   span /per kg
                 dl.item-property
                   dt Description
                   dd
-                    p Here goes description consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco
+                    p 
+                     =product.description
                 dl.param.param-feature
                   dt Model#
                   dd 12345611

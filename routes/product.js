@@ -120,7 +120,7 @@ router.get('/api/:slug',function(req, res){
       req.session.cart = [];
       req.session.cart.push(d);
     }
-    res.json(d);
+    res.json(req.session.cart.length);
   })
 });
 

@@ -9,7 +9,9 @@ block content
             if cart
               #cart.row.alert-danger
                 i.fa.fa-shopping-basket
-                |  Items  #{cart.length}
+                | Items (
+                span#cartcount
+                  |   #{ cart.length})
           each product in products
             row.item
               .col-md-12(id=product.slug,class="productid")
@@ -31,14 +33,14 @@ block content
       
       //alert("cart count: "+count );
       $(document).on('click', '.addtocart', function(event) {
-        console.log(event.target.id);
+        //console.log(event.target.id);
+        count = #{cart.length};
         $.ajax({
             type: "GET",
             url: "/product/api/"+event.target.id,
             success: function(res){
-              //console.log(res);
-              
-              cart.push(res);
+              console.log(res);
+              $('#cartcount').text(res);
             }
         });
       });

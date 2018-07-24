@@ -1,0 +1,18 @@
+extends ../layout-new
+
+block content
+  #home.parallax-content-list.baner-content-listing-biz
+    .container-fluid.container-margin-top.container-fluidpadding
+      .container
+          each p in cart
+            .row
+              .col-md-4
+                strong
+                  =p.name 
+              .col-md-2
+                .alert-danger
+                  strong
+                    |  KES 
+                    =p.price
+              .col-md-4
+                

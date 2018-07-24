@@ -36,7 +36,7 @@ block content
       //alert("cart count: "+count );
       $(document).on('click', '.addtocart', function(event) {
         //console.log(event.target.id);
-        count = #{cart.length};
+        
         $.ajax({
             type: "GET",
             url: "/product/api/"+event.target.id,

@@ -3,7 +3,7 @@ extends ../layout-new
 block content
   #home.parallax-content-list.baner-content-listing-biz
     .container-fluid.container-margin-top.container-fluidpadding
-      section.the-products
+      section
         .row
           .col-md-12.text-right
             if cart
@@ -11,20 +11,22 @@ block content
                 i.fa.fa-shopping-basket
                 |  Items  #{cart.length}
           each product in products
-            row.item
+            row
               .col-md-12(id=product.slug,class="productid")
-                row
-                  .col-sm-12.col-xs-12
-                    h4
-                      =product.name
-                    img.item-image(src='/uploads/product/thumbs/'+product.photo)
-                    p
-                      =product.description
-                    .div
-                      .findit-red
-                        | KES #{product.price}  
-                      button.btn.btn-primary.addtocart(id=product.slug)
+                figure.card.card-product
+                  .img-wrap
+                    img(src='/uploads/product/thumbs/'+product.photo)
+                  figcaption.info-wrap
+                    h6.title.text-dots
+                      =product.name       
+                    div.action-wrap
+                      .price-wrap 
+                        .price-new
+                          .findit-red
+                            | KES #{product.price}  
+                      button.btn.btn-outline-primary.w3ls-btn.findit-blue.addtocart(id=product.slug)
                         | Add to Cart
+                        
   script(type='text/javascript').
     $(function(){
       var count = 0;

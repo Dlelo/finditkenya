@@ -1,7 +1,4 @@
-/*--Author: W3Layouts
-	Author URL: http://w3layouts.com
-	License: Creative Commons Attribution 3.0 Unported
-	License URL: http://creativecommons.org/licenses/by/3.0/
+/*--
  --*/
 
 body {
@@ -3794,4 +3791,52 @@ section.the-products.items .item .item-info ul.price {
 	padding-top: 5px;
 	background-color: #fff;
 	display: inline-flex;
+}
+.card-product:after {
+    content: "";
+    display: table;
+    clear: both;
+    visibility: hidden; }
+  .card-product .price-new, .card-product .price {
+    margin-right: 5px; }
+  .card-product .price-old {
+    color: #999; }
+  .card-product .img-wrap {
+    border-radius: 3px 3px 0 0;
+    overflow: hidden;
+    position: relative;
+    height: 220px;
+    text-align: center; }
+    .card-product .img-wrap img {
+      max-height: 100%;
+      max-width: 100%;
+      object-fit: cover; }
+      
+      .card-product .info-wrap {
+    overflow: hidden;
+    padding: 15px;
+    border-top: 1px solid #eee; }
+  .card-product .action-wrap {
+    padding-top: 4px;
+    margin-top: 4px; }
+  .card-product .bottom-wrap {
+    padding: 15px;
+    border-top: 1px solid #eee; }
+  .card-product .title {
+	margin-top: 0; }
+	.card {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
 }

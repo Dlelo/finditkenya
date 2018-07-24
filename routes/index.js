@@ -1210,8 +1210,8 @@ router.get('/biz/:name',function(req, res, next){
     //pending: { $ne: true }
   })
   .then(function(data){
-    var phones = data.phone.split(",");
-    var emails = data.email.split(",");
+    var phones = data.phone.split(/[\s,]+/);
+    var emails = data.email.split(/[\s,]+/);
     var now = moment();
     delete data.hours.$init;
     //console.log(data);

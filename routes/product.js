@@ -98,9 +98,9 @@ router.post('/create',role.auth, cpUpload, function(req, res){
 
 router.get('/cart',function(req, res){
   if(req.session.cart){
-    res.redirect('/product/cart',{cart: req.session.cart});
+    res.render('product/cart',{cart: req.session.cart});
   }else{
-    res.redirect('/product/cart',{cart: []});
+    res.render('product/cart',{cart: []});
   }
 });
 
@@ -128,7 +128,8 @@ router.get('/:slug',function(req, res){
   Product.findOne({
     slug: req.params.slug,
     //status: true
-  }).then(function(d){
+  })
+  .then(function(d){
     //console.log(d);
     res.render('product/detail',{product: d,title: d.name});
   })

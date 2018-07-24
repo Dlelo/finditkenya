@@ -6,22 +6,24 @@ block content
       .card-single-product
         if product
           .row
-            aside.col-sm-2
-              div.img-small-wrap
-                div.item-gallery
-                  img(src="https://s9.postimg.org/tupxkvfj3/image.jpg")
-                div.item-gallery
-                  img(src="https://s9.postimg.org/tupxkvfj3/image.jpg")
-                div.item-gallery
-                  img(src="https://s9.postimg.org/tupxkvfj3/image.jpg")
-                div.item-gallery
-                  img(src="https://s9.postimg.org/tupxkvfj3/image.jpg")
-            aside.col-sm-4.border-right 
+            aside.col-sm-1
+              article.gallery-wrap
+                div.img-small-wrap
+                  div.item-gallery
+                    img.img-small-wrap(src="../images/oven.jpeg")
+                  div.item-gallery
+                    img.img-small-wrap(src="../images/oven1.jpeg")
+                  div.item-gallery
+                    img.img-small-wrap(src="../images/oven2.jpeg")
+                  div.item-gallery
+                    img.img-small-wrap(src="../images/oven3.jpeg")
+            aside.col-sm-5.border-right 
               article.gallery-wrap 
-                .img-big-wrap
+                div.img-big-wrap
                   div
                     a(href="#")
-                      img(src='/uploads/product/'+product.photo)
+                      img.img-big-wrap(src='/uploads/product/'+product.photo)
+                
             aside.col-sm-6
               article.card-body.p-5
                 h3.title.mb-3

@@ -7,11 +7,12 @@ block content
         .row
           .col-md-12.text-right
             if cart
-              #cart.row.alert-danger
-                i.fa.fa-shopping-basket
-                | Items (
-                span#cartcount
-                  |   #{ cart.length})
+              a(href='/product/cart')
+                #cart.row.alert-danger
+                  i.fa.fa-shopping-basket
+                  | Items (
+                  span#cartcount
+                    |   #{ cart.length})
           each product in products
             row
               a(href="/product/"+product.slug)

@@ -115,9 +115,11 @@ router.get('/api/:slug',function(req, res){
     //status: true
   }).then(function(d){
     if(req.session.cart){
+      d.count = 1;
       req.session.cart.push(d);
     }else{
       req.session.cart = [];
+      d.count = 1;
       req.session.cart.push(d);
     }
     res.json(req.session.cart.length);

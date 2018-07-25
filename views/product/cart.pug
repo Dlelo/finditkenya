@@ -5,14 +5,40 @@ block content
     .container-fluid.container-margin-top.container-fluidpadding
       .container
           each p in cart
-            .row
-              .col-md-4
+            .row.deal-coup(style="margin: 4px;")
+              .col-md-3
                 strong
-                  =p.name 
+                  =p.name
+              .col-md-3 
+                img(src='/uploads/product/thumbs/'+p.photo)
+              .col-md-2
+                | No.  
+                select
+                  option(value='1')
+                    | 1
+                  option(value='2')
+                    | 2
+                  option(value='3')
+                    | 3
+                  option(value='4')
+                    | 4
+                  option(value='5')
+                    | 5
+                  option(value='6')
+                    | 6
+                  option(value='7')
+                    | 7
+                  option(value='8')
+                    | 8
+                  option(value='9')
+                    | 9
+                  option(value='10')
+                    | 10
+                  
               .col-md-2
                 .alert-danger
                   strong
                     |  KES 
                     =p.price
-              .col-md-4
+              .col-md-2
                 i.fa.fa-trash(aria-hidden="true",class='col-md-1') 

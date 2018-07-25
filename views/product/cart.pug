@@ -9,8 +9,10 @@ block content
               .col-md-3
                 strong
                   =p.name
-              .col-md-3 
+              .col-md-2
                 img(src='/uploads/product/thumbs/'+p.photo)
+              .col-md-1
+                =p.count
               .col-md-2
                 | No.  
                 select

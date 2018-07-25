@@ -82,19 +82,6 @@ block content
                   label(for="extras")
                     strong.findit-blue
                       |Select Amenities (select multiple if applicable):
-                  //select(multiple class="form-control" id="extras" name="extras")
-                  select#ssubcategory.form-control-form.form-control-form-select(name='ssubcategory',data-selected-text-format='count > 5', class='ssubcategory') 
-                    option(data-icon='glyphicon glyphicon-signal', value='wifi') Wifi
-                    option(data-icon='glyphicon-credit-card', value='creditcards') Credits Cards
-                    option(data-icon='glyphicon-cutlery', value='buffet') Buffet
-                    option(data-icon='glyphicon glyphicon-glass', value='full_bar') Full Bar
-                    option(data-icon='glyphicon-gift', value='takeaway') Take Away
-                    option(data-icon='glyphicon-ok-circle', value='parking') Parking
-                    option(data-icon='glyphicon-tent', value='camping') Camping
-                    option(data-icon='glyphicon-bed', value='accomodation') Accomodation  
-              //.col-md-12
-                  strong.findit-red
-                    | Select Amenities
                   select.form-control-form-select.selectpicker(name='extras', multiple='', data-selected-text-format='count > 10')
                     option(data-icon='glyphicon glyphicon-signal', value='wifi') Wifi
                     option(data-icon='glyphicon-credit-card', value='creditcards') Credits Cards
@@ -104,6 +91,7 @@ block content
                     option(data-icon='glyphicon-ok-circle', value='parking') Parking
                     option(data-icon='glyphicon-tent', value='camping') Camping
                     option(data-icon='glyphicon-bed', value='accomodation') Accomodation
+              
             .row
               .col-sm-12.text-center
                 strong

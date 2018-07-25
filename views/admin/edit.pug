@@ -1,9 +1,8 @@
 extends ../layout
 
 block content
-  .page_body.basic-content
-    .container
-      .row
+  #home.parallax-content-list.baner-content-listing-biz
+    .container.container-margin-top
         .col-md-offset-3.col-md-6.col-md-offset-3
             h3.text-center Edit #{biz.slug}
         .col-md-offset-0.col-md-12.col-md-offset-0
@@ -56,7 +55,7 @@ block content
                   option(data-icon='glyphicon-wrench', value=biz.category) #{biz.category}
                   option(data-icon='glyphicon-gift', value='business') Business
                   option(data-icon='glyphicon glyphicon-glass',value='service') Service 
-            .form-group
+            
               .col-sm-3
                 select#subcategory.form-control-form-select(name='subcategory',data-selected-text-format='count > 5', class='subcategory')
                   option(data-icon='fa ', value=biz.subcategory) 
@@ -68,8 +67,8 @@ block content
                 select#ssubcategoryy.form-control-form-select.ssubcategory.selectpicker(name='ssubcategory',multiple,data-selected-text-format='count > 5', data-live-search="true")
                   each category in categories
                     each subcat in category.subcategories
-                      option(data-icon='glyphicon-wrench', value=subcat.name, rel=category.name) 
-                        =subcat.name
+                      option(data-icon='glyphicon-wrench', rel=category.name, value=) 
+                        
               .col-sm-3(style="display:none",id="starteventDate")
                 input#startdate.form-control-form(type='text', name='starteventdate', placeholder='Start Event Date',class='datetimepicker',value=biz.starteventdate)
                 =biz.starteventdate
@@ -78,10 +77,10 @@ block content
                 =biz.endeventdate
             .form-group
               .col-sm-12
-                .input-group
-                  .input-group-addon.findit-red
-                    strong
-                        | Select Amenities
+                .col-sm-12
+                  label(for="extras")
+                    strong.findit-blue
+                      |Select Amenities (select multiple if applicable):
                   select.form-control-form-select.selectpicker(name='extras', multiple='', data-selected-text-format='count > 10')
                     option(data-icon='glyphicon-wrench', value=biz.extras) #{biz.extras.join()}
                     option(data-icon='glyphicon glyphicon-signal', value='wifi') Wifi

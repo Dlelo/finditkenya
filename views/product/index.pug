@@ -13,7 +13,7 @@ block content
                 span#cartcount
                   |   #{ cart.length})
           each product in products
-            row
+            .col-md-3
               a(href="/product/"+product.slug)
                 .col-md-12(id=product.slug,class="productid")
                   figure.card.card-product

@@ -14,21 +14,21 @@ block content
                   |   #{ cart.length})
           each product in products
             .col-md-3
-              a(href="/product/"+product.slug)
-                .col-md-12(id=product.slug,class="productid")
-                  figure.card.card-product
+              .col-md-12(id=product.slug,class="productid")
+                figure.card.card-product
+                  a(href="/product/"+product.slug)
                     .img-wrap
                       img(src='/uploads/product/thumbs/'+product.photo)
-                    figcaption.info-wrap
-                      h6.title.text-dots
-                        =product.name       
-                      div.action-wrap
-                        .price-wrap 
-                          .price-new
-                            .findit-red
-                              | KES #{product.price}  
-                        button.btn.btn-outline-primary.w3ls-btn.findit-blue.addtocart(id=product.slug)
-                          | Add to Cart
+                  figcaption.info-wrap
+                    h6.title.text-dots
+                      =product.name       
+                    div.action-wrap
+                      .price-wrap 
+                        .price-new
+                          .findit-red
+                            | KES #{product.price}  
+                      button.btn.btn-outline-primary.w3ls-btn.findit-blue.addtocart(id=product.slug)
+                        | Add to Cart
                           
   script(type='text/javascript').
     $(function(){

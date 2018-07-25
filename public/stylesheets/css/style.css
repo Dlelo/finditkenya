@@ -3881,3 +3881,19 @@ section.the-products.items .item .item-info ul.price {
     border-radius: 4px;
     cursor: zoom-in;
 }
+.img-zoom-result {
+  border: 1px solid #d4d4d4;
+  /*set the size of the result div:*/
+  height: 450px;
+  width: auto;
+  display: inline-block;
+  cursor: zoom-in;
+}
+.img-zoom-lens {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  /*set the size of the lens:*/
+  width: 50px;
+  height: 50px;
+  border-radius:50%;
+}

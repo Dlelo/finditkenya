@@ -3856,7 +3856,7 @@ section.the-products.items .item .item-info ul.price {
 }
 .gallery-wrap .img-big-wrap img {
     height: 450px;
-    width: -webkit-fill-available;
+    width: auto;
     display: inline-block;
     cursor: zoom-in;
 }
@@ -3884,16 +3884,17 @@ section.the-products.items .item .item-info ul.price {
 .img-zoom-result {
   border: 1px solid #d4d4d4;
   /*set the size of the result div:*/
-  height: 450px;
+  height:auto;
   width: auto;
   display: inline-block;
   cursor: zoom-in;
 }
 .img-zoom-lens {
+  border: 1px solid #eee;
   position: absolute;
-  border: 1px solid #d4d4d4;
+  background:transparent;
   /*set the size of the lens:*/
-  width: 50px;
-  height: 50px;
-  border-radius:50%;
+  width: 100px;
+  height: 100px;
+  border-radius:2%;
 }

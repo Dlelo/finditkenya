@@ -3960,9 +3960,9 @@ section.the-products.items .item .item-info ul.price {
 
 /* Lens */
 .xzoom-lens {
-  border: 1px solid #555;
-  box-shadow: -0px -0px 10px rgba(0,0,0,0.50);
   cursor: crosshair;
+  /**border: 1px solid #555;
+  box-shadow: -0px -0px 10px rgba(0,0,0,0.50);*/
 }
 
 /* Loading */
@@ -3989,7 +3989,7 @@ section.the-products.items .item .item-info ul.price {
   position: absolute;
   bottom: -43px;
   left: 0;
-  background: #000;
+  background: #04045a;
   width: 100%;
   text-align: left;
 }

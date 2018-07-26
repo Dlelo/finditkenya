@@ -4017,6 +4017,7 @@ section.the-products.items .item .item-info ul.price {
 	font-size: 1.8em !important;
     text-align: center !important;
 	color: #fff !important;
+	margin-bottom: .00rem !important;
 }
 .card-card-body{
 	padding: 0.09rem !important;

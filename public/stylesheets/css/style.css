@@ -4002,3 +4002,23 @@ section.the-products.items .item .item-info ul.price {
   font-weight: bold;
   padding: 10px;
 }
+.card-cart{
+	border: 0px solid #04045a !important;
+	border-radius: .25rem !important;
+	background-color: #04045a !important;
+	margin-bottom: 10px !important;
+	z-index:999;
+	position:fixed;
+	margin-left: 92%;
+    margin-top: 15%;
+	opacity:0.8;
+}
+.card-cart-title{
+	font-size: 1.8em !important;
+    text-align: center !important;
+	color: #fff !important;
+}
+.card-card-body{
+	padding: 0.09rem !important;
+	color: #fff !important;
+}

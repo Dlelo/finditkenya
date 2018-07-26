@@ -5,14 +5,21 @@ block content
     .container-fluid.container-margin-top.container-fluidpadding
       section
         .row
-          .col-md-12.text-right
-            if cart
+          .col-md-12
+            nav.text-right
               a(href='/product/cart')
-                #cart.row.alert-danger
-                  i.fa.fa-shopping-basket
-                  | Items (
-                  span#cartcount
-                    |   #{ cart.length})
+                #cart.row
+                  .card.card-cart
+                    .card-body.card-card-body
+                      .card-title.card-cart-title
+                        i.fa.fa-shopping-basket
+                      
+                      if cart
+                        card-text
+                          small.strong
+                            | Items (
+                            span#cartcount
+                              |   #{ cart.length})
           each product in products
             .col-md-3
               .col-md-12(id=product.slug,class="productid")

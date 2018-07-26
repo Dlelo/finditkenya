@@ -113,13 +113,32 @@ router.get('/api/:slug',function(req, res){
   Product.findOne({
     slug: req.params.slug,
     //status: true
-  }).then(function(d){
-    if(req.session.cart){
-      req.session.cart.push(d);
+  }).lean().then(function(d){
+    if(req.session.cart > 0){
+      d.count = 1;
+      var unique = false;
+      console.log("parameters");
+      console.log(req.session.cart.length);
+      console.log(index);
+      req.session.cart.forEach(function(i,index){
+        if(i.id == d.id){
+          i.count = i.count + 1;
+          unique = true;
+        }
+
+        if(index == req.session.cart.length - 1){
+          if(unique == false){
+            req.session.cart.push(d);
+          }
+        }
+      });
     }else{
       req.session.cart = [];
+      d.count = 1;
+      console.log(d);
       req.session.cart.push(d);
     }
+    console.log(req.session.cart);
     res.json(req.session.cart.length);
   })
 });

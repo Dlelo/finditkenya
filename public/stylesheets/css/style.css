@@ -166,7 +166,7 @@ footer h2 {
 }
 
 .navbar-light {
-	padding: 1em 1em;
+	padding: 0.7em 0.7em;
 	position: absolute;
 	z-index: 999;
 	width: 100%;
@@ -1465,8 +1465,8 @@ ul.portfolio-area li figure {
 		font-size: 1.8em;
 	}
 	.img-logo {
-    width: 14vw !important;
-    height: 5vh !important;
+        width: 7rem !important;
+        height: 2rem !important;
 	 }
 	 .banner{
 		 height: 45vh !important;
@@ -1523,15 +1523,15 @@ ul.portfolio-area li figure {
     height: 63vh !important;
 	}
 	.img-logo {
-    width: 12vw !important;
-    height: 7vh !important;
+    width: 10rem !important;
+    height: 2rem !important;
     }
 }
 
 @media screen and (max-width: 800px) {
 	.img-logo {
-		width: 10vw !important;
-		height: 2vh !important;
+		width: 9rem !important;
+        height: 2rem !important;
 		}
 		.banner {
     height: 40vh !important;
@@ -1561,8 +1561,8 @@ ul.portfolio-area li figure {
 	}
 	 
     .img-logo {
-    width: 17vw !important;
-    height: 4vh !important;
+    width: 9rem !important;
+    height: 2rem !important;
        }
     
 	.banner-text {
@@ -1599,8 +1599,8 @@ ul.portfolio-area li figure {
     padding-top: 20vh !important;
 	}
 	.img-logo {
-    width: 15vw !important;
-    height: 9vh !important;
+    width: 10rem !important;
+    height: 2rem !important;
      }
 	.banner-text {
 		padding: 2vw 4vw 7vW 3vw;
@@ -1620,8 +1620,8 @@ ul.portfolio-area li figure {
 }
 @media screen and (max-width: 667px) {
 	.img-logo {
-    width: 15vw !important;
-    height: 7vh !important;
+		width: 7rem !important;
+		height: 2rem !important;
       }
 	.banner-text {
 		padding: 2vw 4vw 7vW 3vw;
@@ -1682,8 +1682,8 @@ ul.portfolio-area li figure {
 
 @media screen and (max-width: 600px) {
 	.img-logo {
-    width: 15vw !important;
-    height: 4vh !important;
+       width: 10rem !important;
+       height: 2rem !important;
     }
 	.banner-text {
 		padding: 2vw 4vw 7vW 3vw;
@@ -1760,8 +1760,8 @@ ul.portfolio-area li figure {
 
 @media screen and (max-width: 480px) {
 	.img-logo {
-    width: 10vw !important;
-    height: 3vh !important;
+    width: 9rem !important;
+    height: 2rem !important;
       }
 	.dropdown-item {
 		text-align:left;
@@ -2483,8 +2483,8 @@ padding-right:1px;
     margin-top: 13vh !important;
       }
 	.img-logo {
-    width: 12vw !important;
-    height: 3vh !important;
+    width: 10rem !important;
+    height: 2rem !important;
       }
 	
 	.modal-content{
@@ -2558,8 +2558,8 @@ li.list-hor{
     margin-top: 13vh !important;
      }
 	.img-logo {
-	  width: 15vw !important;
-    height: 3vh !important;
+	  width: 10rem !important;
+      height: 1rem !important;
 	}
 	.search2{
 	  background-position: 11px 12px;
@@ -2629,8 +2629,8 @@ li.list-hor{
     margin-top: 13vh !important;
        }
 	.img-logo {
-	  width: 16vw !important;
-	  height: 4vh !important;
+	  width: 10rem !important;
+      height: 1rem !important;
 	}
 	.search2{
 	  background-position: 11px 12px;
@@ -2695,8 +2695,8 @@ li.list-hor{
     margin-top: 13vh !important;
    }
 	.img-logo {
-	  width: 20vw !important;
-      height: 2vh !important;
+	    width: 10rem !important;
+        height: 1rem !important;
 	}
 	.search2{
 	  background-position: 11px 12px;
@@ -2763,8 +2763,8 @@ li.list-hor{
     margin-top: 13vh !important;
    }
 	.img-logo {
-	  width: 20vw !important;
-     height: 3vh !important;
+	  width: 10rem !important;
+      height: 1rem !important;
 	}
 	.search2{
 	  background-position: 11px 12px;
@@ -3035,8 +3035,8 @@ padding-left:10px;
     margin-top: 1px;
 }
 .img-logo{
-	width:10vw;
-	height: 6vh;
+	width: 7rem;
+    height: 2rem;
 }
 .row{
 

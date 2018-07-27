@@ -3211,8 +3211,8 @@ padding-left: 5px;
     filter: alpha(opacity=50); /* For IE8 and earlier */
 }
 .carousel-caption{
-	right:20% !important;
-	left:20% !important;
+	right:10% !important;
+	left:10% !important;
 	z-index:8888;
 	font-weight: 100;
     color: #04045a;

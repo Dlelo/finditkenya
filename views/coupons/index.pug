@@ -23,13 +23,13 @@ block content
                           img.d-block.w-100.coupons-img.carousel-img(src="/uploads/" + coupon.photo)
                           a(href="/biz/"+coupon.bizid.slug)
                             div.carousel-caption.d-none.d-md-block
-                              div(style="color:#04045a")
+                              div(style="color:#fff")
                                 h3.text-left
                                   =coupon.bizid.name
                                 h4.text-left
                                   =coupon.description
                                 span.text-left.badge.badge-light.findit-red
-                                  h6
+                                  h6.findit-red
                                     =coupon.tagline
                   each coupon, i in coupons
                     if (i>0 && i<3)
@@ -37,13 +37,13 @@ block content
                           img.d-block.w-100.coupons-img.carousel-img(src="/uploads/" + coupon.photo)
                           a(href="/biz/"+coupon.bizid.slug)
                             div.carousel-caption.d-none.d-md-block
-                              div(style="color:#04045a")
+                              div(style="color:#fff")
                                 h3.text-left
                                   =coupon.bizid.name
                                 h4.text-left
                                   =coupon.description
                                 span.text-left.badge.badge-light.findit-red
-                                  h6
+                                  h6.findit-red
                                     =coupon.tagline
           
                     

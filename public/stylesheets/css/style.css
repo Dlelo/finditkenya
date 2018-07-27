@@ -3215,7 +3215,7 @@ padding-left: 5px;
 	left:10% !important;
 	z-index:8888;
 	font-weight: 100;
-    color: #04045a;
+    color: #fff;
     font-size: 60px;
     letter-spacing: -1px;
 }
@@ -4037,7 +4037,7 @@ section.the-products.items .item .item-info ul.price {
 	color: #fff !important;
 }
 .carousel-img{ 
-    opacity: 0.8;
+    filter: brightness(50%);
     filter: alpha(opacity=50);
 }
 .badge-light {

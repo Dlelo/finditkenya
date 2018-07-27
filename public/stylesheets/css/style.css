@@ -2456,6 +2456,16 @@ padding-right:1px;
       width: 70%;
       height: 50vh;
 		  }
+    .carousel-inner>.carousel-item:before {
+    content:'';
+    position: absolute;
+    width:100%; 
+    height:100%;
+    top:0; 
+    left:0;
+    background:rgba(0,0,0,0.1);
+   }
+  
 
 
 
@@ -3201,10 +3211,13 @@ padding-left: 5px;
     filter: alpha(opacity=50); /* For IE8 and earlier */
 }
 .carousel-caption{
-	right:30% !important;
-	left:30% !important;
-	box-shadow: 0 1px 2px 0 rgba(0,0,0,.25);
-	border-radius: 0.25rem;
+	right:20% !important;
+	left:20% !important;
+	z-index:8888;
+	font-weight: 100;
+    color: #04045a;
+    font-size: 60px;
+    letter-spacing: -1px;
 }
 .img-pimp{
     display: block;
@@ -4022,4 +4035,8 @@ section.the-products.items .item .item-info ul.price {
 .card-card-body{
 	padding: 0.09rem !important;
 	color: #fff !important;
+}
+.carousel-img{ 
+    opacity: 0.8;
+    filter: alpha(opacity=50);
 }

@@ -78,7 +78,7 @@ block content
                     each email in emails
                       strong.findit-blue
                         span.fas.fa-envelope
-                        a.findit(href="mailto:"+email,style="color:#2862ec;")
+                        a.findit(href="mailto:"+email)
                           |  Mail
                       br
                   hr.nomargin
@@ -147,7 +147,7 @@ block content
                 .row
                   hr
                   .col-md-12 
-                    .findit-red.padding10
+                    .findit-red.text-center
                       strong Submit a Review
                   .col-md-12
                     form.form-horizontal(method="post",action="/business/review/")                

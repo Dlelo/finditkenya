@@ -20,29 +20,29 @@ block content
                   each coupon, i in coupons
                     if (i==0)
                       div.carousel-item.active
-                          img.d-block.w-100.coupons-img(src="/uploads/" + coupon.photo)
+                          img.d-block.w-100.coupons-img.carousel-img(src="/uploads/" + coupon.photo)
                           a(href="/biz/"+coupon.bizid.slug)
-                            div.carousel-caption.d-none.d-md-block.banner-background
-                              button.btn.btn-danger.flash-coupon(type="button" )
-                                h5
+                            div.carousel-caption.d-none.d-md-block
+                              div(style="color:#04045a")
+                                h3
                                   =coupon.bizid.name
-                                h6
+                                h4
                                   =coupon.description
-                                span.badge.badge-light
+                                span.badge.badge-light.findit-red
                                   h6
                                     =coupon.tagline
                   each coupon, i in coupons
                     if (i>0 && i<3)
                       div.carousel-item
-                          img.d-block.w-100.coupons-img(src="/uploads/" + coupon.photo)
+                          img.d-block.w-100.coupons-img.carousel-img(src="/uploads/" + coupon.photo)
                           a(href="/biz/"+coupon.bizid.slug)
-                            div.carousel-caption.d-none.d-md-block.banner-background
-                              button.btn.btn-danger.flash-coupon(type="button" )
-                                h5
+                            div.carousel-caption.d-none.d-md-block
+                              div(style="color:#04045a")
+                                h3
                                   =coupon.bizid.name
-                                h6
+                                h4
                                   =coupon.description
-                                span.badge.badge-light
+                                span.badge.badge-light.findit-red
                                   h6
                                     =coupon.tagline
           

@@ -3,17 +3,32 @@ extends ../layout-new
 block content
   #home.parallax-content-list.baner-content-listing-biz
     .container-fluid.container-margin-top.container-fluidpadding
-      .container
+      .container-fluid
+          row
+            .col-md-9(style="border-bottom:1px solid #eee; margin-bottom:20px;")
+              row
+                .col-md-12
+                  h4.text-center 
+                    | Shopping Cart
+                
+            
           each p in cart
-            .row.deal-coup(style="margin: 4px;")
-              .col-md-3
-                strong
-                  =p.name
+            .row(style="margin: 4px;")
               .col-md-2
                 img(src='/uploads/product/thumbs/'+p.photo)
+              .col-md-4
+                strong.findit-blue
+                  =p.name
+                div
+                  =p.description
+                div
+                  i.fa.fa-trash(aria-hidden="true",class='col-md-1')
+                  span.findit-red Delete 
+
+                
               .col-md-1
                 =p.count
-              .col-md-2
+              .col-md-1
                 | No.  
                 select
                   option(value='1')
@@ -37,10 +52,20 @@ block content
                   option(value='10')
                     | 10
                   
-              .col-md-2
-                .alert-danger
-                  strong
+              .col-md-1
+                  strong.findit-red
                     |  KES 
                     =p.price
-              .col-md-2
-                i.fa.fa-trash(aria-hidden="true",class='col-md-1') 
+            
+              .col-md-3
+                row
+                  .col-md-12(style="border:1px solid #eee; border-radius:3px; padding:10px; text-align:center;")
+                    h6.Strong 
+                      | Subtotal ( No. of Items): 
+                      .findit-red $76.67
+                    p
+                      .btn.btn-primary Proceed to checkout
+                         
+                        
+              
+               

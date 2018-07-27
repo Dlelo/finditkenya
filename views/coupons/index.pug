@@ -97,7 +97,7 @@ block content
       ul.navbar-nav.mr-auto
         li.nav-item.dropdown.open.text-left
             button.btn.btn-cat.btn-light.form-control.dropdown-toggle(type='button', data-toggle='dropdown')
-              h4.coupon-title
+              h5.coupon-title
                 | Search Coupon by Category
                 
               span.caret
@@ -121,10 +121,10 @@ block content
               button#myBtn.btn.btn-danger.btn-cat-coupon.selected-coupon-left
                 h4.agile-title.text-center
                   span.fas.fa-envelope
-                  |   Selected Coupons  
-                  span.badge.badge-light
+                  |   Selected Coupons
+                  span.badge.badge-light  
                     span#couponscount(style="color:#c00000")
-                      =mycoupons.length
+                      =mycoupons.length  
         
             .col-md-6.col-sm-12.col-xs-12
               div#myModal.modal

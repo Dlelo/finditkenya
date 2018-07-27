@@ -4040,3 +4040,8 @@ section.the-products.items .item .item-info ul.price {
     opacity: 0.8;
     filter: alpha(opacity=50);
 }
+.badge-light {
+    color: #212529;
+    background-color: #eee;
+    float: left;
+}

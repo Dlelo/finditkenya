@@ -3208,7 +3208,7 @@ padding-left: 5px;
 
 .banner-background{
     opacity: 0.8;
-    filter: alpha(opacity=50); /* For IE8 and earlier */
+    filter: alpha(opacity=60); /* For IE8 and earlier */
 }
 .carousel-caption{
 	right:10% !important;

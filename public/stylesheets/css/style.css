@@ -4045,3 +4045,8 @@ section.the-products.items .item .item-info ul.price {
     background-color: #eee;
     float: left;
 }
+.carousel-item.active,
+.carousel-item-next,
+.carousel-item-prev {
+  display: block;
+}

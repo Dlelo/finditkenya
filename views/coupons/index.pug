@@ -120,11 +120,11 @@ block content
             .col-md-6.col-sm-12.col-xs-12
               button#myBtn.btn.btn-danger.btn-cat-coupon.selected-coupon-left
                 h4.agile-title.text-center
-                  span.fas.fa-envelope
-                  |   Selected Coupons
-                  span.badge.badge-light  
-                    span#couponscount(style="color:#c00000")
-                      =mycoupons.length  
+                  =mycoupons.length + "  Selected Coupons  "
+                  //span.badge.badge-light  
+                    span#couponscount(style="color:#c00000")    
+                  span.fas.fa-envelope  
+                    
         
             .col-md-6.col-sm-12.col-xs-12
               div#myModal.modal

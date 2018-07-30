@@ -10,6 +10,10 @@ block content
             input(name=i, type='hidden', value=input)
           h3.text-center
             | Pay This Amount to Claim Your Business
+          p 
+            h6.text-center.findit-red
+             | N/B: The payment recurs annually
+          br
           span.btn.btn-grey.btn-block.btn-lg.noLnk(style=' border: 1px solid;margin-bottom:10px;')
             small(style='text-transform: none;') KShs. #{inputs.ttl} for #{package} Package.
             strong(id='')

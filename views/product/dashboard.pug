@@ -1,0 +1,44 @@
+extends ../admin/admin-layout
+
+block content
+  // /.row
+  // ==============================================================
+  // Different data widgets
+  // ==============================================================
+  // .row
+  .row
+    .col-md-12.col-lg-12.col-sm-12      
+      .white-box
+        h3.box-title 
+          strong Find It Sales
+          #accordion.panel-group(role='tablist', aria-multiselectable='true')
+            table.table.dataTable
+              tbody#couponssort
+                each sale,i in sales
+                  tr
+                    .panel.panel-default(id=sale.id)
+                      #headingTwo.panel-heading(role='tab')
+                        h4.panel-title
+                          a.collapsed(role='button', data-toggle='collapse', data-parent='#accordion', href='#collapse'+i, aria-expanded='false', aria-controls='collapse'+i)
+                            strong
+                              | Order(#{sale.orderid}) | Amount KES: #{sale.amount}
+                      .panel-collapse.collapse(role='tabpanel', aria-labelledby='headingTwo', id='collapse'+i)
+                        .panel-body 
+                          .row
+                            .col-md-12
+                              | Phone: #{sale.phone}
+                            .col-md-12
+                              | Email: #{sale.email}
+                            .col-md-12
+                              | Date: #{sale.timestamp}
+                            hr
+                          .row
+                            h3
+                              | Details
+                            each item in sale.cart
+                              .col-md-3
+                                =item.count
+                              .col-md-3
+                                =item.name
+                              .col-md-3
+                                | KES #{item.price}                                

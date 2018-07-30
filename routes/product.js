@@ -217,7 +217,7 @@ router.get('/api/:slug',function(req, res){
     slug: req.params.slug,
     //status: true
   }).lean().then(function(d){
-    if(req.session.cart.length > 0){
+    if(req.session.cart){
       d.count = 1;
       var unique = false;
       req.session.cart.forEach(function(i,index){
@@ -231,6 +231,9 @@ router.get('/api/:slug',function(req, res){
           }
         }
       });
+      if(req.session.cart.length == 0){
+        req.session.cart.push(d);
+      }
     }else{
       req.session.cart = [];
       d.count = 1;

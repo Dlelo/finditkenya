@@ -21,6 +21,7 @@ var Analytics = require(__dirname + '/../models/Analytics');
 var Coupons = require(__dirname + '/../models/Coupons');
 var emailModel = require(__dirname + '/../config/Mail');
 var Sale = require(__dirname + '/../models/Sales');
+var Product = require(__dirname + '/../models/Product');
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -437,10 +438,23 @@ router.get('/category',role.auth, function(req, res, next) {
   });
 });
 
+//Sales
+
 router.get('/sales',role.admin, function(req, res, next) {
   Sale.find({})
   .then(function(data){
     res.render('product/dashboard', {title: "Find It Sales", sales: data});
+  })
+  .catch(function(err){
+     console.log(err);
+  });
+});
+
+//Product list
+router.get('/product/:id',role.auth, function(req, res, next) {
+  Product.find({})
+  .then(function(data){
+    res.render('product/list', {title: "Products", products: data});
   })
   .catch(function(err){
      console.log(err);

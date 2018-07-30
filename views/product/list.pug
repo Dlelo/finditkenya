@@ -1,0 +1,33 @@
+extends ../admin/admin-layout
+
+block content
+  // /.row
+  // ==============================================================
+  // Different data widgets
+  // ==============================================================
+  // .row
+  .row
+    .col-md-12.col-lg-12.col-sm-12      
+      .white-box
+        h3.box-title 
+        each product in products
+          .row
+            .col-md-3(id=product.slug,class="productid")
+              figure.card.card-product
+                a(href="/product/"+product.slug)
+                  .img-wrap
+                    img(src='/uploads/product/thumbs/'+product.photo)
+            .col-md-3
+              figcaption.info-wrap
+                h6.title.text-dots
+                  =product.name
+            .col-md-3       
+              div.action-wrap
+                .price-wrap 
+                  .price-new
+                    .findit-red
+                      | KES #{product.price}
+            .col-md-3
+              a(href="")
+                i.fa.fa-edit(aria-hidden="true",class='col-md-1')
+                | Edit

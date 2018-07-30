@@ -4048,5 +4048,5 @@ section.the-products.items .item .item-info ul.price {
 .carousel-item.active,
 .carousel-item-next,
 .carousel-item-prev {
-  display: block;
+  display: block !important;
 }

@@ -22,15 +22,18 @@ block content
                 div
                   =p.description
                 div.small.findit-red
-                  i.fa.fa-trash(aria-hidden="true",class='col-md-1')
-                  | Remove 
+                  a(href="/product/removefromcart/"+p._id)
+                    i.fa.fa-trash(aria-hidden="true",class='col-md-1')
+                    | Remove 
 
                 
               .col-md-1
                 =p.count
               .col-md-1
                 | No.  
-                select
+                select(id=p._id, class="editcart")
+                  option(value=p.count)
+                    =p.count
                   option(value='1')
                     | 1
                   option(value='2')
@@ -61,11 +64,49 @@ block content
                 row
                   .col-md-12(style="border:1px solid #eee; border-radius:3px; padding:10px; text-align:center;")
                     h6.Strong 
-                      | Subtotal ( No. of Items): 
-                      .findit-red $76.67
-                    p
-                      .btn.btn-primary Proceed to checkout
+                      | Subtotal ( No. of Items #{p.count}): 
+                      .findit-red 
+                        | KES: #{p.count * p.price}
+          .row
+            form.form-control(method='post', action='/product/pay')
+              .form-group
+                input.form-control(name='phone', type='text', placeholder='phone *', required)
+                input.form-control(name='email', type='text', placeholder='email *', required)
+              .form-group
+                button.btn.btn-primary.form-control(type='submit', style='color:#5050ff') 
+                  Proceed to checkout (KES: #{total})
                          
-                        
+  script(type='text/javascript').
+    $(function(){
+      var count = 0;
+      
+      //alert("cart count: "+count );
+      $(document).on('click', '.editcart', function(event) {
+        console.log(event.target.value);        
+        $.ajax({
+            type: "GET",
+            url: "/product/editcart/"+event.target.id+"/"+event.target.value,
+            success: function(res){
+              console.log(res);
+              $('#cartcount').text(res+')');
+              location.reload(true);
+            }
+        });
+      });
+      
+      $(document).on('click', '.editcart', function(event) {
+        console.log(event.target.value);        
+        $.ajax({
+            type: "GET",
+            url: "/product/editcart/"+event.target.id+"/"+event.target.value,
+            success: function(res){
+              console.log(res);
+              $('#cartcount').text(res+')');
+              location.reload(true);
+            }
+        });
+      });
+    })
+      
               
                

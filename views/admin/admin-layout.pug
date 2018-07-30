@@ -224,6 +224,11 @@ html(lang='en')
                     span.fa.fa-database.text-default.glyph
                     strong
                       |  Add Business
+                li 
+                  a(href='/product/new')
+                    span.fa.fa-suitcase.text-default.glyph
+                    strong
+                      |  Add Product
             // /.col-lg-12
           block content
         // /.container-fluid
@@ -314,13 +319,11 @@ html(lang='en')
                         | <a style='color:#CD7F32;', href='/admin/fakepaid/"+row._id+"/b'>Bronze Paid</a> |\
                         | <a style='color:#7b7b7b;', href='/admin/fakepaid/"+row._id+"/s'>Silver Paid</a> |\
                         | <a style='color:darkgoldenrod;', href='/admin/fakepaid/"+row._id+"/g'>Gold Paid</a> |\
-                         <a href='/admin/analytics/"+row._id+"'>View Analytics</a> |\
-                         <a href='/product/new'>Add Product</a>";
+                         <a href='/admin/analytics/"+row._id+"'>View Analytics</a>";
                     }else{
                       return "<a href='/admin/edit/"+row._id+"'>Edit</a> \
                         | <a style='color:#c00000;', href='/admin/delete/"+row._id+"' onclick=\"return confirm('Are you sure you want to delete this business?');\">Delete</a> |\
-                         <a href='/admin/analytics/"+row._id+"'>View Analytics</a> |\
-                         <a href='/product/new'>Add Product</a>";
+                         <a href='/admin/analytics/"+row._id+"'>View Analytics</a>";
                     }                      
                   }
                 }

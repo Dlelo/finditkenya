@@ -14,6 +14,8 @@ const saleSchema = new Schema({
   email: String,
   amount: String,
   orderid: String,
+  address: String,
+  area: String,
   cart: Array,
   timestamp: Date,
 	status: Boolean

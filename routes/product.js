@@ -120,6 +120,8 @@ router.post('/pay',function(req, res){
   //ssn.agentnumber = req.body.agentnumber;
   ssn.email = req.body.email;
   ssn.phone = req.body.phone;
+  ssn.address = req.body.address;
+  ssn.area = req.body.area;
   if(req.session.cart){
     var total = 0;
     req.session.cart.forEach(function(i,index){
@@ -182,6 +184,8 @@ router.get('/receive', function(req, res){
   var sale = new Sale();
   sale.phone = ssn.phone;
   sale.email = ssn.email;
+  sale.address = ssn.address;
+  sale.area = ssn.area;
   sale.amount = amount;
   sale.cart = req.session.cart;
   sale.timestamp = new Date();

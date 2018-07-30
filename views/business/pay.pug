@@ -5,6 +5,10 @@ block content
     .container.container-margin-top
       .container
         h4 Pay For This Business
+        p 
+          h6.findit-red
+            | N/B: The payment recurs annually
+          br
         form(method='post', action='/claim/'+biz.id)
           .form-group
             input.form-control-form(name='phone', type='text', placeholder='phone *', value=user.phone, required)

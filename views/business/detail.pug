@@ -68,9 +68,10 @@ block content
                       span#biz-id(style="display:none")
                         =biz.id
                       span.fas.fa-phone
-                      a.findit.phoneno(href="tel:"+phone,style="display:none")
+                      //remove style="display:none" on phoneno
+                      a.findit.phoneno(href="tel:"+phone)
                         |  #{phone}
-                      a.findit.phonenofake(href="#")
+                      //a.findit.phonenofake(href="#")
                         |  Get Contacts
                       br
                   hr.nomargin

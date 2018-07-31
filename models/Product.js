@@ -19,6 +19,7 @@ const productSchema = new Schema({
 	description: String,
 	photo: String,
   price: String,
+	oldprice: String,
   quantity: String,
   reviews: [{
     rate: String,

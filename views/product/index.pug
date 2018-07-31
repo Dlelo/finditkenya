@@ -1,4 +1,4 @@
-extends ../layout-new
+extends ../layout-shop
 
 block content
   #home.parallax-content-list.baner-content-listing-biz
@@ -15,7 +15,7 @@ block content
                         i.fa.fa-shopping-basket
                       if cart
                         card-text
-                          small.strong
+                          small
                             | Items (
                             span#cartcount
                               |   #{ cart.length})
@@ -30,10 +30,15 @@ block content
                     h6.title.text-dots
                       =product.name       
                     div.action-wrap
-                      .price-wrap 
-                        .price-new
-                          .findit-red
-                            | KES #{product.price}  
+                      row.price-wrap
+                        .col-sm-6
+                          .price-old
+                            strike
+                              | #{product.oldprice}
+                        .col-sm-6
+                          .price-new
+                            small.findit-red
+                              | KES #{product.price}  
                       button.btn.btn-outline-primary.w3ls-btn.findit-blue.addtocart(id=product.slug)
                         | Add to Cart
                           

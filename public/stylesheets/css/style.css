@@ -3815,13 +3815,13 @@ section.the-products.items .item .item-info ul.price {
     text-align: center; }
 .card-product .img-wrap img {
 	max-height: 100%;
-	max-width: 100%;
+	width: 100%;
 	object-fit: cover; }
       
       .card-product .info-wrap {
     overflow: hidden;
     padding: 15px;
-    border-top: 1px solid #eee; }
+    /*appearance: border-top: 1px solid #eee;*/ }
   .card-product .action-wrap {
     padding-top: 4px;
     margin-top: 4px; }

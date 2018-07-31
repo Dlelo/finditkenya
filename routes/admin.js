@@ -452,7 +452,9 @@ router.get('/sales',role.admin, function(req, res, next) {
 
 //Product list
 router.get('/product/:id',role.auth, function(req, res, next) {
-  Product.find({})
+  Product.find({
+    bizid: req.params.id
+  })
   .then(function(data){
     res.render('product/list', {title: "Products", products: data});
   })

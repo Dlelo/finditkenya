@@ -73,6 +73,52 @@ router.get('/new',role.auth, function(req, res){
   }
 });
 
+router.get('/edit/:id',role.auth, function(req, res){
+  var product = Product.findOne({
+    _id: req.params.id
+  });
+  var businesses = Business.find({
+    user_id : res.locals.user.username
+  })
+  Promise.all([product, businesses ]).then(values => {
+    console.log(values[0]);
+    res.render('product/edit', {title: "Edit Product: "+values[0].name, product: values[0],businesses: values[1]});
+  });
+});
+
+router.post('/update/:id',role.auth,cpUpload, function(req,res){
+  var product = Product.findOne({
+    _id: req.params.id
+  }).then(function(p){
+    //console.log(p);
+    p.name = req.body.name;
+    p.description = req.body.description;
+    if (req.files['photo'] != null){
+  		p.photo = req.files['photo'][0].filename;
+  	}
+    p.price = req.body.price;
+    p.quantity = req.body.quantity;
+    p.status = req.body.status;
+    p.oldprice = req.body.oldprice;
+    p.bizid = req.body.bizid;
+    p.save(function(err){
+      if(err)
+        console.log("err");
+      if (req.files['photo']){
+        Jimp.read("./public/uploads/product/"+p.photo).then(function (cover) {
+            return cover.resize(200, 140)     // resize
+                 .quality(100)                // set greyscale
+                 .write("./public/uploads/product/thumbs/"+p.photo); // save
+        }).catch(function (err) {
+            console.error(err);
+        });
+      }
+      req.flash('success_msg', 'Edited Successfully');
+      res.redirect('/product/'+p.slug);
+    });
+  })
+})
+
 router.post('/create',role.auth, cpUpload, function(req, res){
   var p = new Product();
   p.name = req.body.name;
@@ -84,17 +130,23 @@ router.post('/create',role.auth, cpUpload, function(req, res){
   p.price = req.body.price;
   p.quantity = req.body.quantity;
   p.status = req.body.status;
+  p.oldprice = req.body.oldprice;
+  p.bizid = req.body.bizid;
   p.save(function(err){
     if(err)
       console.log("err");
-    Jimp.read("./public/uploads/product/"+p.photo).then(function (cover) {
-        return cover.resize(200, 140)     // resize
+      if (req.files['photo']){
+        Jimp.read("./public/uploads/product/"+p.photo).then(function (cover) {
+          return cover.resize(200, 140)     // resize
              .quality(100)                // set greyscale
              .write("./public/uploads/product/thumbs/"+p.photo); // save
-    }).catch(function (err) {
-        console.error(err);
-    });
-    res.redirect('/product/new');
+
+        }).catch(function (err) {
+          console.error(err);
+        });
+      }
+      req.flash('success_msg', 'Added Successfully');
+      res.redirect('/product/new');
   });
 });
 

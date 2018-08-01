@@ -17,6 +17,12 @@ block content
             .col-sm-12
               input#order.form-control-form(type='text', name='order', placeholder='order')
           .form-group
+            .col-sm-12
+              select#group.form-control-form(name='group')
+                option(data-icon='glyphicon-wrench', value=biz.group) #{biz.group}
+                option(data-icon='glyphicon glyphicon-globe', value='general') Nairobi
+                option(data-icon='glyphicon glyphicon-globe',value='Mombasa') Mombasa
+          .form-group
             .col-sm-3
               label(for='photo') Cover Photo
             .col-sm-9

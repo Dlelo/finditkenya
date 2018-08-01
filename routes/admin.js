@@ -72,7 +72,7 @@ router.post('/edit/:id', role.auth, cpUpload, function(req, res, next) {
       })
       //b.gallery.push(req.files['gallery']);
 		}
-		b.user_id = res.locals.user.username;
+		  b.user_id = req.body.username;
 	    b.hoursopen = req.body.hoursopen;
 	    b.hoursclose = req.body.hoursclose;
 	    b.extras = req.body.extras;

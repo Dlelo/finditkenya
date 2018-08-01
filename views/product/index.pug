@@ -26,6 +26,18 @@ block content
                   a(href="/product/"+product.slug)
                     .img-wrap
                       img(src='/uploads/product/thumbs/'+product.photo)
+                      span.button.btn.btn-light(style="display:none;" data-toggle="modal" data-target="#qModal") Quick Look
+                      //The QuicklookModal
+                      div(class="modal" id="qModal")
+                        div(class="modal-dialog")
+                          div(class="modal-content")
+                            div(class="modal-header")
+                               h4(class="modal-title") Modal Heading
+                               button(type="button" class="close" data-dismiss="modal") &times;
+                            div(class="modal-body") Product description here body..
+                              div(class="modal-footer")
+                                button(type="button" class="btn btn-danger" data-dismiss="modal")  Close
+          
                   figcaption.info-wrap
                     h6.title.text-dots
                       =product.name       
@@ -60,3 +72,11 @@ block content
         });
       });
     })
+  script(type='text/javascript').
+    $(document).ready(function () {
+    $('.img-wrap').hover(function () {
+        $(this).find('span').show();
+    }, function () {
+        $(this).find('span').hide();
+      });
+    });

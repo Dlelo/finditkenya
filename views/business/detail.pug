@@ -320,9 +320,10 @@ block content
         
         .col-md-3
           if(coupons)
-            h4
-              strong
-                | Coupons in This Business  
+            div
+              h4
+                strong
+                  | Coupons in This Business  
             div       
               each coupon in coupons 
                 a(href="/coupons")
@@ -338,7 +339,8 @@ block content
                               =coupon.description
                         .div
                             =coupon.tagline       
-              
+          else 
+             div    
           if(similarbiz)
             div.col-md-12
               h4

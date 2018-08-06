@@ -42,7 +42,7 @@ router.get('/newcategory',function(req, res){
 });
 
 router.get('/newsubcategory',function(req, res){
-  Category.find({{group:'shopping'}})
+  Category.find({group:'shopping'})
 	.then(function(data){
 	  	//console.log(data);
 	    res.render('admin/addsubcategory',{title: "Find It Categories", categories: data, group: 'shopping'});
@@ -92,3 +92,5 @@ router.get('/viewcategories',function(req, res){
      console.log(err);
   });
 });
+
+module.exports = router;

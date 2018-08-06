@@ -29,6 +29,7 @@ var Business = require('./models/Business');
 var config = require('./config.json');
 var emailModel = require('./config/Mail');
 var product = require('./routes/product');
+var shopping = require('./routes/shopping');
 
 
 var app = express();
@@ -340,6 +341,7 @@ app.use('/users', users);
 app.use('/business', business);
 app.use('/admin', admin);
 app.use('/product', product);
+app.use('/shopping', shopping);
 app.use('/', index);
 
 

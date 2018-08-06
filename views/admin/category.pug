@@ -29,6 +29,7 @@ block content
                 th APPROVED
                 th ICON
                 th ORDER
+                th GROUP
                 th SUBCATEGORIES
                 th ACTIONS
             tbody
@@ -44,6 +45,8 @@ block content
                     =category.icon
                   td 
                     =category.order
+                  td 
+                    =category.group
                   td
                     each cat in category.subcategories
                       =cat.name 

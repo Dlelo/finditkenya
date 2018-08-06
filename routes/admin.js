@@ -530,6 +530,7 @@ router.post('/category/update/:id', role.admin, cpUpload, function(req, res, nex
 		data.name = req.body.name;
 		data.icon = req.body.icon;
 		data.order = req.body.order;
+    data.group = req.body.group;
     if (req.files['photo'] != null){
   		data.photo = req.files['photo'][0].filename;
   	}
@@ -548,7 +549,6 @@ router.post('/category/update/:id', role.admin, cpUpload, function(req, res, nex
   				});
   			}else{
   				req.flash("success_msg", "Category Successfully Created");
-  				res.redirect('/admin/category');
   			}
 			res.redirect('/admin/category');
 		});

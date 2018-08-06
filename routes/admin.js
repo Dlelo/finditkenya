@@ -625,7 +625,7 @@ router.get('/subcategory/add',role.admin, function(req, res, next){
 router.post('/subcategory/add', function(req, res, next){
 	Category.findById(req.body.category).then(function(cat){
 		cat.subcategories.push({name: req.body.name});
-		console.log(cat);
+		//console.log(cat);
 		cat.save(function(err){
 			if(err){
 				console.log(err);

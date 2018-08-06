@@ -50,16 +50,24 @@ router.get('/newsubcategory',function(req, res){
 
 router.post('/subcategory/add', function(req, res, next){
 	Category.findById(req.body.category).then(function(cat){
+    //console.log(cat);
 		cat.subcategories.push({name: req.body.name});
 		cat.save(function(err){
 			if(err){
-				console.log(err);
-				res.render('product/category/addcategory');
+				//console.log(err);
+        req.flash('error_msg','Something went wrong');
+        req.flash('error',err);
+				res.redirect('/shopping/newsubcategory');
 			}else{
         var i = new Subcategory();
       	i.name = req.body.name;
         i.cat_id = cat.id;
         i.save(function(er){
+          if(er){
+            console.log(er);
+            req.flash('error',err);
+          }
+          req.flash('success_msg','Sub-Category added successfully');
           res.redirect('/admin/category');
         })
       }

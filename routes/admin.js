@@ -595,7 +595,6 @@ router.post('/category/add', role.admin, cpUpload, function(req, res, next){
 				});
 			}else{
 				req.flash("success_msg", "Category Successfully Created");
-				res.redirect('/admin/category');
 			}
 		res.redirect('/admin/category');
 	});

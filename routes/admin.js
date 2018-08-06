@@ -566,7 +566,7 @@ router.get('/category/delete/:id', role.admin, function(req, res, next){
 		_id: req.params.id
 	})
 	  .then(function(data){
-	    res.redirect('/category');
+	    res.redirect('/admin/category');
 	  })
 	  .catch(function(err){
 	     console.log(err);

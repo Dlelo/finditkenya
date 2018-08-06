@@ -248,7 +248,7 @@ block content
                   .col-sm-3
                     label(for='photo') Cover Photo
                   .col-sm-5
-                    img(src="/uploads/"+ biz.photo, width="200px")
+                    img(src="/uploads/thumbs/cover"+ biz.photo, width="200px")
                     img(src="",id="coverphotopreview", width="200px")
                   .col-sm-4
                     input#photod.form-control-form(type='file', name='photo', placeholder='photo')                  
@@ -302,8 +302,9 @@ block content
                 input.form-control-form(type='text', name='instagram', placeholder='Instagram Url',value=biz.instagram)
               .col-sm-6
                 input.form-control-form(type='text', name='linkedin', placeholder='Linkedin Url',value=biz.linkedin)
-              .col-sm-6
-                input.form-control-form(type='text', name='username', placeholder='Username',value=biz.user_id)
+              if(#{user.role == 1}){
+                .col-sm-6
+                  input.form-control-form(type='text', name='username', placeholder='Username',value=biz.user_id)
                 
             .form-group
               .row

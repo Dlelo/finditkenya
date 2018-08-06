@@ -65,22 +65,21 @@ body
   div.container-fluid
     header
       //header before navigation items
-      nav#homenavbar.navbar.navbar-expand-lg.navbar-light.bg-gradient-secondary
+      nav.navbar.navbar-expand-lg.navbar-light.bg-gradient-secondary
         div(style="display:flex !important; flex-direction:row !important; width: 100% !important;")
-          div(style="flex-grow:0.1 !important")
+          div(style="flex-grow:0.3 !important")
             a.navbar-brand.text-white(href="/")
               img.img-logo(src="/img/findit-red-logo.png").img-fluid
-          div(style="flex-grow:0.3 !important")
-            #showSearch
-              form.form-class(method='get', action='/search')
-                div.input-group
-                  input.search2.form-control-lg(type="text" placeholder="Restaurants, Businesses, Doctors..." ,style="width:100% !important" ,name='search', autofocus)
+          div(style="flex-grow:0.6 !important")
+            form.form-class(method='get', action='/search')
+              div.input-group
+                input.search2.form-control-lg(type="text" placeholder="Search" ,style="width:100% !important" ,name='search', autofocus)
           div(style="flex-grow:0.1 !important")      
             a(href="/coupons")
               button.btn.btn-light.w3ls-btn.coupons-btn.flash-button#coupbtn(type="button")
                 span.fas.fa-gift.coupons-text-color
                 | View deals
-          div(style="flex-grow:0.5 !important")
+          //div(style="flex-grow:0.5 !important")
             //site navigation 
             button.navbar-toggler.ml-md-auto(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                 aria-expanded="false" aria-label="Toggle navigation")
@@ -88,7 +87,7 @@ body
             div#navbarSupportedContent.collapse.navbar-collapse
             
               ul.nav.navbar-nav.ml-lg-auto.justify-content-end(style="float:right")
-                li.dropdown.nav-item.mr-3
+                //li.dropdown.nav-item.mr-3
                   a.nav-link.dropdown-toggle(href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")    
                     span.fas.fa-th-list.fas-menu
                     strong
@@ -112,19 +111,20 @@ body
                     span.fas.fa-home.fas-menu 
                     strong
                     |  Home
-                if (loggedin)
+                //if (loggedin)
                   li.nav-item.mr-3                  
                     a(href='/dashboard')  
                       span.fas.fa-user.fas-menu
                       strong
-                      |  View Profile          
-                if (loggedin)                
+                      |  Your Account
+                          
+                //if (loggedin)                
                   li.nav-item.mr-3
                     a(href='/logout') 
                       span.fas.fa-sign-out-alt.fas-menu
                       strong
                       |  Logout
-                else
+                //else
                   li.nav-item.mr-3
                     a(href='/login')
                       button.btn.btn-primary.w3ls-btn
@@ -136,7 +136,85 @@ body
                       strong
                       |  Sign Up
 
-   
+      nav#homenavbar.navbar.navbar-expand-lg.navbar-light.bg-gradient-secondary(style="margin-top: 3em; padding: 0em 0em;")
+        div(style="display:flex !important; flex-direction:row !important; width: 100% !important;")
+          div(style="flex-grow:0.1 !important")
+            a.nav-link.dropdown-toggle(href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-top:5px") 
+              small
+                strong
+                  |  Categories 
+                   
+            div.dropdown-menu.dropdown-menu-right.mega-menu(aria-labelledby="navbarDropdown" style="width: -webkit-fill-available;")
+              if categories 
+                div.row
+                  each category,i in categories
+                    div.col-md-4.col-sm-12.col-xs-12
+                      a.dropdown-item(href="/category/"+category.name)
+                        small.findit-blue
+                          strong   
+                            =category.name
+          div(style="flex-grow:0.3 !important")
+            #showSearch(style="padding-bottom: 2px; padding-top:2px;")
+              form.form-class(method='get', action='/search')
+                div.input-group
+                  input.search2.form-control-lg(type="text" placeholder=" Search ..." ,style="width:100% !important" ,name='search', autofocus)
+          //site navigation responsive 
+          button.navbar-toggler.ml-md-auto(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+              aria-expanded="false" aria-label="Toggle navigation")
+                span.navbar-toggler-icon
+          div#navbarSupportedContent.collapse.navbar-collapse
+            div(style="flex-grow:0.1 !important")  
+              a(href='/product/create')
+                small
+                  strong
+                    |  Sell   
+            div(style="flex-grow:0.1 !important")  
+              a(href='#')
+                small
+                  strong
+                    |  Today's Top Deals
+            
+            div(style="flex-grow:0.3 !important")
+              
+            
+              ul.nav.navbar-nav.ml-lg-auto.justify-content-end(style="float:right")
+                        
+                if (loggedin)
+                  li.nav-item.mr-3                  
+                    a(href='/profile')  
+                      small
+                        strong
+                          |Your Account
+                          
+                if (loggedin)                
+                  li.nav-item.mr-3
+                    a(href='/logout') 
+                      small
+                        strong
+                          |  Logout
+                else
+                  li.nav-item.mr-3
+                    a(href='/login')
+                      small
+                        strong
+                          | Login
+                  li.nav-item.mr-3
+                    a(href="/register")
+                      small
+                        strong
+                          | Sign in
+          div(style="flex-grow:0.1 !important")                
+            a(href='/product/cart')
+              #cart.row
+                if cart
+                  small(style="margin-top:5px")
+                    strong
+                      i(class="fas fa-cart-arrow-down fa-2x")
+                      |    (
+                      span#cartcount
+                        |   #{ cart.length}) Cart
+                       
+                
     //display errors
     .errors
       if errors

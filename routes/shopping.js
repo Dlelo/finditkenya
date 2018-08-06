@@ -37,19 +37,38 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 var cpUpload = upload.fields([{ name: 'photo', maxCount: 1 }, { name: 'catalog', maxCount: 5 }, { name: 'gallery', maxCount: 20 }])
 
-router.get('/newcategory',function(req, res){
-  res.render('admin/addcategory');
-});
-
 router.get('/newsubcategory',function(req, res){
   Category.find({group:'shopping'})
 	.then(function(data){
 	  	//console.log(data);
-	    res.render('admin/addsubcategory',{title: "Find It Categories", categories: data, group: 'shopping'});
+	    res.render('product/category/addsubcategory',{title: "Find It Categories", categories: data, group: 'shopping'});
 	})
 	.catch(function(err){
 	     console.log(err);
 	});
+});
+
+router.post('/subcategory/add', function(req, res, next){
+	Category.findById(req.body.category).then(function(cat){
+		cat.subcategories.push({name: req.body.name});
+		cat.save(function(err){
+			if(err){
+				console.log(err);
+				res.render('product/category/addcategory');
+			}else{
+        var i = new Subcategory();
+      	i.name = req.body.name;
+        i.cat_id = cat.id;
+        i.save(function(er){
+          res.redirect('/admin/category');
+        })
+      }
+		});
+	});
+});
+
+router.get('/newcategory',function(req, res){
+  res.render('admin/addcategory');
 });
 
 router.post('/category/add', role.admin, cpUpload, function(req, res, next){

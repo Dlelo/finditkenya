@@ -578,6 +578,7 @@ router.post('/category/add', role.admin, cpUpload, function(req, res, next){
 	i.name = req.body.name;
 	i.icon = req.body.icon;
 	i.order = req.body.order;
+  i.group = req.body.group;
   if (req.files['photo'] != null){
 		i.photo = req.files['photo'][0].filename;
 	}
@@ -612,7 +613,7 @@ router.get('/subcategory', function(req, res, next) {
 });
 
 router.get('/subcategory/add',role.admin, function(req, res, next){
-	Category.find({})
+	Category.find({group:'general'})
 	.then(function(data){
 	  	console.log(data);
 	    res.render('admin/addsubcategory',{title: "Find It Categories", categories: data});

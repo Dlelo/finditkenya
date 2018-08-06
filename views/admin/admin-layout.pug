@@ -215,16 +215,31 @@ html(lang='en')
                 =title
             .col-lg-9.col-sm-8.col-md-8.col-xs-12                
               ul.nav.pull-right.text-right.addbusiness
-                li 
+                li(style="float: left;")
                   a(href='/business/freeadd')
                     span.fa.fa-database.text-default.glyph
                     strong
                       |  Add Business
-                li 
+                li(style="float: left;")
                   a(href='/product/new')
                     span.fa.fa-suitcase.text-default.glyph
                     strong
                       |  Add Product
+                li(style="float: left;")
+                  a(href='/shopping/newcategory')
+                    span.fa.fa-plus-square.text-default.glyph
+                    strong
+                      |  Add Category
+                li(style="float: left;")
+                  a(href='/shopping/newsubcategory')
+                    span.fa.fa-plus-circle.text-default.glyph
+                    strong
+                      |  Add Subcategory
+                li(style="float: left;")
+                  a(href='/shopping/viewcategory')
+                    span.fa.fa-archive.text-default.glyph
+                    strong
+                      |  View Categories
             // /.col-lg-12
           block content
         // /.container-fluid

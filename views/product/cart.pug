@@ -30,7 +30,7 @@ block content
               .col-md-1
                 =p.count
               .col-md-1
-                | No.  
+                | No of items  
                 select(id=p._id, class="editcart")
                   option(value=p.count)
                     =p.count
@@ -61,7 +61,7 @@ block content
                     =p.price
               .col-md-1
                  h6.Strong 
-                      | Subtotal ( No. of Items #{p.count}): 
+                      | Subtotal of (#{p.count}): 
                       .findit-red 
                         | KES: #{p.count * p.price}
             

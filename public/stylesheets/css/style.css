@@ -3539,7 +3539,7 @@ fieldset, label {
 	padding-right:5px;
 }
 .category-zindex{
-  z-index: 150;
+  z-index: 100;
 }
 .form-control{
   font-family:'Ubuntu' FontAwesome !important;
@@ -4050,4 +4050,8 @@ section.the-products.items .item .item-info ul.price {
 .carousel-item-next,
 .carousel-item-prev {
   display: block !important;
+}
+.col-product{
+	padding-right: 5px;
+    padding-left: 5px;
 }

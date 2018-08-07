@@ -5,55 +5,44 @@ block content
     .container-fluid.container-margin-top.container-fluidpadding
       section
         .row
-          .col-md-12
-            nav.text-right
-              a(href='/product/cart')
-                #cart.row
-                  .card.card-cart
-                    .card-body.card-card-body
-                      .card-title.card-cart-title
-                        i.fa.fa-shopping-basket
-                      if cartExists
-                        card-text
-                          small
-                            | Items (
-                            span#cartcount
-                              |   #{ cart.length})
-          each product in products
+          .col-md-9
+            .row
+              each product in products
+                .col-md-3.col-product
+                  .col-md-12(id=product.slug,class="productid")
+                    figure.card.card-product
+                      a(href="/product/"+product.slug)
+                        .img-wrap
+                          img(src='/uploads/product/thumbs/'+product.photo)
+                          span.button.btn.btn-light(style="display:none;" data-toggle="modal" data-target="#qModal") Quick Look
+                          //The QuicklookModal
+                          div(class="modal" id="qModal")
+                            div(class="modal-dialog")
+                              div(class="modal-content")
+                                div(class="modal-header")
+                                  h4(class="modal-title") Modal Heading
+                                  button(type="button" class="close" data-dismiss="modal") &times;
+                                div(class="modal-body") Product description here body..
+                                  div(class="modal-footer")
+                                    button(type="button" class="btn btn-danger" data-dismiss="modal")  Close
+              
+                      figcaption.info-wrap
+                        h6.title.text-dots
+                          =product.name       
+                        div.action-wrap
+                          row.price-wrap
+                            .col-sm-6
+                              .price-old
+                                strike
+                                  | #{product.oldprice}
+                            .col-sm-6
+                              .price-new
+                                small.findit-red
+                                  | KES #{product.price}  
+                          button.btn.btn-outline-primary.w3ls-btn.findit-blue.addtocart(id=product.slug)
+                            | Add to Cart
             .col-md-3
-              .col-md-12(id=product.slug,class="productid")
-                figure.card.card-product
-                  a(href="/product/"+product.slug)
-                    .img-wrap
-                      img(src='/uploads/product/thumbs/'+product.photo)
-                      span.button.btn.btn-light(style="display:none;" data-toggle="modal" data-target="#qModal") Quick Look
-                      //The QuicklookModal
-                      div(class="modal" id="qModal")
-                        div(class="modal-dialog")
-                          div(class="modal-content")
-                            div(class="modal-header")
-                               h4(class="modal-title") Modal Heading
-                               button(type="button" class="close" data-dismiss="modal") &times;
-                            div(class="modal-body") Product description here body..
-                              div(class="modal-footer")
-                                button(type="button" class="btn btn-danger" data-dismiss="modal")  Close
-          
-                  figcaption.info-wrap
-                    h6.title.text-dots
-                      =product.name       
-                    div.action-wrap
-                      row.price-wrap
-                        .col-sm-6
-                          .price-old
-                            strike
-                              | #{product.oldprice}
-                        .col-sm-6
-                          .price-new
-                            small.findit-red
-                              | KES #{product.price}  
-                      button.btn.btn-outline-primary.w3ls-btn.findit-blue.addtocart(id=product.slug)
-                        | Add to Cart
-                          
+                              
   script(type='text/javascript').
     $(function(){
       var count = 0;

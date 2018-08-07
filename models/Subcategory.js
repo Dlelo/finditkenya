@@ -7,10 +7,8 @@ mongoose.Promise =require('bluebird');
 const Schema = mongoose.Schema;
 
 const subcatSchema = new Schema({
-		name: { type: String,required: true, index: { unique: true, sparse: true }},
-		category:[
-	      {type: Schema.Types.ObjectId, ref: 'Category'}
-	    ]
+		name: { type: String,required: true, index: { sparse: true }},
+		cat_id: { type: Schema.Types.ObjectId, ref: 'Category' },
 });
 
 module.exports = mongoose.model('Subcategory', subcatSchema);

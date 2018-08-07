@@ -530,6 +530,7 @@ router.post('/category/update/:id', role.admin, cpUpload, function(req, res, nex
 		data.name = req.body.name;
 		data.icon = req.body.icon;
 		data.order = req.body.order;
+    data.group = req.body.group;
     if (req.files['photo'] != null){
   		data.photo = req.files['photo'][0].filename;
   	}
@@ -548,7 +549,6 @@ router.post('/category/update/:id', role.admin, cpUpload, function(req, res, nex
   				});
   			}else{
   				req.flash("success_msg", "Category Successfully Created");
-  				res.redirect('/admin/category');
   			}
 			res.redirect('/admin/category');
 		});
@@ -566,7 +566,7 @@ router.get('/category/delete/:id', role.admin, function(req, res, next){
 		_id: req.params.id
 	})
 	  .then(function(data){
-	    res.redirect('/category');
+	    res.redirect('/admin/category');
 	  })
 	  .catch(function(err){
 	     console.log(err);
@@ -578,6 +578,7 @@ router.post('/category/add', role.admin, cpUpload, function(req, res, next){
 	i.name = req.body.name;
 	i.icon = req.body.icon;
 	i.order = req.body.order;
+  i.group = req.body.group;
   if (req.files['photo'] != null){
 		i.photo = req.files['photo'][0].filename;
 	}
@@ -594,7 +595,6 @@ router.post('/category/add', role.admin, cpUpload, function(req, res, next){
 				});
 			}else{
 				req.flash("success_msg", "Category Successfully Created");
-				res.redirect('/admin/category');
 			}
 		res.redirect('/admin/category');
 	});
@@ -612,7 +612,7 @@ router.get('/subcategory', function(req, res, next) {
 });
 
 router.get('/subcategory/add',role.admin, function(req, res, next){
-	Category.find({})
+	Category.find({group:'general'})
 	.then(function(data){
 	  	console.log(data);
 	    res.render('admin/addsubcategory',{title: "Find It Categories", categories: data});
@@ -625,7 +625,7 @@ router.get('/subcategory/add',role.admin, function(req, res, next){
 router.post('/subcategory/add', function(req, res, next){
 	Category.findById(req.body.category).then(function(cat){
 		cat.subcategories.push({name: req.body.name});
-		console.log(cat);
+		//console.log(cat);
 		cat.save(function(err){
 			if(err){
 				console.log(err);

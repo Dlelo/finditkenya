@@ -180,7 +180,7 @@ html(lang='en')
             .center.p-10
               a.btn.btn-info.btn-block.waves-effect.waves-light(href='/admin/category/add') Add Category
             .center.p-10
-              a.btn.btn-info.btn-block.waves-effect.waves-light(href='/admin/subcategory/add') Add Sub Category
+              a.btn.btn-info.btn-block.waves-effect.waves-light(href='/shopping/newsubcategory') Add Sub Category
             .center.p-10
               a.btn.btn-warning.btn-block.waves-effect.waves-light(href='/admin/agent/add') Add Agent
       // ==============================================================
@@ -196,16 +196,16 @@ html(lang='en')
               .alert.alert-danger
                 = error
           if message
-            .alert.alert-info wala
+            .alert.alert-info 
               = message
           if success_msg.length
-            .alert.alert-success walaa
+            .alert.alert-success 
               = success_msg
           if error_msg.length
-            .alert.alert-danger walaaa
+            .alert.alert-danger 
               = error_msg
           if error.length
-            .alert.alert-danger walaaaa
+            .alert.alert-danger 
               = error
         .container-fluid          
           .row.bg-title
@@ -215,16 +215,31 @@ html(lang='en')
                 =title
             .col-lg-9.col-sm-8.col-md-8.col-xs-12                
               ul.nav.pull-right.text-right.addbusiness
-                li 
+                li(style="float: left;")
                   a(href='/business/freeadd')
                     span.fa.fa-database.text-default.glyph
                     strong
                       |  Add Business
-                li 
+                li(style="float: left;")
                   a(href='/product/new')
                     span.fa.fa-suitcase.text-default.glyph
                     strong
                       |  Add Product
+                li(style="float: left;")
+                  a(href='/shopping/newcategory')
+                    span.fa.fa-plus-square.text-default.glyph
+                    strong
+                      |  Add Category
+                li(style="float: left;")
+                  a(href='/shopping/newsubcategory')
+                    span.fa.fa-plus-circle.text-default.glyph
+                    strong
+                      |  Add Subcategory
+                li(style="float: left;")
+                  a(href='/shopping/viewcategory')
+                    span.fa.fa-archive.text-default.glyph
+                    strong
+                      |  View Categories
             // /.col-lg-12
           block content
         // /.container-fluid

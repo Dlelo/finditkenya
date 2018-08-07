@@ -5,7 +5,7 @@ block content
     .container-fluid.container-margin-top.container-fluidpadding
       section
         .row
-          //.col-md-12
+          .col-md-12
             nav.text-right
               a(href='/product/cart')
                 #cart.row
@@ -13,7 +13,7 @@ block content
                     .card-body.card-card-body
                       .card-title.card-cart-title
                         i.fa.fa-shopping-basket
-                      if cart
+                      if cartExists
                         card-text
                           small
                             | Items (

@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+mongoose.plugin(schema => { schema.options.usePushEach = true });
 var mongoosastic=require("mongoosastic");
 var dataTables = require('mongoose-datatables');
 

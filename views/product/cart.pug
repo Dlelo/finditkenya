@@ -16,7 +16,7 @@ block content
             .row(style="margin: 4px;")
               .col-md-2
                 img(src='/uploads/product/thumbs/'+p.photo)
-              .col-md-4
+              .col-md-3
                 strong.findit-blue
                   =p.name
                 div
@@ -59,14 +59,16 @@ block content
                   strong.findit-red
                     |  KES 
                     =p.price
-            
-              .col-md-3
-                row
-                  .col-md-12(style="border:1px solid #eee; border-radius:3px; padding:10px; text-align:center;")
-                    h6.Strong 
+              .col-md-1
+                 h6.Strong 
                       | Subtotal ( No. of Items #{p.count}): 
                       .findit-red 
                         | KES: #{p.count * p.price}
+            
+            .col-md-3
+              row
+                .col-md-12(style="border:1px solid #eee; border-radius:3px; padding:10px; text-align:center;")
+                    
           .row
             form.form-control(method='post', action='/product/pay')
               .form-group

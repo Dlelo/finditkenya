@@ -1619,6 +1619,9 @@ ul.portfolio-area li figure {
 	}
 }
 @media screen and (max-width: 667px) {
+	.category-zindex {
+         z-index: 80 !important;
+     }
 	.img-logo {
 		width: 7rem !important;
 		height: 2rem !important;
@@ -1658,8 +1661,12 @@ ul.portfolio-area li figure {
 
 @media screen and (max-width: 640px) {
 	.banner-text {
-		padding: 2vw 4vw 7vW 3vw;
-	}
+		padding: 2vw 4vw 7vW 3vw;  
+	  }
+	  .category-zindex {
+         z-index: 80 !important;
+     }
+	
 	.dropdown-item {
 		text-align:left;
 	}
@@ -1681,6 +1688,9 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 600px) {
+	.category-zindex {
+         z-index: 80 !important;
+     }
 	.img-logo {
        width: 10rem !important;
        height: 2rem !important;
@@ -1710,6 +1720,9 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 568px) {
+	.category-zindex {
+         z-index: 80 !important;
+     }
 	.dropdown-item {
 		text-align:left;
 	}
@@ -1759,6 +1772,9 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 480px) {
+	.category-zindex {
+         z-index: 80 !important;
+     }
 	.img-logo {
     width: 9rem !important;
     height: 2rem !important;
@@ -1837,6 +1853,9 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 414px) {
+	.category-zindex {
+         z-index: 80 !important;
+     }
 	.dropdown-item {
 		text-align:left;
 	}
@@ -1898,6 +1917,9 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 384px) {
+	.category-zindex {
+         z-index: 80 !important;
+     }
 	.dropdown-item {
 		text-align:left;
 	}
@@ -1938,6 +1960,9 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 375px){
+	.category-zindex {
+         z-index: 80 !important;
+     }
       .banner{
 		min-height:47vh !important;
 		height:55vh !important;
@@ -1976,6 +2001,9 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 320px) {
+	.category-zindex {
+         z-index: 80 !important;
+     }
 	.dropdown-item {
 		text-align:left;
 	}
@@ -2025,6 +2053,9 @@ ul.portfolio-area li figure {
 	}
 }
 @media screen and (max-width: 568px){
+	.category-zindex {
+         z-index: 80 !important;
+     }
 	.dropdown-item {
 		text-align:left;
 	}

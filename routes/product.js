@@ -157,7 +157,7 @@ router.post('/create',role.auth, cpUpload, function(req, res){
         });
       }
       req.flash('success_msg', 'Added Successfully');
-      res.redirect('/product/new');
+      res.redirect('/admin/product/'+req.body.bizid);
   });
 });
 

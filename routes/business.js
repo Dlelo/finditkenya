@@ -26,7 +26,7 @@ var storage = multer.diskStorage({
 });
 
 var upload = multer({ storage: storage });
-var cpUpload = upload.fields([{ name: 'photo', maxCount: 1 }, { name: 'catalog', maxCount: 5 }, { name: 'gallery', maxCount: 10 }])
+var cpUpload = upload.fields([{ name: 'photo', maxCount: 1 }, { name: 'catalog', maxCount: 5 }, { name: 'gallery', maxCount: 30 }])
 
 router.post('/add', role.auth, cpUpload, function(req, res, next) {
 	var instance = new Business();

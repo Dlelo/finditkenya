@@ -481,6 +481,32 @@ script(type='text/javascript').
       
     });
 
+    var $cat = $(".cat"),
+        $subcat = $(".subcat");
+    
+    $cat.on("change",function(){
+        var _rel = $(this).find(":selected").val();        
+
+        $.ajax({
+              type: "GET",
+              url: "/product/fetchcategory/"+_rel,
+              success: function(data){
+                  // Parse the returned json data
+                  //var opts = $.parseJSON(data);
+                  
+                  $subcat.empty();
+                  $.each(data, function(i, d) {
+                      // You will need to alter the below to get the right values from your json object.  Guessing that d.id / d.modelName are columns in your carModels data
+                      //console.log(d.name);
+                      $('#subcat').append('<option value="' + d.name + '">' + d.name + '</option>');
+                  });
+                  $('.selectpicker').selectpicker('refresh');
+              }
+          });
+      
+    });
+
+
   tinymce.init({ 
             selector:'#review',
             height: 100,

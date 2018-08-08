@@ -27,6 +27,16 @@ block content
                   option(data-icon='glyphicon-gift', value=biz.id) #{biz.name}
           .form-group
             .col-sm-6
+              select#cat.selectpicker.form-control.cat(name='cat',data-live-search="true")
+                option(data-icon='glyphicon-wrench', value='') -- Select Category --
+                each cat in categories
+                  option(data-icon='glyphicon-gift', value=cat.id) #{cat.name}
+          .form-group
+            .col-sm-6
+              select#subcat.selectpicker.form-control.subcat(name='subcat',data-live-search="true")
+                option(data-icon='glyphicon-wrench', value='') -- Select Sub-Category --
+          .form-group
+            .col-sm-6
               input.form-control-form(name='oldprice',type='text', style ="margin-top:12px;",placeholder="Old Price")
           .form-group
             .col-sm-6

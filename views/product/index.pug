@@ -70,10 +70,11 @@ block content
                   a(href="#")
                     button.btn.btn-primary
                       | Checkout
-                .col-sm-12
-                  .row
-                    each p in cart
-                      .col-sm-12
+                if cartExists
+                  .col-sm-12
+                    .row
+                      each p in cart
+                        .col-sm-12
                       
     
                               

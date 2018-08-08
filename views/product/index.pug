@@ -47,12 +47,15 @@ block content
                           row.price-wrap
                             .col-sm-6
                               .price-old
+                                | Was
                                 strike
-                                  | was KES #{product.oldprice}
+                                  | KES #{product.oldprice}
                             .col-sm-6
                               .price-new
-                                small.findit-red
-                                  | was KES #{product.price}  
+                                small
+                                  | Now
+                                  .findit-red
+                                    |  KES #{product.price}  
                           button.btn.btn-outline-primary.w3ls-btn.findit-blue.addtocart(id=product.slug)
                             | Add to Cart
           .col-md-3

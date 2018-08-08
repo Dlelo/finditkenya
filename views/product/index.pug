@@ -45,17 +45,26 @@ block content
                           =product.name       
                         div.action-wrap
                           row.price-wrap
-                            .col-sm-6
-                              .price-old
-                                | Was
-                                strike
-                                  | KES #{product.oldprice}
-                            .col-sm-6
-                              .price-new
-                                small
-                                  | Now
-                                  .findit-red
-                                    |  KES #{product.price}  
+                            if(product.oldprice)
+                              .col-sm-6
+                                .price-old
+                                  small
+                                    | Was
+                                    strike
+                                      | KES #{product.oldprice}
+                              .col-sm-6
+                                .price-new
+                                  small
+                                    | Now
+                                    .findit-red
+                                      |  KES #{product.price}  
+                            else
+                              .col-sm-6
+                                .price-new
+                                  small
+                                    .findit-red
+                                      |  KES #{product.price}
+                               
                           button.btn.btn-outline-primary.w3ls-btn.findit-blue.addtocart(id=product.slug)
                             | Add to Cart
           .col-md-3
@@ -63,17 +72,17 @@ block content
   
               .card-body
                 row
-                .col-sm-12
-                  h4.card-title
-                    | Total Price   KES:  #{total}
-                    a(href='/product/cart')
-                      i.findit-blue(class="fas fa-cart-arrow-down fa-2x")
-                  p.card-text
-                    | Some example text some example text. Incase of a price cut due to offer
-                  a(href="#")
-                    button.btn.btn-primary
-                      | Checkout
-                if cartExists
+                  .col-sm-12
+                    h4.card-title
+                      | Total Price   KES:  #{total}
+                      a(href='/product/cart')
+                        i.findit-blue(class="fas fa-cart-arrow-down fa-2x")
+                    p.card-text
+                      | Some example text some example text. Incase of a price cut due to offer
+                    a(href="#")
+                      button.btn.btn-primary
+                        | Checkout
+                  //if cartExists
                   .col-sm-12
                     .row
                       each p in cart
@@ -86,9 +95,9 @@ block content
                                 .div(id="dec-button" class="spinner-button")
                                   | -
                               .col-sm-3
-                                img(src='/uploads/product/thumbs/'+product.photo)
+                                img(src='/uploads/product/thumbs/'+p.photo)
                               .col-sm-3
-                                =product.name
+                                =p.name
                               .col-sm-3
                                 .findit-blue
                                   i.findit-blue(class="fas fa-close fa-1x")

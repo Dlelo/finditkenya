@@ -45,28 +45,37 @@ router.get('/',function(req, res){
 	Promise.all([products, categories]).then(values => {
     res.render('product/index',{title: "Products on Findit", products: values[0],categories: values[1]});
   });
+});
 
+router.get('/fetchcategory/:name', function(req, res, next){
+	//console.log(req.params.name);
+	Category.findById(req.params.name)
+	.then(function(data){
+		//console.log(data.subcategories);
+	    res.json(data.subcategories);
+	})
+	.catch(function(err){
+	     console.log(err);
+	});
+	//res.render('business/new');
 });
 
 router.get('/new',role.auth, function(req, res){
   if(res.locals.user.role == '1'){
-    Business.find({
-    })
-    .then(function(data){
-      res.render('product/new',{title: "New Product", businesses: data});
-    })
-    .catch(function(err){
-       console.log(err);
+    var cat = Category.find({group:'shopping'});
+    var businesses = Business.find({});
+    Promise.all([cat, businesses ]).then(values => {
+      console.log(values[0]);
+      res.render('product/new', {title: "New Product", categories: values[0], businesses: values[1] });
     });
   }else{
-    Business.find({
+    var cat = Category.find({group:'shopping'});
+    var businesses = Business.find({
       user_id : res.locals.user.username
-    })
-    .then(function(data){
-      res.render('product/new',{title: "New Product", businesses: data});
-    })
-    .catch(function(err){
-       console.log(err);
+    });
+    Promise.all([cat, businesses ]).then(values => {
+      console.log(values[0]);
+      res.render('product/new', {title: "New Product", categories: values[0], businesses: values[1] });
     });
   }
 });
@@ -99,6 +108,8 @@ router.post('/update/:id',role.auth,cpUpload, function(req,res){
     p.status = req.body.status;
     p.oldprice = req.body.oldprice;
     p.bizid = req.body.bizid;
+    p.category = req.body.cat;
+    p.subcategory = req.body.subcat;
     p.save(function(err){
       if(err)
         console.log("err");
@@ -130,6 +141,8 @@ router.post('/create',role.auth, cpUpload, function(req, res){
   p.status = req.body.status;
   p.oldprice = req.body.oldprice;
   p.bizid = req.body.bizid;
+  p.category = req.body.cat;
+  p.subcategory = req.body.subcat;
   p.save(function(err){
     if(err)
       console.log("err");

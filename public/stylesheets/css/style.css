@@ -4086,3 +4086,37 @@ section.the-products.items .item .item-info ul.price {
 	padding-right: 5px;
     padding-left: 5px;
 }
+input {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  width: 50px;
+  height: 20px;
+  padding: 0px;
+  font-size: 14pt;
+  border: solid 0.5px #000;
+  z-index: 1;
+}
+
+.spinner-button {
+  position: absolute;
+  cursor: default;
+  z-index: 2;
+  background-color: #ccc;
+  width: 14.5px;
+  text-align: center;
+  margin: 0px;
+  pointer-events: none;
+  height: 10px;
+  line-height: 10px;
+}
+
+#inc-button {
+  left: 46px;
+  top: 10.5px;
+}
+
+#dec-button {
+  left: 46px;
+  top: 20.5px;
+}

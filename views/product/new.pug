@@ -9,9 +9,11 @@ block content
         form(method='post', action='/product/create',enctype='multipart/form-data')
           .form-group
              .col-sm-12
+              .input-group
                input.form-control-form(name='name',type='text',placeholder="Name of Product") 
           .form-group
              .col-sm-12
+              .input-group
                 textarea.form-control-form(name='description',type='text',placeholder="Description of Product" maxlength="50") 
                   | Describe the product in a few words
           .form-group
@@ -21,28 +23,34 @@ block content
               input#photod.form-control-form(type='file', name='photo', placeholder='photo')    
           .form-group
             .col-sm-6
-              select.selectpicker.form-control(name='bizid',data-live-search="true")
+             .input-group
+              select.selectpicker.form-control-form-select(name='bizid',data-live-search="true")
                 option(data-icon='glyphicon-wrench', value='') -- Select Business --
                 each biz in businesses
                   option(data-icon='glyphicon-gift', value=biz.id) #{biz.name}
           .form-group
             .col-sm-6
-              select#cat.selectpicker.form-control.cat(name='cat',data-live-search="true")
+             .input-group
+              select#cat.selectpicker.form-control-form-select.cat(name='cat',data-live-search="true")
                 option(data-icon='glyphicon-wrench', value='') -- Select Category --
                 each cat in categories
                   option(data-icon='glyphicon-gift', value=cat.id) #{cat.name}
           .form-group
             .col-sm-6
-              select#subcat.selectpicker.form-control.subcat(name='subcat',data-live-search="true")
+             .input-group
+              select#subcat.selectpicker.form-control-form-select.subcat(name='subcat',data-live-search="true")
                 option(data-icon='glyphicon-wrench', value='') -- Select Sub-Category --
           .form-group
             .col-sm-6
+             .input-group
               input.form-control-form(name='oldprice',type='text', style ="margin-top:12px;",placeholder="Old Price")
           .form-group
             .col-sm-6
+             .input-group
               input.form-control-form(name='price',type='number',style ="margin-top:12px;",placeholder="Price of Product")
           .form-group
             .col-sm-6
+             .input-group
               input.form-control-form(name='quantity',type='text', style ="margin-top:12px;",placeholder="Quantity of Products")
           .form-group
             .col-sm-12    

@@ -7,6 +7,20 @@ block content
         .row
           .col-md-9
             .row
+              .col-md-12
+                nav.text-right
+                  a(href='/product/cart')
+                    #cart.row
+                      //.card.card-cart
+                        .card-body.card-card-body
+                          .card-title.card-cart-title
+                            i.fa.fa-shopping-basket
+                          if cart
+                            card-text
+                              small
+                                | Items (
+                                span#cartcount
+                                  |   #{ cart.length})
               each product in products
                 .col-md-3.col-product
                   .col-md-12(id=product.slug,class="productid")
@@ -41,7 +55,27 @@ block content
                                   | KES #{product.price}  
                           button.btn.btn-outline-primary.w3ls-btn.findit-blue.addtocart(id=product.slug)
                             | Add to Cart
-            .col-md-3
+          .col-md-3
+            .card(style="width:fit-content")
+  
+              .card-body
+                row
+                .col-sm-12
+                  h4.card-title
+                    | Total Price   KES:  #{total}
+                    a(href='/product/cart')
+                      i.findit-blue(class="fas fa-cart-arrow-down fa-2x")
+                  p.card-text
+                    | Some example text some example text. John Doe is an architect and engineer
+                  a(href="#")
+                    button.btn.btn-primary
+                      | Checkout
+                .col-sm-12
+                  .row
+                    each p in cart
+                      .col-sm-12
+                      
+    
                               
   script(type='text/javascript').
     $(function(){

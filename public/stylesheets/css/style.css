@@ -4086,7 +4086,7 @@ section.the-products.items .item .item-info ul.price {
 	padding-right: 5px;
     padding-left: 5px;
 }
-input {
+.input-product{
   position: absolute;
   left: 10px;
   top: 10px;

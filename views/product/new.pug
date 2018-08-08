@@ -21,19 +21,19 @@ block content
               input#photod.form-control-form(type='file', name='photo', placeholder='photo')    
           .form-group
             .col-sm-6
-              select.selectpicker.form-control(name='bizid',data-live-search="true")
+              select.selectpicker.form-control-form-select(name='bizid',data-live-search="true")
                 option(data-icon='glyphicon-wrench', value='') -- Select Business --
                 each biz in businesses
                   option(data-icon='glyphicon-gift', value=biz.id) #{biz.name}
           .form-group
             .col-sm-6
-              select#cat.selectpicker.form-control.cat(name='cat',data-live-search="true")
+              select#cat.selectpicker.form-control-form-select.cat(name='cat',data-live-search="true")
                 option(data-icon='glyphicon-wrench', value='') -- Select Category --
                 each cat in categories
                   option(data-icon='glyphicon-gift', value=cat.id) #{cat.name}
           .form-group
             .col-sm-6
-              select#subcat.selectpicker.form-control.subcat(name='subcat',data-live-search="true")
+              select#subcat.selectpicker.form-control-form-select.subcat(name='subcat',data-live-search="true")
                 option(data-icon='glyphicon-wrench', value='') -- Select Sub-Category --
           .form-group
             .col-sm-6

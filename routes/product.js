@@ -62,7 +62,7 @@ router.get('/fetchcategory/:name', function(req, res, next){
 
 router.get('/new',role.auth, function(req, res){
   if(res.locals.user.role == '1'){
-    var cat = Category.find({group:'shopping'});
+    var cat = Category.find({group:'shopping',paid: 1});
     var businesses = Business.find({});
     Promise.all([cat, businesses ]).then(values => {
       console.log(values[0]);

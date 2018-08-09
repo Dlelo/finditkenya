@@ -4120,3 +4120,12 @@ section.the-products.items .item .item-info ul.price {
   left: 46px;
   top: 20.5px;
 }
+#previewcart{
+	position: absolute;
+	border: 1px solid #eee;
+	padding: 1px;
+	background: white;
+	width: 300px;
+	height:600px;
+	overflow-y: scroll;
+}

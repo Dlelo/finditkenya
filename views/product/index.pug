@@ -75,7 +75,7 @@ block content
                         | Checkout
                   //if cartExists
                   .col-sm-12
-                    .row
+                    .row#cartsidepreview
                       each p in cart
                         .col-sm-12
                            row
@@ -111,8 +111,14 @@ block content
             type: "GET",
             url: "/product/api/"+event.target.id,
             success: function(res){
-              console.log(res);
-              $('#cartcount').text(res+')');
+              $('#cartcount').text(res.itemsincart+')');
+              //To list all the products in cart use below
+              //res.cart
+              res.cart.forEach(function(x){
+                //$('#cartsidepreview').append
+                //x.name, x.count, x.price, x.photo,x.quantity
+                console.log(x.name);
+              });             
             }
         });
       });

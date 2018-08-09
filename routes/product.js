@@ -226,10 +226,10 @@ router.post('/pay',function(req, res){
 });
 
 router.post('/paynow',function(req, res){
+
 });
 
 router.get('/receive', function(req, res){
-  console.log("received from ipay");
   var val = "sokompare";
   var val1 = req.query.id;
   var val2 = req.query.ivm;
@@ -309,7 +309,7 @@ router.get('/api/:slug',function(req, res){
       d.count = 1;
       req.session.cart.push(d);
     }
-    res.json(req.session.cart.length);
+    res.json({itemsincart: req.session.cart.length,cart:req.session.cart});
   })
 });
 //change cart number of Items

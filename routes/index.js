@@ -233,6 +233,8 @@ router.get('/', function(req, res, next) {
         topsearches: values[2],
         coupons: values[3],
         reviews: values[4],
+        description: description,
+        keywords: keywords,
         top: req.get('host')
     });
   });

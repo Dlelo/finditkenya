@@ -3848,7 +3848,7 @@ section.the-products.items .item .item-info ul.price {
 .card-product .img-wrap img {
 	max-height: 100%;
 	width: 100%;
-	object-fit: cover; }
+	padding:10%}
       
       .card-product .info-wrap {
     overflow: hidden;

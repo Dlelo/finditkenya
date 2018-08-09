@@ -56,8 +56,11 @@ block content
                                     .findit-red
                                       |  KES #{product.price}
                                
-                          button.btn.btn-outline-primary.w3ls-btn.findit-blue.addtocart(id=product.slug)
-                            | Add to Cart
+                            row
+                              .col-sm-12
+                                input(type="number" value="0" min="0" max="100")
+                                button.btn.btn-outline-primary.w3ls-btn.findit-blue.addtocart(id=product.slug)
+                                  | Add
           .col-md-3
             .card(style="width:fit-content")
   
@@ -116,8 +119,12 @@ block content
               //To list all the products in cart use below
               //res.cart
               $('#totalprice').text(res.total);
+              $('#cartsidepreview').html(' ')
               res.cart.forEach(function(x){
-                //$('#cartsidepreview').append
+                $('#cartsidepreview').append(
+                  '<div> '+ x.name+ '</div>'
+                )
+                
                 //x.name, x.count, x.price, x.photo,x.quantity
                 console.log(x.name);
               });             

@@ -4129,3 +4129,8 @@ section.the-products.items .item .item-info ul.price {
 	height:600px;
 	overflow-y: scroll;
 }
+#stickypreview{
+	position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}

@@ -309,7 +309,11 @@ router.get('/api/:slug',function(req, res){
       d.count = 1;
       req.session.cart.push(d);
     }
-    res.json({itemsincart: req.session.cart.length,cart:req.session.cart});
+    var total = 0;
+    req.session.cart.forEach(function(i,index){
+      total += i.count * i.price;
+    });
+    res.json({itemsincart: req.session.cart.length,cart:req.session.cart, total:total});
   })
 });
 //change cart number of Items

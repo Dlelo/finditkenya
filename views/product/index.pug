@@ -11,16 +11,7 @@ block content
                 nav.text-right
                   a(href='/product/cart')
                     #cart.row
-                     //- .card.card-cart
-                        .card-body.card-card-body
-                          .card-title.card-cart-title
-                            i.fa.fa-shopping-basket
-                          if cartExists
-                            card-text
-                              small
-                                | Items (
-                                span#cartcount
-                                  |   #{ cart.length})
+                     
               each product in products
                 .col-md-3.col-product
                   .col-md-12(id=product.slug,class="productid")

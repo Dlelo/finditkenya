@@ -225,6 +225,9 @@ router.post('/pay',function(req, res){
   }
 });
 
+router.post('/paynow',function(req, res){
+});
+
 router.get('/receive', function(req, res){
   console.log("received from ipay");
   var val = "sokompare";

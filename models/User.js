@@ -19,6 +19,12 @@ const userSchema = new Schema({
 		email: String,
 		website: String,
 		postal: String,
+		shippingaddress: {
+			phone: String,
+			email: String,
+			building: String,
+			area: String
+		}
 		resetcode: String
 });
 

@@ -23,6 +23,7 @@ const productSchema = new Schema({
   quantity: String,
 	category: { type: Schema.Types.ObjectId, ref: 'Category' },
 	subcategory: String,
+	vat: Boolean,
   reviews: [{
     rate: String,
     msg: String,

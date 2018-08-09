@@ -37,6 +37,16 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 var cpUpload = upload.fields([{ name: 'photo', maxCount: 1 }, { name: 'catalog', maxCount: 5 }, { name: 'gallery', maxCount: 20 }])
 
+router.get('/',function(req, res){
+  //console.log(req.session.cart);
+  var categories = Category.find({group:'shopping'});
+  var products = Product.find({
+  });
+	Promise.all([products, categories]).then(values => {
+    res.render('shopping/index',{title: "Products on Findit", products: values[0],categories: values[1]});
+  });
+});
+
 router.get('/newsubcategory',function(req, res){
   Category.find({group:'shopping'})
 	.then(function(data){

@@ -67,6 +67,7 @@ block content
                     h4.card-title
                       | Total Price   KES:  
                       span#totalprice
+                        =total
                       a(href='/product/cart')
                         i.findit-blue(class="fas fa-cart-arrow-down fa-2x")
                     p.card-text
@@ -95,10 +96,7 @@ block content
                                   i.findit-blue(class="fas fa-close fa-1x")
                                   | KES 
                                   =p.price
-                                 
-                                
-                      
-    
+                              
                               
   script(type='text/javascript').
     $(function(){
@@ -116,8 +114,9 @@ block content
               //To list all the products in cart use below
               //res.cart
               $('#totalprice').text(res.total);
-              res.cart.forEach(function(x){
-                //$('#cartsidepreview').append
+              $('#cartsidepreview').html('');
+              res.cart.forEach(function(x){                
+                $('#cartsidepreview').append(x.name+'<img src="/uploads/product/thumbs/'+x.photo+'")<br>');
                 //x.name, x.count, x.price, x.photo,x.quantity
                 console.log(x.name);
               });             

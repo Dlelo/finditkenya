@@ -56,8 +56,11 @@ block content
                                     .findit-red
                                       |  KES #{product.price}
                                
-                          button.btn.btn-outline-primary.w3ls-btn.findit-blue.addtocart(id=product.slug)
-                            | Add to Cart
+                            row
+                              .col-sm-12
+                                input(type="number" value="0" min="0" max="100")
+                                button.btn.btn-outline-primary.w3ls-btn.findit-blue.addtocart(id=product.slug)
+                                  | Add
           .col-md-3
             .card(style="width:fit-content")
   

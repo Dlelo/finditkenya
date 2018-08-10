@@ -4126,11 +4126,11 @@ section.the-products.items .item .item-info ul.price {
 	padding: 1px;
 	background: white;
 	width: 300px;
-	height:600px;
+	height:400px;
 	overflow-y: scroll;
 }
 #stickypreview{
-	position: -webkit-sticky;
-    position: sticky;
-    top: 0;
+	position: fixed;
+    top: initial;
+    bottom: auto;
 }

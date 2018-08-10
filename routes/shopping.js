@@ -69,6 +69,27 @@ router.get('/newminicategory',function(req, res){
 	});
 });
 
+router.post('/minisubcategory/add', function(req, res, next){
+  //console.log(req.body);
+  Category.findOne(
+      { _id: req.body.category,'subcategories._id': req.body.subcategory }
+  ).then(function(val){
+    val.subcategories.forEach(function(v){
+      if(req.body.subcategory == v._id){
+        v.minicategories.push({name: req.body.name});
+      }
+    });
+    val.save(function(er){
+      if(er){
+        console.log(er);
+        req.flash('error',err);
+      }
+      req.flash('success_msg','Mini-Sub-Category added successfully');
+      res.redirect('/admin/category');
+    })
+  });
+});
+
 router.post('/subcategory/add', function(req, res, next){
 	Category.findById(req.body.category).then(function(cat){
     //console.log(cat);

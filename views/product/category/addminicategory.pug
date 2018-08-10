@@ -1,0 +1,38 @@
+extends ../../admin/admin-layout
+
+block content
+  .page_body.basic-content
+    .row
+      .col-md-offset-3.col-md-6.col-md-offset-3
+          h3.text-center Add Mini Category
+      .col-md-offset-0.col-md-12.col-md-offset-0
+        form.form-horizontal(method="post",action="/shopping/subcategory/add")
+          .form-group
+            .col-sm-12
+              input#name.form-control-form(type='text', name='name', placeholder='Name')
+          .form-group
+            .col-sm-12
+              select.form-control(name='category',id="maincat_inmini")
+                option(data-icon='glyphicon-wrench', value='') --Select Category--
+                each category in categories
+                  option(data-icon='fa '+category.icon, value=category.id) #{category.name} 
+          .form-group
+            .col-sm-12
+              select.form-control(name='subcategory',id="subcat_inmini")
+                option(data-icon='glyphicon-wrench', value='') --Select SubCategory--
+                each cat in categories
+                  each subcat in cat.subcategories
+                    option(value=subcat.id,rel=cat.id) #{subcat.name} 
+          .form-group
+            .row
+              button.button.btn.btn-warning.form-control-form(type='submit') Create
+
+  script(type='text/javascript').
+    $(function() { // On page ready
+        $('#maincat_inmini').change(function(event) { // On change this select
+          //var _this = $(this);
+          console.log(event.target.value);
+          $('#subcat_inmini').children('option').hide();
+          $("#subcat_inmini").children("option[rel^=" + event.target.value + "]").show();
+        });
+    });

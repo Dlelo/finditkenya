@@ -216,9 +216,9 @@ html(lang='en')
         .container-fluid          
           .row.bg-title
             .col-lg-2.col-md-4.col-sm-4.col-xs-12
-              h4.page-title 
-              h3.box-title
+              h5.box-title
                 =title
+            
             .col-lg-10.col-sm-8.col-md-8.col-xs-12                
               ul.nav.pull-right.text-right.addbusiness
                 if(user.role == 1)
@@ -233,21 +233,22 @@ html(lang='en')
                       strong
                         |  Add Product
                 
-                  li(style="float: left;")
-                    a(href='/shopping/newcategory')
-                      span.fa.fa-plus-square.text-default.glyph
-                      strong
-                        |  Add Product Category
-                  li(style="float: left;")
-                    a(href='/shopping/newsubcategory')
-                      span.fa.fa-plus-circle.text-default.glyph
-                      strong
-                        |  Add Product Subcategory
-                  li(style="float: left;")
-                    a(href='/shopping/viewcategory')
-                      span.fa.fa-archive.text-default.glyph
-                      strong
-                        |  View Categories
+                  if(user.role == 1)
+                    li(style="float: left;")
+                      a(href='/shopping/newcategory')
+                        span.fa.fa-plus-square.text-default.glyph
+                        strong
+                          |  Add Product Category
+                    li(style="float: left;")
+                      a(href='/shopping/newsubcategory')
+                        span.fa.fa-plus-circle.text-default.glyph
+                        strong
+                          |  Add Product Subcategory
+                    li(style="float: left;")
+                      a(href='/shopping/newminicategory')
+                        span.fa.fa-archive.text-default.glyph
+                        strong
+                          |  Add Product Minicategory
             // /.col-lg-12
           block content
         // /.container-fluid

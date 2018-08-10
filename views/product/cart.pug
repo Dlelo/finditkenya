@@ -69,16 +69,7 @@ block content
               row
                 .col-md-12(style="border:1px solid #eee; border-radius:3px; padding:10px; text-align:center;")
                     
-          .row
-            form.form-control(method='post', action='/product/pay')
-              .form-group
-                input.form-control(name='phone', type='text', placeholder='phone *', required)
-                input.form-control(name='email', type='text', placeholder='email *', required)
-                textarea.form-control(name='address', type='text', placeholder='Street Name / Building / Apartment No. / Floor *', required)
-                input.form-control(name='area', type='text', placeholder='Area within Nairobi * (eg Parklands or Pipeline)', required)
-              .form-group
-                button.btn.btn-primary.form-control(type='submit', style='color:#5050ff') 
-                  Proceed to checkout (KES: #{total})
+          
                          
   script(type='text/javascript').
     $(function(){

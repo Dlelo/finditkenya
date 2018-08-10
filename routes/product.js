@@ -43,9 +43,11 @@ router.get('/',function(req, res){
   var products = Product.find({
   });
   var total = 0;
-  req.session.cart.forEach(function(i,index){
-    total += i.count * i.price;
-  });
+  if(req.session.cart){
+    req.session.cart.forEach(function(i,index){
+      total += i.count * i.price;
+    });
+  }
 	Promise.all([products, categories]).then(values => {
     res.render('product/index',{title: "Products on Findit", products: values[0],categories: values[1],cart: req.session.cart,total:total});
   });
@@ -177,6 +179,17 @@ router.get('/cart',function(req, res){
   }else{
     res.render('product/cart',{cart: []});
   }
+});
+
+router.get('/shipping',function(req, res){
+  var total = 0;
+  req.session.cart.forEach(function(i,index){
+    total += i.count * i.price;
+  });
+  res.render('product/checkout',{
+    cart: req.session.cart,
+    total: total
+  });
 });
 
 router.post('/pay',function(req, res){

@@ -58,6 +58,17 @@ router.get('/newsubcategory',function(req, res){
 	});
 });
 
+router.get('/newminicategory',function(req, res){
+  Category.find({group:'shopping'})
+	.then(function(data){
+	  	//console.log(data);
+	    res.render('product/category/addminicategory',{title: "Find It Categories", categories: data, group: 'shopping'});
+	})
+	.catch(function(err){
+	     console.log(err);
+	});
+});
+
 router.post('/subcategory/add', function(req, res, next){
 	Category.findById(req.body.category).then(function(cat){
     //console.log(cat);

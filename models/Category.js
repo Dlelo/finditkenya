@@ -15,7 +15,10 @@ const catSchema = new Schema({
 		group: String,
 		photo: String,
 		subcategories: [{
-			name: String
+			name: String,
+			minicategories: [{
+				name: String
+			}]
 		}],
 });
 

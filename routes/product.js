@@ -192,6 +192,8 @@ router.get('/shipping',function(req, res){
   });
 });
 
+
+
 router.post('/pay',function(req, res){
   ssn = req.session;
   ssn.hashkey = "852sokompare963001";

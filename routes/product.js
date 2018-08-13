@@ -192,6 +192,24 @@ router.get('/shipping',function(req, res){
   });
 });
 
+router.get('/directcheckout', function(req,res){
+    var formData = {
+    // Pass a simple key-value pair
+    my_field: 'my_value',
+    // Pass data via Buffers
+  };
+  request.post(
+      'http://www.facebook.com/kievo23',
+      { json: { key: 'value' } },
+      function (error, response, body) {
+          if (!error && response.statusCode == 200) {
+              console.log(body)
+          }
+      }
+  );
+
+});
+
 router.post('/pay',function(req, res){
   ssn = req.session;
   ssn.hashkey = "852sokompare963001";

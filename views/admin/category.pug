@@ -54,7 +54,10 @@ block content
                         i.fa.fa-trash.fa-fw(aria-hidden='true')
                       a(href="/admin/subcategory/bizlist/"+cat.name,'title'="See Businesses Under This Category")
                         i.fa.fa-eye.fa-fw(aria-hidden='true')
+                      each minicat in cat.minicategories
+                        =minicat.name
                       br
+                      
                   td
                     span.text-info
                       a(href="/admin/category/delete/"+category.id, onclick="return confirm('Are you sure you want to delete this Category?')", title="Delete Category")

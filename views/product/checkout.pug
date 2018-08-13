@@ -3,41 +3,40 @@ extends ../layout-min
 block content
   #home.parallax-content-list.baner-content-listing-biz
     .container.container-margin-top
-      .col-md-8
-        .row
-          form.form-control(method='post', action='/product/pay')
-            .form-group
-              input.form-control(name='phone', type='text', placeholder='phone *', required)
-              input.form-control(name='email', type='text', placeholder='email *', required)
-              textarea.form-control(name='address', type='text', placeholder='Street Name / Building / Apartment No. / Floor *', required)
-              input.form-control(name='area', type='text', placeholder='Area within Nairobi * (eg Parklands or Pipeline)', required)
-            .form-group
-              button.btn.btn-primary.form-control(type='submit', style='color:#5050ff') 
-                Proceed to checkout (KES: #{total})
-      .col-md-4
-        each p in cart
-          .row(style="margin: 4px;")
-            .col-md-3
-              img(src='/uploads/product/thumbs/'+p.photo)
-            .col-md-4
-              strong.findit-blue
-                =p.name
-              div
-                =p.description            
-            .col-md-1
-              =p.count    
-            .col-md-1
-                strong.findit-red
-                  |  KES 
-                  =p.price
-          
-            .col-md-3
-              row
-                .col-md-12(style="border:1px solid #eee; border-radius:3px; padding:10px; text-align:center;")
-                  h6.Strong 
-                    | Subtotal ( No. of Items #{p.count}): 
-                    .findit-red 
-                      | KES: #{p.count * p.price}
+      .row
+        .col-md-7
+          .row
+           .col-md-12
+            .form-group.form-control
+              | Use Existing Address
+           .col-md-12
+            .form-group.form-control
+              form(method='post', action='/product/pay')
+                .form-group
+                  input.form-control-form(name='phone', type='text', placeholder='phone *', required)
+                  input.form-control-form(name='email', type='text', placeholder='email *', required)
+                  textarea.form-control-form(name='address', type='text', placeholder='Street Name / Building / Apartment No. / Floor *', required)
+                  input.form-control-form(name='area', type='text', placeholder='Area within Nairobi * (eg Parklands or Pipeline)', required)
+                .form-group
+                  button.btn.btn-primary.form-control(type='submit', style='color:#5050ff') 
+                    Proceed to checkout (KES: #{total})
+        .col-md-5
+          each p in cart
+            .row(style="margin: 4px;")
+              .col-md-3.nopadding
+                img(src='/uploads/product/thumbs/'+p.photo,width='95%')
+              .col-md-2.nopadding
+                strong.findit-blue
+                  =p.name    
+              .col-md-2.nopadding
+                  strong.findit-red
+                    |  KES 
+                    =p.price   
+              .col-md-4.nopadding(style="border:1px solid #eee; border-radius:3px; text-align:center;")
+                h6 
+                  | Subtotal ( No. of Items #{p.count}): 
+                  .findit-red 
+                    | KES: #{p.count * p.price}
       .container
         form(method='post', action='https://payments.ipayafrica.com/v3/ke')
           input(name='hsh', type='hidden', value=hash)
@@ -47,8 +46,8 @@ block content
           span.btn.btn-grey.btn-block.btn-lg.noLnk(style=' border: 1px solid;margin-bottom:10px;')
             small(style='text-transform: none;') KShs. #{total} .
             strong(id='')
-            each input,i in inputs
-              input(name=i, type='hidden', value=input)
+            //each input,i in inputs
+              //input(name=i, type='hidden', value=input)
           .form-group
             button.btn.btn-primary.form-control(type='submit')
               | Pay Now

@@ -3838,7 +3838,7 @@ section.the-products.items .item .item-info ul.price {
   .card-product .price-new, .card-product .price {
     margin-right: 5px; }
   .card-product .price-old {
-    color: #999; }
+    color: #999; text-decoration: line-through; }
   .card-product .img-wrap {
     border-radius: 3px 3px 0 0;
     overflow: hidden;
@@ -4161,4 +4161,91 @@ section.the-products.items .item .item-info ul.price {
     padding-top: 68px;
     padding-bottom: 83px;
     overflow: hidden;
+}
+.deal-of-the-day {
+	background-color:#eee;
+}
+.shopping-card-margin{
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+.shop-card-title{
+	color: inherit;
+	padding: 0.75rem;
+}
+.price-old{
+	text-decoration: line-through;
+}
+.section .general-best-sellers{
+  background-color:#fff;
+}
+@media (min-width: 768px) {
+
+    /* show 3 items */
+    #carouselExample .carousel-inner .active,
+    #carouselExample .carousel-inner .active + .carousel-item,
+    #carouselExample .carousel-inner .active + .carousel-item + .carousel-item,
+   #carouselExample .carousel-inner .active + .carousel-item + .carousel-item + .carousel-item  {
+        display: block;
+    }
+    
+    #carouselExample .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left),
+    #carouselExample .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item,
+    #carouselExample .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item,
+    #carouselExample .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item + .carousel-item {
+        transition: none;
+    }
+    
+    #carouselExample .carousel-inner .carousel-item-next,
+    #carouselExample .carousel-inner .carousel-item-prev {
+      position: relative;
+      transform: translate3d(0, 0, 0);
+    }
+    
+    #carouselExample .carousel-inner .active.carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
+        position: absolute;
+        top: 0;
+        right: -25%;
+        z-index: -1;
+        display: block;
+        visibility: visible;
+    }
+    
+    /* left or forward direction */
+    #carouselExample .active.carousel-item-left + .carousel-item-next.carousel-item-left,
+    #carouselExample .carousel-item-next.carousel-item-left + .carousel-item,
+    #carouselExample .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item,
+    #carouselExample .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item,
+    #carouselExample .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(-100%, 0, 0);
+        visibility: visible;
+    }
+    
+    /* farthest right hidden item must be abso position for animations */
+    #carouselExample .carousel-inner .carousel-item-prev.carousel-item-right {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        display: block;
+        visibility: visible;
+    }
+    
+    /* right or prev direction */
+   #carouselExample .active.carousel-item-right + .carousel-item-prev.carousel-item-right,
+    #carouselExample .carousel-item-prev.carousel-item-right + .carousel-item,
+    #carouselExample .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item,
+    #carouselExample .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item,
+    #carouselExample .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(100%, 0, 0);
+        visibility: visible;
+        display: block;
+        visibility: visible;
+    }
+
+}
+.section.sponsored-deals{
+	background-color: #fff;
 }

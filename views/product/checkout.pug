@@ -11,20 +11,23 @@ block content
             .form-group
               | Use Existing Shipping Address
               .col-sm-6
-                input(name='existing',type='radio',value=true, style ="margin-top:12px; width: 20px; height: 20px;")
+                input.shippingaddress(name='shippingaddress',type='radio',value=true, style ="margin-top:12px; width: 20px; height: 20px;", required)
            .col-md-12.form-control
             .form-group
               | Use New Shipping Address
               .col-sm-6
-                input(name='existing',type='radio',value=false, style ="margin-top:12px; width: 20px; height: 20px;")
+                input.shippingaddress(name='shippingaddress',type='radio',value=false, style ="margin-top:12px; width: 20px; height: 20px;", required)
             .form-group
-              input.form-control-form(name='phone', type='text', placeholder='phone *', required)
-              input.form-control-form(name='email', type='text', placeholder='email *', required)
-              textarea.form-control-form(name='address', type='text', placeholder='Street Name / Building / Apartment No. / Floor *', required)
-              input.form-control-form(name='area', type='text', placeholder='Area within Nairobi * (eg Parklands or Pipeline)', required)
+              input.form-control-form(name='phone', type='text', placeholder='phone *')
+              input.form-control-form(name='email', type='text', placeholder='email *')
+              textarea.form-control-form(name='address', type='text', placeholder='Street Name / Building / Apartment No. / Floor *')
+              input.form-control-form(name='area', type='text', placeholder='Area within Nairobi * (eg Parklands or Pipeline)')
             .form-group
-              button.btn.btn-primary.form-control(type='submit', style='color:#5050ff') 
-                Proceed to checkout (KES: #{total})
+              span.btn.btn-grey.btn-block.btn-lg.noLnk(style=' border: 1px solid;margin-bottom:10px;')
+                small(style='text-transform: none;') Total KShs. #{total} .
+            .form-group
+              button.btn.btn-primary.form-control(type='submit')
+                | Pay Now 
         .col-md-5
           each p in cart
             .row(style="margin: 4px;")
@@ -47,12 +50,19 @@ block content
           input(name='hsh', type='hidden', value=hash)
           input(name=i, type='hidden', value=total)
           h3.text-center
-            | Place Your Order (Delivery in Nairobi and its Environs)
-          span.btn.btn-grey.btn-block.btn-lg.noLnk(style=' border: 1px solid;margin-bottom:10px;')
-            small(style='text-transform: none;') KShs. #{total} .
             strong(id='')
             //each input,i in inputs
               //input(name=i, type='hidden', value=input)
-          .form-group
-            button.btn.btn-primary.form-control(type='submit')
-              | Pay Now
+              $("#radio_1").is(":checked")
+  script(type='text/javascript').
+    $(function(){
+      $(document).on('change', '.shippingaddress', function(event) {
+        if(event.target.value == 'on'){
+          //alert(event.target.value);
+          $("input").prop('required',true);
+        }else{
+          $("input").prop('required',false);
+        }
+      });
+      $("#shippingaddress").is(":checked");
+    });

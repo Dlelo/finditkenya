@@ -200,10 +200,31 @@ router.post('/pay',function(req, res){
   ssn.vendor_id = "sokompare";
   //var package = req.body.package;
   //ssn.agentnumber = req.body.agentnumber;
-  ssn.email = req.body.email;
-  ssn.phone = req.body.phone;
-  ssn.address = req.body.address;
-  ssn.area = req.body.area;
+  if(req.body.shippingaddress == 'on'){
+    console.log(req.body.shippingaddress);
+    console.log("new address");
+    ssn.email = req.body.email;
+    ssn.phone = req.body.phone;
+    ssn.address = req.body.address;
+    ssn.area = req.body.area;
+    Users.update(
+      {_id: req.user.id},
+      { $set: { shippingaddress: {
+            phone: req.body.phone,
+            email: req.body.email,
+            building: req.body.address,
+            area: req.body.area
+          }
+      }},
+       options, callback)
+  }else{
+    console.log(req.body.shippingaddress);
+    console.log("Existing address");
+    ssn.email = req.user.shippingaddress.email;
+    ssn.phone = req.user.shippingaddress.phone;
+    ssn.address = req.user.shippingaddress.address;
+    ssn.area = req.user.shippingaddress.area;
+  }
   if(req.session.cart){
     var total = 0;
     req.session.cart.forEach(function(i,index){
@@ -232,7 +253,7 @@ router.post('/pay',function(req, res){
       fields['ttl']+fields['tel']+fields['eml']+fields['vid']+fields['curr']+fields['p1']+fields['p2']
       +fields['p3']+fields['p4']+fields['cbk']+fields['cst']+fields['crl'];
     var hash = crypto.createHmac('sha1',ssn.hashkey).update(datastring).digest('hex');
-    res.render('product/checkout',{
+    res.render('product/save',{
       cart: req.session.cart,
       total: total,
       hash: hash,

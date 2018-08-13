@@ -4134,3 +4134,31 @@ section.the-products.items .item .item-info ul.price {
     top: initial;
     bottom: auto;
 }
+.banner_content {
+    z-index: 200;
+}
+.banner_background{
+	position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+.fill_height {
+    height: 100%;
+}
+.banner_product_image {
+    position: absolute;
+    top: -5px;
+    right: -52px;
+    z-index: 0;
+}
+.coup-banner{
+    width: 100%;
+    padding-top: 68px;
+    padding-bottom: 83px;
+    overflow: hidden;
+}

@@ -5,21 +5,26 @@ block content
     .container.container-margin-top
       .row
         .col-md-7
+         form(method='post', action='/product/pay')
           .row
-           .col-md-12
-            .form-group.form-control
-              | Use Existing Address
-           .col-md-12
-            .form-group.form-control
-              form(method='post', action='/product/pay')
-                .form-group
-                  input.form-control-form(name='phone', type='text', placeholder='phone *', required)
-                  input.form-control-form(name='email', type='text', placeholder='email *', required)
-                  textarea.form-control-form(name='address', type='text', placeholder='Street Name / Building / Apartment No. / Floor *', required)
-                  input.form-control-form(name='area', type='text', placeholder='Area within Nairobi * (eg Parklands or Pipeline)', required)
-                .form-group
-                  button.btn.btn-primary.form-control(type='submit', style='color:#5050ff') 
-                    Proceed to checkout (KES: #{total})
+           .col-md-12.form-control
+            .form-group
+              | Use Existing Shipping Address
+              .col-sm-6
+                input(name='existing',type='radio',value=true, style ="margin-top:12px; width: 20px; height: 20px;")
+           .col-md-12.form-control
+            .form-group
+              | Use New Shipping Address
+              .col-sm-6
+                input(name='existing',type='radio',value=false, style ="margin-top:12px; width: 20px; height: 20px;")
+            .form-group
+              input.form-control-form(name='phone', type='text', placeholder='phone *', required)
+              input.form-control-form(name='email', type='text', placeholder='email *', required)
+              textarea.form-control-form(name='address', type='text', placeholder='Street Name / Building / Apartment No. / Floor *', required)
+              input.form-control-form(name='area', type='text', placeholder='Area within Nairobi * (eg Parklands or Pipeline)', required)
+            .form-group
+              button.btn.btn-primary.form-control(type='submit', style='color:#5050ff') 
+                Proceed to checkout (KES: #{total})
         .col-md-5
           each p in cart
             .row(style="margin: 4px;")

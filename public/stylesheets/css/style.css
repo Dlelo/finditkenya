@@ -2494,7 +2494,6 @@ padding-right:1px;
     height:100%;
     top:0;
     left:0;
-    background:rgba(0,0,0,0.1);
    }
 
 
@@ -4178,6 +4177,7 @@ section.the-products.items .item .item-info ul.price {
 }
 .section .general-best-sellers{
   background-color:#fff;
+  box-shadow: 1px 0 1px 0 #eee;
 }
 @media (min-width: 768px) {
 
@@ -4246,9 +4246,24 @@ section.the-products.items .item .item-info ul.price {
     }
 
 }
-.section.sponsored-deals{
+.section .sponsored-deals{
 	background-color: #fff;
+	margin-top: 2rem;
+	border-bottom: 1px solid #eee;
 }
+.product-img-home{
+	height: auto !important;
+    padding: 10px;
+}
+.shop-now{
+    background-color:#eee;
+}
+.shop-now{
+	background-color:#eee;
+	margin-top:1rem;
+	margin-bottom:1rem;
+}
+
 input[type=radio]{
 	appearance: radio !important;
 	-webkit-appearance: radio !important;

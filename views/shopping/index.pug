@@ -70,183 +70,127 @@ block content
              .col-md-3
                .card.shopping-card-margin
                    .card-title.shop-card-title
-                      h6.agile-title.h-order-category.text-center
+                      h4.agile-title.h-order-category.text-center
                         | New Arrivals
                       img.card-img-top(src="/img/royco.png" alt="Card image" style="width:100%")
                    .card-body
                      .card-text
+         
+         .section.sponsored-deal
+            div.row
+              div.col-6
+                div.row
+                  div.col-6
+                    .card(style="border:none !important")
+                       img(class="card-img-top img-fluid" src="/img/rings.jpeg" alt="Card image cap")
+                  div.col-6
+                    .card(style="border:none !important")
+                      .card-block(style="padding:1rem")
+                          h4(class="card-title")
+                            | title
+                          p(class="card-text")
+                            | This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                          p(class="card-text")
+                            small.text-muted
+                              | Last updated 3 mins ago
+                          
+              div.col-6
+                div.row
+                  div.col-6
+                    .card(style="border:none !important")
+                       img(class="card-img-top img-fluid" src="/img/rings.jpeg" alt="Card image cap")
+                  div.col-6
+                    .card(style="border:none !important")
+                      .card-block(style="padding:1rem")
+                          h4(class="card-title")
+                            | Title
+                          p(class="card-text")
+                            | This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                          p(class="card-text")
+                            small.text-muted
+                              | Last updated 3 mins ago
+           
+         .section.shop-now
+            .row
+             .col-md-3
+                .card
+                    img.card-img-top(src="/img/blueband.jpg" alt="Card image" style="width:100%")
+                    .card-body
+                      .card-title.shop-card-title
+                      h4.agile-title.h-order-category.text-center
+                        | Best Sellers
+                      .card-text
+                        small
+                          a(href="#")
+                            | Shop Now
+                
+             .col-md-3
+                .card
+                    img.card-img-top(src="/img/airfreshener.png" alt="Card image" style="width:100%")
+                    .card-body
+                      .card-title.shop-card-title
+                        h4.agile-title.h-order-category.text-center
+                          | Deals of the Day
+                      .card-text
+                        .price-old  KES 219
+                         span
+                          |  KES 198
+                       
+                        small
+                          a(href="#")
+                            | See More 
+                
+             .col-md-3
+                .card
+                    img.card-img-top(src="/img/royco.png" alt="Card image" style="width:100%")
+                    .card-body
+                      .card-title.shop-card-title
+                        h4.agile-title.h-order-category
+                          | Featured Products
+                      .card-text
+                        small
+                          a(href="#")
+                            | Shop Now
+               
+             .col-md-3
+               .card
+                  img.card-img-top(src="/img/royco.png" alt="Card image" style="width:100%")
+                  .card-body
+                    .card-title.shop-card-title
+                      h4.agile-title.h-order-category.text-center
+                        | New Arrivals
+                    .card-text
+                        small
+                          a(href="#")
+                            | Shop Now
+         
+           
          .section.general-best-sellers
             h4.agile-title.h-order-category.text-center
-                        | Best Sellers Today
-            span 
-              a(href="#")
-                see all deals
-            div(id="carouselExample" class="carousel slide" data-ride="carousel" data-interval="9000")
-                div(class="carousel-inner row w-100 mx-auto" role="listbox")
-                    div(class="carousel-item col-md-3 active")
-                      figure.card.card-product
-                        .img-wrap
-                          img(class="img-fluid mx-auto d-block" src="/img/exe.jpeg" alt="slide 1")
-                          //The QuicklookModal
-                          div(class="modal" id="qModal")
-                            div(class="modal-dialog")
-                              div(class="modal-content")
-                                div(class="modal-header")
-                                  h4(class="modal-title") Modal Heading
-                                  button(type="button" class="close" data-dismiss="modal") &times;
-                                div(class="modal-body") Product description here body..
-                                  div(class="modal-footer")
-                                    button(type="button" class="btn btn-danger" data-dismiss="modal")  Close
-                        figcaption.info-wrap  
-                            div.action-wrap
-                            span.button.btn.btn-light(style="display:none;" data-toggle="modal" data-target="#qModal") Quick Look
-                    div(class="carousel-item col-md-3")
-                       figure.card.card-product
-                        .img-wrap
-                          img(class="img-fluid mx-auto d-block" src="/img/rice.jpeg" alt="slide 1")
-                          //The QuicklookModal
-                          div(class="modal" id="qModal")
-                            div(class="modal-dialog")
-                              div(class="modal-content")
-                                div(class="modal-header")
-                                  h4(class="modal-title") Modal Heading
-                                  button(type="button" class="close" data-dismiss="modal") &times;
-                                div(class="modal-body") Product description here body..
-                                  div(class="modal-footer")
-                                    button(type="button" class="btn btn-danger" data-dismiss="modal")  Close
-                        figcaption.info-wrap  
-                            div.action-wrap
-                            span.button.btn.btn-light(style="display:none;" data-toggle="modal" data-target="#qModal") Quick Look
-                        
-                    div(class="carousel-item col-md-3")
-                      figure.card.card-product
-                        .img-wrap
-                          img(class="img-fluid mx-auto d-block" src="/img/earrings.jpeg" alt="slide 1")
-                          //The QuicklookModal
-                          div(class="modal" id="qModal")
-                            div(class="modal-dialog")
-                              div(class="modal-content")
-                                div(class="modal-header")
-                                  h4(class="modal-title") Modal Heading
-                                  button(type="button" class="close" data-dismiss="modal") &times;
-                                div(class="modal-body") Product description here body..
-                                  div(class="modal-footer")
-                                    button(type="button" class="btn btn-danger" data-dismiss="modal")  Close
-                        figcaption.info-wrap  
-                            div.action-wrap
-                            span.button.btn.btn-light(style="display:none;" data-toggle="modal" data-target="#qModal") Quick Look
-                    div(class="carousel-item col-md-3")
-                       figure.card.card-product
-                        .img-wrap
-                          img(class="img-fluid mx-auto d-block" src="/img/beer.jpeg" alt="slide 1")
-                          //The QuicklookModal
-                          div(class="modal" id="qModal")
-                            div(class="modal-dialog")
-                              div(class="modal-content")
-                                div(class="modal-header")
-                                  h4(class="modal-title") Modal Heading
-                                  button(type="button" class="close" data-dismiss="modal") &times;
-                                div(class="modal-body") Product description here body..
-                                  div(class="modal-footer")
-                                    button(type="button" class="btn btn-danger" data-dismiss="modal")  Close
-                        figcaption.info-wrap  
-                            div.action-wrap
-                            span.button.btn.btn-light(style="display:none;" data-toggle="modal" data-target="#qModal") Quick Look
-                    div(class="carousel-item col-md-3")
-                      figure.card.card-product
-                        .img-wrap
-                          img(class="img-fluid mx-auto d-block" src="/img/pillows.jpeg" alt="slide 1")
-                          //The QuicklookModal
-                          div(class="modal" id="qModal")
-                            div(class="modal-dialog")
-                              div(class="modal-content")
-                                div(class="modal-header")
-                                  h4(class="modal-title") Modal Heading
-                                  button(type="button" class="close" data-dismiss="modal") &times;
-                                div(class="modal-body") Product description here body..
-                                  div(class="modal-footer")
-                                    button(type="button" class="btn btn-danger" data-dismiss="modal")  Close
-                        figcaption.info-wrap  
-                            div.action-wrap
-                            span.button.btn.btn-light(style="display:none;" data-toggle="modal" data-target="#qModal") Quick Look
-                    div(class="carousel-item col-md-3")
-                       figure.card.card-product
-                        .img-wrap
-                          img(class="img-fluid mx-auto d-block" src="/img/mats.jpeg" alt="slide 1")
-                          //The QuicklookModal
-                          div(class="modal" id="qModal")
-                            div(class="modal-dialog")
-                              div(class="modal-content")
-                                div(class="modal-header")
-                                  h4(class="modal-title") Modal Heading
-                                  button(type="button" class="close" data-dismiss="modal") &times;
-                                div(class="modal-body") Product description here body..
-                                  div(class="modal-footer")
-                                    button(type="button" class="btn btn-danger" data-dismiss="modal")  Close
-                        figcaption.info-wrap  
-                            div.action-wrap
-                            span.button.btn.btn-light(style="display:none;" data-toggle="modal" data-target="#qModal") Quick Look
-                        
-                    div(class="carousel-item col-md-3")
-                        figure.card.card-product
-                        .img-wrap
-                          img(class="img-fluid mx-auto d-block" src="/img/dress.jpeg" alt="slide 1")
-                          //The QuicklookModal
-                          div(class="modal" id="qModal")
-                            div(class="modal-dialog")
-                              div(class="modal-content")
-                                div(class="modal-header")
-                                  h4(class="modal-title") Modal Heading
-                                  button(type="button" class="close" data-dismiss="modal") &times;
-                                div(class="modal-body") Product description here body..
-                                  div(class="modal-footer")
-                                    button(type="button" class="btn btn-danger" data-dismiss="modal")  Close
-                        figcaption.info-wrap  
-                            div.action-wrap
-                            span.button.btn.btn-light(style="display:none;" data-toggle="modal" data-target="#qModal") Quick Look
-                        
-                a(class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev")
-                    i(class="fa fa-chevron-left fa-lg text-muted")
-                       span(class="sr-only")  Previous
-                    
-                a(class="carousel-control-next text-faded" href="#carouselExample" role="button" data-slide="next")
-                    i(class="fa fa-chevron-right fa-lg text-muted")
-                       span(class="sr-only")  Next
-         .section.sponsored-deals
-           row
-             .col-md-6
-               row
-                 .col-md-12(style="border-right:1px solid #eee")
-                   img(class="img-fluid mx-auto d-block" src="/img/rings.jpeg" alt="slide 1" style="float:left")
-                   p.h3
-                     | 10% discount on wedding rings
-
-             .col-md-6
-               row
-                 .col-md-6
-                 .col-md-6
+              | Best Sellers Today
+              span 
+                a(href="#")
+                  | see all deals
+            div(class="carousel slide" data-ride="carousel")
+              div(class="carousel-inner")
+                  div(class="carousel-item active")
+                      div.row
+                        div.col
+                          img.w-100.product-img-home(src="/img/exe.jpeg" alt="1 slide")
+                        div.col
+                          img.w-100.product-img-home(src="/img/rice.jpeg" alt="2 slide")
+                        div.col
+                          img.w-100.product-img-home(src="/img/earrings.jpeg" alt="3 slide")
+                      
+                        div.col
+                            img.w-100.product-img-home(src="/img/beer.jpeg" alt="4 slide")
+                        div.col
+                            img.w-100.product-img-home(src="/img/pillows.jpeg" alt="5 slide")
+                        div.col
+                            img.w-100.product-img-home(src="/img/mats.jpeg" alt="6 slide")
+         
 
     script(type="text/javascript").
-      $('#carouselExample').on('slide.bs.carousel', function (e) {
-
-        var $e = $(e.relatedTarget);
-        var idx = $e.index();
-        var itemsPerSlide = 4;
-        var totalItems = $('.carousel-item').length;
-        
-        if (idx >= totalItems-(itemsPerSlide-1)) {
-            var it = itemsPerSlide - (totalItems - idx);
-            for (var i=0; i<it; i++) {
-                // append slides to end
-                if (e.direction=="left") {
-                    $('.carousel-item').eq(i).appendTo('.carousel-inner');
-                }
-                else {
-                    $('.carousel-item').eq(0).appendTo('.carousel-inner');
-                }
-            }
-        }
-      });
       $('#carouselExample').carousel({ 
                 interval: 9000
         });

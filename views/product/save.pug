@@ -1,0 +1,20 @@
+extends ../layout-min
+
+block content
+  #home.parallax-content-list.baner-content-listing-biz
+    .container.container-margin-top
+      .row
+        .container
+          form(method='post', id='ipayform' action='https://payments.ipayafrica.com/v3/ke')
+            input(name='hsh', type='hidden', value=hash)
+            input(name=i, type='hidden', value=total)
+            each input,i in inputs
+              input(name=i, type='hidden', value=input)
+            button.btn.btn-primary.form-control(type='submit',value='Pay Now')
+              | Pay Now
+        script(type='text/javascript').
+          submit();
+          function submit() {  
+              var form = document.getElementById("ipayform");
+              form.submit();
+          }

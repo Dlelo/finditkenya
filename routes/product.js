@@ -200,9 +200,9 @@ router.post('/pay',function(req, res){
   ssn.vendor_id = "sokompare";
   //var package = req.body.package;
   //ssn.agentnumber = req.body.agentnumber;
-  if(req.body.shippingaddress == 'on'){
-    console.log(req.body.shippingaddress);
-    console.log("new address");
+  if(req.body.shippingaddress){
+    //console.log(req.body.shippingaddress);
+    //console.log("new address");
     ssn.email = req.body.email;
     ssn.phone = req.body.phone;
     ssn.address = req.body.address;
@@ -215,11 +215,12 @@ router.post('/pay',function(req, res){
             building: req.body.address,
             area: req.body.area
           }
-      }},
-       options, callback)
+      }},function (err, doc){
+        //console.log(doc);
+      });
   }else{
-    console.log(req.body.shippingaddress);
-    console.log("Existing address");
+    //console.log(req.body.shippingaddress);
+    //console.log("Existing address");
     ssn.email = req.user.shippingaddress.email;
     ssn.phone = req.user.shippingaddress.phone;
     ssn.address = req.user.shippingaddress.address;
@@ -236,8 +237,8 @@ router.post('/pay',function(req, res){
       "oid": timestamp,
       "inv": "invoiceid"+req.params.id,
       "ttl": total,
-      "tel": req.body.phone,
-      "eml": req.body.email,
+      "tel": ssn.phone,
+      "eml": ssn.email,
       "vid": ssn.vendor_id,
       "curr": "KES",
       "p1": timestamp,
@@ -263,10 +264,6 @@ router.post('/pay',function(req, res){
   }else{
     res.redirect('/product');
   }
-});
-
-router.post('/paynow',function(req, res){
-
 });
 
 router.get('/receive', function(req, res){

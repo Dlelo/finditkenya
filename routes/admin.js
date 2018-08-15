@@ -39,7 +39,7 @@ var cpUpload = upload.fields([{ name: 'photo', maxCount: 1 }, { name: 'catalog',
 router.post('/edit/:id', role.auth, cpUpload, function(req, res, next) {
 	Business.findById(req.params.id)
 	.then(function(b){
-	    b.name = req.body.name
+	  b.name = req.body.name
 		b.slug = slug(req.body.name);
 		b.description = req.body.description;
 		b.city = req.body.city;

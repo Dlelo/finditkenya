@@ -59,6 +59,8 @@ block content
                   | Subtotal ( No. of Items #{p.count}): 
                   .findit-red 
                     | KES: #{p.count * p.price}
+                  if(p.vat)
+                    | KES #{p.price * 0.16}
       .container
         form(method='post', action='https://payments.ipayafrica.com/v3/ke')
           input(name='hsh', type='hidden', value=hash)

@@ -86,6 +86,40 @@ body
         div(style="display:flex !important; flex-direction:row !important; width: 100% !important;")
           div(style="flex-grow:0.1 !important")
             .dropdown
+              a(href="" class="dropdown-toggle" data-toggle="dropdown")
+                small
+                  strong
+                    | Categories
+              
+              ul.dropdown-menu
+                each category,i in categories
+                  li
+                    a.dropdown-item(href="/category/"+category.name)
+                      small.findit-blue
+                        strong
+                          =category.name
+                    .mega
+                      .div.row
+                        .col-md-4
+                           aside
+                              ul
+                                each subcat in category.subcategories
+                                  li
+                                    span(text-uppercase)
+                                        =subcat.name
+                                        ul.nav.flex-column
+                                             li.nav-item
+                                                a.nav-link.active(href="#")
+                                                  | active
+                                                a.nav-link(href="#")
+                                                  | Item 1
+                                                a.nav-link(href="#")
+                                                  | Item 2
+                                                a.nav-link(href="#")
+                                                  | Item 3
+            
+                  
+            //.dropdown
                 a(class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
                   small
                     strong
@@ -98,7 +132,7 @@ body
                             .dropdown
                               a(class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")  
                                  =category.name
-                              div.dropdown-menu.dropdown-menu-right.mega-menu(aria-labelledby="navbarDropdown" style="width:-webkit-fill-available;")
+                              div.dropdown-menu.dropdown-menu-right.mega-menu.shop-mega-menu(aria-labelledby="navbarDropdown" style="width:-webkit-fill-available;")
                                 .container
                                   each subcat in category.subcategories
                                     .div.row
@@ -118,39 +152,7 @@ body
                                                 
 
                 
-          //a.nav-link.dropdown-toggle(href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-top:5px") 
-              small
-                strong
-                  |  Categories 
-                   
-            div.dropdown-menu.dropdown-menu-right.mega-menu(aria-labelledby="navbarDropdown" style="width:-webkit-fill-available;")
-              if categories
-                ul
-                  each category,i in categories
-                    li
-                      a.dropdown-item(href="/category/"+category.name)
-                        small.findit-blue
-                          strong   
-                            =category.name
-                      div.dropdown-menu(aria-labelledby="navbarDropdown")
-                        div.container
-                          div.row
-                            div.col-md-4
-                              span.text-uppercase
-                                | Category 1
-                              ul.nav.flex-column
-                                each subcat in category.subcategories 
-                                  li.nav-item
-                                    a.nav-link.active
-                                      =subcat.name
-
-                //div.row
-                  each category,i in categories
-                    div.col-md-4.col-sm-12.col-xs-12
-                      a.dropdown-item(href="/category/"+category.name)
-                        small.findit-blue
-                          strong   
-                            =category.name
+          
           div(style="flex-grow:0.3 !important")
             #showSearch(style="padding-bottom: 2px; padding-top:2px;")
               form.form-class(method='get', action='/search')

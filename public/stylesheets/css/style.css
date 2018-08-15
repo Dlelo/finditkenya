@@ -4332,8 +4332,11 @@ box-shadow: 2px 3px 5px 0px rgba(204,204,204,1);
 .dropdown ul.dropdown-menu {
     border-radius:4px;
     box-shadow:none;
-    margin-top:20px;
-    width:300px;
+    margin-top:0;
+	width:300px;
+    margin-left: 0.5rem;
+    padding: 1rem;
+   
 }
 .dropdown ul.dropdown-menu:before {
     content: "";

@@ -80,74 +80,71 @@ body
               button.btn.btn-light.w3ls-btn.coupons-btn.flash-button#coupbtn(type="button")
                 span.fas.fa-gift.coupons-text-color
                 | View deals
-          //div(style="flex-grow:0.5 !important")
-            //site navigation 
-            button.navbar-toggler.ml-md-auto(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="Toggle navigation")
-                  span.navbar-toggler-icon
-            div#navbarSupportedContent.collapse.navbar-collapse
-            
-              ul.nav.navbar-nav.ml-lg-auto.justify-content-end(style="float:right")
-                //li.dropdown.nav-item.mr-3
-                  a.nav-link.dropdown-toggle(href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")    
-                    span.fas.fa-th-list.fas-menu
-                    strong
-                     |  Categories 
-                   
-                  div.dropdown-menu.dropdown-menu-right.mega-menu(aria-labelledby="navbarDropdown" style="width: -webkit-fill-available;")
-                    if categories 
-                      div.row
-                        each category,i in categories
-                          div.col-md-4.col-sm-12.col-xs-12
-                            a.dropdown-item(href="/category/"+category.name)
-                                strong.findit-blue
-                                  i.fas.fa-1x(aria-hidden='true', class=category.icon) 
-                                  small.findit-blue
-                                    strong   
-                                      =category.name
-                        
-                            
-                //li.nav-item.mr-3
-                  a(href="/")
-                    span.fas.fa-home.fas-menu 
-                    strong
-                    |  Home
-                //if (loggedin)
-                  li.nav-item.mr-3                  
-                    a(href='/dashboard')  
-                      span.fas.fa-user.fas-menu
-                      strong
-                      |  Your Account
-                          
-                //if (loggedin)                
-                  li.nav-item.mr-3
-                    a(href='/logout') 
-                      span.fas.fa-sign-out-alt.fas-menu
-                      strong
-                      |  Logout
-                //else
-                  li.nav-item.mr-3
-                    a(href='/login')
-                      button.btn.btn-primary.w3ls-btn
-                        strong
-                          | Login
-                  li.nav-item.mr-3
-                  a(href="/register")
-                    button.btn.btn-outline-primary.w3ls-btn.findit-blue
-                      strong
-                      |  Sign Up
+          
 
-      nav#homenavbar.navbar.navbar-expand-lg.navbar-light.bg-gradient-secondary(style="margin-top: 3em; padding: 0em 0em;")
+      nav#homenavbar.navbar.navbar-toggleable-md.navbar-expand-lg.navbar-light.bg-gradient-secondary(style="margin-top: 3em; padding: 0em 0em;")
         div(style="display:flex !important; flex-direction:row !important; width: 100% !important;")
           div(style="flex-grow:0.1 !important")
-            a.nav-link.dropdown-toggle(href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-top:5px") 
+            .dropdown
+                a(class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+                  small
+                    strong
+                      | Categories
+                div.dropdown-menu(aria-labelledby="navbarDropdownMenuLink")
+                  each category,i in categories
+                      a.dropdown-item(href="/category/"+category.name)
+                        small.findit-blue
+                          strong 
+                            .dropdown
+                              a(class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")  
+                                 =category.name
+                              div.dropdown-menu.dropdown-menu-right.mega-menu(aria-labelledby="navbarDropdown" style="width:-webkit-fill-available;")
+                                .container
+                                  each subcat in category.subcategories
+                                    .div.row
+                                      .col-md-4
+                                        span(text-uppercase)
+                                           =subcat.name
+                                           ul.nav.flex-column
+                                             li.nav-item
+                                                a.nav-link.active(href="#")
+                                                  | active
+                                                a.nav-link(href="#")
+                                                  | Item 1
+                                                a.nav-link(href="#")
+                                                  | Item 2
+                                                a.nav-link(href="#")
+                                                  | Item 3
+                                                
+
+                
+          //a.nav-link.dropdown-toggle(href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-top:5px") 
               small
                 strong
                   |  Categories 
                    
-            div.dropdown-menu.dropdown-menu-right.mega-menu(aria-labelledby="navbarDropdown" style="width: -webkit-fill-available;")
-              if categories 
-                div.row
+            div.dropdown-menu.dropdown-menu-right.mega-menu(aria-labelledby="navbarDropdown" style="width:-webkit-fill-available;")
+              if categories
+                ul
+                  each category,i in categories
+                    li
+                      a.dropdown-item(href="/category/"+category.name)
+                        small.findit-blue
+                          strong   
+                            =category.name
+                      div.dropdown-menu(aria-labelledby="navbarDropdown")
+                        div.container
+                          div.row
+                            div.col-md-4
+                              span.text-uppercase
+                                | Category 1
+                              ul.nav.flex-column
+                                each subcat in category.subcategories 
+                                  li.nav-item
+                                    a.nav-link.active
+                                      =subcat.name
+
+                //div.row
                   each category,i in categories
                     div.col-md-4.col-sm-12.col-xs-12
                       a.dropdown-item(href="/category/"+category.name)

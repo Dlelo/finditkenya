@@ -2,7 +2,7 @@ extends ../layout-shop
 block content
   #home.parallax-content-list.baner-content-listing-biz
     .container-fluid.container-margin-top
-      .container-fluid
+      .container-fluid.shopping-background
          .section
            .carousel-shop
               div#demo.carousel.slide(data-ride="carousel")
@@ -76,7 +76,7 @@ block content
                    .card-body
                      .card-text
          
-         .section.sponsored-deal
+         .section.sponsored-deal(style="background-color:  #fff; margin: 1rem;")
             div.row
               div.col-6
                 div.row
@@ -111,9 +111,11 @@ block content
                               | Last updated 3 mins ago
            
          .section.shop-now
+            h4(style="margin:1rem;")
+                | Favourites
             .row
-             .col-md-3
-                .card
+              .col-md-3
+                .card.remove-card-border
                     img.card-img-top(src="/img/blueband.jpg" alt="Card image" style="width:100%")
                     .card-body
                       .card-title.shop-card-title
@@ -124,8 +126,8 @@ block content
                           a(href="#")
                             | Shop Now
                 
-             .col-md-3
-                .card
+              .col-md-3
+                .card.remove-card-border
                     img.card-img-top(src="/img/airfreshener.png" alt="Card image" style="width:100%")
                     .card-body
                       .card-title.shop-card-title
@@ -140,8 +142,8 @@ block content
                           a(href="#")
                             | See More 
                 
-             .col-md-3
-                .card
+              .col-md-3
+                .card.remove-card-border
                     img.card-img-top(src="/img/royco.png" alt="Card image" style="width:100%")
                     .card-body
                       .card-title.shop-card-title
@@ -152,8 +154,8 @@ block content
                           a(href="#")
                             | Shop Now
                
-             .col-md-3
-               .card
+              .col-md-3
+                .card.remove-card-border
                   img.card-img-top(src="/img/royco.png" alt="Card image" style="width:100%")
                   .card-body
                     .card-title.shop-card-title
@@ -166,11 +168,12 @@ block content
          
            
          .section.general-best-sellers
-            h4.agile-title.h-order-category.text-center
+            h4.agile-title.h-order-category.text-left
               | Best Sellers Today
               span 
-                a(href="#")
-                  | see all deals
+                small
+                  a(href="#")
+                    | see More
             div(class="carousel slide" data-ride="carousel")
               div(class="carousel-inner")
                   div(class="carousel-item active")

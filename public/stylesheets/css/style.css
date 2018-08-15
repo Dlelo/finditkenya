@@ -4246,25 +4246,40 @@ section.the-products.items .item .item-info ul.price {
     }
 
 }
-.section .sponsored-deals{
+.sponsored-deals{
 	background-color: #fff;
-	margin-top: 2rem;
 	border-bottom: 1px solid #eee;
+	margin:1rem !important;
 }
 .product-img-home{
 	height: auto !important;
     padding: 10px;
 }
-.shop-now{
+.shopping-background{
     background-color:#eee;
 }
-.shop-now{
-	background-color:#eee;
-	margin-top:1rem;
-	margin-bottom:1rem;
+.shop-now {
+	background-color:#fff;
+	margin:1rem !important;
 }
 
 input[type=radio]{
 	appearance: radio !important;
 	-webkit-appearance: radio !important;
+}
+.general-best-sellers{
+	background-color:#fff;
+	margin:1rem !important;
+	
+}
+.remove-card-border{
+	border: none!important;
+}
+.dropdown:hover>.dropdown-menu {
+  display: block;
+}
+
+.dropdown>.dropdown-toggle:active {
+  /*Without this, clicking will make it sticky*/
+    pointer-events: none;
 }

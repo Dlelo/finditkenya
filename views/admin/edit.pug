@@ -67,7 +67,7 @@ block content
                 select#ssubcategoryy.form-control-form-select.ssubcategory.selectpicker(name='ssubcategory',multiple,data-selected-text-format='count > 5', data-live-search="true")
                   each category in categories
                     each subcat in category.subcategories
-                      option(data-icon='glyphicon-wrench', rel=category.name, value=) 
+                      option(data-icon='glyphicon-wrench', rel=category.name, value="") 
                         
               .col-sm-3(style="display:none",id="starteventDate")
                 input#startdate.form-control-form(type='text', name='starteventdate', placeholder='Start Event Date',class='datetimepicker',value=biz.starteventdate)

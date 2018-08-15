@@ -109,6 +109,9 @@ router.post('/update/:id',role.auth,cpUpload, function(req,res){
     if (req.files['photo'] != null){
   		p.photo = req.files['photo'][0].filename;
   	}
+    if (req.body.vat != null){
+  		p.vat = 1;
+  	}
     p.price = req.body.price;
     p.quantity = req.body.quantity;
     p.status = req.body.status;
@@ -141,6 +144,9 @@ router.post('/create',role.auth, cpUpload, function(req, res){
   p.description = req.body.description;
   if (req.files['photo'] != null){
 		p.photo = req.files['photo'][0].filename;
+	}
+  if (req.body.vat != null){
+		p.vat = 1;
 	}
   p.price = req.body.price;
   p.quantity = req.body.quantity;

@@ -165,7 +165,7 @@ router.get('/edit/:id',role.auth, function(req, res, next){
 	var business = Business.findOne({
 	  _id: req.params.id
 	});
-	var categories = Category.find({});
+	var categories = Category.find({group: 'general'});
 
 	Promise.all([business, categories]).then(values => {
 		var now = moment();

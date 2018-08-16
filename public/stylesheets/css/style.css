@@ -4246,6 +4246,20 @@ section.the-products.items .item .item-info ul.price {
     }
 
 }
+.carousel-item {
+    display: none;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 100%;
+    transition: -webkit-transform .9s ease;
+    transition: transform .9s ease;
+    transition: transform .9s ease,-webkit-transform .9s ease;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
+}
 .sponsored-deals{
 	background-color: #fff;
 	border-bottom: 1px solid #eee;
@@ -4385,4 +4399,7 @@ box-shadow: 2px 3px 5px 0px rgba(204,204,204,1);
 }
 .mega .featured img {
   max-width: 400px;
+}
+.shopping-home-img{
+padding: 1rem;
 }

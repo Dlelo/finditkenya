@@ -39,7 +39,7 @@ var cpUpload = upload.fields([{ name: 'photo', maxCount: 1 }, { name: 'catalog',
 router.post('/edit/:id', role.auth, cpUpload, function(req, res, next) {
 	Business.findById(req.params.id)
 	.then(function(b){
-	    b.name = req.body.name
+	  b.name = req.body.name
 		b.slug = slug(req.body.name);
 		b.description = req.body.description;
 		b.city = req.body.city;
@@ -165,7 +165,7 @@ router.get('/edit/:id',role.auth, function(req, res, next){
 	var business = Business.findOne({
 	  _id: req.params.id
 	});
-	var categories = Category.find({});
+	var categories = Category.find({group: 'general'});
 
 	Promise.all([business, categories]).then(values => {
 		var now = moment();

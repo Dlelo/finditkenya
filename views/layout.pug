@@ -472,8 +472,8 @@ script(type='text/javascript').
                   $.each(data, function(i, d) {
                       // You will need to alter the below to get the right values from your json object.  Guessing that d.id / d.modelName are columns in your carModels data
                       console.log(d.name);
-                      $('#ssubcategory').append('<option value="' + d.name + '">' + d.name + '</option>');
-                      $('#ssubcategoryy').append('<option value="' + d.name + '">' + d.name + '</option>');
+                      $('#ssubcategory').append('<option data-icon="glyphicon-wrench" value="' + d.name + '">' + d.name + '</option>');
+                      $('#ssubcategoryy').append('<option data-icon="glyphicon-wrench" value="' + d.name + '">' + d.name + '</option>');
                   });
                   $('.selectpicker').selectpicker('refresh');
               }
@@ -481,8 +481,8 @@ script(type='text/javascript').
       
     });
 
-    var $cat = $(".cat"),
-        $subcat = $(".subcat");
+    var $cate = $(".cat"),
+        $subcate = $(".subcat");
     
     $cat.on("change",function(){
         var _rel = $(this).find(":selected").val();        
@@ -494,7 +494,7 @@ script(type='text/javascript').
                   // Parse the returned json data
                   //var opts = $.parseJSON(data);
                   
-                  $subcat.empty();
+                  $subcate.empty();
                   $.each(data, function(i, d) {
                       // You will need to alter the below to get the right values from your json object.  Guessing that d.id / d.modelName are columns in your carModels data
                       //console.log(d.name);

@@ -450,7 +450,12 @@ router.get('/login', function(req, res){
 });
 
 router.get('/register', function(req, res){
-  res.render('user/register', {title: "Login"});
+  var form = {
+        nameholder: '',
+        phoneholder: '',
+        emailholder: ''
+    };
+  res.render('user/register', {title: "Login",form: form});
 });
 
 router.get('/welcome', function(req, res){

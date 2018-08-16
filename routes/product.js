@@ -176,15 +176,18 @@ router.post('/create',role.auth, cpUpload, function(req, res){
 //CART FUNCTIONS HERE //
 
 router.get('/cart',function(req, res){
-  if(req.session.cart){
-    var total = 0;
-    req.session.cart.forEach(function(i,index){
-      total += i.count * i.price;
-    });
-    res.render('product/cart',{cart: req.session.cart, total: total});
-  }else{
-    res.render('product/cart',{cart: []});
-  }
+  var categories = Category.find({group:'shopping'});
+  Promise.all([categories]).then(values => {
+    if(req.session.cart){
+      var total = 0;
+      req.session.cart.forEach(function(i,index){
+        total += i.count * i.price;
+      });
+      res.render('product/cart',{cart: req.session.cart, total: total, categories: values[0]});
+    }else{
+      res.render('product/cart',{cart: [], categories: values[0]});
+    }
+  });
 });
 
 router.get('/shipping',function(req, res){

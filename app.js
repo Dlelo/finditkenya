@@ -209,8 +209,8 @@ app.post('/register',
   [
   check('names', 'Full name can not be empty')
     .exists(),
-  check('phone', 'Phone should have 10 characters')
-    .isLength({ min: 10, max: 10 }),
+  check('phone', 'Phone should have 10 characters e.g. (0700123123 or +254700123123)')
+    .isLength({ min: 10, max: 13 }),
   check('email')
     .isEmail().withMessage('must be an email')
     .trim()
@@ -233,8 +233,13 @@ app.post('/register',
     // Get the validation result whenever you want; see the Validation Result API for all options!
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
+      var form = {
+            nameholder: req.body.names,
+            phoneholder: req.body.username,
+            emailholder: req.body.email
+        };
       console.log(errors.mapped());
-      res.render('user/register', { validationerrors: errors.mapped() });
+      res.render('user/register', { validationerrors: errors.mapped(), form: form });
     }else{
       var names = req.body.names;
       var phone = req.body.phone;

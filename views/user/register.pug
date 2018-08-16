@@ -26,11 +26,11 @@ block content
             | Or     
          form(method="post", action="/register")
           .form-group
-            input#names.form-control-form(type='text', placeholder='Full Name', name='names')
+            input#names.form-control-form(type='text', placeholder='Full Name', name='names',value=form.nameholder)
           .form-group
-            input#email.form-control-form(type='email', placeholder='Email', name='email')
+            input#email.form-control-form(type='email', placeholder='Email', name='email',value=form.emailholder)
           .form-group
-            input#phone.form-control-form(type='text', placeholder='Phone', name='phone')
+            input#phone.form-control-form(type='text', placeholder='Phone', name='phone', value=form.phoneholder)
           .form-group
             input#password.form-control-form(type='password', placeholder='Password', name='password')
           .form-group

@@ -48,12 +48,19 @@ block content
                         | Deals of the Day
                       img.card-img-top.shopping-home-img(src="/img/airfreshener.png" alt="Card image" style="width:100%")
                     .card-text
-                      .price-old  KES 219
-                        span
-                          |  KES 198
+                      .price-old.strike
                         small
-                          a(href="#")
-                            | See More deals
+                          | Was  
+                          span
+                            |  KES 301
+                      .price-new
+                        small
+                          | Now  
+                          span.findit-red
+                            |  KES 287
+                      small
+                        a(href="#")
+                          | See More deals
                 
              .col-md-3.py-2
                 .card.h-100.shopping-card-margin
@@ -78,7 +85,130 @@ block content
                       small
                         a(href="#")
                           | Shop Here
-  
+         .section.general-best-sellers
+            h5.agile-title.h-order-category.text-left
+              | Today's top deals
+              span 
+                small
+                  a(href="#")
+                    | see More deals
+            row
+              .owl-carousel.owl-theme
+                .item.py-2(style="border:none")
+                   .card.h-100(style="border:none !important")
+                      img.card-img-top.w-100.product-img-home(src="/img/cups.jpeg" alt="1 slide" style="width: 250px !important; height: 250px !important;")
+                      .card-text
+                        .price-old.findit-blue.strike
+                          small Was  
+                            span KES 301
+                        .price-new.findit-red
+                          small Now  
+                            span KES 287
+                        
+                .item.py-2(style="border:none")
+                   .card.h-100(style="border:none !important")
+                      img.card-img-top.w-100.product-img-home(src="/img/dress.jpg" alt="1 slide" style="width: 250px !important; height: 250px !important;")
+                      .card-text
+                        .price-old.findit-blue.strike
+                          small Was  
+                            span KES 301
+                        .price-new.findit-red
+                          small Now  
+                            span KES 287
+                .item.py-2(style="border:none")
+                   .card.h-100(style="border:none !important")
+                      img.card-img-top.w-100.product-img-home(src="/img/omo.jpg" alt="1 slide" style="width: 250px !important; height: 250px !important;")
+                      .card-text
+                        .price-old.findit-blue.strike
+                          small Was  
+                            span KES 301
+                        .price-new.findit-red
+                          small Now  
+                            span KES 287
+                .item.py-2(style="border:none")
+                   .card.h-100(style="border:none !important")
+                      img.card-img-top.w-100.product-img-home(src="/img/sandals.jpg" alt="1 slide" style="width: 250px !important; height: 250px !important;")
+                      .card-text
+                        .price-old.findit-blue.strike
+                          small Was  
+                            span KES 301
+                        .price-new.findit-red
+                          small Now  
+                            span KES 287
+                .item.py-2(style="border:none")
+                   .card.h-100(style="border:none !important")
+                      img.card-img-top.w-100.product-img-home(src="/img/tcltv.jpg" alt="1 slide" style="width: 250px !important; height: 250px !important;")
+                      .card-text
+                        .price-old.findit-blue.strike
+                          small Was  
+                            span KES 301
+                        .price-new.findit-red
+                          small Now  
+                            span KES 287
+                .item.py-2(style="border:none")
+                   .card.h-100(style="border:none !important")
+                      img.card-img-top.w-100.product-img-home(src="/img/speaker.jpg" alt="1 slide" style="width: 250px !important; height: 250px !important;")
+                      .card-text
+                        .price-old.findit-blue.strike
+                          small Was  
+                            span KES 301
+                        .price-new.findit-red
+                          small Now  
+                            span KES 287
+         .section.shop-now
+            each category,i in categories
+              if(i<1)
+                h5(style="margin:1rem;")
+                    =category.name      
+                    span
+                      small
+                        a(href="#")
+                          |     Shop Now
+
+                .row
+                  .col-md-3.py-2
+                    .card.h-100(style="border:none !important")
+                      .card-body(style="padding:0px; !important")
+                          .card-text
+                            ul
+                              each subcat in category.subcategories
+                                li
+                                  .findit-blue.text-capitalize
+                                      strong
+                                        =subcat.name
+                                  ul.nav.flex-column
+                                        each minicat in subcat.minicategories
+                                          li.nav-item
+                                            a.nav-link(href="#")
+                                              small.description-cat
+                                                  strong
+                                                    =minicat.name
+                  .col-md-3.py-2
+                    .card.h-100(style="border:none !important")
+                      .card-body(style="padding:0px; !important")
+                          img.card-img-top.shopping-home-img(src="/img/airfreshener.png" alt="Card image" style="width:100%")
+                          .card-text
+                            small
+                              a(href="#")
+                                | Shop Now
+                    
+                  .col-md-3.py-2
+                    .card.h-100(style="border:none !important")
+                      .card-body(style="padding:0px; !important")
+                          img.card-img-top.shopping-home-img(src="/img/royco.png" alt="Card image" style="width:100%")
+                          .card-text
+                            small
+                              a(href="#")
+                                | Shop Now
+                  .col-md-3.py-2
+                    .card.h-100(style="border:none !important")
+                      .card-body(style="padding:0px; !important")
+                          img.card-img-top.shopping-home-img(src="/img/royco.png" alt="Card image" style="width:100%")
+                          .card-text
+                            small
+                              a(href="#")
+                                | Shop Now                   
+                            
          .section.general-best-sellers
             h5.agile-title.h-order-category.text-left
               | Best Sellers Today
@@ -140,43 +270,7 @@ block content
                             small.text-muted
                               | Last updated 3 mins ago
            
-         .section.shop-now
-            h5(style="margin:1rem;")
-                | Favourites
-            .row
-              .col-md-3.py-2
-                .card.h-100(style="border:none !important")
-                  .card-body(style="padding:0px; !important")
-                      img.card-img-top.shopping-home-img(src="/img/blueband.jpg" alt="Card image" style="width:100%")
-                      .card-text
-                        small
-                          a(href="#")
-                            | Shop Now
-              .col-md-3.py-2
-                .card.h-100(style="border:none !important")
-                  .card-body(style="padding:0px; !important")
-                      img.card-img-top.shopping-home-img(src="/img/airfreshener.png" alt="Card image" style="width:100%")
-                      .card-text
-                        small
-                          a(href="#")
-                            | Shop Now
-                
-              .col-md-3.py-2
-                .card.h-100(style="border:none !important")
-                  .card-body(style="padding:0px; !important")
-                      img.card-img-top.shopping-home-img(src="/img/royco.png" alt="Card image" style="width:100%")
-                      .card-text
-                        small
-                          a(href="#")
-                            | Shop Now
-              .col-md-3.py-2
-                .card.h-100(style="border:none !important")
-                  .card-body(style="padding:0px; !important")
-                      img.card-img-top.shopping-home-img(src="/img/royco.png" alt="Card image" style="width:100%")
-                      .card-text
-                        small
-                          a(href="#")
-                            | Shop Now
+         
                
 
     // script to show quick look on mouseover

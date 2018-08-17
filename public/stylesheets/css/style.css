@@ -4403,3 +4403,6 @@ box-shadow: 2px 3px 5px 0px rgba(204,204,204,1);
 .shopping-home-img{
 padding: 1rem;
 }
+.nav-tabs {
+    margin-bottom: 1em;
+}

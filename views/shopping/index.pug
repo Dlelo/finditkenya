@@ -183,7 +183,20 @@ block content
                                               small.description-cat
                                                   strong
                                                     =minicat.name
-                  .col-md-3.py-2
+                  .col-md-9
+                    div.bs-example.bs-example-tabs(role="tabpanel" data-example-id="togglable-tabs")
+                       ul(id="myTab" class="nav nav-tabs" role="tablist")
+                          li(role="presentation" class="active")
+                              a(href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home")
+                                | Microcontrollers
+                          li(role="presentation")
+                              a(href="#audio" role="tab" id="audio-tab" data-toggle="tab" aria-controls="audio")
+                                | Electronic Components
+                          li(role="presentation")
+                              a(href="#video" role="tab" id="video-tab" data-toggle="tab" aria-controls="video")
+                                | 3D Printing
+                    
+                  //.col-md-3.py-2
                     .card.h-100(style="border:none !important")
                       .card-body(style="padding:0px; !important")
                           img.card-img-top.shopping-home-img(src="/img/airfreshener.png" alt="Card image" style="width:100%")
@@ -192,7 +205,7 @@ block content
                               a(href="#")
                                 | Shop Now
                     
-                  .col-md-3.py-2
+                  //.col-md-3.py-2
                     .card.h-100(style="border:none !important")
                       .card-body(style="padding:0px; !important")
                           img.card-img-top.shopping-home-img(src="/img/royco.png" alt="Card image" style="width:100%")
@@ -200,7 +213,7 @@ block content
                             small
                               a(href="#")
                                 | Shop Now
-                  .col-md-3.py-2
+                  //.col-md-3.py-2
                     .card.h-100(style="border:none !important")
                       .card-body(style="padding:0px; !important")
                           img.card-img-top.shopping-home-img(src="/img/royco.png" alt="Card image" style="width:100%")

@@ -28,6 +28,9 @@ html(lang='en')
     script(src="/javascripts/jquery-3.3.1.min.js") 
     script(src='/javascripts/jquery.easy-autocomplete.min.js')
     
+    //owl-carousel css
+    link(href="/stylesheets/css/owl.theme.default.min.css" rel="stylesheet")
+    link(href="/stylesheets/css/owl.carousel.min.css" rel="stylesheet")
 
 
     link(rel='stylesheet', href='/stylesheets/lightbox.css')
@@ -105,8 +108,7 @@ body
                               ul
                                 each subcat in category.subcategories
                                   li
-                                    span.text-uppercase
-                                      small.findit-blue
+                                    .findit-blue.text-capitalize
                                         strong
                                           =subcat.name
                                     ul.nav.flex-column
@@ -280,6 +282,7 @@ body
 <!--bootstrap 4 javascript-->
 script(src='/javascripts/bootstrapjs/bootstrap-select-dropdown.min.js')
 script(src='/javascripts/bootstrapjs/BsMultiSelect.min.js')
+script(src='/javascripts/bootstrapjs/owl.carousel.min.js')
 
 
 script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js")

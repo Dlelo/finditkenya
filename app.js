@@ -210,7 +210,7 @@ app.post('/register',
   check('names', 'Full name can not be empty')
     .exists(),
   check('phone', 'Phone should have 10 characters e.g. (0700123123 or +254700123123)')
-    .isLength({ min: 10, max: 13 }),
+    .isLength({ min: 3, max: 13 }),
   check('email')
     .isEmail().withMessage('must be an email')
     .trim()

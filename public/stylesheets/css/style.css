@@ -4406,19 +4406,37 @@ padding: 1rem;
 .nav-tabs {
     margin-bottom: 1em;
 }
-.btn {
-  border: none;
-  outline: none;
-  padding: 12px 16px;
-  background-color: #f1f1f1;
-  cursor: pointer;
+.banner-featured .scale img::before{
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    bottom: 15px;
+    right: 15px;
+    z-index: 9;
+    border-top: 1px solid rgba(255, 255, 255, 0.8);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+    transform: scale(0, 1);
 }
-
-.btn:hover {
-  background-color: #ddd;
+.banner-featured .scale img::after{
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    bottom: 15px;
+    right: 15px;
+    z-index: 9;
+    border-top: 1px solid rgba(255, 255, 255, 0.8);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+    transform: scale(0, 1);
 }
-
-.btn.active {
-  background-color: #666;
-  color: white;
+.banner-featured .item:after{
+    position: absolute;
+    right: -5px;
+    top: -5px;
+    background: url(../img/featurededited.png) no-repeat;
+    width: 75px;
+    height: 75px;
+    z-index: 100;
+    content: "";
 }

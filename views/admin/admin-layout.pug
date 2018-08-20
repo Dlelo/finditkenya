@@ -227,13 +227,14 @@ html(lang='en')
                       span.fa.fa-database.text-default.glyph
                       strong
                         |  Add Business
-                  li(style="float: left;")
-                    a(href='/product/new')
-                      span.fa.fa-suitcase.text-default.glyph
-                      strong
-                        |  Add Product
+                  
                 
                   if(user.role == 1)
+                    li(style="float: left;")
+                      a(href='/product/new')
+                        span.fa.fa-suitcase.text-default.glyph
+                        strong
+                          |  Add Product
                     li(style="float: left;")
                       a(href='/shopping/newcategory')
                         span.fa.fa-plus-square.text-default.glyph

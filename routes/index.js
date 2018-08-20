@@ -271,7 +271,7 @@ router.get('/category/:cat',function(req, res, next){
         { "$unwind": "$subcategories" },
       { "$sort": { "subcategories.name": 1 } }
     ]);
-    var categories = Category.find({approved: true}).sort([['order', 1]]);
+    var categories = Category.find({approved: true,group: 'general'}).sort([['order', 1]]);
     Promise.all([businesses, features, categories]).then(values => {
       //console.log(values[1]);
       res.render('business/list', {
@@ -296,7 +296,7 @@ router.get('/category/:cat',function(req, res, next){
       { "$unwind": "$subcategories" },
       { "$sort": { "subcategories.name": 1 } }
     ]);
-    var categories = Category.find({approved: true}).sort([['order', 1]]);
+    var categories = Category.find({approved: true,group: 'general'}).sort([['order', 1]]);
     Promise.all([businesses, features, categories]).then(values => {
       //console.log(values[1]);
       res.render('business/list', {
@@ -316,11 +316,11 @@ router.get('/subcategory/:name', function(req, res, next){
   .sort([['paid', -1],['datepaid', 1],['slug', 1]]);
   //var features = Category.findOne({ subcategories: {$elemMatch: { name: req.params.name}} });
   var features = Category.aggregate([
-    { $match: { subcategories: {$elemMatch: { name: req.params.name}} } },
+    { $match: { subcategories: {$elemMatch: { name: req.params.name}},group: 'general' } },
     { "$unwind": "$subcategories" },
     { "$sort": { "subcategories.name": 1 } }
   ]);
-  var categories = Category.find({approved: true}).sort([['order', 1]]);
+  var categories = Category.find({approved: true,group: 'general'}).sort([['order', 1]]);
   Promise.all([businesses,features, categories]).then(values => {
     console.log(values[1]);
     res.render('business/list', {
@@ -338,7 +338,7 @@ router.get('/nearby/:category/', function(req, res, next){
   //var features = Category.find({ subcategories: {$elemMatch: { name: req.params.category}} });
 
   var features = Category.aggregate([
-    { $match: { name: req.params.category } },
+    { $match: { name: req.params.category ,group: 'general'} },
       { "$unwind": "$subcategories" },
     { "$sort": { "subcategories.name": 1 } }
   ]);
@@ -355,7 +355,7 @@ router.get('/nearby/:category/', function(req, res, next){
 
 router.get('/nearby/:category/:name', function(req, res, next){
   var businesses = Business.find({subcategory: req.params.category, features: req.params.name});
-  var features = Category.find({ subcategories: {$elemMatch: { name: req.params.name}} });
+  var features = Category.find({ subcategories: {$elemMatch: { name: req.params.name}},group: 'general' });
   Promise.all([businesses, features]).then(values => {
     res.render('business/nearby', {
         title: req.params.cat,

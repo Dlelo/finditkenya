@@ -447,7 +447,24 @@ script(type='text/javascript').
   // document ready  
   });
 
-  
+script(type='text/javascript').
+    $(function(){
+      var count = 0;
+      
+      //alert("cart count: "+count );
+      $(document).on('change', '.editcart', function(event) {
+        console.log(event.target.value);        
+        $.ajax({
+            type: "GET",
+            url: "/product/editcart/"+event.target.id+"/"+event.target.value,
+            success: function(res){
+              console.log(res);
+              $('#cartcount').text(res+')');
+              location.reload(true);
+            }
+        });
+      });
+    })  
 // Script to populate dependable dropdown on add business
 script(type='text/javascript').
  

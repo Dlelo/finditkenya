@@ -2332,8 +2332,8 @@ nav {
 	border-bottom:1px solid #eee;
 }
 .parallax-content-list{
-	margin-top: 7vh;
-	border-top: 1px solid #eee;
+	margin-top: 6vh;
+	
 }
 .main-banner{
 	background-size: cover;
@@ -2519,9 +2519,7 @@ padding-right:1px;
 	  background-position: 11px 12px !important;
       padding: 0px 1px 0px 35px !important;
 	}
-	.container-margin-top {
-    margin-top: 13vh !important;
-      }
+	
 	.img-logo {
     width: 10rem !important;
     height: 2rem !important;
@@ -2595,7 +2593,7 @@ li.list-hor{
 
 @media screen and (max-width: 414px) {
 	.container-margin-top {
-    margin-top: 13vh !important;
+    margin-top: 3vh !important;
      }
 	.img-logo {
 	  width: 10rem !important;
@@ -2620,7 +2618,7 @@ li.list-hor{
 
 	.coupons-img {
 	width: 100vw !important;
-	height: 80vh !important;
+	height: 40vh !important;
      }
 	.btn-coupon {
 	margin-top: 8vh !important;
@@ -2665,9 +2663,7 @@ li.list-hor{
 
 
 @media screen and (max-width: 384px) {
-	.container-margin-top {
-    margin-top: 13vh !important;
-       }
+	
 	.img-logo {
 	  width: 10rem !important;
       height: 1rem !important;
@@ -2731,9 +2727,10 @@ li.list-hor{
 
 
 @media screen and (max-width: 375px) {
-	.container-margin-top {
-    margin-top: 13vh !important;
-   }
+	.parallax-content-list {
+    margin-top: 6vh;
+     }
+	
 	.img-logo {
 	    width: 10rem !important;
         height: 1rem !important;
@@ -2800,7 +2797,7 @@ li.list-hor{
 
 @media screen and (max-width: 320px) {
 	.container-margin-top {
-    margin-top: 13vh !important;
+    margin-top: 4vh !important;
    }
 	.img-logo {
 	  width: 10rem !important;
@@ -3565,7 +3562,7 @@ fieldset, label {
     border-radius: 5px;
 }
 .container-fluidpadding{
-	padding-left: 15px;
+	padding-left: 2px;
 	padding-right:5px;
 }
 .category-zindex{

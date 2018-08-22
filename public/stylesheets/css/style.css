@@ -2406,7 +2406,7 @@ padding-right:1px;
 }
 .coupon-title{
 	color:#c00000;
-	text-emphasis: bold;
+	
 }
 .login-form {
 		width: 385px;
@@ -3564,6 +3564,7 @@ fieldset, label {
 .container-fluidpadding{
 	padding-left: 2px;
 	padding-right:5px;
+	padding-top: 3rem;
 }
 .category-zindex{
   z-index: 100;

@@ -2,39 +2,40 @@ extends layout-new
 block content
  div.container-fluid
   div#home.banner
-    div.row.justify-content-end.my-row    
-      div.col-md-4.col-sm-8.col-xm-8.my-col.text-right
-        div.banner-text-top
-          nav.navbar.navbar-expand-sm.addbusiness.nav-bar-addbusiness.navbar-nav.ml-lg-auto.text-center
-            ul.navbar-nav
-              li.nav-item
-                a.nav-link(href='/business/newpackage')
-                  span.fas.fa-database.user-fav
-                  strong
-                    |  Add Business
-              li.nav-item
-                a.nav-link(href='/add-agent')
-                  span.fas.fa-user-tie.user-fav
-                  strong
-                    |  Apply as an Agent
-    div.row.my-row.justify-content-start
-      div.col-md-8.col-sm-8.col-xm-8.my-col
-        div.banner-text#hideSearch
-          form(method='get', action='/search')
-            div.input-group
-              span.input-group-addon#basic-addon1.finditbutton.input-group-addon.text-center
-               h5
-                |  Find
-              input#search2.form-control.form-control-lg(type="text" placeholder="Restaurants, Holidays, Businesses, Lawyers, Doctors..." ,name='search', autofocus)
-          //.nav.listhome-nav
-            each category,i in categories
-              ul
-                if i <4
-                  a(href="/category/"+category.name)
-                    li.listItems-home
-                      i.fas.fa-1x(aria-hidden='true', class=category.icon)
-                      strong   
-                        =category.name 
+    a#link(href="#")
+        div.row.justify-content-end.my-row    
+          div.col-md-4.col-sm-8.col-xm-8.my-col.text-right
+            div.banner-text-top
+              nav.navbar.navbar-expand-sm.addbusiness.nav-bar-addbusiness.navbar-nav.ml-lg-auto.text-center
+                ul.navbar-nav
+                  li.nav-item
+                    a.nav-link(href='/business/newpackage')
+                      span.fas.fa-database.user-fav
+                      strong
+                        |  Add Business
+                  li.nav-item
+                    a.nav-link(href='/add-agent')
+                      span.fas.fa-user-tie.user-fav
+                      strong
+                        |  Apply as an Agent
+        div.row.my-row.justify-content-start
+          div.col-md-8.col-sm-8.col-xm-8.my-col
+            div.banner-text#hideSearch
+              form(method='get', action='/search')
+                div.input-group
+                  span.input-group-addon#basic-addon1.finditbutton.input-group-addon.text-center
+                    h5
+                      |  Find
+                  input#search2.form-control.form-control-lg(type="text" placeholder="Restaurants, Holidays, Businesses, Lawyers, Doctors..." ,name='search', autofocus)
+            //.nav.listhome-nav
+              each category,i in categories
+                ul
+                  if i <4
+                    a(href="/category/"+category.name)
+                      li.listItems-home
+                        i.fas.fa-1x(aria-hidden='true', class=category.icon)
+                        strong   
+                          =category.name 
 
   //search by category
   //center
@@ -260,16 +261,16 @@ block content
         var images = [['best-banner.jpg','/category/Restaurants'], ['doctor.jpg','/category/Medical'],['office.jpg','/category/Office'], ['find.jpeg','/category/Others'],['furnitures.jpg','/biz/Furniture-palace-international-kenya-ltd'],['velvex-chan.png','/biz/Chandaria-Industries-Ltd'],['ibis.jpg','/biz/Ibis-Styles-Hotel-Nairobi'], ['sajceramic.jpg','/biz/Saj-Ceramics-Ltd' ]];
         var randomimagegenerator = images[Math.floor(Math.random() * images.length)] 
         $('.banner').css({'background-image': 'url(banner-img/' + randomimagegenerator[0] +')'});
-        var idHome = document.getElementById("home");
-        var aTag = document.createElement('a');
-        var aTagWithLink = $(aTag).attr('href',randomimagegenerator[1]);
+        //var idHome = document.getElementById("home");
+        //var aTag = document.createElement('a');
+        var aTagWithLink = $('#link').attr('href',randomimagegenerator[1]);
 
-        console.log($(aTag).attr('href',randomimagegenerator[1]));
+        console.log(aTagWithLink);
        
         //document.body.insertBefore(aTagWithLink, idHome);
       
         console.log(randomimagegenerator[1]);
-        $(idHome).append(aTagWithLink);
+        
         
       });
     //animation

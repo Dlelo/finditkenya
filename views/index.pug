@@ -248,10 +248,29 @@ block content
               | © 2018 Find it Kenya. All rights reserved | FinditKe
   
     //script to change background image on refresh
-    script(type="text/javascript").
+     script(type="text/javascript").
       $(function() {
         var images = ['best-banner.jpg', 'doctor.jpg','office.jpg', 'find.jpeg','furnitures.jpg','velvex-chan.png','ibis.jpg'];
         $('.banner').css({'background-image': 'url(banner-img/' + images[Math.floor(Math.random() * images.length)] + ')'});
+      });
+
+    //script to change background image on refresh
+    script(type="text/javascript").
+      $(function() {
+        var images = [['best-banner.jpg','/category/Restaurants'], ['doctor.jpg','/category/Medical'],['office.jpg','/category/Office'], ['find.jpeg','/category/Others'],['furnitures.jpg','/biz/Furniture-palace-international-kenya-ltd'],['velvex-chan.png','/biz/Chandaria-Industries-Ltd'],['ibis.jpg','/biz/Ibis-Styles-Hotel-Nairobi'], ['sajceramic.jpg','/biz/Saj-Ceramics-Ltd' ]];
+        var randomimagegenerator = images[Math.floor(Math.random() * images.length)] 
+        $('.banner').css({'background-image': 'url(banner-img/' + randomimagegenerator[0] +')'});
+        var idHome = document.getElementById("home");
+        var aTag = document.createElement('a');
+        var aTagWithLink = $(aTag).attr('href',randomimagegenerator[1]);
+
+        console.log($(aTag).attr('href',randomimagegenerator[1]));
+       
+        //document.body.insertBefore(aTagWithLink, idHome);
+      
+        console.log(randomimagegenerator[1]);
+        $(idHome).append(aTagWithLink);
+        
       });
     //animation
     

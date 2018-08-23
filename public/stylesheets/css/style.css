@@ -4455,3 +4455,43 @@ padding: 1rem;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
+.aboutsection{
+	background-image: url("/img/locator2.jpg");
+	background-repeat:no-repeat;
+    background-size:auto;
+}
+.banner-des {
+    bottom: 10px;
+    padding-left: 5%;
+    padding-top: 2%;
+    top: auto;
+	width: 100%;
+}
+.titl {
+    background: #c00000 none repeat scroll 0 0;
+	display: inline-block;
+	color:#fff;
+    font-size: 29px;
+    min-width: 250px;
+    padding: 10px 50px 10px 10px;
+}
+.details {
+    max-height: 80% !important;
+    width: 95% !important;
+	left: 2.5%;
+	background: rgba(241, 241, 241, 0.5);
+	padding: 20px;
+    position: relative;
+
+}
+.about-content{
+	width: 98% !important;
+	margin: 20px 0 10px;
+}
+.about-header-category {
+    margin-top: 1px;
+    margin-bottom: 4px;
+    margin-left: 1px;
+    text-align: left;
+}
+         

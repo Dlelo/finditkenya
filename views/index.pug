@@ -237,10 +237,86 @@ block content
                 .div.col-md-12.col-lg-12.col-sm-12.col-xs-12.center-left
                   button.btn.btn-outline-primary(type="button" )
                     =coupon.tagline 
+  //about
+  div.container-fluid
+    #about
+      section.aboutsection
+        div.banner-des
+          .titl
+            | About
+          div.details
+            div.about-content
+              div.row 
+                .col-md-6
+                  h3.agile-title
+                    | Your Business, Listed
+                  div
+                    | Partner with Find It by adding your businesss so
+                    br
+                    | that you reach new Customers and make more money, 
+                    br
+                    | grow your business
+                  div
+                    a(href='/business/newpackage')
+                      | Get Started
+                      span
+                        i(class="arrow right")
+                .col-md-6
+                  h3.agile-title
+                    | Find Business; Get deals
+                  div
+                    | Search and find Lawyers, Doctors, Counsellors, Consultants
+                    br
+                    | Search hotels, restaurants, guest house 
+                    br
+                    | Search and Find anything you want
+                  div
+                    a(href="/coupons")
+                      | Get Started
+                      span
+                        i(class="arrow right")
+      section
+        div.row 
+          .col-md-4(style="padding: 1rem 3rem 1rem 3rem;")
+              .card-body
+                h4.card-title.agile-title.about-header-category.text-center
+                  | Add Business
+                .card-text
+                  | Add your business on Find It and reach many users
+                
+          
+          .col-md-4(style="padding: 1rem 3rem 1rem 3rem;")
+              .card-body
+                h4.card-title.agile-title.about-header-category.text-center
+                  | View Deals
+                .card-text
+                  | Save money, find what you wanted as less cost on available deals
+          .col-md-4(style="padding: 1rem 3rem 1rem 3rem;")
+              .card-body
+                h4.card-title.agile-title.about-header-category.text-center
+                  | Find Everything
+                .card-text
+                  | Find restaurant, find hospital, find school, find lawyer, find engineer, find electrical equipments
+             
+         
+        
   //footer
   div.container-fluid
-    .col-md-12.col-sm-12.text-center.footer-style
-            .terms-policy.footer-text
+    div.row.text-center.footer-style
+      .col-md-4
+        .terms-policy.footer-text
+              ul
+                li
+                  a.footer-text(href='https://www.instagram.com/finditkenya/?hl=en', target='_parent', class="fa-layers fa-2x")
+                    i.list-social.fab.fa-facebook-f
+                li
+                  a.footer-text(href='https://twitter.com/findit254?lang=en', target='_parent', class="fa-layers fa-2x")
+                    i.list-social.fab.fa-twitter 
+                li
+                  a.footer-text(href='https://www.instagram.com/finditkenya/?hl=en', target='_parent', class="fa-layers fa-2x")
+                    i.list-social.fab.fa-instagram
+      .col-md-4
+         .terms-policy.footer-text
               ul
                 li
                   a.footer-text(href='/terms-and-conditions', target='_parent')
@@ -248,8 +324,22 @@ block content
                 li
                   a.footer-text(href='/privacy-policy', target='_parent')
                     |  Privacy Policy
-            p
-              | © 2018 Find it Kenya. All rights reserved | FinditKe
+      .col-md-4
+        .terms-policy.footer-text
+              ul
+                li
+                  a.footer-text(href="/coupons", target='_parent')
+                    |  View Deals
+                li
+                  a.footer-text(href='/business/newpackage', target='_parent')
+                    |  Pricing
+                li
+                  a.footer-text(href='https://lookfindkenya.wordpress.com/', target='_parent')
+                    |  Blog
+                
+    .col-md-12.col-sm-12.text-center.footer-style     
+        p
+          | © 2018 Find it Kenya. All rights reserved | FinditKe
   
     //script to change background image on refresh
      script(type="text/javascript").

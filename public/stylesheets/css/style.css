@@ -4438,3 +4438,20 @@ padding: 1rem;
     z-index: 100;
     content: "";
 }
+.banner-visit-page {
+    align-content: right;
+    max-width: 100%;
+    padding-top: 5vh;
+    padding-left: inherit;
+    padding-right: 3%;
+    box-sizing: border-box;
+}
+.bannerbutton {
+    padding: 10px 12px;
+    line-height: 1;
+    color: #04045a;
+    text-align: center;
+    background-color: #eeeeee47;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}

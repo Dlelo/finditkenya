@@ -505,9 +505,8 @@ script(type='text/javascript').
                   
                   $minicat.empty();
                   $.each(data, function(i, d) {
-                    console.log(d);
-                    $.each(d, function(f, g) {
-                      console.log(g);
+                    $.each(d.minicategories, function(f, g) {
+                      //console.log(g);
                       if (typeof g.name !== 'undefined'){                        
                         $('#minicat').append('<option value="' + g.name + '">' + g.name + '</option>');
                       }

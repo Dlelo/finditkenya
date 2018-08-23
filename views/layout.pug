@@ -482,9 +482,10 @@ script(type='text/javascript').
     });
 
     var $cate = $(".cat"),
-        $subcate = $(".subcat");
+        $subcate = $(".subcat"),
+        $minicat = $(".minicat");
     
-    $cat.on("change",function(){
+    $cate.on("change",function(){
         var _rel = $(this).find(":selected").val();        
 
         $.ajax({
@@ -499,6 +500,16 @@ script(type='text/javascript').
                       // You will need to alter the below to get the right values from your json object.  Guessing that d.id / d.modelName are columns in your carModels data
                       //console.log(d.name);
                       $('#subcat').append('<option value="' + d.name + '">' + d.name + '</option>');
+                  });
+                  $('.selectpicker').selectpicker('refresh');
+                  
+                  $minicat.empty();
+                  $.each(data, function(i, d) {
+                    $.each(d, function(f, g) {
+                      if (typeof g.name !== 'undefined'){                        
+                        $('#minicat').append('<option value="' + g.name + '">' + g.name + '</option>');
+                      }
+                    });
                   });
                   $('.selectpicker').selectpicker('refresh');
               }

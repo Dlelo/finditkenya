@@ -41,8 +41,9 @@ router.get('/',function(req, res){
   //console.log(req.session.cart);
   var categories = Category.find({group:'shopping'});
   var products = Product.find({
-  });
+  }).populate('category');
 	Promise.all([products, categories]).then(values => {
+    console.log(values[0]);
     res.render('shopping/index',{title: "Products on Findit", products: values[0],categories: values[1]});
   });
 });

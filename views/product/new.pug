@@ -33,8 +33,12 @@ block content
                   option(data-icon='glyphicon-gift', value=cat.id) #{cat.name}
           .form-group
             .col-sm-6
-              select#subcat.selectpicker.form-control.subcat(name='subcat',data-live-search="true")
+              select#subcat.selectpicker.form-control.subcat(name='subcat',data-live-search="true",multiple)
                 option(data-icon='glyphicon-wrench', value='') -- Select Sub-Category --
+          .form-group
+            .col-sm-6
+              select#minicat.selectpicker.form-control.subcat(name='minicat',data-live-search="true",multiple)
+                option(data-icon='glyphicon-wrench', value='') -- Select Mini-Category --
           .form-group
             .col-sm-6
               input.form-control-form(name='oldprice',type='text', style ="margin-top:12px;",placeholder="Old Price")

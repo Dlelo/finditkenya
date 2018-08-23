@@ -22,7 +22,8 @@ const productSchema = new Schema({
 	oldprice: String,
   quantity: String,
 	category: { type: Schema.Types.ObjectId, ref: 'Category' },
-	subcategory: String,
+	subcategory: Array,
+	minicategory: Array,
 	vat: Boolean,
   reviews: [{
     rate: String,

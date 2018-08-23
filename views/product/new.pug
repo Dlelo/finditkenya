@@ -31,10 +31,18 @@ block content
                 option(data-icon='glyphicon-wrench', value='') -- Select Category --
                 each cat in categories
                   option(data-icon='glyphicon-gift', value=cat.id) #{cat.name}
-          .form-group
-            .col-sm-6
-              select#subcat.selectpicker.form-control.subcat(name='subcat',data-live-search="true")
+          .form-group.input-group.col-sm-6
+            .col-sm-12
+              | Sub Category
+            .col-sm-12
+              select#subcat.selectpicker.form-control.subcat(name='subcat',data-live-search="true",multiple)
                 option(data-icon='glyphicon-wrench', value='') -- Select Sub-Category --
+          .form-group.input-group.col-sm-6
+            .col-sm-12
+              | Mini Category
+            .col-sm-12
+              select#minicat.selectpicker.form-control.subcat(name='minicat',data-live-search="true",multiple)
+                option(data-icon='glyphicon-wrench', value='') -- Select Mini-Category --
           .form-group
             .col-sm-6
               input.form-control-form(name='oldprice',type='text', style ="margin-top:12px;",placeholder="Old Price")

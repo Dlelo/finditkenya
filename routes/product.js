@@ -191,7 +191,7 @@ router.get('/cart',function(req, res){
   });
 });
 
-router.get('/feature_product/:id',function(req, res){
+router.get('/feature_product/:bizid/:id',function(req, res){
   Product.findById(req.params.id)
     .then(function(data){
       if(data.featured == true){
@@ -208,7 +208,7 @@ router.get('/feature_product/:id',function(req, res){
     });
 });
 
-router.get('/topdeal_product/:id',function(req, res){
+router.get('/topdeal_product/:bizid/:id',function(req, res){
   Product.findById(req.params.id)
     .then(function(data){
       if(data.topdeals == true){

@@ -30,11 +30,11 @@ block content
             .col-md-2
               
             .col-md-4
-              a(href="/product/edit/"+product.id,title='Edit Product')
+              a(href="/product/edit/"+product.bizid+"/"+product.id,title='Edit Product')
                 i.fa.fa-edit(aria-hidden="true",class='col-md-1')
-              a(href="/product/feature_product/"+product.id,title='Feature this Product')
+              a(href="/product/feature_product/"+product.bizid+"/"+product.id,title='Feature this Product')
                 i.fa.fa-bullhorn(aria-hidden="true",class='col-md-1')
-              a(href="/product/topdeal_product/"+product.id,title='Make Top Deal')
+              a(href="/product/topdeal_product/"+product.bizid+"/"+product.id,title='Make Top Deal')
                 i.fa.fa-bell(aria-hidden="true",class='col-md-1')
-              a(href="/product/delete/"+product.id,title='Delete Product')
+              a(href="/product/delete/"+product.bizid+"/"+product.id,title='Delete Product')
                 i.fa.fa-trash(aria-hidden="true",class='col-md-1')

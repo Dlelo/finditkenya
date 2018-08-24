@@ -33,4 +33,9 @@ const productSchema = new Schema({
 	status: Boolean
 });
 
+productSchema.index(
+	{ name: 'text',category: 'text',subcategory: 'text', minicategory: 'text', description: 'text' },
+	{weights: {name: 12, category: 12, subcategory: 6, minicategory: 4, description: 1}}
+);
+
 module.exports = mongoose.model('Product', productSchema);

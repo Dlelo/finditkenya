@@ -40,8 +40,7 @@ var cpUpload = upload.fields([{ name: 'photo', maxCount: 1 }, { name: 'catalog',
 router.get('/',function(req, res){
   //console.log(req.session.cart);
   var categories = Category.find({group:'shopping'});
-  var products = Product.find({
-  });
+  var products = Product.find({$text: {$search: req.query.search}}).limit(50);
   var total = 0;
   if(req.session.cart){
     req.session.cart.forEach(function(i,index){

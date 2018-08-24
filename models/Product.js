@@ -24,6 +24,8 @@ const productSchema = new Schema({
 	category: { type: Schema.Types.ObjectId, ref: 'Category' },
 	subcategory: Array,
 	minicategory: Array,
+	topdeals: Boolean,
+	featured: Boolean,
 	vat: Boolean,
   reviews: [{
     rate: String,

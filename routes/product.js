@@ -191,6 +191,40 @@ router.get('/cart',function(req, res){
   });
 });
 
+router.get('/feature_product/:id',function(req, res){
+  Product.findById(req.params.id)
+    .then(function(data){
+      if(data.featured == true){
+    		data.featured = false;
+    	}else{
+    		data.featured = true;
+    	}
+    	data.save(function(err){
+    		res.redirect('/admin/product/'+req.params.id);
+    	});
+    })
+    .catch(function(err){
+       console.log(err);
+    });
+});
+
+router.get('/topdeal_product/:id',function(req, res){
+  Product.findById(req.params.id)
+    .then(function(data){
+      if(data.topdeals == true){
+    		data.topdeals = false;
+    	}else{
+    		data.topdeals = true;
+    	}
+    	data.save(function(err){
+    		res.redirect('/admin/product/'+req.params.id);
+    	});
+    })
+    .catch(function(err){
+       console.log(err);
+    });
+});
+
 router.get('/shipping',function(req, res){
   var total = 0;
   req.session.cart.forEach(function(i,index){

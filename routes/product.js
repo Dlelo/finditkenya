@@ -52,6 +52,36 @@ router.get('/',function(req, res){
   });
 });
 
+router.get('/featured',function(req, res){
+  //console.log(req.session.cart);
+  var categories = Category.find({group:'shopping'});
+  var products = Product.find({featured: true}).limit(100);
+  var total = 0;
+  if(req.session.cart){
+    req.session.cart.forEach(function(i,index){
+      total += i.count * i.price;
+    });
+  }
+	Promise.all([products, categories]).then(values => {
+    res.render('product/index',{title: "Featured Products on Findit", products: values[0],categories: values[1],cart: req.session.cart,total:total});
+  });
+});
+
+router.get('/topdeals',function(req, res){
+  //console.log(req.session.cart);
+  var categories = Category.find({group:'shopping'});
+  var products = Product.find({topdeals: true}).limit(100);
+  var total = 0;
+  if(req.session.cart){
+    req.session.cart.forEach(function(i,index){
+      total += i.count * i.price;
+    });
+  }
+	Promise.all([products, categories]).then(values => {
+    res.render('product/index',{title: "Featured Products on Findit", products: values[0],categories: values[1],cart: req.session.cart,total:total});
+  });
+});
+
 router.get('/fetchcategory/:name', function(req, res, next){
 	//console.log(req.params.name);
 	Category.findById(req.params.name)

@@ -200,7 +200,7 @@ router.get('/feature_product/:bizid/:id',function(req, res){
     		data.featured = true;
     	}
     	data.save(function(err){
-    		res.redirect('/admin/product/'+req.params.id);
+    		res.redirect('/admin/product/'+req.params.bizid);
     	});
     })
     .catch(function(err){
@@ -217,7 +217,7 @@ router.get('/topdeal_product/:bizid/:id',function(req, res){
     		data.topdeals = true;
     	}
     	data.save(function(err){
-    		res.redirect('/admin/product/'+req.params.id);
+    		res.redirect('/admin/product/'+req.params.bizid);
     	});
     })
     .catch(function(err){

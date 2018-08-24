@@ -28,7 +28,8 @@ block content
                     .findit-red
                       | KES #{product.price}
             .col-md-2
-              
+              | Featured (#{product.featured})
+              | Top Deals (#{product.topdeals})
             .col-md-4
               a(href="/product/edit/"+product.bizid+"/"+product.id,title='Edit Product')
                 i.fa.fa-edit(aria-hidden="true",class='col-md-1')

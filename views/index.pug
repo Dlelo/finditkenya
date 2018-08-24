@@ -243,19 +243,19 @@ block content
       section.aboutsection
         div.banner-des
           .titl
-            | About
+            | About Us
           div.details
             div.about-content
               div.row 
                 .col-md-6
                   h3.agile-title
-                    | List your Business. Be Found
+                    | Who we are
                   div
-                    | Partner with Find It by adding your businesss on Find It
+                    | Findit.ke is Kenya’s first online directory to showcase your products. With access to 1000’s of businesses already signed up we are able to provide updated business information to our users.
                     br
-                    | Reach new Customers and make more money, 
+                    | From Manufacturers to Retailers, Doctors or Dentists, Legal Advisors or Consultants or maybe hotels and Restaurants.   
                     br
-                    | grow your business with Find It
+                    | We have it all.
                   div
                     a(href='/business/newpackage')
                       | Get Started
@@ -263,16 +263,21 @@ block content
                         i(class="arrow right")
                 .col-md-6
                   h3.agile-title
-                    | Find Business. Get deals
+                    | Own a Business?
                   div
-                    | Find Lawyers, Doctors, Counsellors, Consultants
+                    | List your business on Find It today!
                     br
-                    | Find hotels, restaurants, guest house 
+                    | Reach new Customers at the most affordable packages, 
                     br
-                    | Get amazing deals. Save Cash
+                    | Show case your products and publish special offers. 
+                  div
+                    a(href='/business/newpackage')
+                      | Get Started by Listing your business
+                      span
+                        i(class="arrow right")
                   div
                     a(href="/coupons")
-                      | Get Started
+                      | View Available deals
                       span
                         i(class="arrow right")
       section
@@ -280,23 +285,34 @@ block content
           .col-md-4(style="padding: 1rem 3rem 1rem 3rem;")
               .card-body
                 h4.card-title.agile-title.about-header-category
-                  | Add Business
+                  | View Deals
                 .card-text
-                  | Add your business on Find It and reach many users
+                  | Save money, We have over 100’s of offers for you
+                  p
+                    a(href="/coupons")
+                      | View Available deals
+                      span| 
+                        i(class="arrow right") 
                 
           
           .col-md-4(style="padding: 1rem 3rem 1rem 3rem;")
               .card-body
                 h4.card-title.agile-title.about-header-category
-                  | View Deals
+                  | Find Everything
                 .card-text
-                  | Save money, find what you wanted as less cost on available deals
+                  | From Manufacturers to Retailers, Doctors or Dentists, Legal Advisors or Consultants or maybe hotels and Restaurants. We have it all.
+                  p
+                    a(href="#hideSearch")
+                      | Get Started
+                      span| 
+                        i(class="arrow right") 
           .col-md-4(style="padding: 1rem 3rem 1rem 3rem;")
               .card-body
                 h4.card-title.agile-title.about-header-category
-                  | Find Everything
+                  | Shop Products
                 .card-text
-                  | Find restaurant, find hospital, find school, find lawyer, find engineer, find electrical equipments
+                  | Coming Soon...
+
              
          
         
@@ -351,7 +367,7 @@ block content
     //script to change background image on refresh
     script(type="text/javascript").
       $(function() {
-        var images = [['best-banner.jpg','/category/Restaurants'], ['doctor.jpg','/category/Medical'],['office.jpg','/category/Office'], ['find.jpeg','/category/Others'],['furnitures.jpg','/biz/Furniture-palace-international-kenya-ltd'],['velvex-chan.png','/biz/Chandaria-Industries-Ltd'],['ibis.jpg','/biz/Ibis-Styles-Hotel-Nairobi'], ['sajceramic.jpg','/biz/Saj-Ceramics-Ltd' ],['newmatic1.jpg', '/biz/Newmatic-Africa'], ['newmatic2.jpg', '/biz/Newmatic-Africa'], ['newmatic3.jpg', '/biz/Newmatic-Africa']];
+        var images = [['best-banner.jpg','/category/Restaurants'], ['doctor.jpg','/category/Medical'],['office.jpg','/category/Office'], ['find.jpeg','/category/Travel'],['furnitures.jpg','/biz/Furniture-palace-international-kenya-ltd'],['velvex-chan.png','/biz/Chandaria-Industries-Ltd'],['ibis.jpg','/biz/Ibis-Styles-Hotel-Nairobi'], ['sajceramic.jpg','/biz/Saj-Ceramics-Ltd' ],['newmatic1.jpg', '/biz/Newmatic-Africa'], ['newmatic2.jpg', '/biz/Newmatic-Africa'], ['newmatic3.jpg', '/biz/Newmatic-Africa']];
         var randomimagegenerator = images[Math.floor(Math.random() * images.length)] 
         $('.banner').css({'background-image': 'url(banner-img/' + randomimagegenerator[0] +')'});
         //var idHome = document.getElementById("home");

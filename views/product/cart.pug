@@ -4,67 +4,102 @@ block content
   #home.parallax-content-list.baner-content-listing-biz
     .container-fluid.container-margin-top.container-fluidpadding
       .container-fluid
-          row
-            .col-md-9(style="border-bottom:1px solid #eee; margin-bottom:20px;")
-              row
-                .col-md-12
-                  h4.text-center 
-                    | Shopping Cart
-                
+        row
+          .col-md-12
+              h4.text-center 
+                | Shopping Cart
             
-          each p in cart
-            .row(style="margin: 4px;")
-              .col-md-2
-                img(src='/uploads/product/thumbs/'+p.photo)
-              .col-md-3
-                strong.findit-blue
-                  =p.name
-                div
-                  =p.description
-                div.small.findit-red
-                  a(href="/product/removefromcart/"+p._id)
-                    i.fa.fa-trash(aria-hidden="true",class='col-md-1')
-                    | Remove 
-
-                
-              .col-md-1
-                =p.count
-              .col-md-1
-                | No of items  
-                select(id=p._id, class="editcart")
-                  option(value=p.count)
-                    =p.count
-                  option(value='1')
-                    | 1
-                  option(value='2')
-                    | 2
-                  option(value='3')
-                    | 3
-                  option(value='4')
-                    | 4
-                  option(value='5')
-                    | 5
-                  option(value='6')
-                    | 6
-                  option(value='7')
-                    | 7
-                  option(value='8')
-                    | 8
-                  option(value='9')
-                    | 9
-                  option(value='10')
-                    | 10
-                  
-              .col-md-1
-                  strong.findit-red
-                    |  KES 
-                    =p.price
-              .col-md-1
-                 h6.Strong 
-                      | Subtotal of (#{p.count}): 
-                      .findit-red 
-                        | KES: #{p.count * p.price}
-              .col-md-3
+          .container-fluid
+            div.row 
+              div.col-md-9
+                table(id="cart" class="table table-hover table-condensed")
+                  thead
+                    tr
+                      th(style="width:50%")
+                        | Product
+                      th(style="width:10%")
+                        | Price
+                      th(style="width:8%")
+                        | Quantity
+                      th(style="width:22%" class="text-center")
+                        | Subtotal
+                      th(style="width:10%")
+                  if cartexists
+                    tbody
+                      each p in cart
+                        tr
+                          td(data-th="Product")
+                            div(class="row")
+                              div(class="col-sm-2 hidden-xs")
+                                img(src='/uploads/product/thumbs/'+p.photo alt="..." class="img-responsive")
+                              div(class="col-sm-10")
+                                h4(class="nomargin")
+                                  =p.name 
+                                p
+                                =p.description
+                                div.small.findit-red
+                                  a(href="/product/removefromcart/"+p._id)
+                                    i.fa.fa-trash(aria-hidden="true",class='col-md-1')
+                                      | Remove
+                          td(data-th="Price")
+                            =p.price
+                          td(data-th="Quantity")
+                            select(id=p._id, class="editcart")
+                              option(value=p.count)
+                                =p.count
+                              option(value='1')
+                                | 1
+                              option(value='2')
+                                | 2
+                              option(value='3')
+                                | 3
+                              option(value='4')
+                                | 4
+                              option(value='5')
+                                | 5
+                              option(value='6')
+                                | 6
+                              option(value='7')
+                                | 7
+                              option(value='8')
+                                | 8
+                              option(value='9')
+                                | 9
+                              option(value='10')
+                                | 10
+                              
+                          //input(type="number" class="form-control text-center" value="1")
+                          td(data-th="Subtotal" class="text-center")
+                            | 1.99
+                          td(class="actions" data-th="")
+                            button(class="btn btn-info btn-sm")
+                              i(class="fas fa-refresh")
+                            button(class="btn btn-danger btn-sm")
+                                i(class="fas fa-trash-o")
+                    tfoot
+                      tr(class="visible-xs")
+                        td(class="text-center")
+                          h6.Strong 
+                            | Subtotal of (#{p.count}): 
+                            .findit-red 
+                              | KES: #{p.count * p.price}
+                      tr
+                        td
+                          a(href="#" class="btn btn-warning")
+                            i(class="fas fa-angle-left")
+                              | Continue Shopping
+                        td(colspan="2" class="hidden-xs")
+                        td(class="hidden-xs text-center")
+                          strong
+                            | Total Price:   KES   
+                            span#totalprice
+                              =total
+                        td
+                          a(href="#" class="btn btn-success btn-block")
+                            | Checkout 
+                            i(class="fas fa-angle-right")
+            
+              div.col-md-3
                 .sticky-top(style="z-index:100; padding-top:20px;")
                   .card(style="width:fit-content;")
                     .card-body

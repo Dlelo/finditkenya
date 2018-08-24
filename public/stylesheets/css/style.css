@@ -3472,6 +3472,7 @@ fieldset, label {
 }
 .container-margin-top{
 	margin-top:7vh;
+	padding-top: 1rem;
 }
 /****** Style Star Rating Widget *****/
 
@@ -4494,4 +4495,16 @@ padding: 1rem;
     margin-left: 1px;
     text-align: left;
 }
-         
+.footer-text a:visited {
+    color: #c00000;
+}
+
+/* mouse over link */
+.footer-text a:hover {
+    color: #777;
+}
+
+/* selected link */
+.footer-text a:active {
+    color: #04045a;
+}   

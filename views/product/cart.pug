@@ -83,11 +83,14 @@ block content
                     tfoot
                       tr
                         td
-                          a(href="#" id="#history-back" class="btn btn-warning")
+                          a(href="/" class="btn btn-warning")
                             i(class="fas fa-angle-left")
                               | Continue Shopping
                         td(colspan="2" class="hidden-xs")
                         td(class="hidden-xs text-center")
+                          | Subtotal 
+                          span#totalprice
+                          | VAT
                           strong
                             | Total Price:   KES   
                             span#totalprice
@@ -150,11 +153,7 @@ block content
                   button.btn-btn-primary(style="margin-top:400px; z-index=100000")
                     | View Full Busket
     
-    script(type='text/javascript').
-      $(function() {
-        $("#history-back").on("click", window.history.back);
-      });      
-          
+    
                          
   
       

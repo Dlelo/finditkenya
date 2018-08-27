@@ -4611,3 +4611,13 @@ padding: 1rem;
     }
 
 }
+.cart-image{
+	width: 120px;
+    height: 120px;
+}
+table {
+    display: table;
+    border-collapse: separate;
+    border-spacing: 2px;
+	border-color: grey;
+}

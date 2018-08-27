@@ -103,9 +103,9 @@ body
                           =category.name
                     .mega.mega-dropdown
                       .div.row
-                        .col-md-3
-                          ul
-                            each subcat in category.subcategories
+                        each subcat in category.subcategories  
+                          .col-md-3(style = "margin: 5px 15px;")
+                            ul
                               li
                                 .findit-blue.text-capitalize
                                     strong

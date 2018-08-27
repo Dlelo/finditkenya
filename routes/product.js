@@ -39,17 +39,32 @@ var cpUpload = upload.fields([{ name: 'photo', maxCount: 1 }, { name: 'catalog',
 
 router.get('/',function(req, res){
   //console.log(req.session.cart);
-  var categories = Category.find({group:'shopping'});
-  var products = Product.find({$text: {$search: req.query.search}}).limit(50);
-  var total = 0;
-  if(req.session.cart){
-    req.session.cart.forEach(function(i,index){
-      total += i.count * i.price;
+  if(req.query.search){
+    var categories = Category.find({group:'shopping'});
+    var products = Product.find({$text: {$search: req.query.search}}).limit(50);
+    var total = 0;
+    if(req.session.cart){
+      req.session.cart.forEach(function(i,index){
+        total += i.count * i.price;
+      });
+    }
+  	Promise.all([products, categories]).then(values => {
+      res.render('product/index',{title: "Products on Findit", products: values[0],categories: values[1],cart: req.session.cart,total:total});
+    });
+  }else{
+    var categories = Category.find({group:'shopping'});
+    var products = Product.find({}).limit(50);
+    var total = 0;
+    if(req.session.cart){
+      req.session.cart.forEach(function(i,index){
+        total += i.count * i.price;
+      });
+    }
+  	Promise.all([products, categories]).then(values => {
+      res.render('product/index',{title: "Products on Findit", products: values[0],categories: values[1],cart: req.session.cart,total:total});
     });
   }
-	Promise.all([products, categories]).then(values => {
-    res.render('product/index',{title: "Products on Findit", products: values[0],categories: values[1],cart: req.session.cart,total:total});
-  });
+
 });
 
 router.get('/featured',function(req, res){

@@ -202,36 +202,7 @@ block content
                                     small
                                       =minicat.name
                             
-                        div(id="myTabContent" class="tab-content")
-                          
-                          
-                                
-                  //.col-md-3.py-2
-                    .card.h-100(style="border:none !important")
-                      .card-body(style="padding:0px; !important")
-                          img.card-img-top.shopping-home-img(src="/img/airfreshener.png" alt="Card image" style="width:100%")
-                          .card-text
-                            small
-                              a(href="#")
-                                | Shop Now
-                    
-                  //.col-md-3.py-2
-                    .card.h-100(style="border:none !important")
-                      .card-body(style="padding:0px; !important")
-                          img.card-img-top.shopping-home-img(src="/img/royco.png" alt="Card image" style="width:100%")
-                          .card-text
-                            small
-                              a(href="#")
-                                | Shop Now
-                  //.col-md-3.py-2
-                    .card.h-100(style="border:none !important")
-                      .card-body(style="padding:0px; !important")
-                          img.card-img-top.shopping-home-img(src="/img/royco.png" alt="Card image" style="width:100%")
-                          .card-text
-                            small
-                              a(href="#")
-                                | Shop Now                   
-                            
+                        div(id="myTabContent" class="tab-content")                  
          .section.general-best-sellers
             h5.agile-title.h-order-category.text-left
               | Best Sellers Today
@@ -239,26 +210,32 @@ block content
                 small
                   a(href="#")
                     | see More
-            row
-              .owl-carousel.owl-theme
-                .item(style="border:none")
-                   .card(style="border:none !important")
-                      img.card-img-top.w-100.product-img-home(src="/img/exe.jpeg" alt="1 slide")
-                .item(style="border:none")
-                   .card(style="border:none !important")
-                      img.card-img-top.w-100.product-img-home(src="/img/rice.jpeg" alt="1 slide")
-                .item(style="border:none")
-                   .card(style="border:none !important")
-                      img.card-img-top.w-100.product-img-home(src="/img/earrings.jpeg" alt="1 slide")
-                .item(style="border:none")
-                   .card(style="border:none !important")
-                      img.card-img-top.w-100.product-img-home(src="/img/beer.jpeg" alt="1 slide")
-                .item(style="border:none")
-                   .card(style="border:none !important")
-                      img.card-img-top.w-100.product-img-home(src="/img/pillows.jpeg" alt="1 slide")
-                .item(style="border:none")
-                   .card(style="border:none !important")
-                      img.card-img-top.w-100.product-img-home(src="/img/mats.jpeg" alt="1 slide")
+            .container-fluid.product-carousel
+              div#carouselExample(class="carousel slide" data-ride="carousel" data-interval="9000")
+                div(class="carousel-inner row w-100 mx-auto" role="listbox")
+                  div(class="carousel-item col-md-3 active")
+                    img(class="img-fluid mx-auto d-block" src=src="/img/exe.jpeg" alt="slide 1")
+                  div(class="carousel-item col-md-3 ")
+                    img(class="img-fluid mx-auto d-block" src="/img/rice.jpeg" alt="slide 2")
+                  div(class="carousel-item col-md-3")
+                    img(class="img-fluid mx-auto d-block" src="/img/earrings.jpeg" alt="slide 3")
+                  div(class="carousel-item col-md-3")
+                    img(class="img-fluid mx-auto d-block" src="/img/beer.jpeg" alt="slide 4")
+                  div(class="carousel-item col-md-3")
+                    img(class="img-fluid mx-auto d-block" src="/img/pillows.jpeg" alt="slide 5")
+                  div(class="carousel-item col-md-3")
+                    img(class="img-fluid mx-auto d-block" src="/img/mats.jpeg" alt="slide 6")
+                  div(class="carousel-item col-md-3 ")
+                    img(class="img-fluid mx-auto d-block" src="/img/rice.jpeg" alt="slide 2")
+                  div(class="carousel-item col-md-3")
+                    img(class="img-fluid mx-auto d-block" src="/img/earrings.jpeg" alt="slide 3")
+                a(class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev")
+                  i(class="fas fa-chevron-left fa-lg text-muted")
+                  span(class="sr-only") Previous
+                a(class="carousel-control-next text-faded" href="#carouselExample" role="button" data-slide="next")
+                  i(class="fa fa-chevron-right fa-lg text-muted")
+                  span(class="sr-only") Next
+            
          .section.sponsored-deal(style="background-color:  #fff; margin: 1rem;")
             div.row
               div.col-sm-6
@@ -323,7 +300,7 @@ block content
             }
         }
       });
-    //script for filteing coupons based on category
+    //script for filtering products based on category
     script(type='text/javascript').
       filterSelection("all")
       function filterSelection(c) {
@@ -344,3 +321,15 @@ block content
           if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
         }
       }
+    
+    script(type='text/javascript').
+      $('#carouselExample').on('slide.bs.carousel', function (e) {
+
+        var $e = $(e.relatedTarget);
+        var idx = $e.index();
+        var itemsPerSlide = 4;
+        var totalItems = $('.carousel-item').length;
+        
+        if (idx >= totalItems-(itemsPerSlide-1)) {
+            var it = itemsPerSlide - (totalItems - idx);
+            for (var i=0; i

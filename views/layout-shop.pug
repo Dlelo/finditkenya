@@ -97,31 +97,31 @@ body
               ul.dropdown-menu
                 each category,i in categories
                   li
-                    a.dropdown-item(href="/category/"+category.name)
+                    a.dropdown-item.cat-name(href="/category/"+category.name)
                       small.findit-blue
                         strong
                           =category.name
-                    .mega
+                    .mega.mega-dropdown
                       .div.row
-                        .col-md-4
-                            aside
-                              ul
-                                each subcat in category.subcategories
-                                  li
-                                    .findit-blue.text-capitalize
-                                        strong
-                                          =subcat.name
-                                    ul.nav.flex-column
-                                        each minicat in subcat.minicategories
-                                          li.nav-item
-                                            a.nav-link(href="#")
-                                              small.description-cat
-                                                  strong
-                                                    =minicat.name
-                            //.featured
-                              img(alt="category images" src="/uploads/thumbs/categories/"+category.photo)
-                                              
-          
+                        .col-md-3
+                          ul
+                            each subcat in category.subcategories
+                              li
+                                .findit-blue.text-capitalize
+                                    strong
+                                      =subcat.name
+                                      
+                                ul.nav.flex-column
+                                    each minicat in subcat.minicategories
+                                      li.nav-item
+                                        a.nav-link(href="#")
+                                          small.description-cat
+                                              strong
+                                                =minicat.name
+                        //.featured
+                          img(alt="category images" src="/uploads/thumbs/categories/"+category.photo)
+                                          
+      
                   
             
           

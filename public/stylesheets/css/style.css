@@ -4372,7 +4372,7 @@ box-shadow: 2px 3px 5px 0px rgba(204,204,204,1);
   width: 100%;
   display: none;
   position: absolute;
-  left: 300px;
+  left: 289px;
   top: 0px;
   background: #FFF;
   border: 1px solid #cccccc;
@@ -4534,4 +4534,13 @@ padding: 1rem;
 	table#cart tfoot td{display:block; }
 	table#cart tfoot td .btn{display:block;}
 	
+}
+.mega-dropdown{
+	border:none;
+}
+.cat-name:after{
+	font-family: FontAwesome;
+	content: "\f105";
+	float:right;
+
 }

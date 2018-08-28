@@ -18,6 +18,7 @@ const productSchema = new Schema({
 	bizid: { type: Schema.Types.ObjectId, ref: 'Business' },
 	description: String,
 	photo: String,
+	gallery: Array,
   price: String,
 	oldprice: String,
   quantity: String,

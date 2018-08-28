@@ -5,43 +5,45 @@ block content
     .container.container-margin-top
       .row
         .col-md-7
-         form(method='post', action='/product/pay')
-          .row
-           .col-md-12.form-control
-            .form-group
-              | Use Existing Shipping Address
-              .col-sm-6
-                input.shippingaddress(name='shippingaddress',type='radio',value=true, style ="margin-top:12px; width: 20px; height: 20px;", required)
-            .form-group.row
-              if(loggedin)
-                span.col-md-12.phone
-                  | Phone: 
-                  =user.shippingaddress.phone
-                span.col-md-12.email
-                  | Email: 
-                  =user.shippingaddress.email
-                span.col-md-12.building
-                  | Building Address: 
-                  =user.shippingaddress.building
-                span.col-md-12.area
-                  | Area: 
-                  =user.shippingaddress.area
-           .col-md-12.form-control
-            .form-group
-              | Use New Shipping Address
-              .col-sm-6
-                input.shippingaddress(name='shippingaddress',type='radio',value=false, style ="margin-top:12px; width: 20px; height: 20px;", required)
-            .form-group
-              input.form-control-form(name='phone', type='text', placeholder='phone *')
-              input.form-control-form(name='email', type='text', placeholder='email *')
-              textarea.form-control-form(name='address', type='text', placeholder='Street Name / Building / Apartment No. / Floor *')
-              input.form-control-form(name='area', type='text', placeholder='Area within Nairobi * (eg Parklands or Pipeline)')
-            .form-group
-              span.btn.btn-grey.btn-block.btn-lg.noLnk(style=' border: 1px solid;margin-bottom:10px;')
-                small(style='text-transform: none;') Total KShs. #{total} .
-            .form-group
-              button.btn.btn-primary.form-control(type='submit')
-                | Save and Proceed 
+          h5.agile-title.h-order-category.text-center
+                          | Best Sellers
+          form(method='post', action='/product/pay')
+            .row
+            .col-md-12.form-control
+              .form-group
+                | Use Existing Shipping Address
+                .col-sm-6
+                  input.shippingaddress(name='shippingaddress',type='radio',value=true, style ="margin-top:12px; width: 20px; height: 20px;", required)
+              .form-group.row
+                if(loggedin)
+                  span.col-md-12.phone
+                    | Phone: 
+                    =user.shippingaddress.phone
+                  span.col-md-12.email
+                    | Email: 
+                    =user.shippingaddress.email
+                  span.col-md-12.building
+                    | Building Address: 
+                    =user.shippingaddress.building
+                  span.col-md-12.area
+                    | Area: 
+                    =user.shippingaddress.area
+            .col-md-12.form-control
+              .form-group
+                | Use New Shipping Address
+                .col-sm-6
+                  input.shippingaddress(name='shippingaddress',type='radio',value=false, style ="margin-top:12px; width: 20px; height: 20px;", required)
+              .form-group
+                input.form-control-form(name='phone', type='text', placeholder='phone *')
+                input.form-control-form(name='email', type='text', placeholder='email *')
+                textarea.form-control-form(name='address', type='text', placeholder='Street Name / Building / Apartment No. / Floor *')
+                input.form-control-form(name='area', type='text', placeholder='Area within Nairobi * (eg Parklands or Pipeline)')
+              .form-group
+                span.btn.btn-grey.btn-block.btn-lg.noLnk(style=' border: 1px solid;margin-bottom:10px;')
+                  small(style='text-transform: none;') Total KShs. #{total} .
+              .form-group
+                button.btn.btn-primary.form-control(type='submit')
+                  | Save and Proceed 
         .col-md-5
           each p in cart
             .row(style="margin: 4px;")

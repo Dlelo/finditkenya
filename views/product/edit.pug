@@ -19,7 +19,15 @@ block content
           .col-sm-3
             label(for='photo') Cover Photo
           .col-sm-3
-            input#photod.form-control-form(type='file', name='photo', placeholder='photo')    
+            input#photod.form-control-form(type='file', name='photo', placeholder='photo')  
+        .form-group
+          .row
+            .col-sm-3
+              label(for='gallery') Gallery              
+            .col-sm-4
+              input#gallery.form-control-form.imagegallery(type='file', name='gallery', placeholder='gallery', multiple='')
+            .col-sm-5
+              #gallerypreview   
         .form-group
           .col-sm-6
             select.selectpicker.form-control(name='bizid',data-live-search="true")

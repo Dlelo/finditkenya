@@ -156,6 +156,7 @@ router.post('/update/:id',role.auth,cpUpload, function(req,res){
     if (req.body.vat != null){
   		p.vat = 1;
   	}
+    p.gallery = req.files['gallery'];
     p.price = req.body.price;
     p.quantity = req.body.quantity;
     p.status = req.body.status;

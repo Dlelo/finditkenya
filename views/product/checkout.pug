@@ -3,73 +3,112 @@ extends ../layout-shop
 block content
   #home.parallax-content-list.baner-content-listing-biz
     .container.container-margin-top
-      .row(style="padding:2rem")
+      .row(style="padding:2rem;")
         .col-md-7
           h5.agile-title.h-order-category.text-center
             | Checkout
           form(method='post', action='/product/pay')
-            .row
-            .col-md-12.form-control
-              .form-group
-                | Use Existing Shipping Address
-                .col-sm-6
-                  input.shippingaddress(name='shippingaddress',type='radio',value=true, style ="margin-top:12px; width: 20px; height: 20px;", required)
-              .form-group.row
-                if(loggedin)
-                  span.col-md-12.phone
-                    | Phone: 
-                    =user.shippingaddress.phone
-                  span.col-md-12.email
-                    | Email: 
-                    =user.shippingaddress.email
-                  span.col-md-12.building
-                    | Building Address: 
-                    =user.shippingaddress.building
-                  span.col-md-12.area
-                    | Area: 
-                    =user.shippingaddress.area
-            .col-md-12.form-control
-              .form-group
-                | Use New Shipping Address
-                .col-sm-6
-                  input.shippingaddress(name='shippingaddress',type='radio',value=false, style ="margin-top:12px; width: 20px; height: 20px;", required)
-              .form-group
-                input.form-control-form(name='phone', type='text', placeholder='phone *')
-                input.form-control-form(name='email', type='text', placeholder='email *')
-                textarea.form-control-form(name='address', type='text', placeholder='Street Name / Building / Apartment No. / Floor *')
-                input.form-control-form(name='area', type='text', placeholder='Area within Nairobi * (eg Parklands or Pipeline)')
-              .form-group
-                span.btn.btn-grey.btn-block.btn-lg.noLnk(style=' border: 1px solid;margin-bottom:10px;')
-                  small(style='text-transform: none;') Total KShs. #{total} .
-              .form-group
-                button.btn.btn-primary.form-control(type='submit')
-                  | Save and Proceed 
+            .row(style=" box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)")
+              .col-md-12.form-control.form-check
+                .form-group
+                  .col-sm-12
+                    input.shippingaddress.form-check-input(name='shippingaddress',type='radio',value=true, style ="width: 20px; height: 20px;", required)  
+                    span(style="margin-left:1rem; width:100%")
+                      h5.text-uppercase
+                       | Use Existing Shipping Address
+                .form-group.row
+                  if(loggedin)
+                    span.col-md-12.phone
+                      | Phone: 
+                      =user.shippingaddress.phone
+                    span.col-md-12.email
+                      | Email: 
+                      =user.shippingaddress.email
+                    span.col-md-12.building
+                      | Building Address: 
+                      =user.shippingaddress.building
+                    span.col-md-12.area
+                      | Area: 
+                      =user.shippingaddress.area
+              .col-md-12.form-control
+                .form-group.form-check
+                  | Use New Shipping Address
+                  .col-md-12
+                    input.form-check-input.shippingaddress(name='shippingaddress',type='radio',value=false, style ="margin-top:12px; width: 20px; height: 20px;", required)
+                .form-group
+                  input.form-control-form(name='phone', type='text', placeholder='phone *')
+                  input.form-control-form(name='email', type='text', placeholder='email *')
+                  textarea.form-control-form(name='address', type='text', placeholder='Street Name / Building / Apartment No. / Floor *')
+                  input.form-control-form(name='area', type='text', placeholder='Area within Nairobi * (eg Parklands or Pipeline)')
+                .form-group
+                  span.btn.btn-grey.btn-block.btn-lg.noLnk(style=' border: 1px solid;margin-bottom:10px;')
+                    small(style='text-transform: none;') Total KShs. #{total} .
+                .form-group
+                  button.btn.btn-primary.form-control(type='submit')
+                    | Save and Proceed 
         .col-md-5
-          h5.agile-title.h-order-category.text-center
-            | Order Summary
-          .row#previewcart-checkout(style="margin-left: 4px;")
-            each p in cart
-              .col-md-3.nopadding
-                img(src='/uploads/product/thumbs/'+p.photo,width='95%')
-              .col-md-4.nopadding
-                .findit-blue
-                  =p.name 
-              .col-md-5.nopadding
-                  small
-                    .findit-red 
-                      | KES: #{p.count * p.price}
-                    if(p.vat)
-                      | KES #{p.price * 0.16}   
-                    p
-                      h6 
-                        small
-                         |Qty.( #{p.count})
           .row
-            .col-md-6
-              | Subtotal
-              span
-                
-            .col-md-6          
+           h5.agile-title.h-order-category
+            | Order Summary
+          .row-checkout
+            .row.checkout-rows
+              if cart
+                .agile-title.h-order-category.text-center
+                  | Your Order ( #{cart.length}  
+                  if(cart.length < 2) 
+                    span  Item
+                  else
+                    span Items)
+
+            .row#previewcart-checkout(style="margin-left: 4px;")
+              each p in cart
+                .col-md-4.nopadding
+                  img(src='/uploads/product/thumbs/'+p.photo,width='100px')
+                .col-md-4.nopadding
+                  .findit-blue
+                    =p.name 
+                .col-md-4.nopadding
+                    small
+                      .findit-red 
+                        | KES: #{p.count * p.price}
+                      if(p.vat)
+                        | KES #{p.price * 0.16}   
+                      p
+                        h6 
+                          small
+                          |Qty.( #{p.count})
+            .row.checkout-rows
+              .col-md-12
+                .row
+                  .col-md-12
+                    .float-left
+                      | Subtotal 
+                    .float-right#totalprice
+                      | KES:
+                      span 
+                        =total
+                .row
+                  .col-md-12
+                    .float-left
+                      | VAT 
+                    .float-right#totalprice
+                      | KES:
+                      span
+                        | 0
+                hr      
+                .row
+                  .col-md-12  
+                    strong
+                      .float-left
+                        | Total 
+                      .float-right#totalprice
+                        | KES:
+                        span 
+                          =total   
+          .row(style="margin:1rem")
+            a(href="/product/cart")
+              strong.text-center
+                | MODIFY CART     
       .container
         form(method='post', action='https://payments.ipayafrica.com/v3/ke')
           input(name='hsh', type='hidden', value=hash)

@@ -176,6 +176,18 @@ router.post('/update/:id',role.auth,cpUpload, function(req,res){
             console.error(err);
         });
       }
+      if(p.gallery){
+        p.gallery.forEach(function(gallery) {
+            Jimp.read("./public/uploads/product/"+gallery.filename).then(function (cover) {
+              return cover.resize(200, 140)     // resize
+                   .quality(100)                 // set JPEG quality
+                   .greyscale()                 // set greyscale
+                   .write("./public/uploads/product/thumbs/gallery-"+gallery.filename); // save
+          }).catch(function (err) {
+              console.error(err);
+          });
+        });
+      }
       req.flash('success_msg', 'Edited Successfully');
       res.redirect('/product/'+p.slug);
     });
@@ -193,6 +205,7 @@ router.post('/create',role.auth, cpUpload, function(req, res){
   if (req.body.vat != null){
 		p.vat = 1;
 	}
+  p.gallery = req.files['gallery'];
   p.price = req.body.price;
   p.quantity = req.body.quantity;
   p.subcategory = req.body.subcat;
@@ -212,6 +225,18 @@ router.post('/create',role.auth, cpUpload, function(req, res){
              .write("./public/uploads/product/thumbs/"+p.photo); // save
         }).catch(function (err) {
           console.error(err);
+        });
+      }
+      if(p.gallery){
+        p.gallery.forEach(function(gallery) {
+            Jimp.read("./public/uploads/product/"+gallery.filename).then(function (cover) {
+              return cover.resize(200, 140)     // resize
+                   .quality(100)                 // set JPEG quality
+                   .greyscale()                 // set greyscale
+                   .write("./public/uploads/product/thumbs/gallery-"+gallery.filename); // save
+          }).catch(function (err) {
+              console.error(err);
+          });
         });
       }
       req.flash('success_msg', 'Added Successfully');

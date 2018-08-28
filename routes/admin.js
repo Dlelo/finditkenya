@@ -22,6 +22,7 @@ var Coupons = require(__dirname + '/../models/Coupons');
 var emailModel = require(__dirname + '/../config/Mail');
 var Sale = require(__dirname + '/../models/Sales');
 var Product = require(__dirname + '/../models/Product');
+var Area = require(__dirname + '/../models/Areas');
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -682,6 +683,38 @@ router.get('/activate/all',role.admin, function(req, res){
 	     console.log(err);
 	});
 });
+
+
+
+/***************** AREAS ******************************/
+
+router.get('/areas',role.admin,function(req, res){
+  Area.find({})
+  .then(function(data){
+    res.render('areas/index', {title: "Areas", areas: data});
+  });
+});
+
+router.get('/areas/new',role.admin,function(req, res){
+  res.render('areas/new', {title: "Create Area"});
+});
+
+router.post('/areas/create',role.admin,function(req, res){
+  var i = new Area();
+  i.name = req.body.name;
+  i.created_at = new Date();
+  i.save(function(err){
+    if(err){
+      req.flash('error_msg','area not uploaded');
+      res.redirect('/admin/areas/new');
+    }else{
+      req.flash('success_msg','area successfully uploaded');
+      res.redirect('/admin/areas');
+    }
+  });
+});
+
+
 
 /***************** COUPONS ******************************/
 

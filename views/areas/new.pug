@@ -1,0 +1,15 @@
+extends ../admin/admin-layout
+
+block content
+  #home.parallax-content-list.baner-content-listing-biz
+    .container
+      h3.text-center
+        | Kindly Input The Area
+      row
+        .col-md-10.col-sm-12.col-xs-12
+          form(method='post', action='/admin/areas/create')
+            .form-group
+              input.form-control(name='name',type='text',placeholder="Area Name") 
+            .form-group     
+              button.btn.btn-info.btn-block.waves-effect.waves-light(type='submit')
+                | Create

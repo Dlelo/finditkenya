@@ -9,16 +9,27 @@ block content
         form(method='post', action='/product/create',enctype='multipart/form-data')
           .form-group
              .col-sm-12
-               input.form-control-form(name='name',type='text',placeholder="Name of Product") 
+               input.form-control-form(name='name',type='text',placeholder="Name of Product",required) 
           .form-group
              .col-sm-12
                 textarea#descriptionw.form-control-form(name='description',type='text',placeholder="Description of Product" maxlength="50") 
                   | Describe the product in a few words
           .form-group
+           .row
             .col-sm-3
-              label(for='photo') Cover Photo
-            .col-sm-3
-              input#photod.form-control(type='file', name='photo', placeholder='photo')    
+              label(for='photo') Cover Photo            
+            .col-sm-4
+              input#photod.form-control(type='file', name='photo', placeholder='photo',required) 
+            .col-sm-5
+              #photopreview
+          .form-group
+            .row
+              .col-sm-3
+                label(for='gallery') Gallery              
+              .col-sm-4
+                input#gallery.form-control-form.imagegallery(type='file', name='gallery', placeholder='gallery', multiple='')
+              .col-sm-5
+                #gallerypreview   
           .form-group
             .col-sm-6
               select.selectpicker.form-control(name='bizid',data-live-search="true")
@@ -48,10 +59,10 @@ block content
               input.form-control-form(name='oldprice',type='text', style ="margin-top:12px;",placeholder="Old Price")
           .form-group
             .col-sm-6
-              input.form-control-form(name='price',type='number',style ="margin-top:12px;",placeholder="Price of Product")
+              input.form-control-form(name='price',type='number',style ="margin-top:12px;",placeholder="Price of Product",required)
           .form-group
             .col-sm-6
-              input.form-control-form(name='quantity',type='text', style ="margin-top:12px;",placeholder="Quantity of Products")
+              input.form-control-form(name='quantity',type='text', style ="margin-top:12px;",placeholder="Quantity of Products",required)
           .form-group
             .col-sm-6
               .row

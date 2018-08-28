@@ -4622,11 +4622,19 @@ table {
 	border-color: grey;
 }
 #previewcart-checkout {
-    position: absolute;
+    position: sticky;
     border: 1px solid #eee;
     padding: 1px;
     background: white;
     width: 300px;
-    height: 400px;
+    height: 200px;
     overflow-y: scroll;
+}
+.checkout-rows{
+	border: 1px solid #eee; 
+	width: 300px;
+}
+.row-checkout{
+	box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+    width: 300px;
 }

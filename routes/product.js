@@ -275,10 +275,14 @@ router.get('/shipping',function(req, res){
   req.session.cart.forEach(function(i,index){
     total += i.count * i.price;
   });
-  res.render('product/checkout',{
-    cart: req.session.cart,
-    total: total
-  });
+  var categories = Category.find({group:'shopping'});
+    Promise.all([categories]).then(values => {
+      res.render('product/checkout',{
+        cart: req.session.cart,
+        total: total,
+        categories: values[0]
+      });
+    });
 });
 
 

@@ -47,24 +47,29 @@ block content
         .col-md-5
           h5.agile-title.h-order-category.text-center
             | Order Summary
-          each p in cart
-            .row(style="margin: 4px;")
+          .row#previewcart-checkout(style="margin-left: 4px;")
+            each p in cart
               .col-md-3.nopadding
                 img(src='/uploads/product/thumbs/'+p.photo,width='95%')
-              .col-md-2.nopadding
-                strong.findit-blue
+              .col-md-4.nopadding
+                .findit-blue
                   =p.name 
-              .col-md-2.nopadding
-                  strong.findit-red
-                    |  KES 
-                    =p.price   
-              .col-md-4.nopadding(style="border:1px solid #eee; border-radius:3px; text-align:center;")
-                h6 
-                  | Subtotal ( No. of Items #{p.count}): 
-                  .findit-red 
-                    | KES: #{p.count * p.price}
-                  if(p.vat)
-                    | KES #{p.price * 0.16}
+              .col-md-5.nopadding
+                  small
+                    .findit-red 
+                      | KES: #{p.count * p.price}
+                    if(p.vat)
+                      | KES #{p.price * 0.16}   
+                    p
+                      h6 
+                        small
+                         |Qty.( #{p.count})
+          .row
+            .col-md-6
+              | Subtotal
+              span
+                
+            .col-md-6          
       .container
         form(method='post', action='https://payments.ipayafrica.com/v3/ke')
           input(name='hsh', type='hidden', value=hash)

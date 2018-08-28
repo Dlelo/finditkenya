@@ -3,10 +3,10 @@ extends ../layout-shop
 block content
   #home.parallax-content-list.baner-content-listing-biz
     .container.container-margin-top
-      .row
+      .row(style="padding:2rem")
         .col-md-7
           h5.agile-title.h-order-category.text-center
-                          | Best Sellers
+            | Checkout
           form(method='post', action='/product/pay')
             .row
             .col-md-12.form-control
@@ -45,6 +45,8 @@ block content
                 button.btn.btn-primary.form-control(type='submit')
                   | Save and Proceed 
         .col-md-5
+          h5.agile-title.h-order-category.text-center
+            | Order Summary
           each p in cart
             .row(style="margin: 4px;")
               .col-md-3.nopadding

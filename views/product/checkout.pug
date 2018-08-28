@@ -12,34 +12,51 @@ block content
               .col-md-12.form-control.form-check
                 .form-group
                   .col-sm-12
-                    input.shippingaddress.form-check-input(name='shippingaddress',type='radio',value=true, style ="width: 20px; height: 20px;", required)  
-                    span(style="margin-left:1rem; width:100%")
+                    input.shippingaddress.form-check-input(name='shippingaddress',type='radio',value=true, style ="width: 20px; height: 20px; padding-right:1em", required)  
+                    span
                       h5.text-uppercase
                        | Use Existing Shipping Address
                 .form-group.row
                   if(loggedin)
                     span.col-md-12.phone
-                      | Phone: 
-                      =user.shippingaddress.phone
+                      small.small-cart
+                        | Phone: 
+                        =user.shippingaddress.phone
                     span.col-md-12.email
-                      | Email: 
-                      =user.shippingaddress.email
+                      small.small-cart
+                        | Email: 
+                        =user.shippingaddress.email
                     span.col-md-12.building
-                      | Building Address: 
-                      =user.shippingaddress.building
+                      small.small-cart
+                        | Building Address: 
+                        =user.shippingaddress.building
                     span.col-md-12.area
-                      | Area: 
-                      =user.shippingaddress.area
+                      small.small-cart
+                        | Area: 
+                        =user.shippingaddress.area
               .col-md-12.form-control
-                .form-group.form-check
-                  | Use New Shipping Address
+                .form-group.form-check.form-check
                   .col-md-12
-                    input.form-check-input.shippingaddress(name='shippingaddress',type='radio',value=false, style ="margin-top:12px; width: 20px; height: 20px;", required)
+                    input.shippingaddress.form-check-input(name='shippingaddress',type='radio',value=true, style ="width: 20px; height: 20px; padding-right:1em", required)  
+                    span
+                      h5.text-uppercase
+                       | Use New Shipping Address
                 .form-group
-                  input.form-control-form(name='phone', type='text', placeholder='phone *')
-                  input.form-control-form(name='email', type='text', placeholder='email *')
-                  textarea.form-control-form(name='address', type='text', placeholder='Street Name / Building / Apartment No. / Floor *')
-                  input.form-control-form(name='area', type='text', placeholder='Area within Nairobi * (eg Parklands or Pipeline)')
+                  label(for="name") 
+                    small.small-cart Mobile Phone Number *
+                  input.form-control(id='phone', name='phone', type='text',required)
+                .form-group  
+                  label(for="email") 
+                    small.small-cart Email Address *
+                  input.form-control(id='email', name='email', type='text',required)
+                .form-group  
+                  label(for='address') 
+                    small.small-cart Delivery Address*
+                  textarea.form-control(name='address', type='text',required)
+                .form-group 
+                  label(for='area') 
+                    small.small-cart City*
+                  input.form-control(name='area', type='text',required)
                 .form-group
                   span.btn.btn-grey.btn-block.btn-lg.noLnk(style=' border: 1px solid;margin-bottom:10px;')
                     small(style='text-transform: none;') Total KShs. #{total} .
@@ -53,7 +70,7 @@ block content
           .row-checkout
             .row.checkout-rows
               if cart
-                .agile-title.h-order-category.text-center
+                .agile-title.h-order-category.text-center.text-uppercase
                   | Your Order ( #{cart.length}  
                   if(cart.length < 2) 
                     span  Item
@@ -66,9 +83,10 @@ block content
                   img(src='/uploads/product/thumbs/'+p.photo,width='100px')
                 .col-md-4.nopadding
                   .findit-blue
-                    =p.name 
+                    small.small-cart
+                      =p.name 
                 .col-md-4.nopadding
-                    small
+                    small.small-cart
                       .findit-red 
                         | KES: #{p.count * p.price}
                       if(p.vat)
@@ -76,7 +94,7 @@ block content
                       p
                         h6 
                           small
-                          |Qty.( #{p.count})
+                           |Qty.( #{p.count})
             .row.checkout-rows
               .col-md-12
                 .row
@@ -107,7 +125,7 @@ block content
                           =total   
           .row(style="margin:1rem")
             a(href="/product/cart")
-              strong.text-center
+              strong.text-center(style="margin-left:2rem")
                 | MODIFY CART     
       .container
         form(method='post', action='https://payments.ipayafrica.com/v3/ke')

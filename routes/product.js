@@ -492,14 +492,15 @@ router.get('/removefromcart/:id', function(req, res){
 // END OF CART FUNCTIONS
 
 router.get('/:slug',function(req, res){
-  Product.findOne({
+  var categories = Category.find({group:'shopping'});
+  var product = Product.findOne({
     slug: req.params.slug,
     //status: true
-  })
-  .then(function(d){
-    //console.log(d);
-    res.render('product/detail',{product: d,title: d.name});
-  })
+  });
+  Promise.all([categories,product]).then(values => {
+    console.log(values[1]);
+    res.render('product/detail',{product: values[1],title: values[1].name, categories: values[0]});
+  });
 });
 
 module.exports = router;

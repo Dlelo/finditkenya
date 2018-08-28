@@ -39,15 +39,15 @@ block content
                   =product.name
                 p.price-detail-wrap
                   span.price.h3.text-warning
-                    span.currency Ksh.
+                    span.currency KES. 
                     span.num
                      =product.price
-                  span unit
+                  span 
                 dl.item-property
                   dt Description
                   dd
                     p 
-                     =product.description
+                     | !{product.description}
                 dl.param.param-feature
                   dt Model#
                   dd 12345611

@@ -4660,68 +4660,87 @@ h5 {
 }
 .Restaurants{
   border-color:#b991cc;
+  color:#b991cc;
 
 }
 .Medical{
 	border-color: #90191c;
+	color: #90191c;
 
 }
 .Hospitality{
 	border-color: #88b448;
+	color: #88b448;
 
 }
 .Entertainment{
 	border-color: #24b9b5;
+	color: #24b9b5;
 
 }
 .Consultancy{
 	border-color: #e14f5f;
+	color: #e14f5f;
 
 }
 .Electrical-Equipment-and-Supplies{
 	border-color: #1a6e30;
+	color: #1a6e30;
 
 }
 .Car-Accessories{
 	border-color: #512c5c;
+	color: #512c5c;
 
 }
 .Professional-Services{
-    border-color: #edb90e;
+	border-color: #edb90e;
+	color: #edb90e;
 }
 .Legal{
   border-color: #222222;
+  color: #222222;
 }
 .Travel{
-    border-color: #e14f5f;
+	border-color: #e14f5f;
+	color: #e14f5f;
 }
 .Others{
   border-color: #00456e;
+  color: #00456e;
 }
 .Marketing{
   border-color: #88b448;
+  color: #88b448;
 }
 .Fashion-and-Beauty{
   border-color:#512c5c;
+  color:#512c5c;
 }
 .Financial-Services{
   border-color: #e14f5f;
+  color: #e14f5f;
 }
 .Office{
  border-color: #24b9b5;
+ color: #24b9b5;
 }
 .Shopping{
   border-color:#d42b43;
+  color:#d42b43;
 }
 .Emergency{
 	border-color: #ed522d;
+	color: #ed522d;
 
 }
 .Transport-and-Shipping{
   border-color: #512c5c;
+  color: #512c5c;
 }
 .Home{
   border-color:#1a6e30;
+  color:#1a6e30;
 }
 .hr-cat{
 	margin-top:0.5rem!important;

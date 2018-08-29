@@ -4656,7 +4656,10 @@ h5 {
     
 }
 .site-text-color{
-   color: #212529 !important;
+   color: #26292d !important;
+}
+.sub-cat-color{
+	color:#555;
 }
 .Restaurants{
   border-color:#b991cc;
@@ -4724,5 +4727,5 @@ h5 {
   border-color:#1a6e30;
 }
 .hr-cat{
-	margin-top:0!important;
+	margin-top:0.5rem!important;
 }

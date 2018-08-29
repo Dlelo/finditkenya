@@ -108,7 +108,7 @@ block content
               a(href="/category/"+category.name)
                   strong.findit-blue
                     i.fas.fa-1x(aria-hidden='true', class=category.icon, class=category.name ) 
-                    small.content-col.small-cart
+                    small.site-text-color.small-cart
                       strong   
                         =category.name
               hr.hr-cat(class=category.name)
@@ -119,7 +119,7 @@ block content
                       li
                         small.small-cart
                           i(class="fas fa-check-circle" aria-hidden="true" class=category.name style="margin-right:2px; font-size: 12px;")
-                          a.site-text-color(href="/subcategory/"+subcat.name)
+                          a.sub-cat-color(href="/subcategory/"+subcat.name)
                             =subcat.name
                   div
                     a(href="/category/"+category.name)

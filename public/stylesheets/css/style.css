@@ -318,10 +318,8 @@ header h1 a span {
 }
 
 .rslides_tabs a {
-	width: auto;
 	line-height: 20px;
 	padding: 9px 20px;
-	height: auto;
 	background: transparent;
 	display: inline;
 }
@@ -4506,7 +4504,6 @@ padding: 1rem;
 }
 @media screen and (max-width: 600px) {
     table#cart tbody td .form-control{
-		width:20%;
 		display: inline !important;
 	}
 	.actions .btn{
@@ -4681,15 +4678,15 @@ h5 {
 	border-color: #e14f5f;
 
 }
-.Electrical Equipment & Supplies{
+.Electrical-Equipment-and-Supplies{
 	border-color: #1a6e30;
 
 }
-.Car Accessories{
+.Car-Accessories{
 	border-color: #512c5c;
 
 }
-.Professional Services{
+.Professional-Services{
     border-color: #edb90e;
 }
 .Legal{
@@ -4704,10 +4701,10 @@ h5 {
 .Marketing{
   border-color: #88b448;
 }
-.Fashion And Beauty{
+.Fashion-And-Beauty{
   border-color:#512c5c;
 }
-.Financial Services{
+.Financial-Services{
   border-color: #e14f5f;
 }
 .Office{
@@ -4720,7 +4717,7 @@ h5 {
 	border-color: #ed522d;
 
 }
-.Transport & Shipping{
+.Transport-and-Shipping{
   border-color: #512c5c;
 }
 .Home{

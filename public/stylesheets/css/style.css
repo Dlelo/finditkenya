@@ -4628,7 +4628,7 @@ table {
     background: white;
     width: 300px;
     height: 200px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 .checkout-rows{
 	border: 1px solid #eee; 
@@ -4655,3 +4655,72 @@ h5 {
 	font-size: 90% !important;
     
 }
+.site-text-color{
+   border-color: #212529 !important;
+}
+.Restaurants{
+  border-color:#b991cc;
+
+}
+.Medical{
+	border-color: #90191c;
+
+}
+.Hospitality{
+	border-color: #88b448;
+
+}
+.Entertainment{
+	border-color: #24b9b5;
+
+}
+.Consultancy{
+	border-color: #e14f5f;
+
+}
+.Electrical Equipment & Supplies{
+	border-color: #1a6e30;
+
+}
+.Car Accessories{
+	border-color: #512c5c;
+
+}
+.Professional Services{
+    border-color: #edb90e;
+}
+.Legal{
+  border-color: #222222;
+}
+.Travel{
+    border-color: #e14f5f;
+}
+.Others{
+  border-color: #00456e;
+}
+.Marketing{
+  border-color: #88b448;
+}
+.Fashion And Beauty{
+  border-color:#512c5c;
+}
+.Financial Services{
+  border-color: #e14f5f;
+}
+.Office{
+ border-color: #24b9b5;
+}
+.Shopping{
+  border-color:#d42b43;
+}
+.Emergency{
+	border-color: #ed522d;
+
+}
+.Transport & Shipping{
+  border-color: #512c5c;
+}
+.Home{
+  border-color:#1a6e30;
+}
+

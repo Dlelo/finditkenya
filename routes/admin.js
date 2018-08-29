@@ -529,6 +529,7 @@ router.post('/category/update/:id', role.admin, cpUpload, function(req, res, nex
 	  _id: req.params.id
 	}).then(function(data){
 		data.name = req.body.name;
+    data.slug = slug(req.body.name);
 		data.icon = req.body.icon;
 		data.order = req.body.order;
     data.group = req.body.group;
@@ -577,6 +578,7 @@ router.get('/category/delete/:id', role.admin, function(req, res, next){
 router.post('/category/add', role.admin, cpUpload, function(req, res, next){
   var i = new Category();
 	i.name = req.body.name;
+  i.slug = slug(req.body.name);
 	i.icon = req.body.icon;
 	i.order = req.body.order;
   i.group = req.body.group;

@@ -9,6 +9,10 @@ const Schema = mongoose.Schema;
 
 const catSchema = new Schema({
 		name: { type: String,required: true, index: { unique: true, sparse: true }},
+		slug: {
+			type: String,
+			unique: true
+		},
 		icon: String,
 		approved: String,
 		order: String,

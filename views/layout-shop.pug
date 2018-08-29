@@ -475,6 +475,31 @@ script(type='text/javascript').
     
     
     //KEV
+    var count = 0;
+    
+    //alert("cart count: "+count );
+    $(document).on('click', '.addtocart', function(event) {
+      //console.log(event.target.id);
+      
+      $.ajax({
+          type: "GET",
+          url: "/product/api/"+event.target.id,
+          success: function(res){
+            $('#cartcount').text(res.itemsincart+')');
+            //To list all the products in cart use below
+            //res.cart
+            $('#totalprice').text(res.total);
+            $('#cartsidepreview').html('');
+            res.cart.forEach(function(x){                
+              $('#cartsidepreview').append('<div class="card" style= "border: none; border-top: 1px solid #eee; padding: 10px;"><div class="row"><div class="col-md-3 card-text"><div id="inc-button" style="border:1px solid #eee; border-radius: 10%; padding:2px;">+</div><div class="div">1</div><div id="dec-button" style="border:1px solid #eee; border-radius: 10%; padding:2px;">-</div></div><div class="col-md-6 card-text"><img src="/uploads/product/thumbs/'+x.photo+'" style="width: 66px; height: 66px; margin-right: 4px; padding-top:4px;"></div><div class="col-md-3"><i class="findit-blue fas fa-close fa-1x"></i></div></div><div class="row"><div class="col-md-12 card-text"> <small class="text-left">'+x.name+'</small><span class="findit-blue"><small class="text-right">KES    <span>'+x.price+'</span></small></span></div></div></div>');
+              //x.name, x.count, x.price, x.photo,x.quantity
+              console.log(x.name);
+            });             
+          }
+      });
+    });
+    
+    
     const mq = window.matchMedia( "(min-width: 450px)" );
     $('.phonenofake').click(function() {
         $('.phoneno').show();

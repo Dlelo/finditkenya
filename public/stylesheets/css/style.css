@@ -4656,7 +4656,7 @@ h5 {
     
 }
 .site-text-color{
-   border-color: #212529 !important;
+   color: #212529 !important;
 }
 .Restaurants{
   border-color:#b991cc;
@@ -4723,4 +4723,6 @@ h5 {
 .Home{
   border-color:#1a6e30;
 }
-
+.hr-cat{
+	margin-top:0!important;
+}

@@ -107,18 +107,18 @@ block content
             div.col-md-4.col-sm-12.col-xs-12.morecat
               a(href="/category/"+category.name)
                   strong.findit-blue
-                    i.fas.fa-1x(aria-hidden='true', class=category.icon) 
+                    i.fas.fa-1x(aria-hidden='true', class=category.icon, class=category.name ) 
                     small.content-col.small-cart
                       strong   
                         =category.name
-              hr(class=category.name)
+              hr.hr-cat(class=category.name)
               .div.row
                 ul
                   each subcat, i in category.subcategories
                     if(i<5)
                       li
                         small.small-cart
-                          i(class="fas fa-check-circle" aria-hidden="true" style="margin-right:2px")
+                          i(class="fas fa-check-circle" aria-hidden="true" class=category.name style="margin-right:2px; font-size: 12px;")
                           a.site-text-color(href="/subcategory/"+subcat.name)
                             =subcat.name
                   div

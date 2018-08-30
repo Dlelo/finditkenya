@@ -4737,7 +4737,6 @@ h5 {
 .Transport-and-Shipping{
   border-color: #512c5c;
   color: #512c5c;
-  
 }
 .Home{
   border-color:#1a6e30;
@@ -4745,4 +4744,7 @@ h5 {
 }
 .hr-cat{
 	margin-top:0.5rem!important;
+}
+.all{
+	color:#222222 !important;
 }

@@ -1218,8 +1218,8 @@ router.get('/biz/:name',function(req, res, next){
   })
   .then(function(data){
     //var phones = data.phone.split(/[\s,]+/);
-    var phones = data.phone.split(/[.,\/-]/);
-    var emails = data.email.split(/[.,\/-]/);
+    var phones = data.phone.split(/[,\/-]/);
+    var emails = data.email.split(/[,\/-]/);
     var now = moment();
     delete data.hours.$init;
     //console.log(data);

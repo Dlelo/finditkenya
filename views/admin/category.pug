@@ -48,16 +48,16 @@ block content
                   td 
                     =category.group
                   td
-                    each cat in category.subcategories
-                      =cat.name 
-                      a(href="/admin/subcategory/delete/"+category.id+"/"+cat.name, onclick="return confirm('Are you sure you want to delete this Category?')")
-                        i.fa.fa-trash.fa-fw(aria-hidden='true')
-                      a(href="/admin/subcategory/bizlist/"+cat.name,'title'="See Businesses Under This Category")
-                        i.fa.fa-eye.fa-fw(aria-hidden='true')
-                      each minicat in cat.minicategories
-                        =minicat.name
-                      br
-                      
+                    
+                      each cat in category.subcategories                      
+                        =cat.name
+                        a(href="/admin/subcategory/delete/"+category.id+"/"+cat.name, onclick="return confirm('Are you sure you want to delete this Category?')")
+                          i.fa.fa-trash.fa-fw(aria-hidden='true')
+                        a(href="/admin/subcategory/bizlist/"+cat.name,'title'="See Businesses Under This Category")
+                          i.fa.fa-eye.fa-fw(aria-hidden='true')
+                        each minicat in cat.minicategories
+                          =minicat.name
+                        br                      
                   td
                     span.text-info
                       a(href="/admin/category/delete/"+category.id, onclick="return confirm('Are you sure you want to delete this Category?')", title="Delete Category")
@@ -68,3 +68,4 @@ block content
                     span.text-info
                       a(href="/admin/category/showhome/"+category.id, title="Show on home page")
                         i.fa.fa-check.fa-fw(aria-hidden='true')
+    

@@ -318,10 +318,8 @@ header h1 a span {
 }
 
 .rslides_tabs a {
-	width: auto;
 	line-height: 20px;
 	padding: 9px 20px;
-	height: auto;
 	background: transparent;
 	display: inline;
 }
@@ -4506,7 +4504,6 @@ padding: 1rem;
 }
 @media screen and (max-width: 600px) {
     table#cart tbody td .form-control{
-		width:20%;
 		display: inline !important;
 	}
 	.actions .btn{
@@ -4656,71 +4653,98 @@ h5 {
     
 }
 .site-text-color{
-   border-color: #212529 !important;
+   color: #26292d !important;
+}
+.sub-cat-color{
+	color:#555;
 }
 .Restaurants{
   border-color:#b991cc;
+  color:#b991cc;
 
 }
 .Medical{
 	border-color: #90191c;
+	color: #90191c;
 
 }
 .Hospitality{
 	border-color: #88b448;
+	color: #88b448;
 
 }
 .Entertainment{
 	border-color: #24b9b5;
+	color: #24b9b5;
 
 }
 .Consultancy{
 	border-color: #e14f5f;
+	color: #e14f5f;
 
 }
-.Electrical Equipment & Supplies{
+.Electrical-Equipment-and-Supplies{
 	border-color: #1a6e30;
+	color: #1a6e30;
 
 }
-.Car Accessories{
+.Car-Accessories{
 	border-color: #512c5c;
+	color: #512c5c;
 
 }
-.Professional Services{
-    border-color: #edb90e;
+.Professional-Services{
+	border-color: #edb90e;
+	color: #edb90e;
 }
 .Legal{
   border-color: #222222;
+  color: #222222;
 }
 .Travel{
-    border-color: #e14f5f;
+	border-color: #e14f5f;
+	color: #e14f5f;
 }
 .Others{
   border-color: #00456e;
+  color: #00456e;
 }
 .Marketing{
   border-color: #88b448;
+  color: #88b448;
 }
-.Fashion And Beauty{
+.Fashion-and-Beauty{
   border-color:#512c5c;
+  color:#512c5c;
 }
-.Financial Services{
+.Financial-Services{
   border-color: #e14f5f;
+  color: #e14f5f;
 }
 .Office{
  border-color: #24b9b5;
+ color: #24b9b5;
 }
 .Shopping{
   border-color:#d42b43;
+  color:#d42b43;
 }
 .Emergency{
 	border-color: #ed522d;
+	color: #ed522d;
 
 }
-.Transport & Shipping{
+.Transport-and-Shipping{
   border-color: #512c5c;
+  color: #512c5c;
 }
 .Home{
   border-color:#1a6e30;
+  color:#1a6e30;
 }
-
+.hr-cat{
+	margin-top:0.5rem!important;
+}
+.all{
+	color:#222222 !important;
+}

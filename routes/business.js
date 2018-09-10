@@ -269,6 +269,27 @@ router.get('/gallery/reorder/:bizid',role.auth,function(req, res, next){
   }
 });
 
+//categories reorder
+router.get('/subcategory/reorder/:bizid',role.auth,function(req, res, next){
+	//res.json(req.query.order);
+    console.log(req.params.bizid);
+    Category.findById(req.params.bizid)
+    .then(function(data){
+      console.log(req.query.order);
+      data.subcategories = JSON.parse(decodeURI(req.query.order.replace(/~/g,'&')));
+      data.save(function(err,rst){
+        if(err){
+          console.log(err);
+        }else{
+          res.send("Subcategories Reordered!");
+        }
+      });
+    })
+    .catch(function(err){
+       console.log(err);
+    });
+});
+
 router.get('/:name',function(req, res, next){
 	res.render('business/new');
 });

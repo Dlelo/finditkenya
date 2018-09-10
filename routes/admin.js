@@ -472,7 +472,8 @@ router.get('/category/edit/:id',role.admin, function(req, res, next){
 	    console.log(values);
 	    res.render('admin/editcategory', {
 	        title: "Edit "+values[0].name,
-	        category: values[0]
+	        category: values[0],
+          categoryjson: JSON.stringify(values[0]),
 	    });
 	  });
 });
@@ -550,8 +551,9 @@ router.post('/category/update/:id', role.admin, cpUpload, function(req, res, nex
   				    console.error(err);
   				});
   			}else{
-  				req.flash("success_msg", "Category Successfully Created");
+
   			}
+        req.flash("success_msg", "Category Successfully Edited");
 			res.redirect('/admin/category');
 		});
 	});

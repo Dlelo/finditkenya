@@ -60,7 +60,6 @@ router.get('/search', function(req, res, next){
       keys: [
         "name",
         "subcategory",
-        "keywords",
         "features"
     ]
     };

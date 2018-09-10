@@ -3,10 +3,8 @@ mongoose.plugin(schema => { schema.options.usePushEach = true });
 var dataTables = require('mongoose-datatables');
 
 var sys = require(__dirname + '/../config/System');
-
 var db = mongoose.connect(sys.db_uri, {useMongoClient: true });
 mongoose.Promise =require('bluebird');
-
 const Schema = mongoose.Schema;
 
 const bizSchema = new Schema({

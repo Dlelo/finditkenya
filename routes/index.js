@@ -52,11 +52,11 @@ router.get('/search', function(req, res, next){
     var options = {
       shouldSort: true,
       includeScore: true,
-      threshold: 0.4,
+      threshold: 0.3,
       location: 0,
       distance: 100,
-      maxPatternLength: 32,
-      minMatchCharLength: 2,
+      maxPatternLength: 64,
+      minMatchCharLength: 10,
       keys: [
         "name",
         "subcategory",

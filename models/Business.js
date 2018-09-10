@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 mongoose.plugin(schema => { schema.options.usePushEach = true });
-var mongoosastic=require("mongoosastic");
 var dataTables = require('mongoose-datatables');
 
 var sys = require(__dirname + '/../config/System');
@@ -77,18 +76,11 @@ const bizSchema = new Schema({
 
 bizSchema.index(
 	{ name: 'text',features: 'text',subcategory: 'text', keywords: 'text', description: 'text' },
-	{weights: {name: 12, features: 9, subcategory: 11, keywords: 4, description: 1}}
+	{weights: {name: 12, features: 9, subcategory: 12, keywords: 4, description: 1}}
 );
 bizSchema.plugin(dataTables);
 
-
-bizSchema.plugin(mongoosastic, {
-  hosts: [
-    'localhost:9200'
-  ]
-});
-
 const Promise = require("bluebird");
 const Business = mongoose.model('Business', bizSchema);
-Business.search = Promise.promisify(Business.search, { context: Business });
+//Business.search = Promise.promisify(Business.search, { context: Business });
 module.exports = Business;

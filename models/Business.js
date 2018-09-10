@@ -82,5 +82,5 @@ bizSchema.plugin(dataTables);
 
 const Promise = require("bluebird");
 const Business = mongoose.model('Business', bizSchema);
-Business.search = Promise.promisify(Business.search, { context: Business });
+//Business.search = Promise.promisify(Business.search, { context: Business });
 module.exports = Business;

@@ -303,7 +303,7 @@ router.get('/shipping',function(req, res){
   });
   var categories = Category.find({group:'shopping'});
     Promise.all([categories]).then(values => {
-      res.render('product/checkout',{
+      res.render('procategory/duct/checkout',{
         cart: req.session.cart,
         total: total,
         categories: values[0]

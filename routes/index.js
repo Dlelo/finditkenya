@@ -154,6 +154,10 @@ router.get('/moment',function(req,res){
     console.log(moment('20-01-2012 19:43:00', 'DD-MM-YYYY HH:mm'));
 });
 
+router.get('/advertising',function(req,res){
+    res.render('site/advertising', {title: "Find It: Advertising"});
+});
+
 router.get('/fetchCat/:name',function(req, res, next){
   //wait for the initialization
   Category.findOne({name: req.params.name})

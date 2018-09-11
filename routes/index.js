@@ -53,6 +53,7 @@ router.get('/search', function(req, res, next){
       shouldSort: true,
       includeScore: true,
       threshold: 0.4,
+      tokenize: true,
       location: 0,
       distance: 100,
       maxPatternLength: 64,
@@ -60,7 +61,6 @@ router.get('/search', function(req, res, next){
       keys: [
         "name",
         "subcategory",
-        "keywords",
         "features"
     ]
     };

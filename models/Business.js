@@ -3,10 +3,8 @@ mongoose.plugin(schema => { schema.options.usePushEach = true });
 var dataTables = require('mongoose-datatables');
 
 var sys = require(__dirname + '/../config/System');
-
 var db = mongoose.connect(sys.db_uri, {useMongoClient: true });
 mongoose.Promise =require('bluebird');
-
 const Schema = mongoose.Schema;
 
 const bizSchema = new Schema({
@@ -75,8 +73,8 @@ const bizSchema = new Schema({
 });
 
 bizSchema.index(
-	{ name: 'text',features: 'text',subcategory: 'text', keywords: 'text', description: 'text' },
-	{weights: {name: 12, features: 9, subcategory: 12, keywords: 4, description: 1}}
+	{ name: 'text',features: 'text',subcategory: 'text', keywords: 'text' },
+	{weights: {name: 12, features: 9, subcategory: 12}}
 );
 bizSchema.plugin(dataTables);
 

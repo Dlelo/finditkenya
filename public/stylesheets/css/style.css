@@ -249,7 +249,7 @@ header h1 a span {
 
 	background-size: 100% 100%;
 	width:100%;
-	height: 70vh;
+	/*height: 70vh;*/
 	
 }
 
@@ -266,7 +266,7 @@ header h1 a span {
 
 .banner-text {
 	max-width: 100%;
-    padding: 5vw 0 10vW 15vw;
+    padding: 4vw 0 7vW 10vw;
     box-sizing: border-box;
 }
 #hide-search{
@@ -1524,11 +1524,9 @@ ul.portfolio-area li figure {
 		width: 9rem !important;
         height: 2rem !important;
 		}
-		.banner {
-    height: 40vh !important;
-       }
-	.banner{
-		min-height: 40vh !important;
+	.banner {
+         height: 30rem !important;
+		min-height: 40rem !important;
 	}
 
 	.banner-text {
@@ -1546,10 +1544,10 @@ ul.portfolio-area li figure {
 
 @media screen and (max-width: 768px) {
 	.banner{
-		height:40vh !important;
+		height:25rem !important;
 	}
 	.banner{
-		min-height: 40vh !important;
+		min-height: 27rem !important;
 	}
 
     .img-logo {
@@ -1674,10 +1672,10 @@ ul.portfolio-area li figure {
     padding-top: 23vh!important;
 	}
 	.banner {
-		min-height: 40vh !important;
+		min-height: 20rem !important;
 	}
 	.bannner{
-		height:40vh !important;
+		height:20rem !important;
 	}
 }
 
@@ -1810,8 +1808,8 @@ ul.portfolio-area li figure {
 		letter-spacing: 1px;
 	}
 	.banner {
-		min-height: 20vh !important;
-		height: 65vh !important;
+		min-height: 20rem !important;
+		height: 23rem !important;
 	}
 	.captn {
 		left: 17%;
@@ -1860,7 +1858,7 @@ ul.portfolio-area li figure {
 	   margin-left: 2rem !important;
 	}
 	.banner-text-top{
-    padding-top: 17vh !important;
+    padding-top: 2rem !important;
 	}
 	.slider-info h3 {
 		font-size: 1.5em;
@@ -1959,8 +1957,8 @@ ul.portfolio-area li figure {
          z-index: 80 !important;
      }
       .banner{
-		min-height:47vh !important;
-		height:55vh !important;
+		min-height:20rem !important;
+		height:10rem !important;
            }
 	.dropdown-item {
 		text-align:left;

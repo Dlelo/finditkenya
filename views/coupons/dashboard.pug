@@ -56,10 +56,9 @@ block content
                       .panel-body
                         each usr,i in coupon.users
                           p
-                            if(typeof(usr.user_id.names) !== 'undefined')
-                              | #{usr.code} | #{usr.status} | #{usr.user_id.names} | #{usr.user_id.email}
-                              a(href="/admin/coupon/markused/"+user.id, title="Mark This Coupon as Used")
-                                i.fa.fa-check.fa-fw(aria-hidden='true')
+                            | #{usr.code} | #{usr.status} | #{usr.user_id} 
+                            a(href="/admin/coupon/markused/"+user.id, title="Mark This Coupon as Used")
+                              i.fa.fa-check.fa-fw(aria-hidden='true')
     script(src="/javascripts/admin/Sortable.min.js")
     script(src="/javascripts/axios.min.js")
     script(src='/javascripts/notify.js')

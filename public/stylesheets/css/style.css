@@ -267,7 +267,8 @@ header h1 a span {
 .banner-text {
 	max-width: 100%;
     padding: 4vw 0 7vW 10vw;
-    box-sizing: border-box;
+	box-sizing: border-box;
+	margin-bottom: 3rem;
 }
 #hide-search{
   padding: 5vw 0 10vW 15vw;
@@ -1865,8 +1866,7 @@ ul.portfolio-area li figure {
 	}
 
 	.banner-text {
-		padding-top: 6vw;
-		padding-bottom: 3rem;
+		padding: 1rem !important;
 	}
 
 	footer h2 a {
@@ -2093,7 +2093,7 @@ ul.portfolio-area li figure {
     padding-top: 13vh !important;
 	}
   .banner{
-	  min-height: 60vh;
+	  min-height: 20rem !important;
    }
    .eac-description{
 	   width: 76% !important;

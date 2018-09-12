@@ -64,8 +64,8 @@ router.get('/search', function(req, res, next){
       {score: {$meta: "textScore"}},
       { score: { $gt: 18 }  }
     )
-    //.sort({ score:{$meta:'textScore'}, paid: -1,datepaid: 1})
-    .sort([[score:{$meta:'textScore'}],['paid', -1],['datepaid', 1],['slug', 1]])
+    .sort({ score:{$meta:'textScore'}, paid: 1,datepaid: 1})
+    //.sort([['score', {$meta:'textScore'}],['paid', -1],['datepaid', 1],['slug', 1]])
     .limit(20)
 
   /*var businesses = Business.find({
@@ -96,7 +96,7 @@ router.get('/search', function(req, res, next){
     };
     var fuse = new Fuse(list, options); // "list" is the item array
     var result = fuse.search(req.query.search);*/
-    //console.log(result);
+    //console.log(values[0]);
     res.render('business/search', {
         title: req.query.search,
         businesses: values[0],

@@ -4,9 +4,9 @@ block content
   div.container-fluid
   #home.parallax-content-list.baner-content-listing-biz
     .container-fluid.container-margin-top
-      .row
-        .col-md-12.search-padding.text-center
-          if(suggestion)
+      if(suggestion)
+        .row
+          .col-md-12.search-padding.text-center          
             | Did you mean: 
             a(href="search?search="+suggestion)
                 |  #{suggestion}

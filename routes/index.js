@@ -42,7 +42,7 @@ router.get('/search', function(req, res, next){
   function isInArray(value, array) {
     return array.indexOf(value) > -1;
   }
-  var words_in_negation = ['and', 'in', 'the','kenya','nairobi','of']
+  var words_in_negation = ['and', 'in', 'the','kenya','nairobi','of','tokyo','japanese','chinese','brazillian']
   var newstring = [];
   result.forEach(function(x){
     if(isInArray(x, words_in_negation)){

@@ -97,7 +97,7 @@ router.get('/search', function(req, res, next){
     var fuse = new Fuse(list, options); // "list" is the item array
     var result = fuse.search(req.query.search);*/
     //console.log(values[0]);
-    res.render('business/search', {
+    res.render('business/searchfuse', {
         title: req.query.search,
         businesses: values[0],
         suggestion: array_of_suggestions[0],

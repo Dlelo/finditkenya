@@ -921,7 +921,7 @@ router.get('/coupons', function(req, res){
     Promise.all([ coupons, categories, groups, populars, mycoupons]).then(values => {
         //console.log("Mycoupons Size:"+values[4].length);
         res.render('coupons/index', {
-            title: 'Coupons on Findit',
+            title: 'Findit: Deals in Kenya',
             coupons: values[0],
             categories: values[1],
             groups: values[2],

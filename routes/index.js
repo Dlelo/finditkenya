@@ -44,10 +44,10 @@ router.get('/search', function(req, res, next){
   }
   var words_in_negation = ['and', 'in', 'the','kenya','nairobi','of','tokyo','japanese','chinese','brazillian','itallian','agrovet']
   var newstring = [];
-  console.log(result);
+  //console.log(result);
   result.forEach(function(x){
     if(isInArray(x, words_in_negation)){
-      console.log(true);
+      //console.log(true);
       newstring.push(x);
     }else{
       var a = dictionary.suggest(x);

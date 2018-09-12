@@ -77,7 +77,7 @@ router.get('/search', function(req, res, next){
       {score: {$meta: "textScore"}},
       { score: { $gt: 16 }  }
     )
-    .sort({ paid: 1,datepaid: 1})
+    .sort({ paid: 1})
     //.sort([['score', {$meta:'textScore'}],['paid', -1],['datepaid', 1],['slug', 1]])
     .limit(50)
 

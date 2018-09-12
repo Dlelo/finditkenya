@@ -44,10 +44,8 @@ router.get('/search', function(req, res, next){
   }
   var words_in_negation = ['and', 'in', 'the','kenya','nairobi','of','tokyo','japanese','chinese','brazillian','itallian','agrovet']
   var newstring = [];
-  //console.log(result);
   result.forEach(function(x){
     if(isInArray(x, words_in_negation)){
-      //console.log(true);
       newstring.push(x);
     }else{
       var a = dictionary.suggest(x);
@@ -66,7 +64,7 @@ router.get('/search', function(req, res, next){
       {score: {$meta: "textScore"}},
       { score: { $gt: 16 }  }
     )
-    .sort({ score:{$meta:'textScore'}, paid: 1,datepaid: 1})
+    .sort({ score:{$meta:'textScore'}, paid: -1,datepaid: -1})
     //.sort([['score', {$meta:'textScore'}],['paid', -1],['datepaid', 1],['slug', 1]])
     .limit(50)
 

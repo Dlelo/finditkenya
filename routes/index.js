@@ -62,11 +62,11 @@ router.get('/search', function(req, res, next){
   var businesses = Business.find(
       {$text: {$search: searchString}},
       {score: {$meta: "textScore"}},
-      { score: { $gt: 18 }  }
+      { score: { $gt: 16 }  }
     )
     .sort({ score:{$meta:'textScore'}, paid: 1,datepaid: 1})
     //.sort([['score', {$meta:'textScore'}],['paid', -1],['datepaid', 1],['slug', 1]])
-    .limit(20)
+    .limit(50)
 
   /*var businesses = Business.find({
       $query: { approved: true},

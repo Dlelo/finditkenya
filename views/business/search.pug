@@ -139,6 +139,14 @@ block content
             .row
               strong
                 | No Results Found
+            .row
+              form(method='get', action='/search')
+                div.input-group
+                  span.input-group-addon#basic-addon1.finditbutton.input-group-addon.text-center
+                    h5
+                      |  Search
+                  input#search2.form-control.form-control-lg(type="text" placeholder="..." ,name='search', autofocus)
+
             //.row
               if(suggestion)
                 | Did you mean: 

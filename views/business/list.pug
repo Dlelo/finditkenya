@@ -33,7 +33,7 @@ block content
                   | Filter Sub Categories  
                   span.caret
                   
-                ul.dropdown-menu.open.sub-catbag.drop-down-sub(style="z-index: 100 !important; overflow: hidden; border: 0px solid rgba(0,0,0,.15) !important")
+                ul.dropdown-menu.open.sub-catbag.drop-down-sub(style="z-index: 100; overflow: hidden; border: 0px solid rgba(0,0,0,.15) !important")
                   if features 
                     li.text-left.sub-list
                         h6.findit-red
@@ -295,5 +295,8 @@ block content
         //script to put navitems open by default
         script(type='text/javascript').
           $(document).ready(function(){
-              $(".dropdown-toggle").dropdown("toggle");
+              if($(window).width() >= 600){
+                $(".dropdown-toggle").dropdown("toggle");
+              }
+              
             });

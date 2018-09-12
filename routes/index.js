@@ -37,19 +37,49 @@ var Review = require(__dirname + '/../models/Reviews');
 var mailer = require('express-mailer');
 
 router.get('/search', function(req, res, next){
-  var businesses = Business.find({
+  var result = req.query.search.split(/[, \/-]/);
+  //console.log(result);
+  function isInArray(value, array) {
+    return array.indexOf(value) > -1;
+  }
+  var words_in_negation = ['and', 'in', 'the','kenya','nairobi','of']
+  var newstring = [];
+  result.forEach(function(x){
+    if(isInArray(x, words_in_negation)){
+      newstring.push(x);
+    }else{
+      var a = dictionary.suggest(x);
+      console.log(a);
+      if (a === undefined || a.length == 0) {
+        newstring.push(x);
+      }else{
+        newstring.push(a[0]);
+      }
+    }
+  });
+  var searchString = newstring.join(' ');
+  console.log(searchString);
+  var businesses = Business.find(
+      {$text: {$search: searchString}},
+      {score: {$meta: "textScore"}},
+      { score: { $gt: 18 }  }
+    )
+    .sort({ score:{$meta:'textScore'}, paid: -1})
+    .limit(20)
+
+  /*var businesses = Business.find({
       $query: { approved: true},
     },
     {
       name:1,subcategory:1,keywords:1,description:1,features:1,reviews:1,slug:1,paid:1,
       website:1,photo: 1,instagram: 1,youtube:1,twitter:1,facebook:1, _id:0
     }
-  ).sort([['paid', -1],['datepaid', 1]]);
+  ).sort([['paid', -1],['datepaid', 1]]);*/
   var array_of_suggestions = dictionary.suggest(req.query.search);
   Promise.all([businesses]).then(values => {
     var list = values[0];
     //console.log(list);
-    var options = {
+    /*var options = {
       shouldSort: true,
       includeScore: true,
       matchAllTokens: true,
@@ -64,11 +94,11 @@ router.get('/search', function(req, res, next){
     ]
     };
     var fuse = new Fuse(list, options); // "list" is the item array
-    var result = fuse.search(req.query.search);
+    var result = fuse.search(req.query.search);*/
     //console.log(result);
-    res.render('business/searchfuse', {
+    res.render('business/search', {
         title: req.query.search,
-        businesses: result,
+        businesses: values[0],
         suggestion: array_of_suggestions[0],
         host: req.get('host')
     });
@@ -116,6 +146,31 @@ router.get('/email', function (req, res, next) {
 });
 
 router.get('/searchold',function(req, res, next){
+  var result = req.query.search.split(/[, \/-]/);
+  //console.log(result);
+  function isInArray(value, array) {
+    return array.indexOf(value) > -1;
+  }
+  var words_in_negation = ['and', 'in', 'the','kenya','nairobi','of']
+  var newstring = [];
+  result.forEach(function(x){
+    if(isInArray(x, words_in_negation)){
+      newstring.push(x);
+    }else{
+      var a = dictionary.suggest(x);
+      console.log(a);
+      if (a === undefined || a.length == 0) {
+        newstring.push(x);
+      }else{
+        newstring.push(a[0]);
+      }
+    }
+  });
+  var searchString = newstring.join(' ');
+  res.send(searchString);
+  throw new Error("Something went badly wrong!");
+
+
   //wait for the initialization
   /*var search = Business.search(
     {query_string: {query: req.query.search}},

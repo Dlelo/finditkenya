@@ -53,10 +53,8 @@ router.get('/search', function(req, res, next){
       shouldSort: true,
       includeScore: true,
       matchAllTokens: true,
-      threshold: 0.4,
+      threshold: 0.5,
       tokenize: true,
-      location: 0,
-      distance: 100,
       maxPatternLength: 64,
       minMatchCharLength: 10,
       keys: [

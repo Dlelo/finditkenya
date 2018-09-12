@@ -6,8 +6,9 @@ block content
     .container-fluid.container-margin-top
       if(suggestion)
         .row
-          .col-md-12.search-padding.text-center
-              | Did you mean: 
+          .col-md-12.search-padding
+              strong
+                | Did you mean: 
               a(href="search?search="+suggestion)
                   |  #{suggestion}
       .row          
@@ -138,7 +139,8 @@ block content
           else
             .row
               strong
-                | No Results Found
+                | No Results Found... Search again
+            br
             .row
               form(method='get', action='/search')
                 div.input-group

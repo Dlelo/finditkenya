@@ -46,7 +46,7 @@ router.get('/search', function(req, res, next){
   var newstring = [];
   result.forEach(function(x){
     if(isInArray(x, words_in_negation)){
-      newstring.push(x);
+      //newstring.push(x);
     }else{
       var a = dictionary.suggest(x);
       console.log(a);

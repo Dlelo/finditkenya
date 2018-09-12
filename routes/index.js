@@ -41,8 +41,8 @@ router.get('/search', function(req, res, next){
       $query: { approved: true},
     },
     {
-      name:1,subcategory:1,features:1,slug:1,paid:1,
-      website:1,instagram: 1,youtube:1,twitter:1,facebook:1, _id:0
+      name:1,subcategory:1,keywords:1,description:1,features:1,reviews:1,slug:1,paid:1,
+      website:1,photo: 1,instagram: 1,youtube:1,twitter:1,facebook:1, _id:0
     }
   ).sort([['paid', -1],['datepaid', 1]]);
   var array_of_suggestions = dictionary.suggest(req.query.search);

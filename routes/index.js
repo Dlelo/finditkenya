@@ -71,9 +71,7 @@ router.get('/search', function(req, res, next){
       //console.log(a);
       if (a === undefined || a.length == 0) {
         //newstring.push(x);
-        var array_of_suggestions = dictionary.suggest(req.query.search);
       }else{
-        var array_of_suggestions = [];
         newstring.push(a[0]);
       }
     }
@@ -97,7 +95,7 @@ router.get('/search', function(req, res, next){
       website:1,photo: 1,instagram: 1,youtube:1,twitter:1,facebook:1, _id:0
     }
   ).sort([['paid', -1],['datepaid', 1]]);*/
-
+  var array_of_suggestions = dictionary.suggest(req.query.search);
   Promise.all([businesses]).then(values => {
     var list = values[0];
     //console.log(list);

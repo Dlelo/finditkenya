@@ -23,6 +23,7 @@ var Typo = require("typo-js");
 var dictionary = new Typo("en_US");
 var Fuse = require("fuse.js");
 var _ = require('lodash');
+var nationalities = require(__dirname + '/../models/Nationalities');
 
 var sys = require(__dirname + '/../config/System');
 var role = require(__dirname + '/../config/Role');
@@ -42,19 +43,34 @@ router.get('/search', function(req, res, next){
   function isInArray(value, array) {
     return array.indexOf(value) > -1;
   }
-  var words_in_negation = ['and', 'in', 'the','kenya','nairobi','of']
-  var confused_words = ['tokyo','japanese','chinese','brazillian','itallian','agrovet']
+  function capitalize(string) {
+      return string[0].toUpperCase() + string.slice(1);
+  }
+  var words_in_negation = ['and', 'in', 'the','kenya','nairobi','of'];
+
   var newstring = [];
   result.forEach(function(x){
+    var capitalX = capitalize(x);
     if(isInArray(x, words_in_negation)){
       //newstring.push(x);
-    }else if(isInArray(x, confused_words)){
-      newstring.push(x);
     }else{
-      var a = dictionary.suggest(x);
-      console.log(a);
+      //SPELL CHECK
+      var checka = dictionary.check(x);
+      var checkb = dictionary.check(capitalize(x));
+      console.log(checka);
+      console.log(checkb);
+      if(checka || checkb){
+        if(checka){
+          newstring.push(x);
+        }else{
+          newstring.push(capitalize(x));
+        }
+      }else{
+        var a = dictionary.suggest(x);
+      }
+      //console.log(a);
       if (a === undefined || a.length == 0) {
-        newstring.push(x);
+        //newstring.push(x);
       }else{
         newstring.push(a[0]);
       }
@@ -107,6 +123,10 @@ router.get('/search', function(req, res, next){
         host: req.get('host')
     });
   });
+});
+
+router.get('/test', function(req, res){
+
 });
 /* GET home page. */
 router.get('/nss/:name',function(req, res, next){

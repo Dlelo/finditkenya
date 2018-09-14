@@ -38,7 +38,8 @@ var Review = require(__dirname + '/../models/Reviews');
 var mailer = require('express-mailer');
 
 router.get('/search', function(req, res, next){
-  var result = req.query.search.split(/[, \/-]/);
+  var neatString = req.query.search.trim();
+  var result = neatString.split(/[, \/-]/);
   //console.log(result);
   function isInArray(value, array) {
     return array.indexOf(value) > -1;

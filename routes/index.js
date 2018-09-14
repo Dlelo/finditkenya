@@ -39,7 +39,7 @@ var mailer = require('express-mailer');
 
 router.get('/search', function(req, res, next){
   var neatString = req.query.search.trim();
-  var result = neatString.split(/[, \/-]/);
+  var result = neatString.split(/[,. \/-]/);
   //console.log(result);
   function isInArray(value, array) {
     return array.indexOf(value) > -1;

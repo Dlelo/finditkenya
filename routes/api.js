@@ -45,4 +45,6 @@ router.get('/home',function(req, res){
         categories: values[0]
     });
   });
-})
+});
+
+module.exports = router;

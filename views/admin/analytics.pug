@@ -38,9 +38,10 @@ block content
                   td 
                     =d.ip
                   td 
-                    each b in d.biz
-                      a(href="/biz/"+b.slug,'title'=b.name,target="_blank")
-                        =b.name
+                    if(d.biz)
+                      each b in d.biz
+                        a(href="/biz/"+b.slug,'title'=b.name,target="_blank")
+                          =b.name
                   td.txt-oflo 
                     =d.time
                   

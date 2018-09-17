@@ -55,7 +55,7 @@ router.get('/search', function(req, res, next){
     var capitalX = capitalize(x);
     if(isInArray(x, words_in_negation)){
       //newstring.push(x);
-    }if else(isInArray(capitalX, special_words)){
+    }else if(isInArray(capitalX, special_words)){
       newstring.push(x);
     }
     else{

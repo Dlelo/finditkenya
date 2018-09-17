@@ -47,4 +47,32 @@ router.get('/home',function(req, res){
   });
 });
 
+router.get('/category/:cat',function(req, res, next){
+    var businesses = Business.find({
+      $query: {
+        subcategory: req.params.cat,
+        approved: true
+        //pending: { $ne: true }
+      }
+    }).sort([['paid', -1],['datepaid', 1],['slug', 1]]);
+
+    var features = Category.aggregate([
+      { $match: { name: req.params.cat } },
+      { "$unwind": "$subcategories" },
+      { "$sort": { "subcategories.name": 1 } }
+    ]);
+    var categories = Category.find({approved: true,group: 'general'}).sort([['order', 1]]);
+    Promise.all([businesses, features, categories]).then(values => {
+      //console.log(values[1]);
+      res.json({
+          title: req.params.cat,
+          businesses: values[0],
+          features: values[1],
+          categories: values[2],
+          host: req.get('host')
+      });
+    });
+      //res.render('business/list', { title: 'Businesses on ', businesses: data});
+});
+
 module.exports = router;

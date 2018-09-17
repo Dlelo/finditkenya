@@ -48,13 +48,17 @@ router.get('/search', function(req, res, next){
       return string[0].toUpperCase() + string.slice(1);
   }
   var words_in_negation = ['and', 'in', 'the','kenya','nairobi','of','ltd','Ltd'];
+  var special_words = ['Newmatic'];
 
   var newstring = [];
   result.forEach(function(x){
     var capitalX = capitalize(x);
     if(isInArray(x, words_in_negation)){
       //newstring.push(x);
-    }else{
+    }if else(isInArray(capitalX, special_words)){
+      newstring.push(x);
+    }
+    else{
       //SPELL CHECK
       var checka = dictionary.check(x);
       var checkb = dictionary.check(capitalize(x));

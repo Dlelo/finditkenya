@@ -86,7 +86,7 @@ router.get('/search', function(req, res, next){
   var businesses = Business.find(
       {$text: {$search: searchString}},
       {score: {$meta: "textScore"}},
-      { score: { $gt: 22 }  }
+      { score: { $gt: 24 }  }
     )
     .sort({ score:{$meta:'textScore'}, paid: -1})
     //.sort([['score', {$meta:'textScore'}],['paid', -1],['datepaid', 1],['slug', 1]])

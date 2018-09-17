@@ -29,6 +29,12 @@ block content
                                     small.findit-red                    
                                       span.list-social.far.fa-check-square  
                                 div.nav   
+                                  li.text-left(style="float:left")
+                                    each feature in biz.features
+                                      a(href="/subcategory/"+feature)
+                                        strong
+                                          i.fas.fa-tag
+                                          | #{feature} |
                                   if(biz.facebook)
                                     a.findit(href="http://"+biz.facebook,target="_blank" class="fa-layers fa-2x")
                                         i.list-social.fab.fa-facebook-f                  

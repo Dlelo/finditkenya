@@ -3,14 +3,19 @@ extends ../layout-min
 block content
   #home.parallax-content-list.baner-content-listing-biz
     .container
-      div.xxx-forget
-        span.h4 
-          |  Enter your phone number
+      if validationerrors
+        each error in validationerrors
+          .alert.alert-danger.xxx-error
+            = error.msg
+      .xxx
         hr
-        form(method="post", action="/resetpassword/"+id)
+        h2
+          |  Enter your phone number
+        
+        form(method="post", action=" ")
           .form-group
-            input#email.form-control-form(type='email', placeholder='Email', name='email',value=form.emailholder)
+            input#email.form-control-form(type='email', placeholder='Email', name='email',value="")
           .form-group
-            input#phone.form-control-form(type='text', placeholder='Phone', name='phone', value=form.phoneholder)
+            input#phone.form-control-form(type='text', placeholder='Phone', name='phone', value="")
           .form-group
             button.btn.btn-primary.w3ls-btn(type='submit') Sign Up

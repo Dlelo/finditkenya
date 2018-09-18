@@ -19,6 +19,7 @@ var mailer = require('express-mailer');
 const { check, validationResult } = require('express-validator/check');
 const { matchedData, sanitize } = require('express-validator/filter');
 var slug = require('slug');
+var util = require('util');
 
 var users = require('./routes/users');
 var business = require('./routes/business');
@@ -324,7 +325,7 @@ app.get( '/auth/google/callback',
         failureRedirect: '/login'
   }),
   function(req, res) {
-    console.log("Auth Info:" + JSON.stringify(req));
+    console.log("Auth Info:" + console.log(util.inspect(req)));
     if(req.newUser){
       res.redirect('/google');
       req.newUser == false;

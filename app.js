@@ -127,6 +127,7 @@ passport.use(new GoogleStrategy({
               return;
             }
           });
+          user.newUser = true;
           return done(err, user);
         });
       }else{

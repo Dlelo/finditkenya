@@ -341,7 +341,7 @@ app.get('/auth/facebook/callback',
   passport.authenticate('facebook', { failureRedirect: '/login' }),
   function(req, res) {
     // Successful authentication, redirect home.
-    cpnsole.log(req);
+    console.log(req);
     if(req.newUser){
       res.redirect('/facebook');
       req.session.newUser == false;

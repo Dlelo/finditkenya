@@ -156,7 +156,7 @@ passport.use(new FacebookStrategy({
         });
       }else{
         var newUser = false;
-        return done(null, user,newUser);
+        return done(null, user, newUser);
       }
     }).catch(function(err){
       console.log(err);
@@ -326,9 +326,7 @@ app.get( '/auth/google/callback',
   function(req, res) {
     console.log("Auth Info:");
     for (var key in req) {
-        if (req.hasOwnProperty(key)) {
-            console.log(key + " -> " + req[key]);
-        }
+        req[key];
     }
     if(req.newUser){
       res.redirect('/google');

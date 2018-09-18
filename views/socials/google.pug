@@ -1,0 +1,16 @@
+extends ../layout-min
+
+block content
+  #home.parallax-content-list.baner-content-listing-biz
+    .container
+      div.xxx-forget
+        span.h4 
+          |  Enter your phone number
+        hr
+        form(method="post", action="/resetpassword/"+id)
+          .form-group
+            input#email.form-control-form(type='email', placeholder='Email', name='email',value=form.emailholder)
+          .form-group
+            input#phone.form-control-form(type='text', placeholder='Phone', name='phone', value=form.phoneholder)
+          .form-group
+            button.btn.btn-primary.w3ls-btn(type='submit') Sign Up

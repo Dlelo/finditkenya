@@ -241,6 +241,14 @@ router.get('/advertising',function(req,res){
     res.render('site/advertising', {title: "Find It: Advertising"});
 });
 
+router.get('/facebook',function(req,res){
+    res.render('socials/facebook', {title: "Find It: Complete Facebook Sign Up"});
+});
+
+router.get('/google',function(req,res){
+    res.render('socials/google', {title: "Find It: Complete Google Sign Up"});
+});
+
 router.get('/fetchCat/:name',function(req, res, next){
   //wait for the initialization
   Category.findOne({name: req.params.name})

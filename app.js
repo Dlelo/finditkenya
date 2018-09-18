@@ -324,6 +324,7 @@ app.get( '/auth/google/callback',
         failureRedirect: '/login'
   }),
   function(req, res) {
+    console.log("Auth Info:");
     for (var key in req) {
         if (req.hasOwnProperty(key)) {
             console.log(key + " -> " + req[key]);

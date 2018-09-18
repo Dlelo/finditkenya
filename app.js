@@ -30,6 +30,7 @@ var config = require('./config.json');
 var emailModel = require('./config/Mail');
 var product = require('./routes/product');
 var shopping = require('./routes/shopping');
+var api = require('./routes/api');
 
 
 var app = express();
@@ -347,6 +348,7 @@ app.use('/business', business);
 app.use('/admin', admin);
 app.use('/product', product);
 app.use('/shopping', shopping);
+app.use('/api', api);
 app.use('/', index);
 
 

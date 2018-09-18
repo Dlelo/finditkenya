@@ -128,7 +128,6 @@ passport.use(new GoogleStrategy({
           });
           return done(err, user);
         });
-        req.session.newUser = true;
       }else{
         return done(null, user);
       }
@@ -152,11 +151,12 @@ passport.use(new FacebookStrategy({
           email: profile.id,
           username: profile.id
         },function(err, user){
-          return done(err, user);
+          var newUser = true;
+          return done(err, user, newUser);
         });
-        req.session.newUser = true;
       }else{
-        return done(null, user);
+        var newUser = false;
+        return done(null, user,newUser);
       }
     }).catch(function(err){
       console.log(err);
@@ -341,7 +341,7 @@ app.get('/auth/facebook/callback',
   passport.authenticate('facebook', { failureRedirect: '/login' }),
   function(req, res) {
     // Successful authentication, redirect home.
-    if(req.session.newUser){
+    if(req.newUser){
       res.redirect('/facebook');
       req.session.newUser == false;
     }else if(ssn.returnUrl){

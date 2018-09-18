@@ -115,7 +115,7 @@ passport.use(new GoogleStrategy({
           var holder = emailModel.app;
           var mailer = emailModel.mailer;
           holder.mailer.send('email/welcome', {
-            to: email, // REQUIRED. This can be a comma delimited string just like a normal email to field.
+            to: profile.email, // REQUIRED. This can be a comma delimited string just like a normal email to field.
             subject: 'Welcome To FindIt', // REQUIRED.
             otherProperty: 'Other Property' // All additional properties are also passed to the template as local variables.
           }, function (err) {

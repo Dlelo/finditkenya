@@ -112,8 +112,8 @@ passport.use(new GoogleStrategy({
           email: profile.email,
           username: profile.email
         },function(err, user){
-          var holder = email.app;
-          var mailer = email.mailer;
+          var holder = emailModel.app;
+          var mailer = emailModel.mailer;
           holder.mailer.send('email/welcome', {
             to: email, // REQUIRED. This can be a comma delimited string just like a normal email to field.
             subject: 'Welcome To FindIt', // REQUIRED.
@@ -324,6 +324,7 @@ app.get( '/auth/google/callback',
         failureRedirect: '/login'
   }),
   function(req, res) {
+    console.log("Auth Info: "+req);
     if(req.newUser){
       res.redirect('/google');
       req.newUser == false;

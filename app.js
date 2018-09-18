@@ -324,11 +324,11 @@ app.get( '/auth/google/callback',
         failureRedirect: '/login'
   }),
   function(req, res) {
-    if(req.session.newUser){
+    if(req.newUser){
       res.redirect('/google');
-      req.session.newUser == false;
-    }else if(ssn.returnUrl){
-        res.redirect(ssn.returnUrl);
+      req.newUser == false;
+    }else if(req.session.returnUrl){
+        res.redirect(req.session.returnUrl);
     }else{
       res.redirect('/');
     }
@@ -341,11 +341,12 @@ app.get('/auth/facebook/callback',
   passport.authenticate('facebook', { failureRedirect: '/login' }),
   function(req, res) {
     // Successful authentication, redirect home.
+    cpnsole.log(req);
     if(req.newUser){
       res.redirect('/facebook');
       req.session.newUser == false;
-    }else if(ssn.returnUrl){
-        res.redirect(ssn.returnUrl);
+    }else if(req.session.returnUrl){
+        res.redirect(req.session.returnUrl);
     }else{
       res.redirect('/');
     }

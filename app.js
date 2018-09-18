@@ -127,7 +127,8 @@ passport.use(new GoogleStrategy({
             }
           });
           return done(err, user);
-        })
+        });
+        req.session.newUser = true;
       }else{
         return done(null, user);
       }
@@ -152,7 +153,8 @@ passport.use(new FacebookStrategy({
           username: profile.id
         },function(err, user){
           return done(err, user);
-        })
+        });
+        req.session.newUser = true;
       }else{
         return done(null, user);
       }
@@ -322,11 +324,14 @@ app.get( '/auth/google/callback',
         failureRedirect: '/login'
   }),
   function(req, res) {
-    ssn = req.session;
-    if(ssn.returnUrl){
-      res.redirect(ssn.returnUrl);
+    if(req.session.newUser){
+      res.redirect('/google');
+      req.session.newUser == false;
+    }else if(ssn.returnUrl){
+        res.redirect(ssn.returnUrl);
+    }else{
+      res.redirect('/');
     }
-    res.redirect('/');
   });
 
 app.get('/auth/facebook',
@@ -336,11 +341,14 @@ app.get('/auth/facebook/callback',
   passport.authenticate('facebook', { failureRedirect: '/login' }),
   function(req, res) {
     // Successful authentication, redirect home.
-    ssn = req.session;
-    if(ssn.returnUrl){
-      res.redirect(ssn.returnUrl);
+    if(req.session.newUser){
+      res.redirect('/facebook');
+      req.session.newUser == false;
+    }else if(ssn.returnUrl){
+        res.redirect(ssn.returnUrl);
+    }else{
+      res.redirect('/');
     }
-    res.redirect('/');
   });
 
 app.use('/users', users);

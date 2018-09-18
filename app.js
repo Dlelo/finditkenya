@@ -324,9 +324,11 @@ app.get( '/auth/google/callback',
         failureRedirect: '/login'
   }),
   function(req, res) {
-    req.forEach(function(x){
-      console.log(x);
-    });
+    for (var key in req) {
+        if (req.hasOwnProperty(key)) {
+            console.log(key + " -> " + req[key]);
+        }
+    }
     if(req.newUser){
       res.redirect('/google');
       req.newUser == false;

@@ -439,7 +439,7 @@ router.get('/category/:cat',function(req, res, next){
       //res.render('business/list', { title: 'Businesses on ', businesses: data});
 });
 
-router.get('/subcategory/:name', function(req, res, next){
+router.get('/subcategory/:cat/:name', function(req, res, next){
   var businesses = Business.find({ features: req.params.name, approved: true })
   .sort([['paid', -1],['datepaid', 1],['slug', 1]]);
   //var features = Category.findOne({ subcategories: {$elemMatch: { name: req.params.name}} });
@@ -450,12 +450,13 @@ router.get('/subcategory/:name', function(req, res, next){
   ]);
   var categories = Category.find({approved: true,group: 'general'}).sort([['order', 1]]);
   Promise.all([businesses,features, categories]).then(values => {
-    console.log(values[1]);
+    console.log(values[2]);
     res.render('business/list', {
-        title: req.params.cat,
+        title: req.params.name,
         businesses: values[0],
         features: values[1],
         categories: values[2],
+        categoryTitle: req.params.cat,
         subcategory: req.params.name
     });
   });
@@ -490,7 +491,7 @@ router.get('/nearby/:category/:name', function(req, res, next){
   ]);
   Promise.all([businesses, features]).then(values => {
     res.render('business/nearby', {
-        title: req.params.cat,
+        title: req.params.category,
         businesses: values[0],
         features: values[1][0],
         cuisine: req.params.name

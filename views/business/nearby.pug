@@ -12,7 +12,7 @@ block content
             each feature in features
               .panel-heading.category
                 li.text-left.sub-list
-                  a(href="/subcategory/"+feature.subcategories.name)
+                  a(href="/subcategory/"+title+"/"+feature.subcategories.name)
                     strong  
                       =feature.subcategories.name
     .col-md-10(style="height: 100%;")

@@ -116,7 +116,7 @@ router.get('/search', function(req, res, next){
      },
      {
           "$match": {
-                "score": { "$gt": 17.9 }
+                "score": { "$gt": 10 }
            }
      },
      {

@@ -483,7 +483,11 @@ router.get('/nearby/:category/', function(req, res, next){
 
 router.get('/nearby/:category/:name', function(req, res, next){
   var businesses = Business.find({subcategory: req.params.category, features: req.params.name});
-  var features = Category.find({ subcategories: {$elemMatch: { name: req.params.name}},group: 'general' });
+  var features = Category.aggregate([
+    { $match: { name: req.params.category ,group: 'general'} },
+      { "$unwind": "$subcategories" },
+    { "$sort": { "subcategories.name": 1 } }
+  ]);
   Promise.all([businesses, features]).then(values => {
     res.render('business/nearby', {
         title: req.params.cat,

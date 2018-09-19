@@ -112,7 +112,9 @@ router.get('/search', function(req, res, next){
      },
      {
        "$sort": {
-         "score": 1
+         "score": {
+           $meta: "textScore"
+         }
        }
      }
    ]);

@@ -100,6 +100,7 @@ router.get('/search', function(req, res, next){
                "features" : "$features",
                "photo" : "$photo",
                "reviews": "$reviews",
+               "paid": "$paid",
                "score": {
                      "$meta": "textScore"
                 }

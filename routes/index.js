@@ -102,6 +102,12 @@ router.get('/search', function(req, res, next){
                "reviews": "$reviews",
                "paid": "$paid",
                "description": "$description",
+               "facebook": "$facebook",
+               "twitter": "$twitter",
+               "youtube": "$youtube",
+               "linkedin": "$linkedin",
+               "phone": "$phone",
+               "website": "$website",
                "score": {
                      "$meta": "textScore"
                 }

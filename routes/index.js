@@ -86,7 +86,7 @@ router.get('/search', function(req, res, next){
   var businesses = Business.find(
       {$text: {$search: searchString}},
       {score: {$meta: "textScore"}},
-      { score: { $gt: 24 }  }
+      { score: { $gt: 30 }  }
     )
     .sort({ score:{$meta:'textScore'}, paid: -1})
     //.sort([['score', {$meta:'textScore'}],['paid', -1],['datepaid', 1],['slug', 1]])
@@ -103,7 +103,7 @@ router.get('/search', function(req, res, next){
   var array_of_suggestions = dictionary.suggest(req.query.search);
   Promise.all([businesses]).then(values => {
     var list = values[0];
-    //console.log(list);
+    console.log(list);
     /*var options = {
       shouldSort: true,
       includeScore: true,
@@ -245,8 +245,41 @@ router.get('/facebook',function(req,res){
     res.render('socials/facebook', {title: "Find It: Complete Facebook Sign Up"});
 });
 
+router.post('/facebook', function(req, res){
+  User.findById(req.user._id)
+  .then(function(d){
+    d.email = req.body.email;
+    d.phone = req.body.phone;
+    d.save(function(err){
+      if(err){
+        req.flash('error','Some Error Occured, Kindly try again');
+        res.redirect(ssn.returnUrl);
+      }else{
+        req.flash('success_msg','SignUp completed Successfully');
+        res.redirect('/');
+      }
+    });
+  });
+});
+
 router.get('/google',function(req,res){
     res.render('socials/google', {title: "Find It: Complete Google Sign Up"});
+});
+
+router.post('/google', function(req, res){
+  User.findById(req.user._id)
+  .then(function(d){
+    d.phone = req.body.phone;
+    d.save(function(err){
+      if(err){
+        req.flash('error','Some Error Occured, Kindly try again');
+        res.redirect(ssn.returnUrl);
+      }else{
+        req.flash('success_msg','SignUp completed Successfully');
+        res.redirect('/');
+      }
+    });
+  });
 });
 
 router.get('/fetchCat/:name',function(req, res, next){
@@ -406,7 +439,7 @@ router.get('/category/:cat',function(req, res, next){
       //res.render('business/list', { title: 'Businesses on ', businesses: data});
 });
 
-router.get('/subcategory/:name', function(req, res, next){
+router.get('/subcategory/:cat/:name', function(req, res, next){
   var businesses = Business.find({ features: req.params.name, approved: true })
   .sort([['paid', -1],['datepaid', 1],['slug', 1]]);
   //var features = Category.findOne({ subcategories: {$elemMatch: { name: req.params.name}} });
@@ -417,12 +450,13 @@ router.get('/subcategory/:name', function(req, res, next){
   ]);
   var categories = Category.find({approved: true,group: 'general'}).sort([['order', 1]]);
   Promise.all([businesses,features, categories]).then(values => {
-    console.log(values[1]);
+    console.log(values[0]);
     res.render('business/list', {
-        title: req.params.cat,
+        title: req.params.name,
         businesses: values[0],
         features: values[1],
         categories: values[2],
+        categoryTitle: req.params.cat,
         subcategory: req.params.name
     });
   });
@@ -439,7 +473,7 @@ router.get('/nearby/:category/', function(req, res, next){
   ]);
 
   Promise.all([businesses, features]).then(values => {
-    console.log(values[1]);
+    //console.log(values[0]);
     res.render('business/nearby', {
         title: req.params.category,
         businesses: values[0],
@@ -450,13 +484,19 @@ router.get('/nearby/:category/', function(req, res, next){
 
 router.get('/nearby/:category/:name', function(req, res, next){
   var businesses = Business.find({subcategory: req.params.category, features: req.params.name});
-  var features = Category.find({ subcategories: {$elemMatch: { name: req.params.name}},group: 'general' });
+  var features = Category.aggregate([
+    { $match: { name: req.params.category ,group: 'general'} },
+      { "$unwind": "$subcategories" },
+    { "$sort": { "subcategories.name": 1 } }
+  ]);
   Promise.all([businesses, features]).then(values => {
+    //console.log(values[1][0]);
+    //console.log(values[0]);
     res.render('business/nearby', {
-        title: req.params.cat,
+        title: req.params.category,
         businesses: values[0],
         features: values[1][0],
-        cuisine: req.params.name
+        subcategory: req.params.name
     });
   });
 });

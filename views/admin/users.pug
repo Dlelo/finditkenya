@@ -30,6 +30,8 @@ block content
                 th PHONE
                 th EMAIL
                 th ROLE
+                th Google
+                th Facebook
                 th ACTIONS
             tbody
               each user, i in users
@@ -46,6 +48,10 @@ block content
                   td
                     span.text-success
                       =user.role
+                  td
+                    =user.googleId
+                  td
+                    =user.facebookid
                   td
                     span.text-success
                       a(href="/admin/user/"+user.username, title="see businesses")

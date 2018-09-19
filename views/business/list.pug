@@ -20,14 +20,17 @@ block content
                       strong Filter   
                         .panel-heading.category.cat-items
                           a(href="/nearby/"+features[0].name+"/"+subcategory)
-                            strong   
+                            strong 
+                              span.findit-red 
+                                span.fas.fa-map-marker 
                               |  Nearby
-              .panel.panel-warning
-                a(href="/nearby/"+title)
-                  strong  
-                    span.findit-red 
-                      span.fas.fa-map-marker   
-                    |    See Nearby  #{title}
+              else
+                .panel.panel-warning
+                  a(href="/nearby/"+title)
+                    strong  
+                      span.findit-red 
+                        span.fas.fa-map-marker   
+                      |    See Nearby  #{title}
               .dropdown.open.dropdown-category(style="padding-left: 1rem;")
                 a.nav-link.dropdown-toggle(href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
                   | Filter Sub Categories  
@@ -41,7 +44,7 @@ block content
                     each feature in features
                       .panel-heading.category
                         li.text-left.sub-list
-                          a(href="/subcategory/"+feature.subcategories.name style="color:#212529")
+                          a(href="/subcategory/"+categoryTitle+"/"+feature.subcategories.name style="color:#212529")
                             strong  
                               =feature.subcategories.name
           .col-md-9.category-zindex

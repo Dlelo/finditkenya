@@ -99,6 +99,7 @@ router.get('/search', function(req, res, next){
                "subcategory": "$subcategory",
                "features" : "$features",
                "photo" : "$photo",
+               "reviews": "$reviews",
                "score": {
                      "$meta": "textScore"
                 }

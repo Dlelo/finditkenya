@@ -9,10 +9,9 @@ block content
           span.caret
         ul.dropdown-menu(style="width: -webkit-fill-available;")
           if features 
-            each feature in features
               .panel-heading.category
                 li.text-left.sub-list
-                  a(href="/subcategory/"+title+"/"+feature.subcategories.name)
+                  a(href="/subcategory/"+title+"/"+features.subcategories.name)
                     strong  
                       =feature.subcategories.name
     .col-md-10(style="height: 100%;")

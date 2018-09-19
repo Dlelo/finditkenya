@@ -473,7 +473,7 @@ router.get('/nearby/:category/', function(req, res, next){
   ]);
 
   Promise.all([businesses, features]).then(values => {
-    console.log(values[1]);
+    console.log(values[0]);
     res.render('business/nearby', {
         title: req.params.category,
         businesses: values[0],
@@ -490,6 +490,7 @@ router.get('/nearby/:category/:name', function(req, res, next){
     { "$sort": { "subcategories.name": 1 } }
   ]);
   Promise.all([businesses, features]).then(values => {
+    console.log(values[0]);
     res.render('business/nearby', {
         title: req.params.category,
         businesses: values[0],

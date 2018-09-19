@@ -245,8 +245,41 @@ router.get('/facebook',function(req,res){
     res.render('socials/facebook', {title: "Find It: Complete Facebook Sign Up"});
 });
 
+router.post('/facebook', function(req, res){
+  User.findById(req.user._id)
+  .then(function(d){
+    d.email = req.body.email;
+    d.phone = req.body.phone;
+    d.save(function(err){
+      if(err){
+        req.flash('error','Some Error Occured, Kindly try again');
+        res.redirect(ssn.returnUrl);
+      }else{
+        req.flash('success_msg','SignUp completed Successfully');
+        res.redirect('/');
+      }
+    });
+  });
+});
+
 router.get('/google',function(req,res){
     res.render('socials/google', {title: "Find It: Complete Google Sign Up"});
+});
+
+router.post('/google', function(req, res){
+  User.findById(req.user._id)
+  .then(function(d){
+    d.phone = req.body.phone;
+    d.save(function(err){
+      if(err){
+        req.flash('error','Some Error Occured, Kindly try again');
+        res.redirect(ssn.returnUrl);
+      }else{
+        req.flash('success_msg','SignUp completed Successfully');
+        res.redirect('/');
+      }
+    });
+  });
 });
 
 router.get('/fetchCat/:name',function(req, res, next){

@@ -83,14 +83,36 @@ router.get('/search', function(req, res, next){
   });
   var searchString = newstring.join(' ');
   //console.log(searchString);
-  var businesses = Business.find(
-      {$text: {$search: searchString}},
-      {score: {$meta: "textScore"}},
-      { score: { $gt: 30 }  }
-    )
-    .sort({ score:{$meta:'textScore'}, paid: -1})
-    //.sort([['score', {$meta:'textScore'}],['paid', -1],['datepaid', 1],['slug', 1]])
-    .limit(50)
+  var businesses = Business.aggregate([
+    {
+        "$match": {
+               "$text": {
+                     "$search": searchString
+                }
+         }
+    },
+    {
+         "$project": {
+               "_id": "$_id",
+               "name": '$name',
+               "slug": '$slug',
+               "subcategory": "$subcategory",
+               "features" : "$features",
+               "photo" : "$photo",
+               "reviews": "$reviews",
+               "score": {
+                     "$meta": "textScore"
+                }
+          }
+     },
+     {
+          "$match": {
+                "score": { "$gt": 16.0 }
+           }
+     },
+     { $sort: { score: { $meta: "textScore" } } }
+   ]);
+
 
   /*var businesses = Business.find({
       $query: { approved: true},

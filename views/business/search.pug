@@ -29,7 +29,13 @@ block content
                                     if (biz.paid == true)
                                       small.findit-red                    
                                         span.list-social.far.fa-check-square  
-                                  div.nav   
+                                  div.nav 
+                                    li.text-center(style="text-align:center")
+                                        each feature in biz.features
+                                            a(href="/subcategory/"+feature)
+                                                strong
+                                                    i.fas.fa-tag
+                                                    | #{feature} |  
                                     if(biz.facebook)
                                       a.findit(href="http://"+biz.facebook,target="_blank" class="fa-layers fa-2x")
                                           i.list-social.fab.fa-facebook-f                  
@@ -152,7 +158,13 @@ block content
                                       if (biz.paid == true)
                                         small.findit-red                    
                                           span.list-social.far.fa-check-square  
-                                    div.nav   
+                                    div.nav  
+                                      li.text-center(style="text-align:center")
+                                        each feature in biz.features
+                                            a(href="/subcategory/"+feature)
+                                                strong
+                                                    i.fas.fa-tag
+                                                    | #{feature} |  
                                       if(biz.facebook)
                                         a.findit(href="http://"+biz.facebook,target="_blank" class="fa-layers fa-2x")
                                             i.list-social.fab.fa-facebook-f                  

@@ -329,9 +329,9 @@ app.get( '/auth/google/callback',
   }),
   function(req, res) {
     console.log("Auth Info:" + console.log(req));
-    if(req.newUser){
+    if(req.authInfo.newUser){
       res.redirect('/google');
-      req.newUser == false;
+      req.authInfo.newUser == false;
     }else if(req.session.returnUrl){
         res.redirect(req.session.returnUrl);
     }else{

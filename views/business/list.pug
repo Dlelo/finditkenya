@@ -22,13 +22,6 @@ block content
                           a(href="/nearby/"+features[0].name+"/"+subcategory)
                             strong   
                               |  Nearby
-              if subcategory
-                .panel.panel-warning
-                  a(href="/nearby/"+categoryTitle+"/"+title)
-                    strong  
-                      span.findit-red 
-                        span.fas.fa-map-marker   
-                      |    See Nearby  #{title}
               else
                 .panel.panel-warning
                   a(href="/nearby/"+title)

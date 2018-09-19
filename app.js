@@ -108,6 +108,7 @@ passport.use(new GoogleStrategy({
     User.findOne({ googleId: profile.id }, function (err, user) {
       if(!user){
         User.create({
+
           googleId: profile.id,
           names : profile.displayName,
           email: profile.email,
@@ -128,11 +129,11 @@ passport.use(new GoogleStrategy({
             }
           });
           user.newUser = true;
-          return done(err, user);
+          return done(err, user, {newUser: true});
         });
       }else{
         user.newUser = false;
-        return done(null, user);
+        return done(null, user, {newUser: false});
       }
     }).catch(function(err){
       console.log(err);

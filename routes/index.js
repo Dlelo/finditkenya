@@ -450,7 +450,7 @@ router.get('/subcategory/:cat/:name', function(req, res, next){
   ]);
   var categories = Category.find({approved: true,group: 'general'}).sort([['order', 1]]);
   Promise.all([businesses,features, categories]).then(values => {
-    console.log(values[1]);
+    console.log(values[0]);
     res.render('business/list', {
         title: req.params.name,
         businesses: values[0],

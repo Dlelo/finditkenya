@@ -16,7 +16,7 @@ block content
           
           if(businesses.length)
             each biz in businesses
-              if (biz.paid && score > 17)            
+              if (biz.paid)            
                 .row
                   if (typeof(biz.slug) !== 'undefined')
                       a(href="/biz/"+biz.slug)
@@ -62,7 +62,7 @@ block content
                                     if (typeof(biz.description) !== 'undefined')
                                       if biz.description.length > 250
                                         p.padding.text-left.description-cat  !{biz.description.substr(0, 250)+ '..... <strong style="background-color:#c00000; color:#fff; padding:1px">Read More</strong>'}
-                                          
+                                        =biz.score
                                       else
                                         =biz.description
 
@@ -191,7 +191,7 @@ block content
                                       if (typeof(biz.description) !== 'undefined')
                                         if biz.description.length > 250
                                           p.padding.text-left.description-cat  !{biz.description.substr(0, 250)+ '..... <strong style="background-color:#c00000; color:#fff; padding:1px">Read More</strong>'}
-                                            
+                                          =biz.score  
                                         else
                                           =biz.description
 

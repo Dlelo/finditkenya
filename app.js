@@ -131,6 +131,7 @@ passport.use(new GoogleStrategy({
           return done(err, user);
         });
       }else{
+        user.newUser = false;
         return done(null, user);
       }
     }).catch(function(err){
@@ -326,7 +327,7 @@ app.get( '/auth/google/callback',
         failureRedirect: '/login'
   }),
   function(req, res) {
-    console.log("Auth Info:" + console.log(util.inspect(req)));
+    console.log("Auth Info:" + console.log(req));
     if(req.newUser){
       res.redirect('/google');
       req.newUser == false;

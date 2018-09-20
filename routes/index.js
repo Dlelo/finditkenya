@@ -82,7 +82,7 @@ router.get('/search', function(req, res, next){
     }
   });
   var searchString = newstring.join(' ');
-  //console.log(searchString);
+  console.log(searchString);
   var businesses = Business.aggregate([
     {
         "$match": {

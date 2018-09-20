@@ -845,12 +845,27 @@ router.get('/receive', function(req, res){
       //res.send("Status > " + status + ", Body > " +body);
       //res.end();
       if(body == status){
+        var holder = emailModel.app;
+        var mailer = emailModel.mailer;
+        holder.mailer.send('email/bronze', {
+          to: "kelvinchege@gmail.com", // REQUIRED. This can be a comma delimited string just like a normal email to field.
+          subject: 'Payment Confirmed' + amount, // REQUIRED.
+          otherProperty: 'Other Property' // All additional properties are also passed to the template as local variables.
+        }, function (err) {
+          if (err) {
+            // handle error
+            console.log(err);
+            res.send('There was an error sending the email');
+            return;
+          }
+        });
         b.save(function(err){
           req.flash('success_msg', 'Payment Successfully Done!');
           if(err)
             res.redirect('/'+b.slug);
           res.redirect('/'+b.slug);
         });
+
       }else{
         req.flash('error', 'Transaction Already Authenticated!');
         res.redirect('/'+b.slug);

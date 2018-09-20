@@ -48,7 +48,7 @@ router.get('/search', function(req, res, next){
       return string[0].toUpperCase() + string.slice(1);
   }
   var words_in_negation = ['and', 'in', 'the','kenya','nairobi','of','ltd','Ltd','shop','shops'];
-  var special_words = ['Newmatic','cheka'];
+  var special_words = ['Newmatic','cheka','username'];
 
   var newstring = [];
   result.forEach(function(x){

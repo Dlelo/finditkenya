@@ -58,6 +58,9 @@ router.get('/search', function(req, res, next){
     }else if(isInArray(capitalX, special_words)){
       newstring.push(x);
     }
+    else if(isInArray(x, special_words)){
+      newstring.push(x);
+    }
     else{
       //SPELL CHECK
       var checka = dictionary.check(x);

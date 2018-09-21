@@ -48,7 +48,7 @@ router.get('/search', function(req, res, next){
       return string[0].toUpperCase() + string.slice(1);
   }
   var words_in_negation = ['and', 'in', 'the','kenya','nairobi','of','ltd','Ltd','shop','shops'];
-  var special_words = ['Newmatic','cheka'];
+  var special_words = ['Newmatic','cheka','username'];
 
   var newstring = [];
   result.forEach(function(x){
@@ -56,6 +56,9 @@ router.get('/search', function(req, res, next){
     if(isInArray(x, words_in_negation)){
       //newstring.push(x);
     }else if(isInArray(capitalX, special_words)){
+      newstring.push(x);
+    }
+    else if(isInArray(x, special_words)){
       newstring.push(x);
     }
     else{
@@ -82,7 +85,7 @@ router.get('/search', function(req, res, next){
     }
   });
   var searchString = newstring.join(' ');
-  //console.log(searchString);
+  console.log(searchString);
   var businesses = Business.aggregate([
     {
         "$match": {
@@ -100,6 +103,15 @@ router.get('/search', function(req, res, next){
                "features" : "$features",
                "photo" : "$photo",
                "reviews": "$reviews",
+               "paid": "$paid",
+               "description": "$description",
+               "facebook": "$facebook",
+               "twitter": "$twitter",
+               "youtube": "$youtube",
+               "linkedin": "$linkedin",
+               "phone": "$phone",
+               "website": "$website",
+               "keywords": "$keywords",
                "score": {
                      "$meta": "textScore"
                 }
@@ -107,10 +119,16 @@ router.get('/search', function(req, res, next){
      },
      {
           "$match": {
-                "score": { "$gt": 16.0 }
+                "score": { "$gt": 10 }
            }
      },
-     { $sort: { score: { $meta: "textScore" } } }
+     {
+       "$sort": {
+         "score": {
+           $meta: "textScore"
+         }
+       }
+     }
    ]);
 
 
@@ -125,7 +143,7 @@ router.get('/search', function(req, res, next){
   var array_of_suggestions = dictionary.suggest(req.query.search);
   Promise.all([businesses]).then(values => {
     var list = values[0];
-    console.log(list);
+    //console.log(list);
     /*var options = {
       shouldSort: true,
       includeScore: true,
@@ -827,12 +845,27 @@ router.get('/receive', function(req, res){
       //res.send("Status > " + status + ", Body > " +body);
       //res.end();
       if(body == status){
+        var holder = emailModel.app;
+        var mailer = emailModel.mailer;
+        holder.mailer.send('email/bronze', {
+          to: "kelvinchege@gmail.com", // REQUIRED. This can be a comma delimited string just like a normal email to field.
+          subject: 'Payment Confirmed' + amount, // REQUIRED.
+          otherProperty: 'Other Property' // All additional properties are also passed to the template as local variables.
+        }, function (err) {
+          if (err) {
+            // handle error
+            console.log(err);
+            res.send('There was an error sending the email');
+            return;
+          }
+        });
         b.save(function(err){
           req.flash('success_msg', 'Payment Successfully Done!');
           if(err)
             res.redirect('/'+b.slug);
           res.redirect('/'+b.slug);
         });
+
       }else{
         req.flash('error', 'Transaction Already Authenticated!');
         res.redirect('/'+b.slug);

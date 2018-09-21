@@ -16,7 +16,7 @@ block content
           
           if(businesses.length)
             each biz in businesses
-              if biz.paid              
+              if (biz.paid && biz.score > 20)            
                 .row
                   if (typeof(biz.slug) !== 'undefined')
                       a(href="/biz/"+biz.slug)
@@ -59,10 +59,11 @@ block content
                               .col-md-9
                                 row
                                   .col-md-12.description-cat
+                                    
                                     if (typeof(biz.description) !== 'undefined')
                                       if biz.description.length > 250
                                         p.padding.text-left.description-cat  !{biz.description.substr(0, 250)+ '..... <strong style="background-color:#c00000; color:#fff; padding:1px">Read More</strong>'}
-                                          
+                                        
                                       else
                                         =biz.description
 
@@ -219,59 +220,59 @@ block content
                                   .col-md-12     
                                     div.text-right
                                       if biz.reviews
-                                      if( biz.reviews.length == 1) 
-                                          .col-md-6.ratingsonCat(class="rating medium star-icon value-4 label-hidden" style="margin-left: 430px !important")
-                                            .star-container
-                                              .star
-                                                i.star-empty
-                                                i.star-half
-                                                i.star-filled
-                                              .star
-                                                i.star-empty
-                                                i.star-half
-                                                i.star-filled
-                                              .star
-                                                i.star-empty
-                                                i.star-half
-                                                i.star-filled
-                                              .star
-                                                i.star-empty
-                                                i.star-half
-                                                i.star-filled
-                                              .star
-                                                i.star-empty
-                                                i.star-half
-                                                i.star-filled
+                                        if( biz.reviews.length == 1) 
+                                            .col-md-6.ratingsonCat(class="rating medium star-icon value-4 label-hidden" style="margin-left: 430px !important")
+                                              .star-container
+                                                .star
+                                                  i.star-empty
+                                                  i.star-half
+                                                  i.star-filled
+                                                .star
+                                                  i.star-empty
+                                                  i.star-half
+                                                  i.star-filled
+                                                .star
+                                                  i.star-empty
+                                                  i.star-half
+                                                  i.star-filled
+                                                .star
+                                                  i.star-empty
+                                                  i.star-half
+                                                  i.star-filled
+                                                .star
+                                                  i.star-empty
+                                                  i.star-half
+                                                  i.star-filled
+                                            small
+                                              | #{biz.reviews.length} Review
+                                        else if( biz.reviews.length > 1)
+                                          span.glyphicon.glyphicon-cog.glyph.border
+                                            div(class="rating medium star-icon value-4 label-hidden" style="margin-left: 430px !important")
+                                              .star-container
+                                                .star
+                                                  i.star-empty
+                                                  i.star-half
+                                                  i.star-filled
+                                                .star
+                                                  i.star-empty
+                                                  i.star-half
+                                                  i.star-filled
+                                                .star
+                                                  i.star-empty
+                                                  i.star-half
+                                                  i.star-filled
+                                                .star
+                                                  i.star-empty
+                                                  i.star-half
+                                                  i.star-filled
+                                                .star
+                                                  i.star-empty
+                                                  i.star-half
+                                                  i.star-filled
                                           small
-                                            | #{biz.reviews.length} Review
-                                      else if( biz.reviews.length > 1)
-                                        span.glyphicon.glyphicon-cog.glyph.border
-                                          div(class="rating medium star-icon value-4 label-hidden" style="margin-left: 430px !important")
-                                            .star-container
-                                              .star
-                                                i.star-empty
-                                                i.star-half
-                                                i.star-filled
-                                              .star
-                                                i.star-empty
-                                                i.star-half
-                                                i.star-filled
-                                              .star
-                                                i.star-empty
-                                                i.star-half
-                                                i.star-filled
-                                              .star
-                                                i.star-empty
-                                                i.star-half
-                                                i.star-filled
-                                              .star
-                                                i.star-empty
-                                                i.star-half
-                                                i.star-filled
-                                        small
-                                          | #{biz.reviews.length} Reviews
-                                      else
-                                        | 
+                                            | #{biz.reviews.length} Reviews
+                                        else
+                                          | 
           else
             .row
               strong

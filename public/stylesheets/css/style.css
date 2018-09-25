@@ -2585,6 +2585,9 @@ li.list-hor{
 }
 
 @media screen and (max-width: 414px) {
+	.own-biz{
+		padding-top:1rem;
+	}
 	.container-margin-top {
     margin-top: 0rem !important;
      }
@@ -3021,6 +3024,9 @@ padding-left:10px;
 .category-img-wrapper:hover {
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
+}
+.category-img-wrapper{
+	width:80% !important;
 }
 .coup-img-wrapper {
     border: 1px solid transparent;
@@ -4750,4 +4756,23 @@ h5 {
 }
 .all{
 	color:#222222 !important;
+}
+#back-top-Btn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 95%;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: #c00000;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+#back-top-Btn:hover {
+  background-color: #04045a;
 }

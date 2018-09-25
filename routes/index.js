@@ -37,137 +37,165 @@ var Review = require(__dirname + '/../models/Reviews');
 
 var mailer = require('express-mailer');
 
+router.get('/allbusinesses', function(req, res, next){
+  var bizArray = [];
+  Business.find({},{name: 1, _id:-1})
+  .then(function(d){
+    d.forEach(function(x){
+      //console.log(x.name);
+      var result = x.name.split(/[,. \/-]/);
+      result.forEach(function(g){
+        bizArray.push(g);
+      });
+    });
+    res.json(bizArray);
+  });
+});
+
 router.get('/search', function(req, res, next){
   var neatString = req.query.search.trim();
   var result = neatString.split(/[,. \/-]/);
-  //console.log(result);
-  function isInArray(value, array) {
-    return array.indexOf(value) > -1;
-  }
-  function capitalize(string) {
-      return string[0].toUpperCase() + string.slice(1);
-  }
-  var words_in_negation = ['and', 'in', 'the','kenya','nairobi','of','ltd','Ltd','shop','shops'];
-  var special_words = ['Newmatic','cheka','username'];
+  var bizArray = [];
+  Business.find({},{name: 1, _id:-1})
+  .then(function(d){
+    d.forEach(function(x){
+      //console.log(x.name);
+      var result = x.name.split(/[,. \/-]/);
+      result.forEach(function(g){
+        bizArray.push(g);
+      });
+    });
+    //res.json(bizArray);
+    //console.log(result);
+    function isInArray(value, array) {
+      return array.indexOf(value) > -1;
+    }
+    function capitalize(string) {
+        return string[0].toUpperCase() + string.slice(1);
+    }
+    var words_in_negation = ['and', 'in', 'the','kenya','nairobi','of','ltd','Ltd','shop','shops'];
+    var special_words = bizArray;
 
-  var newstring = [];
-  result.forEach(function(x){
-    var capitalX = capitalize(x);
-    if(isInArray(x, words_in_negation)){
-      //newstring.push(x);
-    }else if(isInArray(capitalX, special_words)){
-      newstring.push(x);
-    }
-    else if(isInArray(x, special_words)){
-      newstring.push(x);
-    }
-    else{
-      //SPELL CHECK
-      var checka = dictionary.check(x);
-      var checkb = dictionary.check(capitalize(x));
-      console.log(checka);
-      console.log(checkb);
-      if(checka || checkb){
-        if(checka){
-          newstring.push(x);
-        }else{
-          newstring.push(capitalize(x));
-        }
-      }else{
-        var a = dictionary.suggest(x);
-      }
-      //console.log(a);
-      if (a === undefined || a.length == 0) {
+    var newstring = [];
+    result.forEach(function(x){
+      var capitalX = capitalize(x);
+      if(isInArray(x, words_in_negation)){
         //newstring.push(x);
-      }else{
-        newstring.push(a[0]);
+      }else if(isInArray(capitalX, special_words)){
+        newstring.push(x);
       }
-    }
-  });
-  var searchString = newstring.join(' ');
-  console.log(searchString);
-  var businesses = Business.aggregate([
-    {
-        "$match": {
-               "$text": {
-                     "$search": searchString
-                }
-         }
-    },
-    {
-         "$project": {
-               "_id": "$_id",
-               "name": '$name',
-               "slug": '$slug',
-               "subcategory": "$subcategory",
-               "features" : "$features",
-               "photo" : "$photo",
-               "reviews": "$reviews",
-               "paid": "$paid",
-               "description": "$description",
-               "facebook": "$facebook",
-               "twitter": "$twitter",
-               "youtube": "$youtube",
-               "linkedin": "$linkedin",
-               "phone": "$phone",
-               "website": "$website",
-               "keywords": "$keywords",
-               "score": {
-                     "$meta": "textScore"
-                }
+      else if(isInArray(x, special_words)){
+        newstring.push(x);
+      }
+      else{
+        //SPELL CHECK
+        var checka = dictionary.check(x);
+        var checkb = dictionary.check(capitalize(x));
+        console.log(checka);
+        console.log(checkb);
+        if(checka || checkb){
+          if(checka){
+            newstring.push(x);
+          }else{
+            newstring.push(capitalize(x));
           }
-     },
-     {
+        }else{
+          var a = dictionary.suggest(x);
+        }
+        //console.log(a);
+        if (a === undefined || a.length == 0) {
+          //newstring.push(x);
+        }else{
+          newstring.push(a[0]);
+        }
+      }
+    });
+    var searchString = newstring.join(' ');
+    console.log(searchString);
+    var businesses = Business.aggregate([
+      {
           "$match": {
-                "score": { "$gt": 10 }
+                 "$text": {
+                       "$search": searchString
+                  }
            }
-     },
-     {
-       "$sort": {
-         "score": {
-           $meta: "textScore"
+      },
+      {
+           "$project": {
+                 "_id": "$_id",
+                 "name": '$name',
+                 "slug": '$slug',
+                 "subcategory": "$subcategory",
+                 "features" : "$features",
+                 "photo" : "$photo",
+                 "reviews": "$reviews",
+                 "paid": "$paid",
+                 "description": "$description",
+                 "facebook": "$facebook",
+                 "twitter": "$twitter",
+                 "youtube": "$youtube",
+                 "linkedin": "$linkedin",
+                 "phone": "$phone",
+                 "website": "$website",
+                 "keywords": "$keywords",
+                 "score": {
+                       "$meta": "textScore"
+                  }
+            }
+       },
+       {
+            "$match": {
+                  "score": { "$gt": 10 }
+             }
+       },
+       {
+         "$sort": {
+           "score": {
+             $meta: "textScore"
+           }
          }
        }
-     }
-   ]);
+     ]);
 
 
-  /*var businesses = Business.find({
-      $query: { approved: true},
-    },
-    {
-      name:1,subcategory:1,keywords:1,description:1,features:1,reviews:1,slug:1,paid:1,
-      website:1,photo: 1,instagram: 1,youtube:1,twitter:1,facebook:1, _id:0
-    }
-  ).sort([['paid', -1],['datepaid', 1]]);*/
-  var array_of_suggestions = dictionary.suggest(req.query.search);
-  Promise.all([businesses]).then(values => {
-    var list = values[0];
-    //console.log(list);
-    /*var options = {
-      shouldSort: true,
-      includeScore: true,
-      matchAllTokens: true,
-      threshold: 0.5,
-      tokenize: true,
-      maxPatternLength: 64,
-      minMatchCharLength: 10,
-      keys: [
-        "name",
-        "subcategory",
-        "features"
-    ]
-    };
-    var fuse = new Fuse(list, options); // "list" is the item array
-    var result = fuse.search(req.query.search);*/
-    //console.log(values[0]);
-    res.render('business/search', {
-        title: req.query.search,
-        businesses: values[0],
-        suggestion: array_of_suggestions[0],
-        host: req.get('host')
+    /*var businesses = Business.find({
+        $query: { approved: true},
+      },
+      {
+        name:1,subcategory:1,keywords:1,description:1,features:1,reviews:1,slug:1,paid:1,
+        website:1,photo: 1,instagram: 1,youtube:1,twitter:1,facebook:1, _id:0
+      }
+    ).sort([['paid', -1],['datepaid', 1]]);*/
+    var array_of_suggestions = dictionary.suggest(req.query.search);
+    Promise.all([businesses]).then(values => {
+      var list = values[0];
+      //console.log(list);
+      /*var options = {
+        shouldSort: true,
+        includeScore: true,
+        matchAllTokens: true,
+        threshold: 0.5,
+        tokenize: true,
+        maxPatternLength: 64,
+        minMatchCharLength: 10,
+        keys: [
+          "name",
+          "subcategory",
+          "features"
+      ]
+      };
+      var fuse = new Fuse(list, options); // "list" is the item array
+      var result = fuse.search(req.query.search);*/
+      //console.log(values[0]);
+      res.render('business/search', {
+          title: req.query.search,
+          businesses: values[0],
+          suggestion: array_of_suggestions[0],
+          host: req.get('host')
+      });
     });
   });
+
 });
 
 router.get('/test', function(req, res){

@@ -1444,8 +1444,8 @@ router.get('/biz/:name',function(req, res, next){
     var openingTimesMoment = new OpeningTimes(data.hours, 'Africa/Nairobi');
     data.openstatus = openingTimesMoment.getStatus(now);
 
-    if(req.headers['x-forwarded-for'].includes("66.249") || req.headers['x-forwarded-for'].includes("	216.244.66.227")){
-
+    if(req.headers['x-forwarded-for'].includes("66.249") || req.headers['x-forwarded-for'].includes("216.244.66.227")){
+      console.log(req.headers['x-forwarded-for']);
     }else{
       var analytics = new Analytics();
       analytics.ip = req.headers['x-forwarded-for'];

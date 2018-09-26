@@ -1446,7 +1446,7 @@ router.get('/biz/:name',function(req, res, next){
       data.openstatus = openingTimesMoment.getStatus(now);
     }
     catch(err) {
-        data.openstatus = null;
+        data.openstatus = {};
     }
 
     if(req.headers['x-forwarded-for'].includes("66.249") || req.headers['x-forwarded-for'].includes("216.244.66.227")){

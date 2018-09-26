@@ -1442,7 +1442,12 @@ router.get('/biz/:name',function(req, res, next){
     delete data.hours.$init;
     //console.log(data);
     var openingTimesMoment = new OpeningTimes(data.hours, 'Africa/Nairobi');
-    data.openstatus = openingTimesMoment.getStatus(now);
+    try {
+      data.openstatus = openingTimesMoment.getStatus(now);
+    }
+    catch(err) {
+        data.openstatus = null;
+    }
 
     if(req.headers['x-forwarded-for'].includes("66.249") || req.headers['x-forwarded-for'].includes("216.244.66.227")){
       console.log(req.headers['x-forwarded-for']);

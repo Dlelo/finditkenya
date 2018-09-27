@@ -16,7 +16,7 @@ block content
           
           if(businesses.length)
             each biz in businesses
-              if (biz.paid && biz.score > 19.9)            
+              if (biz.paid && biz.score > 20)            
                 .row
                   if (typeof(biz.slug) !== 'undefined')
                       a(href="/biz/"+biz.slug)

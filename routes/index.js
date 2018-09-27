@@ -169,7 +169,7 @@ router.get('/search', function(req, res, next){
     var array_of_suggestions = dictionary.suggest(req.query.search);
     Promise.all([businesses]).then(values => {
       var list = values[0];
-      //console.log(list);
+      console.log(list);
       /*var options = {
         shouldSort: true,
         includeScore: true,

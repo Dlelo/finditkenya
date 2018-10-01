@@ -169,7 +169,7 @@ router.get('/search', function(req, res, next){
     var array_of_suggestions = dictionary.suggest(req.query.search);
     Promise.all([businesses]).then(values => {
       var list = values[0];
-      //console.log(list);
+      console.log(list);
       /*var options = {
         shouldSort: true,
         includeScore: true,
@@ -1442,10 +1442,15 @@ router.get('/biz/:name',function(req, res, next){
     delete data.hours.$init;
     //console.log(data);
     var openingTimesMoment = new OpeningTimes(data.hours, 'Africa/Nairobi');
-    data.openstatus = openingTimesMoment.getStatus(now);
+    try {
+      data.openstatus = openingTimesMoment.getStatus(now);
+    }
+    catch(err) {
+        data.openstatus = {};
+    }
 
-    if(req.headers['x-forwarded-for'].includes("66.249") || req.headers['x-forwarded-for'].includes("	216.244.66.227")){
-
+    if(req.headers['x-forwarded-for'].includes("66.249") || req.headers['x-forwarded-for'].includes("216.244.66.227")){
+      console.log(req.headers['x-forwarded-for']);
     }else{
       var analytics = new Analytics();
       analytics.ip = req.headers['x-forwarded-for'];

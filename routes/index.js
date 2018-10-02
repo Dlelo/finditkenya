@@ -467,7 +467,7 @@ router.get('/category/:cat',function(req, res, next){
         { "$unwind": "$subcategories" },
       { "$sort": { "subcategories.name": 1 } }
     ]);
-    var categories = Category.find({approved: true,group: 'general'}).sort([['order', 1]]);
+    var categories = Category.findOne({approved: true,group: 'general'}).sort([['order', 1]]);
     Promise.all([businesses, features, categories]).then(values => {
       //console.log(values[1]);
       res.render('business/list', {

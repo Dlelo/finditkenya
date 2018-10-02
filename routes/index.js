@@ -1000,7 +1000,7 @@ router.post('/forgotpassword', function(req, res){
       });
     }else{
       req.flash('error_msg', 'Email address not found');
-      res.redirect('/');
+      res.redirect('/forgotpassword');
     }
     //END IF
   })

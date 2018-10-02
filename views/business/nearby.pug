@@ -10,10 +10,11 @@ block content
         ul.dropdown-menu(style="width: -webkit-fill-available;")
           if features 
               .panel-heading.category
+                each cat in features.subcategories
                 li.text-left.sub-list
-                  a(href="/subcategory/"+title+"/"+features.subcategories.name)
+                  a(href="/subcategory/"+title+"/"+cat.name)
                     strong  
-                      =features.subcategories.name
+                      =cat.name
     .col-md-10(style="height: 100%;")
       #map
       script.

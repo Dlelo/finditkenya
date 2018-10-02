@@ -467,7 +467,7 @@ router.get('/category/:cat',function(req, res, next){
         { "$unwind": "$subcategories" },
       { "$sort": { "subcategories.name": 1 } }
     ]);
-    var categories = Category.findOne({approved: true,group: 'general'}).sort([['order', 1]]);
+    var categories = Category.find({approved: true,group: 'general'}).sort([['order', 1]]);
     Promise.all([businesses, features, categories]).then(values => {
       //console.log(values[1]);
       res.render('business/list', {
@@ -534,7 +534,7 @@ router.get('/nearby/:category/', function(req, res, next){
   var businesses = Business.find({subcategory: req.params.category});
   //var features = Category.find({ subcategories: {$elemMatch: { name: req.params.category}} });
 
-  var features = Category.find({ name: req.params.category ,group: 'general'});
+  var features = Category.findOne({ name: req.params.category ,group: 'general'});
 
   Promise.all([businesses, features]).then(values => {
     console.log(values[1]);

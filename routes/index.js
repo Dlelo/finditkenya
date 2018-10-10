@@ -534,14 +534,10 @@ router.get('/nearby/:category/', function(req, res, next){
   var businesses = Business.find({subcategory: req.params.category});
   //var features = Category.find({ subcategories: {$elemMatch: { name: req.params.category}} });
 
-  var features = Category.aggregate([
-    { $match: { name: req.params.category ,group: 'general'} },
-      { "$unwind": "$subcategories" },
-    { "$sort": { "subcategories.name": 1 } }
-  ]);
+  var features = Category.findOne({ name: req.params.category ,group: 'general'});
 
   Promise.all([businesses, features]).then(values => {
-    //console.log(values[0]);
+    console.log(values[1]);
     res.render('business/nearby', {
         title: req.params.category,
         businesses: values[0],
@@ -971,37 +967,42 @@ router.post('/forgotpassword', function(req, res){
     email: req.body.email
   })
   .then(function(d){
-    var salt = bcrypt.genSaltSync(10);
-    var date = new Date();
-    var hash = md5(date.toString());
-    console.log(hash);
+    if(d){
+      var salt = bcrypt.genSaltSync(10);
+      var date = new Date();
+      var hash = md5(date.toString());
+      console.log(hash);
 
-    d.resetcode = hash;
-    console.log(d);
-    d.save(function(err){
-      if(err){
-        req.flash('error', 'Error occured when updating agent number');
-        res.redirect('/');
-      }
-      var holder = emailModel.app;
-      var mailer = emailModel.mailer;
-      holder.mailer.send('email/forgotpassword', {
-        to: d.email, // REQUIRED. This can be a comma delimited string just like a normal email to field.
-        subject: 'FindIt Password Recovery', // REQUIRED.
-        forgotpasswordlink:  'https://' + req.get('host') + '/resetpassword/'+d.id+'/'+hash, // All additional properties are also passed to the template as local variables.
-      }, function (err) {
-        if (err) {
-          // handle error
-          console.log(err);
-          res.send('There was an error sending the email');
-          return;
-        }else{
-          req.flash('success_msg', 'Email Sent');
+      d.resetcode = hash;
+      d.save(function(err){
+        if(err){
+          req.flash('error', 'Error occured when updating agent number');
           res.redirect('/');
         }
-      });
+        var holder = emailModel.app;
+        var mailer = emailModel.mailer;
+        holder.mailer.send('email/forgotpassword', {
+          to: d.email, // REQUIRED. This can be a comma delimited string just like a normal email to field.
+          subject: 'FindIt Password Recovery', // REQUIRED.
+          forgotpasswordlink:  'https://' + req.get('host') + '/resetpassword/'+d.id+'/'+hash, // All additional properties are also passed to the template as local variables.
+        }, function (err) {
+          if (err) {
+            // handle error
+            console.log(err);
+            res.send('There was an error sending the email');
+            return;
+          }else{
+            req.flash('success_msg', 'Email Sent');
+            res.redirect('/');
+          }
+        });
 
-    });
+      });
+    }else{
+      req.flash('error_msg', 'Email address not found');
+      res.redirect('/forgotpassword');
+    }
+    //END IF
   })
   .catch(function(err){
      req.flash('error_msg', 'Email Sent');

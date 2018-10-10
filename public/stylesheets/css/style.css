@@ -2725,7 +2725,10 @@ li.list-hor{
 @media screen and (max-width: 375px) {
 	.parallax-content-list {
     margin-top: 6vh;
-     }
+	 }
+	#mobile-view{
+	display:block;
+      }
 	
 	.img-logo {
 	    width: 10rem !important;

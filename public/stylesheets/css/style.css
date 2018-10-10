@@ -2727,7 +2727,7 @@ li.list-hor{
     margin-top: 6vh;
 	 }
 	#mobile-view{
-	  display:block;
+	  display:block !important;
 	  }
 	#web-view{
 		display: none;

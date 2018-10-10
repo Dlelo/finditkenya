@@ -4776,3 +4776,6 @@ h5 {
 #back-top-Btn:hover {
   background-color: #04045a;
 }
+#mobile-view{
+	display:none;
+}

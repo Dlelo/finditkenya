@@ -664,6 +664,7 @@ script(type='text/javascript').
   $(document).ready(function(){
     $("#showmore").click(function(){
         $("#mobile-view").hide();
+        $("#mobile-view").css("display", "none !important");
         $("#show-more").show();
     });
     $("#showless").click(function(){

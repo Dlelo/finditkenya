@@ -2727,10 +2727,10 @@ li.list-hor{
     margin-top: 6vh;
 	 }
 	#mobile-view{
-	display:block !important;
+	  display:block;
 	  }
 	#web-view{
-		display: none !important;
+		display: none;
 	}
 	
 	.img-logo {
@@ -4783,5 +4783,8 @@ h5 {
   background-color: #04045a;
 }
 #mobile-view{
+	display:none;
+}
+#show-more{
 	display:none;
 }

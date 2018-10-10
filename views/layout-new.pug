@@ -659,3 +659,15 @@ script.
     gtag('js', new Date());
 
     gtag('config', 'UA-102320208-3');
+
+script(type='text/javascript').
+  $(document).ready(function(){
+    $("#showmore").click(function(){
+        $("#mobile-view").hide();
+        $("#show-more").show();
+    });
+    $("#showless").click(function(){
+        $("#show-more").hide();
+        $("#mobile-view").show();
+    });
+  });

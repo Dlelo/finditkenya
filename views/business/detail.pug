@@ -226,14 +226,15 @@ block content
                       strong More Information
                     .panel-body
                       p.padding-p  !{biz.description}
-                #mobile-view
-                   .panel
-                    .findit-red.padding10top
-                      strong More Information
-                    .panel-body
-                      p.padding-p 
-                        if biz.description.length > 250
-                          p.padding.text-left.description-cat  !{biz.description.substr(0, 250)+ '..... <strong id="showmore" style="background-color:#c00000; color:#fff; padding:1px">Read More</strong>'}
+                .hideonclick
+                  #mobile-view
+                    .panel
+                      .findit-red.padding10top
+                        strong More Information
+                      .panel-body
+                        p.padding-p 
+                          if biz.description.length > 250
+                            p.padding.text-left.description-cat  !{biz.description.substr(0, 250)+ '..... <strong id="showmore" style="background-color:#c00000; color:#fff; padding:1px">Read More</strong>'}
                 #show-more
                   .panel
                     .findit-red.padding10top

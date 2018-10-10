@@ -306,7 +306,11 @@ block content
               if(user.role == 1)
                 .col-sm-6
                   input.form-control-form(type='text', name='username', placeholder='Username',value=biz.user_id)
-                
+              .col-sm-6
+                input#branch.form-control-form(type="radio",name="branch",value="1",rel=biz._id)
+                | Branch
+              .col-sm-6
+                select#bizparent.form-control-form-select(name='bizparent',class='bizparent', data-live-search="true")
             .form-group
               .row
                 button.button.btn.btn-warning.form-control-form(type='submit') Update
@@ -314,6 +318,29 @@ block content
     script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9MX39yDkMJn6rjWi6vt4Rens5u_cVBQE")
     script(type='text/javascript').
       $(function() {
+        //BRANCHING Businesses
+        $('#branch').on("click",function(event){
+          //$(this).attr('rel');
+          $.ajax({
+                type: "GET",
+                url: "/fetchbiz",
+                success: function(data){
+                    // Parse the returned json data
+                    //var opts = $.parseJSON(data);
+                    //console.log(data);
+                    $('#bizparent').empty();
+                    $.each(data, function(i, d) {
+                        // You will need to alter the below to get the right values from your json object.  Guessing that d.id / d.modelName are columns in your carModels data
+                        //console.log(d.name);
+                        $('#bizparent').append('<option value="' + d._id + '">' + d.name + '</option>');
+                    });
+                    $('.selectpicker').selectpicker('refresh');
+                }
+            });
+        });
+        
+        
+        
         var gallery = "#{gallery}";
         gallery = JSON.parse(gallery.replace(/&quot;/g,'"'));
         var el = document.getElementById('accordion');

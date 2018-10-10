@@ -613,6 +613,22 @@ router.get('/businesses', role.auth, function(req, res){
 
 });
 
+router.get('/fetchbiz', role.auth, function(req, res) {
+  if(req.user.role == 1){
+    Business.find({})
+    .sort({ name:1})
+    .then(function (table) {
+      res.json(table); // table.total, table.data
+    })
+  }else{
+    Business.find({user_id: res.locals.user.username})
+    .sort({ name:1})
+    .then(function (table) {
+      res.json(table); // table.total, table.data
+    })
+  }
+});
+
 router.get('/datatables', role.auth, function(req, res) {
   if(req.user.role == 1){
     Business.dataTables({

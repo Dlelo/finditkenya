@@ -69,6 +69,8 @@ const bizSchema = new Schema({
 		agentphone: String,
 		pending: Boolean,
 		coupons: [{ type: Schema.Types.ObjectId, ref: 'Coupon' }],
+		branch: Boolean,
+		bizparent: { type: Schema.Types.ObjectId, ref: 'Business' },
 		user_id: String
 });
 

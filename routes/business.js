@@ -94,6 +94,10 @@ router.post('/add', role.auth, cpUpload, function(req, res, next) {
 		instance.pending = true;
 		instance.packagepaid = req.body.packagepaid;
 	}
+  if(req.body.branch){
+    instance.branch = true;
+    instance.bizparent = req.body.bizparent;
+  }
 	Business.findOne({
 	   slug: instance.slug
 	})

@@ -83,7 +83,7 @@ passport.use(new LocalStrategy(
     passwordField: 'password'
   },
   function(username, password, done) {
-    User.findOne({ 'username': username }).then(function(user){
+    User.findOne({ $or:[ {'username':username }, { 'email':username } ] }).then(function(user){
       if (!user) {
         return done(null, false, { message: 'Incorrect username.' });
       }

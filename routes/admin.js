@@ -127,8 +127,8 @@ router.post('/edit/:id', role.auth, cpUpload, function(req, res, next) {
 	    	b.endeventdate = new Date(moment(req.body.endeventdate, 'MM-DD-YYYY HH:mm:ss'));
 	    }
       if(req.body.branch){
-        instance.branch = true;
-        instance.bizparent = req.body.bizparent;
+        b.branch = true;
+        b.bizparent = req.body.bizparent;
       }
 
 		b.save(function(err){

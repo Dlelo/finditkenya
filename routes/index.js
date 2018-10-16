@@ -167,7 +167,8 @@ router.get('/search', function(req, res, next){
       }
     ).sort([['paid', -1],['datepaid', 1]]);*/
     var array_of_suggestions = dictionary.suggest(req.query.search);
-    Promise.all([businesses]).then(values => {
+    var categories = Category.find({group: 'general'});
+    Promise.all([businesses,categories]).then(values => {
       var list = values[0];
       console.log(list);
       /*var options = {
@@ -190,6 +191,7 @@ router.get('/search', function(req, res, next){
       res.render('business/search', {
           title: req.query.search,
           businesses: values[0],
+          categories: values[1],
           suggestion: array_of_suggestions[0],
           host: req.get('host')
       });

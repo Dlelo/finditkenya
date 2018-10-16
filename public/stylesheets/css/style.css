@@ -4792,5 +4792,5 @@ h5 {
     width: 0;
     height: 0;
     vertical-align:0 !important;
-    content:0 !important;
+    content:none !important;
 }

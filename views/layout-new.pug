@@ -95,8 +95,7 @@ body
                 li.dropdown.nav-item.mr-3
                   a.nav-link.dropdown-toggle(href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")    
                     span.fas.fa-th-list.fas-menu
-                    strong
-                     |  Categories 
+                    strong Categories 
                    
                   div.dropdown-menu.dropdown-menu-right.mega-menu(aria-labelledby="navbarDropdown" style="width: -webkit-fill-available;")
                     if categories 
@@ -623,12 +622,12 @@ script(type='text/javascript').
     $(".search2" ).focus();
     // scroll to top action
     
-    $('.scroll-top').on('click', function(event) {
+    /*$('.scroll-top').on('click', function(event) {
     event.preventDefault();
     $('html, body').animate({scrollTop:0}, 'fast');
     });
     // mobile nav toggle
-   /* $('#nav-toggle').on('click', function (event) {
+    $('#nav-toggle').on('click', function (event) {
     event.preventDefault();
     $('#main-nav').toggleClass("open");
     });

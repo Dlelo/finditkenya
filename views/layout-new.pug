@@ -162,6 +162,47 @@ body
       span
         i.fas.fa-chevron-up
   block content
+  //footer
+  div.container-fluid
+    
+    div.row.text-center.footer-style
+      .col-md-4
+        .terms-policy.footer-text
+              ul
+                li
+                  a.footer-text(href='https://www.instagram.com/finditkenya/?hl=en', target='_blank', class="fa-layers fa-2x")
+                    i.list-social.fab.fa-facebook-f
+                li
+                  a.footer-text(href='https://twitter.com/findit254?lang=en', target='_blank', class="fa-layers fa-2x")
+                    i.list-social.fab.fa-twitter 
+                li
+                  a.footer-text(href='https://www.instagram.com/finditkenya/?hl=en', target='_blank', class="fa-layers fa-2x")
+                    i.list-social.fab.fa-instagram
+      .col-md-4
+         .terms-policy.footer-text
+              ul
+                li
+                  a.footer-text(href='/terms-and-conditions', target='_blank')
+                    |  Terms and Conditions
+                li
+                  a.footer-text(href='/privacy-policy', target='_blank')
+                    |  Privacy Policy
+      .col-md-4
+        .terms-policy.footer-text
+              ul
+                li
+                  a.footer-text(href="/coupons", target='_parent')
+                    |  View Deals
+                li
+                  a.footer-text(href='/business/newpackage', target='_parent')
+                    |  Pricing
+                li
+                  a.footer-text(href='https://lookfindkenya.wordpress.com/', target='_blank')
+                    |  Blog
+                
+    .col-md-12.col-sm-12.text-center.footer-style     
+        p
+          | © 2018 Find it Kenya. All rights reserved | FinditKe
   //registration and login form
   div(tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true").modal.fade#exampleModal
     div(role="document").modal-dialog

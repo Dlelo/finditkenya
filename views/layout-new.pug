@@ -74,7 +74,7 @@ body
           div(style="flex-grow:0.1 !important")
             a.navbar-brand.text-white(href="/")
               img.img-logo(src="/img/findit-red-logo.png").img-fluid
-          div(style="flex-grow:0.3 !important")
+          div(style="flex-grow:0.1 !important")
             #showSearch
               form.form-class(method='get', action='/search')
                 div.input-group
@@ -94,9 +94,7 @@ body
               ul.nav.navbar-nav.ml-lg-auto.justify-content-end(style="float:right")
                 li.dropdown.nav-item.mr-3
                   a.nav-link.dropdown-toggle(href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")    
-                    span.fas.fa-th-list.fas-menu
-                    strong
-                     |  Categories 
+                    strong Categories 
                    
                   div.dropdown-menu.dropdown-menu-right.mega-menu(aria-labelledby="navbarDropdown" style="width: -webkit-fill-available;")
                     if categories 
@@ -397,7 +395,7 @@ script(type='text/javascript').
 
   // breakpoint and up  
   $(window).resize(function(){
-  if ($(window).width() >= 980){	
+  //if ($(window).width() >= 980){	
 
     // when you hover a toggle show its dropdown menu
     $(".navbar .dropdown-toggle").hover(function () {
@@ -411,7 +409,7 @@ script(type='text/javascript').
     //});
 
   // do something here
-  }	
+  //}
   });  
      
   // document ready  
@@ -623,7 +621,7 @@ script(type='text/javascript').
     $(".search2" ).focus();
     // scroll to top action
     
-    $('.scroll-top').on('click', function(event) {
+    /*$('.scroll-top').on('click', function(event) {
     event.preventDefault();
     $('html, body').animate({scrollTop:0}, 'fast');
     });
@@ -632,7 +630,7 @@ script(type='text/javascript').
     event.preventDefault();
     $('#main-nav').toggleClass("open");
     });
-    });
+    });*/
     // scroll function
     function scrollToID(id, speed){
       var offSet = 50;

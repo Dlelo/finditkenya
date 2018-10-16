@@ -56,6 +56,10 @@ router.get('/search', function(req, res, next){
   var neatString = req.query.search.trim();
   var result = neatString.split(/[,. \/-]/);
   var bizArray = [];
+  var skip = 0;
+  if(req.query.skip){
+    skip = parseInt(req.query.skip);
+  }
   Business.find({},{name: 1, _id:-1})
   .then(function(d){
     d.forEach(function(x){
@@ -154,7 +158,9 @@ router.get('/search', function(req, res, next){
              $meta: "textScore"
            }
          }
-       }
+       },
+       { $limit: 20 },
+       { $skip: skip }
      ]);
 
 
@@ -458,6 +464,10 @@ router.get('/with-images', function(req, res, next) {
 });
 
 router.get('/category/:cat',function(req, res, next){
+  var page = 0;
+  if(req.query.page){
+    page = req.query.page;
+  }
   if(req.params.cat == 'Events'){
     var businesses = Business.find({
       $query: {subcategory: req.params.cat, approved: true},
@@ -487,21 +497,32 @@ router.get('/category/:cat',function(req, res, next){
         approved: true
         //pending: { $ne: true }
       }
-    }).sort([['paid', -1],['datepaid', 1],['slug', 1]]);
+    })
+    .sort([['paid', -1],['datepaid', 1],['slug', 1]])
+    .limit(20)
+    .skip(0);
+
+    var bizcount = Business.count({
+        subcategory: req.params.cat,
+        approved: true
+    });
 
     var features = Category.aggregate([
       { $match: { name: req.params.cat } },
       { "$unwind": "$subcategories" },
       { "$sort": { "subcategories.name": 1 } }
     ]);
+
     var categories = Category.find({approved: true,group: 'general'}).sort([['order', 1]]);
-    Promise.all([businesses, features, categories]).then(values => {
-      //console.log(values[1]);
+    Promise.all([businesses, features, categories, bizcount]).then(values => {
+      console.log(Math.ceil(values[3]/20));
+      //console.log(values[0].length);
       res.render('business/list', {
           title: req.params.cat,
           businesses: values[0],
           features: values[1],
           categories: values[2],
+          bizcount: Math.ceil(values[3]/20),
           host: req.get('host')
       });
     });
@@ -1453,6 +1474,7 @@ router.get('/biz/:name',function(req, res, next){
     approved: true
     //pending: { $ne: true }
   })
+  .populate('bizparent')
   .then(function(data){
     //var phones = data.phone.split(/[\s,]+/);
     var phones = data.phone.split(/[,\/-]/);

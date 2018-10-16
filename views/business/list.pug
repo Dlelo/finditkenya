@@ -174,7 +174,13 @@ block content
                               small
                                 | #{biz.reviews.length} Reviews
 
-                            
+            ul.pagination
+              - var n = 0;
+              while n < bizcount
+                li.page-item
+                  a.page-link(href='#') 
+                    = n++
+                
             
         //script to put navitems open by default
         script(type='text/javascript').

@@ -1528,7 +1528,7 @@ router.get('/biz/:name',function(req, res, next){
 
     var branches = Business.find({bizparent: data._id});
 
-    Promise.all([coupons,businesses,categories]).then(values => {
+    Promise.all([coupons,businesses,categories,branches]).then(values => {
       var coupons = values[0];
       var businesses = values[1];
       var categories = values[2];

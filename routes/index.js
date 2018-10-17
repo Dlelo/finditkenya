@@ -1526,21 +1526,46 @@ router.get('/biz/:name',function(req, res, next){
     .sort([['paid', -1],['datepaid', 1],['slug', 1]])
     .limit(5);
 
-    Promise.all([coupons,businesses,categories]).then(values => {
+    var branches = Business.find({bizparent: data._id});
+
+    Promise.all([coupons,businesses,categories,branches]).then(values => {
       var coupons = values[0];
       var businesses = values[1];
       var categories = values[2];
+      var branches = values[3];
+      console.log(branches);
       if(data.paid == false || typeof data.paid === 'undefined'){
         description = data.name + ', '+ data.subcategory + ', ' + data.street +', '+data.city + ' Kenya';
         keywords = data.keywords + " | on Findit Kenya";
         //console.log(description);
-        res.render('business/freedetail',{title: data.name, biz: data, phones: phones, emails: emails, similarbiz: businesses, keywords: keywords, coupons: coupons,categories:categories});
+        res.render('business/freedetail',{
+          title: data.name,
+          biz: data,
+          phones: phones,
+          emails: emails,
+          similarbiz: businesses,
+          keywords: keywords,
+          coupons: coupons,
+          categories:categories,
+          branches: branches
+        });
         //res.end();
       }else{
         description = data.description;
         keywords = data.keywords + " | on Findit Kenya";
         //console.log(description);
-        res.render('business/detail',{title: data.name, biz: data, phones: phones, emails: emails, description: description, similarbiz: businesses, keywords: keywords, coupons: coupons,categories:categories});
+        res.render('business/detail',{
+          title: data.name,
+          biz: data,
+          phones: phones,
+          emails: emails,
+          description: description,
+          similarbiz: businesses,
+          keywords: keywords,
+          coupons: coupons,
+          categories:categories,
+          branches: branches
+        });
         //res.end();
       }
     });

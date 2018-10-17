@@ -360,13 +360,13 @@ block content
                             =coupon.tagline       
           else 
              div   
-          if(biz.bizparent)
+          if(branches)
             div.col-md-12
               h4
                 strong.text-center
                   | Branches
             div.col-md-12       
-              each branch in biz.bizparent           
+              each branch in branches          
                 a(href="/biz/"+branch.slug) 
                   div.col-md-12.is-island
                     h6.findit-red

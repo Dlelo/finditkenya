@@ -466,7 +466,7 @@ router.get('/with-images', function(req, res, next) {
 router.get('/category/:cat',function(req, res, next){
   var page = 0;
   if(req.query.page){
-    page = req.query.page;
+    page = req.query.page - 1;
   }
   if(req.params.cat == 'Events'){
     var businesses = Business.find({
@@ -482,6 +482,7 @@ router.get('/category/:cat',function(req, res, next){
     var categories = Category.find({approved: true,group: 'general'}).sort([['order', 1]]);
     Promise.all([businesses, features, categories]).then(values => {
       //console.log(values[1]);
+      console.log(url.parse(req.originalUrl));
       res.render('business/list', {
           title: req.params.cat,
           businesses: values[0],
@@ -500,7 +501,7 @@ router.get('/category/:cat',function(req, res, next){
     })
     .sort([['paid', -1],['datepaid', 1],['slug', 1]])
     .limit(20)
-    .skip(0);
+    .skip(20 * page);
 
     var bizcount = Business.count({
         subcategory: req.params.cat,
@@ -516,6 +517,7 @@ router.get('/category/:cat',function(req, res, next){
     var categories = Category.find({approved: true,group: 'general'}).sort([['order', 1]]);
     Promise.all([businesses, features, categories, bizcount]).then(values => {
       console.log(Math.ceil(values[3]/20));
+      console.log(req.path);
       //console.log(values[0].length);
       res.render('business/list', {
           title: req.params.cat,
@@ -523,7 +525,8 @@ router.get('/category/:cat',function(req, res, next){
           features: values[1],
           categories: values[2],
           bizcount: Math.ceil(values[3]/20),
-          host: req.get('host')
+          host: req.get('host'),
+          uri: "/"+req.path
       });
     });
   }

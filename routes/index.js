@@ -526,7 +526,8 @@ router.get('/category/:cat',function(req, res, next){
           categories: values[2],
           bizcount: Math.ceil(values[3]/20),
           host: req.get('host'),
-          uri: "/"+req.path
+          uri: req.path,
+          page: page + 1
       });
     });
   }

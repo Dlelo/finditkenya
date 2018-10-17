@@ -39,6 +39,7 @@ const bizSchema = new Schema({
 		twitter: String,
 		instagram: String,
 		linkedin: String,
+		units: String,
 		gallery: Array,
 		reviews: [{
 			rate: String,

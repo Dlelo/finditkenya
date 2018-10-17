@@ -178,9 +178,14 @@ block content
               - var n = 1;
               while n <= bizcount
                 li.page-item
-                  a.page-link(href=uri+'?page='+n) 
-                    = n
-                    - n++
+                  - if(n == page  )
+                    a.page-link(href="#", style='color: #f6f9f6;background: #0056b3;') 
+                      = n
+                      - n++
+                  - else 
+                    a.page-link(href=uri+'?page='+n) 
+                      = n
+                      - n++
                 
             
         //script to put navitems open by default

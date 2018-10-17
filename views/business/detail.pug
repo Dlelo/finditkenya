@@ -359,7 +359,19 @@ block content
                         .div
                             =coupon.tagline       
           else 
-             div    
+             div   
+          if(biz.bizparent)
+            div.col-md-12
+              h4
+                strong.text-center
+                  | Branches
+            div.col-md-12       
+              each branch in biz.bizparent           
+                a(href="/biz/"+branch.slug) 
+                  div.col-md-12.is-island
+                    h6.findit-red
+                      =branch.name
+            
           if(similarbiz)
             div.col-md-12
               h4

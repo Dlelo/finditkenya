@@ -70,7 +70,7 @@ body
           div(style="flex-grow:0.1 !important")
             a.navbar-brand.text-white(href="/")
               img.img-logo(src="/img/findit-red-logo.png").img-fluid
-          div(style="flex-grow:0.4 !important")
+          div(style="flex-grow:0.1 !important")
               form.form-class(method='get', action='/search')
                 div.input-group
                   input.search2.form-control-lg(type="text" placeholder="Businesses, Doctors, Lawyers, Hotels" ,style="width:100% !important" ,name='search', autofocus)
@@ -89,8 +89,7 @@ body
               ul.nav.navbar-nav.ml-lg-auto.nav.justify-content-end(style="float:right")
                 li.dropdown.nav-item.mr-3
                   a.nav-link.dropdown-toggle(href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")    
-                    span.fas.fa-th-list.fas-menu
-                    |  Categories 
+                    strong Categories 
                     
                   div.dropdown-menu.dropdown-menu-right.mega-menu(aria-labelledby="navbarDropdown" style="width: -webkit-fill-available;")
                     if categories 
@@ -155,6 +154,47 @@ body
         .alert.xxx-error.alert-danger 
           = error
   block content
+  //footer
+  div.container-fluid
+    
+    div.row.text-center.footer-style
+      .col-md-4
+        .terms-policy.footer-text
+              ul
+                li
+                  a.footer-text(href='https://www.instagram.com/finditkenya/?hl=en', target='_blank', class="fa-layers fa-2x")
+                    i.list-social.fab.fa-facebook-f
+                li
+                  a.footer-text(href='https://twitter.com/findit254?lang=en', target='_blank', class="fa-layers fa-2x")
+                    i.list-social.fab.fa-twitter 
+                li
+                  a.footer-text(href='https://www.instagram.com/finditkenya/?hl=en', target='_blank', class="fa-layers fa-2x")
+                    i.list-social.fab.fa-instagram
+      .col-md-4
+         .terms-policy.footer-text
+              ul
+                li
+                  a.footer-text(href='/terms-and-conditions', target='_blank')
+                    |  Terms and Conditions
+                li
+                  a.footer-text(href='/privacy-policy', target='_blank')
+                    |  Privacy Policy
+      .col-md-4
+        .terms-policy.footer-text
+              ul
+                li
+                  a.footer-text(href="/coupons", target='_parent')
+                    |  View Deals
+                li
+                  a.footer-text(href='/business/newpackage', target='_parent')
+                    |  Pricing
+                li
+                  a.footer-text(href='https://lookfindkenya.wordpress.com/', target='_blank')
+                    |  Blog
+                
+    .col-md-12.col-sm-12.text-center.footer-style     
+        p
+          | © 2018 Find it Kenya. All rights reserved | FinditKe
   //registration and login form
   div(tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true").modal.fade#exampleModal
     div(role="document").modal-dialog

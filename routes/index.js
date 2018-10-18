@@ -60,7 +60,7 @@ router.get('/search', function(req, res, next){
   if(req.query.skip){
     skip = parseInt(req.query.skip);
   }
-  Business.find({},{name: 1, _id:-1,branch: { $ne: 1 }})
+  Business.find({branch: { $ne: 1 }},{name: 1, _id:-1})
   .then(function(d){
     d.forEach(function(x){
       //console.log(x.name);

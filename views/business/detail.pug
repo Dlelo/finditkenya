@@ -200,6 +200,7 @@ block content
               .row(width="100%")
                 if(branches)
                   iframe(width='100%', height='300', frameborder='0', style='border:0', src='https://www.google.com/maps/embed/v1/view?zoom='+biz.map.zoom+'&center='+biz.map.lati+','+biz.map.long+'&key=AIzaSyA0P3blnbZTWe7vHDrbX3Bsd7RA2Y5ViTk', allowfullscreen='',)
+                  #map
                 #lightgallery.thumbnails.scrollmenu
                   if biz.gallery
                     each image in biz.gallery
@@ -314,7 +315,7 @@ block content
                       =bizna.subcategory
       .row      
           .col-md-12
-            h3.text-center
+            h3.text-left
               | Reviews
             each review in biz.reviews              
               .row               
@@ -394,6 +395,84 @@ block content
                       label.half(for='starhalf', title='Sucks big time - 0.5 stars')
                 .col-md-12
                   button.button.btn.btn-danger.form-control(type='submit') Submit Review                
-      br    
+          
+      script.
+        // Note: This example requires that you consent to location sharing when
+        // prompted by your browser. If you see the error "The Geolocation service
+        // failed.", it means you probably did not give permission for the browser to
+        // locate you.
+        var map, infoWindow;
+        function initMap() {
+          infoWindow = new google.maps.InfoWindow;
+          // Try HTML5 geolocation.
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
 
-        
+            map = new google.maps.Map(document.getElementById('map'), {
+              center: pos,
+              zoom: 13
+            });
+
+            var marker = new google.maps.Marker({
+              position: pos,
+              title: 'My Location',
+              icon: 'https://findit.ke/img/if_the_iron_man.png',
+              map: map
+            });
+            var branches = !{JSON.stringify(branches)};
+            console.log(branches);
+            branches.forEach(function(biz) {
+              if(typeof biz.map === 'undefined' || biz.map === null){
+                
+              }else{
+                var bizpos = {
+                  lat: parseFloat(biz.map.lati),
+                  lng: parseFloat(biz.map.long)
+                };
+                var marker = new google.maps.Marker({
+                  position: bizpos,
+                  title: biz.name,
+                  animation: google.maps.Animation.DROP,
+                  map: map
+                });
+                marker.info = new google.maps.InfoWindow({
+                  content: '<b>'+ biz.name +'</b> <p>'+biz.subcategory+'</p>'
+                });
+
+                google.maps.event.addListener(marker, 'click', function() {
+                  marker.info.open(map, marker);
+                });
+              }
+              
+            });
+
+            function toggleBounce() {
+              if (marker.getAnimation() !== null) {
+                marker.setAnimation(null);
+              } else {
+                marker.setAnimation(google.maps.Animation.BOUNCE);
+              }
+            }
+            
+            // Create markers.
+            
+            infoWindow.open(map);
+            map.setCenter(pos);
+            }, function() {
+              handleLocationError(true, infoWindow, map.getCenter());
+            });
+            } else {
+              // Browser doesn't support Geolocation
+              handleLocationError(false, infoWindow, map.getCenter());
+            }
+        }
+        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+          infoWindow.setPosition(pos);
+          infoWindow.setContent(browserHasGeolocation ? 'Error: The Geolocation service failed.' : 'Error: Your browser doesnt support geolocation.');
+          infoWindow.open(map);
+        }
+      script(async='', defer='', src='https://maps.googleapis.com/maps/api/js?key=AIzaSyC9MX39yDkMJn6rjWi6vt4Rens5u_cVBQE&callback=initMap&zoom=17')

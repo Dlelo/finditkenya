@@ -263,88 +263,8 @@ block content
                              =extra + ','
                   else
                       | 
-              .col-md-12
-                h3.text-left
-                  | Reviews
-                each review in biz.reviews              
-                  .row               
-                    .col-md-1.text-left 
-                      span.fas.fa-comment-alt
-                    .col-md-3
-                      .col-md-12(class="rating medium star-icon value-"+review.rate+" label-hidden")
-                        .star-container
-                          .star
-                            i.star-empty
-                            i.star-half
-                            i.star-filled
-                          .star
-                            i.star-empty
-                            i.star-half
-                            i.star-filled
-                          .star
-                            i.star-empty
-                            i.star-half
-                            i.star-filled
-                          .star
-                            i.star-empty
-                            i.star-half
-                            i.star-filled
-                          .star
-                            i.star-empty
-                            i.star-half
-                            i.star-filled
-                    .col-md-8.text-left
-                      p
-                        | !{review.msg}
-                  hr
-              
-            if biz.youtube
-              h3.text-left
-                | Youtube
-              .col-md-6
-                iframe(width='100%', height='315', src="https://"+biz.youtube, allow=" encrypted-media" allowfullscreen)
-            
-          .row 
-            .col-md-12 
-              .row
-                hr
-                .col-md-12.text-center
-                  .findit-red.padding10
-                    strong.findit-red 
-                      span.fas.fa-comment
-                      |   Submit a Review
-                .col-md-12
-                  form.form-horizontal(method="post",action="/business/review/")                
-                    .col-md-12
-                      textarea.form-control-form(name='review',required)
-                      input#bizid(type='hidden', name='bizid',value=biz.id)
-                    .col-md-12.text-left
-                      strong
-                        | Star Rating
-                        fieldset.ratings
-                          input#star5(type='radio', name='rating', value='5')
-                          label.full(for='star5', title='Awesome - 5 stars')
-                          input#star4half(type='radio', name='rating', value='4 half')
-                          label.half(for='star4half', title='Pretty good - 4.5 stars')
-                          input#star4(type='radio', name='rating', value='4')
-                          label.full(for='star4', title='Pretty good - 4 stars')
-                          input#star3half(type='radio', name='rating', value='3 half')
-                          label.half(for='star3half', title='Meh - 3.5 stars')
-                          input#star3(type='radio', name='rating', value='3')
-                          label.full(for='star3', title='Meh - 3 stars')
-                          input#star2half(type='radio', name='rating', value='2 half')
-                          label.half(for='star2half', title='Kinda bad - 2.5 stars')
-                          input#star2(type='radio', name='rating', value='2')
-                          label.full(for='star2', title='Kinda bad - 2 stars')
-                          input#star1half(type='radio', name='rating', value='1 half')
-                          label.half(for='star1half', title='Meh - 1.5 stars')
-                          input#star1(type='radio', name='rating', value='1')
-                          label.full(for='star1', title='Sucks big time - 1 star')
-                          input#starhalf(type='radio', name='rating', value='half')
-                          label.half(for='starhalf', title='Sucks big time - 0.5 stars')
-                    .col-md-12
-                      button.button.btn.btn-danger.form-control(type='submit') Submit Review
         
+    
         .col-md-3
           if(coupons.length > 0)
             div
@@ -393,6 +313,89 @@ block content
                       =bizna.name
                     p
                       =bizna.subcategory
+      .row      
+          .col-md-12
+            h3.text-left
+              | Reviews
+            each review in biz.reviews              
+              .row               
+                .col-md-1.text-left 
+                  span.fas.fa-comment-alt
+                .col-md-3
+                  .col-md-12(class="rating medium star-icon value-"+review.rate+" label-hidden")
+                    .star-container
+                      .star
+                        i.star-empty
+                        i.star-half
+                        i.star-filled
+                      .star
+                        i.star-empty
+                        i.star-half
+                        i.star-filled
+                      .star
+                        i.star-empty
+                        i.star-half
+                        i.star-filled
+                      .star
+                        i.star-empty
+                        i.star-half
+                        i.star-filled
+                      .star
+                        i.star-empty
+                        i.star-half
+                        i.star-filled
+                .col-md-8.text-left
+                  p
+                    | !{review.msg}
+              hr
+      .row    
+        if biz.youtube
+          h3.text-left
+            | Youtube
+          .col-md-6
+            iframe(width='100%', height='315', src="https://"+biz.youtube, allow=" encrypted-media" allowfullscreen)
+        
+      .row 
+        .col-md-12 
+          .row
+            hr
+            .col-md-12.text-center
+              .findit-red.padding10
+                strong.findit-red 
+                  span.fas.fa-comment
+                  |   Submit a Review
+            .col-md-12
+              form.form-horizontal(method="post",action="/business/review/")                
+                .col-md-12
+                  textarea.form-control-form(name='review',required)
+                  input#bizid(type='hidden', name='bizid',value=biz.id)
+                .col-md-12.text-left
+                  strong
+                    | Star Rating
+                    fieldset.ratings
+                      input#star5(type='radio', name='rating', value='5')
+                      label.full(for='star5', title='Awesome - 5 stars')
+                      input#star4half(type='radio', name='rating', value='4 half')
+                      label.half(for='star4half', title='Pretty good - 4.5 stars')
+                      input#star4(type='radio', name='rating', value='4')
+                      label.full(for='star4', title='Pretty good - 4 stars')
+                      input#star3half(type='radio', name='rating', value='3 half')
+                      label.half(for='star3half', title='Meh - 3.5 stars')
+                      input#star3(type='radio', name='rating', value='3')
+                      label.full(for='star3', title='Meh - 3 stars')
+                      input#star2half(type='radio', name='rating', value='2 half')
+                      label.half(for='star2half', title='Kinda bad - 2.5 stars')
+                      input#star2(type='radio', name='rating', value='2')
+                      label.full(for='star2', title='Kinda bad - 2 stars')
+                      input#star1half(type='radio', name='rating', value='1 half')
+                      label.half(for='star1half', title='Meh - 1.5 stars')
+                      input#star1(type='radio', name='rating', value='1')
+                      label.full(for='star1', title='Sucks big time - 1 star')
+                      input#starhalf(type='radio', name='rating', value='half')
+                      label.half(for='starhalf', title='Sucks big time - 0.5 stars')
+                .col-md-12
+                  button.button.btn.btn-danger.form-control(type='submit') Submit Review                
+          
       script.
         // Note: This example requires that you consent to location sharing when
         // prompted by your browser. If you see the error "The Geolocation service
@@ -400,7 +403,6 @@ block content
         // locate you.
         var map, infoWindow;
         function initMap() {
-
           infoWindow = new google.maps.InfoWindow;
           // Try HTML5 geolocation.
           if (navigator.geolocation) {

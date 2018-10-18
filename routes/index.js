@@ -1533,7 +1533,12 @@ router.get('/biz/:name',function(req, res, next){
       var coupons = values[0];
       var businesses = values[1];
       var categories = values[2];
-      var branches = values[3];
+      if(values[3].length){
+        var branches = values[3];
+      }else{
+        var branches = null;
+      }
+
       console.log(branches);
       if(data.paid == false || typeof data.paid === 'undefined'){
         description = data.name + ', '+ data.subcategory + ', ' + data.street +', '+data.city + ' Kenya';

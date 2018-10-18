@@ -205,121 +205,121 @@ block content
                               |  Closed
                             else
                               p Sunday: #{hour.opens} - #{hour.closes}
-              .col-md-6.col-xs-12
-                .row(width="100%")
-                  .col-md-12
-                  #lightgallery.thumbnails.scrollmenu
-                    if biz.gallery
-                      each image in biz.gallery
-                        a.nopadding(href='/uploads/'+image.filename, width="", alt='#{biz.slug}')
-                          .thumbnail.bizdetail-photo
-                            img.img-thumbnail.img-responsive(src='/uploads/thumbs/gallery-'+image.filename,  alt='')
-                      .pull-left
-                        small
-                          strong
-                            | Scroll this Gallery Left or Right
-                .row
-                  if(biz.deliverylink)
-                    .col-md-6.col-md-offset-3(style="background-color:#00aabb;padding:5px;border-radius:25px;")
-                      p 
-                        span.fas.fa-motorcycle(style="color:#fdfdfd;")
-                        a.findit(href="http://"+biz.deliverylink,target="_blank",style="color:#fdfdfd;font-size:18px")
-                          strong
-                            |  Place Your Order Now
-                
-                  if(biz.bookinglink)
-                    .col-md-6.col-md-offset-3(style="background-color:#00aabb;padding:5px;border-radius:25px;")
-                      p 
-                        span.fas.fa-plane(style="color:#fdfdfd;")
-                        a.findit(href="http://"+biz.bookinglink,target="_blank",style="color:#fdfdfd;font-size:18px;")
-                          strong
-                            |  Book or Reserve Now
-                if biz.description
-                  #web-view
-                    .panel
-                      .findit-red.padding10top
-                        strong More Information
-                      .panel-body
-                        p.padding-p  !{biz.description}
-                  .hideonclick
-                    #mobile-view
+                .col-md-6.col-xs-12
+                  .row(width="100%")
+                    .col-md-12
+                    #lightgallery.thumbnails.scrollmenu
+                      if biz.gallery
+                        each image in biz.gallery
+                          a.nopadding(href='/uploads/'+image.filename, width="", alt='#{biz.slug}')
+                            .thumbnail.bizdetail-photo
+                              img.img-thumbnail.img-responsive(src='/uploads/thumbs/gallery-'+image.filename,  alt='')
+                        .pull-left
+                          small
+                            strong
+                              | Scroll this Gallery Left or Right
+                  .row
+                    if(biz.deliverylink)
+                      .col-md-6.col-md-offset-3(style="background-color:#00aabb;padding:5px;border-radius:25px;")
+                        p 
+                          span.fas.fa-motorcycle(style="color:#fdfdfd;")
+                          a.findit(href="http://"+biz.deliverylink,target="_blank",style="color:#fdfdfd;font-size:18px")
+                            strong
+                              |  Place Your Order Now
+                  
+                    if(biz.bookinglink)
+                      .col-md-6.col-md-offset-3(style="background-color:#00aabb;padding:5px;border-radius:25px;")
+                        p 
+                          span.fas.fa-plane(style="color:#fdfdfd;")
+                          a.findit(href="http://"+biz.bookinglink,target="_blank",style="color:#fdfdfd;font-size:18px;")
+                            strong
+                              |  Book or Reserve Now
+                  if biz.description
+                    #web-view
                       .panel
                         .findit-red.padding10top
                           strong More Information
                         .panel-body
-                          p.padding-p 
-                            if biz.description.length > 250
-                              p.padding.text-left.description-cat  !{biz.description.substr(0, 250)+ '..... <strong id="showmore" style="background-color:#c00000; color:#fff; padding:1px">Read More</strong>'}
-                  #show-more
-                    .panel
-                      .findit-red.padding10top
-                        strong More Information
-                      .panel-body
-                        p.padding-p  !{biz.description} 
-                          | ..... 
-                          strong(id="showless" style="background-color:#c00000; color:#fff; padding:1px") Read Less   
-                    
-                .row
-                  .panel-body              
-                    if biz.extras.length 
-                      strong.findit-red
-                        h4 Ammenities  
-                      each extra in biz.extras 
-                          span.label.label-dark
-                            span.extra-space
-                              =extra + ','
-                    else
-                        | 
-        
+                          p.padding-p  !{biz.description}
+                    .hideonclick
+                      #mobile-view
+                        .panel
+                          .findit-red.padding10top
+                            strong More Information
+                          .panel-body
+                            p.padding-p 
+                              if biz.description.length > 250
+                                p.padding.text-left.description-cat  !{biz.description.substr(0, 250)+ '..... <strong id="showmore" style="background-color:#c00000; color:#fff; padding:1px">Read More</strong>'}
+                    #show-more
+                      .panel
+                        .findit-red.padding10top
+                          strong More Information
+                        .panel-body
+                          p.padding-p  !{biz.description} 
+                            | ..... 
+                            strong(id="showless" style="background-color:#c00000; color:#fff; padding:1px") Read Less   
+                      
+                  .row
+                    .panel-body              
+                      if biz.extras.length 
+                        strong.findit-red
+                          h4 Ammenities  
+                        each extra in biz.extras 
+                            span.label.label-dark
+                              span.extra-space
+                                =extra + ','
+                      else
+                          | 
+          
     
-              .col-md-3
-                if(coupons.length > 0)
-                  div
-                    h4
-                      strong
-                        | Coupons in This Business  
-                  div       
-                    each coupon in coupons 
-                      a(href="/coupons")
-                        row
-                          .col-md-12.is-island
-                              h6
-                                =coupon.name
-                              img.coup-img.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt="Responsive image")
-                              .div
-                                  h6
-                                    =coupon.bizid.name
-                                  p
-                                    =coupon.description
-                              .div
-                                  =coupon.tagline       
-                else 
-                  div   
-                if(branches)
-                  div.col-md-12
-                    h4
-                      strong.text-center
-                        | Branches
-                  div.col-md-12       
-                    each branch in branches          
-                      a(href="/biz/"+branch.slug) 
-                        div.col-md-12.is-island
-                          h6.findit-red
-                            =branch.name
-                  
-                if(similarbiz)
-                  div.col-md-12
-                    h4
-                      strong.text-center
-                        | Similar Businesses
-                  div.col-md-12       
-                    each bizna in similarbiz            
-                      a(href="/biz/"+bizna.slug) 
-                        div.col-md-12.is-island
-                          h6.findit-red
-                            =bizna.name
-                          p
-                            =bizna.subcategory
+                .col-md-3
+                  if(coupons.length > 0)
+                    div
+                      h4
+                        strong
+                          | Coupons in This Business  
+                    div       
+                      each coupon in coupons 
+                        a(href="/coupons")
+                          row
+                            .col-md-12.is-island
+                                h6
+                                  =coupon.name
+                                img.coup-img.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt="Responsive image")
+                                .div
+                                    h6
+                                      =coupon.bizid.name
+                                    p
+                                      =coupon.description
+                                .div
+                                    =coupon.tagline       
+                  else 
+                    div   
+                  if(branches)
+                    div.col-md-12
+                      h4
+                        strong.text-center
+                          | Branches
+                    div.col-md-12       
+                      each branch in branches          
+                        a(href="/biz/"+branch.slug) 
+                          div.col-md-12.is-island
+                            h6.findit-red
+                              =branch.name
+                    
+                  if(similarbiz)
+                    div.col-md-12
+                      h4
+                        strong.text-center
+                          | Similar Businesses
+                    div.col-md-12       
+                      each bizna in similarbiz            
+                        a(href="/biz/"+bizna.slug) 
+                          div.col-md-12.is-island
+                            h6.findit-red
+                              =bizna.name
+                            p
+                              =bizna.subcategory
       .row      
           .col-md-12
             h3.text-left

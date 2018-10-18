@@ -110,7 +110,32 @@ block content
                           .form-group
                             button.btn.btn-danger.form-control(type='submit')                 
                               | Claim This Business Now
-          if(!preview)
+          
+        if(branches)
+            div.col-md-12
+              h4
+                strong.text-center
+                  | Branches
+            div.col-md-12       
+              each branch in branches           
+                a(href="/biz/"+branch.slug) 
+                  div.col-md-12.is-island
+                    h6.findit-red
+                      =branch.name
+        if(similarbiz)
+          .col-md-3
+            h3
+              strong
+                | Similar Businesses          
+            each bizna in similarbiz            
+              a(href="/biz/"+bizna.slug)
+                .row.is-island
+                  h5
+                    =bizna.name
+                  p
+                    =bizna.subcategory
+      .row
+         if(!preview)
             .row
               .col-md-12
                 h3.text-center
@@ -181,29 +206,5 @@ block content
                           label.half(for='starhalf', title='Sucks big time - 0.5 stars')
                       .col-md-12
                         button.button.btn.btn-danger.form-control(type='submit') Submit Review
-        if(branches)
-            div.col-md-12
-              h4
-                strong.text-center
-                  | Branches
-            div.col-md-12       
-              each branch in branches           
-                a(href="/biz/"+branch.slug) 
-                  div.col-md-12.is-island
-                    h6.findit-red
-                      =branch.name
-        if(similarbiz)
-          .col-md-3
-            h3
-              strong
-                | Similar Businesses          
-            each bizna in similarbiz            
-              a(href="/biz/"+bizna.slug)
-                .row.is-island
-                  h5
-                    =bizna.name
-                  p
-                    =bizna.subcategory
-      .row
 
         

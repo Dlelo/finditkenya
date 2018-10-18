@@ -142,6 +142,7 @@ router.get('/search', function(req, res, next){
                  "phone": "$phone",
                  "website": "$website",
                  "keywords": "$keywords",
+                 "branch": { $ne: [ "$branch", true ] },
                  "score": {
                        "$meta": "textScore"
                   }
@@ -496,7 +497,7 @@ router.get('/category/:cat',function(req, res, next){
       $query: {
         subcategory: req.params.cat,
         approved: true,
-        branch: { $ne: 1 }
+        branch: { $ne: true }
         //pending: { $ne: true }
       }
     })

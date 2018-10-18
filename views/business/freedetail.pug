@@ -110,7 +110,7 @@ block content
                               .form-group
                                 button.btn.btn-danger.form-control(type='submit')                 
                                   | Claim This Business Now
-            .col-md-9
+            .col-md-3
               if(branches)
                   div.col-md-12
                     h4
@@ -134,7 +134,7 @@ block content
                           =bizna.name
                         p
                           =bizna.subcategory
-      .row
+      .row(style="margin-bottom:2rem")
          if(!preview)
             .row
               .col-md-12

@@ -200,9 +200,9 @@ block content
                           p Sunday: #{hour.opens} - #{hour.closes}
             .col-md-7.col-xs-12
               
-              .row(width="100%")
-                .col-md-12
-                  if(branches)
+              .row(width="100%")   
+                if(branches)
+                  .col-md-12
                     .row#map(style="position:unset !important; overflow: visible!important;")
                     //.row#map(height='95%',width="100%", style="visibility:visible;")
                     //iframe(width='100%', height='300', frameborder='0', style='border:0', src='https://www.google.com/maps/embed/v1/view?zoom='+biz.map.zoom+'&center='+biz.map.lati+','+biz.map.long+'&key=AIzaSyA0P3blnbZTWe7vHDrbX3Bsd7RA2Y5ViTk', allowfullscreen='',)

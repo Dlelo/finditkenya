@@ -4794,3 +4794,7 @@ h5 {
     vertical-align:0 !important;
     content:none !important;
 }*/
+#map{
+overflow:visible !important;
+position: unset !important;
+}

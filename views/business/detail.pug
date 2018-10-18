@@ -3,14 +3,8 @@ extends ../layout-new
 block content
   #home.parallax-content-list.baner-content-listing-biz
     .container.container-margin-top
-      .row(width="100%")   
-        if(branches)
-          .col-md-12
-            #map(style="position:unset !important; overflow: visible!important;")
-            //.row#map(height='95%',width="100%", style="visibility:visible;")
-            //iframe(width='100%', height='300', frameborder='0', style='border:0', src='https://www.google.com/maps/embed/v1/view?zoom='+biz.map.zoom+'&center='+biz.map.lati+','+biz.map.long+'&key=AIzaSyA0P3blnbZTWe7vHDrbX3Bsd7RA2Y5ViTk', allowfullscreen='',)
       .row.flowerwhite
-        .col-md-9
+        .col-md-12
           .row    
             .col-md-4      
               if(biz.photo)
@@ -37,6 +31,12 @@ block content
                     strong
                       
                       | #{feature} | 
+          .row.flowerwhite   
+            if(branches)
+              .col-md-12
+                #map(style="position:unset !important; overflow: visible!important;")
+                //.row#map(height='95%',width="100%", style="visibility:visible;")
+                //iframe(width='100%', height='300', frameborder='0', style='border:0', src='https://www.google.com/maps/embed/v1/view?zoom='+biz.map.zoom+'&center='+biz.map.lati+','+biz.map.long+'&key=AIzaSyA0P3blnbZTWe7vHDrbX3Bsd7RA2Y5ViTk', allowfullscreen='',)
               
           .row                        
             .col-md-4.padding-map.mapbox.nomargin

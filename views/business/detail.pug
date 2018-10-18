@@ -198,7 +198,7 @@ block content
                           |  Closed
                         else
                           p Sunday: #{hour.opens} - #{hour.closes}
-            .col-md-7.col-xs-12(style="margin-top:10rem;")
+            .col-md-7.col-xs-12(style="margin-top:1rem;")
               
               .row(width="100%")
                 .col-md-12
@@ -206,18 +206,18 @@ block content
                     .row#map(style="height:100%; width:45%; left:60%; top:100%; padding-right:5rem; padding-left:5rem; position:absolute !important; overflow: visible !important; ")
                     //.row#map(height='95%',width="100%", style="visibility:visible;")
                     //iframe(width='100%', height='300', frameborder='0', style='border:0', src='https://www.google.com/maps/embed/v1/view?zoom='+biz.map.zoom+'&center='+biz.map.lati+','+biz.map.long+'&key=AIzaSyA0P3blnbZTWe7vHDrbX3Bsd7RA2Y5ViTk', allowfullscreen='',)
-              .row(width="100%")
+              .row(style="100%; margin-top:1rem;")
                 .col-md-12
-                #lightgallery.thumbnails.scrollmenu
-                  if biz.gallery
-                    each image in biz.gallery
-                      a.nopadding(href='/uploads/'+image.filename, width="", alt='#{biz.slug}')
-                        .thumbnail.bizdetail-photo
-                          img.img-thumbnail.img-responsive(src='/uploads/thumbs/gallery-'+image.filename,  alt='')
-                    .pull-left
-                      small
-                        strong
-                          | Scroll this Gallery Left or Right
+                  #lightgallery.thumbnails.scrollmenu
+                    if biz.gallery
+                      each image in biz.gallery
+                        a.nopadding(href='/uploads/'+image.filename, width="", alt='#{biz.slug}')
+                          .thumbnail.bizdetail-photo
+                            img.img-thumbnail.img-responsive(src='/uploads/thumbs/gallery-'+image.filename,  alt='')
+                      .pull-left
+                        small
+                          strong
+                            | Scroll this Gallery Left or Right
               .row
                 if(biz.deliverylink)
                   .col-md-6.col-md-offset-3(style="background-color:#00aabb;padding:5px;border-radius:25px;")

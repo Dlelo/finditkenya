@@ -30,111 +30,111 @@ block content
                   a(href="/subcategory/"+feature)
                     span.glyphicon.glyphicon-cog.text-default.glyph
                     |  #{feature} 
-              if(biz.photo)
-                .col-md-3
-                  img.img-responsive(src="/uploads/thumbs/cover"+ biz.photo,width="80%")
-              .row                        
-                .col-md-12.padding-map.nomargin            
-                  .row.is-islandfree
-                    .col-md-12
-                      if biz.building
-                        p.text-left.findit-blue
-                          strong
-                            span.fas.fa-building
-                            |  #{biz.building}
-                      if biz.street
-                        p.text-left.findit-blue
-                          strong
-                            span.fas.fa-road
-                            |  #{biz.street}
-                    .col-md-12
-                      p.text-left.findit-blue
-                        strong
-                          span.fas.fa-th-list
-                          |  #{biz.subcategory}
-                      hr.nomargin
-                    if(biz.website)
-                      .col-md-12
-                        p.text-left.findit-blue
-                          strong(style="color:#2862ec")
-                            span.fas.fa-globe
-                            a.findit(href="http://"+biz.website,target="_blank")
-                              |  Website
-                      hr.nomargin
-                    .col-md-12
-                      p.text-left.findit-red
-                        each phone in phones
-                          span#biz-id(style="display:none")
-                            =biz.id
-                          span.fas.fa-phone
-                          //remove style="display:none" on phoneno
-                          a.findit.phoneno(href="tel:"+phone)
-                            |  #{phone}
-                          //a.findit.phonenofake(href="#",style="color: #c0000")
-                            |  Get Contacts
-                          br
-                      hr.nomargin
-                    .col-md-12.text-left
-                      p.text-left.findit-blue
-                        each email in emails
-                          strong.findit-blue
-                            span.fas.fa-envelope
-                            a.findit(href="mailto:"+email)
-                              |  Mail
-                          br
-                      hr.nomargin
-                    .col-md-12.text-left
-                      if biz.catalog
-                        each catalogue in biz.catalog
-                          strong
-                              span.fas.fa-bars
-                          a.findit(href="/business/catalog/"+catalogue.filename, target="_blank")
-                            |  #{catalogue.filename} 
-                          hr
-                    .col-md-12.text-center
-                        if biz.paid
-                          span.badge.badge-success
-                            span.fa.fa-check-circle.strong
-                            strong
-                              |  Claimed
-                        else
-                          if(biz.pending && user.username == biz.user_id)
-                            a(href='/pay/'+biz.id)
-                              button.button.btn.btn-danger.form-control(type='submit') Pay Now
-                          else if(biz.packagepaid == "free" && preview == true)
-                            a(href='/pay/'+biz.id)
-                              button.button.btn.btn-danger.form-control(type='submit') Submit Now
-                          else
-                            h4 Is this your Business?
-                            form(method='get', action='/claim-form/'+biz.id)
-                              .form-group
-                                button.btn.btn-danger.form-control(type='submit')                 
-                                  | Claim This Business Now
-            .col-md-3
-              if(branches)
-                  div.col-md-12
-                    h4
-                      strong.text-center
-                        | Branches
-                  div.col-md-12       
-                    each branch in branches           
-                      a(href="/biz/"+branch.slug) 
-                        div.col-md-12.is-island
-                          h6.findit-red
-                            =branch.name
-              if(similarbiz)
-                .col-md-3
-                  h3
+            if(biz.photo)
+              .col-md-3
+                img.img-responsive(src="/uploads/thumbs/cover"+ biz.photo,width="80%")
+          .row                        
+            .col-md-12.padding-map.nomargin            
+              .row.is-islandfree
+                .col-md-12
+                  if biz.building
+                    p.text-left.findit-blue
+                      strong
+                        span.fas.fa-building
+                        |  #{biz.building}
+                  if biz.street
+                    p.text-left.findit-blue
+                      strong
+                        span.fas.fa-road
+                        |  #{biz.street}
+                .col-md-12
+                  p.text-left.findit-blue
                     strong
-                      | Similar Businesses          
-                  each bizna in similarbiz            
-                    a(href="/biz/"+bizna.slug)
-                      .row.is-island
-                        h5
-                          =bizna.name
-                        p
-                          =bizna.subcategory
-      .row(style="margin-bottom:2rem")
+                      span.fas.fa-th-list
+                      |  #{biz.subcategory}
+                  hr.nomargin
+                if(biz.website)
+                  .col-md-12
+                    p.text-left.findit-blue
+                      strong(style="color:#2862ec")
+                        span.fas.fa-globe
+                        a.findit(href="http://"+biz.website,target="_blank")
+                          |  Website
+                  hr.nomargin
+                .col-md-12
+                  p.text-left.findit-red
+                    each phone in phones
+                      span#biz-id(style="display:none")
+                        =biz.id
+                      span.fas.fa-phone
+                      //remove style="display:none" on phoneno
+                      a.findit.phoneno(href="tel:"+phone)
+                        |  #{phone}
+                      //a.findit.phonenofake(href="#",style="color: #c0000")
+                        |  Get Contacts
+                      br
+                  hr.nomargin
+                .col-md-12.text-left
+                  p.text-left.findit-blue
+                    each email in emails
+                      strong.findit-blue
+                        span.fas.fa-envelope
+                        a.findit(href="mailto:"+email)
+                          |  Mail
+                      br
+                  hr.nomargin
+                .col-md-12.text-left
+                  if biz.catalog
+                    each catalogue in biz.catalog
+                      strong
+                          span.fas.fa-bars
+                      a.findit(href="/business/catalog/"+catalogue.filename, target="_blank")
+                        |  #{catalogue.filename} 
+                      hr
+                .col-md-12.text-center
+                    if biz.paid
+                      span.badge.badge-success
+                        span.fa.fa-check-circle.strong
+                        strong
+                          |  Claimed
+                    else
+                      if(biz.pending && user.username == biz.user_id)
+                        a(href='/pay/'+biz.id)
+                          button.button.btn.btn-danger.form-control(type='submit') Pay Now
+                      else if(biz.packagepaid == "free" && preview == true)
+                        a(href='/pay/'+biz.id)
+                          button.button.btn.btn-danger.form-control(type='submit') Submit Now
+                      else
+                        h4 Is this your Business?
+                        form(method='get', action='/claim-form/'+biz.id)
+                          .form-group
+                            button.btn.btn-danger.form-control(type='submit')                 
+                              | Claim This Business Now
+          
+        if(branches)
+            div.col-md-12
+              h4
+                strong.text-center
+                  | Branches
+            div.col-md-12       
+              each branch in branches           
+                a(href="/biz/"+branch.slug) 
+                  div.col-md-12.is-island
+                    h6.findit-red
+                      =branch.name
+        if(similarbiz)
+          .col-md-3
+            h3
+              strong
+                | Similar Businesses          
+            each bizna in similarbiz            
+              a(href="/biz/"+bizna.slug)
+                .row.is-island
+                  h5
+                    =bizna.name
+                  p
+                    =bizna.subcategory
+      .row
          if(!preview)
             .row
               .col-md-12
@@ -206,5 +206,3 @@ block content
                           label.half(for='starhalf', title='Sucks big time - 0.5 stars')
                       .col-md-12
                         button.button.btn.btn-danger.form-control(type='submit') Submit Review
-
-        

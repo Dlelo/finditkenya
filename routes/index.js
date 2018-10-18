@@ -60,7 +60,7 @@ router.get('/search', function(req, res, next){
   if(req.query.skip){
     skip = parseInt(req.query.skip);
   }
-  Business.find({},{name: 1, _id:-1})
+  Business.find({},{name: 1, _id:-1,branch: { $ne: 1 }})
   .then(function(d){
     d.forEach(function(x){
       //console.log(x.name);
@@ -495,7 +495,8 @@ router.get('/category/:cat',function(req, res, next){
     var businesses = Business.find({
       $query: {
         subcategory: req.params.cat,
-        approved: true
+        approved: true,
+        branch: { $ne: 1 }
         //pending: { $ne: true }
       }
     })

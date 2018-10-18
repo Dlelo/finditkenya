@@ -4797,4 +4797,6 @@ h5 {
 #map{
 overflow:visible !important;
 position: unset !important;
+width: 400px !important;
+height:400px !important;
 }

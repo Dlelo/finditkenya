@@ -683,16 +683,10 @@ script(type='text/javascript').
         mainNav.removeClass("open");
       }
     }
-    if (typeof console === "undefined") {
-    console = {
-    log: function() { }
-    };
-
-    }
   
 // Global site tag (gtag.js) - Google Analytics
 script(async src="https://www.googletagmanager.com/gtag/js?id=UA-102320208-3")
-script.
+script(type='text/javascript').
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());

@@ -39,7 +39,7 @@ block content
                 //.row#map(height='95%',width="100%", style="visibility:visible;")
                 //iframe(width='100%', height='300', frameborder='0', style='border:0', src='https://www.google.com/maps/embed/v1/view?zoom='+biz.map.zoom+'&center='+biz.map.lati+','+biz.map.long+'&key=AIzaSyA0P3blnbZTWe7vHDrbX3Bsd7RA2Y5ViTk', allowfullscreen='',)
             
-      .row                        
+      .row.flowerwhite                         
         .col-md-3.padding-map.mapbox.nomargin
           if(branches)
             div
@@ -270,54 +270,54 @@ block content
                         =extra + ','
               else
                   | 
-      .col-md-3
-        if(coupons.length > 0)
-          div
-            h4
-              strong
-                | Coupons in This Business  
-          div       
-            each coupon in coupons 
-              a(href="/coupons")
-                row
-                  .col-md-12.is-island
-                      h6
-                        =coupon.name
-                      img.coup-img.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt="Responsive image")
-                      .div
-                          h6
-                            =coupon.bizid.name
-                          p
-                            =coupon.description
-                      .div
-                          =coupon.tagline       
-        else 
-          div   
-        if(branches)
-          div.col-md-12
-            h4
-              strong.text-center
-                | Branches
-          div.col-md-12       
-            each branch in branches          
-              a(href="/biz/"+branch.slug) 
-                div.col-md-12.is-island
-                  h6.findit-red
-                    =branch.name
-          
-        if(similarbiz)
-          div.col-md-12
-            h4
-              strong.text-center
-                | Similar Businesses
-          div.col-md-12       
-            each bizna in similarbiz            
-              a(href="/biz/"+bizna.slug) 
-                div.col-md-12.is-island
-                  h6.findit-red
-                    =bizna.name
-                  p
-                    =bizna.subcategory
+        .col-md-3
+          if(coupons.length > 0)
+            div
+              h4
+                strong
+                  | Coupons in This Business  
+            div       
+              each coupon in coupons 
+                a(href="/coupons")
+                  row
+                    .col-md-12.is-island
+                        h6
+                          =coupon.name
+                        img.coup-img.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt="Responsive image")
+                        .div
+                            h6
+                              =coupon.bizid.name
+                            p
+                              =coupon.description
+                        .div
+                            =coupon.tagline       
+          else 
+            div   
+          if(branches)
+            div.col-md-12
+              h4
+                strong.text-center
+                  | Branches
+            div.col-md-12       
+              each branch in branches          
+                a(href="/biz/"+branch.slug) 
+                  div.col-md-12.is-island
+                    h6.findit-red
+                      =branch.name
+            
+          if(similarbiz)
+            div.col-md-12
+              h4
+                strong.text-center
+                  | Similar Businesses
+            div.col-md-12       
+              each bizna in similarbiz            
+                a(href="/biz/"+bizna.slug) 
+                  div.col-md-12.is-island
+                    h6.findit-red
+                      =bizna.name
+                    p
+                      =bizna.subcategory
       .row      
           .col-md-12
             h3.text-left

@@ -315,7 +315,7 @@ block content
                       =bizna.subcategory
       .row      
           .col-md-12
-            h3.text-center
+            h3.text-left
               | Reviews
             each review in biz.reviews              
               .row               
@@ -424,6 +424,7 @@ block content
               map: map
             });
             var branches = !{JSON.stringify(branches)};
+            console.log(branches);
             branches.forEach(function(biz) {
               if(typeof biz.map === 'undefined' || biz.map === null){
                 

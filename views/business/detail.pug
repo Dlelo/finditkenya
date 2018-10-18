@@ -205,7 +205,6 @@ block content
                   iframe(width='100%', height='300', frameborder='0', style='border:0', src='https://www.google.com/maps/embed/v1/view?zoom='+biz.map.zoom+'&center='+biz.map.lati+','+biz.map.long+'&key=AIzaSyA0P3blnbZTWe7vHDrbX3Bsd7RA2Y5ViTk', allowfullscreen='',)
               .row(width="100%")
                 .col-md-12()
-                  #map(height='300',style="position: relative;width: 100px;overflow: visible;z-index: 600000000;")
                 #lightgallery.thumbnails.scrollmenu
                   if biz.gallery
                     each image in biz.gallery
@@ -318,6 +317,7 @@ block content
                       =bizna.name
                     p
                       =bizna.subcategory
+      .row#map(height='95%',width="95%")
       .row      
           .col-md-12
             h3.text-left

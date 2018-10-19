@@ -2737,6 +2737,9 @@ li.list-hor{
 	    width: 10rem !important;
         height: 1rem !important;
 	}
+	#nav-listmain{
+		flex-grow:0.1 !important;
+	}
 	.search2{
 	  background-position: 11px 12px;
       padding: 0px 1px 0px 35px !important;

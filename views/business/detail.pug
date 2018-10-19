@@ -202,10 +202,9 @@ block content
                         else
                           p Sunday: #{hour.opens} - #{hour.closes}
             .col-md-7.col-xs-12(style="margin-top:4rem;")
-              
-              .row(width="100%")
-                .col-md-12
-                  if(branches)
+              if(branches)
+                .row(width="100%")
+                  .col-md-12
                     #map(style="height:100%; width:45%; left:60%; top:100%; padding-right:5rem; padding-left:5rem; position:absolute !important; overflow: visible !important; ")
                     //#map(style="height:100%; width:95%;")
                     //.row#map(height='95%',width="100%", style="visibility:visible;")

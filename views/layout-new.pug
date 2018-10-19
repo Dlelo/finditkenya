@@ -70,21 +70,21 @@ body
     header
       //header before navigation items
       nav#homenavbar.navbar.navbar-expand-lg.navbar-light.bg-gradient-secondary
-        div(style="display:flex !important; flex-direction:row !important; width: 100% !important;")
-          div(style="flex-grow:0.1 !important")
+        div#nav-style
+          div#nav-list
             a.navbar-brand.text-white(href="/")
               img.img-logo(src="/img/findit-red-logo.png").img-fluid
-          div(style="flex-grow:0.1 !important")
+          div#nav-list
             #showSearch
               form.form-class(method='get', action='/search')
                 div.input-group
                   input.search2.form-control-lg(type="text" placeholder="Restaurants, Businesses, Doctors..." ,style="width:100% !important" ,name='search', autofocus)
-          div(style="flex-grow:0.1 !important")      
+          div#nav-list      
             a(href="/coupons")
               button.btn.btn-light.w3ls-btn.coupons-btn.flash-button#coupbtn(type="button")
                 span.fas.fa-gift.coupons-text-color
                 | View deals
-          div(style="flex-grow:0.5 !important")
+          div#nav-listmain
             //site navigation 
             button.navbar-toggler.ml-md-auto(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                 aria-expanded="false" aria-label="Toggle navigation")

@@ -3086,6 +3086,16 @@ padding-left:10px;
 	margin-right: 0px !important;
     margin-left: 0px!important;
 }
+#map{
+	height: 100%;
+    width: 35%;
+    left: 5%;
+    top: 100%;
+    /* padding-right: 5rem; */
+    /* padding-left: 5rem; */
+    /* position: absolute !important; */
+	overflow: hidden;
+}
 
 /*carousel slider
 */
@@ -4797,4 +4807,15 @@ h5 {
 #map{
 overflow:visible !important;
 position: unset !important;
+}
+#nav-style{
+	display:flex; 
+	flex-direction:row; 
+	width: 100%;
+}
+#nav-list{
+flex-grow:0.1;
+}
+#nav-listmain{
+flex-grow:0.5;
 }

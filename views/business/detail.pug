@@ -1,9 +1,10 @@
 extends ../layout-new
 
 block content
-  if(branches)
-    #map(style="height:100%; width:95%;")
+
   #home.parallax-content-list.baner-content-listing-biz
+    if(branches)
+      #map(style="height:100%; width:95%;")
     .container.container-margin-top
       .row.flowerwhite
         .col-md-9

@@ -530,6 +530,7 @@ router.get('/category/:cat',function(req, res, next){
           businesses: values[0],
           features: values[1],
           categories: values[2],
+          category: req.params.cat,
           bizcount: Math.ceil(values[3]/20),
           host: req.get('host'),
           uri: req.path,

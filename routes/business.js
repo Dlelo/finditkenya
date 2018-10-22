@@ -157,7 +157,7 @@ router.post('/add', role.auth, cpUpload, function(req, res, next) {
 router.get('/freeadd',role.auth, function(req, res, next){
 	Category.find({})
 	.then(function(data){
-	    res.render('business/newfree',{title: "Find It Categories", categories: data});
+	    res.render('business/freeadd',{title: "Find It Categories", categories: data});
 	})
 	.catch(function(err){
 	     console.log(err);

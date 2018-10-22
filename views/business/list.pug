@@ -26,11 +26,11 @@ block content
                               |  Nearby
               else
                 .panel.panel-warning
-                  a(href="/nearby/"+title)
+                  a(href="/nearby/"+category)
                     strong  
                       span.findit-red 
                         span.fas.fa-map-marker   
-                      |    See Nearby  #{title}
+                      |    See Nearby  #{category}
               .dropdown.open.dropdown-category(style="padding-left: 1rem;")
                 a.nav-link.dropdown-toggle(href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
                   | Filter Sub Categories  
@@ -40,7 +40,7 @@ block content
                   if features 
                     li.text-left.sub-list
                         h6.findit-red
-                          | Filter #{title} by Subcategory
+                          | Filter #{category} by Subcategory
                     each feature in features
                       .panel-heading.category
                         li.text-left.sub-list
@@ -52,7 +52,7 @@ block content
               div.cathead-background.cat-box.findit-blue
                 h6
                   | CATEGORY:  
-                  =title
+                  =category
               each biz,i in businesses
                 //if column is even
                 //if (typeof(biz.slug) != 'undefined')

@@ -318,6 +318,10 @@ router.get('/advertising',function(req,res){
     res.render('site/advertising', {title: "Find It: Advertising"});
 });
 
+router.get('/advertising/2',function(req,res){
+    res.render('site/advertisingtwo', {title: "Find It: Advertising"});
+});
+
 router.get('/facebook',function(req,res){
     res.render('socials/facebook', {title: "Find It: Complete Facebook Sign Up"});
 });
@@ -522,10 +526,11 @@ router.get('/category/:cat',function(req, res, next){
       console.log(req.path);
       //console.log(values[0].length);
       res.render('business/list', {
-          title: req.params.cat,
+          title: "Best "+req.params.cat+ " in Nairobi Kenya",
           businesses: values[0],
           features: values[1],
           categories: values[2],
+          category: req.params.cat,
           bizcount: Math.ceil(values[3]/20),
           host: req.get('host'),
           uri: req.path,
@@ -549,11 +554,11 @@ router.get('/subcategory/:cat/:name', function(req, res, next){
   Promise.all([businesses,features, categories]).then(values => {
     console.log(values[0]);
     res.render('business/list', {
-        title: req.params.name,
+        title: "Best "+req.params.name+ " In Kenya",
         businesses: values[0],
         features: values[1],
         categories: values[2],
-        categoryTitle: req.params.cat,
+        category: req.params.name,
         subcategory: req.params.name
     });
   });

@@ -526,7 +526,7 @@ router.get('/category/:cat',function(req, res, next){
       console.log(req.path);
       //console.log(values[0].length);
       res.render('business/list', {
-          title: req.params.cat,
+          title: "Best "+req.params.cat+ " in Nairobi Kenya",
           businesses: values[0],
           features: values[1],
           categories: values[2],

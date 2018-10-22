@@ -318,6 +318,10 @@ router.get('/advertising',function(req,res){
     res.render('site/advertising', {title: "Find It: Advertising"});
 });
 
+router.get('/advertising/2',function(req,res){
+    res.render('site/advertisingtwo', {title: "Find It: Advertising"});
+});
+
 router.get('/facebook',function(req,res){
     res.render('socials/facebook', {title: "Find It: Complete Facebook Sign Up"});
 });

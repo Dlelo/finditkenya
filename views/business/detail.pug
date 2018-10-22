@@ -5,7 +5,7 @@ block content
   #home.parallax-content-list.baner-content-listing-biz
     .container.container-margin-top
       if(branches)
-        #map.row(style="height:100%; width:95%;")
+        #mappy.row(style="height:100%; width:95%;")
       .row.flowerwhite
         .col-md-9
           .row    
@@ -423,7 +423,7 @@ block content
               lng: position.coords.longitude
             };
 
-            map = new google.maps.Map(document.getElementById('map'), {
+            map = new google.maps.Map(document.getElementById('mappy'), {
               center: pos,
               zoom: 11
             });

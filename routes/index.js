@@ -554,11 +554,11 @@ router.get('/subcategory/:cat/:name', function(req, res, next){
   Promise.all([businesses,features, categories]).then(values => {
     console.log(values[0]);
     res.render('business/list', {
-        title: req.params.name,
+        title: "Best "+req.params.name+ " In Kenya",
         businesses: values[0],
         features: values[1],
         categories: values[2],
-        category: "Best "+req.params.name+ " In Kenya",
+        category: req.params.name,
         subcategory: req.params.name
     });
   });

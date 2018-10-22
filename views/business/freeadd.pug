@@ -1,0 +1,71 @@
+extends ../layout
+
+block content
+  #home.parallax-content-list.baner-content-listing-biz
+    .container.container-margin-top
+      .col-md-offset-3.col-md-6.col-md-offset-3
+          h3.text-center.findit-blue Add Business
+      .col-md-offset-0.col-md-12.col-md-offset-0
+        form.form-horizontal(method="post",action="/business/add",enctype="multipart/form-data")
+          .form-group
+            .col-sm-12
+              input#name.form-control-form(type='text', name='name', placeholder='Name' required)
+          .form-group
+            .col-sm-12
+              textarea#description.form-control-form(name='description',placeholder="Describe your business (Max 120 words)", maxlength="150")
+          .form-group
+            .col-sm-6
+              select#city.form-control-form(name='city' required)
+                option(data-icon='glyphicon-wrench', value='') Select City
+                option(data-icon='glyphicon glyphicon-globe', value='Nairobi') Nairobi
+                option(data-icon='glyphicon glyphicon-globe',value='Mombasa') Mombasa 
+                option(data-icon='glyphicon glyphicon-globe', value='Kisumu') Kisumu
+                option(data-icon='glyphicon glyphicon-globe',value='Eldoret') Eldoret 
+                option(data-icon='glyphicon glyphicon-globe', value='Nakuru') Nakuru
+                option(data-icon='glyphicon glyphicon-globe',value='Meru') Meru 
+                option(data-icon='glyphicon glyphicon-globe', value='Nyeri') Nyeri
+                option(data-icon='glyphicon glyphicon-globe',value='Thika') Thika 
+                option(data-icon='glyphicon glyphicon-globe', value='Nanyuki') Nanyuki
+                option(data-icon='glyphicon glyphicon-globe', value='Watamu') Watamu
+                option(data-icon='glyphicon glyphicon-globe', value='Kitale') Kitale 
+                option(data-icon='glyphicon glyphicon-globe', value='Narok') Narok
+                option(data-icon='glyphicon glyphicon-globe', value='Samburu') Samburu
+            .col-sm-6
+              input#map.form-control-form(type='text', name='website', placeholder='website')  
+            .col-sm-6
+              input#map.form-control-form(type='text', name='phone', placeholder='phone1,phone2' required)            
+            .col-sm-6
+              input#map.form-control-form(type='text', name='street', placeholder='street')
+            .col-sm-6
+              input#map.form-control-form(type='text', name='building', placeholder='building')
+            .col-sm-6
+              input#map.form-control-form(type='text', name='email', placeholder='email1,email2')
+            
+            .col-sm-6
+              select.selectpicker.form-control(name='category', data-selected-text-format='count > 5',class='category', required)
+                option(data-icon='glyphicon-wrench', value='') Select Business or Service
+                option(data-icon='glyphicon-gift', value='business') Business
+                option(data-icon='glyphicon glyphicon-glass',value='service') Service 
+            .col-sm-3
+              select#subcategory.selectpicker.form-control-form-select(name='subcategory', data-selected-text-format='count > 5', class='subcategory', required)
+                option(data-icon='glyphicon-wrench', value='') Select Category
+                each category in categories
+                  option(data-icon='fa '+category.icon, value=category.name) 
+                    =category.name
+            .col-sm-3
+              .input-group
+                select#ssubcategory.form-control-form-select.ssubcategory.selectpicker(name='ssubcategory',data-selected-text-format='count > 5', data-live-search="true", required,  title="Select one or more Subcategories" ,multiple)
+                  option(data-icon='fa fa-search', value="")
+                    
+              input#lat.gllpLatitude(type='hidden', value='0',name='lati')
+              input#long.gllpLongitude(type='hidden', value='38.644',name='long')
+              input#zoom.gllpZoom(type='hidden', value='6',name='zoom')
+              if(categories.pendingstatus)
+                input#map.form-control-form(type='hidden', name='pending', value='true')
+              if(categories.packagepaid)
+                input#map.form-control-form(type='hidden', name='packagepaid', value=categories.packagepaid)
+          .form-group
+            .row
+              button.button.btn.btn-warning.form-control-form(type='submit') Create
+  script(src="http://maps.googleapis.com/maps/api/js?key=AIzaSyC9MX39yDkMJn6rjWi6vt4Rens5u_cVBQE") 
+  

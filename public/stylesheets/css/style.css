@@ -4822,3 +4822,133 @@ flex-grow:0.1;
 #nav-listmain{
 flex-grow:0.5;
 }
+#ad{
+background-image: url("/images/finditAd.png");
+background-repeat: no-repeat;
+opacity: 0.8;
+filter: alpha(opacity=80); /* For IE8 and earlier */
+height: 25rem;
+width: 100%
+}
+/* Message box starts here */
+.container-ad {
+  clear: both;
+  position: relative;
+  margin-top:18rem;
+}
+
+.container-ad .arrow {
+  width: 12px;
+  height: 20px;
+  overflow: hidden;
+  position: relative;
+  float: left;
+  top: 6px;
+  right: -1px;
+}
+
+.container-ad .arrow .outer {
+  width: 0;
+  height: 0;
+  border-right: 20px solid #000000;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.container-ad .arrow .inner {
+  width: 0;
+  height: 0;
+  border-right: 20px solid #ffffff;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  position: absolute;
+  top: 0;
+  left: 2px;
+}
+
+.container-ad .message-body {
+  float: left;
+  width: 350px;
+  height: auto;
+  border: 1px solid #CCC;
+  background-color: #04045a;
+  border: 1px solid #343a40;;
+  padding: 6px 8px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.container-ad .message-body p {
+  margin: 0;
+  color:#fff;
+}
+#ad1{
+background-image: url("/images/categoriesAdPage.png");
+background-repeat: no-repeat;
+opacity: 0.8;
+filter: alpha(opacity=80); /* For IE8 and earlier */
+height: 30rem;
+width: 100%
+}
+/* Message box starts here */
+.container-ad1 {
+  clear: both;
+  position: relative;
+  padding-top: 15rem;
+}
+
+.container-ad1 .arrow {
+  width: 12px;
+  height: 20px;
+  overflow: hidden;
+  position: relative;
+  float: left;
+  top: 6px;
+  right: -1px;
+}
+
+.container-ad1 .arrow .outer {
+  width: 0;
+  height: 0;
+  border-right: 20px solid #000000;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.container-ad1 .arrow .inner {
+  width: 0;
+  height: 0;
+  border-right: 20px solid #ffffff;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  position: absolute;
+  top: 0;
+  left: 2px;
+}
+
+.container-ad1 .message-body {
+  float: left;
+  width: 350px;
+  height: auto;
+  border: 1px solid #CCC;
+  background-color: #04045a;
+  border: 1px solid #343a40;;
+  padding: 6px 8px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.container-ad1 .message-body p {
+  margin: 0;
+  color:#fff;
+}

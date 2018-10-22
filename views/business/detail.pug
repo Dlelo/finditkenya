@@ -3,11 +3,11 @@ extends ../layout-new
 block content
 
   #home.parallax-content-list.baner-content-listing-biz
-    .container.container-margin-top
-      if(branches)
-        #mappy.row(style="height:100%; width:95%;")
+    .container.container-margin-top      
       .row.flowerwhite
         .col-md-9
+          if(branches)
+            #mappy.row(style="height:100%; width:95%;")
           .row    
             .col-md-4      
               if(biz.photo)

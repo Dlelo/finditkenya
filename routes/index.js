@@ -558,7 +558,7 @@ router.get('/subcategory/:cat/:name', function(req, res, next){
         businesses: values[0],
         features: values[1],
         categories: values[2],
-        categoryTitle: req.params.cat,
+        categoryTitle: "Best "+req.params.cat+ " In Kenya",
         subcategory: req.params.name
     });
   });

@@ -5,9 +5,7 @@ block content
   #home.parallax-content-list.baner-content-listing-biz
     .container.container-margin-top      
       .row.flowerwhite
-        .col-md-9
-          if(branches)
-            #mappy.row(style="height:45%; width:96%;")
+        .col-md-9          
           .row    
             .col-md-4      
               if(biz.photo)
@@ -34,7 +32,8 @@ block content
                     strong
                       
                       | #{feature} | 
-              
+          if(branches)
+            #mappy.row(style="height:45%; width:96%;")    
           .row(style="margin-bottom: 2rem;")                       
             .col-md-4.padding-map.mapbox.nomargin
               if(branches)

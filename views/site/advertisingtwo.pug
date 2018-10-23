@@ -68,6 +68,11 @@ block content
                                     | Email: 
                                     =user.email
                     .form-group
+                        .col-sm-5
+                            input#gallery.form-control-form.imagegallery(type='file', name='gallery', placeholder='gallery', multiple='')
+                        .col-sm-7
+                            #gallerypreview
+                    .form-group
                         span.btn.btn-grey.btn-block.btn-lg.noLnk(style=' border: 1px solid;margin-bottom:10px;')
                           small(style='text-transform: none;') Total KShs. #{total} .
                     .form-group

@@ -10,14 +10,17 @@ block content
                         label(for='banner')
                             .card.card-product
                                 .div 
-                                    h3.free
+                                    h3
                                         strong
                                             |  Home Page Banner (KES: 500 per day)
-                                    ul
-                                        li
-                                            small Social Media Marketing on find it Page
-                                        li
-                                            small Featured articles on findit blogs 
+                                    .card-img
+                                       img(src='/images/bannerhomead.png' style='width:100%; height:200px')
+                                    .card-text
+                                        ul
+                                            li
+                                                small -Social Media Marketing on find it Page
+                                            li
+                                                small -Featured articles on findit blogs 
                             .info-wrap   
                                 .action-wrap 
                                     .form-group
@@ -32,17 +35,21 @@ block content
                         label(for='banner')
                             .card.card-product
                                 .div 
-                                    h3.free
+                                    h3
                                         strong
                                             | Side bar Banner
+                                            br
                                             span(style="text-decoration: line-through;")
                                               small Was (KES 300 /
                                             span
                                               small Now (KES 200 /  
                                               small Per Day)
-                                    ul
-                                        li
-                                            small Social Media Marketing on find it Page
+                                    .card-img
+                                       img(src='/images/sidebarad.png' style='width:100%; height:200px')
+                                    .card-text
+                                        ul
+                                            li
+                                                small -Social Media Marketing on find it Page
                                         
                             .info-wrap   
                                 .action-wrap 
@@ -77,5 +84,5 @@ block content
                     span.btn.btn-grey.btn-block.btn-lg.noLnk(style=' border: 1px solid;margin-bottom:10px;')
                         small(style='text-transform: none;') Total KShs. #{total} .
                 .form-group
-                    button.btn.btn-primary.form-control(type='submit')
-                        | Save and Proceed 
+                    button.btn.btn-primary.form-control-form(type='submit')
+                        | Submit

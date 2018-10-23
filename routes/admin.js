@@ -433,7 +433,7 @@ router.get('/approve/:id',role.admin, function(req, res, next){
 	});
 });
 
-router.get('/category',role.auth, function(req, res, next) {
+router.get('/category',role.admin, function(req, res, next) {
   Category.find({})
   .then(function(data){
     res.render('admin/category', {title: "Find It Categories", categories: data});

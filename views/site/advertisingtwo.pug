@@ -55,7 +55,7 @@ block content
                                             option(data-icon='glyphicon-gift', value='2-weeks')  1 year(Ksh. 50,000)
                    
 
-            .row(style=" box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12); margin-top:5rem;")
+            .row
                 .col-md-12
                     .form-group.row
                         if(loggedin)
@@ -67,14 +67,15 @@ block content
                                 small.small-cart
                                     | Email: 
                                     =user.email
-                    .form-group
-                        .col-sm-5
-                            input#gallery.form-control-form.imagegallery(type='file', name='gallery', placeholder='gallery', multiple='')
-                        .col-sm-7
-                            #gallerypreview
-                    .form-group
-                        span.btn.btn-grey.btn-block.btn-lg.noLnk(style=' border: 1px solid;margin-bottom:10px;')
-                          small(style='text-transform: none;') Total KShs. #{total} .
-                    .form-group
-                        button.btn.btn-primary.form-control(type='submit')
-                          | Save and Proceed 
+            .row
+                .col-sm-5
+                    input#gallery.form-control-form.imagegallery(type='file', name='gallery', placeholder='gallery', multiple='')
+                .col-sm-7
+                    #gallerypreview
+            .row(style=" box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12); margin-top:5rem;")
+                .form-group
+                    span.btn.btn-grey.btn-block.btn-lg.noLnk(style=' border: 1px solid;margin-bottom:10px;')
+                        small(style='text-transform: none;') Total KShs. #{total} .
+                .form-group
+                    button.btn.btn-primary.form-control(type='submit')
+                        | Save and Proceed 

@@ -12,7 +12,7 @@ block content
        
         p 
           strong Your Name: 
-          if(user.name) 
+          if(user.names) 
             =user.names
           else
               | N/A
@@ -33,12 +33,6 @@ block content
              | N/A
          
         
-        p 
-          strong Website: 
-          if(user.website) 
-            =user.website
-          else
-             | N/A
         p
            a(href='/editprofile')
              Strong

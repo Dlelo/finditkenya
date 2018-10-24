@@ -826,6 +826,44 @@ router.get('/coupon/update/:id', role.auth, function(req, res){
   });
 });
 
+router.post('/coupon/update/:id', role.auth,cpUpload, function(req, res){
+  Coupons.findById(req.params.id).then(function(coupon){
+    coupon.name = req.body.name;
+    coupon.description = req.body.description;
+    coupon.status = req.body.status;
+    coupon.ownerid = res.locals.user._id;
+    coupon.bizid = req.body.bizid;
+    coupon.tagline = req.body.tagline;
+    coupon.type = req.body.type;
+    if (req.files['photo']){
+      console.log(req.files['photo'][0]);
+      coupon.photo = req.files['photo'][0].filename;
+    }
+    coupon.save(function(err){
+      if(err){
+        console.log(err);
+        req.flash("error_msg", err);
+        res.redirect('/admin/coupon/add');
+      }else{
+        if (req.files['photo'] != null){
+          Jimp.read("./public/uploads/"+coupon.photo).then(function (cover) {
+              return cover.resize(200, 150)     // resize
+                   .quality(100)              // set greyscale
+                   .write("./public/uploads/thumbs/coupons/"+coupon.photo); // save
+           req.flash("success_msg", "Coupon Successfully Created");
+           res.redirect('/admin/coupons');
+          }).catch(function (err) {
+              console.error(err);
+          });
+        }else{
+          req.flash("success_msg", "Coupon Successfully Created");
+          res.redirect('/admin/coupons');
+        }
+      }
+    });
+  });
+});
+
 router.get('/coupon/star/:id', role.admin, function(req, res){
 	Coupons.findById(req.params.id)
     .then(function(data){
@@ -919,7 +957,6 @@ router.get('/email/coupon/:id', role.auth, function(req, res){
        res.redirect('/coupons');
     });
 });
-
 
 router.get('/email/coupons', role.auth, function(req, res){
 	Coupons.find({

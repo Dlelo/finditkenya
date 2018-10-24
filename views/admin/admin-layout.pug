@@ -136,7 +136,7 @@ html(lang='en')
               a.waves-effect(href='/dashboard')
                 i.fa.fa-clock-o.fa-fw(aria-hidden='true')
                 | View Business
-            li
+            //li
               a.waves-effect(href='#')
                 i.fa.fa-gift.fa-fw(aria-hidden='true')
                 | View Products
@@ -149,6 +149,10 @@ html(lang='en')
                 i.fa.fa-user.fa-fw(aria-hidden='true')
                 | Profile
             if(user.role == 1)
+              li
+                a.waves-effect(href='#')
+                  i.fa.fa-gift.fa-fw(aria-hidden='true')
+                  | View Products
               li
                 a.waves-effect(href='/users')
                   i.fa.fa-table.fa-fw(aria-hidden='true')

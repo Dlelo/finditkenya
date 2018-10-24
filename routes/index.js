@@ -694,6 +694,26 @@ router.get('/profile', function(req, res){
   res.render('admin/profile', {title: "Profile"});
 });
 
+router.get('/editprofile', function(req, res){
+  res.render('user/editprofile', {title: "Profile"});
+});
+
+router.post('/editprofile', function(req, res){
+  User.findById(res.locals.user._id)
+  .then(function(b){
+    b.names = req.body.names;
+    b.phone = req.body.phone;
+    b.save(function(err){
+      if(err){
+        res.redirect('/editprofile');
+      }else{
+        req.flash('success_msg','Profile Updated');
+        res.redirect('/dashboard');
+      }
+    });
+  });
+});
+
 router.get('/login', function(req, res){
   res.render('user/login', {title: "Sign Up"});
 });

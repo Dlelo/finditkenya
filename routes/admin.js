@@ -812,6 +812,20 @@ router.get('/coupon/activate/:id', role.auth, function(req, res){
     });
 });
 
+router.get('/coupon/update/:id', role.auth, function(req, res){
+	var coupons = Coupons.findById(req.params.id);
+  var businesses = Business.find({
+    user_id : res.locals.user.username
+  });
+  Promise.all([businesses,coupons]).then(values => {
+    res.render('coupons/edit', {
+        title: values[1].name,
+        businesses: values[0],
+        coupon: values[1]
+    });
+  });
+});
+
 router.get('/coupon/star/:id', role.admin, function(req, res){
 	Coupons.findById(req.params.id)
     .then(function(data){

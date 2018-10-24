@@ -1,0 +1,48 @@
+extends ../layout
+
+block content
+  #home.parallax-content-list.baner-content-listing-biz
+    .container.container-margin-top
+      .row(style="margin:5rem;")
+        .col-sm-12
+          h3.text-center Edit
+            span
+            =coupon.name
+          form(method='post', action='/admin/coupon/create',enctype='multipart/form-data')
+            .form-group
+              .col-sm-12
+                input.form-control-form(name='name',type='text',value=coupon.name, maxlength="30") 
+            .form-group
+              .col-sm-12
+                textarea.form-control-form(name='description',type='text',value=coupon.description, maxlength="50") 
+            .form-group
+              .col-sm-12
+                input.form-control-form(name='tagline',type='text',value=coupon.tagline) 
+            .form-group
+              .col-sm-4
+                label(for='photo') Cover Photo
+              .col-sm-2
+                input#photod.form-control-form(type='file', name=coupon.photo, placeholder='photo')    
+            .form-group
+              .col-sm-6
+                select.selectpicker.form-control(name='bizid',data-live-search="true")
+                  option(data-icon='glyphicon-wrench', value=coupon.bizid.name) #{coupon.bizid.name}
+                  each biz in businesses
+                    option(data-icon='glyphicon-gift', value=biz.id) #{coupon.bizid.name}
+            .form-group
+              .col-sm-6
+                select.selectpicker.form-control(name='type')
+                  option(data-icon='glyphicon-wrench', value=coupon.type) #{coupon.type}
+                  option(data-icon='glyphicon-gift', value='1') Percentage Off
+                  option(data-icon='glyphicon-glass',value='2') Buy x Get y Free
+                  option(data-icon='glyphicon-glass',value='3') KES x Off
+            .form-group
+              .col-sm-6
+                select.selectpicker.form-control(name='status')
+                  option(data-icon='glyphicon-wrench', value=coupon.type) #{coupon.type}
+                  option(data-icon='glyphicon-gift', value='1') Active
+                  option(data-icon='glyphicon glyphicon-glass',value='0') Inactive 
+            .form-group   
+              .col-sm-12  
+                button.btn.btn-primary.form-control-form(type='submit' style ="margin-top:12px;")
+                  | Create

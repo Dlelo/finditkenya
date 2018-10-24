@@ -29,7 +29,7 @@ block content
                         select.selectpicker.form-control(name='bizid',data-live-search="true")
                             option(data-icon='glyphicon-wrench', value=coupon.bizid.name) #{coupon.bizid.name}
                             each biz in businesses
-                                option(data-icon='glyphicon-gift', value=coupon.bizid.name) #{coupon.bizid.name}
+                                option(data-icon='glyphicon-gift', value=biz.name) #{biz.name}
                 .form-group
                     .col-sm-6
                         select.selectpicker.form-control(name='type')

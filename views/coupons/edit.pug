@@ -6,7 +6,7 @@ block content
        
         .row(style="margin:5rem;")
             .col-sm-12
-            h3.text-center Edit     
+            h3.text-center Edit:        
                 span   
                 =coupon.name
             form(method='post', action='/admin/coupon/create',enctype='multipart/form-data')
@@ -22,6 +22,7 @@ block content
                 .form-group
                     .col-sm-4
                         label(for='photo') Cover Photo
+                        img(src="/uploads/thumbs/coupons"+ coupon.photo, width="200px" height="150px")
                     .col-sm-2
                         input#photod.form-control-form(type='file', name=coupon.photo, placeholder='photo')    
                 .form-group

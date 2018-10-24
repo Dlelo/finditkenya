@@ -39,19 +39,11 @@ block content
                               i.fa.fa-eye.fa-fw(aria-hidden='true')
                             a(href="/admin/coupon/delete/"+coupon.id, title="Delete Coupon", onclick="return confirm('Are you sure You want to Delete this Coupon?')")
                               i.fa.fa-trash.fa-fw(aria-hidden='true')
+                            a(href="/admin/coupon/update/"+coupon.id, title="Toggle Coupon Status")
+                              i.fa.fa-pencil.fa-fw(aria-hidden='true')
                             if(user.role == 1)
                               a(href="/admin/coupon/star/"+coupon.id, title="Star Coupon")
-                                i.fa.fa-star.fa-fw(aria-hidden='true')
-                              a(href="/admin/coupon/order/"+coupon.id+'/1', title="First Order Coupon")
-                                | 1  
-                              a(href="/admin/coupon/order/"+coupon.id+'/2', title="Second Order Coupon")
-                                | 2  
-                              a(href="/admin/coupon/order/"+coupon.id+'/3', title="Third Order Coupon")
-                                | 3  
-                              a(href="/admin/coupon/order/"+coupon.id+'/4', title="Fourth Order Coupon")
-                                | 4  
-                              a(href="/admin/coupon/order/"+coupon.id+'/5', title="Fifth Order Coupon")
-                                | 5  
+                                i.fa.fa-star.fa-fw(aria-hidden='true')                               
                     .panel-collapse.collapse(role='tabpanel', aria-labelledby='headingTwo', id='collapse'+i)
                       .panel-body
                         each usr,i in coupon.users

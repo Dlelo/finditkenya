@@ -5,7 +5,7 @@ block content
         .form-group
             .row
                 section
-                    .col-md-6.packages-padding
+                    .col-md-6.packages-padding.banner
                         input.form-control-form(name='package', type='radio', value='free', style='display:none', required)
                         label(for='banner')
                             .card.card-product
@@ -30,7 +30,7 @@ block content
                                             option(data-icon='glyphicon-gift', value='2-weeks')  2 weeks(Ksh. 7,000)
                                             option(data-icon='glyphicon-gift', value='2-weeks')  1 month(Ksh. 12,000)
                                             option(data-icon='glyphicon-gift', value='2-weeks')  1 year(Ksh. 150,000)
-                    .col-md-6.packages-padding
+                    .col-md-6.packages-padding.sidebar
                         input.form-control-form(name='package', type='radio', value='free', style='display:none', required)
                         label(for='banner')
                             .card.card-product
@@ -54,12 +54,12 @@ block content
                             .info-wrap   
                                 .action-wrap 
                                     .form-group
-                                        select.selectpicker.form-control(name='bizid',data-live-search="true")
+                                        select.selectpicker.form-control#price(name='bizid',data-live-search="true")
                                             option(data-icon='glyphicon-wrench', value='') -- Select Duration --
                                             option(data-icon='glyphicon-gift', value='1-week')  1 week(Ksh. 1000)
                                             option(data-icon='glyphicon-gift', value='2-weeks')  2 weeks(Ksh. 2,000)
-                                            option(data-icon='glyphicon-gift', value='2-weeks')  1 month(Ksh. 5,000)
-                                            option(data-icon='glyphicon-gift', value='2-weeks')  1 year(Ksh. 50,000)
+                                            option(data-icon='glyphicon-gift', value='1-month')  1 month(Ksh. 5,000)
+                                            option(data-icon='glyphicon-gift', value='1-year')  1 year(Ksh. 50,000)
                    
 
             .row
@@ -82,7 +82,53 @@ block content
             .row(style=" box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12); margin-top:5rem;")
                 .form-group
                     span.btn.btn-grey.btn-block.btn-lg.noLnk(style=' border: 1px solid;margin-bottom:10px;')
-                        small(style='text-transform: none;') Total KShs. #{total} .
+                        small(style='text-transform: none;') Total KShs. 
+                          span#total
+                            #{total} .
                 .form-group
                     button.btn.btn-primary.form-control-form(type='submit')
                         | Submit
+    // script to show quick look on mouseover
+    script(type='text/javascript').
+        $(document).ready(function () {
+          var type = '!{type}';
+          if(type == 'sidebar'){
+            $('.sidebar').show();
+            $('.banner').hide();
+            $('#price').change(function() {
+              console.log($(this).find('option:selected').attr('value'));
+              var total = $(this).find('option:selected').attr('value');
+              if(total == '1-week'){
+                $('#total').text('1000');
+              }
+              if(total == '2-weeks'){
+                $('#total').text('2000');
+              }
+              if(total == '1-month'){
+                $('#total').text('5000');
+              }
+              if(total == '1-year'){
+                $('#total').text('50000');
+              }
+            });
+          }else{
+            $('.sidebar').hide();
+            $('.banner').show();
+            $('#price').change(function() {
+              console.log($(this).find('option:selected').attr('value'));
+              var total = $(this).find('option:selected').attr('value');              
+              if(total == '1-week'){
+                $('#total').text('3700');
+              }
+              if(total == '2-weeks'){
+                $('#total').text('7000');
+              }
+              if(total == '1-month'){
+                $('#total').text('12000');
+              }
+              if(total == '1-year'){
+                $('#total').text('150000');
+              }
+            });
+          }
+        });

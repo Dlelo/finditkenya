@@ -1,0 +1,16 @@
+extends ../layout-min
+
+block content
+  #home.parallax-content-list.baner-content-listing-biz
+    .container
+      .xxx
+        .signup-or-separator
+          span.h4
+            |  Update Profile
+          hr
+        form(method="post", action="/editprofile")
+          .form-group
+            input.form-control-form(type='text', placeholder='Names', name='names',value=user.names)
+            input.form-control-form(type='text', placeholder='254710345130', name='phone',value=user.phone)
+            button.btn.btn-primary.w3ls-btn(type='submit' style="margin-top:2px;") 
+              |  Update

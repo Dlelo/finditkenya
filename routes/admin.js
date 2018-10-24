@@ -813,7 +813,7 @@ router.get('/coupon/activate/:id', role.auth, function(req, res){
 });
 
 router.get('/coupon/update/:id', role.auth, function(req, res){
-	var coupons = Coupons.findById(req.params.id);
+	var coupons = Coupons.findById(req.params.id).populate('bizid');
   var businesses = Business.find({
     user_id : res.locals.user.username
   });

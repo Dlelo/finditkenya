@@ -23,6 +23,7 @@ var Typo = require("typo-js");
 var dictionary = new Typo("en_US");
 var Fuse = require("fuse.js");
 var _ = require('lodash');
+var multer  = require('multer');
 var nationalities = require(__dirname + '/../models/Nationalities');
 
 var sys = require(__dirname + '/../config/System');
@@ -37,6 +38,22 @@ var Review = require(__dirname + '/../models/Reviews');
 var Advert = require(__dirname + '/../models/Advert');
 
 var mailer = require('express-mailer');
+
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './public/uploads/')
+  },
+  filename: function (req, file, cb) {
+    //var fileName = file.originalname + '-' + Date.now() + '.' + mime.extension(file.mimetype);
+    var fileName = Date.now() + slug(file.originalname) +'.'+ mime.extension(file.mimetype);
+    //var catalogName = file.originalname + '-' + Date.now() + '.' + mime.extension(file.mimetype);
+    cb(null, fileName);
+  }
+});
+
+var upload = multer({ storage: storage });
+var cpUpload = upload.fields([{ name: 'photo', maxCount: 1 }, { name: 'catalog', maxCount: 5 }, { name: 'gallery', maxCount: 30 }])
+
 
 router.get('/allbusinesses', function(req, res, next){
   var bizArray = [];

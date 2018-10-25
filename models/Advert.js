@@ -9,6 +9,8 @@ const Schema = mongoose.Schema;
 const advertiseSchema = new Schema({
 		photo: { type: String,required: true},
 		price: { type: String },
+		email: String,
+		phone: String,
 		paid: Boolean
 });
 

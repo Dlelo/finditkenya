@@ -1,12 +1,11 @@
 extends ../layout
 block content
   .container-fluid(style="margin-top:10rem")
-    form(method='post', action='/advertising/2')
+    form(method='post', action='/advertising/2',enctype='multipart/form-data')
         .form-group
             .row
                 section
                     .col-md-12.packages-padding.banner
-                        input.form-control-form(name='package', type='radio', value='free', style='display:none', required)
                         label(for='banner')
                             .card.card-product
                                 .row
@@ -35,7 +34,6 @@ block content
                                                 option(data-icon='glyphicon-gift', value='1-year')  1 year(Ksh. 150,000)
                               
                     .col-md-12.packages-padding.sidebar
-                        input.form-control-form(name='package', type='radio', value='free', style='display:none', required)
                         label(for='banner')
                             .card.card-product
                                 .row
@@ -68,7 +66,7 @@ block content
             .row
                 
                 .col-sm-5
-                    input#gallery.form-control-form.imagegallery(type='file', name='gallery', placeholder='gallery', multiple='')
+                    input#gallery.form-control-form.imagegallery(type='file', name='photo', placeholder='gallery', required)
                 .col-sm-7
                     #gallerypreview
             .row(style=" box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12); margin-top:5rem;")
@@ -85,11 +83,11 @@ block content
                                         input.form-control-form(value=user.email,name='email')
                 .form-group
                     input#priceinput(type="hidden",name="price")
-                    input#package(type="hidden",name="package")
+                    input#packag(type="hidden",name="package")
                     span.btn.btn-grey.btn-block.btn-lg.noLnk(style=' border: 1px solid;margin-bottom:10px;')
                         small(style='text-transform: none;') Total KShs. 
                           span#total
-                            #{total} .
+                            #{total}
                 .form-group
                     button.btn.btn-primary.form-control-form(type='submit')
                         | Submit
@@ -100,7 +98,7 @@ block content
           if(type == 'sidebar'){
             $('.sidebar').show();
             $('.banner').hide();
-            $('#package').val('sidebar');
+            $('#packag').val('sidebar');
             $('#price').change(function() {
               console.log($(this).find('option:selected').attr('value'));
               var total = $(this).find('option:selected').attr('value');
@@ -124,7 +122,7 @@ block content
           }else{
             $('.sidebar').hide();
             $('.banner').show();
-            $('#package').val('banner');
+            $('#packag').val('banner');
             $('#price').change(function() {
               console.log($(this).find('option:selected').attr('value'));
               var total = $(this).find('option:selected').attr('value');              

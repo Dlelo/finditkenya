@@ -1,12 +1,11 @@
 extends ../layout
 block content
-  .container-fluid
-    form(method='post', action='/business/newpackage')
-        .row
-            .form-group
+  .container-fluid(style="margin-top:10rem")
+    form(method='post', action='/advertising/2',enctype='multipart/form-data')
+        .form-group
+            .row
                 section
                     .col-md-12.packages-padding.banner
-                        input.form-control-form(name='package', type='radio', value='free', style='display:none', required)
                         label(for='banner')
                             .card.card-product
                                 .row
@@ -24,6 +23,11 @@ block content
                                                     small -Featured articles on findit blogs 
                                                 li  
                                                     small -You can change the advert image 
+<<<<<<< HEAD
+                                .row
+                                    .col-md-12                         
+                                        .form-group
+=======
                                 
                                 .form-group
                                     .row
@@ -46,12 +50,16 @@ block content
                                 .form-group
                                     .row                        
                                         .col-md-12
+>>>>>>> de7e84955757a7af37320df640a7ef2cbd8156fe
                                             select.selectpicker.form-control#price(name='bizid',data-live-search="true")
                                                 option(data-icon='glyphicon-wrench', value='') -- Select Duration --
                                                 option(data-icon='glyphicon-gift', value='1-week')  1 week(Ksh. 3,500)
                                                 option(data-icon='glyphicon-gift', value='2-weeks')  2 weeks(Ksh. 7,000)
                                                 option(data-icon='glyphicon-gift', value='1-month')  1 month(Ksh. 12,000)
                                                 option(data-icon='glyphicon-gift', value='1-year')  1 year(Ksh. 150,000)
+<<<<<<< HEAD
+                              
+=======
                                 .form-group    
                                     .row
                                         .form-group
@@ -62,8 +70,8 @@ block content
                                 .form-group
                                     button.btn.btn-primary.form-control-form(type='submit')
                                         | Submit
+>>>>>>> de7e84955757a7af37320df640a7ef2cbd8156fe
                     .col-md-12.packages-padding.sidebar
-                        input.form-control-form(name='package', type='radio', value='free', style='display:none', required)
                         label(for='banner')
                             .card.card-product
                                 .row
@@ -85,6 +93,44 @@ block content
                                                     small -Social Media Marketing on find it Page
                                                 li
                                                     small -You can change the advert image                    
+<<<<<<< HEAD
+                                .row
+                                    .col-md-12
+                                        select.selectpicker.form-control#price(name='bizid',data-live-search="true")
+                                            option(data-icon='glyphicon-wrench', value='') -- Select Duration --
+                                            option(data-icon='glyphicon-gift', value='1-week')  1 week(Ksh. 1000)
+                                            option(data-icon='glyphicon-gift', value='2-weeks')  2 weeks(Ksh. 2,000)
+                                            option(data-icon='glyphicon-gift', value='1-month')  1 month(Ksh. 5,000)
+                                            option(data-icon='glyphicon-gift', value='1-year')  1 year(Ksh. 50,000)
+            .row
+                
+                .col-sm-5
+                    input#gallery.form-control-form.imagegallery(type='file', name='photo', placeholder='gallery', required)
+                .col-sm-7
+                    #gallerypreview
+            .row(style=" box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12); margin-top:5rem;")
+                .form-group
+                    .row
+                        .col-md-12
+                                span.col-md-12.phone
+                                    small.small-cart
+                                        | Phone: 
+                                        input.form-control-form(value=user.phone, name='phone')
+                                span.col-md-12.email
+                                    small.small-cart
+                                        | Email: 
+                                        input.form-control-form(value=user.email,name='email')
+                .form-group
+                    input#priceinput(type="hidden",name="price")
+                    input#packag(type="hidden",name="package")
+                    span.btn.btn-grey.btn-block.btn-lg.noLnk(style=' border: 1px solid;margin-bottom:10px;')
+                        small(style='text-transform: none;') Total KShs. 
+                          span#total
+                            #{total}
+                .form-group
+                    button.btn.btn-primary.form-control-form(type='submit')
+                        | Submit
+=======
                         
                                 .form-group
                                     .row
@@ -123,6 +169,7 @@ block content
                                 .form-group
                                     button.btn.btn-primary.form-control-form(type='submit')
                                         | Submit
+>>>>>>> de7e84955757a7af37320df640a7ef2cbd8156fe
     // script to show quick look on mouseover
     script(type='text/javascript').
         $(document).ready(function () {
@@ -130,39 +177,49 @@ block content
           if(type == 'sidebar'){
             $('.sidebar').show();
             $('.banner').hide();
+            $('#packag').val('sidebar');
             $('#price').change(function() {
               console.log($(this).find('option:selected').attr('value'));
               var total = $(this).find('option:selected').attr('value');
               if(total == '1-week'){
                 $('#total').text('1000');
+                $('#priceinput').val('1000');
               }
               if(total == '2-weeks'){
                 $('#total').text('2000');
+                $('#priceinput').val('2000');
               }
               if(total == '1-month'){
                 $('#total').text('5000');
+                $('#priceinput').val('5000');
               }
               if(total == '1-year'){
                 $('#total').text('50000');
+                $('#priceinput').val('50000');
               }
             });
           }else{
             $('.sidebar').hide();
             $('.banner').show();
+            $('#packag').val('banner');
             $('#price').change(function() {
               console.log($(this).find('option:selected').attr('value'));
               var total = $(this).find('option:selected').attr('value');              
               if(total == '1-week'){
                 $('#total').text('3700');
+                $('#priceinput').val('3700');
               }
               if(total == '2-weeks'){
                 $('#total').text('7000');
+                $('#priceinput').val('7000');
               }
               if(total == '1-month'){
                 $('#total').text('12000');
+                $('#priceinput').val('12000');
               }
               if(total == '1-year'){
                 $('#total').text('150000');
+                $('#priceinput').val('150000');
               }
             });
           }

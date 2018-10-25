@@ -23,6 +23,8 @@ var Typo = require("typo-js");
 var dictionary = new Typo("en_US");
 var Fuse = require("fuse.js");
 var _ = require('lodash');
+var multer  = require('multer');
+var mime = require('mime');
 var nationalities = require(__dirname + '/../models/Nationalities');
 
 var sys = require(__dirname + '/../config/System');
@@ -34,8 +36,25 @@ var emailModel = require(__dirname + '/../config/Mail');
 var Analytics = require(__dirname + '/../models/Analytics');
 var Coupons = require(__dirname + '/../models/Coupons');
 var Review = require(__dirname + '/../models/Reviews');
+var Advert = require(__dirname + '/../models/Advert');
 
 var mailer = require('express-mailer');
+
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './public/uploads/')
+  },
+  filename: function (req, file, cb) {
+    //var fileName = file.originalname + '-' + Date.now() + '.' + mime.extension(file.mimetype);
+    var fileName = Date.now() + slug(file.originalname) +'.'+ mime.extension(file.mimetype);
+    //var catalogName = file.originalname + '-' + Date.now() + '.' + mime.extension(file.mimetype);
+    cb(null, fileName);
+  }
+});
+
+var upload = multer({ storage: storage });
+var cpUpload = upload.fields([{ name: 'photo', maxCount: 1 }, { name: 'catalog', maxCount: 5 }, { name: 'gallery', maxCount: 30 }])
+
 
 router.get('/allbusinesses', function(req, res, next){
   var bizArray = [];
@@ -314,6 +333,9 @@ router.get('/moment',function(req,res){
     console.log(moment('20-01-2012 19:43:00', 'DD-MM-YYYY HH:mm'));
 });
 
+
+//ADVERTISING
+
 router.get('/advertising',function(req,res){
     res.render('site/advertising', {title: "Find It: Advertising"});
 });
@@ -321,6 +343,117 @@ router.get('/advertising',function(req,res){
 router.get('/advertising/2',function(req,res){
     res.render('site/advertisingtwo', {title: "Find It: Advertising", type: req.query.type});
 });
+
+router.post('/advertising/2', cpUpload, function(req, res){
+  var a = new Advert();
+  a.price = req.body.price;
+  a.paid = false;
+  //console.log(req.files);
+  if (req.files['photo'] != null){
+    //console.log(req.files['photo'][0]);
+    a.photo = req.files['photo'][0].filename;
+  }
+  a.save(function(err){
+    if(err){
+      console.log(err);
+      req.flash("error_msg", "Something Wrong Happened");
+      res.redirect('/');
+    }else{
+      if (req.files['photo'] != null){
+        Jimp.read("./public/uploads/"+a.photo).then(function (cover) {
+            return cover.resize(200, 150)     // resize
+                 .quality(100)              // set greyscale
+                 .write("./public/uploads/thumbs/adverts/"+a.photo); // save
+         req.flash("success_msg", "Advertisement Successfully Created");
+        }).catch(function (err) {
+            console.error(err);
+        });
+      }else{
+        req.flash("success_msg", "Advertisement Successfully Created");
+      }
+      ssn = req.session;
+      ssn.hashkey = "852sokompare963001";
+      ssn.vendor_id = "sokompare";
+      ssn.advert_id = a.id;
+      ssn.email = req.body.email;
+      ssn.phone = req.body.phone;
+      //var amount = req.body.price;
+      var amount = "1";
+      var fields = {
+        "live":"1",
+        "oid": a.id,
+        "inv": "invoiceid"+a.id,
+        "ttl": amount,
+        "tel": req.body.phone,
+        "eml": req.body.email,
+        "vid": ssn.vendor_id,
+        "curr": "KES",
+        "p1": a.id,
+        "p2": "",
+        "p3": "",
+        "p4": "",
+        "lbk": 'https://'+req.get('host')+'/cancel',
+        "cbk": 'https://'+req.get('host')+'/advert/receive',
+        "cst": "1",
+        "crl": "0"
+      };
+      var datastring =  fields['live']+fields['oid']+fields['inv']+
+        fields['ttl']+fields['tel']+fields['eml']+fields['vid']+fields['curr']+fields['p1']+fields['p2']
+        +fields['p3']+fields['p4']+fields['cbk']+fields['cst']+fields['crl'];
+      var hash = crypto.createHmac('sha1',ssn.hashkey).update(datastring).digest('hex');
+      res.render('site/advertpay', {title: "Pay",hash: hash, inputs: fields, datastring: datastring});
+    }
+  })
+});
+
+router.get('/advert/receive', function(req, res){
+  var val = "sokompare";
+  var val1 = req.query.id;
+  var val2 = req.query.ivm;
+  var val3 = req.query.qwh;
+  var val4 = req.query.afd;
+  var val5 = req.query.poi;
+  var val6 = req.query.uyt;
+  var val7 = req.query.ifd;
+  var bizId = req.query.p1;
+  var array = req.query.p2;
+  var status = req.query.status;
+  var amount = req.query.mc;
+
+  var ipnurl = "https://www.ipayafrica.com/ipn/?vendor="+val+"&id="+val1+"&ivm="+val2+"&qwh="+val3+"&afd="+val4+"&poi="+val5+"&uyt="+val6+"&ifd="+val7;
+  //console.log(ipnurl);
+  Advert.findById(req.session.advert_id)
+  .then(function(b){
+    b.paid = true;
+    b.email = req.session.email;
+    b.phone = req.session.phone;
+    //if(amount == "2320"){
+
+    request(ipnurl, function (error, response, body) {
+      //console.log(body); // Print the HTML for the Google homepage.
+      //res.send("Status > " + status + ", Body > " +body);
+      //res.end();
+      if(body == status){
+        b.save(function(err){
+          req.flash('success_msg', 'Payment Successfully Done!');
+          if(err)
+            res.redirect('/');
+          res.redirect('/');
+        });
+
+      }else{
+        req.flash('error', 'Transaction Already Authenticated!');
+        res.redirect('/');
+      }
+    });
+  })
+  .catch(function(err){
+    console.log(err);
+  });
+});
+
+
+// END ADVERTISING
 
 router.get('/facebook',function(req,res){
     res.render('socials/facebook', {title: "Find It: Complete Facebook Sign Up"});

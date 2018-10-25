@@ -23,6 +23,7 @@ var emailModel = require(__dirname + '/../config/Mail');
 var Sale = require(__dirname + '/../models/Sales');
 var Product = require(__dirname + '/../models/Product');
 var Area = require(__dirname + '/../models/Areas');
+var Advert = require(__dirname + '/../models/Advert');
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -722,8 +723,14 @@ router.post('/areas/create',role.admin,function(req, res){
   });
 });
 
-
-
+/***************** ADVERTS ******************************/
+router.get('/adverts', role.auth, function(req, res){
+  Advert.find({paid: true})
+  .then(function(d){
+    console.log(d);
+    res.render('admin/adverts',{adverts: d, title: "Adverts"});
+  })
+});
 /***************** COUPONS ******************************/
 
 router.get('/coupons', role.auth, function(req, res){

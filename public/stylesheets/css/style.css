@@ -1910,6 +1910,12 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 384px) {
+	.container-ad .arrow{
+		display:none;
+	}
+	.container-ad1 .arrow{
+		display:none;
+	}
 	.category-zindex {
          z-index: 80 !important;
      }
@@ -1953,6 +1959,12 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 375px){
+	.container-ad .arrow{
+		display:none;
+	}
+	.container-ad1 .arrow{
+		display:none;
+	}
 	.category-zindex {
          z-index: 80 !important;
      }
@@ -1997,7 +2009,7 @@ ul.portfolio-area li figure {
 	.container-ad .arrow{
 		display:none;
 	}
-	.container-ad .arrow{
+	.container-ad1 .arrow{
 		display:none;
 	}
 

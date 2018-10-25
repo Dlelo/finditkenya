@@ -1994,6 +1994,13 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 320px) {
+	.container-ad .arrow{
+		display:none;
+	}
+	.container-ad .arrow{
+		display:none;
+	}
+
 	.category-zindex {
          z-index: 80 !important;
      }

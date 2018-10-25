@@ -111,7 +111,8 @@ ul {
 }
 
 .navbar-nav>li {
-	margin-left: 45px;
+	margin-left: 3rem;
+    margin-right: 3rem;
 }
 
 .header.active .navbar-nav>li>a {

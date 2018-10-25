@@ -40,7 +40,7 @@ html
       div.container-fluid
         header
         //header before navigation items
-        nav#homenavbar.navbar.navbar-expand-lg.navbar-light.bg-gradient-secondary(role='navigation')
+        nav.navbar.navbar-inverse
           div(style="display:flex !important; flex-direction:row !important; width: 100% !important;")
             div(style="flex-grow:0.1 !important")
               a.navbar-brand.text-white(href="/")
@@ -52,15 +52,14 @@ html
                     input.search2.form-control-lg(type="text" placeholder="" ,style="width:100% !important" ,name='search', autofocus)
             div(style="flex-grow:0.1 !important")      
               a(href="/coupons")
-                button.btn.btn-light.w3ls-btn.coupons-btn.flash-button#coupbtn(type="button")
+                button.btn.btn-light.w3ls-btn.coupons-btn.flash-button#coupbtn(type="button" style="font-size: 16px;")
                   span.fa-style.fa.fa-gift.coupons-text-color
                   |   View deals
             div(style="flex-grow:0.5 !important")
-              button#nav-toggle.navbar-toggle(type='button', data-toggle='collapse', data-target='#main-nav')
-                span.sr-only Toggle navigation
+              button.navbar-toggle(type='button', data-toggle='collapse', data-target='#main-nav')
                 span.icon-bar
                 span.icon-bar
-                span.icon-bar
+                span.icon-barspan.icon-bar
               
               
               #main-nav.collapse.navbar-collapse
@@ -90,24 +89,24 @@ html
                       strong
                       |  Home
                   if (loggedin)
-                    li.nav-item.mr-3                  
+                    li.nav-item                  
                       a(href='/dashboard')  
                         span.findit-blue.fa.fa-user
                         strong
                         |  View Profile          
                   if (loggedin)                
-                    li.nav-item.mr-3
+                    li.nav-item
                       a(href='/logout') 
                         span.findit-blue.fa.fa-sign-out-alt
                         strong
                         |  Logout
                   else
-                    li.nav-item.mr-3
+                    li.nav-item
                       a(href='/login')
                         button.btn.btn-primary.w3ls-btn
                           strong
                             | Login
-                    li.nav-item.mr-3
+                    li.nav-item
                     a(href="/register")
                       button.btn.btn-outline-primary.w3ls-btn.findit-blue
                         strong

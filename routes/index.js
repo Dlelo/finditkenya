@@ -319,7 +319,7 @@ router.get('/advertising',function(req,res){
 });
 
 router.get('/advertising/2',function(req,res){
-    res.render('site/advertisingtwo', {title: "Find It: Advertising"});
+    res.render('site/advertisingtwo', {title: "Find It: Advertising", type: req.query.type});
 });
 
 router.get('/facebook',function(req,res){

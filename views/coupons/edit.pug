@@ -9,7 +9,7 @@ block content
             h3.text-center Edit:        
                 span   
                 =coupon.name
-            form(method='post', action='/admin/coupon/create',enctype='multipart/form-data')
+            form(method='post', action='/admin/coupon/update/'+coupon._id,enctype='multipart/form-data')
                 .form-group
                     .col-sm-12
                         input.form-control-form(name='name',type='text',value=coupon.name, maxlength="30") 
@@ -24,24 +24,24 @@ block content
                         label(for='photo') Cover Photo
                         img(src="/uploads/thumbs/coupons"+ coupon.photo, width="200px" height="150px")
                     .col-sm-2
-                        input#photod.form-control-form(type='file', name=coupon.photo, placeholder='photo')    
+                        input#photod.form-control-form(type='file', placeholder='photo', name='photo')    
                 .form-group
                     .col-sm-6
                         select.selectpicker.form-control(name='bizid',data-live-search="true")
-                            option(data-icon='glyphicon-wrench', value=coupon.bizid.name) #{coupon.bizid.name}
+                            option(data-icon='glyphicon-wrench', value=coupon.bizid._id) #{coupon.bizid.name}
                             each biz in businesses
-                                option(data-icon='glyphicon-gift', value=biz.name) #{biz.name}
+                                option(data-icon='glyphicon-gift', value=biz._id) #{biz.name}
                 .form-group
                     .col-sm-6
                         select.selectpicker.form-control(name='type')
-                            option(data-icon='glyphicon-wrench', value=coupon.type) #{coupon.type}
+                            option(data-icon='glyphicon-wrench', value=coupon.type) Current Type
                             option(data-icon='glyphicon-gift', value='1') Percentage Off
                             option(data-icon='glyphicon-glass',value='2') Buy x Get y Free
                             option(data-icon='glyphicon-glass',value='3') KES x Off
                 .form-group
                     .col-sm-6
                         select.selectpicker.form-control(name='status')
-                            option(data-icon='glyphicon-wrench', value=coupon.type) #{coupon.type}
+                            option(data-icon='glyphicon-wrench', value=coupon.type) Current Type
                             option(data-icon='glyphicon-gift', value='1') Active
                             option(data-icon='glyphicon glyphicon-glass',value='0') Inactive 
                 .form-group   

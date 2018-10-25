@@ -1,7 +1,7 @@
 extends ../layout
 block content
   .container-fluid(style="margin-top:10rem")
-    form(method='post', action='/business/newpackage')
+    form(method='post', action='/advertising/2')
         .form-group
             .row
                 section
@@ -81,6 +81,7 @@ block content
                     #gallerypreview
             .row(style=" box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12); margin-top:5rem;")
                 .form-group
+                    input#priceinput(type="hidden",name="price")
                     span.btn.btn-grey.btn-block.btn-lg.noLnk(style=' border: 1px solid;margin-bottom:10px;')
                         small(style='text-transform: none;') Total KShs. 
                           span#total
@@ -100,15 +101,19 @@ block content
               var total = $(this).find('option:selected').attr('value');
               if(total == '1-week'){
                 $('#total').text('1000');
+                $('#priceinput').val('1000');
               }
               if(total == '2-weeks'){
                 $('#total').text('2000');
+                $('#priceinput').val('2000');
               }
               if(total == '1-month'){
                 $('#total').text('5000');
+                $('#priceinput').val('5000');
               }
               if(total == '1-year'){
                 $('#total').text('50000');
+                $('#priceinput').val('50000');
               }
             });
           }else{
@@ -119,15 +124,19 @@ block content
               var total = $(this).find('option:selected').attr('value');              
               if(total == '1-week'){
                 $('#total').text('3700');
+                $('#priceinput').val('3700');
               }
               if(total == '2-weeks'){
                 $('#total').text('7000');
+                $('#priceinput').val('7000');
               }
               if(total == '1-month'){
                 $('#total').text('12000');
+                $('#priceinput').val('12000');
               }
               if(total == '1-year'){
                 $('#total').text('150000');
+                $('#priceinput').val('150000');
               }
             });
           }

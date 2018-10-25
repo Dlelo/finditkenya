@@ -34,6 +34,7 @@ var emailModel = require(__dirname + '/../config/Mail');
 var Analytics = require(__dirname + '/../models/Analytics');
 var Coupons = require(__dirname + '/../models/Coupons');
 var Review = require(__dirname + '/../models/Reviews');
+var Advert = require(__dirname + '/../models/Advert');
 
 var mailer = require('express-mailer');
 
@@ -314,6 +315,9 @@ router.get('/moment',function(req,res){
     console.log(moment('20-01-2012 19:43:00', 'DD-MM-YYYY HH:mm'));
 });
 
+
+//ADVERTISING
+
 router.get('/advertising',function(req,res){
     res.render('site/advertising', {title: "Find It: Advertising"});
 });
@@ -321,6 +325,65 @@ router.get('/advertising',function(req,res){
 router.get('/advertising/2',function(req,res){
     res.render('site/advertisingtwo', {title: "Find It: Advertising", type: req.query.type});
 });
+
+router.post('/advertising/2', cpUpload, function(req, res){
+  var a = new Advert();
+  a.price = req.body.price;
+  a.paid = false;
+  if (req.files['photo']){
+    //console.log(req.files['photo'][0]);
+    a.photo = req.files['photo'][0].filename;
+  }
+  a.save(function(err){
+    if(err){
+      req.flash("error_msg", "Something Wrong Happened");
+      res.redirect('/');
+    }else{
+      if (req.files['photo'] != null){
+        Jimp.read("./public/uploads/adverts/"+coupon.photo).then(function (cover) {
+            return cover.resize(200, 150)     // resize
+                 .quality(100)              // set greyscale
+                 .write("./public/uploads/thumbs/adverts/"+coupon.photo); // save
+         req.flash("success_msg", "Advertisement Successfully Created");
+        }).catch(function (err) {
+            console.error(err);
+        });
+      }else{
+        req.flash("success_msg", "Advertisement Successfully Created");
+      }
+      ssn = req.session;
+      ssn.hashkey = "852sokompare963001";
+      ssn.vendor_id = "sokompare";
+      ssn.advert_id = a.id;
+      var amount = req.body.price;
+      var fields = {
+        "live":"1",
+        "oid": a.id,
+        "inv": "invoiceid"+a.id,
+        "ttl": amount,
+        "tel": req.body.phone,
+        "eml": req.body.email,
+        "vid": ssn.vendor_id,
+        "curr": "KES",
+        "p1": a.id,
+        "p2": "",
+        "p3": "",
+        "p4": "",
+        "lbk": 'https://'+req.get('host')+'/cancel',
+        "cbk": 'https://'+req.get('host')+'/receive',
+        "cst": "1",
+        "crl": "0"
+      };
+      var datastring =  fields['live']+fields['oid']+fields['inv']+
+        fields['ttl']+fields['tel']+fields['eml']+fields['vid']+fields['curr']+fields['p1']+fields['p2']
+        +fields['p3']+fields['p4']+fields['cbk']+fields['cst']+fields['crl'];
+      var hash = crypto.createHmac('sha1',ssn.hashkey).update(datastring).digest('hex');
+      res.render('business/claim', {title: "Pay",hash: hash, inputs: fields, datastring: datastring, package: package});
+    }
+  })
+});
+
+// END ADVERTISING
 
 router.get('/facebook',function(req,res){
     res.render('socials/facebook', {title: "Find It: Complete Facebook Sign Up"});

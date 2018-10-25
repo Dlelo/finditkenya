@@ -871,7 +871,10 @@ footer .terms-policy ul li a {
 	#portfolio .section-heading p {
 		padding: 0px 20px;
 	}
-
+    .container-fluid {
+    padding-right: 0px; 
+	padding-left: 0px; 
+	}
 	.projects-holder {
 		text-align: center;
 		padding: 15px 0px;

@@ -30,54 +30,16 @@ block content
                                                     small -Featured articles on findit blogs 
                                                 li  
                                                     small -You can change the advert image 
-<<<<<<< HEAD
                                 .row
                                     .col-md-12                         
                                         .form-group
-=======
-                                
-                                .form-group
-                                    .row
-                                        .col-md-12
-                                            if(loggedin)
-                                                span.col-md-12.phone
-                                                    small.small-cart
-                                                        | Phone: 
-                                                        =user.phone
-                                                span.col-md-12.email
-                                                    small.small-cart
-                                                        | Email: 
-                                                        =user.email
-                                .form-group    
-                                    .row
-                                        .col-sm-5
-                                            input#gallery.form-control-form.imagegallery(type='file', name='gallery', placeholder='gallery', multiple='')
-                                        .col-sm-7
-                                            #gallerypreview
-                                .form-group
-                                    .row                        
-                                        .col-md-12
->>>>>>> de7e84955757a7af37320df640a7ef2cbd8156fe
                                             select.selectpicker.form-control#price(name='bizid',data-live-search="true")
                                                 option(data-icon='glyphicon-wrench', value='') -- Select Duration --
                                                 option(data-icon='glyphicon-gift', value='1-week')  1 week(Ksh. 3,500)
                                                 option(data-icon='glyphicon-gift', value='2-weeks')  2 weeks(Ksh. 7,000)
                                                 option(data-icon='glyphicon-gift', value='1-month')  1 month(Ksh. 12,000)
                                                 option(data-icon='glyphicon-gift', value='1-year')  1 year(Ksh. 150,000)
-<<<<<<< HEAD
                               
-=======
-                                .form-group    
-                                    .row
-                                        .form-group
-                                            span.btn.btn-grey.btn-block.btn-lg.noLnk(style=' border: 1px solid;')
-                                                small(style='text-transform: none;') Total KShs. 
-                                                span#total
-                                                    #{total} .
-                                .form-group
-                                    button.btn.btn-primary.form-control-form(type='submit')
-                                        | Submit
->>>>>>> de7e84955757a7af37320df640a7ef2cbd8156fe
                     .col-md-12.packages-padding.sidebar
                         label(for='banner')
                             .card.card-product
@@ -100,7 +62,6 @@ block content
                                                     small -Social Media Marketing on find it Page
                                                 li
                                                     small -You can change the advert image                    
-<<<<<<< HEAD
                                 .row
                                     .col-md-12
                                         select.selectpicker.form-control#price(name='bizid',data-live-search="true")
@@ -137,46 +98,6 @@ block content
                 .form-group
                     button.btn.btn-primary.form-control-form(type='submit')
                         | Submit
-=======
-                        
-                                .form-group
-                                    .row
-                                        .col-md-12
-                                            if(loggedin)
-                                                span.col-md-12.phone
-                                                    small.small-cart
-                                                        | Phone: 
-                                                        =user.phone
-                                                span.col-md-12.email
-                                                    small.small-cart
-                                                        | Email: 
-                                                        =user.email
-                                .form-group    
-                                    .row
-                                        .col-sm-5
-                                            input#gallery.form-control-form.imagegallery(type='file', name='gallery', placeholder='gallery', multiple='')
-                                        .col-sm-7
-                                            #gallerypreview
-                                .form-group
-                                    .row
-                                        .col-md-12
-                                            select.selectpicker.form-control#price(name='bizid',data-live-search="true")
-                                                option(data-icon='glyphicon-wrench', value='') -- Select Duration --
-                                                option(data-icon='glyphicon-gift', value='1-week')  1 week(Ksh. 1000)
-                                                option(data-icon='glyphicon-gift', value='2-weeks')  2 weeks(Ksh. 2,000)
-                                                option(data-icon='glyphicon-gift', value='1-month')  1 month(Ksh. 5,000)
-                                                option(data-icon='glyphicon-gift', value='1-year')  1 year(Ksh. 50,000)
-                                .form-group    
-                                    .row
-                                        .form-group
-                                            span.btn.btn-grey.btn-block.btn-lg.noLnk(style=' border: 1px solid;')
-                                                small(style='text-transform: none;') Total KShs. 
-                                                span#total
-                                                    #{total} .
-                                .form-group
-                                    button.btn.btn-primary.form-control-form(type='submit')
-                                        | Submit
->>>>>>> de7e84955757a7af37320df640a7ef2cbd8156fe
     // script to show quick look on mouseover
     script(type='text/javascript').
         $(document).ready(function () {

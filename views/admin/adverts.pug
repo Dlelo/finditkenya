@@ -1,0 +1,39 @@
+extends admin-layout
+
+block content
+  // /.row
+  // ==============================================================
+  // Different data widgets
+  // ==============================================================
+  // .row
+  .row
+    .col-md-12.col-lg-12.col-sm-12
+      .white-box
+        
+        h3.box-title Adverts
+        .table-responsive(style="width:100%")
+          table.table
+            thead
+              tr
+                th NO.
+                th PHOTO
+                th PAID
+                th PRICE
+                //th ADDED ON
+            tbody
+              each ad,i in adverts
+                tr
+                  td #{i+1}
+                  td
+                    img(src="/uploads/thumbs/adverts/"+ad.photo style="width:150px; height:150px")
+                  td 
+                    if (ad.paid == 'true')
+                       span(style="color:red") True
+                    else
+                       span(style="color:red") False
+                  td.txt-oflo 
+                    =ad.price 
+                  //td
+                    span.text-info
+                      =ad.date
+              

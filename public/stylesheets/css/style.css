@@ -4890,11 +4890,10 @@ width: 100%
 
 .container-ad .message-body {
   float: left;
-  width: 350px;
+  width: 75%;
   height: auto;
-  border: 1px solid #CCC;
-  background-color: #04045a;
-  border: 1px solid #343a40;;
+  background-color: #cd2029;
+  border: 1px solid #cd2029;
   padding: 6px 8px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -4957,9 +4956,8 @@ width: 100%
   float: left;
   width: 350px;
   height: auto;
-  border: 1px solid #CCC;
-  background-color: #04045a;
-  border: 1px solid #343a40;;
+  background-color: #CD202B;
+  border: 1px solid #CD202B;
   padding: 6px 8px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;

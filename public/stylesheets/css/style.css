@@ -2763,6 +2763,12 @@ li.list-hor{
 	  background-position: 11px 12px;
       padding: 0px 1px 0px 35px !important;
 	}
+	.container-ad .message-body {
+	width: 100%;
+	}
+	.container-ad1 .message-body {
+	width: 100%;
+	}
 	.mega-menu{
 		width:100%;
 	}

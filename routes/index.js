@@ -1687,7 +1687,7 @@ router.get('/biz/:name',function(req, res, next){
     .sort([['paid', -1],['datepaid', 1],['slug', 1]])
     .limit(5);
 
-    var branches = Business.find({bizparent: data._id});
+    var branches = Business.find({bizparent: data._id,branch: { $ne: true }});
 
     Promise.all([coupons,businesses,categories,branches]).then(values => {
       var coupons = values[0];

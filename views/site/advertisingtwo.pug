@@ -4,6 +4,7 @@ block content
     form(method='post', action='/advertising/2',enctype='multipart/form-data')
         .form-group
             .row
+              .form-group
                 section
                     .col-md-12.packages-padding.banner
                         label(for='banner')
@@ -26,7 +27,7 @@ block content
                                 .row
                                     .col-md-12                         
                                         .form-group
-                                            select.selectpicker.form-control#price(name='bizid',data-live-search="true")
+                                            select.selectpicker.form-control.price(name='bizid',data-live-search="true")
                                                 option(data-icon='glyphicon-wrench', value='') -- Select Duration --
                                                 option(data-icon='glyphicon-gift', value='1-week')  1 week(Ksh. 3,500)
                                                 option(data-icon='glyphicon-gift', value='2-weeks')  2 weeks(Ksh. 7,000)
@@ -57,7 +58,7 @@ block content
                                                     small -You can change the advert image                    
                                 .row
                                     .col-md-12
-                                        select.selectpicker.form-control#price(name='bizid',data-live-search="true")
+                                        select.selectpicker.form-control.price(name='bizid',data-live-search="true")
                                             option(data-icon='glyphicon-wrench', value='') -- Select Duration --
                                             option(data-icon='glyphicon-gift', value='1-week')  1 week(Ksh. 1000)
                                             option(data-icon='glyphicon-gift', value='2-weeks')  2 weeks(Ksh. 2,000)
@@ -99,7 +100,7 @@ block content
             $('.sidebar').show();
             $('.banner').hide();
             $('#packag').val('sidebar');
-            $('#price').change(function() {
+            $('.price').change(function() {
               console.log($(this).find('option:selected').attr('value'));
               var total = $(this).find('option:selected').attr('value');
               if(total == '1-week'){
@@ -123,7 +124,7 @@ block content
             $('.sidebar').hide();
             $('.banner').show();
             $('#packag').val('banner');
-            $('#price').change(function() {
+            $('.price').change(function() {
               console.log($(this).find('option:selected').attr('value'));
               var total = $(this).find('option:selected').attr('value');              
               if(total == '1-week'){

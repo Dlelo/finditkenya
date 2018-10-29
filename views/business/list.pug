@@ -174,10 +174,10 @@ block content
                               small
                                 | #{biz.reviews.length} Reviews
 
-            ul.pagination
+            ul.pagination.row
               - var n = 1;
               while n <= bizcount
-                li.page-item
+                li.page-item(width="10%")
                   - if(n == page  )
                     a.page-link(href="#", style='color: #f6f9f6;background: #0056b3;') 
                       = n

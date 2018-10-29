@@ -1681,6 +1681,7 @@ router.get('/biz/:name',function(req, res, next){
         subcategory: data.subcategory,
         features: { "$in": data.features },
         slug: { "$ne": data.slug },
+        branch: { $ne: true },
         approved: true
       }
     })

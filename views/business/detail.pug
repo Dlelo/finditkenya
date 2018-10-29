@@ -34,7 +34,7 @@ block content
                       | #{feature} | 
               
           .row(style="margin-bottom: 2rem;")                       
-            .col-md-4.padding-map.mapbox.nomargin
+            .col-md-4.padding-map.nomargin
               if(branches)
                 div
               else
@@ -199,7 +199,7 @@ block content
                           |  Closed
                         else
                           p Sunday: #{hour.opens} - #{hour.closes}
-            .col-md-7.col-xs-12(style="margin-top:1rem;")
+            .col-md-7.col-xs-12(style="margin-top:1rem; padding-right: 0px; padding-left: 0px;")
               if(branches)
                 #mappy.row(style="height:100%; width:100%;")
                     //#map(style="height:100%; width:45%; left:60%; top:100%; padding-right:5rem; padding-left:5rem; position:absolute !important; overflow: visible !important; ")
@@ -207,7 +207,7 @@ block content
                     //.row#map(height='95%',width="100%", style="visibility:visible;")
                     //iframe(width='100%', height='300', frameborder='0', style='border:0', src='https://www.google.com/maps/embed/v1/view?zoom='+biz.map.zoom+'&center='+biz.map.lati+','+biz.map.long+'&key=AIzaSyA0P3blnbZTWe7vHDrbX3Bsd7RA2Y5ViTk', allowfullscreen='',)
               .row(style="100%; margin-top:2rem;")
-                .col-md-12
+                .col-md-12(style="margin-bottom:2rem;")
                   #lightgallery.thumbnails.scrollmenu
                     if biz.gallery
                       each image in biz.gallery
@@ -296,7 +296,7 @@ block content
           else 
              div   
           if(branches)
-            div.col-md-12
+            div.col-md-12.text-center
               h4
                 strong.text-center
                   | Branches
@@ -308,11 +308,11 @@ block content
                       =branch.name
             
           if(similarbiz)
-            div.col-md-12
+            div.col-md-12.text-center
               h4
                 strong.text-center
                   | Similar Businesses
-            div.col-md-12       
+            div.col-md-12.text-center       
               each bizna in similarbiz            
                 a(href="/biz/"+bizna.slug) 
                   div.col-md-12.is-island
@@ -322,9 +322,9 @@ block content
                       =bizna.subcategory
       .row(style="margin-bottom:2rem")
         if biz.youtube
-          .col-md-10
+          .col-md-10.text-center
             h3.text-left
-            | Youtube
+              | Youtube
             p
             iframe(width='100%', height='315', src="https://"+biz.youtube, allow=" encrypted-media" allowfullscreen)
       .row(style="margin-bottom:2rem")    
@@ -364,7 +364,7 @@ block content
               hr
         
       .row
-        .col-md-12 
+        .col-md-12(style="margin-bottom:2rem;")
           .row
             hr
             .col-md-12.text-center

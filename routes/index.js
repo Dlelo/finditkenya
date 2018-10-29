@@ -1681,13 +1681,14 @@ router.get('/biz/:name',function(req, res, next){
         subcategory: data.subcategory,
         features: { "$in": data.features },
         slug: { "$ne": data.slug },
+        branch: { $ne: true },
         approved: true
       }
     })
     .sort([['paid', -1],['datepaid', 1],['slug', 1]])
     .limit(5);
 
-    var branches = Business.find({bizparent: data._id,branch: { $ne: true }});
+    var branches = Business.find({bizparent: data._id});
 
     Promise.all([coupons,businesses,categories,branches]).then(values => {
       var coupons = values[0];

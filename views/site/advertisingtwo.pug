@@ -72,13 +72,14 @@ block content
                                             option(data-icon='glyphicon-gift', value='2-weeks')  2 weeks(Ksh. 2,000)
                                             option(data-icon='glyphicon-gift', value='1-month')  1 month(Ksh. 5,000)
                                             option(data-icon='glyphicon-gift', value='1-year')  1 year(Ksh. 50,000)
-            .row
-                
-                .col-sm-5
-                    input#gallery.form-control-form.imagegallery(type='file', name='photo', placeholder='gallery', required)
-                .col-sm-7
-                    #gallerypreview
+            
             .row(style=" box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12); margin-top:5rem;")
+                .form-group
+                    .row
+                        .col-sm-5
+                            input#gallery.form-control-form.imagegallery(type='file', name='photo', placeholder='gallery', required)
+                        .col-sm-7
+                            #gallerypreview
                 .form-group
                     .row
                         .col-md-12

@@ -29,7 +29,7 @@ block content
                   td
                     img(src="/uploads/thumbs/adverts/"+ad.photo style="width:150px; height:150px")
                   td 
-                    if(ad.paid == 'true')
+                    if(ad.paid)
                        span(style="color:red") Paid
                   td.txt-oflo 
                     =ad.price 

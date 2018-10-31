@@ -7,79 +7,74 @@ block content
                 section
                     .col-md-12.packages-padding.banner
                         label(for='banner')
-                            .card.card-product
-                                .row
-                                    .col-md-12
-                                        h3
-                                            strong
-                                                |  Home Page Banner (KES: 500 per day)
-                                .row
-                                    .col-md-6 
-                                        .card-img
-                                            img(src='/images/bannerhomead.png' style='width:100%; height:200px')
-                                    .col-md-6     
-                                        .card-text
-                                            h4
-                                              | Features
-                                            ul
-                                                li
-                                                    small -Social Media Marketing on find it Page
-                                                li
-                                                    small -Featured articles on findit blogs 
-                                                li  
-                                                    small -You can change the advert image 
-                                .row
-                                    .col-md-12                         
-                                        select.selectpicker.form-control.price(name='bizid',data-live-search="true")
-                                            option(data-icon='glyphicon-wrench', value='') -- Select Duration --
-                                            option(data-icon='glyphicon-gift', value='1-week')  1 week(Ksh. 3,500)
-                                            option(data-icon='glyphicon-gift', value='2-weeks')  2 weeks(Ksh. 7,000)
-                                            option(data-icon='glyphicon-gift', value='1-month')  1 month(Ksh. 12,000)
-                                            option(data-icon='glyphicon-gift', value='1-year')  1 year(Ksh. 150,000)
+                            .row
+                                .col-md-12
+                                    h3
+                                        strong
+                                            |  Home Page Banner (KES: 500 per day)
+                            .row
+                                .col-md-6 
+                                    img(src='/images/bannerhomead.png' style='width:100%; height:200px')
+                                .col-md-6     
+                                    h4
+                                        | Features
+                                    ul
+                                        li
+                                            small -Social Media Marketing on find it Page
+                                        li
+                                            small -Featured articles on findit blogs 
+                                        li  
+                                            small -You can change the advert image 
+                            .row
+                                .col-md-12                         
+                                    select.selectpicker.form-control.price(name='bizid',data-live-search="true")
+                                        option(data-icon='glyphicon-wrench', value='') -- Select Duration --
+                                        option(data-icon='glyphicon-gift', value='1-week')  1 week(Ksh. 3,500)
+                                        option(data-icon='glyphicon-gift', value='2-weeks')  2 weeks(Ksh. 7,000)
+                                        option(data-icon='glyphicon-gift', value='1-month')  1 month(Ksh. 12,000)
+                                        option(data-icon='glyphicon-gift', value='1-year')  1 year(Ksh. 150,000)
             .row
-                .form-group
-                    section              
-                        .col-md-12.packages-padding.sidebar
-                            label(for='banner')
-                                .card.card-product
-                                    .row
-                                        .col-md-12
-                                            strong
-                                                        | Side bar Banner
-                                                        br
-                                                        span(style="text-decoration: line-through;")
-                                                            small Was (KES 300 /
-                                                        span
-                                                            small Now (KES 200 /  
-                                                            small Per Day)
-                                    .row
-                                        .col-md-6  
-                                            .card-img
-                                                img(src='/images/sidebarad.png' style='width:100%; height:200px')
-                                        .col-md-6    
-                                            .card-text
-                                                h4
-                                                | Features
-                                                ul
-                                                    li
-                                                        small -Social Media Marketing on find it Page
-                                                    li
-                                                        small -You can change the advert image                    
-                                    .row
-                                        .col-md-12
-                                            select.selectpicker.form-control.price(name='bizid',data-live-search="true")
-                                                option(data-icon='glyphicon-wrench', value='') -- Select Duration --
-                                                option(data-icon='glyphicon-gift', value='1-week')  1 week(Ksh. 1000)
-                                                option(data-icon='glyphicon-gift', value='2-weeks')  2 weeks(Ksh. 2,000)
-                                                option(data-icon='glyphicon-gift', value='1-month')  1 month(Ksh. 5,000)
-                                                option(data-icon='glyphicon-gift', value='1-year')  1 year(Ksh. 50,000)
-                
-            .row(style=" box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12); margin-top:5rem;")
+                section              
+                    .col-md-12.packages-padding.sidebar
+                        label(for='banner')
+                            .row
+                                .col-md-12
+                                    strong
+                                        | Side bar Banner
+                                        br
+                                        span(style="text-decoration: line-through;")
+                                            small Was (KES 300 /
+                                        span
+                                            small Now (KES 200 /  
+                                            small Per Day)
+                            .row
+                                .col-md-6  
+                                    .card-img
+                                        img(src='/images/sidebarad.png' style='width:100%; height:200px')
+                                .col-md-6    
+                                    .card-text
+                                        h4
+                                        | Features
+                                        ul
+                                            li
+                                                small -Social Media Marketing on find it Page
+                                            li
+                                                small -You can change the advert image                    
+                            .row
+                                .col-md-12
+                                    select.selectpicker.form-control.price(name='bizid',data-live-search="true")
+                                        option(data-icon='glyphicon-wrench', value='') -- Select Duration --
+                                        option(data-icon='glyphicon-gift', value='1-week')  1 week(Ksh. 1000)
+                                        option(data-icon='glyphicon-gift', value='2-weeks')  2 weeks(Ksh. 2,000)
+                                        option(data-icon='glyphicon-gift', value='1-month')  1 month(Ksh. 5,000)
+                                        option(data-icon='glyphicon-gift', value='1-year')  1 year(Ksh. 50,000)
+            
+            .row.ad-row
                 .form-group
                     .row
-                        .col-sm-5
+                        .col-md-5.col-xs-12
                             input#gallery.form-control-form.imagegallery(type='file', name='photo', placeholder='gallery', required)
-                        .col-sm-7
+                        .col-md-7.col-xs-12
                             #gallerypreview
                 .form-group
                     .row

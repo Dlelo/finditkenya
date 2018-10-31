@@ -4911,7 +4911,7 @@ width: 100%
 .container-ad .message-body p {
   margin: 0;
   color:#fff;
-  animation-duration: 7s;
+  animation-duration: 10s;
   animation-name: slidein;
   animation-iteration-count: infinite;
 }
@@ -4991,7 +4991,7 @@ width: 100%
 .container-ad1 .message-body p {
   margin: 0;
   color:#fff;
-  animation-duration: 7s;
+  animation-duration: 10s;
   animation-name: slidein;
   animation-iteration-count: infinite;
 }

@@ -36,7 +36,12 @@ var storage = multer.diskStorage({
 });
 
 var upload = multer({ storage: storage });
-var cpUpload = upload.fields([{ name: 'photo', maxCount: 1 }, { name: 'catalog', maxCount: 5 }, { name: 'gallery', maxCount: 30 }])
+var cpUpload = upload.fields([
+  { name: 'photo', maxCount: 1 },
+  { name: 'profile', maxCount: 1 }, 
+  { name: 'catalog', maxCount: 5 },
+  { name: 'gallery', maxCount: 30 }
+]);
 
 router.post('/edit/:id', role.auth, cpUpload, function(req, res, next) {
 	Business.findById(req.params.id)
@@ -51,6 +56,9 @@ router.post('/edit/:id', role.auth, cpUpload, function(req, res, next) {
 		b.email = req.body.email;
 		if (req.files['catalog'] != null){
 			b.catalog = req.files['catalog'];
+		}
+    if (req.files['profile'] != null){
+			b.profile = req.files['profile'][0].filename;;
 		}
 		if (req.files['photo']){
 		  b.photo = req.files['photo'][0].filename;

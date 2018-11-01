@@ -26,8 +26,12 @@ var storage = multer.diskStorage({
 });
 
 var upload = multer({ storage: storage });
-var cpUpload = upload.fields([{ name: 'photo', maxCount: 1 }, { name: 'catalog', maxCount: 5 }, { name: 'gallery', maxCount: 30 }])
-
+var cpUpload = upload.fields([
+  { name: 'photo', maxCount: 1 },
+  { name: 'profile', maxCount: 1 },
+  { name: 'catalog', maxCount: 5 },
+  { name: 'gallery', maxCount: 30 }
+]);
 router.post('/add', role.auth, cpUpload, function(req, res, next) {
 	var instance = new Business();
 	instance.name = req.body.name
@@ -38,12 +42,16 @@ router.post('/add', role.auth, cpUpload, function(req, res, next) {
 	if (req.files['catalog'] != null){
 		instance.catalog = req.files['catalog'];
 	}
+  if (req.files['profile'] != null){
+		instance.profile = req.files['profile'][0].filename;
+	}
 	instance.website = req.body.website;
 	instance.phone = req.body.phone;
 	instance.email = req.body.email;
 	if (req.files['photo'] != null){
 		instance.photo = req.files['photo'][0].filename;
 	}
+
 	instance.category = req.body.category;
 	instance.reviews = req.body.reviews;
 	instance.subcategory = req.body.subcategory;

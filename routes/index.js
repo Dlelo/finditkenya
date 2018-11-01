@@ -441,8 +441,10 @@ router.get('/advert/receive', function(req, res){
         console.log(b);
         b.save(function(err){
           req.flash('success_msg', 'Payment Successfully Done!');
-          if(err)
+          if(err){
+            console.log(err);
             res.redirect('/');
+          }
           res.redirect('/');
         });
 

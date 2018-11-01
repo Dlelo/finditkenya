@@ -731,6 +731,15 @@ router.get('/adverts', role.auth, function(req, res){
     res.render('admin/adverts',{adverts: d, title: "Adverts"});
   })
 });
+
+router.get('/adverts/approve/:id', role.auth, function(req, res){
+  Advert.findById(req.params.id)
+  .then(function(d){
+    d.approved = true;
+    res.render('admin/adverts',{adverts: d, title: "Adverts"});
+  });
+});
+
 /***************** COUPONS ******************************/
 
 router.get('/coupons', role.auth, function(req, res){

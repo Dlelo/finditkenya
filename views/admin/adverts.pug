@@ -21,6 +21,7 @@ block content
                 th PRICE
                 th DATE
                 th TYPE
+                th ACTIONS
                 //th START
                 //th EXPIRY
                 //th ADDED ON
@@ -39,6 +40,10 @@ block content
                     =ad.date 
                   td.txt-oflo 
                     =ad.type 
+                  td
+                    span.text-info
+                      a(href="/admin/adverts/approve/"+ad.id, onclick="return confirm('Are you sure you want to activate this ad?')", title="Approve Category")
+                        i.fa.fa-trash.fa-fw(aria-hidden='true')
                   //td
                     span.text-info
                       =ad.date

@@ -737,8 +737,8 @@ router.get('/adverts/approve/:id', role.auth, function(req, res){
   .then(function(d){
     d.approved = true;
     d.save(function(err){
-      res.render('/admin/adverts');
-    });    
+      res.redirect('/admin/adverts');
+    });
   });
 });
 

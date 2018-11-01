@@ -38,7 +38,7 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 var cpUpload = upload.fields([
   { name: 'photo', maxCount: 1 },
-  { name: 'profile', maxCount: 1 }, 
+  { name: 'profile', maxCount: 1 },
   { name: 'catalog', maxCount: 5 },
   { name: 'gallery', maxCount: 30 }
 ]);
@@ -758,6 +758,18 @@ router.get('/adverts/confirm/:id', role.auth, function(req, res){
       res.redirect('/admin/adverts');
     });
   });
+});
+
+router.get('/advert/delete/:id',role.auth, function(req, res, next){
+		Advert.findOneAndRemove({
+		  _id: req.params.id
+		})
+		.then(function(data){
+		    res.redirect('/admin/adverts');
+		})
+		.catch(function(err){
+		     console.log(err);
+		});
 });
 
 /***************** COUPONS ******************************/

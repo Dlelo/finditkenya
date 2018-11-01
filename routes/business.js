@@ -67,7 +67,7 @@ router.post('/add', role.auth, cpUpload, function(req, res, next) {
     instance.facebook = req.body.facebook;
     instance.twitter = req.body.twitter;
     instance.instagram = req.body.instagram;
-    instance.youtube = req.body.youtube;
+    instance.youtube = req.body.youtube.replace("watch?v=", "embed/");
     instance.linkedin = req.body.linkedin;
 	if(req.body.hoursopensun){
 		instance.hours.sunday.push({opens: req.body.hoursopensun, closes: req.body.hoursclosesun});

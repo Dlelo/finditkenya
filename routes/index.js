@@ -382,14 +382,14 @@ router.post('/advertising/2', cpUpload, function(req, res){
       var amount = "1";
       var fields = {
         "live":"1",
-        "oid": a.id,
-        "inv": "invoiceid"+a.id,
+        "oid": a._id,
+        "inv": "invoiceid"+a._id,
         "ttl": amount,
         "tel": req.body.phone,
         "eml": req.body.email,
         "vid": ssn.vendor_id,
         "curr": "KES",
-        "p1": a.id,
+        "p1": a._id,
         "p2": "",
         "p3": "",
         "p4": "",
@@ -438,6 +438,7 @@ router.get('/advert/receive', function(req, res){
       //res.send("Status > " + status + ", Body > " +body);
       //res.end();
       if(body == status){
+        console.log(b);
         b.save(function(err){
           req.flash('success_msg', 'Payment Successfully Done!');
           if(err)

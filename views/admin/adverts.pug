@@ -19,6 +19,8 @@ block content
                 th PHOTO
                 th PAID
                 th PRICE
+                th DATE
+                th TYPE
                 //th START
                 //th EXPIRY
                 //th ADDED ON
@@ -33,6 +35,10 @@ block content
                        span(style="color:red") Paid
                   td.txt-oflo 
                     =ad.price 
+                  td.txt-oflo 
+                    =ad.date 
+                  td.txt-oflo 
+                    =ad.type 
                   //td
                     span.text-info
                       =ad.date

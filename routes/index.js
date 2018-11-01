@@ -374,9 +374,10 @@ router.post('/advertising/2', cpUpload, function(req, res){
       ssn = req.session;
       ssn.hashkey = "852sokompare963001";
       ssn.vendor_id = "sokompare";
-      ssn.advert_id = a.id;
+      ssn.advert_id = a._id;
       ssn.email = req.body.email;
       ssn.phone = req.body.phone;
+      ssn.package = req.body.package;
       //var amount = req.body.price;
       var amount = "1";
       var fields = {
@@ -427,6 +428,9 @@ router.get('/advert/receive', function(req, res){
     b.paid = true;
     b.email = req.session.email;
     b.phone = req.session.phone;
+    b.price = amount;
+    b.date = new Date();
+    b.type = req.session.package;
     //if(amount == "2320"){
 
     request(ipnurl, function (error, response, body) {

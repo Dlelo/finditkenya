@@ -11,7 +11,10 @@ const advertiseSchema = new Schema({
 		price: { type: String },
 		email: String,
 		phone: String,
-		paid: Boolean
+		paid: Boolean,
+		date: Date,
+		approved: Boolean,
+		type: String
 });
 
 module.exports = mongoose.model('Advertise', advertiseSchema);

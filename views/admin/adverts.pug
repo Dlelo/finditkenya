@@ -22,6 +22,7 @@ block content
                 th DATE
                 th TYPE
                 th APPROVED
+                th CONFIRMED
                 th ACTIONS
                 //th START
                 //th EXPIRY
@@ -43,6 +44,8 @@ block content
                     =ad.type 
                   td.txt-info 
                     =ad.approved
+                  td.txt-info 
+                    =ad.confirmation
                   td
                     span.text-info
                       a(href="/admin/adverts/confirm/"+ad.id, onclick="return confirm('Are you sure you want to Confirm this ad?')", title="Confirm Ad")

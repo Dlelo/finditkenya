@@ -268,15 +268,28 @@ block content
                               i.fa.fa-trash(aria-hidden="true",class='col-md-1')                 
                   #gallerypreview.col-md-12
                 .form-group
-                  .col-sm-4
-                    label(for='catalog') Catalog/Menu (pdf)*
-                  .col-sm-8
-                    input#catalog.form-control-form.catalogmenu(type='file', name='catalog', placeholder='catalog/menu', multiple='')
+                  .row
+                    .col-sm-3
+                      label(for='catalog') Catalog/Menu (pdf)*
+                    .col-sm-3
+                      input#catalog.form-control-form.catalogmenu(type='file', name='catalog', placeholder='catalog/menu', multiple='')
+                    .col-sm-3
+                      label(for='profile') Company Profile (pdf)*
+                    .col-sm-3
+                      input#profile.form-control-form.catalogmenu(type='file', name='profile', placeholder='company profile', multiple='')
+                    
                 if biz.catalog
                   .form-group
-                    .col-sm-12
-                      each catal in biz.catalog
-                        embed(src="/uploads/"+catal.filename, width='50%', height='300px')
+                    .row
+                      .col-sm-12
+                        each catal in biz.catalog
+                          embed(src="/uploads/"+catal.filename, width='50%', height='300px')
+                if biz.profile
+                  .form-group
+                    .row
+                      .col-sm-12
+                        each prof in biz.profile
+                          embed(src="/uploads/"+prof.filename, width='50%', height='300px')
               .col-md-6
                 .form-group
                   fieldset.gllpLatlonPicker

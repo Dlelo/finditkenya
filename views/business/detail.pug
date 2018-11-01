@@ -138,7 +138,14 @@ block content
                             |  View Menu #{i+1}
                       else
                           | 
-                      hr   
+                      hr
+                if(biz.profile)
+                  .col-md-12.text-left 
+                    strong
+                        span.fas.fa-bars
+                        a.findit(href="/business/profile/"+profile.filename, target="_blank")
+                          |  View Company Profile  
+                      
                 .col-md-12.text-center.findit-red
                   if biz.paid
                     span.badge.badge-success

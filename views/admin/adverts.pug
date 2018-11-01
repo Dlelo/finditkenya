@@ -19,6 +19,8 @@ block content
                 th PHOTO
                 th PAID
                 th PRICE
+                //th START
+                //th EXPIRY
                 //th ADDED ON
             tbody
               each ad,i in adverts
@@ -27,10 +29,8 @@ block content
                   td
                     img(src="/uploads/thumbs/adverts/"+ad.photo style="width:150px; height:150px")
                   td 
-                    if (ad.paid == 'true')
-                       span(style="color:red") True
-                    else
-                       span(style="color:red") False
+                    if(ad.paid)
+                       span(style="color:red") Paid
                   td.txt-oflo 
                     =ad.price 
                   //td

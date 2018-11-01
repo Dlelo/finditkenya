@@ -736,7 +736,9 @@ router.get('/adverts/approve/:id', role.auth, function(req, res){
   Advert.findById(req.params.id)
   .then(function(d){
     d.approved = true;
-    res.render('admin/adverts',{adverts: d, title: "Adverts"});
+    d.save(function(err){
+      res.render('/admin/adverts');
+    });    
   });
 });
 

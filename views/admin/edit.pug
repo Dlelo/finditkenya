@@ -288,8 +288,7 @@ block content
                   .form-group
                     .row
                       .col-sm-12
-                        each prof in biz.profile
-                          embed(src="/uploads/"+prof.filename, width='50%', height='300px')
+                        embed(src="/uploads/"+biz.profile.filename, width='50%', height='300px')
               .col-md-6
                 .form-group
                   fieldset.gllpLatlonPicker

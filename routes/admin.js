@@ -742,6 +742,16 @@ router.get('/adverts/approve/:id', role.auth, function(req, res){
   });
 });
 
+router.get('/adverts/confirm/:id', role.auth, function(req, res){
+  Advert.findById(req.params.id)
+  .then(function(d){
+    d.confirmation = true;
+    d.save(function(err){
+      res.redirect('/admin/adverts');
+    });
+  });
+});
+
 /***************** COUPONS ******************************/
 
 router.get('/coupons', role.auth, function(req, res){

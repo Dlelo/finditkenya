@@ -14,6 +14,7 @@ const advertiseSchema = new Schema({
 		paid: Boolean,
 		date: Date,
 		approved: Boolean,
+		confirmation: Boolean,
 		type: String
 });
 

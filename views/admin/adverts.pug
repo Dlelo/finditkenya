@@ -45,7 +45,11 @@ block content
                     =ad.approved
                   td
                     span.text-info
-                      a(href="/admin/adverts/approve/"+ad.id, onclick="return confirm('Are you sure you want to activate this ad?')", title="Approve Category")
+                      a(href="/admin/adverts/confirm/"+ad.id, onclick="return confirm('Are you sure you want to Confirm this ad?')", title="Confirm Ad")
+                        i.fa.fa-check.fa-fw(aria-hidden='true')
+                  td
+                    span.text-info
+                      a(href="/admin/adverts/approve/"+ad.id, onclick="return confirm('Are you sure you want to activate this ad?')", title="Approve Ad")
                         i.fa.fa-check.fa-fw(aria-hidden='true')
                   //td
                     span.text-info

@@ -4923,20 +4923,6 @@ width: 100%
 .container-ad .message-body p {
   margin: 0;
   color:#fff;
-  animation-name: slidein;
-  animation-iteration-count: infinite;
-}
-
-@keyframes slidein {
-  from {
-    margin-left: 100%;
-    width: 300%; 
-  }
-
-  to {
-    margin-left: 0%;
-    width: 100%;
-  }
 }
 
 #ad1{

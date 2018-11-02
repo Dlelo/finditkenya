@@ -459,10 +459,13 @@ block content
                 marker.info = new google.maps.InfoWindow({
                   content: '<b>'+ biz.name +'</b> <p>'+biz.subcategory+'</p>'
                 });
-
+                
                 google.maps.event.addListener(marker, 'click', function() {
                   marker.info.open(map, marker);
                 });
+
+                google.maps.event.addDomListener(window, 'load', getLocation);
+
               }
               
             });

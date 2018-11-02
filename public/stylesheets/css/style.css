@@ -4923,10 +4923,12 @@ width: 100%
 .container-ad .message-body p {
   margin: 0;
   color:#fff;
+}
+/*
   animation-duration: 10s;
   animation-name: slidein;
   animation-iteration-count: infinite;
-}
+
 
 @keyframes slidein {
   from {
@@ -4939,6 +4941,7 @@ width: 100%
     width: 100%;
   }
 }
+*/
 
 #ad1{
 background-image: url("/images/categoriesAdPage.png");
@@ -5003,6 +5006,8 @@ width: 100%
 .container-ad1 .message-body p {
   margin: 0;
   color:#fff;
+}
+/*
   animation-duration: 10s;
   animation-name: slidein;
   animation-iteration-count: infinite;
@@ -5019,8 +5024,9 @@ width: 100%
     width: 100%;
   }
 }
+*/
 .ad-row{
 	box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12); 
 	margin-top:5rem;
-}*/
+}
 

@@ -413,87 +413,84 @@ block content
                   button.button.btn.btn-danger.form-control(type='submit') Submit Review                
           
       script.
-        window.onload = function(){
-          // Note: This example requires that you consent to location sharing when
-          // prompted by your browser. If you see the error "The Geolocation service
-          // failed.", it means you probably did not give permission for the browser to
-          // locate you.
-          var map, infoWindow;
-          function initMap() {
-            infoWindow = new google.maps.InfoWindow;
-            // Try HTML5 geolocation.
-            if (navigator.geolocation) {
-              navigator.geolocation.getCurrentPosition(function(position) {
-              
-              var pos = {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
-              };
+        // Note: This example requires that you consent to location sharing when
+        // prompted by your browser. If you see the error "The Geolocation service
+        // failed.", it means you probably did not give permission for the browser to
+        // locate you.
+        var map, infoWindow;
+        function initMap() {
+          infoWindow = new google.maps.InfoWindow;
+          // Try HTML5 geolocation.
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
 
-              map = new google.maps.Map(document.getElementById('mappy'), {
-                center: pos,
-                zoom: 11
-              });
+            map = new google.maps.Map(document.getElementById('mappy'), {
+              center: pos,
+              zoom: 11
+            });
 
-              var marker = new google.maps.Marker({
-                position: pos,
-                title: 'My Location',
-                icon: 'https://findit.ke/img/bluegoogle.png',
-                map: map
-              });
-              google.maps.event.trigger(map, "resize");
-              var branches = !{JSON.stringify(branches)};
-              console.log(branches);
-              branches.forEach(function(biz) {
-                if(typeof biz.map === 'undefined' || biz.map === null){
-                  
-                }else{
-                  var bizpos = {
-                    lat: parseFloat(biz.map.lati),
-                    lng: parseFloat(biz.map.long)
-                  };
-                  var marker = new google.maps.Marker({
-                    position: bizpos,
-                    title: biz.name,
-                    animation: google.maps.Animation.DROP,
-                    map: map
-                  });
-                  marker.info = new google.maps.InfoWindow({
-                    content: '<b>'+ biz.name +'</b> <p>'+biz.subcategory+'</p>'
-                  });
-                  
-                  google.maps.event.addListener(marker, 'click', function() {
-                    marker.info.open(map, marker);
-                  });
-
-                }
+            var marker = new google.maps.Marker({
+              position: pos,
+              title: 'My Location',
+              icon: 'https://findit.ke/img/bluegoogle.png',
+              map: map
+            });
+            google.maps.event.trigger(map, "resize");
+            var branches = !{JSON.stringify(branches)};
+            console.log(branches);
+            branches.forEach(function(biz) {
+              if(typeof biz.map === 'undefined' || biz.map === null){
                 
-              });
+              }else{
+                var bizpos = {
+                  lat: parseFloat(biz.map.lati),
+                  lng: parseFloat(biz.map.long)
+                };
+                var marker = new google.maps.Marker({
+                  position: bizpos,
+                  title: biz.name,
+                  animation: google.maps.Animation.DROP,
+                  map: map
+                });
+                marker.info = new google.maps.InfoWindow({
+                  content: '<b>'+ biz.name +'</b> <p>'+biz.subcategory+'</p>'
+                });
+                
+                google.maps.event.addListener(marker, 'click', function() {
+                  marker.info.open(map, marker);
+                });
 
-              function toggleBounce() {
-                if (marker.getAnimation() !== null) {
-                  marker.setAnimation(null);
-                } else {
-                  marker.setAnimation(google.maps.Animation.BOUNCE);
-                }
               }
               
-              // Create markers.
-              
-              infoWindow.open(map);
-              map.setCenter(pos);
-              }, function() {
-                handleLocationError(true, infoWindow, map.getCenter());
-              });
+            });
+
+            function toggleBounce() {
+              if (marker.getAnimation() !== null) {
+                marker.setAnimation(null);
               } else {
-                // Browser doesn't support Geolocation
-                handleLocationError(false, infoWindow, map.getCenter());
+                marker.setAnimation(google.maps.Animation.BOUNCE);
               }
-          }
-          function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-            infoWindow.setPosition(pos);
-            infoWindow.setContent(browserHasGeolocation ? 'Error: The Geolocation service failed.' : 'Error: Your browser doesnt support geolocation.');
+            }
+            
+            // Create markers.
+            
             infoWindow.open(map);
-          }
+            map.setCenter(pos);
+            }, function() {
+              handleLocationError(true, infoWindow, map.getCenter());
+            });
+            } else {
+              // Browser doesn't support Geolocation
+              handleLocationError(false, infoWindow, map.getCenter());
+            }
+        }
+        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+          infoWindow.setPosition(pos);
+          infoWindow.setContent(browserHasGeolocation ? 'Error: The Geolocation service failed.' : 'Error: Your browser doesnt support geolocation.');
+          infoWindow.open(map);
         }
       script(async, defer, src='https://maps.googleapis.com/maps/api/js?key=AIzaSyC9MX39yDkMJn6rjWi6vt4Rens5u_cVBQE&callback=initMap&zoom=11')

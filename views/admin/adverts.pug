@@ -19,10 +19,11 @@ block content
                 th PHOTO
                 th PAID
                 th PRICE
-                th DATE
-                th TYPE
-                th APPROVED
-                th CONFIRMED
+                th AD TYPE
+                th CREATED DATE
+                th STATUS
+                th START DATE
+                th EXPIRY DATE
                 th ACTIONS
                 //th START
                 //th EXPIRY
@@ -32,31 +33,41 @@ block content
                 tr
                   td #{i+1}
                   td
-                    img(src="/uploads/thumbs/adverts/"+ad.photo style="width:150px; height:150px")
+                    img(src="/uploads/thumbs/adverts/"+ad.photo style="width:100px; height:100px")
                   td 
                     if(ad.paid)
                        span(style="color:red") Paid
                   td.txt-oflo 
-                    =ad.price 
-                  td.txt-oflo 
-                    =ad.date 
+                    =ad.price  
                   td.txt-oflo 
                     =ad.type 
+                  td.txt-oflo 
+                    =ad.date
                   td.txt-info 
-                    =ad.approved
+                    if(ad.approved == 'true')
+                      span(style="color:#5cb85c")
+                        | Approved
+                    else
+                      span(style="color:#c00000")
+                        | Waiting approval
                   td.txt-info 
                     =ad.confirmation
+                  td.txt-oflo 
+                    =ad.date
+                  td.txt-oflo 
+                    =ad.date
                   td
-                    span.text-info
+                    //span.text-info
                       a(href="/admin/adverts/confirm/"+ad.id, onclick="return confirm('Are you sure you want to Confirm this ad?')", title="Confirm Ad")
                         i.fa.fa-check.fa-fw(aria-hidden='true')
                     span.text-info
                       a(href="/admin/adverts/approve/"+ad.id, onclick="return confirm('Are you sure you want to Approve ad?')", title="Approve Ad")
-                        i.fa.fa-check-square-o(aria-hidden='true')    
+                        i.fa.fa-check-square-o(aria-hidden='true')
+                    span.text-info
+                      a(href="/admin/adverts/edit/"+ad.id, title="Edit Ad")
+                        i.fa.fa-pencil(aria-hidden='true')    
                     span.text-info
                       a(href="/admin/advert/delete/"+ad.id, onclick="return confirm('Are you sure you want to Delete this ad?')", title="Delete")
                         i.fa.fa-trash.fa-fw(aria-hidden='true')
-                  //td
-                    span.text-info
-                      =ad.date
+                  
               

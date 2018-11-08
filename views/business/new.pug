@@ -18,7 +18,6 @@ block content
                 textarea#keywords.form-control-form(name='keywords',placeholder="Insert your 'KEYWORDS' and separate them with a comma (NOTE: Keywords are words and phrases that define your business e.g. shoes, men shoes, shoes in Kenya )")
                 span.spnCharLeft
             .form-group
-              .row
                 .col-sm-6
                   select#city.form-control-form(name='city' required)
                     option(data-icon='glyphicon glyphicon-globe', value='Nairobi') Nairobi
@@ -37,20 +36,21 @@ block content
                     option(data-icon='glyphicon glyphicon-globe', value='Machakos') Machakos 
                     option(data-icon='glyphicon glyphicon-globe', value='Nyahururu') Nyahururu
                     option(data-icon='glyphicon glyphicon-globe', value='Malindi') Malindi      
+                
                 .col-sm-6
-                  input#map.form-control-form(type='text', name='phone', placeholder='Phone', required)
+                  input.form-control-form(type='text', name='phone', placeholder='Phone', required)
                 .col-sm-6
-                  input#map.form-control-form(type='text', name='website', placeholder='Website')
+                  input.form-control-form(type='text', name='website', placeholder='Website')
                 .col-sm-6
-                  input#map.form-control-form(type='text', name='email', placeholder='Email')            
+                  input.form-control-form(type='text', name='email', placeholder='Email')            
                 .col-sm-6
-                  input#map.form-control-form(type='text', name='deliverylink', placeholder='Delivery or Takeaway Link')
+                  input.form-control-form(type='text', name='deliverylink', placeholder='Delivery or Takeaway Link')
                 .col-sm-6
-                  input#map.form-control-form(type='text', name='bookinglink', placeholder='Booking or Reservation Link')
+                  input.form-control-form(type='text', name='bookinglink', placeholder='Booking or Reservation Link')
                 .col-sm-6
-                  input#map.form-control-form(type='text', name='street', placeholder='Street')
+                  input.form-control-form(type='text', name='street', placeholder='Street')
                 .col-sm-6
-                  input#map.form-control-form(type='text', name='building', placeholder='Building')
+                  input.form-control-form(type='text', name='building', placeholder='Building')
                 .col-sm-6
                   select.form-control-form(name='category', data-selected-text-format='count > 5', required)
                     option(data-icon='glyphicon-gift', value='business') Business
@@ -233,15 +233,15 @@ block content
               .form-group
                 .row
                   .col-sm-6
-                    input#map.form-control-form(type='text', name='youtube', placeholder='youtube url')
+                    input.form-control-form(type='text', name='youtube', placeholder='youtube url')
                   .col-sm-6
-                    input#map.form-control-form(type='text', name='facebook', placeholder='facebook Url')
+                    input.form-control-form(type='text', name='facebook', placeholder='facebook Url')
                   .col-sm-6
-                    input#map.form-control-form(type='text', name='twitter', placeholder='twitter Url')
+                    input.form-control-form(type='text', name='twitter', placeholder='twitter Url')
                   .col-sm-6
-                    input#map.form-control-form(type='text', name='instagram', placeholder='Instagram Url')
+                    input.form-control-form(type='text', name='instagram', placeholder='Instagram Url')
                   .col-sm-6
-                    input#map.form-control-form(type='text', name='linkedin', placeholder='linkedin Url')
+                    input.form-control-form(type='text', name='linkedin', placeholder='linkedin Url')
                     if(categories.pendingstatus)
                       input#map.form-control-form(type='hidden', name='pending', value='true')
                     if(categories.packagepaid)

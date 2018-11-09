@@ -1713,6 +1713,9 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 568px) {
+	.pat-space{
+	padding-right: 0 !important;
+    }
 	.category-zindex {
          z-index: 80 !important;
      }
@@ -1765,6 +1768,9 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 480px) {
+	.pat-space{
+	padding-right: 0 !important;
+    }
 	.category-zindex {
          z-index: 80 !important;
      }
@@ -1846,6 +1852,9 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 414px) {
+	.pat-space{
+	padding-right: 0 !important;
+    }
 	.category-zindex {
          z-index: 80 !important;
      }
@@ -1959,6 +1968,10 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 375px){
+	.pat-space{
+	padding-right: 0 !important;
+    }
+
 	.container-ad .arrow{
 		display:none;
 	}
@@ -2006,6 +2019,9 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 320px) {
+	.pat-space{
+	padding-right: 0 !important;
+    }
 	.container-ad .arrow{
 		display:none;
 	}
@@ -5009,4 +5025,7 @@ width: 100%
 }
 #nav{
 	text-align: center !important;
+}
+.pat-space{
+	padding-right: 0.2em;
 }

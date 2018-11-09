@@ -4878,7 +4878,8 @@ background-repeat: no-repeat;
 opacity: 0.8;
 filter: alpha(opacity=80); /* For IE8 and earlier */
 height: 25rem;
-width: 100%
+width: 100%;
+background-size: cover;
 }
 /* Message box starts here */
 .container-ad {
@@ -4944,7 +4945,8 @@ background-repeat: no-repeat;
 opacity: 0.8;
 filter: alpha(opacity=80); /* For IE8 and earlier */
 height: 30rem;
-width: 100%
+width: 100%;
+background-size: cover;
 }
 /* Message box starts here */
 .container-ad1 {

@@ -188,6 +188,8 @@ html(lang='en')
                   | Error 404          
           .center.p-10
             a.btn.btn-info.btn-block.waves-effect.waves-light(href='/business/freeadd') Add More Business
+          .center.p-10  
+            a.btn.btn-info.btn-block.waves-effect.waves-light(href='/product/new') Add Products
           
           if(user.role == 1)
             .center.p-10
@@ -231,10 +233,10 @@ html(lang='en')
             .col-lg-10.col-sm-8.col-md-8.col-xs-12                
               ul.nav.pull-right.text-right.addbusiness
                 li(style="float: left;")
-                      a(href='/product/new')
-                        span.fa.fa-suitcase.text-default.glyph
-                        strong
-                          |  Add Product
+                  a(href='/product/new')
+                    span.fa.fa-suitcase.text-default.glyph
+                    strong
+                      |  Add Product
                 if(user.role == 1)
                   li(style="float: left;")
                     a(href='/business/freeadd')

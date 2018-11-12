@@ -1,257 +1,188 @@
 doctype html
 html
-head
-  meta(charset="utf-8")
-  title= title
-  meta(name="viewport" content="width=device-width, initial-scale=1")
-  meta(name="description" content=description)
-  meta(name="keywords" content=keywords)
+  head
+    meta(charset="utf-8")
+    title= title
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    meta(name="description" content=description)
+    meta(name="keywords" content=keywords)
 
-  meta(name="google-site-verification", content="CoXsTMnoIpW_aQqFyEqaFZ4cKbYSrSwUXQca9u_6mMg")
-  link(href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800', rel='stylesheet')
-  link(href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900', rel='stylesheet')
-  script(src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.0/fuse.min.js")
-  link(rel='apple-touch-icon', href='apple-touch-icon.png')
- 
-  //custom theme files
-  link(href="/stylesheets/css/bootstrap.css" type="text/css" rel="stylesheet" media="all")
-  link(href="/stylesheets/css/style.css" type="text/css" rel="stylesheet" media="all")
+    meta(name="google-site-verification", content="CoXsTMnoIpW_aQqFyEqaFZ4cKbYSrSwUXQca9u_6mMg")
+    link(href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800', rel='stylesheet')
+    link(href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900', rel='stylesheet')
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.0/fuse.min.js")
+    link(rel='apple-touch-icon', href='apple-touch-icon.png')
   
-  
-
-  //Site favicon
-  link(rel="icon" type="image/png" sizes="32x32" href="/img/favicon.png")
-  //site css
-  link(href="/stylesheets/css/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css" rel="stylesheet")
-  link(href="/stylesheets/css/fontawesome-all.min.css" rel="stylesheet")
-  //star rating
-  link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
-  //online-fonts
-  link(href="//fonts.googleapis.com/css?family=Josefin+Sans:100,100i,300,300i,400,400i,600,600i,700,700i" rel="stylesheet")
-  script(src="/javascripts/jquery-3.3.1.min.js") 
-  //selector css
-  //link(rel='stylesheet', href='/stylesheets/css/bootstrap-select.min.css')
-
-  link(rel='stylesheet', href='/stylesheets/lightbox.css')
-  //link(rel='stylesheet', href='/stylesheets/bootstrap-select.min.css')
-  link(rel='stylesheet', href='/stylesheets/easy-autocomplete.min.css')
-  link(rel='stylesheet', href='/stylesheets/easy-autocomplete.themes.min.css')
-  link(rel='stylesheet', href='/stylesheets/jquery-gmaps-latlon-picker.css')
-  link(rel='stylesheet', href='/stylesheets/star-rating.min.css')
-  link(rel='stylesheet', href='/stylesheets/lightgallery.min.css')
-  link(href="/stylesheets/css/bootstrap-multiselect.css" type="text/css" rel="stylesheet" media="all")
-
-  //added css from layout
-  link(rel='stylesheet', href='/stylesheets/fontAwesome.css')
-  //link(rel='stylesheet', href='/stylesheets/hero-slider.css')
-  link(rel='stylesheet', href='/stylesheets/owl.carousel.min.css')
-  link(rel='stylesheet', href='/stylesheets/owl.theme.default.min.css')
-  //link(rel='stylesheet', href='/stylesheets/templatemo-style.css')
-  link(rel='stylesheet', href='/stylesheets/lightbox.css')
-  //old selector css//link(rel='stylesheet', href='/stylesheets/bootstrap-select.min.css')
-  link(rel='stylesheet', href='/stylesheets/bootstrap-datetimepicker.min.css')
-  
-
-  
-  
-  
-  
-  script(type='text/javascript').
-      addEventListener("load", function () {
-        setTimeout(hideURLbar, 0);
-        }, false)
-        function hideURLbar() {
-            window.scrollTo(0, 1);
-        }
-  //custom template files
-body
-  ul.navbar-nav.ml-lg-auto.text-center
-  //banner - only on homepage
-  div.container-fluid
-    header
-      //header before navigation items
-      nav#homenavbar.navbar.navbar-expand-lg.navbar-light.bg-gradient-secondary
-        div(style="display:flex !important; flex-direction:row !important; width: 100% !important;")
-          div(style="flex-grow:0.1 !important")
-            a.navbar-brand.text-white(href="/")
-              img.img-logo(src="/img/findit-red-logo.png").img-fluid
-          div(style="flex-grow:0.1 !important")
-            #showSearch
-              form.form-class(method='get', action='/search')
-                div.input-group
-                  input.search2.form-control-lg(type="text" placeholder="",style="width:100% !important" ,name='search', autofocus)
-          div(style="flex-grow:0.1 !important")      
-            a(href="/coupons")
-              button.btn.btn-light.w3ls-btn.coupons-btn.flash-button#coupbtn(type="button")
-                span.fas.fa-gift.coupons-text-color
-                | View deals
-          div(style="flex-grow:0.5 !important")
-            //site navigation 
-            button.navbar-toggler.ml-md-auto(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-              aria-expanded="false" aria-label="Toggle navigation")
-                span.navbar-toggler-icon
-            div#navbarSupportedContent.collapse.navbar-collapse
-            
-              ul.nav.navbar-nav.ml-lg-auto.nav.justify-content-end(style="float:right")
-                
-                if loggedin
-                  li.nav-item.mr-3                  
-                    a(href='/dashboard')  
-                      span.fas.fa-user.fas-menu
-                      strong
-                      |  View Profile          
-                if loggedin                
-                  li.nav-item.mr-3
-                    a(href='/logout') 
-                      span.fas.fa-sign-out-alt.fas-menu
-                      strong
-                      |  Logout
-                else
-                  li.nav-item.mr-3
-                    a(href='/login')
-                      button.btn.btn-primary.w3ls-btn
-                        strong
-                          | Login
-                  li.nav-item.mr-3
-                  a(href="/register")
-                    button.btn.btn-outline-primary.w3ls-btn.findit-blue
-                      strong
-                      |  Sign Up
-                    
-        
-   
-    //display errors
-    .errors
-      if errors
-        each error in errors
-          .alert.xxx-error.alert-danger
-            = error
-      
-      if message
-        .alert.xxx-error.alert-info
-          = message
-      if success_msg.length
-        .alert.xxx-error.alert-success 
-          = success_msg
-      if error_msg.length
-        .alert.xxx-error.alert-danger 
-          = error_msg
-      if error.length
-        .alert.xxx-error.alert-danger 
-          = error
-  block content
-  //footer
-  div.container-fluid
+    //custom theme files
+    link(href="/stylesheets/css/bootstrap.css" type="text/css" rel="stylesheet" media="all")
+    link(href="/stylesheets/css/style.css" type="text/css" rel="stylesheet" media="all")
     
-    div.row.text-center.footer-style
-      .col-md-4
-        .terms-policy.footer-text
-              ul
-                li
-                  a.footer-text(href='https://www.instagram.com/finditkenya/?hl=en', target='_blank', class="fa-layers fa-2x")
-                    i.list-social.fab.fa-facebook-f
-                li
-                  a.footer-text(href='https://twitter.com/findit254?lang=en', target='_blank', class="fa-layers fa-2x")
-                    i.list-social.fab.fa-twitter 
-                li
-                  a.footer-text(href='https://www.instagram.com/finditkenya/?hl=en', target='_blank', class="fa-layers fa-2x")
-                    i.list-social.fab.fa-instagram
-      .col-md-4
-         .terms-policy.footer-text
-              ul
-                li
-                  a.footer-text(href='/terms-and-conditions', target='_blank')
-                    |  Terms and Conditions
-                li
-                  a.footer-text(href='/privacy-policy', target='_blank')
-                    |  Privacy Policy
-      .col-md-4
-        .terms-policy.footer-text
-              ul
-                li
-                  a.footer-text(href="/coupons", target='_parent')
-                    |  View Deals
-                li
-                  a.footer-text(href='/business/newpackage', target='_parent')
-                    |  Pricing
-                li
-                  a.footer-text(href='https://lookfindkenya.wordpress.com/', target='_blank')
-                    |  Blog
-                
-    .col-md-12.col-sm-12.text-center.footer-style     
-        p
-          | © 2018 Find it Kenya. All rights reserved | FinditKe
+    
+
+    //Site favicon
+    link(rel="icon" type="image/png" sizes="32x32" href="/img/favicon.png")
+    //site css
+    link(href="/stylesheets/css/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css" rel="stylesheet")
+    link(href="/stylesheets/css/fontawesome-all.min.css" rel="stylesheet")
+    //star rating
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+    //online-fonts
+    link(href="//fonts.googleapis.com/css?family=Josefin+Sans:100,100i,300,300i,400,400i,600,600i,700,700i" rel="stylesheet")
+    script(src="/javascripts/jquery-3.3.1.min.js") 
+    //selector css
+    //link(rel='stylesheet', href='/stylesheets/css/bootstrap-select.min.css')
+
+    link(rel='stylesheet', href='/stylesheets/lightbox.css')
+    //link(rel='stylesheet', href='/stylesheets/bootstrap-select.min.css')
+    link(rel='stylesheet', href='/stylesheets/easy-autocomplete.min.css')
+    link(rel='stylesheet', href='/stylesheets/easy-autocomplete.themes.min.css')
+    link(rel='stylesheet', href='/stylesheets/jquery-gmaps-latlon-picker.css')
+    link(rel='stylesheet', href='/stylesheets/star-rating.min.css')
+    link(rel='stylesheet', href='/stylesheets/lightgallery.min.css')
+    link(href="/stylesheets/css/bootstrap-multiselect.css" type="text/css" rel="stylesheet" media="all")
+
+    //added css from layout
+    link(rel='stylesheet', href='/stylesheets/fontAwesome.css')
+    //link(rel='stylesheet', href='/stylesheets/hero-slider.css')
+    link(rel='stylesheet', href='/stylesheets/owl.carousel.min.css')
+    link(rel='stylesheet', href='/stylesheets/owl.theme.default.min.css')
+    //link(rel='stylesheet', href='/stylesheets/templatemo-style.css')
+    link(rel='stylesheet', href='/stylesheets/lightbox.css')
+    //old selector css//link(rel='stylesheet', href='/stylesheets/bootstrap-select.min.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap-datetimepicker.min.css')
+    
+
+    
+    
+    
+    
+    script(type='text/javascript').
+        addEventListener("load", function () {
+          setTimeout(hideURLbar, 0);
+          }, false)
+          function hideURLbar() {
+              window.scrollTo(0, 1);
+          }
+    //custom template files
+  body
+    ul.navbar-nav.ml-lg-auto.text-center
+    //banner - only on homepage
+    div.container-fluid
+      header
+        //header before navigation items
+        nav#homenavbar.navbar.navbar-expand-lg.navbar-light.bg-gradient-secondary
+          div(style="display:flex !important; flex-direction:row !important; width: 100% !important;")
+            div(style="flex-grow:0.1 !important")
+              a.navbar-brand.text-white(href="/")
+                img.img-logo(src="/img/findit-red-logo.png").img-fluid
+            div(style="flex-grow:0.1 !important")
+              #showSearch
+                form.form-class(method='get', action='/search')
+                  div.input-group
+                    input.search2.form-control-lg(type="text" placeholder="",style="width:100% !important" ,name='search', autofocus)
+            div(style="flex-grow:0.1 !important")      
+              a(href="/coupons")
+                button.btn.btn-light.w3ls-btn.coupons-btn.flash-button#coupbtn(type="button")
+                  span.fas.fa-gift.coupons-text-color
+                  | View deals
+            div(style="flex-grow:0.5 !important")
+              //site navigation 
+              button.navbar-toggler.ml-md-auto(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation")
+                  span.navbar-toggler-icon
+              div#navbarSupportedContent.collapse.navbar-collapse
+              
+                ul.nav.navbar-nav.ml-lg-auto.nav.justify-content-end(style="float:right")
+                  
+                  if loggedin
+                    li.nav-item.mr-3                  
+                      a(href='/dashboard')  
+                        span.fas.fa-user.fas-menu
+                        strong
+                        |  View Profile          
+                  if loggedin                
+                    li.nav-item.mr-3
+                      a(href='/logout') 
+                        span.fas.fa-sign-out-alt.fas-menu
+                        strong
+                        |  Logout
+                  else
+                    li.nav-item.mr-3
+                      a(href='/login')
+                        button.btn.btn-primary.w3ls-btn
+                          strong
+                            | Login
+                    li.nav-item.mr-3
+                    a(href="/register")
+                      button.btn.btn-outline-primary.w3ls-btn.findit-blue
+                        strong
+                        |  Sign Up
+                      
+          
+    
+      //display errors
+      .errors
+        if errors
+          each error in errors
+            .alert.xxx-error.alert-danger
+              = error
+        
+        if message
+          .alert.xxx-error.alert-info
+            = message
+        if success_msg.length
+          .alert.xxx-error.alert-success 
+            = success_msg
+        if error_msg.length
+          .alert.xxx-error.alert-danger 
+            = error_msg
+        if error.length
+          .alert.xxx-error.alert-danger 
+            = error
+    block content
+    //footer
+    div.container-fluid
+      
+      div.row.text-center.footer-style
+        .col-md-4
+          .terms-policy.footer-text
+                ul
+                  li
+                    a.footer-text(href='https://www.instagram.com/finditkenya/?hl=en', target='_blank', class="fa-layers fa-2x")
+                      i.list-social.fab.fa-facebook-f
+                  li
+                    a.footer-text(href='https://twitter.com/findit254?lang=en', target='_blank', class="fa-layers fa-2x")
+                      i.list-social.fab.fa-twitter 
+                  li
+                    a.footer-text(href='https://www.instagram.com/finditkenya/?hl=en', target='_blank', class="fa-layers fa-2x")
+                      i.list-social.fab.fa-instagram
+        .col-md-4
+          .terms-policy.footer-text
+                ul
+                  li
+                    a.footer-text(href='/terms-and-conditions', target='_blank')
+                      |  Terms and Conditions
+                  li
+                    a.footer-text(href='/privacy-policy', target='_blank')
+                      |  Privacy Policy
+        .col-md-4
+          .terms-policy.footer-text
+                ul
+                  li
+                    a.footer-text(href="/coupons", target='_parent')
+                      |  View Deals
+                  li
+                    a.footer-text(href='/business/newpackage', target='_parent')
+                      |  Pricing
+                  li
+                    a.footer-text(href='https://lookfindkenya.wordpress.com/', target='_blank')
+                      |  Blog
+                  
+      .col-md-12.col-sm-12.text-center.footer-style     
+          p
+            | © 2018 Find it Kenya. All rights reserved | FinditKe
   //registration and login form
-  div(tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true").modal.fade#exampleModal
-    div(role="document").modal-dialog
-      div.modal-content
-        div.modal-header
-          h5#exampleModalLabel.modal-title
-            | Login
-          button(type="button" data-dismiss="modal" aria-label="Close").close
-            span(aria-hidden="true")
-               | &times;
-        div.modal-body
-          form(action="#" method="post")
-            div.form-group
-              label.col-form-label(for="recipient-name")
-                | Username
-              input.form-control#recipient-name(type="text" placeholder="Username" name="Name" required="")
-            div.form-group
-              label.col-form-label(for="passwords")
-                | Password
-              input.form-control#recipient-name(type="password" placeholder="Password" name="password" required="")
-            div.right-w3l
-              input.form-control(type="submit" value="Log in")
-            div.row.sub-w3l.my-3
-              div.col.sub-agile
-                input.brand1(type="checkbox" value="")
-                label.text-white(for="brand1")
-                  span
-                    | Remember me?
-              div.col.forgot-w3l.text-right
-                a.text-white(href="#")
-                  | Forgot Password?
-            p.text-center.dont-do.text-white
-              | Don't have an account?
-              a.text-white(ref="#" data-toggle="modal" data-target="#exampleModal1")
-                | Register
-  div.modal.fade#exampleModal1(tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true")
-    div.modal-dialog(role="document")
-      div.modal-content
-        div.modal-header
-          h5.modal-title(id="exampleModalLabel")
-              | Login
-              div.form-group
-          button.close(type="button" data-dismiss="modal" aria-label="Close")
-              span(aria-hidden="true")
-               | &times;
-        div.modal-body
-           form(action="#" method="post")
-              div.form-group
-                label.col-form-label(for="recipient-name")
-                  | User Name
-                input.form-control#recipient-rname(type="text" class="form-control" placeholder=" " name="Name" required="")
-              div.form-group
-                label.col-form-label(for="recipient-email")
-                  | Email
-                input.form-control#recipient-email(type="email" placeholder=" " name="Email"  required="")
-              div.form-group
-                label.col-form-label(for="password1")
-                  | Password
-                input.form-control#password1(type="password" placeholder=" " name="Password" required="")
-              div.form-group
-                label.col-form-label(for="password2")
-                input.form-control#password2(type="password" placeholder=" " name="Confirm Password" required="")
-              div.sub-w3l
-              div.sub-agile
-                input#brand2(type="checkbox" value="")
-                label.mb-3(for="brand2")
-                 span
-                   | I Accept to the Terms & Conditions
-              div.right-w3l
-                input.form-control(type="submit" value="Register")
-                        
+
   
 <!--bootstrap 4 javascript-->
 //script(src='/javascripts/bootstrapjs/BsMultiSelect.min.js')

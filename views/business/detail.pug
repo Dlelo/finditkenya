@@ -327,15 +327,16 @@ block content
                       =bizna.name
                     p
                       =bizna.subcategory
-      .row(style="margin-bottom:2rem")
-        if biz.youtube
+      if biz.youtube
+        .row(style="margin-bottom:2rem")
           .col-md-10.text-center
             h3.text-center
               | Youtube
             p
               //iframe(width='100%', height='315', src='https://'+biz.youtube, frameborder='0', allow='autoplay; encrypted-media', allowfullscreen='')
               iframe(width='100%', height='315', src=biz.youtube, frameborder='1', allow='autoplay; encrypted-media', allowfullscreen='')
-      .row(style="margin-bottom:2rem")    
+      if biz.reviews
+        .row(style="margin-bottom:2rem")    
           .col-md-12
             h3.text-center
               | Reviews

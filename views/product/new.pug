@@ -5,7 +5,7 @@ block content
     .container-fluid.container-margin-top.container-fluidpadding
       .container
         h3.text-center
-          | Create Product
+          | Add Product
         form(method='post', action='/product/create',enctype='multipart/form-data')
           .form-group
              .col-sm-12
@@ -15,55 +15,52 @@ block content
                 textarea#descriptionw.form-control-form(name='description',type='text',placeholder="Description of Product" maxlength="50") 
                   | Describe the product in a few words
           .form-group
-           .row
-            .col-sm-3
+            .col-sm-1
               label(for='photo') Cover Photo            
-            .col-sm-4
-              input#photod.form-control(type='file', name='photo', placeholder='photo',required) 
-            .col-sm-5
+            .col-sm-2
+              input#photod.form-control.form(type='file', name='photo', placeholder='photo',required) 
+            .col-sm-3
               #photopreview
           .form-group
-            .row
-              .col-sm-3
-                label(for='gallery') Gallery              
-              .col-sm-4
-                input#gallery.form-control-form.imagegallery(type='file', name='gallery', placeholder='gallery', multiple='')
-              .col-sm-5
-                #gallerypreview   
+            .col-sm-1
+              label(for='gallery') Gallery              
+            .col-sm-2
+              input#gallery.form-control-form.imagegallery(type='file', name='gallery', placeholder='gallery', multiple='')
+            .col-sm-3
+              #gallerypreview   
           .form-group
             .col-sm-6
               select.selectpicker.form-control(name='bizid',data-live-search="true")
-                option(data-icon='glyphicon-wrench', value='') -- Select Business --
+                option(data-icon='glyphicon-wrench', value='') Select Business
                 each biz in businesses
                   option(data-icon='glyphicon-gift', value=biz.id) #{biz.name}
           .form-group
             .col-sm-6
               select#cat.selectpicker.form-control.cat(name='cat',data-live-search="true")
-                option(data-icon='glyphicon-wrench', value='') -- Select Category --
+                option(data-icon='glyphicon-wrench', value='')  Select Category 
                 each cat in categories
                   option(data-icon='glyphicon-gift', value=cat.id) #{cat.name}
-          .form-group.input-group.col-sm-6
-            .col-sm-12
-              | Sub Category
-            .col-sm-12
-              select#subcat.selectpicker.form-control.subcat(name='subcat',data-live-search="true",multiple)
-                option(data-icon='glyphicon-wrench', value='') -- Select Sub-Category --
-          .form-group.input-group.col-sm-6
+          .form-group
+            .col-sm-6
+              select#subcat.selectpicker.form-control.subcat(name='subcat', placeholder='Select Sub-Category', data-live-search="true",multiple)
+                option(data-icon='glyphicon-wrench', value='')  Select Sub-Category 
+            .col-sm-6
+              select#minicat.selectpicker.form-control.subcat(name='minicat', placeholder='Select Mini-Category',data-live-search="true",multiple)
+                option(data-icon='glyphicon-wrench', value='')  Select Mini-Category 
+          //.form-group.input-group.col-sm-6
             .col-sm-12
               | Mini Category
             .col-sm-12
               select#minicat.selectpicker.form-control.subcat(name='minicat',data-live-search="true",multiple)
-                option(data-icon='glyphicon-wrench', value='') -- Select Mini-Category --
+                option(data-icon='glyphicon-wrench', value='')  Select Mini-Category 
           .form-group
             .col-sm-6
               input.form-control-form(name='oldprice',type='text', style ="margin-top:12px;",placeholder="Old Price")
-          .form-group
             .col-sm-6
               input.form-control-form(name='price',type='number',style ="margin-top:12px;",placeholder="Price of Product",required)
           .form-group
             .col-sm-6
               input.form-control-form(name='quantity',type='text', style ="margin-top:12px;",placeholder="Quantity of Products",required)
-          .form-group
             .col-sm-6
               .row
                 .col-sm-6(style="padding: 10px")

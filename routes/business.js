@@ -307,6 +307,13 @@ router.get('/subcategory/reorder/:bizid',role.auth,function(req, res, next){
     });
 });
 
+router.get('/viewmore/:id', function(req, res, next){
+  var products = Product.find({bizid: req.params.id});
+  Promise.all([products]).then(values => {
+    res.render('business/viewmore',{products: values[0], title: "View More Products"});
+  });
+});
+
 router.get('/:name',function(req, res, next){
 	res.render('business/new');
 });

@@ -30,11 +30,12 @@ block content
                                       span.list-social.far.fa-check-square  
                                 div.nav   
                                   li.text-center(style="text-align:center")
-                                    each feature in biz.features
-                                      a(href="/subcategory/btn/"+feature)
-                                        strong
-                                          i.fas.fa-tag
-                                          | #{feature} |
+                                    if biz.features
+                                      each feature in biz.features
+                                        a(href="/subcategory/btn/"+feature)
+                                          strong
+                                            i.fas.fa-tag
+                                            | #{feature} |
                                   if(biz.facebook)
                                     a.findit(href="http://"+biz.facebook,target="_blank" class="fa-layers fa-2x")
                                         i.list-social.fab.fa-facebook-f                  

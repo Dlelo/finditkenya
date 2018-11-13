@@ -51,25 +51,25 @@ block content
                       a(href="/product/"+product.slug)
                         .img-wrap
                           img(src='/uploads/product/thumbs/'+product.photo)
-                      figcaption.info-wrap
-                        h6.title.text-dots
-                          =product.name       
-                        div.action-wrap
-                          row.price-wrap
-                            if(product.oldprice)
-                              .col-sm-12
-                                .price-old.strike
-                                  small
-                                    | Was  
-                                    span
-                                      |  KES #{product.oldprice}
-                                .price-new
-                                  small
-                                    | Now  
-                                    span.findit-red
-                                      |  KES #{product.price}  
-                            else
-                                .price-new
-                                  small
-                                    .findit-red
-                                      |  KES #{product.price}
+                        figcaption.info-wrap
+                            h6.title.text-dots
+                            =product.name       
+                            div.action-wrap
+                            row.price-wrap
+                                if(product.oldprice)
+                                .col-sm-12
+                                    .price-old.strike
+                                    small
+                                        | Was  
+                                        span
+                                        |  KES #{product.oldprice}
+                                    .price-new
+                                    small
+                                        | Now  
+                                        span.findit-red
+                                        |  KES #{product.price}  
+                                else
+                                    .price-new
+                                    small
+                                        .findit-red
+                                        |  KES #{product.price}

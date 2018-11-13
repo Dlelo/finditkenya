@@ -193,7 +193,7 @@ router.get('/add/:package',role.auth, function(req, res, next){
 		data.pendingstatus = true;
     //console.log(data);
 		if(req.params.package == "free"){
-			res.redirect('business/freeadd');
+			res.redirect('/business/freeadd');
 		}else{
 			res.render('business/new',{title: "Find It Categories", categories: data});
 		}

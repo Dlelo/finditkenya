@@ -347,19 +347,20 @@ block content
                       | see More Products
         .row
           .owl-carousel.owl-theme
-            each product in products
-              .item.py-2(style="border:none")
-                .card.h-100(style="border:none !important")
-                    img.card-img-top.w-100.product-img-home(src="/img/cups.jpeg" alt="1 slide" style="width: 200px !important; height: 200px !important;")
-                    .card-text
-                      =product.name
-                      if product.oldprice
-                        .price-old.findit-blue.strike
-                          small Was  
-                            span KES #{product.oldprice}
-                      .price-new.findit-red
-                        small Now  
-                          span KES #{product.price}
+            each product, i in products
+              if(i<6)
+                .item.py-2(style="border:none")
+                  .card.h-100(style="border:none !important")
+                      img.card-img-top.w-100.product-img-home(src="/img/cups.jpeg" alt="1 slide" style="width: 200px !important; height: 200px !important;")
+                      .card-text
+                        =product.name
+                        if product.oldprice
+                          .price-old.findit-blue.strike
+                            small Was  
+                              span KES #{product.oldprice}
+                        .price-new.findit-red
+                          small Now  
+                            span KES #{product.price}
       else
          |               
             

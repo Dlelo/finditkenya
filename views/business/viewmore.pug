@@ -1,0 +1,75 @@
+extends ../layout-new
+
+block content
+
+  #home.parallax-content-list.baner-content-listing-biz
+    .container-fluid.container-margin-top
+      #home.parallax-content-list.baner-content-listing-biz
+    .container-fluid.container-margin-top.container-fluidpadding
+      section
+        .row
+          .col-md-12         
+              each product in products
+                .col-md-3.col-product
+                  .col-md-12(id=product.slug,class="productid")
+                    figure.card.card-product
+                      a(href="/product/"+product.slug)
+                        .img-wrap
+                          img(src='/uploads/product/thumbs/'+product.photo)
+                      figcaption.info-wrap
+                        h6.title.text-dots
+                          =product.name       
+                        div.action-wrap
+                          row.price-wrap
+                            if(product.oldprice)
+                              .col-sm-12
+                                .price-old.strike
+                                  small
+                                    | Was  
+                                    span
+                                      |  KES #{product.oldprice}
+                                .price-new
+                                  small
+                                    | Now  
+                                    span.findit-red
+                                      |  KES #{product.price}  
+                            else
+                                .price-new
+                                  small
+                                    .findit-red
+                                      |  KES #{product.price}
+      section
+        .row
+            .col-md-12 
+              | Similar Products  
+        .row
+            .col-md-12 
+              each product in products
+                .col-md-3.col-product
+                  .col-md-12(id=product.slug,class="productid")
+                    figure.card.card-product
+                      a(href="/product/"+product.slug)
+                        .img-wrap
+                          img(src='/uploads/product/thumbs/'+product.photo)
+                      figcaption.info-wrap
+                        h6.title.text-dots
+                          =product.name       
+                        div.action-wrap
+                          row.price-wrap
+                            if(product.oldprice)
+                              .col-sm-12
+                                .price-old.strike
+                                  small
+                                    | Was  
+                                    span
+                                      |  KES #{product.oldprice}
+                                .price-new
+                                  small
+                                    | Now  
+                                    span.findit-red
+                                      |  KES #{product.price}  
+                            else
+                                .price-new
+                                  small
+                                    .findit-red
+                                      |  KES #{product.price}

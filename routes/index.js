@@ -37,6 +37,7 @@ var Analytics = require(__dirname + '/../models/Analytics');
 var Coupons = require(__dirname + '/../models/Coupons');
 var Review = require(__dirname + '/../models/Reviews');
 var Advert = require(__dirname + '/../models/Advert');
+var Product = require(__dirname + '/../models/Product');
 
 var mailer = require('express-mailer');
 
@@ -1680,6 +1681,7 @@ router.get('/biz/:name',function(req, res, next){
 
     //coupons
     var coupons = Coupons.find({bizid: data.id});
+    var products = Product.find({bizid: data.id});
     var categories = Category.find({approved: true}).sort([['order', 1]]);
     //SIMILAR BUSINESSES
     //"author": { "$in": userIds }
@@ -1697,10 +1699,11 @@ router.get('/biz/:name',function(req, res, next){
 
     var branches = Business.find({bizparent: data._id});
 
-    Promise.all([coupons,businesses,categories,branches]).then(values => {
+    Promise.all([coupons,businesses,categories,branches,products]).then(values => {
       var coupons = values[0];
       var businesses = values[1];
       var categories = values[2];
+      var products = values[4];
       if(values[3].length){
         var branches = values[3];
       }else{
@@ -1721,7 +1724,8 @@ router.get('/biz/:name',function(req, res, next){
           keywords: keywords,
           coupons: coupons,
           categories:categories,
-          branches: branches
+          branches: branches,
+          products: products
         });
         //res.end();
       }else{
@@ -1738,7 +1742,8 @@ router.get('/biz/:name',function(req, res, next){
           keywords: keywords,
           coupons: coupons,
           categories:categories,
-          branches: branches
+          branches: branches,
+          products: products
         });
         //res.end();
       }

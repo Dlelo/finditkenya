@@ -162,4 +162,5 @@ router.get('/viewcategories',function(req, res){
   });
 });
 
+
 module.exports = router;

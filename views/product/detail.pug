@@ -6,17 +6,7 @@ block content
       .card-single-product
         if product
           .row
-            //aside.col-sm-1
-              article.gallery-wrap
-                div.img-small-wrap
-                  div.item-gallery
-                    img.img-small-wrap(src="../images/oven.jpeg")
-                  div.item-gallery
-                    img.img-small-wrap(src="../images/oven1.jpeg")
-                  div.item-gallery
-                    img.img-small-wrap(src="../images/oven2.jpeg")
-                  div.item-gallery
-                    img.img-small-wrap(src="../images/oven3.jpeg")
+            
             aside.col-sm-6.border-right 
               article.gallery-wrap 
                 div.img-big-wrap
@@ -24,13 +14,15 @@ block content
                     a(href="#")
                       img.xzoom#xzoom-default(width="500" src='/uploads/product/'+product.photo,  xoriginal='/uploads/product/'+product.photo)
                       div.xzoom-thumbs
-                        a(href="../images/oven.jpeg")
-                          img.xzoom-gallery(width="80" height="80" src="../images/oven.jpeg"  title="The description goes here")
-                        a(href="../images/oven1.jpeg")
+                        if product.gallery
+                          each image in product.gallery
+                        a(href='/uploads/product/'+image.filename)
+                          img.xzoom-gallery(width="80" height="80" src='/uploads/product/thumbs/'+image.filename)
+                        //a(href="../images/oven1.jpeg")
                          img.xzoom-gallery(width="80" height="80" src="../images/oven1.jpeg" title="The description goes here")
-                        a(href="../images/oven2.jpeg")
+                        //a(href="../images/oven2.jpeg")
                          img.xzoom-gallery(width="80" height="80" src="../images/oven2.jpeg" title="The description goes here")
-                        a(href="../images/oven3.jpeg")
+                        //a(href="../images/oven3.jpeg")
                          img.xzoom-gallery(width="80" height="80" src="../images/oven3.jpeg" title="The description goes here") 
                         
             aside.col-sm-6

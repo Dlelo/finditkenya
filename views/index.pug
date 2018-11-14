@@ -254,6 +254,8 @@ block content
                   button.btn.btn-outline-primary(type="button" )
                     if coupon.tagline.length > 30
                       | !{coupon.tagline.substr(0, 27)+ '...'} 
+                    else
+                      =coupons.tagline
   //about
   div.container-fluid
     #about

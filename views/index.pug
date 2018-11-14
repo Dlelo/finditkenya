@@ -252,7 +252,8 @@ block content
                   
                 .div.col-md-12.col-lg-12.col-sm-12.col-xs-12.center-left
                   button.btn.btn-outline-primary(type="button" )
-                    =coupon.tagline 
+                    if coupon.tagline.length > 30
+                      | !{coupon.tagline.substr(0, 27)+ '...'} 
   //about
   div.container-fluid
     #about

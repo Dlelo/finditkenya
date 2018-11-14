@@ -254,8 +254,6 @@ block content
                   button.btn.btn-outline-primary(type="button" )
                     if coupon.tagline.length >= 20
                       | !{coupon.tagline.substr(0, 17)+ '...'} 
-                    else if coupon.tagline.length <= 20
-                      =coupons.tagline
                     else
                       =coupons.tagline
                       

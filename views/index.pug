@@ -252,8 +252,8 @@ block content
                   
                 .div.col-md-12.col-lg-12.col-sm-12.col-xs-12.center-left
                   button.btn.btn-outline-primary(type="button" )
-                    if coupon.tagline.length > 30
-                      | !{coupon.tagline.substr(0, 27)+ '...'} 
+                    if coupon.tagline.length > 20
+                      | !{coupon.tagline.substr(0, 17)+ '...'} 
                     else
                       =coupons.tagline
   //about

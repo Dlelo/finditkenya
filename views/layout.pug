@@ -55,12 +55,11 @@ html
           div(style="flex-grow:0.5 !important")      
             #main-nav.collapse.navbar-collapse
               ul.nav.navbar-nav.navbar-right
-                li
-                  .dropdown.nav-item.mr-3
-                    a.nav-link.dropdown-toggle(href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")    
+                li.dropdown.dropdown-large
+                    a.dropdown-toggle(href="#" data-toggle="dropdown")    
                       strong
                       |  Categories
-                    div.dropdown-menu.dropdown-menu-right.mega-menu(aria-labelledby="navbarDropdown" style="width: -webkit-fill-available;")
+                    ul.dropdown-menu.dropdown-menu-large.row
                       if categories 
                         div.row
                           each category,i in categories

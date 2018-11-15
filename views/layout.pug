@@ -60,7 +60,17 @@ html
                     a.nav-link.dropdown-toggle(href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")    
                       strong
                       |  Categories
-                                        
+                    div.dropdown-menu.dropdown-menu-right.mega-menu(aria-labelledby="navbarDropdown" style="width: -webkit-fill-available;")
+                      if categories 
+                        div.row
+                          each category,i in categories
+                            div.col-md-4.col-sm-12.col-xs-12
+                              a.dropdown-item(href="/category/"+category.name)
+                                  strong.findit-blue
+                                    i.fas.fa-1x(aria-hidden='true', class=category.icon) 
+                                    small.findit-blue
+                                      strong   
+                                        =category.name                  
                 if (loggedin)
                   li                  
                     a(href='/dashboard')  

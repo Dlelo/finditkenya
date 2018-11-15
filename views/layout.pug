@@ -55,7 +55,10 @@ html
           div(style="flex-grow:0.5 !important")      
             #main-nav.collapse.navbar-collapse
               ul.nav.navbar-nav.navbar-right
-
+                li
+                  .dropdown.nav-item.mr-3
+                    a.nav-link.dropdown-toggle(href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")    
+                      strong Categories                  
                 if (loggedin)
                   li                  
                     a(href='/dashboard')  

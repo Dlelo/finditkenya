@@ -338,11 +338,17 @@ router.get('/moment',function(req,res){
 //ADVERTISING
 
 router.get('/advertising',function(req,res){
-    res.render('site/advertising', {title: "Find It: Advertising"});
+    var categories = Category.find({approved: true,group: 'general'}).sort([['order', 1]]);
+    Promise.all([categories]).then(values => {
+      res.render('site/advertising', {title: "Find It: Advertising",categories: values[0]});
+    });
 });
 
 router.get('/advertising/2',function(req,res){
-    res.render('site/advertisingtwo', {title: "Find It: Advertising", type: req.query.type});
+  var categories = Category.find({approved: true,group: 'general'}).sort([['order', 1]]);
+  Promise.all([categories]).then(values => {
+    res.render('site/advertisingtwo', {title: "Find It: Advertising", type: req.query.type,categories: values[0]});
+  });
 });
 
 router.post('/advertising/2', cpUpload, function(req, res){

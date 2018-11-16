@@ -318,5 +318,4 @@ router.get('/:name',function(req, res, next){
 	res.render('business/new');
 });
 
-
 module.exports = router;

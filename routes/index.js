@@ -334,6 +334,13 @@ router.get('/moment',function(req,res){
     console.log(moment('20-01-2012 19:43:00', 'DD-MM-YYYY HH:mm'));
 });
 
+// VIEW ALL CATEGORIES
+router.get('/viewcategories', function (req, res, next) {
+  var categories = Category.find({ approved: true, group: 'general' }).sort([['order', 1]]);
+  Promise.all([categories]).then(values => {
+    res.render('business/viewcategories', { title: "Find It: Categories", categories: values[0] });
+  });
+});
 
 //ADVERTISING
 

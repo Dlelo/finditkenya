@@ -1,13 +1,13 @@
 extends ../layout-new
 block content
   div.container-fluid(style="margin-top:3rem;")
-    div.row#expandcategories( style="display:none; padding-top:5rem; border-top: 1px solid #eee")
+    div.row( style="padding-top:5rem; border-top: 1px solid #eee")
         each category,i in categories
             div.col-md-4.col-sm-12.col-xs-12.morecat
                 a(href="/category/"+category.name)
                     strong
                         i.fas.fa-1x(aria-hidden='true', class=category.icon, class=category.slug ) 
-                        small.site-text-color.small-cart
+                        .site-text-color.small-cart
                             strong   
                               =category.name
                 hr.hr-cat(class=category.slug)
@@ -16,7 +16,7 @@ block content
                         each subcat, i in category.subcategories
                             if(i<5)
                                 li
-                                    small.small-cart
+                                    .small-cart
                                         i(class="fas fa-check-circle" aria-hidden="true" class=category.slug style="margin-right:2px; font-size: 12px;")
                                         a.sub-cat-color(href="/subcategory/sub/"+subcat.name)
                                           =subcat.name

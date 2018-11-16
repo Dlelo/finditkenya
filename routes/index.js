@@ -336,7 +336,10 @@ router.get('/moment',function(req,res){
 
 // VIEW ALL CATEGORIES
 router.get('/viewcategories', function (req, res, next) {
-  res.render('business/viewcategories');
+  var categories = Category.find({approved: true,group: 'general'}).sort([['order', 1]]);
+  Promise.all([categories]).then(values => {
+    res.render('business/viewcategories', {title: "Find It: Advertising",categories: values[0]});
+  });
 });
 
 //ADVERTISING

@@ -93,10 +93,8 @@ router.post('/edit/:id', role.auth, cpUpload, function(req, res, next) {
 	    b.facebook = req.body.facebook;
 	    b.twitter = req.body.twitter;
 	    b.instagram = req.body.instagram;
-      if(req.body.youtube){
-        if(req.body.youtube.includes("watch?v=")){
-          b.youtube = req.body.youtube.replace("watch?v=", "embed/");
-        }
+      if(req.body.youtube.includes("watch?v=")){
+        b.youtube = req.body.youtube.replace("watch?v=", "embed/");
       }
 	    b.linkedin = req.body.linkedin;
 

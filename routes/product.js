@@ -23,6 +23,7 @@ var Coupons = require(__dirname + '/../models/Coupons');
 var emailModel = require(__dirname + '/../config/Mail');
 var Product = require(__dirname + '/../models/Product');
 var Sale = require(__dirname + '/../models/Sales');
+var User = require(__dirname + '/../models/User');
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {

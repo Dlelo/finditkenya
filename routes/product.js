@@ -497,10 +497,13 @@ router.get('/:slug',function(req, res){
   var product = Product.findOne({
     slug: req.params.slug,
     //status: true
-  });
+  }).populate('bizid');
   Promise.all([categories,product]).then(values => {
-    console.log(values[1]);
-    res.render('product/detail',{product: values[1],title: values[1].name, categories: values[0]});
+    //console.log(values[1]);
+    User.findById(values[1].bizid._id).then(function(u){
+      console.log(u);
+      res.render('product/detail',{product: values[1],title: values[1].name, categories: values[0], user: u});
+    });
   });
 });
 

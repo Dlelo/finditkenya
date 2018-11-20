@@ -501,11 +501,10 @@ router.get('/:slug',function(req, res){
   }).populate('bizid');
   Promise.all([categories,product]).then(values => {
     console.log(values[1].bizid.id);
-    console.log(values[1].bizid._id);
-    Business.findById(values[1].bizid.id).populate('user_id').then(function(b){
+    User.findOne({ username: values[1].bizid.user_id }).populate('user_id').then(function(u){
       //if(err) console.log(err);
-      console.log(b);
-      res.render('product/detail',{product: values[1],title: values[1].name, categories: values[0], user: b.user_id});
+      console.log(u);
+      res.render('product/detail',{product: values[1],title: values[1].name, categories: values[0], user: u});
     }).catch(function(){
         // want to handle errors here
         console.log("error happened");

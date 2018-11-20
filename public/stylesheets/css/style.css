@@ -276,7 +276,7 @@ header h1 a span {
 .banner-text-top{
     align-content: right;
     max-width: 100%;
-    padding-top: 13vh;
+    padding-top: 5rem;
     padding-left: inherit;
     padding-right: 3%;
     box-sizing: border-box;
@@ -1461,7 +1461,7 @@ ul.portfolio-area li figure {
         height: 2rem !important;
 	 }
 	 .banner{
-		 height: 45vh !important;
+		 height: 27rem !important;
 	 }
 	 .eac-description{
 		 width:80% !important;
@@ -1470,7 +1470,7 @@ ul.portfolio-area li figure {
 		  width:80% !important;
 	 }
 	 .banner-text-top{
-		     padding-top: 16vh !important;
+		     padding-top: 5rem !important;
 	 }
 }
 
@@ -1503,7 +1503,7 @@ ul.portfolio-area li figure {
 
 @media screen and (max-width: 900px) {
 	.banner-text-top {
-    padding-top: 19vh !important;
+    padding-top: 7rem !important;
      }
 	.dropdown-item {
 		text-align:left;
@@ -1512,7 +1512,7 @@ ul.portfolio-area li figure {
 		left: 20%;
 	}
 	.banner {
-    height: 63vh !important;
+    height: 25rem !important;
 	}
 	.img-logo {
     width: 10rem !important;
@@ -1547,10 +1547,7 @@ ul.portfolio-area li figure {
 	.banner{
 		height:25rem !important;
 	}
-	.banner{
-		min-height: 27rem !important;
-	}
-
+	
     .img-logo {
     width: 9rem !important;
     height: 2rem !important;
@@ -1583,13 +1580,11 @@ ul.portfolio-area li figure {
 
 @media screen and (max-width: 736px) {
 	.banner {
-    height: 60vh !important;
+    height: 19rem !important;
 	  }
-	  .banner {
-    min-height: 60vh !important;
-		}
+	  
 	.banner-text-top {
-    padding-top: 20vh !important;
+    padding-top: 5rem !important;
 	}
 	.img-logo {
     width: 10rem !important;
@@ -1670,12 +1665,9 @@ ul.portfolio-area li figure {
 	   margin-left: 2rem !important;
 	}
 	.banner-text-top{
-    padding-top: 23vh!important;
+    padding-top: 5rem !important;
 	}
-	.banner {
-		min-height: 20rem !important;
-	}
-	.bannner{
+	.banner{
 		height:20rem !important;
 	}
 }
@@ -1701,7 +1693,7 @@ ul.portfolio-area li figure {
 	   margin-left: 2rem !important;
 	}
 	.banner-text-top{
-    padding-top: 23vh;
+    padding-top: 5rem !important;
 	}
 	.slide {
 		min-height: 386px;
@@ -1729,7 +1721,7 @@ ul.portfolio-area li figure {
 	   margin-left: 2rem !important;
 	}
 	.banner-text-top{
-    padding-top: 23vh !important;
+    padding-top: 5rem !important;
 	}
 	.slide {
 		min-height: 366px;
@@ -1788,7 +1780,7 @@ ul.portfolio-area li figure {
 	   margin-left: 2rem !important;
 	}
 	.banner-text-top{
-    padding-top: 23vh !important;
+    padding-top: 5rem !important;
 	}
 	.navbar-toggler {
 		padding: 0.2rem 0.3rem;
@@ -1938,7 +1930,7 @@ ul.portfolio-area li figure {
 	   margin-left: 2rem !important;
 	}
 	.banner-text-top{
-    padding-top: 10vh!important;
+    padding-top: 5rem !important;
 	}
 	.captn {
 		left: 9%;
@@ -2125,7 +2117,7 @@ ul.portfolio-area li figure {
 	   margin-left: 2rem!important;
 	}
 	.banner-text-top{
-    padding-top: 13vh !important;
+    padding-top: 5rem !important;
 	}
   .banner{
 	  min-height: 20rem !important;

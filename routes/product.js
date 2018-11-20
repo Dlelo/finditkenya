@@ -493,7 +493,7 @@ router.get('/removefromcart/:id', function(req, res){
 });
 // END OF CART FUNCTIONS
 
-router.get('/product/delete/:id', role.auth, function(req, res){
+router.get('/delete/:id', role.auth, function(req, res){
     if(req.user.role == 1){
       Product.findOneAndRemove({
         _id: req.params.id

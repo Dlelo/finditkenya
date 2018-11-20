@@ -504,6 +504,9 @@ router.get('/:slug',function(req, res){
       if(err) console.log(err);
       console.log(u);
       res.render('product/detail',{product: values[1],title: values[1].name, categories: values[0], user: u});
+    }).catch(function(){
+        // want to handle errors here
+        console.log("error happened");
     });
   });
 });

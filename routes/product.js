@@ -493,6 +493,31 @@ router.get('/removefromcart/:id', function(req, res){
 });
 // END OF CART FUNCTIONS
 
+router.get('/product/delete/:id', role.auth, function(req, res){
+    if(req.user.role == 1){
+      Product.findOneAndRemove({
+        _id: req.params.id
+      })
+      .then(function(data){
+          res.redirect('/admin/product/'+data.bizid);
+      })
+      .catch(function(err){
+           console.log(err);
+      });
+  }else{
+    Product.findOneAndRemove({
+      _id: req.params.id,
+      ownerid: res.locals.user.id
+    })
+    .then(function(data){
+        res.redirect('/admin/product/'+data.bizid);
+    })
+    .catch(function(err){
+         console.log(err);
+    });
+  }
+});
+
 router.get('/:slug',function(req, res){
   var categories = Category.find({group:'shopping'});
   var product = Product.findOne({

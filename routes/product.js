@@ -501,6 +501,7 @@ router.get('/:slug',function(req, res){
   Promise.all([categories,product]).then(values => {
     //console.log(values[1]);
     User.findById(values[1].bizid.id).then(function(u){
+      console.log(u);
       res.render('product/detail',{product: values[1],title: values[1].name, categories: values[0], user: u});
     });
   });

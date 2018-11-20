@@ -5023,3 +5023,9 @@ background-size: cover;
 .pat-space{
 	padding-right: 0.2em;
 }
+.owl-carousel .owl-stage-outer{
+	position: relative;
+    overflow: hidden;
+    -webkit-transform: translate3d(0,0,0);
+    margin-left: 1rem;
+}

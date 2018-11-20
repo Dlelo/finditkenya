@@ -500,7 +500,8 @@ router.get('/:slug',function(req, res){
     //status: true
   }).populate('bizid');
   Promise.all([categories,product]).then(values => {
-    console.log(values[1]);
+    console.log(values[1].bizid.id);
+    console.log(values[1].bizid._id);
     User.findById(values[1].bizid.id).then(function(u){
       //if(err) console.log(err);
       console.log(u);

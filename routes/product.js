@@ -502,10 +502,10 @@ router.get('/:slug',function(req, res){
   Promise.all([categories,product]).then(values => {
     console.log(values[1].bizid.id);
     console.log(values[1].bizid._id);
-    User.findById(values[1].bizid.id).then(function(u){
+    Business.findById(values[1].bizid.id).populate('user_id').then(function(b){
       //if(err) console.log(err);
-      console.log(u);
-      res.render('product/detail',{product: values[1],title: values[1].name, categories: values[0], user: u});
+      console.log(b);
+      res.render('product/detail',{product: values[1],title: values[1].name, categories: values[0], user: b.user_id});
     }).catch(function(){
         // want to handle errors here
         console.log("error happened");

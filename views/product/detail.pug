@@ -39,10 +39,14 @@ block content
                 
                 hr
                 div
-                    p.contact #{owner.name}
-                    p.contact #{owner.phone}
-                    p.contact #{owner.email}
-                    .btn.btn-lg.btn-outline-primary.text-uppercase.addtocart#showProduct
+                    p.contact 
+                      strong #{owner.name}
+                    p.contact 
+                      strong #{owner.phone}
+                    p.contact 
+                      strong #{owner.email}
+
+                    .btn.btn-lg.btn-outline-primary.text-uppercase.addtocart#showProduct(style="margin-top:1rem;")
                        i.fas.fa-shopping-cart Contact Owner
                 
                      

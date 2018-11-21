@@ -16,8 +16,8 @@ block content
                       div.xzoom-thumbs
                         if product.gallery
                           each image in product.gallery
-                            a(href='/uploads/product/'+image.filename)
-                              img.xzoom-gallery(width="80" height="80" src='/uploads/product/thumbs/'+image.filename)
+                            a(href='/uploads/product/gallery-'+image.filename)
+                              img.xzoom-gallery(width="80" height="80" src='/uploads/product/thumbs/gallery-'+image.filename)
                               //a(href="../images/oven1.jpeg")
                               //img.xzoom-gallery(width="80" height="80" src="../images/oven1.jpeg" title="The description goes here")
                               //a(href="../images/oven2.jpeg")

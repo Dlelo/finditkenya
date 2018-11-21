@@ -206,78 +206,86 @@ block content
                           |  Closed
                         else
                           p Sunday: #{hour.opens} - #{hour.closes}
-            .col-md-7.col-xs-12(style="margin-top:1rem; padding-right: 0px; padding-left: 0px;")
-              if(branches)
-                div#mappy.row(style="height:100%; width:100%;")
-                    //#map(style="height:100%; width:45%; left:60%; top:100%; padding-right:5rem; padding-left:5rem; position:absolute !important; overflow: visible !important; ")
-                    //#map(style="height:100%; width:95%;")
-                    //.row#map(height='95%',width="100%", style="visibility:visible;")
-                    //iframe(width='100%', height='300', frameborder='0', style='border:0', src='https://www.google.com/maps/embed/v1/view?zoom='+biz.map.zoom+'&center='+biz.map.lati+','+biz.map.long+'&key=AIzaSyA0P3blnbZTWe7vHDrbX3Bsd7RA2Y5ViTk', allowfullscreen='',)
+            if biz.gallery
               .row(style="100%; margin-top:2rem;")
                 .col-md-12(style="margin-bottom:2rem;")
                   #lightgallery.thumbnails.scrollmenu
-                    if biz.gallery
-                      each image in biz.gallery
-                        a.nopadding(href='/uploads/'+image.filename, width="", alt='#{biz.slug}')
-                          .thumbnail.bizdetail-photo
-                            img.img-thumbnail.img-responsive(src='/uploads/thumbs/gallery-'+image.filename,  alt='')
-                      .pull-left
-                        small
-                          strong
-                            | Scroll this Gallery Left or Right
+                    each image in biz.gallery
+                      a.nopadding(href='/uploads/'+image.filename, width="", alt='#{biz.slug}')
+                        .thumbnail.bizdetail-photo
+                          img.img-thumbnail.img-responsive(src='/uploads/thumbs/gallery-'+image.filename,  alt='')
+                    .pull-left
+                      small
+                        strong
+                          | Scroll this Gallery Left or Right
+            if biz.description
               .row
-                if(biz.deliverylink)
-                  .col-md-6.col-md-offset-3(style="background-color:#00aabb;padding:5px;border-radius:25px;")
-                    p 
-                      span.fas.fa-motorcycle(style="color:#fdfdfd;")
-                      a.findit(href="http://"+biz.deliverylink,target="_blank",style="color:#fdfdfd;font-size:18px")
-                        strong
-                          |  Place Your Order Now
-               
-                if(biz.bookinglink)
-                  .col-md-6.col-md-offset-3(style="background-color:#00aabb;padding:5px;border-radius:25px;")
-                    p 
-                      span.fas.fa-plane(style="color:#fdfdfd;")
-                      a.findit(href="http://"+biz.bookinglink,target="_blank",style="color:#fdfdfd;font-size:18px;")
-                        strong
-                          |  Book or Reserve Now
-              if biz.description
-                #web-view
-                  .panel
-                    .findit-red.padding10top
-                      strong More Information
-                    .panel-body
-                      p.padding-p  !{biz.description}
-                .hideonclick
-                  #mobile-view
+                .col-md-12
+                  #web-view
                     .panel
                       .findit-red.padding10top
                         strong More Information
                       .panel-body
-                        p.padding-p 
-                          if biz.description.length > 250
-                            p.padding.text-left.description-cat  !{biz.description.substr(0, 250)+ '..... <strong id="showmore" style="background-color:#c00000; color:#fff; padding:1px">Read More</strong>'}
-                #show-more
-                  .panel
-                    .findit-red.padding10top
-                      strong More Information
-                    .panel-body
-                      p.padding-p  !{biz.description} 
-                        | ..... 
-                        strong(id="showless" style="background-color:#c00000; color:#fff; padding:1px") Read Less   
-                  
+                        p.padding-p  !{biz.description}
+                  .hideonclick
+                    #mobile-view
+                      .panel
+                        .findit-red.padding10top
+                          strong More Information
+                        .panel-body
+                          p.padding-p 
+                            if biz.description.length > 250
+                              p.padding.text-left.description-cat  !{biz.description.substr(0, 250)+ '..... <strong id="showmore" style="background-color:#c00000; color:#fff; padding:1px">Read More</strong>'}
+                  #show-more
+                    .panel
+                      .findit-red.padding10top
+                        strong More Information
+                      .panel-body
+                        p.padding-p  !{biz.description} 
+                          | ..... 
+                          strong(id="showless" style="background-color:#c00000; color:#fff; padding:1px") Read Less   
+            if(biz.deliverylink)
               .row
-                .panel-body              
-                  if biz.extras.length 
-                    strong.findit-red
-                      h4 Ammenities  
-                    each extra in biz.extras 
-                        span.label.label-dark
-                           span.extra-space
-                             =extra + ','
-                  else
-                      | 
-        
+                .col-md-6.col-md-offset-3(style="background-color:#00aabb;padding:5px;border-radius:25px;")
+                  p 
+                    span.fas.fa-motorcycle(style="color:#fdfdfd;")
+                    a.findit(href="http://"+biz.deliverylink,target="_blank",style="color:#fdfdfd;font-size:18px")
+                      strong
+                        |  Place Your Order Now
+               
+            if(biz.bookinglink)
+              .row
+                .col-md-6.col-md-offset-3(style="background-color:#00aabb;padding:5px;border-radius:25px;")
+                  p 
+                    span.fas.fa-plane(style="color:#fdfdfd;")
+                    a.findit(href="http://"+biz.bookinglink,target="_blank",style="color:#fdfdfd;font-size:18px;")
+                      strong
+                        |  Book or Reserve Now
+            if biz.ammenities        
+              .row
+                .col-md-12
+                  .panel-body              
+                    if biz.extras.length 
+                      strong.findit-red
+                        h4 Ammenities  
+                      each extra in biz.extras 
+                          span.label.label-dark
+                            span.extra-space
+                              =extra + ','
+                    else
+                        | 
+          
+            if(branches)
+              .row
+                .col-md-7.col-xs-12(style="margin-top:1rem; padding-right: 0px; padding-left: 0px;")
+                  if(branches)
+                    div#mappy.row(style="height:100%; width:100%;")
+                        //#map(style="height:100%; width:45%; left:60%; top:100%; padding-right:5rem; padding-left:5rem; position:absolute !important; overflow: visible !important; ")
+                        //#map(style="height:100%; width:95%;")
+                        //.row#map(height='95%',width="100%", style="visibility:visible;")
+                        //iframe(width='100%', height='300', frameborder='0', style='border:0', src='https://www.google.com/maps/embed/v1/view?zoom='+biz.map.zoom+'&center='+biz.map.lati+','+biz.map.long+'&key=AIzaSyA0P3blnbZTWe7vHDrbX3Bsd7RA2Y5ViTk', allowfullscreen='',)
+            
+            
     
         .col-md-3
           if(coupons.length > 0)
@@ -327,14 +335,6 @@ block content
                       =bizna.name
                     p
                       =bizna.subcategory
-      if biz.youtube
-        .row(style="margin-bottom:2rem")
-          .col-md-10.text-center
-            h3.text-center
-              | Youtube
-            p
-              //iframe(width='100%', height='315', src='https://'+biz.youtube, frameborder='0', allow='autoplay; encrypted-media', allowfullscreen='')
-              iframe(width='100%', height='315', src=biz.youtube, frameborder='1', allow='autoplay; encrypted-media', allowfullscreen='')
       if(products.length > 0)  
         .row
           .col-md-12
@@ -365,6 +365,15 @@ block content
       else
          |               
             
+      if biz.youtube
+        .row(style="margin-bottom:2rem")
+          .col-md-10.text-center
+            h3.text-center
+              | Youtube
+            p
+              //iframe(width='100%', height='315', src='https://'+biz.youtube, frameborder='0', allow='autoplay; encrypted-media', allowfullscreen='')
+              iframe(width='100%', height='315', src=biz.youtube, frameborder='1', allow='autoplay; encrypted-media', allowfullscreen='')
+      
       if biz.reviews
         .row(style="margin-bottom:2rem")    
           .col-md-12

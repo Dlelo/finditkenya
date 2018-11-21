@@ -493,6 +493,31 @@ router.get('/removefromcart/:id', function(req, res){
 });
 // END OF CART FUNCTIONS
 
+router.get('/delete/:id', role.auth, function(req, res){
+    if(req.user.role == 1){
+      Product.findOneAndRemove({
+        _id: req.params.id
+      })
+      .then(function(data){
+          res.redirect('/admin/product/'+data.bizid);
+      })
+      .catch(function(err){
+           console.log(err);
+      });
+  }else{
+    Product.findOneAndRemove({
+      _id: req.params.id,
+      ownerid: res.locals.user.id
+    })
+    .then(function(data){
+        res.redirect('/admin/product/'+data.bizid);
+    })
+    .catch(function(err){
+         console.log(err);
+    });
+  }
+});
+
 router.get('/:slug',function(req, res){
   var categories = Category.find({group:'shopping'});
   var product = Product.findOne({
@@ -500,11 +525,11 @@ router.get('/:slug',function(req, res){
     //status: true
   }).populate('bizid');
   Promise.all([categories,product]).then(values => {
-    console.log(values[1]);
-    User.findById(values[1].bizid.id).then(function(u){
+    console.log(values[1].bizid.id);
+    User.findOne({ username: values[1].bizid.user_id }).populate('user_id').then(function(u){
       //if(err) console.log(err);
       console.log(u);
-      res.render('product/detail',{product: values[1],title: values[1].name, categories: values[0], user: u});
+      res.render('product/detail',{product: values[1],title: values[1].name, categories: values[0], owner: u});
     }).catch(function(){
         // want to handle errors here
         console.log("error happened");

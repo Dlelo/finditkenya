@@ -5,7 +5,7 @@ block content
   #home.parallax-content-list.baner-content-listing-biz
     .container-fluid.container-margin-top      
       .row.flowerwhite
-        .col-md-12(style="padding-right:0px; padding-left:0px;")          
+        .col-md-9(style="padding-right:0px; padding-left:0px;")          
           .row    
             .col-md-4      
               if(biz.photo)
@@ -32,7 +32,54 @@ block content
                     strong
                       
                       | #{feature} | 
-              
+        .col-md-3
+          if(coupons.length > 0)
+            div
+              h4
+                strong
+                  | Coupons in This Business  
+            div       
+              each coupon in coupons 
+                a(href="/coupons")
+                  row
+                    .col-md-12.is-island
+                        h6
+                          =coupon.name
+                        img.coup-img.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt="Responsive image")
+                        .div
+                            h6
+                              =coupon.bizid.name
+                            p
+                              =coupon.description
+                        .div
+                            =coupon.tagline       
+          else 
+             div   
+          if(branches)
+            div.col-md-12.text-center
+              h4
+                strong.text-center
+                  | Branches
+            div.col-md-12       
+              each branch in branches          
+                a(href="/biz/"+branch.slug) 
+                  div.col-md-12.is-island
+                    h6.findit-red
+                      =branch.name
+            
+          if(similarbiz)
+            div.col-md-12.text-center
+              h4
+                strong.text-center
+                  | Similar Businesses
+            div.col-md-12.text-center       
+              each bizna in similarbiz            
+                a(href="/biz/"+bizna.slug) 
+                  div.col-md-12.is-island
+                    h6.findit-red
+                      =bizna.name
+                    p
+                      =bizna.subcategory      
       .row(style="margin-bottom: 2rem;")                       
         .col-md-4.padding-map.nomargin
           if(branches)
@@ -275,54 +322,7 @@ block content
                             =extra + ','
                   else
                       | 
-        .col-md-2
-          if(coupons.length > 0)
-            div
-              h4
-                strong
-                  | Coupons in This Business  
-            div       
-              each coupon in coupons 
-                a(href="/coupons")
-                  row
-                    .col-md-12.is-island
-                        h6
-                          =coupon.name
-                        img.coup-img.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt="Responsive image")
-                        .div
-                            h6
-                              =coupon.bizid.name
-                            p
-                              =coupon.description
-                        .div
-                            =coupon.tagline       
-          else 
-             div   
-          if(branches)
-            div.col-md-12.text-center
-              h4
-                strong.text-center
-                  | Branches
-            div.col-md-12       
-              each branch in branches          
-                a(href="/biz/"+branch.slug) 
-                  div.col-md-12.is-island
-                    h6.findit-red
-                      =branch.name
-            
-          if(similarbiz)
-            div.col-md-12.text-center
-              h4
-                strong.text-center
-                  | Similar Businesses
-            div.col-md-12.text-center       
-              each bizna in similarbiz            
-                a(href="/biz/"+bizna.slug) 
-                  div.col-md-12.is-island
-                    h6.findit-red
-                      =bizna.name
-                    p
-                      =bizna.subcategory
+        
       if(branches)
         .row
           .col-md-7.col-xs-12(style="margin-top:1rem; padding-right: 0px; padding-left: 0px;")

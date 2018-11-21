@@ -38,13 +38,14 @@ block content
                      | !{product.description}
                 
                 hr
-                .btn.btn-lg.btn-outline-primary.text-uppercase.addtocart(id=product.slug onclick="ownerFunction()")
-                  i.fas.fa-shopping-cart Contact Owner
-                .div.row#ownerContact
-                  .col-md-12
-                     p #{owner.name}
-                     p #{owner.phone}
-                     p #{owner.email}
+                div
+                    p.contact #{owner.name}
+                    p.contact #{owner.phone}
+                    p.contact #{owner.email}
+                    .btn.btn-lg.btn-outline-primary.text-uppercase.addtocart#showProduct
+                       i.fas.fa-shopping-cart Contact Owner
+                
+                     
 
      
     
@@ -53,14 +54,11 @@ block content
     script(src='https://hammerjs.github.io/dist/hammer.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/js/foundation.min.js')
     script(type='text/javascript').
-        function ownerFunction() {
-            var x = document.getElementById("ownerContact");
-            if (x.style.display === "block") {
-                x.style.display = "none";
-            } else {
-                x.style.display = "block";
-            }
-        }
+     $(document).ready(function(){
+        $("#showProduct").click(function(){
+            $(".contact").show();
+        });
+      });
     script(type='text/javascript').
       (function ($) {
         $(document).ready(function() {

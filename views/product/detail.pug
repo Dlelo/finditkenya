@@ -36,46 +36,31 @@ block content
                   dd
                     p 
                      | !{product.description}
-                //dl.param.param-feature
-                  dt Model#
-                  dd 12345611
-                //dl.param.param-feature
-                  dt Color
-                  dd Black and white
-                //dl.param.param-feature
-                  dt Delivery
-                  dd Russia, USA, and Europe
-                //hr
-                //row
-                  .col-sm-5
-                    dl.param.param-inline
-                      dt Quantity:
-                      dd
-                        select.form-control.form-control-sm(style="width:70px;")
-                          option 1
-                          option 2
-                          option 3
-                  .col-sm-7
-                    dl.param.param-inline
-                      dt Size:
-                      dd
-                        label.form-check.form-check-inline
-                          input.form-check-input(type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2")
-                          span.form-check-label SM
-                        label.form-check.form-check-inline
-                          input.form-check-input(type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2")
-                          span.form-check-label MD 
-                        label.form-check.form-check-inline
-                          input.form-check-input(type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2")
-                          span.form-check-label XXL 
+                
                 hr
-                .btn.btn-lg.btn-outline-primary.text-uppercase.addtocart(id=product.slug)
-                  i.fas.fa-shopping-cart Contact Owner     
+                .btn.btn-lg.btn-outline-primary.text-uppercase.addtocart(id=product.slug onclick="ownerFunction()")
+                  i.fas.fa-shopping-cart Contact Owner
+                .div.row#ownerContact
+                  .col-md-12
+                     p #{owner.name}
+                     p #{owner.phone}
+                     p #{owner.email}
+
+     
     
     script(src='https://code.jquery.com/jquery-2.1.1.js')
     script(src='https://unpkg.com/xzoom/dist/xzoom.min.js')
     script(src='https://hammerjs.github.io/dist/hammer.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/js/foundation.min.js')
+    script(type='text/javascript').
+        function ownerFunction() {
+            var x = document.getElementById("ownerContact");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
     script(type='text/javascript').
       (function ($) {
         $(document).ready(function() {

@@ -185,6 +185,23 @@ block content
                               |  Closed
                             else
                               p Sunday: #{hour.opens} - #{hour.closes}
+                  if(biz.deliverylink)
+                    .row
+                      .col-md-12.col-md-offset-3(style="background-color:#00aabb;padding:5px;border-radius:25px;")
+                        p 
+                          span.fas.fa-motorcycle(style="color:#fdfdfd;")
+                          a.findit(href="http://"+biz.deliverylink,target="_blank",style="color:#fdfdfd;font-size:18px")
+                            strong
+                              |  Place Your Order Now
+                      
+                  if(biz.bookinglink)
+                    .row
+                      .col-md-12.col-md-offset-3(style="background-color:#00aabb;padding:5px;border-radius:25px;")
+                        p 
+                          span.fas.fa-plane(style="color:#fdfdfd;")
+                          a.findit(href="http://"+biz.bookinglink,target="_blank",style="color:#fdfdfd;font-size:18px;")
+                            strong
+                              |  Book or Reserve Now    
             .col-md-8
               .row
                 .col-md-12
@@ -249,23 +266,7 @@ block content
                               p.padding-p  !{biz.description} 
                                 | ..... 
                                 strong(id="showless" style="background-color:#c00000; color:#fff; padding:1px") Read Less   
-                  if(biz.deliverylink)
-                    .row
-                      .col-md-6.col-md-offset-3(style="background-color:#00aabb;padding:5px;border-radius:25px;")
-                        p 
-                          span.fas.fa-motorcycle(style="color:#fdfdfd;")
-                          a.findit(href="http://"+biz.deliverylink,target="_blank",style="color:#fdfdfd;font-size:18px")
-                            strong
-                              |  Place Your Order Now
-                      
-                  if(biz.bookinglink)
-                    .row
-                      .col-md-6.col-md-offset-3(style="background-color:#00aabb;padding:5px;border-radius:25px;")
-                        p 
-                          span.fas.fa-plane(style="color:#fdfdfd;")
-                          a.findit(href="http://"+biz.bookinglink,target="_blank",style="color:#fdfdfd;font-size:18px;")
-                            strong
-                              |  Book or Reserve Now
+                  
                   if biz.ammenities        
                     .row
                       .col-md-12

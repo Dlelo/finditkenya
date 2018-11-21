@@ -529,7 +529,7 @@ router.get('/:slug',function(req, res){
     User.findOne({ username: values[1].bizid.user_id }).populate('user_id').then(function(u){
       //if(err) console.log(err);
       console.log(u);
-      res.render('product/detail',{product: values[1],title: values[1].name, categories: values[0], user: u});
+      res.render('product/detail',{product: values[1],title: values[1].name, categories: values[0], owner: u});
     }).catch(function(){
         // want to handle errors here
         console.log("error happened");

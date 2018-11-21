@@ -14,17 +14,13 @@ block content
                     a(href="#")
                       img.xzoom#xzoom-default(width="500" src='/uploads/product/'+product.photo,  xoriginal='/uploads/product/'+product.photo)
                       div.xzoom-thumbs
+                        a(href='/uploads/product/'+product.photo)
+                              img.xzoom-gallery(width="80" height="80" src='/uploads/product/'+product.photo)
                         if product.gallery
                           each image in product.gallery
                             a(href='/uploads/product/gallery-'+image.filename)
                               img.xzoom-gallery(width="80" height="80" src='/uploads/product/thumbs/gallery-'+image.filename)
-                              //a(href="../images/oven1.jpeg")
-                              //img.xzoom-gallery(width="80" height="80" src="../images/oven1.jpeg" title="The description goes here")
-                              //a(href="../images/oven2.jpeg")
-                              //img.xzoom-gallery(width="80" height="80" src="../images/oven2.jpeg" title="The description goes here")
-                              //a(href="../images/oven3.jpeg")
-                              //img.xzoom-gallery(width="80" height="80" src="../images/oven3.jpeg" title="The description goes here") 
-                        
+                              
             aside.col-sm-6
               article.card-body.p-5
                 h3.title.mb-3

@@ -33,261 +33,262 @@ block content
                       
                       | #{feature} | 
               
-          .row(style="margin-bottom: 2rem;")                       
-            .col-md-4.padding-map.nomargin
+      .row(style="margin-bottom: 2rem;")                       
+        .col-md-4.padding-map.nomargin
+          if(branches)
+            div
+          else
+            iframe(width='100%', height='150', frameborder='0', style='border:0', src='https://www.google.com/maps/embed/v1/view?zoom='+biz.map.zoom+'&center='+biz.map.lati+','+biz.map.long+'&key=AIzaSyA0P3blnbZTWe7vHDrbX3Bsd7RA2Y5ViTk', allowfullscreen='',)
+          .row.is-island
+            .col-md-12
               if(branches)
                 div
               else
-                iframe(width='100%', height='150', frameborder='0', style='border:0', src='https://www.google.com/maps/embed/v1/view?zoom='+biz.map.zoom+'&center='+biz.map.lati+','+biz.map.long+'&key=AIzaSyA0P3blnbZTWe7vHDrbX3Bsd7RA2Y5ViTk', allowfullscreen='',)
-              .row.is-island
-                .col-md-12
-                  if(branches)
-                    div
-                  else
-                    if biz.building
-                      p.text-left.findit-blue
-                        strong
-                          span.fas.fa-building
-                          |  #{biz.building}
-                    if biz.street
-                      p.text-left.findit-blue
-                        strong
-                          span.fas.fa-road
-                          |  #{biz.street}
-                .col-md-12
+                if biz.building
                   p.text-left.findit-blue
                     strong
-                      span.fas.fa-th-list
-                      |  #{biz.subcategory}
-                  hr.nomargin
-                if(biz.website)
-                  .col-md-12
-                    p.text-left.findit-blue
-                      strong.findit-blue
-                        span.fas.fa-globe
-                        a.findit(href="http://"+biz.website,target="_blank")
-                          |  Website
-                  hr.nomargin
-                .col-md-12
-                  p.text-left.findit-red
-                    each phone in phones
-                      span#biz-id(style="display:none")
-                        =biz.id
-                      span.fas.fa-phone
-                      //remove style="display:none" on phoneno
-                      a.findit.phoneno(href="tel:"+phone)
-                        |  #{phone}
-                      //a.findit.phonenofake(href="#")
-                        |  Get Contacts
-                      br
-                  hr.nomargin
-                .col-md-12.text-left
+                      span.fas.fa-building
+                      |  #{biz.building}
+                if biz.street
                   p.text-left.findit-blue
-                    each email in emails
-                      strong.findit-blue
-                        span.fas.fa-envelope
-                        a.findit(href="mailto:"+email)
-                          |  Mail
-                      br
-                  hr.nomargin
-                if(biz.facebook)
-                  .col-md-12.text-left
-                    p.findit-blue
-                      strong
-                        span.fab.fa-facebook-f
-                        a.findit(href="http://"+biz.facebook,target="_blank") 
-                          | Facebook
-                if(biz.twitter)
-                  .col-md-12.text-left
-                    p.findit-blue 
-                      strong
-                        span.fab.fa-twitter
-                        a.findit(href="http://"+biz.twitter,target="_blank")
-                          |  Twitter
-                if(biz.instagram)
-                  .col-md-12.text-left
-                    p.findit-blue 
-                      strong
-                        span.fab.fa-instagram
-                        a.findit(href="http://"+biz.instagram,target="_blank")
-                          |  Instagram
-                if(biz.linkedin)
-                  .col-md-12.text-left
-                    p.findit-blue 
-                      strong
-                        span.fab.fa-linkedin 
-                        a.findit(href="http://"+biz.linkedin,target="_blank")
-                          |  LinkedIn
-                if(biz.youtube)
-                  .col-md-12.text-left
-                    p.findit-red
-                      strong
-                        span.fab.fa-youtube
-                        a.findit(href="http://"+biz.youtube,target="_blank")
-                          |  Youtube
-                
+                    strong
+                      span.fas.fa-road
+                      |  #{biz.street}
+            .col-md-12
+              p.text-left.findit-blue
+                strong
+                  span.fas.fa-th-list
+                  |  #{biz.subcategory}
+              hr.nomargin
+            if(biz.website)
+              .col-md-12
+                p.text-left.findit-blue
+                  strong.findit-blue
+                    span.fas.fa-globe
+                    a.findit(href="http://"+biz.website,target="_blank")
+                      |  Website
+              hr.nomargin
+            .col-md-12
+              p.text-left.findit-red
+                each phone in phones
+                  span#biz-id(style="display:none")
+                    =biz.id
+                  span.fas.fa-phone
+                  //remove style="display:none" on phoneno
+                  a.findit.phoneno(href="tel:"+phone)
+                    |  #{phone}
+                  //a.findit.phonenofake(href="#")
+                    |  Get Contacts
+                  br
+              hr.nomargin
+            .col-md-12.text-left
+              p.text-left.findit-blue
+                each email in emails
+                  strong.findit-blue
+                    span.fas.fa-envelope
+                    a.findit(href="mailto:"+email)
+                      |  Mail
+                  br
+              hr.nomargin
+            if(biz.facebook)
+              .col-md-12.text-left
+                p.findit-blue
+                  strong
+                    span.fab.fa-facebook-f
+                    a.findit(href="http://"+biz.facebook,target="_blank") 
+                      | Facebook
+            if(biz.twitter)
+              .col-md-12.text-left
+                p.findit-blue 
+                  strong
+                    span.fab.fa-twitter
+                    a.findit(href="http://"+biz.twitter,target="_blank")
+                      |  Twitter
+            if(biz.instagram)
+              .col-md-12.text-left
+                p.findit-blue 
+                  strong
+                    span.fab.fa-instagram
+                    a.findit(href="http://"+biz.instagram,target="_blank")
+                      |  Instagram
+            if(biz.linkedin)
+              .col-md-12.text-left
+                p.findit-blue 
+                  strong
+                    span.fab.fa-linkedin 
+                    a.findit(href="http://"+biz.linkedin,target="_blank")
+                      |  LinkedIn
+            if(biz.youtube)
+              .col-md-12.text-left
+                p.findit-red
+                  strong
+                    span.fab.fa-youtube
+                    a.findit(href="http://"+biz.youtube,target="_blank")
+                      |  Youtube
+            
 
-                if (biz.catalog.length)
-                  .col-md-12.text-left
-                    each catalogue, i in biz.catalog
-                      if (catalogue)
-                        strong
-                          span.fas.fa-bars
-                          
-                          a.findit(href="/business/catalog/"+catalogue.filename, target="_blank")
-                            |  View Menu #{i+1}
-                      else
-                          | 
-                      hr
-                if(biz.profile)
-                  .col-md-12.text-left 
+            if (biz.catalog.length)
+              .col-md-12.text-left
+                each catalogue, i in biz.catalog
+                  if (catalogue)
                     strong
-                        span.fas.fa-bars
-                        a.findit(href="/business/profile/"+biz.profile.filename, target="_blank")
-                          |  View Company Profile  
+                      span.fas.fa-bars
                       
-                .col-md-12.text-center.findit-red
-                  if biz.paid
-                    span.badge.badge-success
-                      span.fa.fa-check-circle.strong(style="color:#2862ec;")
-                      strong
-                        |  Claimed
+                      a.findit(href="/business/catalog/"+catalogue.filename, target="_blank")
+                        |  View Menu #{i+1}
                   else
-                    h4 Claim This Business
-                    form(method='get', action='/claim-form/'+biz.id)
-                      .form-group
-                        input.form-control(name='phone', type='text', value='', placeholder='phone')
-                      .form-group
-                        input.form-control(name='email', type='text', value='', placeholder='email')
-                      .form-group
-                        button.btn.btn-danger.form-control(type='submit')                 
-                          | Claim Business
-              if(branches)
-                div
+                      | 
+                  hr
+            if(biz.profile)
+              .col-md-12.text-left 
+                strong
+                    span.fas.fa-bars
+                    a.findit(href="/business/profile/"+biz.profile.filename, target="_blank")
+                      |  View Company Profile  
+                  
+            .col-md-12.text-center.findit-red
+              if biz.paid
+                span.badge.badge-success
+                  span.fa.fa-check-circle.strong(style="color:#2862ec;")
+                  strong
+                    |  Claimed
               else
-                if (biz.openstatus)
-                  .row
-                    .col-md-12.findit-red.padding20
-                      strong
-                        |  Opening & Closing Hours
-                    .col-md-12
-                      each hour in biz.hours.monday
-                        if(hour.opens === hour.closes)
-                          |  Closed
-                        else
-                          p Monday: #{hour.opens} - #{hour.closes}
-                      each hour in biz.hours.tuesday
-                        if(hour.opens === hour.closes)
-                          |  Closed
-                        else
-                          p Tuesday: #{hour.opens} - #{hour.closes}
-                      each hour in biz.hours.wednesday
-                        if(hour.opens === hour.closes)
-                          |  Closed
-                        else
-                          p Wednesday: #{hour.opens} - #{hour.closes}
-                      each hour in biz.hours.thursday
-                        if(hour.opens === hour.closes)
-                          |  Closed
-                        else
-                          p Thursday: #{hour.opens} - #{hour.closes}
-                      each hour in biz.hours.friday
-                        if(hour.opens === hour.closes)
-                          |  Closed
-                        else
-                          p Friday: #{hour.opens} - #{hour.closes}
-                      each hour in biz.hours.saturday
-                        if(hour.opens === hour.closes)
-                          |  Closed
-                        else
-                          p Saturday: #{hour.opens} - #{hour.closes}
-                      each hour in biz.hours.sunday
-                        if(hour.opens === hour.closes)
-                          |  Closed
-                        else
-                          p Sunday: #{hour.opens} - #{hour.closes}
-            if biz.gallery
-              .row(style="100%; margin-top:2rem;")
-                .col-md-12(style="margin-bottom:2rem;")
-                  #lightgallery.thumbnails.scrollmenu
-                    each image in biz.gallery
-                      a.nopadding(href='/uploads/'+image.filename, width="", alt='#{biz.slug}')
-                        .thumbnail.bizdetail-photo
-                          img.img-thumbnail.img-responsive(src='/uploads/thumbs/gallery-'+image.filename,  alt='')
-                    .pull-left
-                      small
-                        strong
-                          | Scroll this Gallery Left or Right
-            if biz.description
+                h4 Claim This Business
+                form(method='get', action='/claim-form/'+biz.id)
+                  .form-group
+                    input.form-control(name='phone', type='text', value='', placeholder='phone')
+                  .form-group
+                    input.form-control(name='email', type='text', value='', placeholder='email')
+                  .form-group
+                    button.btn.btn-danger.form-control(type='submit')                 
+                      | Claim Business
+          if(branches)
+            div
+          else
+            if (biz.openstatus)
               .row
+                .col-md-12.findit-red.padding20
+                  strong
+                    |  Opening & Closing Hours
                 .col-md-12
-                  #web-view
-                    .panel
-                      .findit-red.padding10top
-                        strong More Information
-                      .panel-body
-                        p.padding-p  !{biz.description}
-                  .hideonclick
-                    #mobile-view
-                      .panel
-                        .findit-red.padding10top
-                          strong More Information
-                        .panel-body
-                          p.padding-p 
-                            if biz.description.length > 250
-                              p.padding.text-left.description-cat  !{biz.description.substr(0, 250)+ '..... <strong id="showmore" style="background-color:#c00000; color:#fff; padding:1px">Read More</strong>'}
-                  #show-more
-                    .panel
-                      .findit-red.padding10top
-                        strong More Information
-                      .panel-body
-                        p.padding-p  !{biz.description} 
-                          | ..... 
-                          strong(id="showless" style="background-color:#c00000; color:#fff; padding:1px") Read Less   
-            if(biz.deliverylink)
-              .row
-                .col-md-6.col-md-offset-3(style="background-color:#00aabb;padding:5px;border-radius:25px;")
-                  p 
-                    span.fas.fa-motorcycle(style="color:#fdfdfd;")
-                    a.findit(href="http://"+biz.deliverylink,target="_blank",style="color:#fdfdfd;font-size:18px")
-                      strong
-                        |  Place Your Order Now
-               
-            if(biz.bookinglink)
-              .row
-                .col-md-6.col-md-offset-3(style="background-color:#00aabb;padding:5px;border-radius:25px;")
-                  p 
-                    span.fas.fa-plane(style="color:#fdfdfd;")
-                    a.findit(href="http://"+biz.bookinglink,target="_blank",style="color:#fdfdfd;font-size:18px;")
-                      strong
-                        |  Book or Reserve Now
-            if biz.ammenities        
-              .row
-                .col-md-12
-                  .panel-body              
-                    if biz.extras.length 
-                      strong.findit-red
-                        h4 Ammenities  
-                      each extra in biz.extras 
-                          span.label.label-dark
-                            span.extra-space
-                              =extra + ','
+                  each hour in biz.hours.monday
+                    if(hour.opens === hour.closes)
+                      |  Closed
                     else
-                        | 
+                      p Monday: #{hour.opens} - #{hour.closes}
+                  each hour in biz.hours.tuesday
+                    if(hour.opens === hour.closes)
+                      |  Closed
+                    else
+                      p Tuesday: #{hour.opens} - #{hour.closes}
+                  each hour in biz.hours.wednesday
+                    if(hour.opens === hour.closes)
+                      |  Closed
+                    else
+                      p Wednesday: #{hour.opens} - #{hour.closes}
+                  each hour in biz.hours.thursday
+                    if(hour.opens === hour.closes)
+                      |  Closed
+                    else
+                      p Thursday: #{hour.opens} - #{hour.closes}
+                  each hour in biz.hours.friday
+                    if(hour.opens === hour.closes)
+                      |  Closed
+                    else
+                      p Friday: #{hour.opens} - #{hour.closes}
+                  each hour in biz.hours.saturday
+                    if(hour.opens === hour.closes)
+                      |  Closed
+                    else
+                      p Saturday: #{hour.opens} - #{hour.closes}
+                  each hour in biz.hours.sunday
+                    if(hour.opens === hour.closes)
+                      |  Closed
+                    else
+                      p Sunday: #{hour.opens} - #{hour.closes}
+        .col-md-6  
+          if biz.gallery
+            .row(style="100%; margin-top:2rem;")
+              .col-md-12(style="margin-bottom:2rem;")
+                #lightgallery.thumbnails.scrollmenu
+                  each image in biz.gallery
+                    a.nopadding(href='/uploads/'+image.filename, width="", alt='#{biz.slug}')
+                      .thumbnail.bizdetail-photo
+                        img.img-thumbnail.img-responsive(src='/uploads/thumbs/gallery-'+image.filename,  alt='')
+                  .pull-left
+                    small
+                      strong
+                        | Scroll this Gallery Left or Right
+          if biz.description
+            .row
+              .col-md-12
+                #web-view
+                  .panel
+                    .findit-red.padding10top
+                      strong More Information
+                    .panel-body
+                      p.padding-p  !{biz.description}
+                .hideonclick
+                  #mobile-view
+                    .panel
+                      .findit-red.padding10top
+                        strong More Information
+                      .panel-body
+                        p.padding-p 
+                          if biz.description.length > 250
+                            p.padding.text-left.description-cat  !{biz.description.substr(0, 250)+ '..... <strong id="showmore" style="background-color:#c00000; color:#fff; padding:1px">Read More</strong>'}
+                #show-more
+                  .panel
+                    .findit-red.padding10top
+                      strong More Information
+                    .panel-body
+                      p.padding-p  !{biz.description} 
+                        | ..... 
+                        strong(id="showless" style="background-color:#c00000; color:#fff; padding:1px") Read Less   
+          if(biz.deliverylink)
+            .row
+              .col-md-6.col-md-offset-3(style="background-color:#00aabb;padding:5px;border-radius:25px;")
+                p 
+                  span.fas.fa-motorcycle(style="color:#fdfdfd;")
+                  a.findit(href="http://"+biz.deliverylink,target="_blank",style="color:#fdfdfd;font-size:18px")
+                    strong
+                      |  Place Your Order Now
+              
+          if(biz.bookinglink)
+            .row
+              .col-md-6.col-md-offset-3(style="background-color:#00aabb;padding:5px;border-radius:25px;")
+                p 
+                  span.fas.fa-plane(style="color:#fdfdfd;")
+                  a.findit(href="http://"+biz.bookinglink,target="_blank",style="color:#fdfdfd;font-size:18px;")
+                    strong
+                      |  Book or Reserve Now
+          if biz.ammenities        
+            .row
+              .col-md-12
+                .panel-body              
+                  if biz.extras.length 
+                    strong.findit-red
+                      h4 Ammenities  
+                    each extra in biz.extras 
+                        span.label.label-dark
+                          span.extra-space
+                            =extra + ','
+                  else
+                      | 
+        
+          if(branches)
+            .row
+              .col-md-7.col-xs-12(style="margin-top:1rem; padding-right: 0px; padding-left: 0px;")
+                if(branches)
+                  div#mappy.row(style="height:100%; width:100%;")
+                      //#map(style="height:100%; width:45%; left:60%; top:100%; padding-right:5rem; padding-left:5rem; position:absolute !important; overflow: visible !important; ")
+                      //#map(style="height:100%; width:95%;")
+                      //.row#map(height='95%',width="100%", style="visibility:visible;")
+                      //iframe(width='100%', height='300', frameborder='0', style='border:0', src='https://www.google.com/maps/embed/v1/view?zoom='+biz.map.zoom+'&center='+biz.map.lati+','+biz.map.long+'&key=AIzaSyA0P3blnbZTWe7vHDrbX3Bsd7RA2Y5ViTk', allowfullscreen='',)
           
-            if(branches)
-              .row
-                .col-md-7.col-xs-12(style="margin-top:1rem; padding-right: 0px; padding-left: 0px;")
-                  if(branches)
-                    div#mappy.row(style="height:100%; width:100%;")
-                        //#map(style="height:100%; width:45%; left:60%; top:100%; padding-right:5rem; padding-left:5rem; position:absolute !important; overflow: visible !important; ")
-                        //#map(style="height:100%; width:95%;")
-                        //.row#map(height='95%',width="100%", style="visibility:visible;")
-                        //iframe(width='100%', height='300', frameborder='0', style='border:0', src='https://www.google.com/maps/embed/v1/view?zoom='+biz.map.zoom+'&center='+biz.map.lati+','+biz.map.long+'&key=AIzaSyA0P3blnbZTWe7vHDrbX3Bsd7RA2Y5ViTk', allowfullscreen='',)
-            
-            
-    
-        .col-md-3
+          
+
+        .col-md-2
           if(coupons.length > 0)
             div
               h4

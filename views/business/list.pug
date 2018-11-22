@@ -6,13 +6,12 @@ block content
       .container-fluid.container-margin-top
         .row
           .col-md-3
-              if feature
+              if subcategory
                   .panel-heading.category
                     .text-left.cat-items
-                      a(href="/subcategory/"+categoryTitle+"/"+feature.subcategories.name style="color:#212529")
-                        //a(href="/subcategory/"+subcategory)
+                      a(href="/subcategory/undefined/"+subcategory)
                         strong  
-                          =feature.subcategories.name
+                          =subcategory
               
               if subcategory
                 if features.length

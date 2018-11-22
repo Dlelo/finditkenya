@@ -5029,3 +5029,6 @@ background-size: cover;
     -webkit-transform: translate3d(0,0,0);
     margin-left: 1rem;
 }
+.contact{
+	display:none
+}

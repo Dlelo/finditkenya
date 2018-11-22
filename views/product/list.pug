@@ -31,7 +31,7 @@ block content
               | Featured (#{product.featured})
               | Top Deals (#{product.topdeals})
             .col-md-2
-              a(href="/product/edit/"+product.bizid+"/"+product.id,title='Edit Product')
+              a(href="/product/edit/"+product.id,title='Edit Product')
                 i.fa.fa-edit(aria-hidden="true",class='col-md-1')
               a(href="/product/feature_product/"+product.bizid+"/"+product.id,title='Feature this Product')
                 i.fa.fa-bullhorn(aria-hidden="true",class='col-md-1')

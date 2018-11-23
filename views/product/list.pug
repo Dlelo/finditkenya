@@ -19,8 +19,9 @@ block content
                     img(src='/uploads/product/thumbs/'+product.photo)
             .col-md-3
               figcaption.info-wrap
-                h6.title.text-dots
-                  =product.name
+                a(href="/product/"+product.slug)
+                  h6.title.text-dots
+                    =product.name
             .col-md-2      
               div.action-wrap
                 .price-wrap 

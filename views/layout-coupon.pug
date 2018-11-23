@@ -368,7 +368,7 @@ script(type='text/javascript').
         window.onload = function () {
             document.getElementById("password1").onchange = validatePassword;
             document.getElementById("password2").onchange = validatePassword;
-        }evt.newIndex
+        }
 
         function validatePassword() {
             var pass2 = document.getElementById("password2").value;
@@ -683,11 +683,12 @@ script(type='text/javascript').
       }
     }
     if (typeof console === "undefined") {
-    console = {
-    log: function() { }
-    };
+      console = {
+        log: function() { }
+      };
 
     }
+  });
   
 // Global site tag (gtag.js) - Google Analytics
 script(async src="https://www.googletagmanager.com/gtag/js?id=UA-102320208-3")

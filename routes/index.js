@@ -162,7 +162,7 @@ router.get('/search', function(req, res, next){
                  "phone": "$phone",
                  "website": "$website",
                  "keywords": "$keywords",
-                 "branch": { $ne: [ "$branch", true ] },
+                 "branch": { $not: [ "$branch", true ] },
                  "score": {
                        "$meta": "textScore"
                   }

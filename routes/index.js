@@ -1695,7 +1695,7 @@ router.get('/biz/:name',function(req, res, next){
 
     //coupons
     var coupons = Coupons.find({bizid: data.id});
-    var products = Product.find({bizid: data.id});
+    var products = Product.find({bizid: data.id}).populate('category');
     var categories = Category.find({approved: true}).sort([['order', 1]]);
     //SIMILAR BUSINESSES
     //"author": { "$in": userIds }

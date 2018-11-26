@@ -516,7 +516,7 @@ router.get('/delete/:id', role.auth, function(req, res){
   }
 });
 
-router.get('/:slug',function(req, res){
+router.get('/:bizname/:category/:subcat/:minicat/:slug',function(req, res){
   var categories = Category.find({group:'shopping'});
   var product = Product.findOne({
     slug: req.params.slug,

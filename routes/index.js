@@ -141,7 +141,8 @@ router.get('/search', function(req, res, next){
           "$match": {
                  "$text": {
                        "$search": searchString
-                  }
+                  },
+                  "branch": { '$ne' : true }
            }
       },
       {

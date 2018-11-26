@@ -471,6 +471,8 @@ router.get('/product/:id',role.auth, function(req, res, next) {
   Product.find({
     bizid: req.params.id
   })
+  .populate('category')
+  .populate('bizid')
   .then(function(data){
     res.render('product/list', {title: "Products", products: data});
   })

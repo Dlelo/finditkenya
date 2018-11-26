@@ -521,7 +521,7 @@ router.get('/:bizname/:category/:subcat/:minicat/:slug',function(req, res){
   var product = Product.findOne({
     slug: req.params.slug,
     //status: true
-  }).populate('bizid');
+  }).populate('bizid').populate('category');
   Promise.all([categories,product]).then(values => {
     console.log(values[1].bizid.id);
     User.findOne({ username: values[1].bizid.user_id }).populate('user_id').then(function(u){

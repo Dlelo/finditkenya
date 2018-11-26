@@ -182,8 +182,7 @@ router.post('/update/:id',role.auth,cpUpload, function(req,res){
         p.gallery.forEach(function(gallery) {
             Jimp.read("./public/uploads/product/"+gallery.filename).then(function (cover) {
               return cover.resize(200, 140)     // resize
-                   .quality(100)                 // set JPEG quality
-                   .greyscale()                 // set greyscale
+                   .quality(100)                // set greyscale
                    .write("./public/uploads/product/thumbs/gallery-"+gallery.filename); // save
           }).catch(function (err) {
               console.error(err);
@@ -233,8 +232,7 @@ router.post('/create',role.auth, cpUpload, function(req, res){
         p.gallery.forEach(function(gallery) {
             Jimp.read("./public/uploads/product/"+gallery.filename).then(function (cover) {
               return cover.resize(200, 140)     // resize
-                   .quality(100)                 // set JPEG quality
-                   .greyscale()                 // set greyscale
+                   .quality(100)                // set greyscale
                    .write("./public/uploads/product/thumbs/gallery-"+gallery.filename); // save
           }).catch(function (err) {
               console.error(err);

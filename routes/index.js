@@ -1724,7 +1724,7 @@ router.get('/biz/:name',function(req, res, next){
         var branches = null;
       }
 
-      console.log(branches);
+      console.log(businesses);
       if(data.paid == false || typeof data.paid === 'undefined'){
         description = data.name + ', '+ data.subcategory + ', ' + data.street +', '+data.city + ' Kenya';
         keywords = data.keywords + " | on Findit Kenya";

@@ -1708,7 +1708,7 @@ router.get('/biz/:name',function(req, res, next){
         approved: true
       }
     })
-    .sort([['paid', -1],['datepaid', 1],['slug', 1]])
+    .sort([['paid', 1],['datepaid', 1]])
     .limit(5);
 
     var branches = Business.find({bizparent: data._id});

@@ -1702,7 +1702,7 @@ router.get('/biz/:name',function(req, res, next){
     var businesses = Business.find({
       $query: {
         subcategory: data.subcategory,
-        features: { "$in": data.features },
+        //features: { "$in": data.features },
         slug: { "$ne": data.slug },
         branch: { $ne: true },
         approved: true

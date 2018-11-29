@@ -14,7 +14,7 @@ block content
           .row
             .col-md-3(id=product.slug,class="productid")
               figure.card.card-product
-                a(href="/product/"+product.slug)
+                a(href="/product/"+product.bizid.slug+"/"+product.category.name+"/"+product.subcategory+"/"+product.minicategory+"/"+product.slug)
                   .img-wrap
                     img(src='/uploads/product/thumbs/'+product.photo)
             .col-md-3

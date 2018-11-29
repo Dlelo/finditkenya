@@ -182,8 +182,7 @@ router.post('/update/:id',role.auth,cpUpload, function(req,res){
         p.gallery.forEach(function(gallery) {
             Jimp.read("./public/uploads/product/"+gallery.filename).then(function (cover) {
               return cover.resize(200, 140)     // resize
-                   .quality(100)                 // set JPEG quality
-                   .greyscale()                 // set greyscale
+                   .quality(100)                // set greyscale
                    .write("./public/uploads/product/thumbs/gallery-"+gallery.filename); // save
           }).catch(function (err) {
               console.error(err);
@@ -233,8 +232,7 @@ router.post('/create',role.auth, cpUpload, function(req, res){
         p.gallery.forEach(function(gallery) {
             Jimp.read("./public/uploads/product/"+gallery.filename).then(function (cover) {
               return cover.resize(200, 140)     // resize
-                   .quality(100)                 // set JPEG quality
-                   .greyscale()                 // set greyscale
+                   .quality(100)                // set greyscale
                    .write("./public/uploads/product/thumbs/gallery-"+gallery.filename); // save
           }).catch(function (err) {
               console.error(err);
@@ -518,17 +516,17 @@ router.get('/delete/:id', role.auth, function(req, res){
   }
 });
 
-router.get('/:slug',function(req, res){
+router.get('/:bizname/:category/:subcat/:minicat/:slug',function(req, res){
   var categories = Category.find({group:'shopping'});
   var product = Product.findOne({
     slug: req.params.slug,
     //status: true
-  }).populate('bizid');
+  }).populate('bizid').populate('category');
   Promise.all([categories,product]).then(values => {
     console.log(values[1].bizid.id);
     User.findOne({ username: values[1].bizid.user_id }).populate('user_id').then(function(u){
       //if(err) console.log(err);
-      console.log(u);
+      console.log(values[1]);
       res.render('product/detail',{product: values[1],title: values[1].name, categories: values[0], owner: u});
     }).catch(function(){
         // want to handle errors here

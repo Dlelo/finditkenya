@@ -141,7 +141,8 @@ router.get('/search', function(req, res, next){
           "$match": {
                  "$text": {
                        "$search": searchString
-                  }
+                  },
+                  "branch": { '$ne' : true }
            }
       },
       {
@@ -162,7 +163,7 @@ router.get('/search', function(req, res, next){
                  "phone": "$phone",
                  "website": "$website",
                  "keywords": "$keywords",
-                 "branch": { $ne: [ "$branch", true ] },
+                 "branches": { $ne: [ "$branch", false ] },
                  "score": {
                        "$meta": "textScore"
                   }
@@ -1694,7 +1695,7 @@ router.get('/biz/:name',function(req, res, next){
 
     //coupons
     var coupons = Coupons.find({bizid: data.id});
-    var products = Product.find({bizid: data.id});
+    var products = Product.find({bizid: data.id}).populate('category');
     var categories = Category.find({approved: true}).sort([['order', 1]]);
     //SIMILAR BUSINESSES
     //"author": { "$in": userIds }
@@ -1723,7 +1724,7 @@ router.get('/biz/:name',function(req, res, next){
         var branches = null;
       }
 
-      console.log(branches);
+      console.log(businesses);
       if(data.paid == false || typeof data.paid === 'undefined'){
         description = data.name + ', '+ data.subcategory + ', ' + data.street +', '+data.city + ' Kenya';
         keywords = data.keywords + " | on Findit Kenya";

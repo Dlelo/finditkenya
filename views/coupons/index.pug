@@ -20,7 +20,7 @@ block content
                   each coupon, i in coupons
                     if (i==0)
                       div.carousel-item.active
-                          img.d-block.w-100.coupons-img.carousel-img(src="/uploads/" + coupon.photo)
+                          img.d-block.w-100.coupons-img.carousel-img(src="/uploads/" + coupon.photo, alt=coupon.bizid.name)
                           a(href="/biz/"+coupon.bizid.slug)
                             div.carousel-caption.d-none.d-md-block
                               div(style="color:#fff")
@@ -34,7 +34,7 @@ block content
                   each coupon, i in coupons
                     if (i>0 && i<3)
                       div.carousel-item
-                          img.d-block.w-100.coupons-img.carousel-img(src="/uploads/" + coupon.photo)
+                          img.d-block.w-100.coupons-img.carousel-img(src="/uploads/" + coupon.photo, alt=coupon.bizid.name)
                           a(href="/biz/"+coupon.bizid.slug)
                             div.carousel-caption.d-none.d-md-block
                               div(style="color:#fff")
@@ -67,7 +67,7 @@ block content
                     small
                       h6
                         =popular.name
-                    img.coup-img(src="/uploads/thumbs/coupons/"+ popular.photo)
+                    img.coup-img(src="/uploads/thumbs/coupons/"+ popular.photo, alt=coupon.bizid.name+' on FindIt')
                     p
                        small
                           p
@@ -178,7 +178,7 @@ block content
                   h3                  
                   = coupon.name
               .div.col-md-12.col-lg-12.col-sm-12.col-xs-12
-                  img.coup-img-wrapper.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt="Responsive image")
+                  img.coup-img-wrapper.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name)
               .div.col-md-12.col-lg-12.col-sm-12.col-xs-12.float-left 
                 h6
                   small

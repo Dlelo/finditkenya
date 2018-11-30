@@ -661,8 +661,8 @@ router.get('/category/:cat',function(req, res, next){
       }
     })
     .sort([['paid', -1],['datepaid', 1],['slug', 1]])
-    .limit(20)
-    .skip(20 * page);
+    //.limit(20)
+    //.skip(20 * page);
 
     var bizcount = Business.count({
         subcategory: req.params.cat,
@@ -1704,11 +1704,11 @@ router.get('/biz/:name',function(req, res, next){
         subcategory: data.subcategory,
         features: { "$in": data.features },
         slug: { "$ne": data.slug },
-        branch: { $ne: true },
+        branch: { "$ne": true },
         approved: true
       }
     })
-    .sort([['paid', -1],['datepaid', 1],['slug', 1]])
+    .sort([['paid', 1],['datepaid', 1],['slug', 1]])
     .limit(5);
 
     var branches = Business.find({bizparent: data._id});

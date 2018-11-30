@@ -7,7 +7,7 @@ html(lang='en')
     meta(name='description', content='')
     meta(name='author', content='')
     link(rel='icon', type='image/png', sizes='32x32', href='../plugins/images/favicon.png')
-    title Find It Dashboard
+    title #{title}
     link(rel='icon' href='images/icon/favicon.ico' type='image/x-icon')
     // Custom CSS
     link(href='/stylesheets/admin/style.css', rel='stylesheet')
@@ -47,7 +47,7 @@ html(lang='en')
         .navbar-header
           .top-left-part
             // Logo
-            a.logo(href='/', title="Front View")
+            a.logo(href='/', title="Find It Kenya")
               // Logo icon image, you can use font-icon also
               b
                 // This is dark logo icon
@@ -72,50 +72,17 @@ html(lang='en')
             // mgtow.Task dropdown
             
                 li.divider
-            // .Megamenu
-            li.mega-dropdown
-              ul.dropdown-menu.mega-dropdown-menu.animated.bounceInDown
-                li.col-sm-3
-                  ul
-                    li.dropdown-header Forms Elements
-                    li
-                      a(href='form-basic.html') Basic Forms
-                    li
-                      a(href='form-layout.html') Form Layout
-                    li
-                      a(href='form-advanced.html') Form Addons
-                    li
-                      a(href='form-material-elements.html') Form Material
-                    li
-                      a(href='form-float-input.html') Form Float Input
-                    li
-                      a(href='form-upload.html') File Upload
-                    li
-                      a(href='form-mask.html') Form Mask
-                    li
-                      a(href='form-img-cropper.html') Image Cropping
-                    li
-                      a(href='form-validation.html') Form Validation
-            // /.Megamenu
-
-
-
-
 
           ul.nav.navbar-top-links.navbar-right.pull-right
-            li
-              form.app-search.hidden-sm.hidden-xs.m-r-10(role='search')
-                input.form-control(type='text', placeholder='Search...')
-                a(href='')
-                  i.fa.fa-search
+            
             li
               a.profile-pic(href='#')
-                img.img-circle(src='/plugins/images/users/user.png', alt='user-img', width='36')
+                img.img-circle(src='/plugins/images/users/user.png', alt=user.name, width='36')
                 b.hidden-xs 
                 if user
                   =user.names
             li
-              a.profile-pic(href='/logout')
+              a(href='/logout')
                 b.hidden-xs 
                 | logout
         // /.navbar-header
@@ -194,7 +161,7 @@ html(lang='en')
           
           if(user.role == 1)
             .center.p-10
-                a.btn.btn-info.btn-block.waves-effect.waves-light(href='/shopping/newsubcategory') Add Product
+              a.btn.btn-info.btn-block.waves-effect.waves-light(href='/shopping/newsubcategory') Add Product
             .center.p-10
               a.btn.btn-info.btn-block.waves-effect.waves-light(href='/admin/category/add') Add Business Category
             .center.p-10
@@ -227,11 +194,11 @@ html(lang='en')
               = error
         .container-fluid          
           .row.bg-title
-            .col-lg-2.col-md-4.col-sm-4.col-xs-12
+            .col-lg-12.col-md-12.col-sm-12.col-xs-12
               h5.box-title
                 =title
             
-            .col-lg-10.col-sm-8.col-md-8.col-xs-12                
+            .col-lg-12.col-sm-12.col-md-12.col-xs-12                
               ul.nav.pull-right.text-right.addbusiness
                 li(style="float: left;")
                   a(href='/product/new')

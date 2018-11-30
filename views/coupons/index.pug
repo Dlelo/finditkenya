@@ -172,8 +172,7 @@ block content
                   | Email. 
       each coupon, i in coupons
         div.col-md-3.all.well(class=coupon.bizid.subcategory)
-          div.row.deal-main.deal-coup.coupon-items.row-eq-height.coupon(id=coupon.id,class=(coupon.users.some(function(x) { return x.user_id == user.id })) ? 'couponclicked' : 'couponadd', rel=user.id)
-            div 
+          div.row.deal-main.deal-coup.coupon-items.row-eq-height.coupon(id=coupon.id,class=(coupon.users.some(function(x) { return x.user_id == user.id })) ? 'couponclicked' : 'couponadd', rel=user.id) 
               .div.col-md-12.col-sm-12.col-xs-12
                 strong
                   h3                  
@@ -190,9 +189,8 @@ block content
               .div.col-md-12.col-lg-12.col-sm-12.col-xs-12.float-left
                   =coupon.description
                 
-              .div.col-md-12.col-lg-12.col-sm-12.col-xs-12.center-left
-                button.btn.btn-outline-primary(type="button" )
-                  =coupon.tagline 
+              .div.col-md-12.col-lg-12.col-sm-12.col-xs-12.center-left(style='border: 1px solid #eee;background: #eee; padding-right:0px; padding-left:0px;')
+                =coupon.tagline 
               .div.col-md-6.col-sm-12.col-xs-12.clipped.float-center
                 button.btn.btn.danger
                   | Clipped  

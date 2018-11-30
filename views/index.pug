@@ -67,7 +67,7 @@ block content
                   //div.w3-ab-grid
                   a(href="/category/"+category.name)
                     div.w3-aicon.py-lg-5.py-md-3.py-5
-                        img.img-fluid.category-img-wrapper(src="/uploads/thumbs/categories/"+category.photo, alt=category.name, data-wow-delay="0.6s")
+                        img.img-fluid.category-img-wrapper(src="/uploads/thumbs/categories/"+category.photo, alt=category.name +' on FindIt Kenya', data-wow-delay="0.6s")
                         h6.my-3
                          =category.name
                     div.w3-ab-captn.p-md-3.py-4
@@ -85,7 +85,7 @@ block content
                 //div.w3-ab-grid
                 a(href="/category/"+category.name)
                   div.w3-aicon.py-lg-5.py-md-3.py-5
-                      img.img-fluid.category-img-wrapper(src="/uploads/thumbs/categories/"+category.photo, alt=category.name,data-wow-delay="0.6s")
+                      img.img-fluid.category-img-wrapper(src="/uploads/thumbs/categories/"+category.photo, alt=category.name + ' on FindIt Kenya',data-wow-delay="0.6s")
                       h6.my-3
                         =category.name
                   div.w3-ab-captn.p-md-3.py-4
@@ -102,7 +102,7 @@ block content
                   button.btn.btn-light(type="button")
                     span.findit-blue
                       | More Categories
-                  img.img-fluid.category-img-wrapper(src="/img/more_categories.png" alt="Responsive image",data-wow-delay="0.6s")                            
+                  img.img-fluid.category-img-wrapper(src="/img/more_categories.png", alt="Find It Kenya - Find Anything and Everything", data-wow-delay="0.6s")                            
         div.row#expandcategories( style="display:none; padding-top:5rem; border-top: 1px solid #eee")
           each category,i in categories
             div.col-md-4.col-sm-12.col-xs-12.morecat
@@ -145,7 +145,7 @@ block content
               a(href="/biz/"+review.bizid.slug)  
                 div.col-lg-12.col-md-12.col-sm-12.col-xs-12
                   
-                img.img-fluid.latest-review-imgwrapper(src="/uploads/thumbs/cover"+ review.bizid.photo)
+                img.img-fluid.latest-review-imgwrapper(src="/uploads/thumbs/cover"+ review.bizid.photo, alt=review.bizid.name+ ' on FindIt Kenya')
                 
                 div.col-lg-12.col-md-12.col-sm-12.col-xs-12
                   h6.text-left
@@ -243,7 +243,7 @@ block content
                         | @       
                         =coupon.bizid.name
                 .div.col-md-12.col-lg-12.col-sm-12.col-xs-12
-                    img.coup-img-wrapper.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt="Responsive image")
+                    img.coup-img-wrapper.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name+ ' on FindIt Kenya')
                 //.div.col-md-12.col-lg-12.col-sm-12.col-xs-12.float-left 
                   
                 

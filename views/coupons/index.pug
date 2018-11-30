@@ -20,7 +20,7 @@ block content
                   each coupon, i in coupons
                     if (i==0)
                       div.carousel-item.active
-                          img.d-block.w-100.coupons-img.carousel-img(src="/uploads/" + coupon.photo, alt=coupon.bizid.name)
+                          img.d-block.w-100.coupons-img.carousel-img(src="/uploads/" + coupon.photo, alt=coupon.bizid.name +' on FindIt Kenya')
                           a(href="/biz/"+coupon.bizid.slug)
                             div.carousel-caption.d-none.d-md-block
                               div(style="color:#fff")
@@ -34,7 +34,7 @@ block content
                   each coupon, i in coupons
                     if (i>0 && i<3)
                       div.carousel-item
-                          img.d-block.w-100.coupons-img.carousel-img(src="/uploads/" + coupon.photo, alt=coupon.bizid.name)
+                          img.d-block.w-100.coupons-img.carousel-img(src="/uploads/" + coupon.photo, alt=coupon.bizid.name + ' on FindIt')
                           a(href="/biz/"+coupon.bizid.slug)
                             div.carousel-caption.d-none.d-md-block
                               div(style="color:#fff")
@@ -68,7 +68,7 @@ block content
                       h6
                         =popular.name
                     each bz in popular.biz
-                      img.coup-img(src="/uploads/thumbs/coupons/"+ popular.photo, alt=bz.name + '  on FindIt Kenya')
+                      img.coup-img(src="/uploads/thumbs/coupons/"+ popular.photo, alt=bz.name + ' on FindIt Kenya')
                     p
                        small
                           p
@@ -179,7 +179,7 @@ block content
                   h3                  
                   = coupon.name
               .div.col-md-12.col-lg-12.col-sm-12.col-xs-12
-                  img.coup-img-wrapper.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name)
+                  img.coup-img-wrapper.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name +' on Findit Kenya')
               .div.col-md-12.col-lg-12.col-sm-12.col-xs-12.float-left 
                 h6
                   small

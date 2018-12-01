@@ -50,7 +50,13 @@ router.post('/edit/:id', role.auth, cpUpload, function(req, res, next) {
 		b.slug = slug(req.body.name);
 		b.description = req.body.description;
 		b.city = req.body.city;
-		b.map = {lati: req.body.lati, long: req.body.long, zoom: req.body.zoom };
+		//--- update to match Business Schema -----///
+		let mappy = {
+			type:"Point",
+			coordinates:[Number(req.body.long),Number(req.body.lati)],
+			zoom:req.body.zoom 
+		}
+		b.map = mappy;
 		b.website = req.body.website;
 		b.phone = req.body.phone;
 		b.email = req.body.email;

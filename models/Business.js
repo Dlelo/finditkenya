@@ -11,9 +11,10 @@ const bizSchema = new Schema({
 		name: { type: String,required: true, index: { unique: true, sparse: true }, es_indexed:true, es_boost:4.0},
 		description: { type: String, es_indexed:true, es_boost:1.0 },
 		city: String,
+		///--- Schema update to support GEOJSON ---///
 		map: {
-			lati: String,
-			long: String,
+			type: { type: String },
+			coordinates: [],
 			zoom: String
 		},
 		website: String,

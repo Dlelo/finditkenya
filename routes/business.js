@@ -180,7 +180,7 @@ router.get('/mappy', function(req, res){
 			//--- (doc.map) contains the previous location format --
 			let newMap = JSON.parse(JSON.stringify(doc.map));
 			//console.log(newMap)
-      if(doc.map.coordinates[1] == 0){
+      if(isNaN(doc.map.coordinates[1])){
         let mappy = {
   				type:"Point",
   				coordinates:[ 36.7073071, -1.3028618],

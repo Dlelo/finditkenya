@@ -174,8 +174,8 @@ router.post('/add', role.auth, cpUpload, function(req, res, next) {
 
 });
 
-router.get('/mappy', function(req, res){
-  Business.find({ slug: 'Art-Cafe-Junction'}).then(function(document) {
+router.get('/mappy/:biz', function(req, res){
+  Business.find({ slug: req.params.biz}).then(function(document) {
 		document.forEach((doc)=>{
 			//--- (doc.map) contains the previous location format --
 			let newMap = JSON.parse(JSON.stringify(doc.map));

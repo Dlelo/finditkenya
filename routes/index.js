@@ -1720,12 +1720,19 @@ router.get('/biz/:name',function(req, res, next){
         "type": "Point",
         "coordinates": [lon,lat]
       };
+      let parent = "a";
+      if(data.branch){
+        parent = data.bizparent._id;
+      }else{
+        parent = data._id;
+      }
+      console.log(data)
       Business.aggregate(
         	[{
         			'$geoNear': {
         					'near': point,
                   'spherical': true,
-                  "query":{ bizparent: data._id },
+                  "query":{ bizparent: parent },
         					'distanceField': 'distance',
         					'maxDistance': 1000000000000
         			}

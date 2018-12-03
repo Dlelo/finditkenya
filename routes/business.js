@@ -187,9 +187,12 @@ router.get('/mappy/:biz', function(req, res){
 				zoom:doc.map.zoom
 			}
 		//	--- 'mappy' contains the location in GEOJSON format ---
+    console.log(mappy);
 			Business.update({_id:doc._id},
 				{ $set: {"map": mappy
-				}},{multi:true}).then(()=>{})
+      }},{multi:true}).then((b)=>{
+          console.log(b);
+        })
 			//-- update only worked when I chained an empty .then(()=>{})
 		})
 	})

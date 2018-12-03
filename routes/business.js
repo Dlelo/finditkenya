@@ -180,18 +180,22 @@ router.get('/mappy', function(req, res){
 			//--- (doc.map) contains the previous location format --
 			let newMap = JSON.parse(JSON.stringify(doc.map));
 			//console.log(newMap)
-			let mappy = {
-				type:"Point",
-				coordinates:[ parseFloat(newMap.long), parseFloat(newMap.lati)],
-				zoom:doc.map.zoom
-			}
+      if(doc.map.coordinates[1] == 0){
+        let mappy = {
+  				type:"Point",
+  				coordinates:[ 36.7073071, -1.3028618],
+  				zoom:doc.map.zoom
+  			}
+        Business.update({_id:doc._id},
+  				{ $set: {"map": mappy
+          }},{multi:true}).then((b)=>{
+              console.log(b);
+            })
+      }
+
 		//	--- 'mappy' contains the location in GEOJSON format ---
     //console.log(mappy);
-			Business.update({_id:doc._id},
-				{ $set: {"map": mappy
-      }},{multi:true}).then((b)=>{
-          console.log(b);
-        })
+
 			//-- update only worked when I chained an empty .then(()=>{})
 		})
 	})

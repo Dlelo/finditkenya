@@ -1715,7 +1715,7 @@ router.get('/biz/:name',function(req, res, next){
     let lon = Number(req.query.lon);
     let lat = Number(req.query.lat);
     if (lon && lat){
-      // if coordinates are provided 
+      // if coordinates are provided
       var point = {
         "type": "Point",
         "coordinates": [lon,lat]
@@ -1741,7 +1741,7 @@ router.get('/biz/:name',function(req, res, next){
               }else{
                 var branches = null;
               }
-        
+
               if(data.paid == false || typeof data.paid === 'undefined'){
                 description = data.name + ', '+ data.subcategory + ', ' + data.street +', '+data.city + ' Kenya';
                 keywords = data.keywords + " | on Findit Kenya";

@@ -33,7 +33,7 @@ var cpUpload = upload.fields([
   { name: 'gallery', maxCount: 30 }
 ]);
 router.post('/add', role.auth, cpUpload, function(req, res, next) {
-	
+
 	var instance = new Business();
 	instance.name = req.body.name
 	instance.slug = slug(req.body.name);
@@ -43,7 +43,7 @@ router.post('/add', role.auth, cpUpload, function(req, res, next) {
 	instance.map = {
 		type:"Point",
 		coordinates:[Number(req.body.lati),Number(req.body.long)],
-		zoom: req.body.zoom 
+		zoom: req.body.zoom
 	};
 	//// ----------------------------------------------------------
 	if (req.files['catalog'] != null){
@@ -174,8 +174,28 @@ router.post('/add', role.auth, cpUpload, function(req, res, next) {
 
 });
 
+router.get('/mappy', function(req, res){
+  Business.find({ slug: 'Art-Cafe-Junction'}).then(function(document) {
+		document.forEach((doc)=>{
+			//--- (doc.map) contains the previous location format --
+			let newMap = JSON.parse(JSON.stringify(doc.map));
+			console.log(newMap)
+			let mappy = {
+				type:"Point",
+				coordinates:[ parseFloat(newMap.long), parseFloat(newMap.lati)],
+				zoom:doc.map.zoom
+			}
+		//	--- 'mappy' contains the location in GEOJSON format ---
+			Business.update({_id:doc._id},
+				{ $set: {"map": mappy
+				}},{multi:true}).then(()=>{})
+			//-- update only worked when I chained an empty .then(()=>{})
+		})
+	})
+});
+
 router.get('/freeadd',role.auth, function(req, res, next){
-	
+
 	// ------ UPDATE CURRENT DATA IN DB TO GEOJSON ------///
 	// ---------- first try out with one ---------///
 	// Business.find({}).limit(1).then(function(document) {

@@ -175,6 +175,7 @@ router.post('/add', role.auth, cpUpload, function(req, res, next) {
 });
 
 router.get('/mappy/:biz', function(req, res){
+  console.log("mappy");
   Business.find({ slug: req.params.biz}).then(function(document) {
 		document.forEach((doc)=>{
 			//--- (doc.map) contains the previous location format --

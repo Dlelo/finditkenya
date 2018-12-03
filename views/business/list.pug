@@ -84,9 +84,9 @@ block content
                       .row 
                         .col-md-3       
                           if(biz.photo)
-                            img.cat-image.cat-items-bottom(src="/uploads/thumbs/cover"+ biz.photo, height="200px")
+                            img.cat-image.cat-items-bottom(src="/uploads/thumbs/cover"+ biz.photo, alt=biz.name +' on FindIt Kenya', height="200px")
                           else
-                            img.cat-image.cat-items-bottom(src="/img/noimageavailable.png" , height="200px")
+                            img.cat-image.cat-items-bottom(src="/img/noimageavailable.png", alt=biz.name+ ' on FindIt Kenya', height="200px")
                         .col-md-9
                           row
                             .col-md-12.description-cat

@@ -20,7 +20,7 @@ block content
                   each coupon, i in coupons
                     if (i==0)
                       div.carousel-item.active
-                          img.d-block.w-100.coupons-img.carousel-img(src="/uploads/" + coupon.photo)
+                          img.d-block.w-100.coupons-img.carousel-img(src="/uploads/" + coupon.photo, alt=coupon.bizid.name +' on FindIt Kenya')
                           a(href="/biz/"+coupon.bizid.slug)
                             div.carousel-caption.d-none.d-md-block
                               div(style="color:#fff")
@@ -34,7 +34,7 @@ block content
                   each coupon, i in coupons
                     if (i>0 && i<3)
                       div.carousel-item
-                          img.d-block.w-100.coupons-img.carousel-img(src="/uploads/" + coupon.photo)
+                          img.d-block.w-100.coupons-img.carousel-img(src="/uploads/" + coupon.photo, alt=coupon.bizid.name + ' on FindIt')
                           a(href="/biz/"+coupon.bizid.slug)
                             div.carousel-caption.d-none.d-md-block
                               div(style="color:#fff")
@@ -67,7 +67,8 @@ block content
                     small
                       h6
                         =popular.name
-                    img.coup-img(src="/uploads/thumbs/coupons/"+ popular.photo)
+                    each bz in popular.biz
+                      img.coup-img(src="/uploads/thumbs/coupons/"+ popular.photo, alt=bz.name + ' on FindIt Kenya')
                     p
                        small
                           p
@@ -171,14 +172,13 @@ block content
                   | Email. 
       each coupon, i in coupons
         div.col-md-3.all.well(class=coupon.bizid.subcategory)
-          div.row.deal-main.deal-coup.coupon-items.row-eq-height.coupon(id=coupon.id,class=(coupon.users.some(function(x) { return x.user_id == user.id })) ? 'couponclicked' : 'couponadd', rel=user.id)
-            div 
+          div.row.deal-main.deal-coup.coupon-items.row-eq-height.coupon(id=coupon.id,class=(coupon.users.some(function(x) { return x.user_id == user.id })) ? 'couponclicked' : 'couponadd', rel=user.id) 
               .div.col-md-12.col-sm-12.col-xs-12
                 strong
                   h3                  
                   = coupon.name
               .div.col-md-12.col-lg-12.col-sm-12.col-xs-12
-                  img.coup-img-wrapper.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt="Responsive image")
+                  img.coup-img-wrapper.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name +' on Findit Kenya')
               .div.col-md-12.col-lg-12.col-sm-12.col-xs-12.float-left 
                 h6
                   small
@@ -189,9 +189,8 @@ block content
               .div.col-md-12.col-lg-12.col-sm-12.col-xs-12.float-left
                   =coupon.description
                 
-              .div.col-md-12.col-lg-12.col-sm-12.col-xs-12.center-left
-                button.btn.btn-outline-primary(type="button" )
-                  =coupon.tagline 
+              .div.col-md-12.col-lg-12.col-sm-12.col-xs-12.center-left(style='color: #04045a;')
+                =coupon.tagline 
               .div.col-md-6.col-sm-12.col-xs-12.clipped.float-center
                 button.btn.btn.danger
                   | Clipped  

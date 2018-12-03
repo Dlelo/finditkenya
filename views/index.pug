@@ -396,7 +396,14 @@ block content
           },
           list: {
             onClickEvent: function() {
-              self.location = "/biz/"+$('#search2').getSelectedItemData().slug;
+              const item = $('#search2').getSelectedItemData().slug
+              navigator.geolocation.getCurrentPosition(function(position) {
+                var pos = {
+                  lat: position.coords.latitude,
+                  lng: position.coords.longitude
+                };
+                self.location = "/biz/"+item+"/?lat="+pos.lat+"&lon="+pos.lng;
+              });
             } 
           },
           ajaxSettings: {

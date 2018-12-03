@@ -17,7 +17,7 @@ block content
                   if(branches)
                     div
                   else
-                    iframe(width='100%', height='150', frameborder='0', style='border:0', src='https://www.google.com/maps/embed/v1/view?zoom='+biz.map.zoom+'&center='+biz.map.lati+','+biz.map.long+'&key=AIzaSyA0P3blnbZTWe7vHDrbX3Bsd7RA2Y5ViTk', allowfullscreen='',)
+                    iframe(width='100%', height='150', frameborder='0', style='border:0', src='https://www.google.com/maps/embed/v1/view?zoom='+biz.map.zoom+'&center='+biz.map.coordinates[1]+','+biz.map.coordinates[0]+'&key=AIzaSyA0P3blnbZTWe7vHDrbX3Bsd7RA2Y5ViTk', allowfullscreen='',)
                   .row.is-island
                     .col-md-12
                       if(branches)
@@ -284,10 +284,9 @@ block content
                     .col-md-12.col-xs-12(style="margin-top:1rem; padding-right: 0px; padding-left: 0px;")
                       if(branches)
                         div#mappy(style="height:20rem !important; !important; width:100% !important;")
-                            //#map(style="height:100%; width:45%; left:60%; top:100%; padding-right:5rem; padding-left:5rem; position:absolute !important; overflow: visible !important; ")
-                            //#map(style="height:100%; width:95%;")
-                            //.row#map(height='95%',width="100%", style="visibility:visible;")
-                            //iframe(width='100%', height='300', frameborder='0', style='border:0', src='https://www.google.com/maps/embed/v1/view?zoom='+biz.map.zoom+'&center='+biz.map.lati+','+biz.map.long+'&key=AIzaSyA0P3blnbZTWe7vHDrbX3Bsd7RA2Y5ViTk', allowfullscreen='',)
+                            
+                            
+                            
         .col-md-3
           if(coupons.length > 0)
             div
@@ -318,10 +317,14 @@ block content
                   | Branches
             div.col-md-12       
               each branch in branches          
-                a(href="/biz/"+branch.slug) 
+                a.bizlink(href="/biz/"+branch.slug) 
                   div.col-md-12.is-island
                     h6.findit-red
                       =branch.name
+                    span 
+                      =(branch.distance/1000).toFixed(1)
+                      span     km away
+                    
             
           if(similarbiz)
             div.col-md-12.text-center
@@ -337,16 +340,6 @@ block content
                     p
                       =bizna.subcategory      
         
-      
-      //if(branches)
-        .col-md-7.col-xs-12(style="margin-top:1rem; padding-right: 0px; padding-left: 0px;")
-          if(branches)
-            div#mappy.row(style="height:100%; width:100%;")
-                //#map(style="height:100%; width:45%; left:60%; top:100%; padding-right:5rem; padding-left:5rem; position:absolute !important; overflow: visible !important; ")
-                //#map(style="height:100%; width:95%;")
-                //.row#map(height='95%',width="100%", style="visibility:visible;")
-                //iframe(width='100%', height='300', frameborder='0', style='border:0', src='https://www.google.com/maps/embed/v1/view?zoom='+biz.map.zoom+'&center='+biz.map.lati+','+biz.map.long+'&key=AIzaSyA0P3blnbZTWe7vHDrbX3Bsd7RA2Y5ViTk', allowfullscreen='',)
-    
           
 
       if(products.length > 0)  
@@ -468,10 +461,14 @@ block content
                   button.button.btn.btn-danger.form-control(type='submit') Submit Review                
           
       script.
+      
         // Note: This example requires that you consent to location sharing when
         // prompted by your browser. If you see the error "The Geolocation service
         // failed.", it means you probably did not give permission for the browser to
         // locate you.
+         $(document).ready(function(){
+           
+         });
         var map, infoWindow;
         function initMap() {
           infoWindow = new google.maps.InfoWindow;
@@ -482,7 +479,13 @@ block content
               lat: position.coords.latitude,
               lng: position.coords.longitude
             };
-
+            /// ------- attach users location to url
+            $(".bizlink").each(function () {
+              let url =$(this).attr("href")
+              let newUrl = url+'?lon='+pos.lng+'&lat='+pos.lat;
+              $(this).attr("href", newUrl);
+            });
+            /// ---------
             map = new google.maps.Map(document.getElementById('mappy'), {
               center: pos,
               zoom: 11
@@ -502,8 +505,8 @@ block content
                 
               }else{
                 var bizpos = {
-                  lat: parseFloat(biz.map.lati),
-                  lng: parseFloat(biz.map.long)
+                  lat: parseFloat(biz.map.coordinates[0]),
+                  lng: parseFloat(biz.map.coordinates[1])
                 };
                 var marker = new google.maps.Marker({
                   position: bizpos,

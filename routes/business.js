@@ -33,12 +33,19 @@ var cpUpload = upload.fields([
   { name: 'gallery', maxCount: 30 }
 ]);
 router.post('/add', role.auth, cpUpload, function(req, res, next) {
+
 	var instance = new Business();
 	instance.name = req.body.name
 	instance.slug = slug(req.body.name);
 	instance.description = req.body.description;
 	instance.city = req.body.city;
-	instance.map = {lati: req.body.lati, long: req.body.long, zoom: req.body.zoom };
+	//// ----- changed map property to match the Business Schema
+	instance.map = {
+		type:"Point",
+		coordinates:[Number(req.body.lati),Number(req.body.long)],
+		zoom: req.body.zoom
+	};
+	//// ----------------------------------------------------------
 	if (req.files['catalog'] != null){
 		instance.catalog = req.files['catalog'];
 	}
@@ -166,6 +173,36 @@ router.post('/add', role.auth, cpUpload, function(req, res, next) {
 	});
 
 });
+
+
+/*
+router.get('/mappy', function(req, res){
+  Business.find({}).then(function(document) {
+		document.forEach((doc)=>{
+			//--- (doc.map) contains the previous location format --
+			let newMap = JSON.parse(JSON.stringify(doc.map));
+			//console.log(newMap)
+      if(isNaN(doc.map.coordinates[1])){
+        let mappy = {
+  				type:"Point",
+  				coordinates:[ 36.7073071, -1.3028618],
+  				zoom:doc.map.zoom
+  			}
+        Business.update({_id:doc._id},
+  				{ $set: {"map": mappy
+          }},{multi:true}).then((b)=>{
+              console.log(b);
+            })
+      }
+
+		//	--- 'mappy' contains the location in GEOJSON format ---
+    //console.log(mappy);
+
+			//-- update only worked when I chained an empty .then(()=>{})
+		})
+	})
+});
+*/
 
 router.get('/freeadd',role.auth, function(req, res, next){
 	Category.find({})

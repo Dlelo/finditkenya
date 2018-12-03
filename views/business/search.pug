@@ -1,5 +1,8 @@
 extends ../layout-new
 
+
+
+
 block content
   div.container-fluid
   #home.parallax-content-list.baner-content-listing-biz
@@ -20,7 +23,7 @@ block content
                 if (typeof(biz.slug) !== 'undefined')
                     a(href="/biz/"+biz.slug)
                       div.cat-backgroundeven.cat-box.cat-shadow 
-                        a(href="/biz/"+biz.slug)
+                        a.bizlink(href="/biz/"+biz.slug)
                           .row
                             .col-md-12.findit-blue.cat-items-top.cat-header 
                                 h4.findit-blue.catbiz-name
@@ -159,5 +162,16 @@ block content
       //script to put navitems open by default
       script(type='text/javascript').
         $(document).ready(function(){
-            //$(".dropdown-toggle").dropdown("toggle");
+          function getLocation() {
+          if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(showPosition);
+          }
+          function showPosition(position) {
+           
+           $(".bizlink").each(function () {
+              let url =$(this).attr("href")
+              let newUrl = url+'?lon='+position.coords.longitude+'&lat='+position.coords.latitude;
+              $(this).attr("href", newUrl);
           });
+          }
+          }getLocation()});

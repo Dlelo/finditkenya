@@ -56,9 +56,9 @@ block content
               each biz,i in businesses
                 //if column is even
                 //if (typeof(biz.slug) != 'undefined')
-                a(href="/biz/"+biz.slug)
+                a.bizlink(href="/biz/"+biz.slug)
                   div.cat-backgroundeven.cat-box.cat-shadow 
-                    a(href="/biz/"+biz.slug)  
+                    a.bizlink(href="/biz/"+biz.slug)  
                       .row
                         .col-md-12.findit-blue.cat-items-top.cat-header 
                             h4.findit-blue.catbiz-name
@@ -121,7 +121,7 @@ block content
                           .col-md-12.text-right    
                             div.nav(style="float: right;")
                               if biz.reviews
-                              if( biz.reviews.length == 1) 
+                                if( biz.reviews.length == 1) 
                                   .col-md-6.ratingsonCat.text-right(class="rating medium star-icon value-4 label-hidden")
                                     .star-container
                                       .star
@@ -170,9 +170,17 @@ block content
                                         i.star-empty
                                         i.star-half
                                         i.star-filled
-                              br
+                            
                               small
                                 | #{biz.reviews.length} Reviews
+                          //if(!isNaN(biz.distance))
+                                  
+                                span 
+                                  i.fas.fa-map-marker-alt               
+                                  =(biz.distance/1000).toFixed(1)
+                                span     km away
+                                
+                                br      
 
             //ul.pagination.row
               - var n = 1;
@@ -193,5 +201,17 @@ block content
           $(document).ready(function(){
               if($(window).width() >= 600){
                 $(".dropdown-toggle").dropdown("toggle");
-              }              
-            });
+              }  
+              navigator.geolocation.getCurrentPosition(function(position) {
+                var pos = {
+                  lat: position.coords.latitude,
+                  lng: position.coords.longitude
+                };
+                /// ------- attach users location to url
+                $(".bizlink").each(function () {
+                  let url =$(this).attr("href")
+                  let newUrl = url+'?lon='+pos.lng+'&lat='+pos.lat;
+                  $(this).attr("href", newUrl);
+                });
+              });            
+          });

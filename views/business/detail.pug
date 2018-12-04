@@ -10,7 +10,7 @@ block content
               if(biz.photo)
                 .row
                   .col-md-12
-                    img.img-responsive(src="/uploads/thumbs/cover"+ biz.photo,width="80%") 
+                    img.img-responsive(src="/uploads/thumbs/cover"+ biz.photo, alt=biz.name +' on FindIt Kenya', width="80%") 
               .row(style="margin-bottom: 2rem;")                       
                 .col-md-12.padding-map.nomargin
                   if(branches)
@@ -234,7 +234,7 @@ block content
                           each image in biz.gallery
                             a.nopadding(href='/uploads/'+image.filename, width="", alt='#{biz.slug}')
                               .thumbnail.bizdetail-photo
-                                img.img-thumbnail.img-responsive(src='/uploads/thumbs/gallery-'+image.filename,  alt='')
+                                img.img-thumbnail.img-responsive(src='/uploads/thumbs/gallery-'+image.filename,  alt=biz.name +' on FindIt Kenya')
                           .pull-left
                             small
                               strong
@@ -299,7 +299,7 @@ block content
                     .col-md-12.is-island
                         h6
                           =coupon.name
-                        img.coup-img.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt="Responsive image")
+                        img.coup-img.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=product.bizid.name +' on FindIt Kenya')
                         .div
                             h6
                               =coupon.bizid.name
@@ -320,9 +320,10 @@ block content
                   div.col-md-12.is-island
                     h6.findit-red
                       =branch.name
-                    span 
-                      =(branch.distance/1000).toFixed(1)
-                      span     km away
+                    if(!isNaN(branch.distance))  
+                      span 
+                        =(branch.distance/1000).toFixed(1)
+                        span     km away
                     
             
           if(similarbiz)
@@ -359,7 +360,7 @@ block content
                 .item.py-2(style="border:none")
                   a(href="/product/"+biz.slug+"/"+product.category.name+"/"+product.subcategory+"/"+product.minicategory+"/"+product.slug)
                     .card.h-100(style="border:none !important; box-shadow: 0 0 2px 0 rgba(46,62,72,.12), 0 2px 4px 0 rgba(46,62,72,.12);")
-                        img.card-img-top.w-100.product-img-home(src='/uploads/product/thumbs/'+product.photo, style="width: 200px !important; height: 200px !important;")
+                        img.card-img-top.w-100.product-img-home(src='/uploads/product/thumbs/'+product.photo, alt=product.name +' on FindIt Kenya', style="width: 200px !important; height: 200px !important;")
                         .card-text
                           =product.name
                           if product.oldprice
@@ -478,34 +479,45 @@ block content
               lat: position.coords.latitude,
               lng: position.coords.longitude
             };
-            /// ------- attach users location to url
+            /// ------ attach users location to url
             $(".bizlink").each(function () {
               let url =$(this).attr("href")
               let newUrl = url+'?lon='+pos.lng+'&lat='+pos.lat;
               $(this).attr("href", newUrl);
             });
             /// ---------
+            var branchCoords = !{JSON.stringify(biz.map)};
+            var zoom = 17
+            let branchPos = {
+                lat:branchCoords.coordinates[1],
+                lng:branchCoords.coordinates[0]
+            }
+           if(branchPos.lat == 0){
+             branchPos = pos
+             zoom = 11
+           }
             map = new google.maps.Map(document.getElementById('mappy'), {
-              center: pos,
-              zoom: 11
+              center: branchPos,
+              zoom: zoom
             });
-
+            
             var marker = new google.maps.Marker({
-              position: pos,
+              position: {
+                lat:position.coords.latitude,
+                lng:position.coords.longitude
+                },
               title: 'My Location',
               icon: 'https://findit.ke/img/bluegoogle.png',
               map: map
             });
-            google.maps.event.trigger(map, "resize");
             var branches = !{JSON.stringify(branches)};
-            console.log(branches);
             branches.forEach(function(biz) {
               if(typeof biz.map === 'undefined' || biz.map === null){
                 
               }else{
                 var bizpos = {
-                  lat: parseFloat(biz.map.coordinates[0]),
-                  lng: parseFloat(biz.map.coordinates[1])
+                  lat: parseFloat(biz.map.coordinates[1]),
+                  lng: parseFloat(biz.map.coordinates[0])
                 };
                 var marker = new google.maps.Marker({
                   position: bizpos,
@@ -524,6 +536,11 @@ block content
               }
               
             });
+            
+            
+            google.maps.event.trigger(map, "resize");
+           
+            
 
             function toggleBounce() {
               if (marker.getAnimation() !== null) {
@@ -536,7 +553,7 @@ block content
             // Create markers.
             
             infoWindow.open(map);
-            map.setCenter(pos);
+            map.setCenter(branchPos);
             }, function() {
               handleLocationError(true, infoWindow, map.getCenter());
             });
@@ -546,8 +563,8 @@ block content
             }
         }
         function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-          infoWindow.setPosition(pos);
+          infoWindow.setPosition(branchPos);
           infoWindow.setContent(browserHasGeolocation ? 'Error: The Geolocation service failed.' : 'Error: Your browser doesnt support geolocation.');
           infoWindow.open(map);
         }
-      script(async, defer, src='https://maps.googleapis.com/maps/api/js?key=AIzaSyC9MX39yDkMJn6rjWi6vt4Rens5u_cVBQE&callback=initMap&zoom=11')
+      script(async, defer, src='https://maps.googleapis.com/maps/api/js?key=AIzaSyC9MX39yDkMJn6rjWi6vt4Rens5u_cVBQE&callback=initMap&zoom=18')

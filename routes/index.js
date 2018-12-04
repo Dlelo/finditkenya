@@ -622,9 +622,12 @@ router.get('/with-images', function(req, res, next) {
        console.log(err);
   });
 });
-
+//
 router.get('/category/:cat',function(req, res, next){
   var page = 0;
+  let lon = Number(req.query.lon);
+  let lat = Number(req.query.lat);
+  let point;
   if(req.query.page){
     page = req.query.page - 1;
   }
@@ -652,47 +655,103 @@ router.get('/category/:cat',function(req, res, next){
       });
     });
   }else{
-    var businesses = Business.find({
-      $query: {
-        subcategory: req.params.cat,
-        approved: true,
-        branch: { $ne: true }
-        //pending: { $ne: true }
-      }
-    })
-    .sort([['paid', -1],['datepaid', 1],['slug', 1]])
-    //.limit(20)
-    //.skip(20 * page);
-
-    var bizcount = Business.count({
-        subcategory: req.params.cat,
-        approved: true
-    });
-
-    var features = Category.aggregate([
-      { $match: { name: req.params.cat } },
-      { "$unwind": "$subcategories" },
-      { "$sort": { "subcategories.name": 1 } }
+    if (lon && lat){
+      // if coordinates are provided
+      point = {
+        "type": "Point",
+        "coordinates": [lon,lat]
+      };
+  
+     var businesses = Business.aggregate([{
+        '$geoNear': {
+          'near': point,
+          'spherical': true,
+          "query":{
+            subcategory: req.params.cat,
+            approved: true,
+            branch: { $ne: true }
+          },
+          'distanceField': 'distance',
+          'maxDistance': 1000000000000
+        }
+      },
+       { "$sort": { "paid": 1 } }
     ]);
 
-    var categories = Category.find({approved: true,group: 'general'}).sort([['order', 1]]);
-    Promise.all([businesses, features, categories, bizcount]).then(values => {
-      console.log(Math.ceil(values[3]/20));
-      console.log(req.path);
-      //console.log(values[0].length);
-      res.render('business/list', {
-          title: "Best "+req.params.cat+ " in Nairobi Kenya",
-          businesses: values[0],
-          features: values[1],
-          categories: values[2],
-          category: req.params.cat,
-          bizcount: Math.ceil(values[3]/20),
-          host: req.get('host'),
-          uri: req.path,
-          page: page + 1
+      var bizcount = Business.count({
+        subcategory: req.params.cat,
+        approved: true
       });
-    });
-  }
+
+      var features = Category.aggregate([
+        { $match: { name: req.params.cat } },
+        { "$unwind": "$subcategories" },
+        { "$sort": { "subcategories.name": 1 } }
+      ]);
+//as
+      var categories = Category.find({approved: true,group: 'general'}).sort([['order', 1]]);
+    
+      Promise.all([businesses, features, categories, bizcount]).then(values => {
+        console.log(values[0])
+        console.log(Math.ceil(values[3]/20));
+        console.log(req.path);
+        //console.log(values[0].length);
+        res.render('business/list', {
+            title: "Best "+req.params.cat+ " in Nairobi Kenya",
+            businesses: values[0],
+            features: values[1],
+            categories: values[2],
+            category: req.params.cat,
+            bizcount: Math.ceil(values[3]/20),
+            host: req.get('host'),
+            uri: req.path,
+            page: page + 1
+        });
+      });
+    }else{
+      var businesses = Business.find({
+        $query: {
+          subcategory: req.params.cat,
+          approved: true,
+          branch: { $ne: true }
+          //pending: { $ne: true }
+        }
+      })
+      .sort([['paid', -1],['datepaid', 1],['slug', 1]])
+      //.limit(20)
+      //.skip(20 * page);
+
+      var bizcount = Business.count({
+          subcategory: req.params.cat,
+          approved: true
+      });
+
+      var features = Category.aggregate([
+        { $match: { name: req.params.cat } },
+        { "$unwind": "$subcategories" },
+        { "$sort": { "subcategories.name": 1 } }
+      ]);
+
+      var categories = Category.find({approved: true,group: 'general'}).sort([['order', 1]]);
+      
+      Promise.all([businesses, features, categories, bizcount]).then(values => {
+        console.log(Math.ceil(values[3]/20));
+        console.log(req.path);
+        //console.log(values[0].length);
+        res.render('business/list', {
+            title: "Best "+req.params.cat+ " in Nairobi Kenya",
+            businesses: values[0],
+            features: values[1],
+            categories: values[2],
+            category: req.params.cat,
+            bizcount: Math.ceil(values[3]/20),
+            host: req.get('host'),
+            uri: req.path,
+            page: page + 1
+        });
+      });
+    }
+}
       //res.render('business/list', { title: 'Businesses on ', businesses: data});
 });
 
@@ -1726,7 +1785,6 @@ router.get('/biz/:name',function(req, res, next){
       }else{
         parent = data._id;
       }
-      console.log(data)
       Business.aggregate(
         	[{
         			'$geoNear': {
@@ -1743,10 +1801,11 @@ router.get('/biz/:name',function(req, res, next){
               var businesses = values[1];
               var categories = values[2];
               var products = values[4];
+              var branches;
               if(values[3].length){
-                var branches = values[3];
+                 branches = values[3];
               }else{
-                var branches = null;
+                 branches = null;
               }
 
               if(data.paid == false || typeof data.paid === 'undefined'){
@@ -1796,10 +1855,11 @@ router.get('/biz/:name',function(req, res, next){
       var businesses = values[1];
       var categories = values[2];
       var products = values[4];
+      var branch;
       if(values[3].length){
-        var branches = values[3];
+      branch = values[3];
       }else{
-        var branches = null;
+      branch = null;
       }
 
       if(data.paid == false || typeof data.paid === 'undefined'){
@@ -1815,7 +1875,7 @@ router.get('/biz/:name',function(req, res, next){
           keywords: keywords,
           coupons: coupons,
           categories:categories,
-          branches: branches,
+          branches: branch,
           products: products
         });
         //res.end();
@@ -1833,7 +1893,7 @@ router.get('/biz/:name',function(req, res, next){
           keywords: keywords,
           coupons: coupons,
           categories:categories,
-          branches: branches,
+          branches: branch,
           products: products
         });
         //res.end();

@@ -120,64 +120,68 @@ block content
                           row
                           .col-md-12.text-right    
                             div.nav(style="float: right;")
-                              if(!isNaN(biz.distance))  
-                                span 
-                                  =(biz.distance/1000).toFixed(1)
-                                  span     km away
-                              if biz.reviews
-                              if( biz.reviews.length == 1) 
-                                  .col-md-6.ratingsonCat.text-right(class="rating medium star-icon value-4 label-hidden")
-                                    .star-container
-                                      .star
-                                        i.star-empty
-                                        i.star-half
-                                        i.star-filled
-                                      .star
-                                        i.star-empty
-                                        i.star-half
-                                        i.star-filled
-                                      .star
-                                        i.star-empty
-                                        i.star-half
-                                        i.star-filled
-                                      .star
-                                        i.star-empty
-                                        i.star-half
-                                        i.star-filled
-                                      .star
-                                        i.star-empty
-                                        i.star-half
-                                        i.star-filled
+                              li
+                                if(!isNaN(biz.distance))  
                                   small
-                                    | #{biz.reviews.length} Review
-                              else if( biz.reviews.length > 1)
-                                span.glyphicon.glyphicon-cog.glyph.border
-                                  div.text-right(class="rating medium star-icon value-4 label-hidden")
-                                    .star-container
-                                      .star
-                                        i.star-empty
-                                        i.star-half
-                                        i.star-filled
-                                      .star
-                                        i.star-empty
-                                        i.star-half
-                                        i.star-filled
-                                      .star
-                                        i.star-empty
-                                        i.star-half
-                                        i.star-filled
-                                      .star
-                                        i.star-empty
-                                        i.star-half
-                                        i.star-filled
-                                      .star
-                                        i.star-empty
-                                        i.star-half
-                                        i.star-filled
-                              br
-                              small
-                                | #{biz.reviews.length} Reviews
-                              br
+                                    i.fas.fa-map-marker-alt
+                                    span 
+                                      =(biz.distance/1000).toFixed(1)
+                                      span     km away
+                              li
+                                if biz.reviews
+                                if( biz.reviews.length == 1) 
+                                    .col-md-6.ratingsonCat.text-right(class="rating medium star-icon value-4 label-hidden")
+                                      .star-container
+                                        .star
+                                          i.star-empty
+                                          i.star-half
+                                          i.star-filled
+                                        .star
+                                          i.star-empty
+                                          i.star-half
+                                          i.star-filled
+                                        .star
+                                          i.star-empty
+                                          i.star-half
+                                          i.star-filled
+                                        .star
+                                          i.star-empty
+                                          i.star-half
+                                          i.star-filled
+                                        .star
+                                          i.star-empty
+                                          i.star-half
+                                          i.star-filled
+                                    small
+                                      | #{biz.reviews.length} Review
+                                else if( biz.reviews.length > 1)
+                                  span.glyphicon.glyphicon-cog.glyph.border
+                                    div.text-right(class="rating medium star-icon value-4 label-hidden")
+                                      .star-container
+                                        .star
+                                          i.star-empty
+                                          i.star-half
+                                          i.star-filled
+                                        .star
+                                          i.star-empty
+                                          i.star-half
+                                          i.star-filled
+                                        .star
+                                          i.star-empty
+                                          i.star-half
+                                          i.star-filled
+                                        .star
+                                          i.star-empty
+                                          i.star-half
+                                          i.star-filled
+                                        .star
+                                          i.star-empty
+                                          i.star-half
+                                          i.star-filled
+                                br
+                                small
+                                  | #{biz.reviews.length} Reviews
+                                br
                               
             //ul.pagination.row
               - var n = 1;

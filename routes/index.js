@@ -698,7 +698,7 @@ router.get('/category/:cat',function(req, res, next){
         //console.log(values[0].length);
         res.render('business/list', {
             title: "Best "+req.params.cat+ " in Nairobi Kenya",
-            businesses: values[0],
+            businesses: businesses,
             features: values[1],
             categories: values[2],
             category: req.params.cat,

@@ -1726,7 +1726,6 @@ router.get('/biz/:name',function(req, res, next){
       }else{
         parent = data._id;
       }
-      console.log(data)
       Business.aggregate(
         	[{
         			'$geoNear': {
@@ -1743,10 +1742,11 @@ router.get('/biz/:name',function(req, res, next){
               var businesses = values[1];
               var categories = values[2];
               var products = values[4];
+              var branches;
               if(values[3].length){
-                var branches = values[3];
+                 branches = values[3];
               }else{
-                var branches = null;
+                 branches = null;
               }
 
               if(data.paid == false || typeof data.paid === 'undefined'){
@@ -1796,10 +1796,11 @@ router.get('/biz/:name',function(req, res, next){
       var businesses = values[1];
       var categories = values[2];
       var products = values[4];
+      var branch;
       if(values[3].length){
-        var branches = values[3];
+      branch = values[3];
       }else{
-        var branches = null;
+      branch = null;
       }
 
       if(data.paid == false || typeof data.paid === 'undefined'){
@@ -1815,7 +1816,7 @@ router.get('/biz/:name',function(req, res, next){
           keywords: keywords,
           coupons: coupons,
           categories:categories,
-          branches: branches,
+          branches: branch,
           products: products
         });
         //res.end();
@@ -1833,7 +1834,7 @@ router.get('/biz/:name',function(req, res, next){
           keywords: keywords,
           coupons: coupons,
           categories:categories,
-          branches: branches,
+          branches: branch,
           products: products
         });
         //res.end();

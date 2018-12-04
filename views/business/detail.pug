@@ -487,19 +487,32 @@ block content
               $(this).attr("href", newUrl);
             });
             /// ---------
+            var branchCoords = !{JSON.stringify(biz.map)};
+            var zoom = 17
+            let branchPos = {
+                lat:branchCoords.coordinates[1],
+                lng:branchCoords.coordinates[0]
+            }
+           if(branchPos.lat == 0){
+             branchPos = pos
+             zoom = 11
+           }
             map = new google.maps.Map(document.getElementById('mappy'), {
-              center: pos,
-              zoom: 11
+              center: branchPos,
+              zoom: zoom
             });
-
+            
             var marker = new google.maps.Marker({
-              position: pos,
+              position: {
+                lat:position.coords.latitude,
+                lng:position.coords.longitude
+                },
               title: 'My Location',
               icon: 'https://findit.ke/img/bluegoogle.png',
               map: map
             });
-            if(!biz.branch){
-              branches.forEach(function(biz) {
+            var branches = !{JSON.stringify(branches)};
+            branches.forEach(function(biz) {
               if(typeof biz.map === 'undefined' || biz.map === null){
                 
               }else{
@@ -524,9 +537,10 @@ block content
               }
               
             });
-            }
+            
+            
             google.maps.event.trigger(map, "resize");
-            var branches = !{JSON.stringify(branches)};
+           
             
 
             function toggleBounce() {
@@ -540,7 +554,7 @@ block content
             // Create markers.
             
             infoWindow.open(map);
-            map.setCenter(pos);
+            map.setCenter(branchPos);
             }, function() {
               handleLocationError(true, infoWindow, map.getCenter());
             });
@@ -554,4 +568,4 @@ block content
           infoWindow.setContent(browserHasGeolocation ? 'Error: The Geolocation service failed.' : 'Error: Your browser doesnt support geolocation.');
           infoWindow.open(map);
         }
-      script(async, defer, src='https://maps.googleapis.com/maps/api/js?key=AIzaSyC9MX39yDkMJn6rjWi6vt4Rens5u_cVBQE&callback=initMap&zoom=11')
+      script(async, defer, src='https://maps.googleapis.com/maps/api/js?key=AIzaSyC9MX39yDkMJn6rjWi6vt4Rens5u_cVBQE&callback=initMap&zoom=18')

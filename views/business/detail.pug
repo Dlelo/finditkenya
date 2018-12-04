@@ -480,7 +480,7 @@ block content
               lat: position.coords.latitude,
               lng: position.coords.longitude
             };
-            /// ------- attach users location to url
+            /// ------ attach users location to url
             $(".bizlink").each(function () {
               let url =$(this).attr("href")
               let newUrl = url+'?lon='+pos.lng+'&lat='+pos.lat;
@@ -564,7 +564,7 @@ block content
             }
         }
         function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-          infoWindow.setPosition(pos);
+          infoWindow.setPosition(branchPos);
           infoWindow.setContent(browserHasGeolocation ? 'Error: The Geolocation service failed.' : 'Error: Your browser doesnt support geolocation.');
           infoWindow.open(map);
         }

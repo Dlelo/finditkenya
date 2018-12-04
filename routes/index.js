@@ -659,18 +659,18 @@ router.get('/category/:cat',function(req, res, next){
       // if coordinates are provided
       point = {
         "type": "Point",
-        "coordinates": [lat,lon]
+        "coordinates": [lon,lat]
       };
   
      var businesses = Business.aggregate([{
         '$geoNear': {
           'near': point,
           'spherical': true,
-          // "query":{
-          //   subcategory: req.params.cat,
-          //   approved: true,
-          //   branch: { $ne: true }
-          // },
+          "query":{
+            subcategory: req.params.cat,
+            approved: true,
+            branch: { $ne: true }
+          },
           'distanceField': 'distance',
           'maxDistance': 1000000000000
         }
@@ -688,7 +688,7 @@ router.get('/category/:cat',function(req, res, next){
         { "$unwind": "$subcategories" },
         { "$sort": { "subcategories.name": 1 } }
       ]);
-
+//as
       var categories = Category.find({approved: true,group: 'general'}).sort([['order', 1]]);
     
       Promise.all([businesses, features, categories, bizcount]).then(values => {
@@ -733,6 +733,7 @@ router.get('/category/:cat',function(req, res, next){
       ]);
 
       var categories = Category.find({approved: true,group: 'general'}).sort([['order', 1]]);
+      
       Promise.all([businesses, features, categories, bizcount]).then(values => {
         console.log(Math.ceil(values[3]/20));
         console.log(req.path);

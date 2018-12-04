@@ -11,14 +11,14 @@ block content
                 div.img-big-wrap
                   div.row.xzoom-container
                     a(href="#")
-                      img.xzoom#xzoom-default(width="500" src='/uploads/product/'+product.photo,  xoriginal='/uploads/product/'+product.photo)
+                      img.xzoom#xzoom-default(width="500" src='/uploads/product/'+product.photo,  xoriginal='/uploads/product/'+product.photo, alt=product.name +' on FindIt Kenya' )
                       div.xzoom-thumbs
                         a(href='/uploads/product/'+product.photo)
-                              img.xzoom-gallery(width="80" height="80" src='/uploads/product/'+product.photo)
+                              img.xzoom-gallery(width="80", height="80", src='/uploads/product/'+product.photo, alt=product.name +' on FindIt Kenya')
                         if product.gallery
                           each image in product.gallery
                             a(href='/uploads/product/gallery-'+image.filename)
-                              img.xzoom-gallery(width="80" height="80" src='/uploads/product/thumbs/gallery-'+image.filename)
+                              img.xzoom-gallery(width="80" height="80" src='/uploads/product/thumbs/gallery-'+image.filename, alt=product.name +' on FindIt Kenya')
                               
             aside.col-sm-6
               article.card-body.p-5

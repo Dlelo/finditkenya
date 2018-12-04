@@ -662,7 +662,7 @@ router.get('/category/:cat',function(req, res, next){
         "coordinates": [lat,lon]
       };
   
-     Business.aggregate([{
+     var businesses = Business.aggregate([{
         '$geoNear': {
           'near': point,
           'spherical': true,
@@ -676,8 +676,8 @@ router.get('/category/:cat',function(req, res, next){
         }
       },
        { "$sort": { "paid": 1 } }
-    ],
-    function(err,businesses){
+    ]);
+    
       var bizcount = Business.count({
         subcategory: req.params.cat,
         approved: true
@@ -692,13 +692,13 @@ router.get('/category/:cat',function(req, res, next){
       var categories = Category.find({approved: true,group: 'general'}).sort([['order', 1]]);
     
       Promise.all([businesses, features, categories, bizcount]).then(values => {
-        console.log(businesses)
+        console.log(values[0])
         console.log(Math.ceil(values[3]/20));
         console.log(req.path);
         //console.log(values[0].length);
         res.render('business/list', {
             title: "Best "+req.params.cat+ " in Nairobi Kenya",
-            businesses: businesses,
+            businesses: values[0],
             features: values[1],
             categories: values[2],
             category: req.params.cat,

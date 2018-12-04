@@ -121,7 +121,7 @@ block content
                           .col-md-12.text-right    
                             div.nav(style="float: right;")
                               if biz.reviews
-                                if( biz.reviews.length == 1) 
+                                if ( biz.reviews.length == 1) 
                                   .col-md-6.ratingsonCat.text-right(class="rating medium star-icon value-4 label-hidden")
                                     .star-container
                                       .star
@@ -199,6 +199,7 @@ block content
         //script to put navitems open by default
         script(type='text/javascript').
           $(document).ready(function(){
+              console.log(!{JSON.stringify(businesses)});
               if($(window).width() >= 600){
                 $(".dropdown-toggle").dropdown("toggle");
               }  

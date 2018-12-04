@@ -11,7 +11,7 @@ block content
               if(biz.photo)
                 .row
                   .col-md-12
-                    img.img-responsive(src="/uploads/thumbs/cover"+ biz.photo,width="80%") 
+                    img.img-responsive(src="/uploads/thumbs/cover"+ biz.photo, alt=biz.name +' on FindIt Kenya', width="80%") 
               .row(style="margin-bottom: 2rem;")                       
                 .col-md-12.padding-map.nomargin
                   if(branches)
@@ -235,7 +235,7 @@ block content
                           each image in biz.gallery
                             a.nopadding(href='/uploads/'+image.filename, width="", alt='#{biz.slug}')
                               .thumbnail.bizdetail-photo
-                                img.img-thumbnail.img-responsive(src='/uploads/thumbs/gallery-'+image.filename,  alt='')
+                                img.img-thumbnail.img-responsive(src='/uploads/thumbs/gallery-'+image.filename,  alt=biz.name +' on FindIt Kenya')
                           .pull-left
                             small
                               strong
@@ -300,7 +300,7 @@ block content
                     .col-md-12.is-island
                         h6
                           =coupon.name
-                        img.coup-img.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt="Responsive image")
+                        img.coup-img.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=product.bizid.name +' on FindIt Kenya')
                         .div
                             h6
                               =coupon.bizid.name
@@ -361,7 +361,7 @@ block content
                 .item.py-2(style="border:none")
                   a(href="/product/"+biz.slug+"/"+product.category.name+"/"+product.subcategory+"/"+product.minicategory+"/"+product.slug)
                     .card.h-100(style="border:none !important; box-shadow: 0 0 2px 0 rgba(46,62,72,.12), 0 2px 4px 0 rgba(46,62,72,.12);")
-                        img.card-img-top.w-100.product-img-home(src='/uploads/product/thumbs/'+product.photo, style="width: 200px !important; height: 200px !important;")
+                        img.card-img-top.w-100.product-img-home(src='/uploads/product/thumbs/'+product.photo, alt=product.name +' on FindIt Kenya', style="width: 200px !important; height: 200px !important;")
                         .card-text
                           =product.name
                           if product.oldprice

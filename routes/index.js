@@ -677,7 +677,7 @@ router.get('/category/:cat',function(req, res, next){
       },
        { "$sort": { "paid": 1 } }
     ]);
-    
+
       var bizcount = Business.count({
         subcategory: req.params.cat,
         approved: true
@@ -708,8 +708,6 @@ router.get('/category/:cat',function(req, res, next){
             page: page + 1
         });
       });
-    }
-    )
     }else{
       var businesses = Business.find({
         $query: {

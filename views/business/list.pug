@@ -170,17 +170,17 @@ block content
                                         i.star-empty
                                         i.star-half
                                         i.star-filled
-                            if(!isNaN(biz.distance))
-                                
-                              span 
-                                i.fas.fa-map-marker-alt               
-                                =(biz.distance/1000).toFixed(1)
-                              span     km away
-                              
-                              br
+                            
                               small
                                 | #{biz.reviews.length} Reviews
-                              
+                          //if(!isNaN(biz.distance))
+                                  
+                                span 
+                                  i.fas.fa-map-marker-alt               
+                                  =(biz.distance/1000).toFixed(1)
+                                span     km away
+                                
+                                br      
 
             //ul.pagination.row
               - var n = 1;

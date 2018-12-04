@@ -675,7 +675,7 @@ router.get('/category/:cat',function(req, res, next){
           'maxDistance': 1000000000000
         }
       },
-       { "$sort": { "paid": 1 } }
+       { "$sort": { "paid": -1 } }
     ]);
 
       var bizcount = Business.count({

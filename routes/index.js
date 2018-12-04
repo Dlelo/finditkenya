@@ -666,11 +666,11 @@ router.get('/category/:cat',function(req, res, next){
         '$geoNear': {
           'near': point,
           'spherical': true,
-          "query":{
-            subcategory: req.params.cat,
-            approved: true,
-            branch: { $ne: true }
-          },
+          // "query":{
+          //   subcategory: req.params.cat,
+          //   approved: true,
+          //   branch: { $ne: true }
+          // },
           'distanceField': 'distance',
           'maxDistance': 1000000000000
         }

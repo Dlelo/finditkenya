@@ -678,26 +678,10 @@ router.get('/category/:cat',function(req, res, next){
        { "$sort": { "paid": 1 } }
     ],
     function(err,businesses){
-      console.log(businesses)
-      Promise.all([businesses, features, categories, bizcount]).then(values => {
-        console.log(Math.ceil(values[3]/20));
-        console.log(req.path);
-        res.render('business/list', {
-            title: "Best "+req.params.cat+ " in Nairobi Kenya",
-            businesses: values[0],
-            features: values[1],
-            categories: values[2],
-            category: req.params.cat,
-            bizcount: Math.ceil(values[3]/20),
-            host: req.get('host'),
-            uri: req.path,
-            page: page + 1
-        });
-      });
       var bizcount = Business.count({
         subcategory: req.params.cat,
         approved: true
-    });
+      });
 
       var features = Category.aggregate([
         { $match: { name: req.params.cat } },
@@ -706,6 +690,7 @@ router.get('/category/:cat',function(req, res, next){
       ]);
 
       var categories = Category.find({approved: true,group: 'general'}).sort([['order', 1]]);
+    
       Promise.all([businesses, features, categories, bizcount]).then(values => {
         console.log(businesses)
         console.log(Math.ceil(values[3]/20));
@@ -725,12 +710,6 @@ router.get('/category/:cat',function(req, res, next){
       });
     }
     )
-    
-      //.sort([['paid', -1],['datepaid', 1],['slug', 1]])
-      //.limit(20)
-      //.skip(20 * page);
-
-     
     }else{
       var businesses = Business.find({
         $query: {

@@ -696,6 +696,10 @@ router.get('/category/:cat',function(req, res, next){
         console.log(Math.ceil(values[3]/20));
         console.log(req.path);
         //console.log(values[0].length);
+        let bizs = values[0];
+        for(let i = 0; i < bizs.length; i++){
+          bizs[i].reviews = [];
+        }
         res.render('business/list', {
             title: "Best "+req.params.cat+ " in Nairobi Kenya",
             businesses: values[0],

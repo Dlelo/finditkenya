@@ -120,8 +120,8 @@ block content
                           row
                           .col-md-12.text-right    
                             div.nav(style="float: right;")
-                                  //if biz.reviews
-                                  //if( biz.reviews.length == 1) 
+                              if biz.reviews
+                              if( biz.reviews.length == 1) 
                                   .col-md-6.ratingsonCat.text-right(class="rating medium star-icon value-4 label-hidden")
                                     .star-container
                                       .star
@@ -145,7 +145,7 @@ block content
                                         i.star-half
                                         i.star-filled
                                   small
-                                    | 1 Review
+                                    | #{biz.reviews.length} Review
                               else if( biz.reviews.length > 1)
                                 span.glyphicon.glyphicon-cog.glyph.border
                                   div.text-right(class="rating medium star-icon value-4 label-hidden")
@@ -170,17 +170,9 @@ block content
                                         i.star-empty
                                         i.star-half
                                         i.star-filled
-                            
+                              br
                               small
                                 | #{biz.reviews.length} Reviews
-                          //if(!isNaN(biz.distance))
-                                  
-                                span 
-                                  i.fas.fa-map-marker-alt               
-                                  =(biz.distance/1000).toFixed(1)
-                                span     km away
-                                
-                                br      
 
             //ul.pagination.row
               - var n = 1;

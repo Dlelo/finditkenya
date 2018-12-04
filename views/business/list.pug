@@ -56,9 +56,9 @@ block content
               each biz,i in businesses
                 //if column is even
                 //if (typeof(biz.slug) != 'undefined')
-                a(href="/biz/"+biz.slug)
+                a.bizlink(href="/biz/"+biz.slug)
                   div.cat-backgroundeven.cat-box.cat-shadow 
-                    a(href="/biz/"+biz.slug)  
+                    a.bizlink(href="/biz/"+biz.slug)  
                       .row
                         .col-md-12.findit-blue.cat-items-top.cat-header 
                             h4.findit-blue.catbiz-name
@@ -193,5 +193,17 @@ block content
           $(document).ready(function(){
               if($(window).width() >= 600){
                 $(".dropdown-toggle").dropdown("toggle");
-              }              
+              }  
+              navigator.geolocation.getCurrentPosition(function(position) {
+                var pos = {
+                  lat: position.coords.latitude,
+                  lng: position.coords.longitude
+                };
+                /// ------- attach users location to url
+                $(".bizlink").each(function () {
+                  let url =$(this).attr("href")
+                  let newUrl = url+'?lon='+pos.lng+'&lat='+pos.lat;
+                  $(this).attr("href", newUrl);
+                });
+              });            
             });

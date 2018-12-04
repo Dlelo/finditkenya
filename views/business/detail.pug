@@ -321,7 +321,7 @@ block content
                   div.col-md-12.is-island
                     h6.findit-red
                       =branch.name
-                    if(branch.distance)  
+                    if(!isNaN(branch.distance))  
                       span 
                         =(branch.distance/1000).toFixed(1)
                         span     km away

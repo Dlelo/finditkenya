@@ -321,9 +321,10 @@ block content
                   div.col-md-12.is-island
                     h6.findit-red
                       =branch.name
-                    span 
-                      =(branch.distance/1000).toFixed(1)
-                      span     km away
+                    if(!isNaN(branch.distance))  
+                      span 
+                        =(branch.distance/1000).toFixed(1)
+                        span     km away
                     
             
           if(similarbiz)
@@ -497,16 +498,14 @@ block content
               icon: 'https://findit.ke/img/bluegoogle.png',
               map: map
             });
-            google.maps.event.trigger(map, "resize");
-            var branches = !{JSON.stringify(branches)};
-            console.log(branches);
-            branches.forEach(function(biz) {
+            if(!biz.branch){
+              branches.forEach(function(biz) {
               if(typeof biz.map === 'undefined' || biz.map === null){
                 
               }else{
                 var bizpos = {
-                  lat: parseFloat(biz.map.coordinates[0]),
-                  lng: parseFloat(biz.map.coordinates[1])
+                  lat: parseFloat(biz.map.coordinates[1]),
+                  lng: parseFloat(biz.map.coordinates[0])
                 };
                 var marker = new google.maps.Marker({
                   position: bizpos,
@@ -525,6 +524,10 @@ block content
               }
               
             });
+            }
+            google.maps.event.trigger(map, "resize");
+            var branches = !{JSON.stringify(branches)};
+            
 
             function toggleBounce() {
               if (marker.getAnimation() !== null) {

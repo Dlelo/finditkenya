@@ -120,6 +120,7 @@ block content
                           row
                           .col-md-12.text-right    
                             div.nav(style="float: right;")
+                              biz.distance
                               if biz.reviews
                               if( biz.reviews.length == 1) 
                                   .col-md-6.ratingsonCat.text-right(class="rating medium star-icon value-4 label-hidden")
@@ -173,7 +174,8 @@ block content
                               br
                               small
                                 | #{biz.reviews.length} Reviews
-
+                              br
+                              
             //ul.pagination.row
               - var n = 1;
               while n <= bizcount

@@ -1793,8 +1793,9 @@ router.get('/biz/:name',function(req, res, next){
                 "branch": { "$ne": true },
                 "approved": true
               },
+              'num':6,
               'distanceField': 'distance',
-              'maxDistance': 20000
+              'maxDistance': 200000
           }
       }]
     )

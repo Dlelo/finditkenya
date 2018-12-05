@@ -699,7 +699,7 @@ router.get('/category/:cat',function(req, res, next){
         let bizs = values[0];
         for(let i = 0; i < bizs.length; i++){
           if (typeof bizs[i].reviews == 'undefined'){
-            bizs[i].reviews = [];
+            bizs[i].reviews = []; 
           }
           if (typeof bizs[i].features == 'undefined'){
             bizs[i].features = [];

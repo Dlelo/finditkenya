@@ -128,7 +128,7 @@ block content
               strong
                 | Similar Businesses          
             each bizna in similarbiz            
-              a(href="/biz/"+bizna.slug)
+              a.bizlink(href="/biz/"+bizna.slug)
                 .row.is-island
                   h5
                     =bizna.name
@@ -205,3 +205,19 @@ block content
                           label.half(for='starhalf', title='Sucks big time - 0.5 stars')
                       .col-md-12
                         button.button.btn.btn-danger.form-control(type='submit') Submit Review
+
+    script(type='text/javascript').
+          $(document).ready(function(){
+              navigator.geolocation.getCurrentPosition(function(position) {
+                var pos = {
+                  lat: position.coords.latitude,
+                  lng: position.coords.longitude
+                };
+                /// ------- attach users location to url
+                $(".bizlink").each(function () {
+                  let url =$(this).attr("href")
+                  let newUrl = url+'?lon='+pos.lng+'&lat='+pos.lat;
+                  $(this).attr("href", newUrl);
+                });
+              });            
+          });            

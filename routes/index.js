@@ -1783,7 +1783,7 @@ router.get('/biz/:name',function(req, res, next){
       }
       let similarPoint = {
         "type": "Point",
-        "coordinates": [data.map.coordinates[1],data.map.coordinates[0]]
+        "coordinates": [data.map.coordinates[0],data.map.coordinates[1]]
       };
 
       var businesses = Business.aggregate(

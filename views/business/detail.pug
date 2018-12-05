@@ -224,7 +224,6 @@ block content
                     each feature in biz.features
                       a(href="/subcategory/subcat/"+feature)
                         strong
-                          
                           | #{feature} |    
               .row  
                 .col-md-12  
@@ -338,9 +337,11 @@ block content
                   div.col-md-12.is-island
                     h6.findit-red
                       =bizna.name
-                      
-                    p
-                      =bizna.subcategory
+                    each feature , i in bizna.features.sort()
+                        if(i < 2)
+                        p
+                        | #{feature}
+                        br
                     if(!isNaN(bizna.distance))  
                       span 
                         =(bizna.distance/1000).toFixed(1)

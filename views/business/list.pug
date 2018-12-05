@@ -113,10 +113,16 @@ block content
                                     i.fas.fa-mobile-alt 
                                   //a.findit.phoneno(href="tel:"+phone,style="color:#2c155a;display:none")
                                       |  #{biz.phone}
-                                  a(href="/biz/"+biz.slug)
+                                  a.bizlink(href="/biz/"+biz.slug)
                                     |  Get Phone Number
                                 else
                                   | 
+                                br  
+                              each feature,i in biz.features
+                                  span
+                                     | #{feature} | 
+                                 
+
                           row
                           .col-md-12.text-right    
                             div.nav(style="float: right;")

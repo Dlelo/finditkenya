@@ -1781,11 +1781,15 @@ router.get('/biz/:name',function(req, res, next){
       }else{
         parent = data._id;
       }
+      let similarPoint = {
+        "type": "Point",
+        "coordinates": [data.map.coordinates[0],data.map.coordinates[1]]
+      };
 
       var businesses = Business.aggregate(
         [{
           '$geoNear': {
-              'near': point,
+              'near': similarPoint,
               'spherical': true,
               "query": {
                 "subcategory": data.subcategory,

@@ -333,7 +333,7 @@ block content
                   | Similar Businesses
             div.col-md-12.text-center       
               each bizna in similarbiz            
-                a(href="/biz/"+bizna.slug) 
+                a.bizlink(href="/biz/"+bizna.slug) 
                   div.col-md-12.is-island
                     h6.findit-red
                       =bizna.name

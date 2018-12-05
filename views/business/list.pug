@@ -117,10 +117,11 @@ block content
                                     |  Get Phone Number
                                 else
                                   | 
-                                
-                          
+                                br  
+                              each feature,i in biz.features
+                                  span
+                                     | #{feature} | 
                                  
-
                           row
                           .col-md-12.text-right    
                             div.nav(style="float: right;")

@@ -700,7 +700,10 @@ router.get('/category/:cat',function(req, res, next){
         for(let i = 0; i < bizs.length; i++){
           if (typeof bizs[i].reviews == 'undefined'){
             bizs[i].reviews = [];
-          }         
+          }
+          if (typeof bizs[i].features == 'undefined'){
+            bizs[i].features = [];
+          }           
         }
         res.render('business/list', {
             title: "Best "+req.params.cat+ " in Nairobi Kenya",
@@ -1844,11 +1847,6 @@ router.get('/biz/:name',function(req, res, next){
             }
             
           }
-          
-         
-          
-
-
           if(data.paid == false || typeof data.paid === 'undefined'){
             description = data.name + ', '+ data.subcategory + ', ' + data.street +', '+data.city + ' Kenya';
             keywords = data.keywords + " | on Findit Kenya";

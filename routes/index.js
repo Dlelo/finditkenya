@@ -1824,6 +1824,27 @@ router.get('/biz/:name',function(req, res, next){
              branches = null;
           }
 
+          //array  of current businesses features
+          let currentBusinessFeatures = data.features;
+
+          currentBusinessFeatures.sort(); 
+
+          let similarbusinesses = businesses;
+
+          for(let i = 0; i < similarbusinesses.length;i++){
+
+            for(let k = 0; k < similarbusinesses[i].features.length;k++){
+              similarbusinesses[i].features =  similarbusinesses[i].features.filter(function(id) {
+                return currentBusinessFeatures.indexOf(id) > -1;
+              });
+            }
+            
+          }
+          
+         
+          
+
+
           if(data.paid == false || typeof data.paid === 'undefined'){
             description = data.name + ', '+ data.subcategory + ', ' + data.street +', '+data.city + ' Kenya';
             keywords = data.keywords + " | on Findit Kenya";
@@ -1833,7 +1854,7 @@ router.get('/biz/:name',function(req, res, next){
               biz: data,
               phones: phones,
               emails: emails,
-              similarbiz: businesses,
+              similarbiz: similarbusinesses,
               keywords: keywords,
               coupons: coupons,
               categories:categories,

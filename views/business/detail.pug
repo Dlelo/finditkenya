@@ -338,8 +338,13 @@ block content
                   div.col-md-12.is-island
                     h6.findit-red
                       =bizna.name
+                      
                     p
-                      =bizna.subcategory      
+                      =bizna.subcategory
+                    if(!isNaN(bizna.distance))  
+                      span 
+                        =(bizna.distance/1000).toFixed(1)
+                        span     km away    
         
           
 

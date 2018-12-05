@@ -1788,7 +1788,8 @@ router.get('/biz/:name',function(req, res, next){
               'near': point,
               'spherical': true,
               "query": {
-                "feature": data.feature,
+                "subcategory": data.subcategory,
+                "features": { "$in": data.features },
                 "slug": { "$ne": data.slug },
                 "branch": { "$ne": true },
                 "approved": true

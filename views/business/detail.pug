@@ -161,27 +161,27 @@ block content
                               p Tuesday: #{hour.opens} - #{hour.closes}
                           each hour in biz.hours.wednesday
                             if(hour.opens === hour.closes)
-                              |  Closed
+                              p  Closed
                             else
                               p Wednesday: #{hour.opens} - #{hour.closes}
                           each hour in biz.hours.thursday
                             if(hour.opens === hour.closes)
-                              |  Closed
+                              p  Closed
                             else
                               p Thursday: #{hour.opens} - #{hour.closes}
                           each hour in biz.hours.friday
                             if(hour.opens === hour.closes)
-                              |  Closed
+                              p  Closed
                             else
                               p Friday: #{hour.opens} - #{hour.closes}
                           each hour in biz.hours.saturday
                             if(hour.opens === hour.closes)
-                              |  Closed
+                              p  Closed
                             else
                               p Saturday: #{hour.opens} - #{hour.closes}
                           each hour in biz.hours.sunday
                             if(hour.opens === hour.closes)
-                              |  Closed
+                              p  Closed
                             else
                               p Sunday: #{hour.opens} - #{hour.closes}
                   if(biz.deliverylink)

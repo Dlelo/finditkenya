@@ -150,12 +150,13 @@ block content
                         .col-md-12
                           each hour in biz.hours.monday
                             if(hour.opens === hour.closes)
-                              |  Closed
+                              p  Closed
+                               
                             else
                               p Monday: #{hour.opens} - #{hour.closes}
                           each hour in biz.hours.tuesday
                             if(hour.opens === hour.closes)
-                              |  Closed
+                              p  Closed
                             else
                               p Tuesday: #{hour.opens} - #{hour.closes}
                           each hour in biz.hours.wednesday

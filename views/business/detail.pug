@@ -150,38 +150,38 @@ block content
                         .col-md-12
                           each hour in biz.hours.monday
                             if(hour.opens === hour.closes)
-                              p  Closed
+                              p  Monday: Closed
                                
                             else
                               p Monday: #{hour.opens} - #{hour.closes}
                           each hour in biz.hours.tuesday
                             if(hour.opens === hour.closes)
-                              p  Closed
+                              p  Tuesday: Closed
                             else
                               p Tuesday: #{hour.opens} - #{hour.closes}
                           each hour in biz.hours.wednesday
                             if(hour.opens === hour.closes)
-                              p  Closed
+                              p  Wednesday: Closed
                             else
                               p Wednesday: #{hour.opens} - #{hour.closes}
                           each hour in biz.hours.thursday
                             if(hour.opens === hour.closes)
-                              p  Closed
+                              p Thursday: Closed
                             else
                               p Thursday: #{hour.opens} - #{hour.closes}
                           each hour in biz.hours.friday
                             if(hour.opens === hour.closes)
-                              p  Closed
+                              p  Friday: Closed
                             else
                               p Friday: #{hour.opens} - #{hour.closes}
                           each hour in biz.hours.saturday
                             if(hour.opens === hour.closes)
-                              p  Closed
+                              p   Saturday: Closed
                             else
                               p Saturday: #{hour.opens} - #{hour.closes}
                           each hour in biz.hours.sunday
                             if(hour.opens === hour.closes)
-                              p  Closed
+                              p  Sunday: Closed
                             else
                               p Sunday: #{hour.opens} - #{hour.closes}
                   if(biz.deliverylink)

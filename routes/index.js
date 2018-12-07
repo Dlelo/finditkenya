@@ -699,8 +699,11 @@ router.get('/category/:cat',function(req, res, next){
         let bizs = values[0];
         for(let i = 0; i < bizs.length; i++){
           if (typeof bizs[i].reviews == 'undefined'){
-            bizs[i].reviews = [];
-          }         
+            bizs[i].reviews = []; 
+          }
+          if (typeof bizs[i].features == 'undefined'){
+            bizs[i].features = [];
+          }           
         }
         res.render('business/list', {
             title: "Best "+req.params.cat+ " in Nairobi Kenya",
@@ -1764,17 +1767,7 @@ router.get('/biz/:name',function(req, res, next){
     var categories = Category.find({approved: true}).sort([['order', 1]]);
     //SIMILAR BUSINESSES
     //"author": { "$in": userIds }
-    var businesses = Business.find({
-      $query: {
-        subcategory: data.subcategory,
-        features: { "$in": data.features },
-        slug: { "$ne": data.slug },
-        branch: { "$ne": true },
-        approved: true
-      }
-    })
-    .sort([['paid', 1],['datepaid', 1],['slug', 1]])
-    .limit(5);
+    
 
     var branches;
     let lon = Number(req.query.lon);
@@ -1791,7 +1784,31 @@ router.get('/biz/:name',function(req, res, next){
       }else{
         parent = data._id;
       }
-      Business.aggregate(
+      let similarPoint = {
+        "type": "Point",
+        "coordinates": [data.map.coordinates[0],data.map.coordinates[1]]
+      };
+
+      var businesses = Business.aggregate(
+        [{
+          '$geoNear': {
+              'near': similarPoint,
+              'spherical': true,
+              "query": {
+                "subcategory": data.subcategory,
+                "features": { "$in": data.features },
+                "slug": { "$ne": data.slug },
+                "branch": { "$ne": true },
+                "approved": true
+              },
+              'num':6,
+              'distanceField': 'distance',
+              'maxDistance': 200000
+          }
+      }]
+    )
+
+      var branches = Business.aggregate(
         	[{
         			'$geoNear': {
         					'near': point,
@@ -1800,61 +1817,85 @@ router.get('/biz/:name',function(req, res, next){
         					'distanceField': 'distance',
         					'maxDistance': 1000000000000
         			}
-        	}],
-          function(err,branches){
-            Promise.all([coupons,businesses,categories,branches,products]).then(values => {
-              var coupons = values[0];
-              var businesses = values[1];
-              var categories = values[2];
-              var products = values[4];
-              var branches;
-              if(values[3].length){
-                 branches = values[3];
-              }else{
-                 branches = null;
-              }
-
-              if(data.paid == false || typeof data.paid === 'undefined'){
-                description = data.name + ', '+ data.subcategory + ', ' + data.street +', '+data.city + ' Kenya';
-                keywords = data.keywords + " | on Findit Kenya";
-                //console.log(description);
-                res.render('business/freedetail',{
-                  title: data.name,
-                  biz: data,
-                  phones: phones,
-                  emails: emails,
-                  similarbiz: businesses,
-                  keywords: keywords,
-                  coupons: coupons,
-                  categories:categories,
-                  branches: branches,
-                  products: products
-                });
-                //res.end();
-              }else{
-                description = data.description;
-                keywords = data.keywords + " | on Findit Kenya";
-                //console.log(description);
-                res.render('business/detail',{
-                  title: data.name,
-                  biz: data,
-                  phones: phones,
-                  emails: emails,
-                  description: description,
-                  similarbiz: businesses,
-                  keywords: keywords,
-                  coupons: coupons,
-                  categories:categories,
-                  branches: branches,
-                  products: products
-                });
-                //res.end();
-              }
-            });
+          }]);
+        
+      Promise.all([coupons,businesses,categories,branches,products]).then(values => {
+          var coupons = values[0];
+          var businesses = values[1];
+          var categories = values[2];
+          var products = values[4];
+          var branches;
+          if(values[3].length){
+             branches = values[3];
+          }else{
+             branches = null;
           }
-        )
+
+          //array  of current businesses features
+          let currentBusinessFeatures = data.features;
+
+          currentBusinessFeatures.sort(); 
+
+          let similarbusinesses = businesses;
+
+          for(let i = 0; i < similarbusinesses.length;i++){
+
+            for(let k = 0; k < similarbusinesses[i].features.length;k++){
+              similarbusinesses[i].features =  similarbusinesses[i].features.filter(function(id) {
+                return currentBusinessFeatures.indexOf(id) > -1;
+              });
+            }
+            
+          }
+          if(data.paid == false || typeof data.paid === 'undefined'){
+            description = data.name + ', '+ data.subcategory + ', ' + data.street +', '+data.city + ' Kenya';
+            keywords = data.keywords + " | on Findit Kenya";
+            //console.log(description);
+            res.render('business/freedetail',{
+              title: data.name,
+              biz: data,
+              phones: phones,
+              emails: emails,
+              similarbiz: similarbusinesses,
+              keywords: keywords,
+              coupons: coupons,
+              categories:categories,
+              branches: branches,
+              products: products
+            });
+            //res.end();
+          }else{
+            description = data.description;
+            keywords = data.keywords + " | on Findit Kenya";
+            //console.log(description);
+            res.render('business/detail',{
+              title: data.name,
+              biz: data,
+              phones: phones,
+              emails: emails,
+              description: description,
+              similarbiz: businesses,
+              keywords: keywords,
+              coupons: coupons,
+              categories:categories,
+              branches: branches,
+              products: products
+            });
+            //res.end();
+          }
+        });
+
     }else{
     // if client doesn't allow/support Location API
+      var businesses = Business.find({
+        $query: {
+          subcategory: data.subcategory,
+          features: { "$in": data.features },
+          slug: { "$ne": data.slug },
+          branch: { "$ne": true },
+          approved: true
+        }
+      }).limit(10).sort({slug:1})
      branches = Business.find({bizparent: data._id});
      Promise.all([coupons,businesses,categories,branches,products]).then(values => {
       var coupons = values[0];

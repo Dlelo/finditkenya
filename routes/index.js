@@ -1723,6 +1723,7 @@ router.get('/stemming/:name', function(req, res, next){
 });
 
 router.get('/biz/:name',function(req, res, next){
+ 
   Business.findOne({
     slug: req.params.name,
     approved: true
@@ -1730,6 +1731,7 @@ router.get('/biz/:name',function(req, res, next){
   })
   .populate('bizparent')
   .then(function(data){
+    
     //var phones = data.phone.split(/[\s,]+/);
     var phones = data.phone.split(/[,\/-]/);
     var emails = data.email.split(/[,\/-]/);
@@ -1765,6 +1767,7 @@ router.get('/biz/:name',function(req, res, next){
     var coupons = Coupons.find({bizid: data.id});
     var products = Product.find({bizid: data.id}).populate('category');
     var categories = Category.find({approved: true}).sort([['order', 1]]);
+    
     //SIMILAR BUSINESSES
     //"author": { "$in": userIds }
     
@@ -1784,6 +1787,7 @@ router.get('/biz/:name',function(req, res, next){
       }else{
         parent = data._id;
       }
+      var hq = Business.findById(parent);
       let similarPoint = {
         "type": "Point",
         "coordinates": [data.map.coordinates[0],data.map.coordinates[1]]
@@ -1819,12 +1823,13 @@ router.get('/biz/:name',function(req, res, next){
         			}
           }]);
         
-      Promise.all([coupons,businesses,categories,branches,products]).then(values => {
+      Promise.all([coupons,businesses,categories,branches,products,hq]).then(values => {
           var coupons = values[0];
           var businesses = values[1];
           var categories = values[2];
           var products = values[4];
           var branches;
+          var hq = values[5];
           if(values[3].length){
              branches = values[3];
           }else{
@@ -1861,7 +1866,8 @@ router.get('/biz/:name',function(req, res, next){
               coupons: coupons,
               categories:categories,
               branches: branches,
-              products: products
+              products: products,
+              hq:hq
             });
             //res.end();
           }else{
@@ -1897,12 +1903,20 @@ router.get('/biz/:name',function(req, res, next){
         }
       }).limit(10).sort({slug:1})
      branches = Business.find({bizparent: data._id});
-     Promise.all([coupons,businesses,categories,branches,products]).then(values => {
+     let parent = "a";
+      if(data.branch){
+        parent = data.bizparent._id;
+      }else{
+        parent = data._id;
+      }
+     var hq = Business.findById(parent);
+     Promise.all([coupons,businesses,categories,branches,products,hq]).then(values => {
       var coupons = values[0];
       var businesses = values[1];
       var categories = values[2];
       var products = values[4];
       var branch;
+      var hq = values[5];
       if(values[3].length){
       branch = values[3];
       }else{
@@ -1923,7 +1937,8 @@ router.get('/biz/:name',function(req, res, next){
           coupons: coupons,
           categories:categories,
           branches: branch,
-          products: products
+          products: products,
+          hq:hq
         });
         //res.end();
       }else{

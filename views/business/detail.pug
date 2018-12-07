@@ -310,15 +310,16 @@ block content
           else 
              div   
           if(branches)
-            div.col-md-12.text-center
-              h4
-                strong.text-center
-                  | Head quater
-            div.col-md-12                
-              //a.bizlink(href="/biz/"+hq.slug) 
-                div.col-md-12.is-island
-                  h6.findit-red
-              =hq.name
+            if biz.branch==true
+              div.col-md-12.text-center
+                h4
+                  strong.text-center
+                    | Head quater
+              div.col-md-12                
+                a.bizlink(href="/biz/"+hq.slug) 
+                  div.col-md-12.is-island
+                    h6.findit-red
+                      =hq.name
             div.col-md-12.text-center
               h4
                 strong.text-center

@@ -1867,7 +1867,6 @@ router.get('/biz/:name',function(req, res, next){
               categories:categories,
               branches: branches,
               products: products,
-              hq:hq
             });
             //res.end();
           }else{
@@ -1885,7 +1884,8 @@ router.get('/biz/:name',function(req, res, next){
               coupons: coupons,
               categories:categories,
               branches: branches,
-              products: products
+              products: products,
+              hq:hq
             });
             //res.end();
           }
@@ -1938,7 +1938,6 @@ router.get('/biz/:name',function(req, res, next){
           categories:categories,
           branches: branch,
           products: products,
-          hq:hq
         });
         //res.end();
       }else{
@@ -1956,7 +1955,8 @@ router.get('/biz/:name',function(req, res, next){
           coupons: coupons,
           categories:categories,
           branches: branch,
-          products: products
+          products: products,
+          hq:hq
         });
         //res.end();
       }

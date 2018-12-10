@@ -1830,6 +1830,7 @@ router.get('/biz/:name',function(req, res, next){
           var products = values[4];
           var branches;
           var hq = values[5];
+          console.log(hq)
           if(values[3].length){
              branches = values[3];
           }else{
@@ -1917,6 +1918,7 @@ router.get('/biz/:name',function(req, res, next){
       var products = values[4];
       var branch;
       var hq = values[5];
+      console.log(hq)
       if(values[3].length){
       branch = values[3];
       }else{

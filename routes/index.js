@@ -703,7 +703,7 @@ router.get('/category/:cat',function(req, res, next){
           }
           if (typeof bizs[i].features == 'undefined'){
             bizs[i].features = [];
-          }           
+          }          
         }
         res.render('business/list', {
             title: "Best "+req.params.cat+ " in Nairobi Kenya",
@@ -1767,7 +1767,7 @@ router.get('/biz/:name',function(req, res, next){
     var coupons = Coupons.find({bizid: data.id});
     var products = Product.find({bizid: data.id}).populate('category');
     var categories = Category.find({approved: true}).sort([['order', 1]]);
-    
+
     //SIMILAR BUSINESSES
     //"author": { "$in": userIds }
     
@@ -1836,7 +1836,11 @@ router.get('/biz/:name',function(req, res, next){
           }else{
              branches = null;
           }
-
+          for(let i = 0; i < products.length; i++){
+            if (typeof products[i].category.name == 'undefined'){
+              products[i].category.name = ''
+            }      
+          }
           //array  of current businesses features
           let currentBusinessFeatures = data.features;
 
@@ -1916,6 +1920,11 @@ router.get('/biz/:name',function(req, res, next){
       var businesses = values[1];
       var categories = values[2];
       var products = values[4];
+      for(let i = 0; i < products.length; i++){
+        if (typeof products[i].category.name == 'undefined'){
+          products[i].category.name = ''
+        }      
+      }
       var branch;
       var hq = values[5];
       console.log(hq)

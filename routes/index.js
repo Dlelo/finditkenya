@@ -72,6 +72,15 @@ router.get('/allbusinesses', function(req, res, next){
   });
 });
 
+
+router.get('/artcaffe',function(req,res){
+  Business.findByIdAndUpdate('5bc42aedc885b63161c43a55',{
+    branch:false
+  }).then(function(){
+    res.redirect('/')
+  })
+})
+
 router.get('/search', function(req, res, next){
   var neatString = req.query.search.trim();
   var result = neatString.split(/[,. \/-]/);

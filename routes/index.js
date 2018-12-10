@@ -1837,6 +1837,7 @@ router.get('/biz/:name',function(req, res, next){
              branches = null;
           }
           for(let i = 0; i < products.length; i++){
+            console.log(products[i].category)
             if(typeof products[i].category == null){
               products[i].category.name = 'undefined'
             }      
@@ -1921,6 +1922,7 @@ router.get('/biz/:name',function(req, res, next){
       var categories = values[2];
       var products = values[4];
       for(let i = 0; i < products.length; i++){
+        console.log(products[i].category)
         if (typeof products[i].category == null){
           products[i].category.name = 'undefined'
         }      

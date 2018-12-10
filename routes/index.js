@@ -1837,10 +1837,13 @@ router.get('/biz/:name',function(req, res, next){
              branches = null;
           }
           for(let i = 0; i < products.length; i++){
-            console.log(products[i].category)
+            
             if(typeof products[i].category == null){
-              products[i].category.name = 'undefined'
-            }      
+              products[i].category = {
+                name: 'undefined'
+              }
+            }
+            console.log(products[i].category)      
           }
           //array  of current businesses features
           let currentBusinessFeatures = data.features;
@@ -1924,7 +1927,10 @@ router.get('/biz/:name',function(req, res, next){
       for(let i = 0; i < products.length; i++){
         console.log(products[i].category)
         if (typeof products[i].category == null){
-          products[i].category.name = 'undefined'
+          products[i].category = {
+            name: 'undefined'
+          }
+          console.log(products[i].category)
         }      
       }
       var branch;

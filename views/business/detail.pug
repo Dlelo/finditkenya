@@ -141,9 +141,13 @@ block content
                           .form-group
                             button.btn.btn-danger.form-control(type='submit')                 
                               | Claim Business
+<<<<<<< HEAD
                  if(branches)
                     div
                   else
+=======
+                  if(branches)
+>>>>>>> 1d3464b45bb477d2b46ffaced1100519f31383fd
                     if (biz.openstatus)
                       .row
                         .col-md-12.findit-red.padding20
@@ -152,37 +156,38 @@ block content
                         .col-md-12
                           each hour in biz.hours.monday
                             if(hour.opens === hour.closes)
-                              |  Closed
+                              p  Monday: Closed
+                               
                             else
                               p Monday: #{hour.opens} - #{hour.closes}
                           each hour in biz.hours.tuesday
                             if(hour.opens === hour.closes)
-                              |  Closed
+                              p  Tuesday: Closed
                             else
                               p Tuesday: #{hour.opens} - #{hour.closes}
                           each hour in biz.hours.wednesday
                             if(hour.opens === hour.closes)
-                              |  Closed
+                              p  Wednesday: Closed
                             else
                               p Wednesday: #{hour.opens} - #{hour.closes}
                           each hour in biz.hours.thursday
                             if(hour.opens === hour.closes)
-                              |  Closed
+                              p Thursday: Closed
                             else
                               p Thursday: #{hour.opens} - #{hour.closes}
                           each hour in biz.hours.friday
                             if(hour.opens === hour.closes)
-                              |  Closed
+                              p  Friday: Closed
                             else
                               p Friday: #{hour.opens} - #{hour.closes}
                           each hour in biz.hours.saturday
                             if(hour.opens === hour.closes)
-                              |  Closed
+                              p   Saturday: Closed
                             else
                               p Saturday: #{hour.opens} - #{hour.closes}
                           each hour in biz.hours.sunday
                             if(hour.opens === hour.closes)
-                              |  Closed
+                              p  Sunday: Closed
                             else
                               p Sunday: #{hour.opens} - #{hour.closes}
                   if(biz.deliverylink)
@@ -310,6 +315,16 @@ block content
           else 
              div   
           if(branches)
+            if biz.branch==true
+              div.col-md-12.text-center
+                h4
+                  strong.text-center
+                    | Headquarter
+              div.col-md-12                
+                a.bizlink(href="/biz/"+hq.slug) 
+                  div.col-md-12.is-island
+                    h6.findit-red
+                      =hq.name
             div.col-md-12.text-center
               h4
                 strong.text-center

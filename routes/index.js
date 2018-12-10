@@ -74,9 +74,9 @@ router.get('/allbusinesses', function(req, res, next){
 
 
 router.get('/artcaffe',function(req,res){
-  Business.findByIdAndUpdate('5bc42aedc885b63161c43a55',{
+  Business.findOneAndUpdate({_id:'5bc42aedc885b63161c43a55'},{
     branch:false
-  }).then(function(){
+  },function(){
     res.redirect('/')
   })
 })

@@ -99,13 +99,13 @@ block content
                   img.img-fluid.category-img-wrapper(src="/img/more_categories.png", alt="Find It Kenya - Find Anything and Everything", data-wow-delay="0.6s")                            
         div.row#expandcategories( style="display:none; padding-top:5rem; border-top: 1px solid #eee")
           each category,i in categories
-             a.bizlink(href="/category/"+category.name)
-              div.col-md-4.col-sm-12.col-xs-12.morecat
-                  strong
-                    i.fas.fa-1x(aria-hidden='true', class=category.icon, class=category.slug ) 
-                    small.site-text-color.small-cart
-                      strong   
-                        =category.name
+            div.col-md-4.col-sm-12.col-xs-12.morecat  
+              a.bizlink(href="/category/"+category.name)
+                strong
+                  i.fas.fa-1x(aria-hidden='true', class=category.icon, class=category.slug ) 
+                  small.site-text-color.small-cart
+                    strong   
+                      =category.name
               hr.hr-cat(class=category.slug)
               .div.row
                 ul

@@ -141,8 +141,7 @@ block content
                             button.btn.btn-danger.form-control(type='submit')                 
                               | Claim Business
                   if(branches)
-                    div
-                  else
+
                     if (biz.openstatus)
                       .row
                         .col-md-12.findit-red.padding20
@@ -151,37 +150,38 @@ block content
                         .col-md-12
                           each hour in biz.hours.monday
                             if(hour.opens === hour.closes)
-                              |  Closed
+                              p  Monday: Closed
+                               
                             else
                               p Monday: #{hour.opens} - #{hour.closes}
                           each hour in biz.hours.tuesday
                             if(hour.opens === hour.closes)
-                              |  Closed
+                              p  Tuesday: Closed
                             else
                               p Tuesday: #{hour.opens} - #{hour.closes}
                           each hour in biz.hours.wednesday
                             if(hour.opens === hour.closes)
-                              |  Closed
+                              p  Wednesday: Closed
                             else
                               p Wednesday: #{hour.opens} - #{hour.closes}
                           each hour in biz.hours.thursday
                             if(hour.opens === hour.closes)
-                              |  Closed
+                              p Thursday: Closed
                             else
                               p Thursday: #{hour.opens} - #{hour.closes}
                           each hour in biz.hours.friday
                             if(hour.opens === hour.closes)
-                              |  Closed
+                              p  Friday: Closed
                             else
                               p Friday: #{hour.opens} - #{hour.closes}
                           each hour in biz.hours.saturday
                             if(hour.opens === hour.closes)
-                              |  Closed
+                              p   Saturday: Closed
                             else
                               p Saturday: #{hour.opens} - #{hour.closes}
                           each hour in biz.hours.sunday
                             if(hour.opens === hour.closes)
-                              |  Closed
+                              p  Sunday: Closed
                             else
                               p Sunday: #{hour.opens} - #{hour.closes}
                   if(biz.deliverylink)
@@ -238,6 +238,7 @@ block content
                             small
                               strong
                                 | Scroll this Gallery Left or Right
+                  
                   if biz.description
                     .row
                       .col-md-12
@@ -264,7 +265,33 @@ block content
                               p.padding-p  !{biz.description} 
                                 | ..... 
                                 strong(id="showless" style="background-color:#c00000; color:#fff; padding:1px") Read Less 
-                          
+                  else if (biz.branch && hq.replicate)
+                    .row
+                      .col-md-12
+                        #web-view
+                          .panel
+                            .findit-red.padding10top
+                              strong More Information
+                            .panel-body
+                              p.padding-p  !{hq.description}
+                        .hideonclick
+                          #mobile-view
+                            .panel
+                              .findit-red.padding10top
+                                strong More Information
+                              .panel-body
+                                p.padding-p 
+                                  if hq.description.length > 250
+                                    p.padding.text-left.description-cat  !{hq.description.substr(0, 250)+ '..... <strong id="showmore" style="background-color:#c00000; color:#fff; padding:1px">Read More</strong>'}
+                        #show-more
+                          .panel
+                            .findit-red.padding10top
+                              strong More Information
+                            .panel-body
+                              p.padding-p  !{hq.description} 
+                                | ..... 
+                                strong(id="showless" style="background-color:#c00000; color:#fff; padding:1px") Read Less 
+                                    
                   if biz.ammenities        
                     .row
                       .col-md-12
@@ -309,6 +336,16 @@ block content
           else 
              div   
           if(branches)
+            if biz.branch==true
+              div.col-md-12.text-center
+                h4
+                  strong.text-center
+                    | Headquarter
+              div.col-md-12                
+                a.bizlink(href="/biz/"+hq.slug) 
+                  div.col-md-12.is-island
+                    h6.findit-red
+                      =hq.name
             div.col-md-12.text-center
               h4
                 strong.text-center

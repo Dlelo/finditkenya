@@ -72,6 +72,15 @@ router.get('/allbusinesses', function(req, res, next){
   });
 });
 
+
+router.get('/artcaffe',function(req,res){
+  Business.findOneAndUpdate({_id:'5bc42aedc885b63161c43a55'},{
+    branch:false
+  },function(){
+    res.redirect('/')
+  })
+})
+
 router.get('/search', function(req, res, next){
   var neatString = req.query.search.trim();
   var result = neatString.split(/[,. \/-]/);
@@ -699,8 +708,11 @@ router.get('/category/:cat',function(req, res, next){
         let bizs = values[0];
         for(let i = 0; i < bizs.length; i++){
           if (typeof bizs[i].reviews == 'undefined'){
-            bizs[i].reviews = [];
-          }         
+            bizs[i].reviews = []; 
+          }
+          if (typeof bizs[i].features == 'undefined'){
+            bizs[i].features = [];
+          }          
         }
         res.render('business/list', {
             title: "Best "+req.params.cat+ " in Nairobi Kenya",
@@ -1719,6 +1731,19 @@ router.get('/stemming/:name', function(req, res, next){
     });
 });
 
+router.get('/replicate/:name',function(req,res){
+  Business.findOneAndUpdate(
+    {slug: req.params.name},
+    {replicate:true},
+    function(doc){
+      console.log(doc)
+    }
+  )
+  Business.findOne({
+    slug: req.params.name
+  }).then(console.log)
+})
+
 router.get('/biz/:name',function(req, res, next){
   Business.findOne({
     slug: req.params.name,
@@ -1727,6 +1752,7 @@ router.get('/biz/:name',function(req, res, next){
   })
   .populate('bizparent')
   .then(function(data){
+   
     //var phones = data.phone.split(/[\s,]+/);
     var phones = data.phone.split(/[,\/-]/);
     var emails = data.email.split(/[,\/-]/);
@@ -1762,6 +1788,7 @@ router.get('/biz/:name',function(req, res, next){
     var coupons = Coupons.find({bizid: data.id});
     var products = Product.find({bizid: data.id}).populate('category');
     var categories = Category.find({approved: true}).sort([['order', 1]]);
+
     //SIMILAR BUSINESSES
     //"author": { "$in": userIds }
     
@@ -1781,6 +1808,7 @@ router.get('/biz/:name',function(req, res, next){
       }else{
         parent = data._id;
       }
+      var hq = Business.findById(parent);
       let similarPoint = {
         "type": "Point",
         "coordinates": [data.map.coordinates[0],data.map.coordinates[1]]
@@ -1816,18 +1844,28 @@ router.get('/biz/:name',function(req, res, next){
         			}
           }]);
         
-      Promise.all([coupons,businesses,categories,branches,products]).then(values => {
+      Promise.all([coupons,businesses,categories,branches,products,hq]).then(values => {
           var coupons = values[0];
           var businesses = values[1];
           var categories = values[2];
           var products = values[4];
           var branches;
+          var hq = values[5];
+          console.log(hq)
           if(values[3].length){
              branches = values[3];
           }else{
              branches = null;
           }
-
+          for(let i = 0; i < products.length; i++){
+            if (products[i].category == null || products[i].category == ''){
+              let val = {
+                name: 'undefined'
+              }
+              products[i].category = val
+              console.log(products[i].category)
+            }      
+          }
           //array  of current businesses features
           let currentBusinessFeatures = data.features;
 
@@ -1844,11 +1882,6 @@ router.get('/biz/:name',function(req, res, next){
             }
             
           }
-          
-         
-          
-
-
           if(data.paid == false || typeof data.paid === 'undefined'){
             description = data.name + ', '+ data.subcategory + ', ' + data.street +', '+data.city + ' Kenya';
             keywords = data.keywords + " | on Findit Kenya";
@@ -1863,13 +1896,14 @@ router.get('/biz/:name',function(req, res, next){
               coupons: coupons,
               categories:categories,
               branches: branches,
-              products: products
+              products: products,
             });
             //res.end();
           }else{
             description = data.description;
             keywords = data.keywords + " | on Findit Kenya";
             //console.log(description);
+            console.log("------------"+hq)
             res.render('business/detail',{
               title: data.name,
               biz: data,
@@ -1881,7 +1915,8 @@ router.get('/biz/:name',function(req, res, next){
               coupons: coupons,
               categories:categories,
               branches: branches,
-              products: products
+              products: products,
+              hq:hq
             });
             //res.end();
           }
@@ -1899,12 +1934,30 @@ router.get('/biz/:name',function(req, res, next){
         }
       }).limit(10).sort({slug:1})
      branches = Business.find({bizparent: data._id});
-     Promise.all([coupons,businesses,categories,branches,products]).then(values => {
+     let parent = "a";
+      if(data.branch){
+        parent = data.bizparent._id;
+      }else{
+        parent = data._id;
+      }
+     var hq = Business.findById(parent);
+     Promise.all([coupons,businesses,categories,branches,products,hq]).then(values => {
       var coupons = values[0];
       var businesses = values[1];
       var categories = values[2];
       var products = values[4];
+      for(let i = 0; i < products.length; i++){
+        if (products[i].category == null || products[i].category == ''){
+          let val = {
+            name: 'undefined'
+          }
+          products[i].category = val
+          console.log(products[i].category)
+        }      
+      }
       var branch;
+      var hq = values[5];
+      console.log(hq)
       if(values[3].length){
       branch = values[3];
       }else{
@@ -1925,7 +1978,7 @@ router.get('/biz/:name',function(req, res, next){
           coupons: coupons,
           categories:categories,
           branches: branch,
-          products: products
+          products: products,
         });
         //res.end();
       }else{
@@ -1943,7 +1996,8 @@ router.get('/biz/:name',function(req, res, next){
           coupons: coupons,
           categories:categories,
           branches: branch,
-          products: products
+          products: products,
+          hq:hq
         });
         //res.end();
       }
@@ -1956,5 +2010,34 @@ router.get('/biz/:name',function(req, res, next){
   });
 });
 
+
+router.get('/sitemap',function(req,res,next){
+
+  var businesses = Business.find({},'slug name -_id')
+  .sort([['paid', -1],['datepaid', 1],['slug', 1]])
+
+  var categories = Category.find({},'slug name subcategories -_id').sort([['order', 1]]);
+  
+  var features = Category.aggregate([
+    { "$unwind": "$subcategories" },
+    { "$sort": { "subcategories.name": 1 } }
+  ]);
+
+  var products = Product.find({},'slug name bizid -_id').populate('category');
+ 
+  Promise.all([businesses, features, categories,products]).then(values => {
+   
+    res.render('sitemap', {
+        title: "Sitemap Findit Kenya",
+        businesses: values[0],
+        features: values[1],
+        categories: values[2],
+        products:values[3],
+        host: req.get('host'),
+        uri: req.path,
+    });
+  });
+
+})
 
 module.exports = router;

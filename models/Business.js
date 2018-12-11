@@ -74,7 +74,8 @@ const bizSchema = new Schema({
 		coupons: [{ type: Schema.Types.ObjectId, ref: 'Coupon' }],
 		branch: Boolean,
 		bizparent: { type: Schema.Types.ObjectId, ref: 'Business' },
-		user_id: String
+		user_id: String,
+		replicate:Boolean
 });
 
 bizSchema.index(

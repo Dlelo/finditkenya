@@ -46,11 +46,12 @@ var cpUpload = upload.fields([
 router.post('/edit/:id', role.auth, cpUpload, function(req, res, next) {
 	Business.findById(req.params.id)
 	.then(function(b){
+		b.replicate = true
 	  b.name = req.body.name
 		b.slug = slug(req.body.name);
 		b.description = req.body.description;
 		b.city = req.body.city;
-		//--- update to match Business Schema -----///
+		
 		let mappy = {
 			type:"Point",
 			coordinates:[Number(req.body.long),Number(req.body.lati)],
@@ -176,7 +177,7 @@ router.post('/edit/:id', role.auth, cpUpload, function(req, res, next) {
 				res.redirect('/dashboard');
 			}
 		});
-	})
+	})                                                                                                                                                                                                                                                                                                                                                                                                                                                            
 	.catch(function(err){
 	     console.log(err);
 	});

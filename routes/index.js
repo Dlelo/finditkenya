@@ -2011,4 +2011,33 @@ router.get('/biz/:name',function(req, res, next){
 });
 
 
+router.get('/sitemap',function(req,res,next){
+
+  var businesses = Business.find({},'slug name -_id')
+  .sort([['paid', -1],['datepaid', 1],['slug', 1]])
+
+  var categories = Category.find({},'slug name subcategories -_id').sort([['order', 1]]);
+  
+  var features = Category.aggregate([
+    { "$unwind": "$subcategories" },
+    { "$sort": { "subcategories.name": 1 } }
+  ]);
+
+  var products = Product.find({},'slug name bizid -_id').populate('category');
+ 
+  Promise.all([businesses, features, categories,products]).then(values => {
+   
+    res.render('sitemap', {
+        title: "Sitemap Findit Kenya",
+        businesses: values[0],
+        features: values[1],
+        categories: values[2],
+        products:values[3],
+        host: req.get('host'),
+        uri: req.path,
+    });
+  });
+
+})
+
 module.exports = router;

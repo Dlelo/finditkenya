@@ -66,6 +66,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public'), { maxage: '7d' }));
 
+
 passport.serializeUser(function(user, done) {
   done(null, user.id);
 });

@@ -1987,7 +1987,7 @@ ul.portfolio-area li figure {
 	   margin-left: 2rem !important;
 	}
 	.banner-text-top{
-    padding-top: 10vh!important;
+    padding-top: 2.6rem!important;
 	}
 
 	.coupon-items {
@@ -2086,7 +2086,7 @@ ul.portfolio-area li figure {
 	   margin-left: 2rem!important;
 	}
 	.banner-text-top{
-    padding-top: 23vh;
+    padding-top: 2.6rem;
 	}
 }
 .input-group-addon {
@@ -2117,7 +2117,7 @@ ul.portfolio-area li figure {
 	   margin-left: 2rem!important;
 	}
 	.banner-text-top{
-    padding-top: 5rem !important;
+    padding-top: 2.6rem !important;
 	}
   .banner{
 	  min-height: 20rem !important;
@@ -5031,4 +5031,20 @@ background-size: cover;
 }
 .contact{
 	display:none
+}
+input.largerCheckbox
+{
+width: 30px;
+height: 30px;
+}
+.branch input:checked ~ .largerCheckbox {
+	background-color: #c00000;
+}
+
+
+.branch span.glyphicon {    			
+	opacity: 0;				
+}
+.branch.active span.glyphicon {				
+	opacity: 1;				
 }

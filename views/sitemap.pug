@@ -11,9 +11,10 @@ block content
                             strong
                                =category.name 
                             each subcat, i in category.subcategories
-                                .col-md-12
-                                    a(href="/subcategory/sub/"+subcat.name)
-                                       =subcat.name
+                                if(i<5)  
+                                    .col-md-12
+                                        a(href="/subcategory/sub/"+subcat.name)
+                                          =subcat.name
 
 
                 

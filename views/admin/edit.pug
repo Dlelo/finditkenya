@@ -318,11 +318,13 @@ block content
               if(user.role == 1)
                 .col-sm-6
                   input.form-control-form(type='text', name='username', placeholder='Username',value=biz.user_id)
+              .col-sm-3 
+                | Is this a branch?
               .col-sm-2
-                input#branch(type='checkbox', name="branch", rel=biz._id)
-              .col-sm-4  
-                | Select Branch
-              .col-sm-6
+                input#branch(type='checkbox', class='largerCheckbox', name='branch', rel=biz._id)
+              .col-sm-2
+                | Select Parent company (Hq)
+              .col-sm-4
                 select#bizparent.form-control-form-select(name='bizparent',class='bizparent', data-live-search="true")
             .form-group
               .row

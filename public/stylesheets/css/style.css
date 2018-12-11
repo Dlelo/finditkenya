@@ -5032,3 +5032,8 @@ background-size: cover;
 .contact{
 	display:none
 }
+input.largerCheckbox
+{
+width: 30px;
+height: 30px;
+}

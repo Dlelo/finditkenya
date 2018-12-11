@@ -318,10 +318,10 @@ block content
               if(user.role == 1)
                 .col-sm-6
                   input.form-control-form(type='text', name='username', placeholder='Username',value=biz.user_id)
-              .col-sm-4
+              .col-sm-2
                 input#branch.form-control-form(type="checkbox",name="branch",rel=biz._id)
-              .col-sm-2  
-                | Branch
+              .col-sm-4  
+                | Select Branch
               .col-sm-6
                 select#bizparent.form-control-form-select(name='bizparent',class='bizparent', data-live-search="true")
             .form-group

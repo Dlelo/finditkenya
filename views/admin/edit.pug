@@ -326,16 +326,11 @@ block content
                   label(class='custom-control-label', for='customCheck1', style='margin-left:5px')
                     |      Is this a branch?
                 
-              .col-sm-2 
+              .col-sm-6
                 label
                   | Select Parent company (Hq)
-              .col-sm-4
-                select#bizparent.form-control-form-select(name='bizparent',class='bizparent', data-live-search="true")
-              //.col-sm-6
-                input#branch.form-control-form(type="radio",name="branch",value="1",rel=biz._id)
-                | Branch
-              //.col-sm-6
-                select#bizparent.form-control-form-select(name='bizparent',class='bizparent', data-live-search="true")
+                  select#bizparent.form-control-form-select(name='bizparent',class='bizparent', data-live-search="true")
+              
             .form-group
               .row
                 button.button.btn.btn-warning.form-control-form(type='submit') Update

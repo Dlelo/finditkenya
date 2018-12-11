@@ -65,9 +65,9 @@ block content
                         =category.name
               .col-sm-3
                 select#ssubcategoryy.form-control-form-select.ssubcategory.selectpicker(name='ssubcategory',multiple,data-selected-text-format='count > 5', data-live-search="true")
-                  option(selected, value=biz.features)
-                     each subcat in biz.features
-                        =subcat
+                  each subcat in biz.features
+                     option(selected, value=subcat)
+                        =subcat    
                   option(data-icon='fa fa-search', value="")
                   
                       

@@ -5037,3 +5037,9 @@ input.largerCheckbox
 width: 30px;
 height: 30px;
 }
+.branch span.glyphicon {    			
+	opacity: 0;				
+}
+.branch.active span.glyphicon {				
+	opacity: 1;				
+}

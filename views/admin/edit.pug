@@ -318,13 +318,13 @@ block content
               if(user.role == 1)
                 .col-sm-6
                   input.form-control-form(type='text', name='username', placeholder='Username',value=biz.user_id)
-              .col-sm-3 
-                | Is this a branch?
-              .col-sm-2
-                input#branch(type='checkbox', class='largerCheckbox', value='1', name='branch', rel=biz._id)
-              .col-sm-2
-                | Select Parent company (Hq)
-              .col-sm-4
+              .col-sm-6.checkbox
+                label
+                  input#branch(type='checkbox', class='largerCheckbox', value='1', name='branch', rel=biz._id)
+                  | Is this a branch?
+              .col-sm-6  
+                label
+                  | Select Parent company (Hq)
                 select#bizparent.form-control-form-select(name='bizparent',class='bizparent', data-live-search="true")
               //.col-sm-6
                 input#branch.form-control-form(type="radio",name="branch",value="1",rel=biz._id)

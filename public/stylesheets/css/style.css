@@ -5037,6 +5037,11 @@ input.largerCheckbox
 width: 30px;
 height: 30px;
 }
+.branch input:checked ~ .largerCheckbox {
+	background-color: #c00000;
+}
+
+
 .branch span.glyphicon {    			
 	opacity: 0;				
 }

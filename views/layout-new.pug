@@ -139,7 +139,7 @@ html(lang='en')
                         div.row
                           each category,i in categories
                             div.col-md-4.col-sm-12.col-xs-12
-                              a.dropdown-item(href="/category/"+category.name)
+                              a.bizlink.dropdown-item(href="/category/"+category.name)
                                   strong.findit-blue
                                     i.fas.fa-1x(aria-hidden='true', class=category.icon) 
                                     small.findit-blue
@@ -417,7 +417,18 @@ script.
 script(type='text/javascript').
   $(document).ready(function() {
   // executes when HTML-Document is loaded and DOM is ready
-
+  navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            /// ------ attach users location to url
+            $(".bizlink").each(function () {
+              //- let url =$(this).attr("href")
+              //- let newUrl = url+'?lon='+pos.lng+'&lat='+pos.lat;
+              //- $(this).attr("href", newUrl);
+            });
+  });
   // breakpoint and up  
   $(window).resize(function(){
   //if ($(window).width() >= 980){	

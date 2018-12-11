@@ -321,11 +321,12 @@ block content
                 .col-sm-6
                   input.form-control-form(type='text', name='username', placeholder='Username',value=biz.user_id)
               .col-sm-6.checkbox
-                label.branch
-                  input#branch(type='checkbox', class='largerCheckbox', value='1', name='branch', rel=biz._id)
-                  span.glyphicon.glyphicon-ok
-                strong(style="margin-left: 2rem;")
-                  |        Is this a branch?
+                .branch
+                  label
+                    input#branch(type='checkbox', class='largerCheckbox', value='1', name='branch', rel=biz._id)
+                    span.glyphicon.glyphicon-ok
+                  strong(style="margin-left: 2rem;")
+                    |        Is this a branch?
               .col-sm-2 
                 label
                   | Select Parent company (Hq)

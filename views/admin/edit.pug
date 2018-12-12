@@ -65,10 +65,12 @@ block content
                         =category.name
               .col-sm-3
                 select#ssubcategoryy.form-control-form-select.ssubcategory.selectpicker(name='ssubcategory',multiple,data-selected-text-format='count > 5', data-live-search="true")
-                  each category in categories
-                    each subcat in category.subcategories
-                      option(data-icon='glyphicon-wrench', rel=category.name, value=subcat.name) 
-                        =subcat.name
+                  each subcat in biz.features
+                     option(selected, value=subcat)
+                        =subcat    
+                  option(data-icon='fa fa-search', value="")
+                  
+                      
                         
               .col-sm-3(style="display:none",id="starteventDate")
                 input#startdate.form-control-form(type='text', name='starteventdate', placeholder='Start Event Date',class='datetimepicker',value=biz.starteventdate)
@@ -318,11 +320,18 @@ block content
               if(user.role == 1)
                 .col-sm-6
                   input.form-control-form(type='text', name='username', placeholder='Username',value=biz.user_id)
+              
               .col-sm-6
-                input#branch.form-control-form(type="radio",name="branch",value="1",rel=biz._id)
-                | Branch
-              .col-sm-6
+                  input(type='checkbox', class='custom-control-input custom-control form-control-lg custom-checkbox', id='customCheck1', style = 'width: 20px; height: 20px;' , value='1', name='branch', rel=biz._id)
+                  label(class='custom-control-label', for='customCheck1', style='margin-left:5px')
+                    |      Is this a branch?
+                
+              .col-sm-2 
+                label
+                  | Select Parent company (Hq)
+              .col-sm-4
                 select#bizparent.form-control-form-select(name='bizparent',class='bizparent', data-live-search="true")
+              
             .form-group
               .row
                 button.button.btn.btn-warning.form-control-form(type='submit') Update

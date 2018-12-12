@@ -72,23 +72,160 @@ router.get('/allbusinesses', function(req, res, next){
   });
 });
 
+// handle new search
+router.get('/newsearch',function(req,res){
+  let query = req.query.search.trim();
+  let multi = query.split(' ');                   
+  Business.find({$and:[
+    {name:{
+    $regex:query,
+    $options:'i'
+  }},
+  {$or:[
+    {branch:null},
+    {branch:false}
+  ]}
+]},'name slug -_id').limit(180)
+    .then(function(d){
+      
+     var result = d.filter(function(biz){
+       return biz.name.trim().toLowerCase().startsWith(query)
+     })
+     if(multi.length > 1 && result.length == 0){
+      Business.find({$and:[
+        {name:{
+        $regex:multi[1],
+        $options:'i'
+      }},
+      {$or:[
+        {branch:null},
+        {branch:false}
+      ]}
+    ]},'name slug -_id').limit(180).then(function(d){
+      var result = d.filter(function(biz){
+        return biz.name.trim().toLowerCase().startsWith(multi[0])
+      })
+      if(result.length == 0 && multi.length > 1 ){
+        Business.find({$and:[
+          {name:{
+          $regex:multi[0],
+          $options:'i'
+        }},
+        {$or:[
+          {branch:null},
+          {branch:false}
+        ]}
+      ]},'name slug -_id').limit(180).then(function(d){
+        if(d.length > 0 ){
+          var result = d.filter(function(biz){
+            if(multi.length == 2){
+              return biz.name.trim().toLowerCase().startsWith(multi[0]) && biz.name.includes(multi[1].substr(0,multi[1].length/2))    
+            }
+            return biz.name.trim().toLowerCase().startsWith(multi[0])
+          })
+        }
+          res.status(200).send(result)
+      })
+      }else{
+        res.status(200).send(result)
+      }
+    })
+    }else{ 
+     res.status(200).send(result);
+    }
+    })
+})
 
-router.get('/artcaffe',function(req,res){
-  Business.findOneAndUpdate({_id:'5bc42aedc885b63161c43a55'},{
-    branch:false
-  },function(){
-    res.redirect('/')
-  })
+//render new search 
+router.get('/newindex',function(req,res){
+  var topsearches = Analytics.aggregate([
+    {"$group":{
+        _id: '$bizid',
+        count:{$sum:1}
+      }
+    },
+    { "$sort": { "count": -1 } },
+    { "$limit": 5 },
+    {
+     $lookup:
+       {
+         from: "businesses",
+         localField: "_id",
+         foreignField: "_id",
+         as: "biz"
+       }
+     }
+  ]);
+  var toprestaurants = Analytics.aggregate([
+    {"$group":{
+        _id: '$bizid',
+        count:{$sum:1}
+      }
+    },
+    { "$sort": { "count": -1 } },
+    { "$limit": 500},
+    {
+     $lookup:
+       {
+         from: "businesses",
+         localField: "_id",
+         foreignField: "_id",
+         as: "biz"
+       }
+     },
+     {
+       $project :{
+         count: '$count',
+         category: {
+           $filter: {
+             input: "$biz",
+             as: "biz",
+             cond : [
+                 { '$eq': ['$biz.subcategory', 'Restaurants']},
+                     1,
+                     0
+             ]
+           }
+         }
+       }
+     }
+  ]);
+
+  var coupons = Coupons.find({
+    status: true
+  }).populate('bizid').sort([['order', 1],['star', -1]]).limit(5);
+  var reviews = Review.find().sort([['created_at', -1]]).populate('bizid').populate('user_id').limit(5);
+  var categories = Category.find({approved: true,group: 'general'}).sort([['order', 1]]);
+  var description = "Find It is a leading online directory to find businesses, service providers and their information in one single platform. Find it or be found. Register today and add your business.";
+  var keywords = "Find Restaurants, professional services, Financial help, travel agencies, medical and legal help in Kenya on our platform Findit";
+  var title = 'Find It Kenya | Find businesses and service providers in Kenya';
+  Promise.all([categories, toprestaurants, topsearches, coupons, reviews ]).then(values => {
+    //console.log(values[4]);
+    res.render('new-search', {
+        title: title,
+        categories: values[0],
+        toprestaurants: values[1],
+        topsearches: values[2],
+        coupons: values[3],
+        reviews: values[4],
+        description: description,
+        keywords: keywords,
+        top: req.get('host')
+    });
+  });
 })
 
 router.get('/search', function(req, res, next){
   var neatString = req.query.search.trim();
   var result = neatString.split(/[,. \/-]/);
+  const item = result[0];
+  const item2 = result[1]
   var bizArray = [];
   var skip = 0;
   if(req.query.skip){
     skip = parseInt(req.query.skip);
   }
+ 
   Business.find({branch: { $ne: 1 }},{name: 1, _id:-1})
   .then(function(d){
     d.forEach(function(x){
@@ -144,7 +281,7 @@ router.get('/search', function(req, res, next){
       }
     });
     var searchString = newstring.join(' ');
-    console.log(searchString);
+    //console.log(searchString);
     var businesses = Business.aggregate([
       {
           "$match": {
@@ -207,7 +344,7 @@ router.get('/search', function(req, res, next){
     var categories = Category.find({group: 'general'});
     Promise.all([businesses,categories]).then(values => {
       var list = values[0];
-      console.log(list);
+      //console.log(list);
       /*var options = {
         shouldSort: true,
         includeScore: true,
@@ -2020,13 +2157,12 @@ router.get('/sitemap',function(req,res,next){
   
   var features = Category.aggregate([
     { "$unwind": "$subcategories" },
-    { "$sort": { "subcategories.name": 1 } }
+    { "$sort": { "subcategories.name": 1 } },
   ]);
 
   var products = Product.find({},'slug name bizid -_id').populate('category');
  
   Promise.all([businesses, features, categories,products]).then(values => {
-   
     res.render('sitemap', {
         title: "Sitemap Findit Kenya",
         businesses: values[0],
@@ -2037,7 +2173,6 @@ router.get('/sitemap',function(req,res,next){
         uri: req.path,
     });
   });
-
 })
 
 module.exports = router;

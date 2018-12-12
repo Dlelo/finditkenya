@@ -1,0 +1,386 @@
+extends layout-new
+block content
+ div.container-fluid
+  div#home.banner
+    div.row.justify-content-end.my-row    
+      div.col-md-5.col-sm-12.col-xm-12.my-col.text-right
+        div.banner-text-top
+          nav.navbar.navbar-expand-sm.addbusiness.nav-bar-addbusiness.navbar-nav.ml-lg-auto.text-center
+            ul.navbar-nav
+              li.nav-item
+                a.nav-link(href='/business/newpackage')
+                  span.fas.fa-database.user-fav
+                  strong
+                    |  Add Business
+              li.nav-item
+                a.nav-link(href='/add-agent')
+                  span.fas.fa-user-tie.user-fav
+                  strong
+                    |  Apply as an Agent
+                                                       
+        a.link(href="")
+          .banner-visit-page
+            button.input-group-addon#basic-addon1.finditbutton.input-group-addon.text-center
+              | Visit Page
+    div.row.my-row.justify-content-start
+      div.col-md-8.col-sm-8.col-xm-8.my-col
+        div.banner-text#hideSearch
+          form#searchform
+            div.input-group
+              input#search2.form-control.form-control-lg(type="text" placeholder="find a business")
+              button
+               | Search
+          div.result-set.row(style="background:#fff;display:block;position:absolute;width:650px;z-index:2000")
+  div.container-fluid
+    
+    //main categories and coupon row
+    div.row.my-row.justify-content-center
+      //categories
+      div.col-md-8.col-lg-8.col-sm-12.col-sm-12.my-col
+        h2.agile-title.h-order-category.text-center
+          | Search by Category
+        div.row.mt-sm-8.text-center
+          ins.adsbygoogle(style='display:block', data-ad-client='ca-pub-9965055906014205', data-ad-slot='7358207938', data-ad-format='auto')
+          script.
+            window.onload = function() {  (adsbygoogle = window.adsbygoogle || []).push({});}
+        div.row.mt-sm-8.text-center
+          each category,i in categories
+            if(i < 4)
+              div.col-lg-3.col-md-3.col-sm-12.col-xm-12.w3-ab.my-md-0.my-sm-12.my-4
+                   a.bizlink(href="/category/"+category.name)
+                    div.w3-aicon.py-lg-5.py-md-3.py-5
+                        img.img-fluid.category-img-wrapper(src="/uploads/thumbs/categories/"+category.photo, alt=category.name +' on FindIt Kenya', data-wow-delay="0.6s")
+                        h6.my-3
+                         =category.name
+                    div.w3-ab-captn.p-md-3.py-4
+                      i.fas.fa-bed
+                      h4.my-lg-3.my-md-2.my-3
+                        | Professional Services
+                      p.px-3
+                        | Aenean pulvinar ac enimet posuere tincidunt velit Utin tincidunt
+              
+        //div.agileabt-w3.py-lg-5
+        div.row.mt-sm-8.text-center
+          each category,i in categories
+            if(i > 3 && i < 7)
+              div.col-lg-3.col-md-3.col-sm-12.col-xm-12.w3-ab.my-md-0.my-sm-12.my-4
+                a.bizlink(href="/category/"+category.name)
+                  div.w3-aicon.py-lg-5.py-md-3.py-5
+                      img.img-fluid.category-img-wrapper(src="/uploads/thumbs/categories/"+category.photo, alt=category.name + ' on FindIt Kenya',data-wow-delay="0.6s")
+                      h6.my-3
+                        =category.name
+                  div.w3-ab-captn.p-md-3.py-4
+                    i.fas.fa-bed
+                    h4.my-lg-3.my-md-2.my-3
+                      | Professional Services
+                    p.px-3
+                      | Aenean pulvinar ac enimet posuere tincidunt velit Utin tincidunt
+              
+          
+          div.col-lg-3.col-md-3.w3-ab.my-md-0.my-sm-8.my-4( onclick="toggle_visibility('expandcategories');")
+            a(href="#expandcategories")
+                div.w3-aicon.py-lg-5.py-md-3.py-5
+                  button.btn.btn-light(type="button")
+                    span.findit-blue
+                      | More Categories
+                  img.img-fluid.category-img-wrapper(src="/img/more_categories.png", alt="Find It Kenya - Find Anything and Everything", data-wow-delay="0.6s")                            
+        div.row#expandcategories( style="display:none; padding-top:5rem; border-top: 1px solid #eee")
+          each category,i in categories
+            div.col-md-4.col-sm-12.col-xs-12.morecat  
+              a.bizlink(href="/category/"+category.name)
+                strong
+                  i.fas.fa-1x(aria-hidden='true', class=category.icon, class=category.slug ) 
+                  small.site-text-color.small-cart
+                    strong   
+                      =category.name
+              hr.hr-cat(class=category.slug)
+              .div.row
+                ul
+                  each subcat, i in category.subcategories
+                    if(i<5)
+                      li
+                        small.small-cart
+                          i(class="fas fa-check-circle" aria-hidden="true" class=category.slug style="margin-right:2px; font-size: 12px;")
+                          a.bizlink.sub-cat-color(href="/subcategory/sub/"+subcat.name)
+                            =subcat.name
+                  div
+                    a.bizlink(href="/category/"+category.name)
+                      strong
+                        | See more
+                  
+                  
+                                      
+                            
+                
+        // Latest review
+        div.border-bottom
+       
+        div.row.latest-review
+          div.col-12.my-col
+           h2.agile-title.h-order-category.text-center
+             | Latest Reviews
+          
+          each review, i in reviews
+           if i<4
+            div.col-lg-5.col-md-5.col-sm-12.col-xs-12.latest-review.latest-review-main.latest-review-container.coupon-col
+              a(href="/biz/"+review.bizid.slug)  
+                div.col-lg-12.col-md-12.col-sm-12.col-xs-12
+                  
+                img.img-fluid.latest-review-imgwrapper(src="/uploads/thumbs/cover"+ review.bizid.photo, alt=review.bizid.name+ ' on FindIt Kenya')
+                
+                div.col-lg-12.col-md-12.col-sm-12.col-xs-12
+                  h6.text-left
+                    strong
+                      =review.bizid.name
+                div.col-lg-12.col-md-12.col-sm-12.col-xs-12
+                  small.text-center.content-col
+                    |  #{review.length} Reviews
+                div.col-lg-12.col-md-12.col-sm-12.col-xs-12
+                    strong
+                      =review.user_id.names
+                      |  , Says
+                    div.col-lg-12.col-md-12.col-sm-12.col-xs-12
+                      i.the-review.content-col.content-col
+                        =review.message
+                div.col-12
+
+                  p
+                    
+                    if reviews
+                      if( reviews.length == 1) 
+                        .col-md-6(class="rating medium star-icon value-"+review.star+" label-hidden")
+                          .star-container
+                            .star
+                              i.star-empty
+                              i.star-half
+                              i.star-filled
+                            .star
+                              i.star-empty
+                              i.star-half
+                              i.star-filled
+                            .star
+                              i.star-empty
+                              i.star-half
+                              i.star-filled
+                            .star
+                              i.star-empty
+                              i.star-half
+                              i.star-filled
+                            .star
+                              i.star-empty
+                              i.star-half
+                              i.star-filled
+                        
+                      else if( reviews.length > 1)
+                        span.glyphicon.glyphicon-cog.glyph.border
+                          div(class="rating medium star-icon value-"+review.star+" label-hidden")
+                            .star-container
+                              .star
+                                i.star-empty
+                                i.star-half
+                                i.star-filled
+                              .star
+                                i.star-empty
+                                i.star-half
+                                i.star-filled
+                              .star
+                                i.star-empty
+                                i.star-half
+                                i.star-filled
+                              .star
+                                i.star-empty
+                                i.star-half
+                                i.star-filled
+                              .star
+                                i.star-empty
+                                i.star-half
+                                i.star-filled
+                      
+                  
+                .col-12.text-left.content-col
+                  .small
+                    =review.created_at
+
+    
+          
+     
+              
+      div.col-lg-4.col-md-4.col-sm-6.col-xs-6
+        div
+          h2.agile-title.h-order-category.text-center
+            | Top deals
+            //top deal
+        
+  //about
+  div.container-fluid
+    #about
+      section.aboutsection
+        div.banner-des
+          .titl
+            | About Us
+          div.details
+            div.about-content
+              div.row 
+                .col-md-6
+                  h3.agile-title
+                    | Who we are
+                  div
+                    | Findit.ke is Kenya’s first online directory to showcase your products. With access to thousands of businesses already signed up we are able to provide updated business information to our users.
+                    br
+                    | From Manufacturers to Retailers, Doctors or Dentists, Legal Advisors or Consultants, hotels and Restaurants.   
+                    br
+                    | We have it all.
+                  
+                .col-md-6.own-biz
+                  h3.agile-title
+                    | Do you Own a Business?
+                  div
+                    | List your business on Find It today!
+                    br
+                    | Reach new Customers at the most affordable packages, 
+                    br
+                    | Show case your products and publish special offers. 
+                  div
+                    a(href='/business/newpackage')
+                      | Get Started by Listing your business
+                      span
+                        i(class="arrow right")
+      section
+        div.row 
+          .col-md-4(style="padding: 1rem 3rem 1rem 3rem;")
+              .card-body
+                h4.card-title.agile-title.about-header-category
+                  | View Deals
+                .card-text
+                  | Save money, We have over 100’s of offers for you
+                  p
+                    a(href="/coupons")
+                      | View Available deals
+                      span| 
+                        i(class="arrow right") 
+                
+          
+          .col-md-4(style="padding: 1rem 3rem 1rem 3rem;")
+              .card-body
+                h4.card-title.agile-title.about-header-category
+                  | Find Everything
+                .card-text
+                  | From Manufacturers to Retailers, Doctors or Dentists, Legal Advisors or Consultants or maybe hotels and Restaurants. We have it all.
+                  p
+                    a(href="#hideSearch")
+                      | Get Started
+                      span| 
+                        i(class="arrow right") 
+          .col-md-4(style="padding: 1rem 3rem 1rem 3rem;")
+              .card-body
+                h4.card-title.agile-title.about-header-category
+                  | Shop Products
+                .card-text
+                  | Coming Soon...
+
+    style.
+      #link:hover{
+        background:rgba(0,0,0,0.05)
+      }
+      #link{
+        list-style:none;
+        padding:5px;
+        color:rgba(0,0,0,0.6);
+        font-size:18px;
+        font-family:sans-serif
+      }
+
+    script(type='text/javascript').
+      var pos;
+      navigator.geolocation.getCurrentPosition(function(position) {
+         pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        
+      });
+      var req=null;
+      let form = $('#searchform');
+      let input = $('#search2');
+      form.on('submit',function(e){
+        e.preventDefault();
+      })
+      input.on('keyup',function(){
+        if($(this).val()!=''){
+          if(req != null){
+            req.abort()
+          }
+          req = $.get('/newsearch?search='+$(this).val(),function(data){
+            $('.result-set').empty()
+            data.splice(10,data.length)
+            if(data.length != 0){
+              data.forEach(function(biz){
+                $('.result-set').append('<a href=/biz/'+biz.slug+'?lat='+pos.lat+'&lon='+pos.lng+'><li id ="link">'+biz.name.toLowerCase()+'</li></a>')
+              })
+          }else{
+            $('.result-set').append('<li id ="link"><a href="#">No results found...</a></li>')
+          }
+        })
+      }else{
+        $('.result-set').empty()
+      }
+      })
+     
+    script(type="text/javascript").
+      $(function() {
+        var images = [['best-banner.jpg','/category/Restaurants'], ['doctor.jpg','/category/Medical'],['office.jpg','/category/Office'], ['find.jpeg','/category/Travel'],['furnitures.jpg','/biz/Furniture-palace-international-kenya-ltd'],['velvex-chan.png','/biz/Chandaria-Industries-Ltd'],['ibis.jpg','/biz/Ibis-Styles-Hotel-Nairobi'], ['sajceramic.jpg','/biz/Saj-Ceramics-Ltd' ],['sajceramics01.jpg','/biz/Saj-Ceramics-Ltd'],['seramic02.jpg','/biz/Saj-Ceramics-Ltd'],['newmatic1.jpg', '/biz/Newmatic-Africa'], ['newmatic2.jpg', '/biz/Newmatic-Africa'], ['newmatic3.jpg', '/biz/Newmatic-Africa']];
+        var randomimagegenerator = images[Math.floor(Math.random() * images.length)] 
+        $('.banner').css({'background-image': 'url(banner-img/' + randomimagegenerator[0] +')'});
+        //var idHome = document.getElementById("home");
+        //var aTag = document.createElement('a');
+        var aTagWithLink = $('.link').attr('href',randomimagegenerator[1]);
+
+        console.log(aTagWithLink);
+       
+        //document.body.insertBefore(aTagWithLink, idHome);
+      
+        console.log(randomimagegenerator[1]);
+        
+        
+      });
+    //animation
+    
+    
+      
+    //script to toggle morecategories
+    script(type="text/javascript").
+      navigator.geolocation.getCurrentPosition(function(position) {
+        var pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+      
+       $(".bizlink").each(function () {
+          let url =$(this).attr("href")
+          let newUrl = url+'?lon='+pos.lng+'&lat='+pos.lat;
+          $(this).attr("href", newUrl);
+        });
+      });
+      function toggle_visibility(id) {
+        var e = document.getElementById(id);
+        e.style.display = ((e.style.display!='none') ? 'none' : '');
+      }
+
+   
+    //sript to hide search on menu on scroll
+    script(type='text/javascript').
+      $(window).scroll(function() {
+
+        if ($(this).scrollTop()>300)
+        {
+            $(function() {
+              $("#hideSearch").css("visibility", "hidden");
+            });
+        }
+        else
+        {
+          $(function() {
+              $("#hideSearch").css("visibility", "visible");
+            });
+        }
+      });

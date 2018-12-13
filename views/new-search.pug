@@ -23,14 +23,12 @@ block content
             button.input-group-addon#basic-addon1.finditbutton.input-group-addon.text-center
               | Visit Page
     div.row.my-row.justify-content-start
-      div.col-md-8.col-sm-8.col-xm-8.my-col
-        div.banner-text#hideSearch
-          form#searchform
-            div.input-group
-              input#search2.form-control.form-control-lg(type="text" placeholder="find a business")
-              button
-               | Search
-          div.result-set.row(style="background:#fff;display:block;position:absolute;width:650px;z-index:2000")
+      div.banner-text
+      form#searchform(style="width:40%;margin-left:250px;")
+        div.input-group
+          input#search2.form-control.form-control-lg(type="text" placeholder="find a business ...")
+          br
+        div.result-set.row(style="background:#fff;display:block;position:absolute;width:40%;z-index:2000")
   div.container-fluid
     
     //main categories and coupon row
@@ -250,19 +248,6 @@ block content
           .col-md-4(style="padding: 1rem 3rem 1rem 3rem;")
               .card-body
                 h4.card-title.agile-title.about-header-category
-                  | View Deals
-                .card-text
-                  | Save money, We have over 100’s of offers for you
-                  p
-                    a(href="/coupons")
-                      | View Available deals
-                      span| 
-                        i(class="arrow right") 
-                
-          
-          .col-md-4(style="padding: 1rem 3rem 1rem 3rem;")
-              .card-body
-                h4.card-title.agile-title.about-header-category
                   | Find Everything
                 .card-text
                   | From Manufacturers to Retailers, Doctors or Dentists, Legal Advisors or Consultants or maybe hotels and Restaurants. We have it all.
@@ -286,7 +271,7 @@ block content
         list-style:none;
         padding:5px;
         color:rgba(0,0,0,0.6);
-        font-size:18px;
+        font-size:16px;
         font-family:sans-serif
       }
 
@@ -305,19 +290,37 @@ block content
       form.on('submit',function(e){
         e.preventDefault();
       })
-      input.on('keyup',function(){
+
+      input.on('keypress',function(e){
+       if (e.which == 13) {
+          form.submit();
+        }
         if($(this).val()!=''){
           if(req != null){
             req.abort()
           }
-          req = $.get('/newsearch?search='+$(this).val(),function(data){
+          req = $.get('/newsearch?search='+$(this).val()+'&lat='+pos.lat+'&lon='+pos.lng,function(data){
             $('.result-set').empty()
-            data.splice(10,data.length)
             if(data.length != 0){
+              data.splice(8,data.length)
+
               data.forEach(function(biz){
-                $('.result-set').append('<a href=/biz/'+biz.slug+'?lat='+pos.lat+'&lon='+pos.lng+'><li id ="link">'+biz.name.toLowerCase()+'</li></a>')
+                let distance;
+                if(biz.distance){
+                  distance = '<span style="float:right;font-size:15px;color:rgba(0,0,0,0.5);">('+(biz.distance/1000).toFixed(1)+' km away)</span>'
+                }else{
+                  distance = ' ';
+                }
+                if(biz.name.length > 40){
+                  biz.name = biz.name.substr(0,40);
+                  biz.name +=" ..."
+                }
+                $('.result-set').append('<a href=/biz/'+biz.slug+'?lat='+pos.lat+'&lon='+pos.lng+'><li class="result-item" id ="link">'+biz.name.toLowerCase()+''+distance+'</li></a>')
               })
-          }else{
+               ('html, body').animate({
+                scrollTop:500
+              },1000);
+               
             $('.result-set').append('<li id ="link"><a href="#">No results found...</a></li>')
           }
         })
@@ -371,11 +374,11 @@ block content
     script(type='text/javascript').
       $(window).scroll(function() {
 
-        if ($(this).scrollTop()>300)
+        if ($(this).scrollTop()>00)
         {
             $(function() {
               $("#hideSearch").css("visibility", "hidden");
-            });
+              });
         }
         else
         {

@@ -75,65 +75,101 @@ router.get('/allbusinesses', function(req, res, next){
 // handle new search
 router.get('/newsearch',function(req,res){
   let query = req.query.search.trim();
-  let multi = query.split(' ');                   
-  Business.find({$and:[
-    {name:{
-    $regex:query,
-    $options:'i'
-  }},
-  {$or:[
-    {branch:null},
-    {branch:false}
-  ]}
-]},'name slug -_id').limit(180)
-    .then(function(d){
-      
-     var result = d.filter(function(biz){
-       return biz.name.trim().toLowerCase().startsWith(query)
-     })
-     if(multi.length > 1 && result.length == 0){
-      Business.find({$and:[
-        {name:{
-        $regex:multi[1],
-        $options:'i'
-      }},
-      {$or:[
-        {branch:null},
-        {branch:false}
-      ]}
-    ]},'name slug -_id').limit(180).then(function(d){
-      var result = d.filter(function(biz){
-        return biz.name.trim().toLowerCase().startsWith(multi[0])
-      })
-      if(result.length == 0 && multi.length > 1 ){
-        Business.find({$and:[
-          {name:{
-          $regex:multi[0],
-          $options:'i'
-        }},
-        {$or:[
-          {branch:null},
-          {branch:false}
-        ]}
-      ]},'name slug -_id').limit(180).then(function(d){
-        if(d.length > 0 ){
-          var result = d.filter(function(biz){
-            if(multi.length == 2){
-              return biz.name.trim().toLowerCase().startsWith(multi[0]) && biz.name.includes(multi[1].substr(0,multi[1].length/2))    
-            }
-            return biz.name.trim().toLowerCase().startsWith(multi[0])
-          })
-        }
-          res.status(200).send(result)
-      })
-      }else{
-        res.status(200).send(result)
-      }
-    })
-    }else{ 
-     res.status(200).send(result);
+  let lon = Number(req.query.lon);
+  let lat = Number(req.query.lat);
+  let multi = query.split(' ');
+  if(multi.length == 1){
+    multi[1] = multi[0]
+  }  
+  console.log(multi[1])
+  let point = {
+    "type": "Point",
+    "coordinates": [lon,lat]
+  };
+  // regex name with query
+  // no coords
+  // var q1 = Business.find({$or:[
+  //   {name:{
+  //   $regex:query,
+  //   $options:'i'
+  //   }},
+  //   {name:{
+  //     $regex:multi[1],
+  //     $options:'i'
+  //   }}
+  // ]},'name slug -_id').limit(180)
+  
+  var q1 = Business.aggregate([{
+    '$geoNear': {
+      'near': point,
+      'spherical': true,
+      "query":{
+        $and:[
+            {branch:null},
+          {$or:[ 
+            {name:{
+              $regex:query,
+              $options:'i'
+            }},
+            {name:{
+              $regex:multi[1],
+              $options:'i'
+              }}
+            ]
+          }
+        ]
+      },
+      'distanceField': 'distance',
+      'maxDistance': 1000000000000
     }
+  }
+]);
+
+  var q2 = Business.aggregate([{
+    '$geoNear': {
+      'near': point,
+      'spherical': true,
+      "query":{
+        $and:[{
+          $or:[
+            {branch:false},
+            {branch:null}
+          ]
+        },{
+        $or:[
+          {subcategory:{
+          $regex:query,
+          $options:'im'
+          }},
+          {description:{
+            $regex:query,
+            $options:'im'
+          }},
+        ]
+      }]
+    },
+      'distanceField': 'distance',
+      'maxDistance': 1000000000000
+    }
+  }
+]);
+
+  Promise.all([q1,q2]).then(values => {
+    
+    var res1 = values[0].filter(function(biz){
+      console.log(biz.name)
+      return biz.name.trim().toLowerCase().startsWith(multi[0]) ||
+      biz.name.trim().toLowerCase().includes(multi[1])  
     })
+
+    if(res1.length != 0){
+      console.log('sent 0')
+      res.status(200).send(res1)
+    }else{
+      console.log('sent 1')
+      res.status(200).send(values[1])
+    }
+  })
 })
 
 //render new search 
@@ -200,7 +236,7 @@ router.get('/newindex',function(req,res){
   var keywords = "Find Restaurants, professional services, Financial help, travel agencies, medical and legal help in Kenya on our platform Findit";
   var title = 'Find It Kenya | Find businesses and service providers in Kenya';
   Promise.all([categories, toprestaurants, topsearches, coupons, reviews ]).then(values => {
-    //console.log(values[4]);
+    //console.log(values[4]);Promise
     res.render('new-search', {
         title: title,
         categories: values[0],

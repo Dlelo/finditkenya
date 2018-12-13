@@ -251,6 +251,106 @@ router.get('/newindex',function(req,res){
   });
 })
 
+router.get('/updatesearch',function(req,res){
+  let query = req.query.search.trim();
+  let lon = Number(req.query.lon);
+  let lat = Number(req.query.lat);
+  let multi = query.split(' ');
+  if(multi.length == 1){
+    multi[1] = multi[0]
+  }  
+  console.log(multi[1])
+  let point = {
+    "type": "Point",
+    "coordinates": [lon,lat]
+  };
+  // regex name with query
+  // no coords
+  // var q1 = Business.find({$or:[
+  //   {name:{
+  //   $regex:query,
+  //   $options:'i'
+  //   }},
+  //   {name:{
+  //     $regex:multi[1],
+  //     $options:'i'
+  //   }}
+  // ]},'name slug -_id').limit(180)
+  
+  var q1 = Business.aggregate([{
+    '$geoNear': {
+      'near': point,
+      'spherical': true,
+      "query":{
+        $and:[
+            {branch:null},
+          {$or:[ 
+            {name:{
+              $regex:query,
+              $options:'i'
+            }},
+            {name:{
+              $regex:multi[1],
+              $options:'i'
+              }}
+            ]
+          }
+        ]
+      },
+      'distanceField': 'distance',
+      'maxDistance': 1000000000000
+    }
+  },{ "$sort": { "paid": 1 } }
+]);
+
+  var q2 = Business.aggregate([{
+    '$geoNear': {
+      'near': point,
+      'spherical': true,
+      "query":{
+        $and:[{
+          $or:[
+            {branch:false},
+            {branch:null}
+          ]
+        },{
+        $or:[
+          {subcategory:{
+          $regex:query,
+          $options:'im'
+          }},
+          {description:{
+            $regex:query,
+            $options:'im'
+          }},
+        ]
+      }]
+    },
+      'distanceField': 'distance',
+      'maxDistance': 1000000000000
+    },
+    
+  },{ "$sort": { "paid": 1 } }
+]);
+  
+var categories = Category.find({group: 'general'}); 
+
+  Promise.all([q1,q2,categories]).then(values => {
+    
+    var res1 = values[0].filter(function(biz){
+      return biz.name.trim().toLowerCase().startsWith(multi[0]) ||
+      biz.name.trim().toLowerCase().includes(multi[1])  
+    })
+      res1.concat(values[1])
+      res.render('business/search', {
+        title: req.query.search,
+        businesses: res1,
+        categories: values[2],
+        host: req.get('host')
+    });
+  })
+})
+
 router.get('/search', function(req, res, next){
   var neatString = req.query.search.trim();
   console.log("Search: "+neatString);

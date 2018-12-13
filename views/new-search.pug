@@ -24,7 +24,7 @@ block content
               | Visit Page
     div.row.my-row.justify-content-start
       div.banner-text
-      form#searchform(style="width:40%;margin-left:250px;")
+      form#searchform(method='get' style="width:40%;margin-left:250px;")
         div.input-group
           input#search2.form-control.form-control-lg(type="text" placeholder="find a business ...")
           br
@@ -289,8 +289,10 @@ block content
       let input = $('#search2');
       form.on('submit',function(e){
         e.preventDefault();
+        e.stopPropagation();
+        window.location = "/updatesearch?search=" + input.val()+'&lat='+pos.lat+'&lon='+pos.lng;
+        return true;
       })
-
       input.on('keypress',function(e){
        if (e.which == 13) {
           form.submit();

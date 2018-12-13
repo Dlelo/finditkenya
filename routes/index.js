@@ -172,7 +172,7 @@ router.get('/newsearch',function(req,res){
   })
 })
 
-//render new search 
+//render new search
 router.get('/newindex',function(req,res){
   var topsearches = Analytics.aggregate([
     {"$group":{
@@ -253,6 +253,7 @@ router.get('/newindex',function(req,res){
 
 router.get('/search', function(req, res, next){
   var neatString = req.query.search.trim();
+  console.log("Search: "+neatString);
   var result = neatString.split(/[,. \/-]/);
   const item = result[0];
   const item2 = result[1]
@@ -261,7 +262,7 @@ router.get('/search', function(req, res, next){
   if(req.query.skip){
     skip = parseInt(req.query.skip);
   }
- 
+
   Business.find({branch: { $ne: 1 }},{name: 1, _id:-1})
   .then(function(d){
     d.forEach(function(x){
@@ -281,6 +282,7 @@ router.get('/search', function(req, res, next){
     }
     var words_in_negation = ['and', 'in', 'the','kenya','nairobi','of','ltd','Ltd','shop','shops'];
     var special_words = bizArray;
+    ///console.log(bizArray);
 
     var newstring = [];
     result.forEach(function(x){
@@ -317,7 +319,7 @@ router.get('/search', function(req, res, next){
       }
     });
     var searchString = newstring.join(' ');
-    //console.log(searchString);
+    console.log("Refined: "+searchString);
     var businesses = Business.aggregate([
       {
           "$match": {

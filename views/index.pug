@@ -1,7 +1,7 @@
 extends layout-new
 block content
  div.container-fluid
-  div#home.banner
+  div#home.banner(style="object-fit: cover;")
     div.row.justify-content-end.my-row    
       div.col-md-5.col-sm-12.col-xm-12.my-col.text-right
         div.banner-text-top
@@ -373,21 +373,6 @@ block content
 
     //sript to hide search on menu on scroll
     script(type='text/javascript').
-      $(window).scroll(function() {
-
-        if ($(this).scrollTop()>2)
-        {
-            $(function() {
-              $("#hideSearch").css("visibility", "hidden");
-            });
-        }
-        else
-        {
-          $(function() {
-              $("#hideSearch").css("visibility", "visible");
-            });
-        }
-      });
       $(function() {
         var options = {
 

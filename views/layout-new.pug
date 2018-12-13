@@ -268,12 +268,19 @@ script(type='text/javascript').
           $(function() {
             $("#showSearch").css("visibility", "visible");
           });
+
+          $(function() {
+              $("#hideSearch").css("visibility", "hidden");
+          });
       }
       else
       {
         $(function() {
             $("#showSearch").css("visibility", "hidden");
           });
+        $(function() {
+              $("#hideSearch").css("visibility", "visible");
+            });
       }
     } else{
       if ($(this).scrollTop()>10)
@@ -281,12 +288,18 @@ script(type='text/javascript').
           $(function() {
             $("#showSearch").css("visibility", "visible");
           });
+          $(function() {
+              $("#hideSearch").css("visibility", "hidden");
+          });
       }
       else
       {
         $(function() {
             $("#showSearch").css("visibility", "hidden");
-          });
+        });
+        $(function() {
+              $("#hideSearch").css("visibility", "visible");
+        });
       }
 
     }

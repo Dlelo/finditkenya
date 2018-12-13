@@ -373,21 +373,6 @@ block content
 
     //sript to hide search on menu on scroll
     script(type='text/javascript').
-      $(window).scroll(function() {
-
-        if ($(this).scrollTop()>2)
-        {
-            $(function() {
-              $("#hideSearch").css("visibility", "hidden");
-            });
-        }
-        else
-        {
-          $(function() {
-              $("#hideSearch").css("visibility", "visible");
-            });
-        }
-      });
       $(function() {
         var options = {
 

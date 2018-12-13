@@ -261,47 +261,26 @@ script(src="/javascripts/bootstrap-datetimepicker.min.js")
 <!--sript to show search on menu on scroll -->
 script(type='text/javascript').
   $(window).scroll(function() {
-    if ($(window).width() >= 600){
+    //if ($(window).width() >= 600){
 
-      if ($(this).scrollTop()>5)
-      {
-          $(function() {
-            $("#showSearch").css("visibility", "visible");
-          });
-
-          $(function() {
-              $("#hideSearch").css("visibility", "hidden");
-          });
-      }
-      else
-      {
+    if ($(this).scrollTop()>5)
+    {
         $(function() {
-            $("#showSearch").css("visibility", "hidden");
-          });
-        $(function() {
-              $("#hideSearch").css("visibility", "visible");
-            });
-      }
-    } else{
-      if ($(this).scrollTop()>20)
-      {
-          $(function() {
-            $("#showSearch").css("visibility", "visible");
-          });
-          $(function() {
-              $("#hideSearch").css("visibility", "hidden");
-          });
-      }
-      else
-      {
-        $(function() {
-            $("#showSearch").css("visibility", "hidden");
+          $("#showSearch").css("visibility", "visible");
         });
-        $(function() {
-              $("#hideSearch").css("visibility", "visible");
-        });
-      }
 
+        $(function() {
+            $("#hideSearch").css("visibility", "hidden");
+        });
+    }
+    else
+    {
+      $(function() {
+          $("#showSearch").css("visibility", "hidden");
+        });
+      $(function() {
+            $("#hideSearch").css("visibility", "visible");
+          });
     }
   });
   

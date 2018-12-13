@@ -83,6 +83,7 @@ router.get('/artcaffe',function(req,res){
 
 router.get('/search', function(req, res, next){
   var neatString = req.query.search.trim();
+  console.log("Search: "+neatString);
   var result = neatString.split(/[,. \/-]/);
   var bizArray = [];
   var skip = 0;
@@ -108,6 +109,7 @@ router.get('/search', function(req, res, next){
     }
     var words_in_negation = ['and', 'in', 'the','kenya','nairobi','of','ltd','Ltd','shop','shops'];
     var special_words = bizArray;
+    ///console.log(bizArray);
 
     var newstring = [];
     result.forEach(function(x){
@@ -144,7 +146,7 @@ router.get('/search', function(req, res, next){
       }
     });
     var searchString = newstring.join(' ');
-    console.log(searchString);
+    console.log("Refined: "+searchString);
     var businesses = Business.aggregate([
       {
           "$match": {

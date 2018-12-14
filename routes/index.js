@@ -737,7 +737,7 @@ router.get('/', function(req, res, next) {
   var keywords = "Find Restaurants, professional services, Financial help, travel agencies, medical and legal help in Kenya on our platform Findit";
   var title = 'Find It Kenya | Find businesses and service providers in Kenya';
   Promise.all([categories, toprestaurants, topsearches, coupons, reviews ]).then(values => {
-    //console.log(values[4]);
+    console.log(values[3]);
     res.render('index', {
         title: title,
         categories: values[0],
@@ -856,6 +856,7 @@ router.get('/category/:cat',function(req, res, next){
         res.render('business/list', {
             title: "Best "+req.params.cat+ " in Nairobi Kenya",
             businesses: values[0],
+            description: req.params.cat+" in Kenya",
             features: values[1],
             categories: values[2],
             category: req.params.cat,
@@ -897,6 +898,7 @@ router.get('/category/:cat',function(req, res, next){
         //console.log(values[0].length);
         res.render('business/list', {
             title: "Best "+req.params.cat+ " in Nairobi Kenya",
+            description: req.params.cat+" in Kenya",
             businesses: values[0],
             features: values[1],
             categories: values[2],
@@ -1640,6 +1642,7 @@ router.get('/coupons/:cat',role.auth, function(req, res){
             title: 'Coupons on Findit',
             coupons: values[0],
             categories: values[1],
+            keywords: "Best deals on meals, households, services etc in Kenya",
             host: req.get('host')
         });
     });

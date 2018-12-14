@@ -38,7 +38,12 @@ router.post('/add', role.auth, cpUpload, function(req, res, next) {
 	instance.slug = slug(req.body.name);
 	instance.description = req.body.description;
 	instance.city = req.body.city;
-	instance.map = {lati: req.body.lati, long: req.body.long, zoom: req.body.zoom };
+  let mappy = {
+    type:"Point",
+    coordinates:[Number(req.body.long),Number(req.body.lati)],
+    zoom:req.body.zoom
+  }
+  instance.map = mappy;
 	if (req.files['catalog'] != null){
 		instance.catalog = req.files['catalog'];
 	}
@@ -120,7 +125,7 @@ router.post('/add', role.auth, cpUpload, function(req, res, next) {
 				if(err){
 					Category.find({})
 					.then(function(data){
-					    res.render('business/newfree',{title: "Find It Categories", categories: data, errors: err});
+					    res.render('business/freeadd',{title: "Find It Categories", categories: data, errors: err});
 					})
 					.catch(function(err){
 					     console.log(err);

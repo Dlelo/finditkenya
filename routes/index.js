@@ -1208,7 +1208,7 @@ router.get('/newindex',function(req,res){
 })
 
 router.get('/updatesearch',function(req,res){
-  let query = req.query.search.trim();
+  let query = req.query.search.trim().toLowerCase();
 
   let lon = Number(req.query.lon);
   let lat = Number(req.query.lat);
@@ -1245,7 +1245,7 @@ router.get('/updatesearch',function(req,res){
       'spherical': true,
       "query":{
         $and:[
-            {branch:null},
+          {$or:[{branch:null},{branch:false}]},
           {$or:[ 
             {name:{
               $regex:query.substr(0,query.length/1.5),
@@ -1310,6 +1310,7 @@ router.get('/updatesearch',function(req,res){
     })
 
       res1 = res1.concat(values[1])
+
       res.render('business/search',{
         title: req.query.search,
         businesses: res1,

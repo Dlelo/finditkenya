@@ -1210,8 +1210,9 @@ router.get('/newindex',function(req,res){
 router.get('/updatesearch',function(req,res){
   let query = req.query.search.trim().toLowerCase();
 
-  let lon = Number(req.query.lon);
-  let lat = Number(req.query.lat);
+  let lon =req.query.lon ? Number(req.query.lon):36.8219;
+  let lat =req.query.lat ? Number(req.query.lat):-1.2921;
+  
   let multi = query.split(' ');
   let catSearch = [false,''];
   let subCatSearch = [false,''];
@@ -1227,10 +1228,10 @@ router.get('/updatesearch',function(req,res){
   }
   if(subCatSearch[0]){
     const subcat = subCatSearch[1].replace(/^\w/, c => c.toUpperCase());
-    res.redirect('subcategory/undefined/'+subcat)
+    res.redirect('subcategory/undefined/'+subcat+'?lat='+lat+'&lon='+lon)
   }else if(catSearch[0]){
     const cat = catSearch[1].replace(/^\w/, c => c.toUpperCase());
-    res.redirect('category/'+cat)
+    res.redirect('category/'+cat+'?lat='+lat+'&lon='+lon)
   } 
   
   console.log()

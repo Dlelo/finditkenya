@@ -14,6 +14,7 @@ html(lang='en')
     link(rel='apple-touch-icon', href='apple-touch-icon.png')
     link(rel="icon" type="image/png" sizes="32x32" href="/img/favicon.png")
     //custom theme files
+    link(rel='stylesheet' href='https://www.w3schools.com/w3css/4/w3.css')
     link(href="/stylesheets/css/bootstrap.css" type="text/css" rel="stylesheet" media="all")
     link(href="/stylesheets/css/style.css" type="text/css" rel="stylesheet" media="all")
     
@@ -81,25 +82,76 @@ html(lang='en')
         
     //banner - only on homepage
     div.container-fluid
-      header
-        //nav.navbar.navbar-toggleable-md.navbar-light.bg-faded
-          button.navbar-toggler.navbar-toggler-right(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
-            span.navbar-toggler-icon
-          a.navbar-brand(href='#') Navbar
-          #navbarSupportedContent.collapse.navbar-collapse
-            ul.navbar-nav.mr-auto
-              li.nav-item.active
-                a.nav-link(href='#')
-                  | Home 
-                  span.sr-only (current)
-              li.nav-item
-                a.nav-link(href='#') Link
-              li.nav-item
-                a.nav-link.disabled(href='#') Disabled
-            form.form-inline.my-2.my-lg-0
-              input.form-control.mr-sm-2(type='text' placeholder='Search')
-              button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Search
+      //#container.col(style="padding-right:0px; padding-left:0px;")
+        // Links (sit on top)
+        .w3-row.w3-large.w3-light-grey#homenavbar
+          .w3-col.s3
+            a.navbar-brand.text-white(href="/")
+              img.img-logo.img-fluid(src="/img/findit-red-logo.png")
+          .w3-col.s3
+            #showSearch
+                form.form-class(method='get', action='/search')
+                  div.input-group
+                    input.search2.form-control-lg(type="text" placeholder="Restaurants, Businesses, Doctors..." ,style="width:100% !important" ,name='search', autofocus)
+          .w3-col.s3
+            a(href="/coupons")
+                button.btn.btn-light.w3ls-btn.coupons-btn.flash-button#coupbtn(type="button")
+                  span.fas.fa-gift.coupons-text-color
+                  | View deals
+          .w3-col.s3
+            button.navbar-toggler.ml-md-auto(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation")
+                  span.navbar-toggler-icon
+            div#navbarSupportedContent.collapse.navbar-collapse
+            
+              ul.nav.navbar-nav.ml-lg-auto.justify-content-end.navbar-right(style="float:right")
+                li.dropdown.nav-item.mr-3
+                  a.nav-link.dropdown-toggle(href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")    
+                    strong Categories 
+                  
+                  div.dropdown-menu.dropdown-menu-right.mega-menu(aria-labelledby="navbarDropdown" style="width: -webkit-fill-available;")
+                    if categories 
+                      div.row
+                        each category,i in categories
+                          div.col-md-4.col-sm-12.col-xs-12
+                            a.bizlink.dropdown-item(href="/category/"+category.name)
+                                strong.findit-blue
+                                  i.fas.fa-1x(aria-hidden='true', class=category.icon) 
+                                  small.findit-blue
+                                    strong   
+                                      =category.name
+                        
+                            
+                //li.nav-item.mr-3
+                  a(href="/")
+                    span.fas.fa-home.fas-menu 
+                    strong
+                    |  Home
+                if (loggedin)
+                  li.nav-item.mr-3                  
+                    a(href='/dashboard')  
+                      span.fas.fa-user.fas-menu
+                      strong
+                      |  View Profile          
+                if (loggedin)                
+                  li.nav-item.mr-3
+                    a(href='/logout') 
+                      span.fas.fa-sign-out-alt.fas-menu
+                      strong
+                      |  Logout
+                else
+                  li.nav-item.mr-3
+                    a(href='/login')
+                      button.btn.btn-primary.w3ls-btn
+                        strong
+                          | Login
+                  li.nav-item.mr-3
+                  a(href="/register")
+                    button.btn.btn-outline-primary.w3ls-btn.findit-blue
+                      strong
+                      |  Sign Up
 
+      header
         //header before navigation items
         nav#homenavbar.navbar.navbar-expand-lg.navbar-light.bg-gradient-secondary
           div#nav-style

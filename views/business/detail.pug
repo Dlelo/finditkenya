@@ -11,6 +11,7 @@ block content
                 .row
                   .col-md-12
                     img.img-responsive(src="/uploads/thumbs/cover"+ biz.photo, alt=biz.name +' on FindIt Kenya', width="80%") 
+              
               .row(style="margin-bottom: 2rem;")                       
                 .col-md-12.padding-map.nomargin
                   if(branches)
@@ -226,7 +227,7 @@ block content
                           | #{feature} |    
               .row  
                 .col-md-12  
-                  if biz.gallery
+                  if biz.gallery.length > 0
                     .row(style="100%; margin-top:2rem;")
                       .col-md-12(style="margin-bottom:2rem;")
                         #lightgallery.thumbnails.scrollmenu
@@ -238,6 +239,8 @@ block content
                             small
                               strong
                                 | Scroll this Gallery Left or Right
+                  else
+                     |
                   
                   if biz.description
                     .row

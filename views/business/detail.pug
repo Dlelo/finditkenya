@@ -226,21 +226,22 @@ block content
                         strong
                           | #{feature} |    
               .row  
-                .col-md-12  
-                  if biz.gallery.length > 0
-                    .row(style="100%; margin-top:2rem;")
-                      .col-md-12(style="margin-bottom:2rem;")
-                        #lightgallery.thumbnails.scrollmenu
-                          each image in biz.gallery
-                            a.nopadding(href='/uploads/'+image.filename, width="", alt='#{biz.slug}')
-                              .thumbnail.bizdetail-photo
-                                img.img-thumbnail.img-responsive(src='/uploads/thumbs/gallery-'+image.filename,  alt=biz.name +' on FindIt Kenya')
-                          .pull-left
-                            small
-                              strong
-                                | Scroll this Gallery Left or Right
-                  else
-                     |
+                .col-md-12
+                  if biz.gallery  
+                    if biz.gallery.length > 0
+                      .row(style="100%; margin-top:2rem;")
+                        .col-md-12(style="margin-bottom:2rem;")
+                          #lightgallery.thumbnails.scrollmenu
+                            each image in biz.gallery
+                              a.nopadding(href='/uploads/'+image.filename, width="", alt='#{biz.slug}')
+                                .thumbnail.bizdetail-photo
+                                  img.img-thumbnail.img-responsive(src='/uploads/thumbs/gallery-'+image.filename,  alt=biz.name +' on FindIt Kenya')
+                            .pull-left
+                              small
+                                strong
+                                  | Scroll this Gallery Left or Right
+                    else
+                      |
                   
                   if biz.description
                     .row

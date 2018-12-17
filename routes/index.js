@@ -1067,7 +1067,7 @@ router.get('/newsearch',function(req,res){
               $options:'i'
             }},
             {name:{
-              $regex:multi[1],
+              $regex:multi[0],
               $options:'i'
               }}
             ]
@@ -1213,6 +1213,9 @@ router.get('/updatesearch',function(req,res){
   multi = multi.filter(function(word){
     return word != 'in'
   })
+  if(multi.length<1){
+    multi.push(multi[0])
+  }
   for(let i = 0; i < multi.length; i++){
     if(CATS.includes(multi[i])){
       catSearch[0] = true;
@@ -1223,6 +1226,7 @@ router.get('/updatesearch',function(req,res){
       subCatSearch[1] = multi[i]
     }
   }
+  
   if(subCatSearch[0]){
     const subcat = subCatSearch[1].replace(/^\w/, c => c.toUpperCase());
     res.redirect('subcategory/undefined/'+subcat+'?lat='+lat+'&lon='+lon)
@@ -1236,55 +1240,54 @@ router.get('/updatesearch',function(req,res){
     "coordinates": [lon,lat]
   };
 
-var q1 = Business.aggregate([{
-  '$geoNear': {
-    'near': point,
-    'spherical': true,
-    "query":{
-      $and:[
-        {$or:[{branch:null},{branch:false}]},
-        {$or:[ 
-          {name:{
-            $regex:query.substr(0,query.length/1.5),
-            $options:'i'
-            }},
-            {keywords:{
+  var q1 = Business.aggregate([{
+    '$geoNear': {
+      'near': point,
+      'spherical': true,
+      "query":{
+        $and:[
+          {$or:[ 
+              {branch:false},
+              {branch:null}
+            ]
+          },
+          {$or:[ 
+            {name:{
               $regex:query,
-              $options:'i'
-            }},
-            {keywords:{
-              $regex:multi[multi.length-1],
               $options:'i'
             }},
             {name:{
               $regex:multi[0].substr(0,multi[0].length/1.5),
               $options:'i'
-            }},
-          ]
-        }
-      ]
-    },
-    'distanceField': 'distance',
-    'maxDistance': 1000000000000
+              }}
+            ]
+          }
+        ]
+      },
+      'distanceField': 'distance',
+      'maxDistance': 1000000000000
+    }
   }
-},{ "$sort": { "paid": -1 } }
 ]);
-
   var categories = Category.find({group: 'general'}); 
 
   Promise.all([q1,categories]).then(values => {
     
     var res1 = values[0].filter(function(biz){
       console.log(biz.name)
-      return biz.name.trim().toLowerCase().includes(multi[0].substr(0,multi[0].length/1.5)) || 
-      biz.name.trim().toLowerCase().startsWith(query.substr(0,3))
+      return biz.name.trim().toLowerCase().startsWith(multi[0].substr(0,2)) ||
+      biz.name.trim().toLowerCase().includes(multi[1]) || biz.name.trim().toLowerCase().includes(multi[0]) 
     })
-
-      res.render('business/search',{
-        title: req.query.search,
-        businesses: res1,
-        categories: values[1],
-        host: req.get('host')
+  
+    
+    res1.forEach(function(biz){
+      //console.log(biz.name)
+    })
+    res.render('business/search',{
+      title: req.query.search,
+      businesses: res1,
+      categories: values[1],
+      host: req.get('host')
     });
   })
 })

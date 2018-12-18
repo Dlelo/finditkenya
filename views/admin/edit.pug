@@ -103,14 +103,14 @@ block content
                   strong
                     |  Monday
                 .col-sm-3(id="hoursopen",class="timeopen")
-                  if (biz.hours.monday != '')
+                  if(biz.hours.monday != '')
                     each hour in biz.hours.monday
                       if(hour.opens)
-                        input.form-control-form(type='text', name='hoursopenmon', placeholder='Opening Hours Monday',class='timepicker hoursopencloseoption', value=hour.opens)
+                        input#hours.form-control-form(type='text', name='hoursopenmon', placeholder='Opening Hours Monday',class='timepicker hoursopencloseoption', value=hour.opens)
                   else
                     input.form-control-form(type='text', name='hoursopenmon', placeholder='Opening Hours Monday',class='timepicker hoursopened hoursopencloseoption')
                 .col-sm-3(id="hoursclose",class="timeclose")
-                  if (biz.hours.monday != '')
+                  if(biz.hours.monday != '')
                     each hour in biz.hours.monday
                       if(hour.closes)
                         input.form-control-form(type='text', name='hoursclosemon', placeholder='Closes Hours Monday',class='timepicker hoursopencloseoption', value=hour.closes)
@@ -124,14 +124,14 @@ block content
                   strong
                     |  Tuesday
                 .col-sm-3(id="hoursopen",class="timeopen")
-                  if (biz.hours.tuesday != '')
+                  if(biz.hours.tuesday != '')
                     each hour in biz.hours.tuesday
                       if(hour.opens)
                         input.form-control-form(type='text', name='hoursopentue', placeholder='Opening Hours Tuesday',class='timepicker hoursopencloseoption', value=hour.opens)
                   else
                     input.form-control-form(type='text', name='hoursopentue', placeholder='Opening Hours Tuesday',class='timepicker hoursopened hoursopencloseoption')
                 .col-sm-3(id="hoursclose",class="hoursclose")
-                  if (biz.hours.tuesday != '')
+                  if(biz.hours.tuesday != '')
                     each hour in biz.hours.tuesday
                       if(hour.closes)
                         input.form-control-form(type='text', name='hoursclosetue', placeholder='Closes Hours Tuesday',class='timepicker hoursopencloseoption', value=hour.closes)

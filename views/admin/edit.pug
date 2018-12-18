@@ -329,11 +329,18 @@ block content
                 .col-sm-6
                   input.form-control-form(type='text', name='username', placeholder='Username',value=biz.user_id)
               
-              .col-sm-6
-                  label(class='custom-control-label', for='branch', style='margin-left:5px')
+              .col-sm-2
+                  label
                     |      Is this a branch?
-                  input#branch.form-control-form(type='radio', class='custom-control-input custom-control form-control-lg custom-checkbox', style = 'width: 20px; height: 20px;' , value='1', name='branch', rel=biz._id) Yes
-                  input#branch.form-control-form(type='radio', class='custom-control-input custom-control form-control-lg custom-checkbox', style = 'width: 20px; height: 20px;' , value='0', name='branch', rel=biz._id) No
+              .col-sm-4    
+                  .radio
+                      label.radio-inline
+                        input.form-control-form(type='radio',value='1', name='branch', rel=biz._id)
+                        | Yes
+                      label.radio-inline
+                        input.form-control-form(type='radio', value='0', name='branch')
+                        | No
+                  
                 
               .col-sm-2 
                 label

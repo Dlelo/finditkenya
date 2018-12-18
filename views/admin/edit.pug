@@ -328,32 +328,32 @@ block content
               if(user.role == 1)
                 .col-sm-6
                   input.form-control-form(type='text', name='username', placeholder='Username',value=biz.user_id)
-              
-              .col-sm-6
-                  .row
-                      .col-sm-6
-                        label
-                          |      Is this a branch?
-                      .col-sm-6
-                        .radio
-                          if biz.branch
-                            label.radio-inline
-                              input.form-control-form(type='radio', value=1, name='branch', rel=biz._id, checked)
-                              | Yes
-                          else
-                            label.radio-inline
-                              input.form-control-form(type='radio', value=1, name='branch', rel=biz._id)
-                              | Yes
+            
+              .col-sm-12
+                .row
+                  .col-sm-2
+                    label
+                      |      Is this a branch?
+                  .col-sm-4    
+                      .radio
+                        if biz.branch
                           label.radio-inline
-                            input.form-control-form(type='radio', value=0, name='branch')
-                            | No
-                    
+                            input.form-control-form(type='radio', value=1, name='branch', rel=biz._id, checked)
+                            | Yes
+                        else
+                          label.radio-inline
+                            input.form-control-form(type='radio', value=1, name='branch', rel=biz._id)
+                            | Yes
+                        label.radio-inline
+                          input.form-control-form(type='radio', value=0, name='branch')
+                          | No
+                        
                 
-              .col-sm-2 
-                label
-                  | Select Parent company (Hq)
-              .col-sm-4
-                select#bizparent.form-control-form-select(name='bizparent',class='bizparent', data-live-search='true')
+                  .col-sm-2 
+                    label
+                      | Select Parent company (Hq)
+                  .col-sm-4
+                    select#bizparent.form-control-form-select(name='bizparent',class='bizparent', data-live-search='true')
               
             .form-group
               .row

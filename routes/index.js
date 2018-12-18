@@ -1227,13 +1227,13 @@ router.get('/updatesearch',function(req,res){
     }
   }
   
-  if(subCatSearch[0]){
-    const subcat = subCatSearch[1].replace(/^\w/, c => c.toUpperCase());
-    res.redirect('subcategory/undefined/'+subcat+'?lat='+lat+'&lon='+lon)
-  }else if(catSearch[0]){
-    const cat = catSearch[1].replace(/^\w/, c => c.toUpperCase());
-    res.redirect('category/'+cat+'?lat='+lat+'&lon='+lon)
-  } 
+  // if(subCatSearch[0]){
+  //   const subcat = subCatSearch[1].replace(/^\w/, c => c.toUpperCase());
+  //   res.redirect('subcategory/undefined/'+subcat+'?lat='+lat+'&lon='+lon)
+  // }else if(catSearch[0]){
+  //   const cat = catSearch[1].replace(/^\w/, c => c.toUpperCase());
+  //   res.redirect('category/'+cat+'?lat='+lat+'&lon='+lon)
+  // } 
   
   let point = {
     "type": "Point",
@@ -1269,24 +1269,46 @@ router.get('/updatesearch',function(req,res){
     }
   }
 ]);
+  
+  var q2 = Business.find({$or: [
+    {
+      name: { "$regex": query, "$options": "i" }
+    },
+    {
+      keywords: { "$regex": query, "$options": "i" }
+    },
+    {
+      subcategory: { "$regex": query, "$options": "i" }
+    }
+    ],
+    approved: true,
+    pending: { $ne: true }
+  }).sort({paid:-1})
+
   var categories = Category.find({group: 'general'}); 
 
-  Promise.all([q1,categories]).then(values => {
+  Promise.all([q2,q1,categories]).then(values => {
     
-    var res1 = values[0].filter(function(biz){
+    var res2 = values[0].filter(function(biz){
+      return biz.branch == typeof 'undefined' || biz.branch == false || biz.branch == null
+    })
+
+    res2.forEach(function(biz){
       console.log(biz.name)
+    })
+
+    var res1 = values[1].filter(function(biz){
       return biz.name.trim().toLowerCase().startsWith(multi[0].substr(0,2)) ||
       biz.name.trim().toLowerCase().includes(multi[1]) || biz.name.trim().toLowerCase().includes(multi[0]) 
     })
-  
-    
-    res1.forEach(function(biz){
-      //console.log(biz.name)
-    })
+    if(res.length==0){
+      res2 = res2.concat(res1)
+    }
+
     res.render('business/search',{
       title: req.query.search,
-      businesses: res1,
-      categories: values[1],
+      businesses: res2,
+      categories: values[2],
       host: req.get('host')
     });
   })

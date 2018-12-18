@@ -1042,18 +1042,6 @@ router.get('/newsearch',function(req,res){
     "type": "Point",
     "coordinates": [lon,lat]
   };
-  // regex name with query
-  // no coords
-  // var q1 = Business.find({$or:[
-  //   {name:{
-  //   $regex:query,
-  //   $options:'i'
-  //   }},
-  //   {name:{
-  //     $regex:multi[1],
-  //     $options:'i'
-  //   }}
-  // ]},'name slug -_id').limit(180)
   
   var q1 = Business.aggregate([{
     '$geoNear': {
@@ -1201,6 +1189,12 @@ router.get('/newindex',function(req,res){
   });
 })
 
+router.get('/updatesigma',function(req,res){
+  Business.findByIdAndUpdate('5a8401032d917b00146da6cd',{'branch':false}).then(function(data){
+    res.redirect('/')
+  })
+})
+
 router.get('/updatesearch',function(req,res){
   let query = req.query.search.trim().toLowerCase();
 
@@ -1227,13 +1221,13 @@ router.get('/updatesearch',function(req,res){
     }
   }
   
-  if(subCatSearch[0]){
-    const subcat = subCatSearch[1].replace(/^\w/, c => c.toUpperCase());
-    res.redirect('subcategory/undefined/'+subcat+'?lat='+lat+'&lon='+lon)
-  }else if(catSearch[0]){
-    const cat = catSearch[1].replace(/^\w/, c => c.toUpperCase());
-    res.redirect('category/'+cat+'?lat='+lat+'&lon='+lon)
-  } 
+  // if(subCatSearch[0]){
+  //   const subcat = subCatSearch[1].replace(/^\w/, c => c.toUpperCase());
+  //   res.redirect('subcategory/undefined/'+subcat+'?lat='+lat+'&lon='+lon)
+  // }else if(catSearch[0]){
+  //   const cat = catSearch[1].replace(/^\w/, c => c.toUpperCase());
+  //   res.redirect('category/'+cat+'?lat='+lat+'&lon='+lon)
+  // } 
   
   let point = {
     "type": "Point",
@@ -1269,24 +1263,41 @@ router.get('/updatesearch',function(req,res){
     }
   }
 ]);
+  
+  var q2 = Business.find({$or: [
+    {
+      name: { "$regex": query, "$options": "i" }
+    },
+    {
+      keywords: { "$regex": query, "$options": "i" }
+    },
+    {
+      subcategory: { "$regex": query, "$options": "i" }
+    }
+    ]
+  }).sort({paid:-1})
+
   var categories = Category.find({group: 'general'}); 
 
-  Promise.all([q1,categories]).then(values => {
+  Promise.all([q2,q1,categories]).then(values => {
     
-    var res1 = values[0].filter(function(biz){
-      console.log(biz.name)
+    var res2 = values[0].filter(function(biz){
+      return biz.branch == typeof 'undefined' || biz.branch == false || biz.branch == null
+    })
+
+    var res1 = values[1].filter(function(biz){
       return biz.name.trim().toLowerCase().startsWith(multi[0].substr(0,2)) ||
       biz.name.trim().toLowerCase().includes(multi[1]) || biz.name.trim().toLowerCase().includes(multi[0]) 
     })
-  
-    
-    res1.forEach(function(biz){
-      //console.log(biz.name)
-    })
+
+    if(res2.length==0){
+      res2 = res2.concat(res1)
+    }
+
     res.render('business/search',{
       title: req.query.search,
-      businesses: res1,
-      categories: values[1],
+      businesses: res2,
+      categories: values[2],
       host: req.get('host')
     });
   })
@@ -1810,9 +1821,9 @@ router.get('/', function(req, res, next) {
   }).populate('bizid').sort([['order', 1],['star', -1]]).limit(5);
   var reviews = Review.find().sort([['created_at', -1]]).populate('bizid').populate('user_id').limit(5);
   var categories = Category.find({approved: true,group: 'general'}).sort([['order', 1]]);
-  var description = "Find It is a leading online directory to find businesses, service providers and their information in one single platform. Find it or be found. Register today and add your business.";
-  var keywords = "Find Restaurants, professional services, Financial help, travel agencies, medical and legal help in Kenya on our platform Findit";
-  var title = 'Find It Kenya | Find businesses and service providers in Kenya';
+  var description = "Business contact information, deals from the best businesses, shopping, special offers & much more only on Findit in Kenya."
+  var keywords = "Findit,findit,Businesses,restaurants,Nairobi,Kenya,dentists,doctors,hotels,deals,special offers,lawyers,hospitals,salon,spa,pizza,movies,ice cream,shopping mall,bakeries";
+  var title = 'Find the best businesses & services in Kenya, restaurants, lawyers, doctors, salons, findit';
   Promise.all([categories, toprestaurants, topsearches, coupons, reviews ]).then(values => {
     console.log(values[3]);
     res.render('index', {

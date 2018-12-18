@@ -81,123 +81,46 @@ html(lang='en')
               
         
     //banner - only on homepage
-    div.container-fluid
-      //#container.col(style="padding-right:0px; padding-left:0px;")
-        // Links (sit on top)
-        .w3-row.w3-large.w3-light-grey#homenavbar
-          .w3-col.s3
-            a.navbar-brand.text-white(href="/")
-              img.img-logo.img-fluid(src="/img/findit-red-logo.png")
-          .w3-col.s3
-            #showSearch
-                form.form-class(method='get', action='/search')
-                  div.input-group
-                    input.search2.form-control-lg(type="text" placeholder="Restaurants, Businesses, Doctors..." ,style="width:100% !important" ,name='search', autofocus)
-          .w3-col.s3
-            a(href="/coupons")
-                button.btn.btn-light.w3ls-btn.coupons-btn.flash-button#coupbtn(type="button")
-                  span.fas.fa-gift.coupons-text-color
-                  | View deals
-          .w3-col.s3
-            button.navbar-toggler.ml-md-auto(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="Toggle navigation")
-                  span.navbar-toggler-icon
-            div#navbarSupportedContent.collapse.navbar-collapse
-            
-              ul.nav.navbar-nav.ml-lg-auto.justify-content-end.navbar-right(style="float:right")
-                li.dropdown.nav-item.mr-3
-                  a.nav-link.dropdown-toggle(href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")    
-                    strong Categories 
-                  
-                  div.dropdown-menu.dropdown-menu-right.mega-menu(aria-labelledby="navbarDropdown" style="width: -webkit-fill-available;")
-                    if categories 
-                      div.row
-                        each category,i in categories
-                          div.col-md-4.col-sm-12.col-xs-12
-                            a.bizlink.dropdown-item(href="/category/"+category.name)
-                                strong.findit-blue
-                                  i.fas.fa-1x(aria-hidden='true', class=category.icon) 
-                                  small.findit-blue
-                                    strong   
-                                      =category.name
-                        
-                            
-                //li.nav-item.mr-3
-                  a(href="/")
-                    span.fas.fa-home.fas-menu 
-                    strong
-                    |  Home
-                if (loggedin)
-                  li.nav-item.mr-3                  
-                    a(href='/dashboard')  
-                      span.fas.fa-user.fas-menu
-                      strong
-                      |  View Profile          
-                if (loggedin)                
-                  li.nav-item.mr-3
-                    a(href='/logout') 
-                      span.fas.fa-sign-out-alt.fas-menu
-                      strong
-                      |  Logout
-                else
-                  li.nav-item.mr-3
-                    a(href='/login')
-                      button.btn.btn-primary.w3ls-btn
-                        strong
-                          | Login
-                  li.nav-item.mr-3
-                  a(href="/register")
-                    button.btn.btn-outline-primary.w3ls-btn.findit-blue
-                      strong
-                      |  Sign Up
-
+    .container-fluid
       header
         //header before navigation items
         nav#homenavbar.navbar.navbar-expand-lg.navbar-light.bg-gradient-secondary
-          div#nav-style
-            div#nav-list
+          div(style="display:flex !important; flex-direction:row !important; width: 100% !important;")
+            div(style="flex-grow:0.1 !important")
               a.navbar-brand.text-white(href="/")
                 img.img-logo(src="/img/findit-red-logo.png").img-fluid
-            div#nav-list
-              #showSearch
+            div(style="flex-grow:0.1 !important")
                 form.form-class(method='get', action='/search')
                   div.input-group
-                    input.search2.form-control-lg(type="text" placeholder="Restaurants, Businesses, Doctors..." ,style="width:100% !important" ,name='search', autofocus)
-            div#nav-list      
+                    input.search2.form-control-lg(type="text" placeholder="Businesses, Doctors, Lawyers, Hotels" ,style="width:100% !important" ,name='search', autofocus)
+            div(style="flex-grow:0.1 !important")      
               a(href="/coupons")
                 button.btn.btn-light.w3ls-btn.coupons-btn.flash-button#coupbtn(type="button")
                   span.fas.fa-gift.coupons-text-color
                   | View deals
-            div#nav-listmain
+            div(style="flex-grow:0.5 !important")
               //site navigation 
-              button.navbar-toggler.ml-md-auto(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                  aria-expanded="false" aria-label="Toggle navigation")
-                    span.navbar-toggler-icon
-              div#navbarSupportedContent.collapse.navbar-collapse
+              button.navbar-toggler.ml-md-auto(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" onclick="w3_open()")
+                span.navbar-toggler-icon
+              div#navbarSupportedContent.navbar-collapse
               
-                ul.nav.navbar-nav.ml-lg-auto.justify-content-end.navbar-right(style="float:right")
+                ul.nav.navbar-nav.ml-lg-auto.nav.justify-content-end(style="float:right")
                   li.dropdown.nav-item.mr-3
                     a.nav-link.dropdown-toggle(href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")    
                       strong Categories 
-                    
+                      
                     div.dropdown-menu.dropdown-menu-right.mega-menu(aria-labelledby="navbarDropdown" style="width: -webkit-fill-available;")
                       if categories 
                         div.row
                           each category,i in categories
                             div.col-md-4.col-sm-12.col-xs-12
-                              a.bizlink.dropdown-item(href="/category/"+category.name)
+                              a.dropdown-item(href="/category/"+category.name)
                                   strong.findit-blue
                                     i.fas.fa-1x(aria-hidden='true', class=category.icon) 
                                     small.findit-blue
                                       strong   
                                         =category.name
-                          
-                              
-                  //li.nav-item.mr-3
-                    a(href="/")
-                      span.fas.fa-home.fas-menu 
-                      strong
-                      |  Home
+                  
                   if (loggedin)
                     li.nav-item.mr-3                  
                       a(href='/dashboard')  
@@ -222,7 +145,8 @@ html(lang='en')
                         strong
                         |  Sign Up
 
-    
+
+    .container-fluid
       //display errors
       .errors
         if errors

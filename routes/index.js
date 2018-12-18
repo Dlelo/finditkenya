@@ -1037,7 +1037,6 @@ router.get('/newsearch',function(req,res){
   if(multi.length == 1){
     multi[1] = multi[0]
   }  
-  console.log(multi[1])
   let point = {
     "type": "Point",
     "coordinates": [lon,lat]
@@ -1100,10 +1099,8 @@ router.get('/newsearch',function(req,res){
     })
 
     if(res1.length != 0){
-      console.log('sent 0')
       res.status(200).send(res1)
     }else{
-      console.log('sent 1')
       res.status(200).send(values[1])
     }
   })
@@ -1306,7 +1303,6 @@ router.get('/updatesearch',function(req,res){
 
 router.get('/search', function(req, res, next){
   var neatString = req.query.search.trim();
-  console.log("Search: "+neatString);
   var result = neatString.split(/[,. \/-]/);
   const item = result[0];
   const item2 = result[1]
@@ -1352,8 +1348,6 @@ router.get('/search', function(req, res, next){
         //SPELL CHECK
         var checka = dictionary.check(x);
         var checkb = dictionary.check(capitalize(x));
-        console.log(checka);
-        console.log(checkb);
         if(checka || checkb){
           if(checka){
             newstring.push(x);
@@ -1372,7 +1366,6 @@ router.get('/search', function(req, res, next){
       }
     });
     var searchString = newstring.join(' ');
-    console.log("Refined: "+searchString);
     var businesses = Business.aggregate([
       {
           "$match": {
@@ -1522,7 +1515,7 @@ router.get('/searchold',function(req, res, next){
       newstring.push(x);
     }else{
       var a = dictionary.suggest(x);
-      console.log(a);
+      
       if (a === undefined || a.length == 0) {
         newstring.push(x);
       }else{
@@ -1556,7 +1549,9 @@ router.get('/searchold',function(req, res, next){
   var array_of_suggestions = dictionary.suggest(req.query.search);
   Promise.all([search, features, categories]).then(values => {
       console.log(values[0]);
+
       res.render('business/search', {
+
           title: req.query.search,
           //businesses: values[0].hits.hits,
           businesses: values[0],
@@ -1690,7 +1685,6 @@ router.get('/advert/receive', function(req, res){
       //res.send("Status > " + status + ", Body > " +body);
       //res.end();
       if(body == status){
-        console.log(b);
         b.save(function(err){
           req.flash('success_msg', 'Payment Successfully Done!');
           if(err){
@@ -1826,7 +1820,6 @@ router.get('/', function(req, res, next) {
   var keywords = "Findit,findit,Businesses,restaurants,Nairobi,Kenya,dentists,doctors,hotels,deals,special offers,lawyers,hospitals,salon,spa,pizza,movies,ice cream,shopping mall,bakeries";
   var title = 'Find the best businesses & services in Kenya, restaurants, lawyers, doctors, salons, findit';
   Promise.all([categories, toprestaurants, topsearches, coupons, reviews ]).then(values => {
-    console.log(values[3]);
     res.render('index', {
         title: title,
         categories: values[0],
@@ -1846,7 +1839,6 @@ router.get('/with-images', function(req, res, next) {
   .then(function(data){
     res.json(data);
     data.forEach(function(element){
-      console.log(element);
       element.photo = null;
       element.gallery = null;
       /*element.save(function(err){
@@ -1929,9 +1921,6 @@ router.get('/category/:cat',function(req, res, next){
       var categories = Category.find({approved: true,group: 'general'}).sort([['order', 1]]);
 
       Promise.all([businesses, features, categories, bizcount]).then(values => {
-        console.log(values[0])
-        console.log(Math.ceil(values[3]/20));
-        console.log(req.path);
         //console.log(values[0].length);
         let bizs = values[0];
         for(let i = 0; i < bizs.length; i++){
@@ -1982,8 +1971,6 @@ router.get('/category/:cat',function(req, res, next){
       var categories = Category.find({approved: true,group: 'general'}).sort([['order', 1]]);
 
       Promise.all([businesses, features, categories, bizcount]).then(values => {
-        console.log(Math.ceil(values[3]/20));
-        console.log(req.path);
         //console.log(values[0].length);
         res.render('business/list', {
             title: "Best "+req.params.cat+ " in Nairobi Kenya",
@@ -2014,7 +2001,6 @@ router.get('/subcategory/:cat/:name', function(req, res, next){
   ]);
   var categories = Category.find({approved: true,group: 'general'}).sort([['order', 1]]);
   Promise.all([businesses,features, categories]).then(values => {
-    console.log(values[0]);
     res.render('business/list', {
         title: "Best "+req.params.name+ " In Kenya",
         businesses: values[0],
@@ -2033,7 +2019,6 @@ router.get('/nearby/:category/', function(req, res, next){
   var features = Category.findOne({ name: req.params.category ,group: 'general'});
 
   Promise.all([businesses, features]).then(values => {
-    console.log(values[1]);
     res.render('business/nearby', {
         title: req.params.category,
         businesses: values[0],
@@ -2050,8 +2035,6 @@ router.get('/nearby/:category/:name', function(req, res, next){
     { "$sort": { "subcategories.name": 1 } }
   ]);
   Promise.all([businesses, features]).then(values => {
-    //console.log(values[1][0]);
-    //console.log(values[0]);
     res.render('business/nearby', {
         title: req.params.category,
         businesses: values[0],
@@ -2180,6 +2163,10 @@ router.get('/login', function(req, res){
   res.render('user/login', {title: "Sign Up"});
 });
 
+router.get('/',(req,res)=>{
+
+})
+
 router.get('/register', function(req, res){
   var form = {
         nameholder: '',
@@ -2222,12 +2209,10 @@ router.get('/elasticmapping', function(req, res){
 });
 
 router.get('/indexsearch/:string', function(req, res){
-  console.log(req.params.string);
   var search = Business.search(
     {query_string: {query: req.params.string}},
     {hydrate: true });
   Promise.all([search]).then(values => {
-    console.log(values[0]);
       res.render('business/list', {
           title: req.params.string,
           businesses: values[0].hits.hits,
@@ -2244,7 +2229,6 @@ router.get('/indexall', function(req, res){
     count++;
   });
   stream.on('close', function(){
-    console.log('indexed ' + count + ' documents!');
     res.send('indexed ' + count + ' documents!');
   });
   stream.on('error', function(err){
@@ -2266,7 +2250,6 @@ router.get('/elasticsearch', function(req, res){
       console.trace('elasticsearch cluster is down!');
       res.send('elasticsearch cluster is down!');
     } else {
-      console.log('All is well');
       res.send('All is well');
     }
   });
@@ -2275,7 +2258,6 @@ router.get('/elasticsearch', function(req, res){
 router.get('/pay/:bizid', function(req, res){
   Business.findById(req.params.bizid)
   .then(function(b){
-    console.log(b);
     res.render('business/pay',{ biz: b });
   });
 });
@@ -2456,7 +2438,6 @@ router.post('/resetpassword/:id', function(req, res){
       var salt = bcrypt.genSaltSync(10);
       var hash = bcrypt.hashSync(req.body.password, salt);
       d.password = hash;
-      console.log(d);
       d.save(function(err){
         if(err){
           req.flash('error','Some Error Occured, Kindly try again');
@@ -2503,7 +2484,6 @@ router.post('/forgotpassword', function(req, res){
       var salt = bcrypt.genSaltSync(10);
       var date = new Date();
       var hash = md5(date.toString());
-      console.log(hash);
 
       d.resetcode = hash;
       d.save(function(err){
@@ -2743,7 +2723,6 @@ router.get('/getcoupon/user/:id', function(req, res){
     Coupons.findById(req.params.id)
       .populate('bizid')
       .then(function(coupon){
-        console.log();
         if(coupon.users.some(function(x) { return x.user_id == res.locals.user.id })){
           res.json({msg: 'You Have Already Used This Coupon'});
         }else{
@@ -2923,16 +2902,13 @@ router.get('/preview/:name',function(req, res, next){
     approved: true
   })
   .then(function(data){
-    console.log(data);
     var phones = data.phone.split(",");
     var emails = data.email.split(",");
     var now = moment();
     delete data.hours.$init;
-    //console.log(data);
     var openingTimesMoment = new OpeningTimes(data.hours, 'Africa/Nairobi');
     data.openstatus = openingTimesMoment.getStatus(now);
 
-      //console.log(similarbiz);
       if(data.paid == false || typeof data.paid === 'undefined'){
         description = data.name + ', '+ data.subcategory + ', ' + data.street +', '+data.city + ' Kenya';
         res.render('business/freedetail',{title: data.name, biz: data, phones: phones, emails: emails, preview: true});
@@ -2957,7 +2933,6 @@ router.get('/stemming/:name', function(req, res, next){
    .limit(50)
    .sort({ score:{$meta:'textScore'}})
    .exec(function(err, docs) {
-     //console.log(docs);
      res.send(docs);
     });
 });
@@ -3083,7 +3058,6 @@ router.get('/biz/:name',function(req, res, next){
           var products = values[4];
           var branches;
           var hq = values[5];
-          console.log(hq)
           if(values[3].length){
              branches = values[3];
           }else{
@@ -3095,7 +3069,6 @@ router.get('/biz/:name',function(req, res, next){
                 name: 'undefined'
               }
               products[i].category = val
-              console.log(products[i].category)
             }
           }
           //array  of current businesses features
@@ -3117,7 +3090,6 @@ router.get('/biz/:name',function(req, res, next){
           if(data.paid == false || typeof data.paid === 'undefined'){
             description = data.name + ', '+ data.subcategory + ', ' + data.street +', '+data.city + ' Kenya';
             keywords = data.keywords + " | on Findit Kenya";
-            //console.log(description);
             res.render('business/freedetail',{
               title: data.name,
               biz: data,
@@ -3134,8 +3106,6 @@ router.get('/biz/:name',function(req, res, next){
           }else{
             description = data.description;
             keywords = data.keywords + " | on Findit Kenya";
-            //console.log(description);
-            console.log("------------"+hq)
             res.render('business/detail',{
               title: data.name,
               biz: data,
@@ -3184,12 +3154,10 @@ router.get('/biz/:name',function(req, res, next){
             name: 'undefined'
           }
           products[i].category = val
-          console.log(products[i].category)
         }
       }
       var branch;
       var hq = values[5];
-      console.log(hq)
       if(values[3].length){
       branch = values[3];
       }else{

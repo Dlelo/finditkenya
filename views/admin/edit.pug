@@ -330,7 +330,7 @@ block content
                   input.form-control-form(type='text', name='username', placeholder='Username',value=biz.user_id)
               
               .col-sm-6
-                  input#branch.form-control-form(type='checkbox', class='custom-control-input custom-control form-control-lg custom-checkbox', style = 'width: 20px; height: 20px;' , value='1', name='branch', rel=biz._id)
+                  input#branch.form-control-form(type='radio', class='custom-control-input custom-control form-control-lg custom-checkbox', style = 'width: 20px; height: 20px;' , value='1', name='branch', rel=biz._id)
                   label(class='custom-control-label', for='branch', style='margin-left:5px')
                     |      Is this a branch?
                 
@@ -338,7 +338,7 @@ block content
                 label
                   | Select Parent company (Hq)
               .col-sm-4
-                select#bizparent.form-control-form-select(name='bizparent',class='bizparent', data-live-search="true")
+                select#bizparent.form-control-form-select(name='bizparent',class='bizparent', data-live-search='true')
               
             .form-group
               .row

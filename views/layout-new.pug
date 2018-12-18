@@ -100,9 +100,10 @@ html(lang='en')
                   | View deals
             div(style="flex-grow:0.5 !important")
               //site navigation 
-              button.navbar-toggler.ml-md-auto(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" onclick="w3_open()")
-                span.navbar-toggler-icon
-              div#navbarSupportedContent.navbar-collapse
+              button.navbar-toggler.ml-md-auto(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                  aria-expanded="false" aria-label="Toggle navigation")
+                    span.navbar-toggler-icon
+              div#navbarSupportedContent.collapse.navbar-collapse
               
                 ul.nav.navbar-nav.ml-lg-auto.nav.justify-content-end(style="float:right")
                   li.dropdown.nav-item.mr-3
@@ -120,7 +121,13 @@ html(lang='en')
                                     small.findit-blue
                                       strong   
                                         =category.name
-                  
+                          
+                              
+                  //li.nav-item.mr-3
+                    a(href="/")
+                      span.fas.fa-home.fas-menu 
+                      strong
+                      |  Home
                   if (loggedin)
                     li.nav-item.mr-3                  
                       a(href='/dashboard')  
@@ -140,10 +147,10 @@ html(lang='en')
                           strong
                             | Login
                     li.nav-item.mr-3
-                    a(href="/register")
-                      button.btn.btn-outline-primary.w3ls-btn.findit-blue
-                        strong
-                        |  Sign Up
+                      a(href="/register")
+                        button.btn.btn-outline-primary.w3ls-btn.findit-blue
+                          strong
+                          |  Sign Up
 
 
     .container-fluid

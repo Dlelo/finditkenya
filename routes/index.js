@@ -1291,15 +1291,12 @@ router.get('/updatesearch',function(req,res){
       return biz.branch == typeof 'undefined' || biz.branch == false || biz.branch == null
     })
 
-    res2.forEach(function(biz){
-      console.log(biz.name)
-    })
-
     var res1 = values[1].filter(function(biz){
       return biz.name.trim().toLowerCase().startsWith(multi[0].substr(0,2)) ||
       biz.name.trim().toLowerCase().includes(multi[1]) || biz.name.trim().toLowerCase().includes(multi[0]) 
     })
-    if(res.length==0){
+
+    if(res2.length==0){
       res2 = res2.concat(res1)
     }
 

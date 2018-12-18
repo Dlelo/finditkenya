@@ -1221,10 +1221,11 @@ router.get('/updatesearch',function(req,res){
     }
   }
   
-  // if(subCatSearch[0]){
-  //   const subcat = subCatSearch[1].replace(/^\w/, c => c.toUpperCase());
-  //   res.redirect('subcategory/undefined/'+subcat+'?lat='+lat+'&lon='+lon)
-  // }else if(catSearch[0]){
+  if(subCatSearch[0]){
+    const subcat = subCatSearch[1].replace(/^\w/, c => c.toUpperCase());
+    res.redirect('subcategory/undefined/'+subcat+'?lat='+lat+'&lon='+lon)
+  }
+    // }else if(catSearch[0]){
   //   const cat = catSearch[1].replace(/^\w/, c => c.toUpperCase());
   //   res.redirect('category/'+cat+'?lat='+lat+'&lon='+lon)
   // } 

@@ -1042,18 +1042,6 @@ router.get('/newsearch',function(req,res){
     "type": "Point",
     "coordinates": [lon,lat]
   };
-  // regex name with query
-  // no coords
-  // var q1 = Business.find({$or:[
-  //   {name:{
-  //   $regex:query,
-  //   $options:'i'
-  //   }},
-  //   {name:{
-  //     $regex:multi[1],
-  //     $options:'i'
-  //   }}
-  // ]},'name slug -_id').limit(180)
   
   var q1 = Business.aggregate([{
     '$geoNear': {
@@ -1199,6 +1187,12 @@ router.get('/newindex',function(req,res){
         top: req.get('host')
     });
   });
+})
+
+router.get('/updatesigma',function(req,res){
+  Business.findByIdAndUpdate('5a8401032d917b00146da6cd',{'branch':false}).then(function(data){
+    res.redirect('/')
+  })
 })
 
 router.get('/updatesearch',function(req,res){

@@ -1061,14 +1061,13 @@ router.get('/newsearch',function(req,res){
       'spherical': true,
       "query":{
         $and:[
-            {branch:null},
           {$or:[ 
             {name:{
               $regex:query,
               $options:'i'
             }},
             {name:{
-              $regex:multi[1],
+              $regex:multi[0],
               $options:'i'
               }}
             ]
@@ -1087,11 +1086,6 @@ router.get('/newsearch',function(req,res){
       'spherical': true,
       "query":{
         $and:[{
-          $or:[
-            {branch:false},
-            {branch:null}
-          ]
-        },{
         $or:[
           {subcategory:{
           $regex:query,
@@ -1216,6 +1210,12 @@ router.get('/updatesearch',function(req,res){
   let multi = query.split(' ');
   let catSearch = [false,''];
   let subCatSearch = [false,''];
+  multi = multi.filter(function(word){
+    return word != 'in'
+  })
+  if(multi.length<1){
+    multi.push(multi[0])
+  }
   for(let i = 0; i < multi.length; i++){
     if(CATS.includes(multi[i])){
       catSearch[0] = true;
@@ -1226,6 +1226,7 @@ router.get('/updatesearch',function(req,res){
       subCatSearch[1] = multi[i]
     }
   }
+  
   if(subCatSearch[0]){
     const subcat = subCatSearch[1].replace(/^\w/, c => c.toUpperCase());
     res.redirect('subcategory/undefined/'+subcat+'?lat='+lat+'&lon='+lon)
@@ -1234,7 +1235,6 @@ router.get('/updatesearch',function(req,res){
     res.redirect('category/'+cat+'?lat='+lat+'&lon='+lon)
   } 
   
-  console.log()
   let point = {
     "type": "Point",
     "coordinates": [lon,lat]
@@ -1246,21 +1246,20 @@ router.get('/updatesearch',function(req,res){
       'spherical': true,
       "query":{
         $and:[
-          {$or:[{branch:null},{branch:false}]},
           {$or:[ 
-            {name:{
-              $regex:query.substr(0,query.length/1.5),
-              $options:'i'
-              }},
+              {branch:false},
+              {branch:null}
+            ]
+          },
+          {$or:[ 
             {name:{
               $regex:query,
               $options:'i'
             }},
             {name:{
-              $regex:multi[0],
+              $regex:multi[0].substr(0,multi[0].length/1.5),
               $options:'i'
-              }},
-            
+              }}
             ]
           }
         ]
@@ -1268,55 +1267,27 @@ router.get('/updatesearch',function(req,res){
       'distanceField': 'distance',
       'maxDistance': 1000000000000
     }
-  },{ "$sort": { "paid": -1 } }
+  }
 ]);
-
-  var q2 = Business.aggregate([{
-    '$geoNear': {
-      'near': point,
-      'spherical': true,
-      "query":{
-        $and:[{
-          $or:[
-            {branch:false},
-            {branch:null}
-          ]
-        },{
-        $or:[
-          {subcategory:{
-          $regex:query,
-          $options:'im'
-          }},
-          {description:{
-            $regex:query,
-            $options:'im'
-          }},
-        ]
-      }]
-    },
-      'distanceField': 'distance',
-      'maxDistance': 1000000000000
-    },
-    
-  },{ "$sort": { "paid": -1 } }
-]);
-  
   var categories = Category.find({group: 'general'}); 
 
-  Promise.all([q1,q2,categories]).then(values => {
+  Promise.all([q1,categories]).then(values => {
     
     var res1 = values[0].filter(function(biz){
-      return biz.name.trim().toLowerCase().startsWith(multi[0]) ||
-      biz.name.trim().toLowerCase().includes(query.substr(0,query.length/1.5))  
+      console.log(biz.name)
+      return biz.name.trim().toLowerCase().startsWith(multi[0].substr(0,2)) ||
+      biz.name.trim().toLowerCase().includes(multi[1]) || biz.name.trim().toLowerCase().includes(multi[0]) 
     })
-
-      res1 = res1.concat(values[1])
-
-      res.render('business/search',{
-        title: req.query.search,
-        businesses: res1,
-        categories: values[2],
-        host: req.get('host')
+  
+    
+    res1.forEach(function(biz){
+      //console.log(biz.name)
+    })
+    res.render('business/search',{
+      title: req.query.search,
+      businesses: res1,
+      categories: values[1],
+      host: req.get('host')
     });
   })
 })

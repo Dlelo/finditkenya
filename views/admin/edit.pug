@@ -106,7 +106,7 @@ block content
                   if (biz.hours.monday != '')
                     each hour in biz.hours.monday
                       if(hour.opens)
-                        input.form-control-form(type='text', name='hoursopenmon', placeholder='Opening Hours Monday',class='timepicker hoursopencloseoption', value=hour.opens)
+                        input#hours.form-control-form(type='text', name='hoursopenmon', placeholder='Opening Hours Monday',class='timepicker hoursopencloseoption', value=hour.opens)
                   else
                     input.form-control-form(type='text', name='hoursopenmon', placeholder='Opening Hours Monday',class='timepicker hoursopened hoursopencloseoption')
                 .col-sm-3(id="hoursclose",class="timeclose")

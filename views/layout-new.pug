@@ -90,6 +90,7 @@ html(lang='en')
               a.navbar-brand.text-white(href="/")
                 img.img-logo(src="/img/findit-red-logo.png").img-fluid
             div(style="flex-grow:0.1 !important")
+              #showSearch  
                 form.form-class(method='get', action='/search')
                   div.input-group
                     input.search2.form-control-lg(type="text" placeholder="Businesses, Doctors, Lawyers, Hotels" ,style="width:100% !important" ,name='search', autofocus)
@@ -106,6 +107,11 @@ html(lang='en')
               div#navbarSupportedContent.collapse.navbar-collapse
               
                 ul.nav.navbar-nav.ml-lg-auto.nav.justify-content-end(style="float:right")
+                  li.nav-item.mr-3
+                    a.nav-link(href='/business/newpackage')
+                      span.fas.fa-database.user-fav
+                      strong
+                        |  Add Business
                   li.dropdown.nav-item.mr-3
                     a.nav-link.dropdown-toggle(href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")    
                       strong Categories 

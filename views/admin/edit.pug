@@ -112,10 +112,11 @@ block content
                 .col-sm-3(id="hoursclose",class="hoursclose")
                   if(biz.hours.monday != '')
                     each hour in biz.hours.monday
-                      if(hour.closes)
-                        input.form-control-form(type='text', name='hoursclosemon', placeholder='Closes Hours Monday',class='timepicker hoursopencloseoption', value=hour.closes)
+                      //if(hour.closes)
+                      if(biz.hours.monday != '')
+                        input.form-control-form(type='text', name='hoursclosemon', placeholder='Closing Hours Monday',class='timepicker hoursopencloseoption', value=hour.closes)
                   else
-                    input#hours.form-control-form(type='text', name='hoursclosemon', placeholder='Closes Hours Monday',class='timepicker hoursclosed hoursopencloseoption')
+                    input#hours.form-control-form(type='text', name='hoursclosemon', placeholder='Closing Hours Monday',class='timepicker hoursclosed hoursopencloseoption')
                 .col-sm-2.text-center
                   button.btn.btn-danger.form-control-form.alert-danger.btnclose
                     |  Closed
@@ -133,10 +134,11 @@ block content
                 .col-sm-3(id="hoursclose",class="hoursclose")
                   if(biz.hours.tuesday != '')
                     each hour in biz.hours.tuesday
-                      if(hour.closes)
-                        input.form-control-form(type='text', name='hoursclosetue', placeholder='Closes Hours Tuesday',class='timepicker hoursopencloseoption', value=hour.closes)
+                      //if(hour.closes)
+                      if(biz.hours.tuesday != '')
+                        input.form-control-form(type='text', name='hoursclosetue', placeholder='Closing Hours Tuesday',class='timepicker hoursopencloseoption', value=hour.closes)
                   else
-                    input#hours.form-control-form(type='text', name='hoursclosetue', placeholder='Closes Hours Tuesday',class='timepicker hoursclosed hoursopencloseoption')
+                    input#hours.form-control-form(type='text', name='hoursclosetue', placeholder='Closing Hours Tuesday',class='timepicker hoursclosed hoursopencloseoption')
                 .col-sm-2.text-center
                   button.btn.btn-danger.form-control-form.alert-danger.btnclose
                     |  Closed
@@ -155,10 +157,11 @@ block content
                 .col-sm-3(id="hoursclose",class="hoursclose")
                   if(biz.hours.wednesday != '')
                     each hour in biz.hours.wednesday
-                      if(hour.closes)
-                        input.form-control-form(type='text', name='hoursclosewed', placeholder='Closes Hours Wednesday',class='timepicker hoursopencloseoption', value=hour.closes)
+                      //if(hour.closes)
+                      if(biz.hours.wednesday != '')
+                        input.form-control-form(type='text', name='hoursclosewed', placeholder='Closing Hours Wednesday',class='timepicker hoursopencloseoption', value=hour.closes)
                   else
-                    input#hours.form-control-form(type='text', name='hoursclosewed', placeholder='Closes Hours Wednesday',class='timepicker hoursclosed hoursopencloseoption')
+                    input#hours.form-control-form(type='text', name='hoursclosewed', placeholder='Closing Hours Wednesday',class='timepicker hoursclosed hoursopencloseoption')
                 .col-sm-2.text-center
                   button.btn.btn-danger.form-control-form.alert-danger.btnclose
                     |  Closed
@@ -176,10 +179,11 @@ block content
                 .col-sm-3(id="hoursclose",class="hoursclose")
                   if(biz.hours.thursday != '')
                     each hour in biz.hours.thursday
-                      if(hour.closes)
-                        input.form-control-form(type='text', name='hoursclosethu', placeholder='Closes Hours Thursday',class='timepicker hoursopencloseoption', value=hour.closes)
+                      //if(hour.closes)
+                      if(biz.hours.thursday != '')
+                        input.form-control-form(type='text', name='hoursclosethu', placeholder='Closing Hours Thursday',class='timepicker hoursopencloseoption', value=hour.closes)
                   else
-                    input#hours.form-control-form(type='text', name='hoursclosethu', placeholder='Closes Hours Thursday',class='timepicker hoursclosed hoursopencloseoption')
+                    input#hours.form-control-form(type='text', name='hoursclosethu', placeholder='Closing Hours Thursday',class='timepicker hoursclosed hoursopencloseoption')
                 .col-sm-2.text-center
                   button.btn.btn-danger.form-control-form.alert-danger.btnclose
                     |  Closed
@@ -197,10 +201,11 @@ block content
                 .col-sm-3(id="hoursclose",class="hoursclose")
                   if(biz.hours.friday != '')
                     each hour in biz.hours.friday
-                      if(hour.closes)
-                        input.form-control-form(type='text', name='hoursclosefri', placeholder='Closes Hours Friday',class='timepicker hoursopencloseoption', value=hour.closes)
+                      //if(hour.closes)
+                      if(biz.hours.friday != '')
+                        input.form-control-form(type='text', name='hoursclosefri', placeholder='Closing Hours Friday',class='timepicker hoursopencloseoption', value=hour.closes)
                   else
-                    input#hours.form-control-form(type='text', name='hoursclosefri', placeholder='Closes Hours Friday',class='timepicker hoursclosed hoursopencloseoption')
+                    input#hours.form-control-form(type='text', name='hoursclosefri', placeholder='Closing Hours Friday',class='timepicker hoursclosed hoursopencloseoption')
                 .col-sm-2.text-center
                   button.btn.btn-danger.form-control-form.alert-danger.btnclose
                     |  Closed
@@ -218,10 +223,11 @@ block content
                 .col-sm-3(id="hoursclose",class="hoursclose")
                   if(biz.hours.saturday != '')
                     each hour in biz.hours.saturday
-                      if(hour.closes)
-                        input.form-control-form(type='text', name='hoursclosesat', placeholder='Closes Hours Saturday',class='timepicker hoursopencloseoption', value=hour.closes)
+                      //if(hour.closes)
+                      if(biz.hours.saturday != '')
+                        input.form-control-form(type='text', name='hoursclosesat', placeholder='Closing Hours Saturday',class='timepicker hoursopencloseoption', value=hour.closes)
                   else
-                    input#hours.form-control-form(type='text', name='hoursclosesat', placeholder='Closes Hours Saturday',class='timepicker hoursclosed hoursopencloseoption')
+                    input#hours.form-control-form(type='text', name='hoursclosesat', placeholder='Closing Hours Saturday',class='timepicker hoursclosed hoursopencloseoption')
                 .col-sm-2.text-center
                   button.btn.btn-danger.form-control-form.alert-danger.btnclose
                     |  Closed
@@ -239,7 +245,8 @@ block content
                 .col-sm-3(id="hoursclose",class="hoursclose")
                   if(biz.hours.sunday != '')
                     each hour in biz.hours.sunday
-                      if(hour.closes)
+                      //if(hour.closes)
+                      if(biz.hours.sunday != '')
                         input.form-control-form(type='text', name='hoursclosesun', placeholder='Closes Hours Sunday',class='timepicker hoursopencloseoption', value=hour.closes)
                   else
                     input#hours.form-control-form(type='text', name='hoursclosesun', placeholder='Closes Hours Sunday',class='timepicker hoursclosed hoursopencloseoption')

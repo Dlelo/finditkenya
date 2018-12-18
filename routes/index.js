@@ -1280,9 +1280,7 @@ router.get('/updatesearch',function(req,res){
     {
       subcategory: { "$regex": query, "$options": "i" }
     }
-    ],
-    approved: true,
-    pending: { $ne: true }
+    ]
   }).sort({paid:-1})
 
   var categories = Category.find({group: 'general'}); 

@@ -319,22 +319,25 @@ block content
                   h4
                     strong
                       | Coupons in This Business  
-                div       
-                  each coupon, i in coupons 
-                    if i<3
-                      a(href="/coupons")
-                        row
-                          .col-md-12.is-island
-                              h6
-                                =coupon.name
-                              img.coup-img.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name +' on FindIt Kenya')
-                              .div
-                                  h6
-                                    =coupon.bizid.name
-                                  p
-                                    =coupon.description
-                              .div
-                                  =coupon.tagline
+                
+            .row
+              .col-md-12.is-island      
+                each coupon, i in coupons 
+                  if i<3
+                    a(href="/coupons")    
+                      h6
+                        =coupon.name
+                      img.coup-img.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name +' on FindIt Kenya')
+                      .div
+                          span
+                            =coupon.tagline
+                          h6
+                            span @  
+                            span 
+                              =coupon.bizid.name
+                          p
+                            =coupon.description
+                  br
           if(branches)
             .row
               div.col-md-12.text-center

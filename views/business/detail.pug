@@ -379,10 +379,10 @@ block content
                         each feature , i in bizna.features.sort()
                           if(i < 2)
                             p
-                            | #{feature}
-                            br
+                            | #{feature} |
+                            
                         if(!isNaN(bizna.distance))  
-                          span 
+                          p 
                             =(bizna.distance/1000).toFixed(1)
                             span     km away 
       .row.flowerwhite

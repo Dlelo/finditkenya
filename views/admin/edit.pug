@@ -338,11 +338,11 @@ block content
                       .radio
                         if biz.branch
                           label.radio-inline
-                            input.form-control-form(type='radio', value=1, name='branch', rel=biz._id, checked)
+                            input.branch.form-control-form(type='radio', value=1, name='branch', rel=biz._id, checked)
                             | Yes
                         else
                           label.radio-inline
-                            input.form-control-form(type='radio', value=1, name='branch', rel=biz._id)
+                            input.branch.form-control-form(type='radio', value=1, name='branch', rel=biz._id)
                             | Yes
                         label.radio-inline
                           input.form-control-form(type='radio', value=0, name='branch')
@@ -354,16 +354,16 @@ block content
                       | Select Parent company (Hq)
                   .col-sm-4
                     select#bizparent.form-control-form-select(name='bizparent',class='bizparent', data-live-search='true')
-              
+                      
             .form-group
               .row
-                button.button.btn.btn-warning.form-control-form(type='submit') Update
+                button.btn.btn-warning.form-control-form(type='submit') Update
               .row
     script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9MX39yDkMJn6rjWi6vt4Rens5u_cVBQE")
     script(type='text/javascript').
       $(function() {
         //BRANCHING Businesses
-        $('#branch').on("click",function(event){
+        $('.branch').on("click",function(event){
           //$(this).attr('rel');
           $.ajax({
                 type: "GET",

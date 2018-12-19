@@ -92,9 +92,9 @@ html(lang='en')
                 img.img-logo(src="/img/findit-red-logo.png").img-fluid
             div(style="flex-grow:0.1 !important")
               #showSearch  
-                form.form-class(method='get', action='/search')
+                form.form-class(method='get', action='/updatesearch')
                   div.input-group
-                    input.search2.form-control-lg(type="text" placeholder="Businesses, Doctors, Lawyers, Hotels" ,style="width:100% !important" ,name='search', autofocus)
+                    input.search2.form-control-lg(type="text" placeholder="Find a business" ,style="width:100% !important" ,name='search', autofocus)
             div(style="flex-grow:0.1 !important")      
               a(href="/coupons")
                 button.btn.btn-light.w3ls-btn.coupons-btn.flash-button#coupbtn(type="button")
@@ -530,47 +530,8 @@ script(type='text/javascript').
       });
     });
 
-     
-    
-     /*  var $cat = $(".subcategory"),
-          $subcat = $(".ssubcategory");
-      
-      $cat.on("change",function(){
-          var _rel = $(this).find(":selected").val();
-          alert(_rel);
-              url= "/business/fetchcategory/"+ _rel;
-          alert(url);
-          $.ajax({
-              type: "GET",
-              url: url,
-              success: function(data){
-                  // Parse the returned json data
-                  //var opts = $.parseJSON(data);
-                  console.log(data);
-                  $(".ssubcategory").empty();
-                  $.each(data, function(i, d) {
-                      // You will need to alter the below to get the right values from your json object.  Guessing that d.id / d.modelName are columns in your carModels data
-                      console.log(d.name);
-                      $(".ssubcategory").append('<option value="' + d.name + '">' + d.name + '</option>');
-                      //old $('#ssubcategoryy').append('<option value="' + d.name + '">' + d.name + '</option>');
-                  });
-              }
-          });
-          if(_rel == 'Events'){
-              $('.timeopen').hide();
-              $('#endeventDate').show();
-              $('#starteventDate').show();
-          }else{
-              $('#startDate').show();
-              $('.timeopen').show();
-              $('#endeventDate').hide();
-              $('#starteventDate').hide();
-          }*/
+  });
 
-        
-      });
-     
-      
 
     tinymce.init({ 
               selector:'#review',
@@ -598,35 +559,28 @@ script(type='text/javascript').
                 toolbar: 'undo redo',
                 content_css: '//www.tinymce.com/css/codepen.min.css'
           });
-
-
-
-
+              var pos = {
+                 lat: '',
+                 lng: ''
+              }
+              navigator.geolocation.getCurrentPosition(function(position) {
+                pos.lat = position.coords.latitude;
+                pos.lng = position.coords.longitude;
+              });
           var options = {
 
             url: function(phrase) {
-              return "/nss/"+$('.search2').val();
+              return '/newsearch?search='+$('.search2').val()+'&lat='+pos.lat+'&lon='+pos.lng
             },
 
             getValue: function(element) {
-              return element.slug;
-            },
-            template: {
-              type: "description",
-              fields: {
-                description: "website"
-              }
+              return element.name;
             },
             list: {
               onClickEvent: function() {
                 const item = $('.search2').getSelectedItemData().slug
-              navigator.geolocation.getCurrentPosition(function(position) {
-                var pos = {
-                  lat: position.coords.latitude,
-                  lng: position.coords.longitude
-                };
                 self.location = "/biz/"+item+"/?lat="+pos.lat+"&lon="+pos.lng;
-              });
+             
               } 
             },
             ajaxSettings: {
@@ -638,18 +592,7 @@ script(type='text/javascript').
     
     $(".search2").easyAutocomplete(options);
     $(".search2" ).focus();
-    // scroll to top action
-    
-    /*$('.scroll-top').on('click', function(event) {
-    event.preventDefault();
-    $('html, body').animate({scrollTop:0}, 'fast');
-    });
-    // mobile nav toggle
-    $('#nav-toggle').on('click', function (event) {
-    event.preventDefault();
-    $('#main-nav').toggleClass("open");
-    });
-    });*/
+
     // scroll function
     function scrollToID(id, speed){
       var offSet = 50;

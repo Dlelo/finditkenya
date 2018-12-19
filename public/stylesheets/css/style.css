@@ -5048,3 +5048,6 @@ height: 30px;
 .branch.active span.glyphicon {				
 	opacity: 1;				
 }
+.dropdown-toggle::after {
+   display: none; 
+}

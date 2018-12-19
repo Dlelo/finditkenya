@@ -377,9 +377,9 @@ block content
                         h6.findit-red
                           =bizna.name
                         each feature , i in bizna.features.sort()
-                          if(i < 2)
-                            p
-                             | #{feature} |
+                          p
+                            if(i < 2)
+                              | #{feature} |
                             
                         if(!isNaN(bizna.distance))  
                           p 

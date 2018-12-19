@@ -4,12 +4,12 @@ block content
   #home.parallax-content-list.baner-content-listing-biz
     .container-fluid.container-margin-top     
       .row.flowerwhite
-        .col-xs-2
+        .col-md-2.col-xs-2
           if(biz.photo)
             img.img-responsive(src="/uploads/thumbs/cover"+ biz.photo, alt=biz.name +' on FindIt Kenya', width="80%") 
           else
             img.cat-image.cat-items-bottom(src="/img/noimageavailable.jpg", alt=biz.name+ ' on FindIt Kenya', height="200px")          
-        .col-xs-8
+        .col-md-8.col-xs-8
           h3.text-left 
             =biz.name
             span
@@ -30,7 +30,7 @@ block content
               a(href="/subcategory/subcat/"+feature)
                 strong
                   |       #{feature} |
-        .col-xs-2
+        .col-md-2.col-xs-2
           if(branches)
             if biz.branch==true
               div.col-md-12.text-center

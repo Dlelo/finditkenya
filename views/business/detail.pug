@@ -5,35 +5,31 @@ block content
     .container-fluid.container-margin-top      
       .row.flowerwhite
         .col-sm-2
-          .row
-            .col-md-12
-              if(biz.photo)
-                img.img-responsive(src="/uploads/thumbs/cover"+ biz.photo, alt=biz.name +' on FindIt Kenya', width="80%") 
-              else
-                img.cat-image.cat-items-bottom(src="/img/noimageavailable.jpg", alt=biz.name+ ' on FindIt Kenya', height="200px")          
+          if(biz.photo)
+            img.img-responsive(src="/uploads/thumbs/cover"+ biz.photo, alt=biz.name +' on FindIt Kenya', width="80%") 
+          else
+            img.cat-image.cat-items-bottom(src="/img/noimageavailable.jpg", alt=biz.name+ ' on FindIt Kenya', height="200px")          
         .col-sm-8
-          .row
-            .col-md-12
-                h3.text-left 
-                  =biz.name
-                
-                p.text-left
-                  if (biz.openstatus.isOpen)
-                    if (biz.openstatus.isOpen == true)
-                      span.badge.badge-success
-                        span.fas.fa-check-circle  
-                        |  Now Open
-                    else
-                      span.badge.badge-danger
-                        span.fas.fa-times-circle  
-                        |  Now Closed
-                  - var list = [1,2,3,4,5]
-                  - list.sort((a,b)=>{return Math.random()-0.5})
-                p.text-left
-                  each feature in biz.features
-                    a(href="/subcategory/subcat/"+feature)
-                      strong
-                        | #{feature} |
+          h3.text-left 
+            =biz.name
+          
+          p.text-left
+            if (biz.openstatus.isOpen)
+              if (biz.openstatus.isOpen == true)
+                span.badge.badge-success
+                  span.fas.fa-check-circle  
+                  |  Now Open
+              else
+                span.badge.badge-danger
+                  span.fas.fa-times-circle  
+                  |  Now Closed
+            - var list = [1,2,3,4,5]
+            - list.sort((a,b)=>{return Math.random()-0.5})
+          p.text-left
+            each feature in biz.features
+              a(href="/subcategory/subcat/"+feature)
+                strong
+                  | #{feature} |
         .col-sm-2
           if(branches)
             if biz.branch==true
@@ -237,17 +233,15 @@ block content
             .col-md-12
               if biz.gallery  
                 if biz.gallery.length > 0
-                  .row(style="100%; margin-top:2rem;")
-                    .col-md-12(style="margin-bottom:2rem;")
-                      #lightgallery.thumbnails.scrollmenu
-                        each image in biz.gallery
-                          a.nopadding(href='/uploads/'+image.filename, width="", alt='#{biz.slug}')
-                            .thumbnail.bizdetail-photo
-                              img.img-thumbnail.img-responsive(src='/uploads/thumbs/gallery-'+image.filename,  alt=biz.name +' on FindIt Kenya')
-                        .pull-left
-                          small
-                            strong
-                              | Scroll this Gallery Left or Right
+                  #lightgallery.thumbnails.scrollmenu
+                    each image in biz.gallery
+                      a.nopadding(href='/uploads/'+image.filename, width="", alt='#{biz.slug}')
+                        .thumbnail.bizdetail-photo
+                          img.img-thumbnail.img-responsive(src='/uploads/thumbs/gallery-'+image.filename,  alt=biz.name +' on FindIt Kenya')
+                    .pull-left
+                      small
+                        strong
+                          | Scroll this Gallery Left or Right
                 else
                   |
               

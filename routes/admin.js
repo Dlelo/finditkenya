@@ -148,7 +148,8 @@ router.post('/edit/:id', role.auth, cpUpload, function(req, res, next) {
         b.branch = true;
         b.bizparent = req.body.bizparent;
       }else{
-				b.branch = false;
+				b.bizparent = null;
+				b.branch = null;
 			}
 
 		b.save(function(err){

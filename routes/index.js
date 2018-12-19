@@ -2959,7 +2959,6 @@ router.get('/biz/:name',function(req, res, next){
   })
   .populate('bizparent')
   .then(function(data){
-
     //var phones = data.phone.split(/[\s,]+/);
     var phones = data.phone.split(/[,\/-]/);
     var emails = data.email.split(/[,\/-]/);

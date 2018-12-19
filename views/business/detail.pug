@@ -4,318 +4,325 @@ block content
   #home.parallax-content-list.baner-content-listing-biz
     .container-fluid.container-margin-top      
       .row.flowerwhite
-        .col-md-9(style="padding-right:0px; padding-left:0px;")          
-          .row    
-            .col-md-4      
+        .col-sm-4
+          .row
+            .col-md-12
               if(biz.photo)
+                img.img-responsive(src="/uploads/thumbs/cover"+ biz.photo, alt=biz.name +' on FindIt Kenya', width="80%") 
+              else
+                img.cat-image.cat-items-bottom(src="/img/noimageavailable.jpg", alt=biz.name+ ' on FindIt Kenya', height="200px")          
+        .col-sm-6
+          .row
+            .col-md-12
+                h3.text-left 
+                  =biz.name
+                
+                p.text-left
+                  if (biz.openstatus.isOpen)
+                    if (biz.openstatus.isOpen == true)
+                      span.badge.badge-success
+                        span.fas.fa-check-circle  
+                        |  Now Open
+                    else
+                      span.badge.badge-danger
+                        span.fas.fa-times-circle  
+                        |  Now Closed
+                  - var list = [1,2,3,4,5]
+                  - list.sort((a,b)=>{return Math.random()-0.5})
+                p.text-left
+                  each feature in biz.features
+                    a(href="/subcategory/subcat/"+feature)
+                      strong
+                        | #{feature} |
+        .col-sm-2
+          if(branches)
+            if biz.branch==true
+              div.col-md-12.text-center
+                h4
+                  strong.text-center
+                    | Headquarters
+              div.col-md-12                
+                a.bizlink(href="/biz/"+hq.slug) 
+                  div.col-md-12.is-island
+                    h6.findit-red
+                      =hq.name
+      .row.flowerwhite
+        .col-md-3
+          .row
+            .col-md-12
+              if(branches)
+                div
+              else
+                if biz.building
+                  p.text-left.findit-blue
+                    strong
+                      span.fas.fa-building
+                      |  #{biz.building}
+                if biz.street
+                  p.text-left.findit-blue
+                    strong
+                      span.fas.fa-road
+                      |  #{biz.street}
+            .col-md-12
+              p.text-left.findit-blue
+                strong
+                  span.fas.fa-th-list
+                  |  #{biz.subcategory}
+              hr.nomargin
+            if(biz.website)
+              .col-md-12
+                p.text-left.findit-blue
+                  strong.findit-blue
+                    span.fas.fa-globe
+                    a.findit(href="http://"+biz.website,target="_blank")
+                      |  Website
+              hr.nomargin
+            .col-md-12
+              p.text-left.findit-red
+                each phone in phones
+                  span#biz-id(style="display:none")
+                    =biz.id
+                  span.fas.fa-phone
+                  //remove style="display:none" on phoneno
+                  a.findit.phoneno(href="tel:"+phone)
+                    |  #{phone}
+                  //a.findit.phonenofake(href="#")
+                    |  Get Contacts
+                  br
+              hr.nomargin
+            .col-md-12.text-left
+              p.text-left.findit-blue
+                each email in emails
+                  strong.findit-blue
+                    span.fas.fa-envelope
+                    a.findit(href="mailto:"+email)
+                      |  Mail
+                  br
+              hr.nomargin
+            if(biz.facebook)
+              .col-md-12.text-left
+                p.findit-blue
+                  strong
+                    span.fab.fa-facebook-f
+                    a.findit(href="http://"+biz.facebook,target="_blank") 
+                      | Facebook
+            if(biz.twitter)
+              .col-md-12.text-left
+                p.findit-blue 
+                  strong
+                    span.fab.fa-twitter
+                    a.findit(href="http://"+biz.twitter,target="_blank")
+                      |  Twitter
+            if(biz.instagram)
+              .col-md-12.text-left
+                p.findit-blue 
+                  strong
+                    span.fab.fa-instagram
+                    a.findit(href="http://"+biz.instagram,target="_blank")
+                      |  Instagram
+            if(biz.linkedin)
+              .col-md-12.text-left
+                p.findit-blue 
+                  strong
+                    span.fab.fa-linkedin 
+                    a.findit(href="http://"+biz.linkedin,target="_blank")
+                      |  LinkedIn
+            if(biz.youtube)
+              .col-md-12.text-left
+                p.findit-red
+                  strong
+                    span.fab.fa-youtube
+                    a.findit(href="http://"+biz.youtube,target="_blank")
+                      |  Youtube
+            
+
+            if (biz.catalog.length)
+              .col-md-12.text-left
+                each catalogue, i in biz.catalog
+                  if (catalogue)
+                    strong
+                      span.fas.fa-bars
+                      
+                      a.findit(href="/business/catalog/"+catalogue.filename, target="_blank")
+                        |  View Menu #{i+1}
+                  else
+                      | 
+                  hr
+            if(biz.profile)
+              .col-md-12.text-left 
+                strong
+                    span.fas.fa-bars
+                    a.findit(href="/business/profile/"+biz.profile.filename, target="_blank")
+                      |  View Company Profile  
+                  
+            .col-md-12.text-center.findit-red
+              if biz.paid
+                span.badge.badge-success
+                  span.fa.fa-check-circle.strong(style="color:#2862ec;")
+                  strong
+                    |  Claimed
+              else
+                h4 Claim This Business
+                form(method='get', action='/claim-form/'+biz.id)
+                  .form-group
+                    input.form-control(name='phone', type='text', value='', placeholder='phone')
+                  .form-group
+                    input.form-control(name='email', type='text', value='', placeholder='email')
+                  .form-group
+                    button.btn.btn-danger.form-control(type='submit')                 
+                      | Claim Business
+          if(branches)
+
+            if (biz.openstatus)
+              .row
+                .col-md-12.findit-red.padding20
+                  strong
+                    |  Opening & Closing Hours
+                .col-md-12
+                  each hour in biz.hours.monday
+                    if(hour.opens === hour.closes)
+                      p  Monday: Closed
+                        
+                    else
+                      p Monday: #{hour.opens} - #{hour.closes}
+                  each hour in biz.hours.tuesday
+                    if(hour.opens === hour.closes)
+                      p  Tuesday: Closed
+                    else
+                      p Tuesday: #{hour.opens} - #{hour.closes}
+                  each hour in biz.hours.wednesday
+                    if(hour.opens === hour.closes)
+                      p  Wednesday: Closed
+                    else
+                      p Wednesday: #{hour.opens} - #{hour.closes}
+                  each hour in biz.hours.thursday
+                    if(hour.opens === hour.closes)
+                      p Thursday: Closed
+                    else
+                      p Thursday: #{hour.opens} - #{hour.closes}
+                  each hour in biz.hours.friday
+                    if(hour.opens === hour.closes)
+                      p  Friday: Closed
+                    else
+                      p Friday: #{hour.opens} - #{hour.closes}
+                  each hour in biz.hours.saturday
+                    if(hour.opens === hour.closes)
+                      p   Saturday: Closed
+                    else
+                      p Saturday: #{hour.opens} - #{hour.closes}
+                  each hour in biz.hours.sunday
+                    if(hour.opens === hour.closes)
+                      p  Sunday: Closed
+                    else
+                      p Sunday: #{hour.opens} - #{hour.closes}
+          if(biz.deliverylink)
+            .row
+              .col-md-12.col-md-offset-3(style="background-color:#00aabb;padding:5px;border-radius:25px;")
+                p 
+                  span.fas.fa-motorcycle(style="color:#fdfdfd;")
+                  a.findit(href="http://"+biz.deliverylink,target="_blank",style="color:#fdfdfd;font-size:18px")
+                    strong
+                      |  Place Your Order Now
+              
+          if(biz.bookinglink)
+            .row
+              .col-md-12.col-md-offset-3(style="background-color:#00aabb;padding:5px;border-radius:25px;")
+                p 
+                  span.fas.fa-plane(style="color:#fdfdfd;")
+                  a.findit(href="http://"+biz.bookinglink,target="_blank",style="color:#fdfdfd;font-size:18px;")
+                    strong
+                      |  Book or Reserve Now  
+        .col-md-6 
+          .row  
+            .col-md-12
+              if biz.gallery  
+                if biz.gallery.length > 0
+                  .row(style="100%; margin-top:2rem;")
+                    .col-md-12(style="margin-bottom:2rem;")
+                      #lightgallery.thumbnails.scrollmenu
+                        each image in biz.gallery
+                          a.nopadding(href='/uploads/'+image.filename, width="", alt='#{biz.slug}')
+                            .thumbnail.bizdetail-photo
+                              img.img-thumbnail.img-responsive(src='/uploads/thumbs/gallery-'+image.filename,  alt=biz.name +' on FindIt Kenya')
+                        .pull-left
+                          small
+                            strong
+                              | Scroll this Gallery Left or Right
+                else
+                  |
+              
+              if biz.description
                 .row
                   .col-md-12
-                    img.img-responsive(src="/uploads/thumbs/cover"+ biz.photo, alt=biz.name +' on FindIt Kenya', width="80%") 
-              
-              .row(style="margin-bottom: 2rem;")                       
-                .col-md-12.padding-map.nomargin
+                    #web-view
+                      .panel
+                        .findit-red.padding10top
+                          strong More Information
+                        .panel-body
+                          p.padding-p  !{biz.description}
+                    .hideonclick
+                      #mobile-view
+                        .panel
+                          .findit-red.padding10top
+                            strong More Information
+                          .panel-body
+                            p.padding-p 
+                              if biz.description.length > 250
+                                p.padding.text-left.description-cat  !{biz.description.substr(0, 250)+ '..... <strong id="showmore" style="background-color:#c00000; color:#fff; padding:1px">Read More</strong>'}
+                    #show-more
+                      .panel
+                        .findit-red.padding10top
+                          strong More Information
+                        .panel-body
+                          p.padding-p  !{biz.description} 
+                            | ..... 
+                            strong(id="showless" style="background-color:#c00000; color:#fff; padding:1px") Read Less 
+              else if (biz.branch && hq.replicate)
+                .row
+                  .col-md-12
+                    #web-view
+                      .panel
+                        .findit-red.padding10top
+                          strong More Information
+                        .panel-body
+                          p.padding-p  !{hq.description}
+                    .hideonclick
+                      #mobile-view
+                        .panel
+                          .findit-red.padding10top
+                            strong More Information
+                          .panel-body
+                            p.padding-p 
+                              if hq.description.length > 250
+                                p.padding.text-left.description-cat  !{hq.description.substr(0, 250)+ '..... <strong id="showmore" style="background-color:#c00000; color:#fff; padding:1px">Read More</strong>'}
+                    #show-more
+                      .panel
+                        .findit-red.padding10top
+                          strong More Information
+                        .panel-body
+                          p.padding-p  !{hq.description} 
+                            | ..... 
+                            strong(id="showless" style="background-color:#c00000; color:#fff; padding:1px") Read Less 
+                                
+              if biz.ammenities        
+                .row
+                  .col-md-12
+                    .panel-body              
+                      if biz.extras.length 
+                        strong.findit-red
+                          h4 Ammenities  
+                        each extra in biz.extras 
+                            span.label.label-dark
+                              span.extra-space
+                                =extra + ','
+                      else
+                          | 
+              .row
+                .col-md-12.col-xs-12(style="margin-top:1rem; padding-right: 0px; padding-left: 0px;")
                   if(branches)
-                    div
+                    div#mappy(style="height:20rem !important; !important; width:100% !important;") 
                   else
                     iframe(width='100%', height='150', frameborder='0', style='border:0', src='https://www.google.com/maps/embed/v1/view?zoom='+biz.map.zoom+'&center='+biz.map.coordinates[1]+','+biz.map.coordinates[0]+'&key=AIzaSyA0P3blnbZTWe7vHDrbX3Bsd7RA2Y5ViTk', allowfullscreen='',)
-                  .row.is-island
-                    .col-md-12
-                      if(branches)
-                        div
-                      else
-                        if biz.building
-                          p.text-left.findit-blue
-                            strong
-                              span.fas.fa-building
-                              |  #{biz.building}
-                        if biz.street
-                          p.text-left.findit-blue
-                            strong
-                              span.fas.fa-road
-                              |  #{biz.street}
-                    .col-md-12
-                      p.text-left.findit-blue
-                        strong
-                          span.fas.fa-th-list
-                          |  #{biz.subcategory}
-                      hr.nomargin
-                    if(biz.website)
-                      .col-md-12
-                        p.text-left.findit-blue
-                          strong.findit-blue
-                            span.fas.fa-globe
-                            a.findit(href="http://"+biz.website,target="_blank")
-                              |  Website
-                      hr.nomargin
-                    .col-md-12
-                      p.text-left.findit-red
-                        each phone in phones
-                          span#biz-id(style="display:none")
-                            =biz.id
-                          span.fas.fa-phone
-                          //remove style="display:none" on phoneno
-                          a.findit.phoneno(href="tel:"+phone)
-                            |  #{phone}
-                          //a.findit.phonenofake(href="#")
-                            |  Get Contacts
-                          br
-                      hr.nomargin
-                    .col-md-12.text-left
-                      p.text-left.findit-blue
-                        each email in emails
-                          strong.findit-blue
-                            span.fas.fa-envelope
-                            a.findit(href="mailto:"+email)
-                              |  Mail
-                          br
-                      hr.nomargin
-                    if(biz.facebook)
-                      .col-md-12.text-left
-                        p.findit-blue
-                          strong
-                            span.fab.fa-facebook-f
-                            a.findit(href="http://"+biz.facebook,target="_blank") 
-                              | Facebook
-                    if(biz.twitter)
-                      .col-md-12.text-left
-                        p.findit-blue 
-                          strong
-                            span.fab.fa-twitter
-                            a.findit(href="http://"+biz.twitter,target="_blank")
-                              |  Twitter
-                    if(biz.instagram)
-                      .col-md-12.text-left
-                        p.findit-blue 
-                          strong
-                            span.fab.fa-instagram
-                            a.findit(href="http://"+biz.instagram,target="_blank")
-                              |  Instagram
-                    if(biz.linkedin)
-                      .col-md-12.text-left
-                        p.findit-blue 
-                          strong
-                            span.fab.fa-linkedin 
-                            a.findit(href="http://"+biz.linkedin,target="_blank")
-                              |  LinkedIn
-                    if(biz.youtube)
-                      .col-md-12.text-left
-                        p.findit-red
-                          strong
-                            span.fab.fa-youtube
-                            a.findit(href="http://"+biz.youtube,target="_blank")
-                              |  Youtube
-                    
-
-                    if (biz.catalog.length)
-                      .col-md-12.text-left
-                        each catalogue, i in biz.catalog
-                          if (catalogue)
-                            strong
-                              span.fas.fa-bars
-                              
-                              a.findit(href="/business/catalog/"+catalogue.filename, target="_blank")
-                                |  View Menu #{i+1}
-                          else
-                              | 
-                          hr
-                    if(biz.profile)
-                      .col-md-12.text-left 
-                        strong
-                            span.fas.fa-bars
-                            a.findit(href="/business/profile/"+biz.profile.filename, target="_blank")
-                              |  View Company Profile  
-                          
-                    .col-md-12.text-center.findit-red
-                      if biz.paid
-                        span.badge.badge-success
-                          span.fa.fa-check-circle.strong(style="color:#2862ec;")
-                          strong
-                            |  Claimed
-                      else
-                        h4 Claim This Business
-                        form(method='get', action='/claim-form/'+biz.id)
-                          .form-group
-                            input.form-control(name='phone', type='text', value='', placeholder='phone')
-                          .form-group
-                            input.form-control(name='email', type='text', value='', placeholder='email')
-                          .form-group
-                            button.btn.btn-danger.form-control(type='submit')                 
-                              | Claim Business
-                  if(branches)
-
-                    if (biz.openstatus)
-                      .row
-                        .col-md-12.findit-red.padding20
-                          strong
-                            |  Opening & Closing Hours
-                        .col-md-12
-                          each hour in biz.hours.monday
-                            if(hour.opens === hour.closes)
-                              p  Monday: Closed
-                               
-                            else
-                              p Monday: #{hour.opens} - #{hour.closes}
-                          each hour in biz.hours.tuesday
-                            if(hour.opens === hour.closes)
-                              p  Tuesday: Closed
-                            else
-                              p Tuesday: #{hour.opens} - #{hour.closes}
-                          each hour in biz.hours.wednesday
-                            if(hour.opens === hour.closes)
-                              p  Wednesday: Closed
-                            else
-                              p Wednesday: #{hour.opens} - #{hour.closes}
-                          each hour in biz.hours.thursday
-                            if(hour.opens === hour.closes)
-                              p Thursday: Closed
-                            else
-                              p Thursday: #{hour.opens} - #{hour.closes}
-                          each hour in biz.hours.friday
-                            if(hour.opens === hour.closes)
-                              p  Friday: Closed
-                            else
-                              p Friday: #{hour.opens} - #{hour.closes}
-                          each hour in biz.hours.saturday
-                            if(hour.opens === hour.closes)
-                              p   Saturday: Closed
-                            else
-                              p Saturday: #{hour.opens} - #{hour.closes}
-                          each hour in biz.hours.sunday
-                            if(hour.opens === hour.closes)
-                              p  Sunday: Closed
-                            else
-                              p Sunday: #{hour.opens} - #{hour.closes}
-                  if(biz.deliverylink)
-                    .row
-                      .col-md-12.col-md-offset-3(style="background-color:#00aabb;padding:5px;border-radius:25px;")
-                        p 
-                          span.fas.fa-motorcycle(style="color:#fdfdfd;")
-                          a.findit(href="http://"+biz.deliverylink,target="_blank",style="color:#fdfdfd;font-size:18px")
-                            strong
-                              |  Place Your Order Now
-                      
-                  if(biz.bookinglink)
-                    .row
-                      .col-md-12.col-md-offset-3(style="background-color:#00aabb;padding:5px;border-radius:25px;")
-                        p 
-                          span.fas.fa-plane(style="color:#fdfdfd;")
-                          a.findit(href="http://"+biz.bookinglink,target="_blank",style="color:#fdfdfd;font-size:18px;")
-                            strong
-                              |  Book or Reserve Now    
-            .col-md-8
-              .row
-                .col-md-12
-                  h3.text-left 
-                    =biz.name
-                  
-                  p.text-left
-                    if (biz.openstatus.isOpen)
-                      if (biz.openstatus.isOpen == true)
-                        span.badge.badge-success
-                          span.fas.fa-check-circle  
-                          |  Now Open
-                      else
-                        span.badge.badge-danger
-                          span.fas.fa-times-circle  
-                          |  Now Closed
-                    - var list = [1,2,3,4,5]
-                    - list.sort((a,b)=>{return Math.random()-0.5})
-                  p.text-left
-                    each feature in biz.features
-                      a(href="/subcategory/subcat/"+feature)
-                        strong
-                          | #{feature} |    
-              .row  
-                .col-md-12
-                  if biz.gallery  
-                    if biz.gallery.length > 0
-                      .row(style="100%; margin-top:2rem;")
-                        .col-md-12(style="margin-bottom:2rem;")
-                          #lightgallery.thumbnails.scrollmenu
-                            each image in biz.gallery
-                              a.nopadding(href='/uploads/'+image.filename, width="", alt='#{biz.slug}')
-                                .thumbnail.bizdetail-photo
-                                  img.img-thumbnail.img-responsive(src='/uploads/thumbs/gallery-'+image.filename,  alt=biz.name +' on FindIt Kenya')
-                            .pull-left
-                              small
-                                strong
-                                  | Scroll this Gallery Left or Right
-                    else
-                      |
-                  
-                  if biz.description
-                    .row
-                      .col-md-12
-                        #web-view
-                          .panel
-                            .findit-red.padding10top
-                              strong More Information
-                            .panel-body
-                              p.padding-p  !{biz.description}
-                        .hideonclick
-                          #mobile-view
-                            .panel
-                              .findit-red.padding10top
-                                strong More Information
-                              .panel-body
-                                p.padding-p 
-                                  if biz.description.length > 250
-                                    p.padding.text-left.description-cat  !{biz.description.substr(0, 250)+ '..... <strong id="showmore" style="background-color:#c00000; color:#fff; padding:1px">Read More</strong>'}
-                        #show-more
-                          .panel
-                            .findit-red.padding10top
-                              strong More Information
-                            .panel-body
-                              p.padding-p  !{biz.description} 
-                                | ..... 
-                                strong(id="showless" style="background-color:#c00000; color:#fff; padding:1px") Read Less 
-                  else if (biz.branch && hq.replicate)
-                    .row
-                      .col-md-12
-                        #web-view
-                          .panel
-                            .findit-red.padding10top
-                              strong More Information
-                            .panel-body
-                              p.padding-p  !{hq.description}
-                        .hideonclick
-                          #mobile-view
-                            .panel
-                              .findit-red.padding10top
-                                strong More Information
-                              .panel-body
-                                p.padding-p 
-                                  if hq.description.length > 250
-                                    p.padding.text-left.description-cat  !{hq.description.substr(0, 250)+ '..... <strong id="showmore" style="background-color:#c00000; color:#fff; padding:1px">Read More</strong>'}
-                        #show-more
-                          .panel
-                            .findit-red.padding10top
-                              strong More Information
-                            .panel-body
-                              p.padding-p  !{hq.description} 
-                                | ..... 
-                                strong(id="showless" style="background-color:#c00000; color:#fff; padding:1px") Read Less 
-                                    
-                  if biz.ammenities        
-                    .row
-                      .col-md-12
-                        .panel-body              
-                          if biz.extras.length 
-                            strong.findit-red
-                              h4 Ammenities  
-                            each extra in biz.extras 
-                                span.label.label-dark
-                                  span.extra-space
-                                    =extra + ','
-                          else
-                              | 
-                  .row
-                    .col-md-12.col-xs-12(style="margin-top:1rem; padding-right: 0px; padding-left: 0px;")
-                      if(branches)
-                        div#mappy(style="height:20rem !important; !important; width:100% !important;")
-                            
-                            
-                            
         .col-md-3
           if(coupons.length > 0)
             div
@@ -323,22 +330,54 @@ block content
                 strong
                   | Coupons in This Business  
             div       
-              each coupon in coupons 
-                a(href="/coupons")
-                  row
-                    .col-md-12.is-island
-                        h6
-                          =coupon.name
-                        img.coup-img.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name +' on FindIt Kenya')
-                        .div
-                            h6
-                              =coupon.bizid.name
-                            p
-                              =coupon.description
-                        .div
-                            =coupon.tagline       
-          else 
-             div   
+              each coupon, i in coupons 
+                if i<5
+                  a(href="/coupons")
+                    row
+                      .col-md-12.is-island
+                          h6
+                            =coupon.name
+                          img.coup-img.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name +' on FindIt Kenya')
+                          .div
+                              h6
+                                =coupon.bizid.name
+                              p
+                                =coupon.description
+                          .div
+                              =coupon.tagline
+      .row.flowerwhite
+        .col-md-9
+          if(products.length > 0)  
+            .row
+              .col-md-12
+                .section.general-best-sellers
+                  h4.text-center
+                    strong
+                      | Our Products
+                    span 
+                      small
+                        a(href="#")
+                          | see More Products
+            .row
+              .owl-carousel.owl-theme
+                each product, i in products
+                  if(i<6)
+                    .item.py-2(style="border:none")
+                      a(href="/product/"+biz.slug+"/"+product.category.name+"/"+product.subcategory+"/"+product.minicategory+"/"+product.slug)
+                        .card.h-100(style="border:none !important; box-shadow: 0 0 2px 0 rgba(46,62,72,.12), 0 2px 4px 0 rgba(46,62,72,.12);")
+                            img.card-img-top.w-100.product-img-home(src='/uploads/product/thumbs/'+product.photo, alt=product.name +' on FindIt Kenya', style="width: 200px !important; height: 200px !important;")
+                            .card-text
+                              =product.name
+                              if product.oldprice
+                                .price-old.findit-blue.strike
+                                  small Was  
+                                    span KES #{product.oldprice}
+                              .price-new.findit-red
+                                small Now  
+                                  span KES #{product.price}
+          else
+            |              
+        .col-md-3
           if(branches)
             if biz.branch==true
               div.col-md-12.text-center
@@ -355,158 +394,131 @@ block content
                 strong.text-center
                   | Branches
             div.col-md-12       
-              each branch in branches          
-                a.bizlink(href="/biz/"+branch.slug) 
-                  div.col-md-12.is-island
-                    h6.findit-red
-                      =branch.name
-                    if(!isNaN(branch.distance))  
-                      span 
-                        =(branch.distance/1000).toFixed(1)
-                        span     km away
-                    
-            
+              each branch, i in branches 
+                if i<5         
+                  a.bizlink(href="/biz/"+branch.slug) 
+                    div.col-md-12.is-island
+                      h6.findit-red
+                        =branch.name
+                      if(!isNaN(branch.distance))  
+                        span 
+                          =(branch.distance/1000).toFixed(1)
+                          span     km away
+      .row.flowerwhite 
+        .col-md-9
+          if biz.youtube
+            .row(style="margin-bottom:2rem")
+              .col-md-10.text-center
+                h3.text-center
+                  | Youtube
+                p
+                  //iframe(width='100%', height='315', src='https://'+biz.youtube, frameborder='0', allow='autoplay; encrypted-media', allowfullscreen='')
+                  iframe(width='100%', height='315', src=biz.youtube, frameborder='1', allow='autoplay; encrypted-media', allowfullscreen='')
+        .col-md-3  
           if(similarbiz.length > 0)
             div.col-md-12.text-center
               h4
                 strong.text-center
                   | Similar Businesses
             div.col-md-12.text-center       
-              each bizna in similarbiz            
-                a.bizlink(href="/biz/"+bizna.slug) 
-                  div.col-md-12.is-island
-                    h6.findit-red
-                      =bizna.name
-                    each feature , i in bizna.features.sort()
-                      if(i < 2)
-                        p
-                        | #{feature}
-                        br
-                    if(!isNaN(bizna.distance))  
-                      span 
-                        =(bizna.distance/1000).toFixed(1)
-                        span     km away    
-        
-          
-
-      if(products.length > 0)  
-        .row
-          .col-md-12
-            .section.general-best-sellers
-              h4.text-center
-                strong
-                  | Our Products
-                span 
-                  small
-                    a(href="#")
-                      | see More Products
-        .row
-          .owl-carousel.owl-theme
-            each product, i in products
-              if(i<6)
-                .item.py-2(style="border:none")
-                  a(href="/product/"+biz.slug+"/"+product.category.name+"/"+product.subcategory+"/"+product.minicategory+"/"+product.slug)
-                    .card.h-100(style="border:none !important; box-shadow: 0 0 2px 0 rgba(46,62,72,.12), 0 2px 4px 0 rgba(46,62,72,.12);")
-                        img.card-img-top.w-100.product-img-home(src='/uploads/product/thumbs/'+product.photo, alt=product.name +' on FindIt Kenya', style="width: 200px !important; height: 200px !important;")
-                        .card-text
-                          =product.name
-                          if product.oldprice
-                            .price-old.findit-blue.strike
-                              small Was  
-                                span KES #{product.oldprice}
-                          .price-new.findit-red
-                            small Now  
-                              span KES #{product.price}
-      else
-         |               
-            
-      if biz.youtube
-        .row(style="margin-bottom:2rem")
-          .col-md-10.text-center
-            h3.text-center
-              | Youtube
-            p
-              //iframe(width='100%', height='315', src='https://'+biz.youtube, frameborder='0', allow='autoplay; encrypted-media', allowfullscreen='')
-              iframe(width='100%', height='315', src=biz.youtube, frameborder='1', allow='autoplay; encrypted-media', allowfullscreen='')
-      
-      if biz.reviews
-        .row(style="margin-bottom:2rem")    
-          .col-md-12
-            h3.text-center
-              | Reviews
-            each review in biz.reviews              
-              .row               
-                .col-md-1.text-left 
-                  span.fas.fa-comment-alt
-                .col-md-3
-                  .col-md-12(class="rating medium star-icon value-"+review.rate+" label-hidden")
-                    .star-container
-                      .star
-                        i.star-empty
-                        i.star-half
-                        i.star-filled
-                      .star
-                        i.star-empty
-                        i.star-half
-                        i.star-filled
-                      .star
-                        i.star-empty
-                        i.star-half
-                        i.star-filled
-                      .star
-                        i.star-empty
-                        i.star-half
-                        i.star-filled
-                      .star
-                        i.star-empty
-                        i.star-half
-                        i.star-filled
-                .col-md-8.text-left
-                  p
-                    | !{review.msg}
-              hr
-        
-      .row
-        .col-md-12(style="margin-bottom:2rem;")
-          .row
-            hr
-            .col-md-12.text-center
-              .findit-red.padding10
-                strong.findit-red 
-                  span.fas.fa-comment
-                  |   Submit a Review
+              each bizna, i in similarbiz
+                if i<5            
+                  a.bizlink(href="/biz/"+bizna.slug) 
+                    div.col-md-12.is-island
+                      h6.findit-red
+                        =bizna.name
+                      each feature , i in bizna.features.sort()
+                        if(i < 2)
+                          p
+                          | #{feature}
+                          br
+                      if(!isNaN(bizna.distance))  
+                        span 
+                          =(bizna.distance/1000).toFixed(1)
+                          span     km away     
+      .row.flowerwhite
+        if biz.reviews.length>0
+          .row(style="margin-bottom:2rem")    
             .col-md-12
-              form.form-horizontal(method="post",action="/business/review/")                
-                .col-md-12
-                  textarea.form-control-form(name='review',required)
-                  input#bizid(type='hidden', name='bizid',value=biz.id)
-                .col-md-12.text-left
-                  strong
-                    | Star Rating
-                    fieldset.ratings
-                      input#star5(type='radio', name='rating', value='5')
-                      label.full(for='star5', title='Awesome - 5 stars')
-                      input#star4half(type='radio', name='rating', value='4 half')
-                      label.half(for='star4half', title='Pretty good - 4.5 stars')
-                      input#star4(type='radio', name='rating', value='4')
-                      label.full(for='star4', title='Pretty good - 4 stars')
-                      input#star3half(type='radio', name='rating', value='3 half')
-                      label.half(for='star3half', title='Meh - 3.5 stars')
-                      input#star3(type='radio', name='rating', value='3')
-                      label.full(for='star3', title='Meh - 3 stars')
-                      input#star2half(type='radio', name='rating', value='2 half')
-                      label.half(for='star2half', title='Kinda bad - 2.5 stars')
-                      input#star2(type='radio', name='rating', value='2')
-                      label.full(for='star2', title='Kinda bad - 2 stars')
-                      input#star1half(type='radio', name='rating', value='1 half')
-                      label.half(for='star1half', title='Meh - 1.5 stars')
-                      input#star1(type='radio', name='rating', value='1')
-                      label.full(for='star1', title='Sucks big time - 1 star')
-                      input#starhalf(type='radio', name='rating', value='half')
-                      label.half(for='starhalf', title='Sucks big time - 0.5 stars')
-                .col-md-12
-                  button.button.btn.btn-danger.form-control(type='submit') Submit Review                
+              h3.text-center
+                | Reviews
+              each review in biz.reviews              
+                .row               
+                  .col-md-1.text-left 
+                    span.fas.fa-comment-alt
+                  .col-md-3
+                    .col-md-12(class="rating medium star-icon value-"+review.rate+" label-hidden")
+                      .star-container
+                        .star
+                          i.star-empty
+                          i.star-half
+                          i.star-filled
+                        .star
+                          i.star-empty
+                          i.star-half
+                          i.star-filled
+                        .star
+                          i.star-empty
+                          i.star-half
+                          i.star-filled
+                        .star
+                          i.star-empty
+                          i.star-half
+                          i.star-filled
+                        .star
+                          i.star-empty
+                          i.star-half
+                          i.star-filled
+                  .col-md-8.text-left
+                    p
+                      | !{review.msg}
+                hr
           
+      .row
+          .col-md-12(style="margin-bottom:2rem;")
+            .row
+              hr
+              .col-md-12.text-center
+                .findit-red.padding10
+                  strong.findit-red 
+                    span.fas.fa-comment
+                    |   Submit a Review
+              .col-md-12
+                form.form-horizontal(method="post",action="/business/review/")                
+                  .col-md-12
+                    textarea.form-control-form(name='review',required)
+                    input#bizid(type='hidden', name='bizid',value=biz.id)
+                  .col-md-12.text-left
+                    strong
+                      | Star Rating
+                      fieldset.ratings
+                        input#star5(type='radio', name='rating', value='5')
+                        label.full(for='star5', title='Awesome - 5 stars')
+                        input#star4half(type='radio', name='rating', value='4 half')
+                        label.half(for='star4half', title='Pretty good - 4.5 stars')
+                        input#star4(type='radio', name='rating', value='4')
+                        label.full(for='star4', title='Pretty good - 4 stars')
+                        input#star3half(type='radio', name='rating', value='3 half')
+                        label.half(for='star3half', title='Meh - 3.5 stars')
+                        input#star3(type='radio', name='rating', value='3')
+                        label.full(for='star3', title='Meh - 3 stars')
+                        input#star2half(type='radio', name='rating', value='2 half')
+                        label.half(for='star2half', title='Kinda bad - 2.5 stars')
+                        input#star2(type='radio', name='rating', value='2')
+                        label.full(for='star2', title='Kinda bad - 2 stars')
+                        input#star1half(type='radio', name='rating', value='1 half')
+                        label.half(for='star1half', title='Meh - 1.5 stars')
+                        input#star1(type='radio', name='rating', value='1')
+                        label.full(for='star1', title='Sucks big time - 1 star')
+                        input#starhalf(type='radio', name='rating', value='half')
+                        label.half(for='starhalf', title='Sucks big time - 0.5 stars')
+                  .col-md-12
+                    button.button.btn.btn-danger.form-control(type='submit') Submit Review                
+            
+            
+            
+          
+      
       script.
       
         // Note: This example requires that you consent to location sharing when

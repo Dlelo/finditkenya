@@ -25,7 +25,7 @@ block content
     div.row.my-row.justify-content-start
       div.col-md-8.col-sm-8.col-xm-8.my-col
         div.banner-text#hideSearch
-          form(method='get', action='/search')
+          form(method='get', action='/updatesearch')
             div.input-group
               span.input-group-addon#basic-addon1.finditbutton.input-group-addon.text-center
                 h5
@@ -330,16 +330,18 @@ block content
         
       });
     //animation
-    
-    
-      
+
     //script to toggle morecategories
     script(type="text/javascript").
-      navigator.geolocation.getCurrentPosition(function(position) {
-        var pos = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
+
+       var pos = {
+          lat: '',
+          lng: ''
         };
+
+      navigator.geolocation.getCurrentPosition(function(position) {
+          pos.lat = position.coords.latitude;
+          pos.lng = position.coords.longitude;
       
        $(".bizlink").each(function () {
           let url =$(this).attr("href")
@@ -351,24 +353,13 @@ block content
         var e = document.getElementById(id);
         e.style.display = ((e.style.display!='none') ? 'none' : '');
       }
-
-    //sript to hide search on menu on scroll
-    script(type='text/javascript').
       $(function() {
         var options = {
-
           url: function(phrase) {
-            return "/nss/"+$('#search2').val();
+            return '/newsearch?search='+$('#search2').val()+'&lat='+pos.lat+'&lon='+pos.lng
           },
-
           getValue: function(element) {
-            return element.slug;
-          },
-          template: {
-            type: "description",
-            fields: {
-              description: "website"
-            }
+            return element.name;
           },
           list: {
             onClickEvent: function() {
@@ -387,8 +378,6 @@ block content
           }
         };
         var timer;      
-       
-
         $("#search2").easyAutocomplete(options);
         $("#search2" ).focus();
       });

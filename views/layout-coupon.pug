@@ -89,7 +89,7 @@ html(lang='en')
               a.navbar-brand.text-white(href="/")
                 img.img-logo(src="/img/findit-red-logo.png").img-fluid
             div(style="flex-grow:0.1 !important")
-                form.form-class(method='get', action='/search')
+                form.form-class(method='get', action='/updatesearch')
                   div.input-group
                     input.search2.form-control-lg(type="text" placeholder="Businesses, Doctors, Lawyers, Hotels" ,style="width:100% !important" ,name='search', autofocus)
             //div(style="flex-grow:0.1 !important")      
@@ -629,22 +629,21 @@ script(type='text/javascript').
           });
 
 
-
+           var pos = {
+                 lat: '',
+                 lng: ''
+              }
+          navigator.geolocation.getCurrentPosition(function(position) {
+            pos.lat = position.coords.latitude;
+            pos.lng = position.coords.longitude;
+          });
 
           var options = {
-
             url: function(phrase) {
-              return "/nss/"+$('.search2').val();
+              return '/newsearch?search='+$('.search2').val()+'&lat='+pos.lat+'&lon='+pos.lng
             },
-
             getValue: function(element) {
-              return element.slug;
-            },
-            template: {
-              type: "description",
-              fields: {
-                description: "website"
-              }
+              return element.name;
             },
             list: {
               onClickEvent: function() {

@@ -1186,12 +1186,6 @@ router.get('/newindex',function(req,res){
   });
 })
 
-router.get('/updatesigma',function(req,res){
-  Business.findByIdAndUpdate('5a8401032d917b00146da6cd',{'branch':false}).then(function(data){
-    res.redirect('/')
-  })
-})
-
 router.get('/updatesearch',function(req,res){
   let query = req.query.search.trim().toLowerCase();
 

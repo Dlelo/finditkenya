@@ -321,7 +321,7 @@ block content
                       | Coupons in This Business  
                 div       
                   each coupon, i in coupons 
-                    if i<5
+                    if i<3
                       a(href="/coupons")
                         row
                           .col-md-12.is-island
@@ -343,7 +343,7 @@ block content
                     | Branches
               div.col-md-12       
                 each branch, i in branches 
-                  if i<5         
+                  if i<3        
                     a.bizlink(href="/biz/"+branch.slug) 
                       div.col-md-12.is-island
                         h6.findit-red
@@ -359,7 +359,7 @@ block content
                     | Similar Businesses
               div.col-md-12.text-center       
                 each bizna, i in similarbiz
-                  if i<5            
+                  if i<3           
                     a.bizlink(href="/biz/"+bizna.slug) 
                       div.col-md-12.is-island
                         h6.findit-red

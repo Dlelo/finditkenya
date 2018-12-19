@@ -342,21 +342,26 @@ block content
                   
           if(branches)
             .row
-              div.col-md-12.text-center
-                h4
-                  strong.text-center
-                    | Branches
-              div.col-md-12       
-                each branch, i in branches 
-                  if i<3        
-                    a.bizlink(href="/biz/"+branch.slug) 
-                      div.col-md-12.is-island
-                        h6.findit-red
-                          =branch.name
-                        if(!isNaN(branch.distance))  
-                          span 
-                            =(branch.distance/1000).toFixed(1)
-                            span     km away
+              .col-md-12.is-island  
+                .row
+                  .col-md-12
+                    div
+                      h4
+                        strong
+                          | Branches
+                br
+                .row
+                  .col-md-12       
+                    each branch, i in branches 
+                      if i<3        
+                        a.bizlink(href="/biz/"+branch.slug) 
+                          p
+                            h6.findit-red
+                              =branch.name
+                            if(!isNaN(branch.distance))  
+                              span 
+                                =(branch.distance/1000).toFixed(1)
+                                span     km away
           if(similarbiz.length > 0)
               div.col-md-12.text-center
                 h4

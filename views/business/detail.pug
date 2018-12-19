@@ -10,10 +10,10 @@ block content
           else
             img.cat-image.cat-items-bottom(src="/img/noimageavailable.jpg", alt=biz.name+ ' on FindIt Kenya', height="200px")          
         .col-md-8.col-xs-8
-          h3.text-left 
+          h3.text-center
             =biz.name
             span
-              h6.text-left
+              h6.text-center
                 if (biz.openstatus.isOpen)
                   if (biz.openstatus.isOpen == true)
                     span.badge.badge-success
@@ -25,7 +25,7 @@ block content
                       |  Now Closed
                 - var list = [1,2,3,4,5]
                 - list.sort((a,b)=>{return Math.random()-0.5})
-          p.text-left
+          p.text-center
             each feature in biz.features
               a(href="/subcategory/subcat/"+feature)
                 strong
@@ -311,6 +311,11 @@ block content
                                 =extra + ','
                       else
                           | 
+              .col-md-12.col-xs-12(style="margin-top:1rem; padding-right: 0px; padding-left: 0px;")
+                if(branches)
+                  div#mappy(style="height:20rem !important; !important; width:100% !important;") 
+                else
+                  iframe(width='100%', height='250', frameborder='0', style='border:0', src='https://www.google.com/maps/embed/v1/view?zoom='+biz.map.zoom+'&center='+biz.map.coordinates[1]+','+biz.map.coordinates[0]+'&key=AIzaSyA0P3blnbZTWe7vHDrbX3Bsd7RA2Y5ViTk', allowfullscreen='',)
         .col-md-3
           if(coupons.length > 0)        
             .row
@@ -402,7 +407,7 @@ block content
                 .row
                   .col-md-12
                     a(href='#') See all
-      .row.flowerwhite
+      //.row.flowerwhite
         .col-md-3
           .div
         .col-md-6

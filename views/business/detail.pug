@@ -376,14 +376,15 @@ block content
                       div.col-md-12.is-island
                         h6.findit-red
                           =bizna.name
-                        .row
-                          each feature , i in bizna.features.sort()
-                            if(i < 2)
-                              .col-xs-6
-                                | #{feature}    |   
+                        span.text-left 
+                          .row
+                            each feature , i in bizna.features.sort()
+                              if(i < 2)
+                                .col-xs-6
+                                  | #{feature}    |   
                             
                         if(!isNaN(bizna.distance))  
-                          p 
+                          span.text-left  
                             =(bizna.distance/1000).toFixed(1)
                             span     km away   
       .row.flowerwhite

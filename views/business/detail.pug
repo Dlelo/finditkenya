@@ -321,8 +321,7 @@ block content
                       h4
                         strong
                           | Coupons in This Business
-                          span
-                            a(href='#') See all
+                br
                 .row
                   .col-md-12
                     each coupon, i in coupons 
@@ -336,6 +335,11 @@ block content
                                 =coupon.tagline
                               p
                                 =coupon.description
+                br
+                .row
+                  .col-md-12
+                    p
+                      a(href='#') See all
                   
           if(branches)
             .row

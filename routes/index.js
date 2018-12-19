@@ -2994,8 +2994,8 @@ router.get('/biz/:name',function(req, res, next){
 
 
     var branches;
-    let lon = Number(req.query.lon);
-    let lat = Number(req.query.lat);
+    let lon =req.query.lon ? Number(req.query.lon):36.8219;
+    let lat =req.query.lat ? Number(req.query.lat):-1.2921;
     if (lon && lat){
       // if coordinates are provided
       var point = {

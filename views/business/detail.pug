@@ -314,27 +314,29 @@ block content
         .col-md-3
           if(coupons.length > 0)        
             .row
-              .col-md-12
-                div
-                  h5
-                    strong
-                      | Coupons in This Business
-                      span
-                        a(href='#') See all
-
-              .col-md-12.is-island      
-                each coupon, i in coupons 
-                  if i<3
-                    a(href="/coupons")    
-                      h6
-                        =coupon.name
-                      img.coup-img.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name +' on FindIt Kenya')
-                      .div
+              .col-md-12.is-island  
+                .row
+                  .col-md-12
+                    div
+                      h4
+                        strong
+                          | Coupons in This Business
                           span
-                            =coupon.tagline
-                          p
-                            =coupon.description
-                  br
+                            a(href='#') See all
+                .row
+                  .col-md-12
+                    each coupon, i in coupons 
+                      if i<3
+                        a(href="/coupons")    
+                          h6
+                            =coupon.name
+                          img.coup-img.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name +' on FindIt Kenya')
+                          .div
+                              span
+                                =coupon.tagline
+                              p
+                                =coupon.description
+                  
           if(branches)
             .row
               div.col-md-12.text-center

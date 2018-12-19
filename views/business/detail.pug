@@ -12,19 +12,18 @@ block content
         .col-xs-8
           h3.text-left 
             =biz.name
-          
-          p.text-left
-            if (biz.openstatus.isOpen)
-              if (biz.openstatus.isOpen == true)
-                span.badge.badge-success
-                  span.fas.fa-check-circle  
-                  |  Now Open
-              else
-                span.badge.badge-danger
-                  span.fas.fa-times-circle  
-                  |  Now Closed
-            - var list = [1,2,3,4,5]
-            - list.sort((a,b)=>{return Math.random()-0.5})
+            span.text-left
+              if (biz.openstatus.isOpen)
+                if (biz.openstatus.isOpen == true)
+                  span.badge.badge-success
+                    span.fas.fa-check-circle  
+                    |  Now Open
+                else
+                  span.badge.badge-danger
+                    span.fas.fa-times-circle  
+                    |  Now Closed
+              - var list = [1,2,3,4,5]
+              - list.sort((a,b)=>{return Math.random()-0.5})
           p.text-left
             each feature in biz.features
               a(href="/subcategory/subcat/"+feature)

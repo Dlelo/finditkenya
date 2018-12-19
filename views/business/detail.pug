@@ -353,7 +353,7 @@ block content
                 .row
                   .col-md-12       
                     each branch, i in branches 
-                      if i<3        
+                      if i<2       
                         a.bizlink(href="/biz/"+branch.slug) 
                           p
                             img.coup-img.img-fluid(src="/uploads/thumbs/coupons/"+ branch.photo, alt=branch.name +' on FindIt Kenya')
@@ -369,28 +369,39 @@ block content
                   .col-md-12
                     a(href='#') See all
           if(similarbiz.length > 0)
-              div.col-md-12.text-center
-                h4
-                  strong.text-center
-                    | Similar Businesses
-              div.col-md-12.text-center       
-                each bizna, i in similarbiz
-                  if i<3           
-                    a.bizlink(href="/biz/"+bizna.slug) 
-                      div.col-md-12.is-island
-                        h6.findit-red
-                          =bizna.name
-                        span.text-left 
-                          .row
-                            each feature , i in bizna.features.sort()
-                              if(i < 2)
-                                .col-xs-6
-                                  | #{feature}    |   
-                            
-                        if(!isNaN(bizna.distance))  
-                          span.text-left  
-                            =(bizna.distance/1000).toFixed(1)
-                            span     km away   
+            .row
+              .col-md-12.is-island  
+                .row
+                  .col-md-12
+                    div
+                      h4
+                        strong Similar Businesses
+                br
+                .row
+                  .col-md-12      
+                    each bizna, i in similarbiz
+                      if i<2          
+                        a.bizlink(href="/biz/"+bizna.slug) 
+                          p
+                            img.coup-img.img-fluid(src="/uploads/thumbs/coupons/"+ bizna.photo, alt=bizna.name +' on FindIt Kenya')
+                            div
+                              h6.findit-red
+                                =bizna.name
+                              span
+                                .row
+                                  each feature , i in bizna.features.sort()
+                                    if(i < 2)
+                                      .col-xs-6
+                                        | #{feature}    |   
+                                
+                              if(!isNaN(bizna.distance))  
+                                span.text-left  
+                                  =(bizna.distance/1000).toFixed(1)
+                                  span     km away   
+                        br
+                .row
+                  .col-md-12
+                    a(href='#') See all
       .row.flowerwhite
         .col-md-3
           .div

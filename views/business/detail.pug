@@ -312,15 +312,16 @@ block content
                       else
                           | 
         .col-md-3
-          if(coupons.length > 0)  
+          if(coupons.length > 0)        
             .row
               .col-md-12
                 div
-                  h4
+                  h5
                     strong
-                      | Coupons in This Business  
-                
-            .row
+                      | Coupons in This Business
+                      span
+                        a(href='#') See all
+
               .col-md-12.is-island      
                 each coupon, i in coupons 
                   if i<3

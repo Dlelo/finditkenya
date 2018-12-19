@@ -356,12 +356,14 @@ block content
                       if i<3        
                         a.bizlink(href="/biz/"+branch.slug) 
                           p
-                            h6.findit-red
-                              =branch.name
-                            if(!isNaN(branch.distance))  
-                              span 
-                                =(branch.distance/1000).toFixed(1)
-                                span     km away
+                            img.coup-img.img-fluid(src="/uploads/thumbs/coupons/"+ branch.photo, alt=branch.name +' on FindIt Kenya')
+                            div
+                              h6.findit-red
+                                =branch.name
+                              if(!isNaN(branch.distance))  
+                                span.text-left 
+                                  =(branch.distance/1000).toFixed(1)
+                                  span     km away
           if(similarbiz.length > 0)
               div.col-md-12.text-center
                 h4

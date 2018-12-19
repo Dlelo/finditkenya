@@ -376,10 +376,11 @@ block content
                       div.col-md-12.is-island
                         h6.findit-red
                           =bizna.name
-                        each feature , i in bizna.features.sort()
-                          p
+                        .row
+                          each feature , i in bizna.features.sort()
                             if(i < 2)
-                              | #{feature} |
+                              .col-md-6
+                                | #{feature} 
                             
                         if(!isNaN(bizna.distance))  
                           p 

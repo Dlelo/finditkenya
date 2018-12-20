@@ -42,9 +42,16 @@ block content
                       strong.text-center
                         | Headquarters
                   div.col-md-12                
-                    a.bizlink(href="/biz/"+hq.slug) 
+                    a.bizlink(href="/biz/"+hq.slug)
+                      if hq.photo 
+                        img.coup-img.img-fluid(src="/uploads/thumbs/cover"+ hq.photo, alt=hq.name +' on FindIt Kenya')
+                      else
+                        img.coup-img.img-fluid(src="/img/noimageavailable.jpg", alt=hq.name+ ' on FindIt Kenya')
+                      div
                         h6.findit-red
-                          =hq.name
+                          =hq.name 
+                        
+                        
         else
           | 
       .row.flowerwhite

@@ -340,7 +340,10 @@ block content
                         a(href="/coupons")    
                           h6
                             =coupon.name
-                          img.coup-img.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name +' on FindIt Kenya')
+                          if coupon.photo
+                            img.coup-img.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name +' on FindIt Kenya')
+                          else
+                            img.coup-img.img-fluid(src="/img/noimageavailable.jpg", alt=coupon.bizid.name + ' on FindIt Kenya')
                           .div
                               span
                                 =coupon.tagline
@@ -404,7 +407,10 @@ block content
                       if i<2       
                         a.bizlink(href="/biz/"+branch.slug) 
                           p
-                            img.coup-img.img-fluid(src="/uploads/thumbs/cover"+ branch.photo, alt=branch.name +' on FindIt Kenya')
+                            if branch.photo 
+                              img.coup-img.img-fluid(src="/uploads/thumbs/cover"+ branch.photo, alt=branch.name +' on FindIt Kenya')
+                            else
+                              img.coup-img.img-fluid(src="/img/noimageavailable.jpg", alt=branch.name+ ' on FindIt Kenya')
                             div
                               h6.findit-red
                                 =branch.name
@@ -468,7 +474,10 @@ block content
                       if i<2          
                         a.bizlink(href="/biz/"+bizna.slug) 
                           p
-                            img.coup-img.img-fluid(src="/uploads/thumbs/cover"+ bizna.photo, alt=bizna.name +' on FindIt Kenya')
+                            if
+                              img.coup-img.img-fluid(src="/uploads/thumbs/cover"+ bizna.photo, alt=bizna.name +' on FindIt Kenya')
+                            else
+                              img.coup-img.img-fluid(src="/img/noimageavailable.jpg", alt=bizna.name+ ' on FindIt Kenya')
                             div
                               h6.findit-red
                                 =bizna.name

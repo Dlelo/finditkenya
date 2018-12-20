@@ -32,15 +32,14 @@ block content
                 strong
                   |       #{feature} |
         if biz.branch==true 
-          .col-md-2.col-xs-2
-              .row
-                .col-md-12
-                  div
-                    h6
-                      strong Headquarters
+          .col-md-2.col-xs-2.text-center
+              .row.text-center
+                .col-md-12.text-center
+                  h6.text-center
+                    strong Headquarters
               br
-              .row
-                .col-md-12               
+              .row.text-center
+                .col-md-12.text-center              
                   a.bizlink(href="/biz/"+hq.slug)
                     if hq.photo 
                       img.coup-img.img-fluid(src="/uploads/thumbs/cover"+ hq.photo, alt=hq.name +' on FindIt Kenya')

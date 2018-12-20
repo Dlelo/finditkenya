@@ -13,18 +13,19 @@ block content
           p.text-center
             h3.text-center
               =biz.name
-              span(style="font-size: 1.05rem; margin-left:1rem;")
-                if (biz.openstatus.isOpen)
-                  if (biz.openstatus.isOpen == true)
-                    span.badge.badge-success
-                      span.fas.fa-check-circle  
-                      |  Now Open
-                  else
-                    span.badge.badge-danger
-                      span.fas.fa-times-circle  
-                      |  Now Closed
-                - var list = [1,2,3,4,5]
-                - list.sort((a,b)=>{return Math.random()-0.5})
+              p
+                span(style="font-size: 1.05rem;")
+                  if (biz.openstatus.isOpen)
+                    if (biz.openstatus.isOpen == true)
+                      span.badge.badge-success
+                        span.fas.fa-check-circle  
+                        |  Now Open
+                    else
+                      span.badge.badge-danger
+                        span.fas.fa-times-circle  
+                        |  Now Closed
+                  - var list = [1,2,3,4,5]
+                  - list.sort((a,b)=>{return Math.random()-0.5})
           p.text-center
             each feature in biz.features
               a(href="/subcategory/subcat/"+feature)

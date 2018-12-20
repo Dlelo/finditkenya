@@ -410,23 +410,45 @@ block content
                                   =(bizna.distance/1000).toFixed(1)
                                   span     km away   
                         br
-                .row
-                  .col-md-12
-                    button.btn.btn-primary(type='button' data-toggle='modal' data-target='#myModal')  See all
-                    // The Modal
-                    #myModal.modal
-                      .modal-dialog
-                        .modal-content
-                          // Modal Header
-                          .modal-header
-                            h4.modal-title Modal Heading
-                            button.close(type='button' data-dismiss='modal') &times;
-                          // Modal body
-                          .modal-body
-                            | Modal body..
-                          // Modal footer
-                          .modal-footer
-                            button.btn.btn-danger(type='button' data-dismiss='modal') Close
+                if(similarbiz.length > 2)
+                  .row
+                    .col-md-12
+                      button.btn.btn-primary(type='button' data-toggle='modal' data-target='#myModal')  See more
+                      // The Modal
+                      #myModal.modal
+                        .modal-dialog
+                          .modal-content
+                            // Modal Header
+                            .modal-header
+                              h4.modal-title Similar Businesses
+                              button.close(type='button' data-dismiss='modal') &times;
+                            // Modal body
+                            .modal-body
+                              .row
+                                .col-md-12      
+                                  each bizna, i in similarbiz
+                                    if i>1         
+                                      a.bizlink(href="/biz/"+bizna.slug) 
+                                        p
+                                          img.coup-img.img-fluid(src="/uploads/thumbs/cover"+ bizna.photo, alt=bizna.name +' on FindIt Kenya')
+                                          div
+                                            h6.findit-red
+                                              =bizna.name
+                                            span
+                                              .row
+                                                each feature , i in bizna.features.sort()
+                                                  if(i < 2)
+                                                    .col-xs-6
+                                                      | #{feature}    |   
+                                              
+                                            if(!isNaN(bizna.distance))  
+                                              span.text-left  
+                                                =(bizna.distance/1000).toFixed(1)
+                                                span     km away   
+                                      br
+                            // Modal footer
+                            .modal-footer
+                              button.btn.btn-danger(type='button' data-dismiss='modal') Close
 
       //.row.flowerwhite
         .col-md-3

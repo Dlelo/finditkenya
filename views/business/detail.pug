@@ -46,7 +46,7 @@ block content
                       img.coup-img.img-fluid(src="/uploads/thumbs/cover"+ hq.photo, alt=hq.name +' on FindIt Kenya')
                     else
                       img.coup-img.img-fluid(src="/img/noimageavailable.jpg", alt=hq.name+ ' on FindIt Kenya')
-                    div
+                    //div
                       h6.findit-red
                         =hq.name 
                           
@@ -369,7 +369,7 @@ block content
                       // The Modal
                       #coupModal.modal
                         .modal-dialog
-                          .modal-content
+                          .modal-content(style="width: 100% !important;")
                             // Modal Header
                             .modal-header
                               h4.modal-title Coupons
@@ -439,7 +439,7 @@ block content
                       // The Modal
                       #branchModal.modal
                         .modal-dialog
-                          .modal-content
+                          .modal-content(style="width: 100% !important;")
                             // Modal Header
                             .modal-header
                               h4.modal-title Branches

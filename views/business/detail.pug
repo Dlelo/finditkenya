@@ -424,8 +424,9 @@ block content
                                 =branch.name
                               if(!isNaN(branch.distance))  
                                 span.text-left 
-                                  =(branch.distance/1000).toFixed(1)
-                                  span     km away
+                                  small
+                                    =(branch.distance/1000).toFixed(1)
+                                    span     km away
                         br
                 //.row
                   .col-md-12
@@ -460,8 +461,9 @@ block content
                                               =branch.name
                                             if(!isNaN(branch.distance))  
                                               span.text-left 
-                                                =(branch.distance/1000).toFixed(1)
-                                                span     km away   
+                                                small
+                                                  =(branch.distance/1000).toFixed(1)
+                                                  span     km away   
                                       br
                             // Modal footer
                             .modal-footer

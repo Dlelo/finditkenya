@@ -139,10 +139,11 @@ block content
                 each catalogue, i in biz.catalog
                   if (catalogue)
                     strong
-                      span.fas.fa-bars
-                      
-                      a.findit(href="/business/catalog/"+catalogue.filename, target="_blank")
-                        |  View Menu #{i+1}
+                      p
+                        span.fas.fa-bars
+                        
+                        a.findit(href="/business/catalog/"+catalogue.filename, target="_blank")
+                          |  View Menu #{i+1}
                   else
                       | 
                   

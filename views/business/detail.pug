@@ -32,16 +32,16 @@ block content
                 strong
                   |       #{feature} |
         if biz.branch==true 
-          .col-md-2.col-xs-2
-            .row
-              div.col-md-12.is-island
-              
-                if biz.branch==true
-                  div.col-md-12.text-center
+          .row
+            .col-md-12.is-island  
+              .row
+                .col-md-12
+                  div
                     h4
-                      strong.text-center
-                        | Headquarters
-                  div.col-md-12                
+                      strong Headquarters
+              br
+                .row
+                  .col-md-12               
                     a.bizlink(href="/biz/"+hq.slug)
                       if hq.photo 
                         img.coup-img.img-fluid(src="/uploads/thumbs/cover"+ hq.photo, alt=hq.name +' on FindIt Kenya')
@@ -50,8 +50,7 @@ block content
                       div
                         h6.findit-red
                           =hq.name 
-                        
-                        
+                          
         else
           | 
       .row.flowerwhite

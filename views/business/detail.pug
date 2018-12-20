@@ -30,10 +30,11 @@ block content
               a(href="/subcategory/subcat/"+feature)
                 strong
                   |       #{feature} |
-        .col-md-2.col-xs-2
-          .row
-            div.col-md-12.is-island
-              if(branches)
+        if(branches)  
+          .col-md-2.col-xs-2
+            .row
+              div.col-md-12.is-island
+              
                 if biz.branch==true
                   div.col-md-12.text-center
                     h4

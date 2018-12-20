@@ -6,13 +6,13 @@ block content
       .row.flowerwhite
         .col-md-2.col-xs-2
           if(biz.photo)
-            img.img-responsive(src="/uploads/thumbs/cover"+ biz.photo, alt=biz.name +' on FindIt Kenya', width="80%") 
+            img.img-responsive(src="/uploads/thumbs/cover"+ biz.photo, alt=biz.name +' on FindIt Kenya', width="100%") 
           else
             img.cat-image.cat-items-bottom(src="/img/noimageavailable.jpg", alt=biz.name+ ' on FindIt Kenya', height="200px")          
         .col-md-8.col-xs-8
-          h3.text-center
-            =biz.name
-          p.text-left
+          p.text-center
+            h3
+              =biz.name
             if (biz.openstatus.isOpen)
               if (biz.openstatus.isOpen == true)
                 span.badge.badge-success
@@ -30,17 +30,18 @@ block content
                 strong
                   |       #{feature} |
         .col-md-2.col-xs-2
-          if(branches)
-            if biz.branch==true
-              div.col-md-12.text-center
-                h4
-                  strong.text-center
-                    | Headquarters
-              div.col-md-12                
-                a.bizlink(href="/biz/"+hq.slug) 
-                  div.col-md-12.is-island
-                    h6.findit-red
-                      =hq.name
+          .row
+            div.col-md-12.is-island
+              if(branches)
+                if biz.branch==true
+                  div.col-md-12.text-center
+                    h4
+                      strong.text-center
+                        | Headquarters
+                  div.col-md-12                
+                    a.bizlink(href="/biz/"+hq.slug) 
+                        h6.findit-red
+                          =hq.name
       .row.flowerwhite
         .col-md-3
           .row.is-island

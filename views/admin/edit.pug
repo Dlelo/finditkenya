@@ -331,11 +331,11 @@ block content
             
               .col-sm-12
                 .row
-                  .col-sm-2
+                  .col-sm-2.col-xs-12
                     label
                       |      Is this a branch?
-                  .col-sm-4    
-                      .radio
+                  .col-sm-4.col-xs-12  
+                      .radio(style="margin-bottom: 3rem;")
                         if biz.branch
                           label.radio-inline
                             input.branch.form-control-form(type='radio', value=1, name='branch', rel=biz._id, checked)
@@ -349,10 +349,10 @@ block content
                           | No
                         
                 
-                  .col-sm-2 
+                  .col-sm-2.col-xs-12  
                     label
                       | Select Parent company (Hq)
-                  .col-sm-4
+                  .col-sm-4.col-xs-12 
                     select#bizparent.form-control-form-select(name='bizparent',class='bizparent', data-live-search='true')
                       
             .form-group

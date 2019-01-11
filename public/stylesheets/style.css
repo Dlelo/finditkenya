@@ -2,7 +2,7 @@
 @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 
 .header-tp .navbar {
-    position: relative;
+  position: relative;
 	min-height: 50px;
 	margin-bottom: 0px;
 	border: 1px solid transparent;

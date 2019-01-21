@@ -51,51 +51,84 @@ block content
       //categories
       div.col-md-8.col-lg-8.col-sm-12.col-sm-12.my-col
         h2.agile-title.h-order-category.text-center
-          | Search by Category
+          | Top deals
         div.row.mt-sm-8.text-center
           ins.adsbygoogle(style='display:block', data-ad-client='ca-pub-9965055906014205', data-ad-slot='7358207938', data-ad-format='auto')
           script.
             window.onload = function() {  (adsbygoogle = window.adsbygoogle || []).push({});}
         div.row.mt-sm-8.text-center
-          each category,i in categories
+          each coupon,i in coupons
             if(i < 4)
-              div.col-lg-3.col-md-3.col-sm-12.col-xm-12.w3-ab.my-md-0.my-sm-12
-                   a.bizlink(href="/category/"+category.name)
-                    div.w3-aicon.py-lg-5.py-md-3
-                        img.img-fluid.category-img-wrapper(src="/uploads/thumbs/categories/"+category.photo, alt=category.name +' on FindIt Kenya', data-wow-delay="0.6s")
-                        h6.my-3
-                         =category.name
-                    div.w3-ab-captn.p-md-3.py-4
-                      i.fas.fa-bed
-                      h4.my-lg-3.my-md-2.my-3
-                        | Professional Services
-                      p.px-3
-                        | Aenean pulvinar ac enimet posuere tincidunt velit Utin tincidunt
+              div.col-lg-3.col-md-3.col-sm-12.col-xm-12.w3-ab.my-md-0.my-sm-12.coup-container
+                div.w3-aicon.py-md-3
+                  h6.my-3
+                    span.findit-blue
+                      =coupon.name
+                  img.img-fluid.category-img-wrapper(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name+ ' on FindIt Kenya')
+                    
+                div.p-md-3.py-4.overlay
+                  div.coup-text
+                    h6.text-uppercase
+                      =coupon.tagline
+                    p
+                      
+                      =coupon.description
+                    p
+                      strong
+                        | !{'@  ' + coupon.bizid.name}
+                     
+                    p 
+                      a(href="/coupons" style="color:#fff;")   
+                        h6
+                          span 
+                            i.fas.fa-gift
+                          .text-uppercase Get coupon!!!
+                            
+                    
+                        
               
         //div.agileabt-w3.py-lg-5
         div.row.mt-sm-8.text-center
-          each category,i in categories
+          each coupon,i in coupons
             if(i > 3 && i < 7)
-              div.col-lg-3.col-md-3.col-sm-12.col-xm-12.w3-ab.my-md-0.my-sm-12
-                a.bizlink(href="/category/"+category.name)
-                  div.w3-aicon.py-lg-5.py-md-3
-                      img.img-fluid.category-img-wrapper(src="/uploads/thumbs/categories/"+category.photo, alt=category.name + ' on FindIt Kenya',data-wow-delay="0.6s")
-                      h6.my-3
-                        =category.name
-                  div.w3-ab-captn.p-md-3.py-4
-                    i.fas.fa-bed
-                    h4.my-lg-3.my-md-2.my-3
-                      | Professional Services
-                    p.px-3
-                      | Aenean pulvinar ac enimet posuere tincidunt velit Utin tincidunt
-              
+              div.col-lg-3.col-md-3.col-sm-12.col-xm-12.w3-ab.my-md-0.my-sm-12.coup-container
+                div.w3-aicon.py-md-3
+                  h6.my-3
+                    span.findit-blue
+                      =coupon.name
+                  img.img-fluid.category-img-wrapper(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name+ ' on FindIt Kenya')
+                    
+                div.p-md-3.py-4.overlay
+                  div.coup-text
+                    h6.text-uppercase
+                      =coupon.tagline
+                    p.coupp
+                      
+                      =coupon.description
+                    p
+                      strong
+                        | !{'@  ' + coupon.bizid.name}
+                     
+                    p 
+                      a(href="/coupons" style="color:#fff;")   
+                        h6
+                          span 
+                            i.fas.fa-gift
+                          .text-uppercase Get coupon!!!
           
-          div.col-lg-3.col-md-3.w3-ab.my-md-0.my-sm-8( onclick="toggle_visibility('expandcategories');")
+          div.col-lg-3.col-md-3.col-sm-12.col-xm-12.w3-ab.my-md-0.my-sm-12.coup-container
+            a(href="/coupons")
+              div.w3-aicon.py-md-3
+                span.findit-blue
+                  | See more Coupons
+                img.img-fluid.category-img-wrapper(src="/img/more_categories.png", alt="Find It Kenya - Find Anything and Everything", data-wow-delay="0.6s")  
+          
+          //div.col-lg-3.col-md-3.w3-ab.my-md-0.my-sm-8( onclick="toggle_visibility('expandcategories');")
             a(href="#expandcategories")
                 div.w3-aicon.py-lg-5.py-md-3
                   button.btn.btn-light(type="button")
                     span.findit-blue
-                      | More Categories
+                      | See more Coupons
                   img.img-fluid.category-img-wrapper(src="/img/more_categories.png", alt="Find It Kenya - Find Anything and Everything", data-wow-delay="0.6s")                            
         div.row#expandcategories( style="display:none; padding-top:5rem; border-top: 1px solid #eee")
           each category,i in categories
@@ -119,7 +152,8 @@ block content
                   div
                     a.bizlink(href="/category/"+category.name)
                       strong
-                        | See more
+                        | See more 
+                    
                   
                   
                                       
@@ -129,9 +163,10 @@ block content
         div.border-bottom
        
         div.row.latest-review
-          div.col-12.my-col
-           h2.agile-title.h-order-category.text-center
-             | Latest Reviews
+          if reviews
+            div.col-12.my-col
+              h2.agile-title.h-order-category.text-center
+                | Latest Reviews
           
           each review, i in reviews
            if i<4
@@ -216,35 +251,31 @@ block content
         
       div.col-lg-4.col-md-4.col-sm-6.col-xs-6
         div
-          h2.agile-title.h-order-category.text-center
-            | Top deals
-            //top deal
-        each coupon,i in coupons
-          a(href="/coupons")
-            row.deal-main.deal-coup.coupon-items.column
-              div.content  
-                .div.col-md-12.col-sm-12.col-xs-12
-                  strong
-                    h5                 
-                      =coupon.name
-                    h6
-                    small.findit-red
-                      strong
-                        | @       
-                        =coupon.bizid.name
-                .div.col-md-12.col-lg-12.col-sm-12.col-xs-12
-                    img.coup-img-wrapper.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name+ ' on FindIt Kenya')
-                //.div.col-md-12.col-lg-12.col-sm-12.col-xs-12.float-left                 
-                .div.col-md-12.col-lg-12.col-sm-12.col-xs-12(style="color:#212529 !important")
-                    =coupon.description
-                  
-                .div.col-md-12.col-lg-12.col-sm-12.col-xs-12.center-left
-                  button.btn.btn-outline-primary(type="button" )
-                    if coupon.tagline.length >= 20
-                      | !{coupon.tagline.substr(0, 17)+ '...'} 
-                    else
-                      =coupon.tagline
-                      
+          h2.agile-title.h-order-category.text-left
+            | Find by Category
+            // Categories
+        div.row.mt-sm-8.text-center
+          each category,i in categories
+            if(i < 5)
+              a.bizlink(href="/category/"+category.name)
+                row.deal-main.column.text-center 
+                  a.bizlink(href="/category/"+category.name)
+                    .div.col-md-12.col-sm-12.col-xs-12
+                      .div.w3-aicon.py-lg-12.py-md-12
+                        h6.my-3
+                          span.findit-blue
+                            =category.name
+                        img.img-fluid(src="/uploads/thumbs/categories/"+category.photo, alt=category.name +' on FindIt Kenya', data-wow-delay="0.6s")
+        div.row.mt-sm-8.text-center  
+          row.deal-main.column.text-center( onclick="toggle_visibility('expandcategories');")
+            a.bizlink(href="#expandcategories")
+              .div.col-md-12.col-sm-12.col-xs-12
+                .div.w3-aicon.py-lg-12.py-md-12
+                  h6.my-3
+                    span.findit-blue.text-center
+                      | More Categories
+                img.img-fluid(src="/img/more_categories.png", alt="Find It Kenya - Find Anything and Everything", data-wow-delay="0.6s")                                           
+                    
   //about
   div.container-fluid
     #about

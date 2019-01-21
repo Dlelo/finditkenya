@@ -774,7 +774,22 @@ span.w3-line {
 	text-transform: capitalize;
 	font-weight: 600;
 }
-
+.w3-coup-captn{
+	height: 100%;
+	width: 100%;
+	top: 0;
+	position: absolute;
+	-webkit-transform: scale(0);
+	-moz-transform: scale(0);
+	-o-transform: scale(0);
+	-ms-transform: scale(0);
+	transform: scale(0);
+	-webkit-transition: all 0.9s;
+	-moz-transition: all 0.9s;
+	-ms-transition: all 0.9s;
+	-o-transition: all 0.9s;
+	transition: all 0.9s;
+}
 .w3-ab-captn {
 	height: 100%;
 	width: 100%;
@@ -804,7 +819,7 @@ span.w3-line {
 	color: #fff;
 }
 
-.w3-ab-grid:hover .w3-ab-captn {
+.w3-ab-captn:hover .w3-ab-captn {
 	background-color: #007bff;
 	-webkit-transform: scale(1);
 	-moz-transform: scale(1);
@@ -5162,4 +5177,46 @@ button.close {
     left: 0;
     z-index: 1040;
     background-color: #000;
+}
+/*overlay on home page coupons */
+.coup-container{
+	position: relative;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color:#04045aa6;
+}
+.overlay {
+	color: #fff;
+}
+
+.coup-container:hover .overlay {
+  opacity: 1;
+}
+.coup-text {
+  color: white;
+  font-size: 1em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width:100%;
+}
+.coup-text p{
+	color:#fff;
+}
+.coup-text h6{
+	color:#fff;
+	padding:1rem;
 }

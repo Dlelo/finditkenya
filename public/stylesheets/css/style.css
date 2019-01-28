@@ -2707,7 +2707,7 @@ li.list-hor{
 
 @media screen and (max-width: 384px) {
 	.logo-res{
-	  width:50%
+	  width:30%
 	}
 	.img-logo {
 	  width: 10rem !important;
@@ -2777,7 +2777,7 @@ li.list-hor{
 
 @media screen and (max-width: 375px) {
 	.logo-res{
-	  width:50%
+	  width:30%
 	}
 	.parallax-content-list {
     margin-top: 6vh;
@@ -2868,7 +2868,7 @@ li.list-hor{
 
 @media screen and (max-width: 320px) {
 	.logo-res{
-	  width:50%
+	  width:30%
 	}
 	.container-margin-top {
     margin-top: 4vh !important;

@@ -2632,7 +2632,8 @@ li.list-hor{
 		padding-top:1rem;
 	}
 	.container-margin-top {
-    margin-top: 0rem !important;
+	margin-top: 0rem !important;
+	padding-top: 0 !important;
      }
 	.img-logo {
 	  width: 10rem !important;

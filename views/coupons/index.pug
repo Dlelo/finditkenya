@@ -3,10 +3,10 @@ extends ../layout-coupon
 block content
   div.container-fluid
   #home.parallax-content-list.baner-content-listing-biz
-    .container-fluid.container-margin-top.container-fluidpadding
-     .row.couponbg-color
+    .container-fluid.container-margin-top
+      .row.couponbg-color
 
-       div.col-md-9(style="padding-right:0; padding-left:15px;")
+        div.col-md-9(style="padding-right:0; padding-left:15px;")
           row.my-row
             
               div#carouselExampleFade.carousel.slide.carousel-fade(data-ride="carousel")
@@ -55,51 +55,119 @@ block content
                   span.carousel-control-next-icon(aria-hidden="true")
       
         
-       div.col-md-3
-         row
-            h5
-              .coupon-title
-                | Popular Coupons
-            each popular, i in populars
-              if i<2  
-                row.deal-main.deal-home.deal-coup
-                  .col-md-12
-                    small
-                      h6
-                        =popular.name
-                    each bz in popular.biz
-                      img.coup-img(src="/uploads/thumbs/coupons/"+ popular.photo, alt=bz.name + ' on FindIt Kenya')
-                    p
-                       small
-                          p
-                            =popular.description
-                          p
-                          each bz in popular.biz
-                            | @  
-                            =bz.name
-                          p
-                          strong.findit-red
-                            =popular.tagline 
-                            
-                             
-                         
+        div.col-md-3
+          row
+              h5
+                .coupon-title
+                  | Popular Coupons
+              each popular, i in populars
+                if i<2  
+                  row.deal-main.deal-home.deal-coup
+                    .col-md-12
+                      small
+                        h6
+                          =popular.name
+                      each bz in popular.biz
+                        img.coup-img(src="/uploads/thumbs/coupons/"+ popular.photo, alt=bz.name + ' on FindIt Kenya')
+                      p
+                        small
+                            p
+                              =popular.description
+                            p
+                            each bz in popular.biz
+                              | @  
+                              =bz.name
+                            p
+                            strong.findit-red
+                              =popular.tagline 
+                              
+                              
                           
+                            
+                    
                   
-                
 
-         //row
-            h5
+          //row
+              h5
+              .coupon-title
+                |  Selected Coupons
+              div
+                .mycoupons#coupons-sticky
+  .container
+    nav.navbar.bg-white
+      .navbar-brand 
+        .nav-item.dropdown.open
+          button.btn.btn-cat.btn-light.form-control.dropdown-toggle(type='button', data-toggle='dropdown')
+            h5.coupon-title
+              span.i.fas.fa-filter
+              span    Filter Coupons by Category
+              
+            span.caret
+          div#items.dropdown-menu.open.sub-catbag.dropdown-menu-coupon
+            
+            if groups 
+              button(class="btn btn-light category-button" data-filter = "all")
+                strong
+                  |  All Categories (
+                span
+                  =groups.length + ')'
+              each group in groups
+                div.text-left.sub-list
+                  //a(href="#"+group._id)
+                  button(class="btn btn-light category-button" data-filter = ''+group._id+'')
+                    strong  
+                      =group._id + " (" + group.count + ")"
+      .nav-item
+        #myBtn  
+          img(src="/img/coup.png")
+          span
+            .badge.badge-light  
+              #couponscount(style="color:#c00000")
+                h5 
+                  strong
+                    =mycoupons.length
+            span.text-center 
+              strong      coupon(s). 
+              span
+                strong.findit-blue   Click here
+              span
+                strong   to Redeem Coupon(s)            
+
+
+        div#myModal.modal
+          div.modal-content(style=" width: 60%;")
+            span.close.text-center
+              |&times;
+            div 
             .coupon-title
-              |  Selected Coupons
+              h3.text-center
+                |  Selected Coupons
             div
               .mycoupons#coupons-sticky
-  div.container-fluid
-    nav.navbar.navbar-expand-lg.navbar-light.bg-light#navbarCoup
+                each mycoupon in mycoupons
+                  .coupon.coupon-modal
+                    strong 
+                      =mycoupon.name
+                    i.fa.fa-close.fa-fw.text-right.del-coupon(rel=mycoupon._id, aria-hidden='true',id=user.id)
+            div
+                strong
+                a(href="/admin/email/coupons" class="text-center")
+                  h6
+                    i(class="fa fa-envelope fa-fw" aria-hidden="true")
+                    | Click here to receive all Coupons in your email
+      .nav-item
+        form.form-inline#searchCoup.form-class(method='get', action='/search')
+          .input-group
+            div.input-group
+              input.search2.form-control-lg(type="text" placeholder="Businesses, Doctors, Lawyers, Hotels" ,style="width:100% !important" ,name='search', autofocus) 
+        
+    //nav.navbar.navbar-expand-lg.bg-light#homenavbar
       ul.navbar-nav.mr-auto
         li.nav-item.dropdown.open.text-left
             button.btn.btn-cat.btn-light.form-control.dropdown-toggle(type='button', data-toggle='dropdown')
               h5.coupon-title
-                | Search Coupon by Category
+                span.i.fas.fa-filter
+                span    Filter Coupons by Category
                 
               span.caret
             div#items.dropdown-menu.open.sub-catbag.drop-down-sub.dropdown-menu-coupon.dropdown-category
@@ -154,8 +222,8 @@ block content
             form.form-class(method='get', action='/search')
               div.input-group
                 input.search2.form-control-lg(type="text" placeholder="Businesses, Doctors, Lawyers, Hotels" ,style="width:100% !important" ,name='search', autofocus)              
-              
-    .row.deal-main
+  .container-fluid(style="background-color: #f9f9f9;")        
+    .row.deal-main.text-center
       .col-md-12.col-sm-12.col-xs-12
               div.text-center
                 span.h4.coupon-title-start
@@ -170,6 +238,8 @@ block content
                   | and 
                 span.strong
                   | Email. 
+  
+    .row.deal-main(style="padding-left: 4rem; padding-right: 4rem; background-color: #f9f9f9;")
       each coupon, i in coupons
         div.col-md-3.all.well(class=coupon.bizid.subcategory)
           div.row.deal-main.deal-coup.coupon-items.row-eq-height.coupon(id=coupon.id,class=(coupon.users.some(function(x) { return x.user_id == user.id })) ? 'couponclicked' : 'couponadd', rel=user.id) 
@@ -203,7 +273,7 @@ block content
     $(function(){
           //script for sticky coupons on scroll
       $("#coupons-sticky").stick_in_parent();
-      $(".clipped").hide();
+      //$(".clipped").hide();
       var cartCount = #{mycoupons.length};
       $(document).on('click', '.couponadd', function(event) {
         //alert("clicked");
@@ -323,7 +393,7 @@ block content
   script(type='text/javascript').
     $(window).scroll(function() {
 
-      if ($(this).scrollTop()>10)
+      if ($(this).scrollTop()>2)
       {
           $(function() {
             $("#homenavbar").hide();

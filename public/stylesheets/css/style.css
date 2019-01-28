@@ -2174,6 +2174,7 @@ ul.portfolio-area li figure {
 
 /* -- //Responsive code -- */
 .flash-button{
+	margin-right: 1rem;
 	margin-top:3px;
 	background:#04045a;
 	padding: 2px 3px 2px 3px;
@@ -3084,7 +3085,8 @@ padding-left:10px;
 
 .deal-coup{
 	border: 1px solid #eee;
-    box-shadow: 0 1px 3px 0 rgba(0,0,0,.02);
+	box-shadow: 0 1px 3px 0 rgba(0,0,0,.02);
+	background-color: #fff;
 }
 .coup-img-wrapper:hover {
     -webkit-transform: scaleX(-1);
@@ -5055,6 +5057,9 @@ height: 30px;
 .branch input:checked ~ .largerCheckbox {
 	background-color: #c00000;
 }
+.clipped{
+display:none;
+}
 
 
 .branch span.glyphicon {    			
@@ -5192,7 +5197,7 @@ button.close {
   width: 100%;
   opacity: 0;
   transition: .5s ease;
-  background-color:#04045aa6;
+  background-color:#04045acf;
 }
 .overlay {
 	color: #fff;
@@ -5220,3 +5225,20 @@ button.close {
 	color:#fff;
 	padding:1rem;
 }
+.scrollpane { height: 30%; overflow: auto; }
+.loading { color: #04045a; }
+.Hide
+{
+  display:none;
+}
+.Hidecat{
+	 display:none;
+}
+.container-padding{
+	padding-left: 5%;
+	padding-right: 5%;
+}
+/*#homenavbar{
+	padding-left: 2%;
+    padding-right: 3%;
+}*/

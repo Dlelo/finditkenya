@@ -1,5 +1,7 @@
 extends layout-new
+
 block content
+ //div.container-fluid.container-padding(style="padding-top:3.8rem")
  div.container-fluid
   div#home.banner(style="object-fit: cover;")
     div.row.justify-content-end.my-row    
@@ -44,7 +46,7 @@ block content
   //search by category
   //center
   //section.wthree-row.py-sm-5.py-3.w3-about
-  div.container-fluid
+ div.container-fluid.container-padding
     
     //main categories and coupon row
     div.row.my-row.justify-content-center
@@ -82,7 +84,7 @@ block content
                         h6
                           span 
                             i.fas.fa-gift
-                          .text-uppercase Get coupon!!!
+                          .text-uppercase Claim Now!!!
                             
                     
                         
@@ -114,15 +116,48 @@ block content
                         h6
                           span 
                             i.fas.fa-gift
-                          .text-uppercase Get coupon!!!
+                          .text-uppercase Claim Now!!!
           
-          div.col-lg-3.col-md-3.col-sm-12.col-xm-12.w3-ab.my-md-0.my-sm-12.coup-container
-            a(href="/coupons")
+          div.col-lg-3.col-md-3.col-sm-12.col-xm-12.w3-ab.my-md-0.my-sm-12.coup-container( onclick="toggle_visibility('expandcoupons');")
+            a(href="#expandcoupons")
               div.w3-aicon.py-md-3
-                span.findit-blue
-                  | See more Coupons
-                img.img-fluid.category-img-wrapper(src="/img/more_categories.png", alt="Find It Kenya - Find Anything and Everything", data-wow-delay="0.6s")  
-          
+                span.findit-blue(style='padding-top:2rem')
+                  span.Show
+                    | See more Coupons
+                  span.Hide
+                    | Hide more Coupons
+                //img.img-fluid.category-img-wrapper(src="/img/more_categories.png", alt="Find It Kenya - Find Anything and Everything", data-wow-delay="0.6s")  
+        div.row.mt-sm-8.text-center.scrollpane#expandcoupons(style="display:none; padding-top:4rem;")
+          div.col-lg-12.col-md-12.col-sm-12.col-xm-12.w3-ab.my-md-0.my-sm-12.text-center
+              span.h4.coupon-title-start
+                | More Free Coupons & Deals 
+              span.h6
+                |  ...  
+          each coupon,i in coupons
+            div.col-lg-3.col-md-3.col-sm-12.col-xm-12.w3-ab.my-md-0.my-sm-12.coup-container#result
+              div.w3-aicon.py-md-3
+                h6.my-3
+                  span.findit-blue
+                    =coupon.name
+                img.img-fluid.category-img-wrapper(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name+ ' on FindIt Kenya')
+                  
+              div.p-md-3.py-4.overlay
+                div.coup-text
+                  h6.text-uppercase
+                    =coupon.tagline
+                  p.coupp
+                    
+                    =coupon.description
+                  p
+                    strong
+                      | !{'@  ' + coupon.bizid.name}
+                  
+                  p 
+                    a(href="/coupons" style="color:#fff;")   
+                      h6
+                        span 
+                          i.fas.fa-gift
+                        .text-uppercase Claim Now!!!
           //div.col-lg-3.col-md-3.w3-ab.my-md-0.my-sm-8( onclick="toggle_visibility('expandcategories');")
             a(href="#expandcategories")
                 div.w3-aicon.py-lg-5.py-md-3
@@ -163,7 +198,7 @@ block content
         div.border-bottom
        
         div.row.latest-review
-          if reviews
+          if(reviews.length>1)
             div.col-12.my-col
               h2.agile-title.h-order-category.text-center
                 | Latest Reviews
@@ -249,12 +284,12 @@ block content
                   .small
                     =review.created_at
         
-      div.col-lg-4.col-md-4.col-sm-6.col-xs-6
+      div.col-lg-4.col-md-4.col-sm-6.col-xs-6.text-center
         div
-          h2.agile-title.h-order-category.text-left
+          h2.agile-title.h-order-category.text-center
             | Find by Category
             // Categories
-        div.row.mt-sm-8.text-center
+        div.text-center
           each category,i in categories
             if(i < 5)
               a.bizlink(href="/category/"+category.name)
@@ -266,18 +301,19 @@ block content
                           span.findit-blue
                             =category.name
                         img.img-fluid(src="/uploads/thumbs/categories/"+category.photo, alt=category.name +' on FindIt Kenya', data-wow-delay="0.6s")
-        div.row.mt-sm-8.text-center  
-          row.deal-main.column.text-center( onclick="toggle_visibility('expandcategories');")
-            a.bizlink(href="#expandcategories")
+        div.text-center  
+          a.bizlink(href="#expandcategories") 
+            row.deal-main.column.text-center( onclick="toggle_visibility('expandcategories');")
               .div.col-md-12.col-sm-12.col-xs-12
                 .div.w3-aicon.py-lg-12.py-md-12
                   h6.my-3
                     span.findit-blue.text-center
-                      | More Categories
+                      span.Showcat More Categories
+                      span.Hidecat Few Categories
                 img.img-fluid(src="/img/more_categories.png", alt="Find It Kenya - Find Anything and Everything", data-wow-delay="0.6s")                                           
                     
-  //about
-  div.container-fluid
+ //about
+ div.container-fluid
     #about
       section.aboutsection
         div.banner-des
@@ -361,54 +397,223 @@ block content
         
       });
     //animation
+  
+    //function  to load more coupons on page scroll
+    script(type='text/javascript').
+      function loadResults() {
+        var coupons = "";
+        for (var i = 0; i < 10; i++) {
+            result += "<li>Result " + i + "</li>";
+        }
+        $.ajax({
+            url:"/api/mycoupons/",
+            type: "post",
+            data: {
+                html: result,
+                delay: 3
+            },
+            beforeSend: function(xhr) {
+                $("#results").after($("<li class='loading'>Loading...</li>").fadeIn('slow')).data("loading", true);
+            },
+            success: function(data) {
+                var $results = $("#results");
+                $(".loading").fadeOut('fast', function() {
+                    $(this).remove();
+                });
+                var $data = $(data);
+                $data.hide();
+                $results.append($data);
+                $data.fadeIn();
+                $results.removeData("loading");
+            }
+        });
+      };
 
-    //script to toggle morecategories
-    script(type="text/javascript").
+      $(function() {
+          loadResults();
 
-       var pos = {
-          lat: '',
-          lng: ''
-        };
+          $(".scrollpane").scroll(function() {
+              var $this = $(this);
+              var $results = $("#results");
 
-      navigator.geolocation.getCurrentPosition(function(position) {
-          pos.lat = position.coords.latitude;
-          pos.lng = position.coords.longitude;
-      
-       $(".bizlink").each(function () {
-          let url =$(this).attr("href")
-          let newUrl = url+'?lon='+pos.lng+'&lat='+pos.lat;
-          $(this).attr("href", newUrl);
+              if (!$results.data("loading")) {
+
+                  if ($this.scrollTop() + $this.height() == $results.height()) {
+                      loadResults();
+                  }
+              }
+          });
+      });
+ //Script for selecting coupons       
+ //-script(type='text/javascript').
+    //(function($) {
+    $(function(){
+          //script for sticky coupons on scroll
+      $("#coupons-sticky").stick_in_parent();
+      $(".clipped").hide();
+      var cartCount = #{mycoupons.length};
+      $(document).on('click', '.couponadd', function(event) {
+        //alert("clicked");
+        var couponid = $(this).attr("id");
+        $(this).addClass('couponclicked');
+        $(this).removeClass('couponadd');
+        $(this).find('.clipped').show();
+        $(this).find('.fa-status').html('<i class="fa fa-window-close fa-2x" aria-hidden="true" style="display:block;text-align:right"></i>');
+        $.ajax({
+            type: "GET",
+            url: "/getcoupon/user/"+couponid,
+            success: function(data){
+                if(#{loggedin} == false){
+                  //alert("not logged in");
+                  window.location.href = "/login";
+                  throw new Error("kindly login!");
+                }
+                Notify.toast(data.msg, {
+                  fn: function () {
+                    // custom function here
+                  }
+                });
+                if(data.msg == 'Coupon Obtained'){
+                  cartCount = cartCount + 1;
+                  if(cartCount >= 0){
+                    $('#couponscount').text(cartCount);
+                  }
+                }
+                $.ajax({
+                    type: "GET",
+                    url: "/api/mycoupons/",
+                    success: function(data){
+                      var carray = data.mycoupons; 
+                      $('.mycoupons').html('');
+                      carray.forEach(function(el) {
+                        $('.mycoupons').append(
+                          '<div class="coupon coupon-modal"><strong>'+el.name+'</strong>\
+                          <i id=#{user.id} class="fa fa-close fa-fw text-right  del-coupon" rel='+el._id+' aria-hidden="true"></i></div>'
+                        );
+                      }); 
+                      $('.mycoupons').append( '<br><strong><span class="coup-msg">Click "Mail All" then, check your email to get coupon codes<span></strong>');             
+                      console.log(data.code);
+                    }
+                });
+            }
+        });                    
+      });
+      $(document).on('click', ".couponclicked", function(event) {
+        $(this).removeClass('couponclicked');
+        $(this).addClass('couponadd');
+        $(this).find('.clipped').hide();
+        var userid = $(this).attr("rel");
+        $.ajax({
+            type: "GET",
+            url: "/removecoupon/"+ userid,
+            success: function(data){
+                Notify.toast(data.msg, {
+                  fn: function () {
+                    // custom function here
+                  }
+                });
+                if(data.msg == 'Coupon Removed'){
+                  cartCount = cartCount - 1;
+                  if(cartCount >= 0){
+                    $('#couponscount').text(cartCount);
+                  }
+                }
+                $.ajax({
+                    type: "GET",
+                    url: "/api/mycoupons/",
+                    success: function(data){
+                      $('.mycoupons').html('');
+                      data.mycoupons.forEach(function(el) {
+                        $('.mycoupons').append(
+                          '<div class="coupon"><strong>'+el.name+'</strong>\
+                          <i id=#{user.id} class="fa fa-close fa-fw  del-coupon" rel='+el._id+' aria-hidden="true"></i></div>'
+                        );
+                      });
+                      $('.mycoupons').append('<br><strong><span class="coup-msg">Click "Mail All" then, check your email to get coupon codes<span></strong>');
+                    }
+                });
+            }
+        });
+
+
+        $(this).find('.fa-status').html('<i class="fa fa-plus-square fa-2x" aria-hidden="true" style="display:block;text-align:right"></i>');
+      });
+
+      $(document).on('click', ".del-coupon", function(event) {
+        //alert($(this).attr("rel"));
+        $('#'+$(this).attr("rel")).removeClass('couponclicked');
+        $('#'+$(this).attr("rel")).addClass('couponadd');
+        $.ajax({
+          type: "GET",
+          url: "/removecoupon/"+$(this).attr("id"),
+          success: function(data){
+            $.ajax({
+              type: "GET",
+              url: "/api/mycoupons/",
+              success: function(data){
+                $('.mycoupons').html('');
+                data.mycoupons.forEach(function(el) {
+                  $('.mycoupons').append(
+                    '<div class="coupon"><strong>'+el.name+'</strong>\
+                    <i id=#{user.id} class="fa fa-close fa-fw  del-coupon" rel='+el._id+' aria-hidden="true"></i></div>'
+                  );
+                });
+                $('.mycoupons').append('<br><strong><span class="coup-msg">Click "Mail All" then, check your email to get coupon codes<span></strong>');
+              }
+          });
+          }
         });
       });
-      function toggle_visibility(id) {
-        var e = document.getElementById(id);
-        e.style.display = ((e.style.display!='none') ? 'none' : '');
-      }
-      $(function() {
-        var options = {
-          url: function(phrase) {
-            return '/newsearch?search='+$('#search2').val()+'&lat='+pos.lat+'&lon='+pos.lng
-          },
-          getValue: function(element) {
-            return element.name;
-          },
-          list: {
-            onClickEvent: function() {
-              const item = $('#search2').getSelectedItemData().slug
-              navigator.geolocation.getCurrentPosition(function(position) {
-                var pos = {
-                  lat: position.coords.latitude,
-                  lng: position.coords.longitude
-                };
-                self.location = "/biz/"+item+"/?lat="+pos.lat+"&lon="+pos.lng;
-              });
-            } 
-          },
-          ajaxSettings: {
-            method: "GET"
-          }
-        };
-        var timer;      
-        $("#search2").easyAutocomplete(options);
-        $("#search2" ).focus();
+    });
+  
+
+  //script to toggle morecategories
+  script(type="text/javascript").
+
+      var pos = {
+        lat: '',
+        lng: ''
+      };
+
+    navigator.geolocation.getCurrentPosition(function(position) {
+        pos.lat = position.coords.latitude;
+        pos.lng = position.coords.longitude;
+    
+      $(".bizlink").each(function () {
+        let url =$(this).attr("href")
+        let newUrl = url+'?lon='+pos.lng+'&lat='+pos.lat;
+        $(this).attr("href", newUrl);
       });
+    });
+    function toggle_visibility(id) {
+      var e = document.getElementById(id);
+      e.style.display = ((e.style.display!='none') ? 'none' : '');
+    }
+    $(function() {
+      var options = {
+        url: function(phrase) {
+          return '/newsearch?search='+$('#search2').val()+'&lat='+pos.lat+'&lon='+pos.lng
+        },
+        getValue: function(element) {
+          return element.name;
+        },
+        list: {
+          onClickEvent: function() {
+            const item = $('#search2').getSelectedItemData().slug
+            navigator.geolocation.getCurrentPosition(function(position) {
+              var pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+              };
+              self.location = "/biz/"+item+"/?lat="+pos.lat+"&lon="+pos.lng;
+            });
+          } 
+        },
+        ajaxSettings: {
+          method: "GET"
+        }
+      };
+      var timer;      
+      $("#search2").easyAutocomplete(options);
+      $("#search2" ).focus();
+    });

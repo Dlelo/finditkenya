@@ -2319,15 +2319,15 @@ nav {
   z-index: 1;
 }
 .latest-review-imgwrapper{
-	width: fit-content;
-    height: fit-content;
-    position: relative;
-    margin-left: 20%;
-    margin-right: 10%;
+	width: 100%;
+    height: 50%;
+    position: 50%;
+    /* margin-left: 20%; */
+    /* margin-right: 10%; */
     overflow: hidden;
-	border-radius: 1%;
-	padding-top: 1rem;
-	display: block;
+    border-radius: 1%;
+    padding-top: 1rem;
+    display: block;
 }
 .latest-review-leftcol{
   padding-left:20px !important;

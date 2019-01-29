@@ -234,23 +234,15 @@ block content
             div.col-lg-12.col-md-12.col-sm-12.col-xs-12.latest-review.latest-review-main.latest-review-container.coupon-col
               a(href="/biz/"+review.bizid.slug)  
                 div.col-lg-12.col-md-12.col-sm-12.col-xs-12
-                  
-                img.img-fluid.latest-review-imgwrapper(src="/uploads/thumbs/cover"+ review.bizid.photo, alt=review.bizid.name+ ' on FindIt Kenya')
-                
-                div.col-lg-12.col-md-12.col-sm-12.col-xs-12
+                  strong
+                      =review.user_id.names
+                      |  , Says
+                  img.img-fluid.latest-review-imgwrapper(src="/uploads/thumbs/cover"+ review.bizid.photo, alt=review.bizid.name+ ' on FindIt Kenya')
                   h6.text-left
                     strong
                       =review.bizid.name
-                div.col-lg-12.col-md-12.col-sm-12.col-xs-12
                   small.text-center.content-col
                     |  #{review.length} Reviews
-                div.col-lg-12.col-md-12.col-sm-12.col-xs-12
-                    strong
-                      =review.user_id.names
-                      |  , Says
-                    div.col-lg-12.col-md-12.col-sm-12.col-xs-12
-                      i.the-review.content-col.content-col
-                        =review.message
                 div.col-12
 
                   p
@@ -304,7 +296,10 @@ block content
                                 i.star-empty
                                 i.star-half
                                 i.star-filled
-                      
+                div.col-lg-12.col-md-12.col-sm-12.col-xs-12
+                  div.col-lg-12.col-md-12.col-sm-12.col-xs-12
+                    i.the-review.content-col.content-col
+                      =review.message      
                   
                 .col-12.text-left.content-col
                   .small

@@ -298,7 +298,10 @@ block content
                 div.col-lg-12.col-md-12.col-sm-12.col-xs-12
                   div.col-lg-12.col-md-12.col-sm-12.col-xs-12
                     i.the-review.content-col.content-col
-                      =review.message      
+                      if review.message.length > 100
+                        p.padding.text-left.description-cat  !{review.message.substr(0, 100)+ '..... <strong id="showmore" style="color:#c00000;">Continue Reading</strong>'}
+                      else
+                        p.padding-p  !{review.message}
                   
                 .col-12.text-right.content-col
                   .small

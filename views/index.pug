@@ -72,8 +72,7 @@ block content
                           br
                           h6.card-title #{coupon.name}
                           p.card-text #{coupon.tagline}
-                          a.btn.btn-primary.btn-sm(href='/coupons')
-                            i.fa.fa-plus
+                          
                     .backside
                       .card
                         .card-body.text-center.mt-4
@@ -81,9 +80,9 @@ block content
                             strong
                               | !{'@  ' + coupon.bizid.name}
                           p.card-text #{coupon.description}
-                          a(href='/coupons')
-                            i.fa.fa-gift
-                            span View More coupons
+                          p
+                            a.btn.btn-primary.btn-sm(href='/coupons')
+                            i.fa.fa-plus View More Coupons
                           //ul.list-inline
                             li.list-inline-item
                               a.social-icon.text-xs-center(target='_blank' href='#')

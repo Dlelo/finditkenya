@@ -76,16 +76,17 @@ block content
                     .backside
                       .card
                         .card-body.text-center.mt-4
-                          h4.card-title(style="text-transform: capitalize;")
+                          .card-text #{coupon.tagline}
+                          h6.card-title(style="text-transform: capitalize;")
                             strong
                               | !{'@  ' + coupon.bizid.name}
-                          .card-text #{coupon.tagline}
                           p.card-text #{coupon.description}
-                          p
+                          div.text-center
                             .btn.btn-primary.btn-sm(href='/coupons')
                               i.fa.fa-plus 
                             a(href='/coupons')
-                              |     View More Coupons
+                              small
+                                strong  View More Coupons
                           
               
               //div  

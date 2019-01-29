@@ -165,6 +165,39 @@ block content
                     span.findit-blue
                       | See more Coupons
                   img.img-fluid.category-img-wrapper(src="/img/more_categories.png", alt="Find It Kenya - Find Anything and Everything", data-wow-delay="0.6s")                            
+        div(style="border-top: 1px solid #eee")
+          h2.agile-title.h-order-category.text-center
+            | Find Business by category
+          div.row.mt-sm-8.text-center
+            ins.adsbygoogle(style='display:block', data-ad-client='ca-pub-9965055906014205', data-ad-slot='7358207938', data-ad-format='auto')
+            script.
+              window.onload = function() {  (adsbygoogle = window.adsbygoogle || []).push({});}
+          div.row.mt-sm-8.text-center  
+            each category,i in categories
+              if(i < 4)
+                div.col-lg-3.col-md-3.col-sm-12.col-xm-12.w3-ab.my-md-0.my-sm-12
+                    a.bizlink(href="/category/"+category.name)
+                      div.w3-aicon.py-lg-5.py-md-3
+                          img.img-fluid.category-img-wrapper(src="/uploads/thumbs/categories/"+category.photo, alt=category.name +' on FindIt Kenya', data-wow-delay="0.6s")
+                          h6.my-3
+                          =category.name
+          div.row.mt-sm-8.text-center
+            each category,i in categories
+              if(i > 3 && i < 7)
+                div.col-lg-3.col-md-3.col-sm-12.col-xm-12.w3-ab.my-md-0.my-sm-12
+                  a.bizlink(href="/category/"+category.name)
+                    div.w3-aicon.py-lg-5.py-md-3
+                        img.img-fluid.category-img-wrapper(src="/uploads/thumbs/categories/"+category.photo, alt=category.name + ' on FindIt Kenya',data-wow-delay="0.6s")
+                        h6.my-3
+                          =category.name
+            div.col-lg-3.col-md-3.w3-ab.my-md-0.my-sm-8( onclick="toggle_visibility('expandcategories');")
+              a(href="#expandcategories")
+                  div.w3-aicon.py-lg-5.py-md-3
+                    button.btn.btn-light(type="button")
+                      span.findit-blue
+                        | More Categories
+                    img.img-fluid.category-img-wrapper(src="/img/more_categories.png", alt="Find It Kenya - Find Anything and Everything", data-wow-delay="0.6s")                            
+                      
         div.row#expandcategories( style="display:none; padding-top:5rem; border-top: 1px solid #eee")
           each category,i in categories
             div.col-md-4.col-sm-12.col-xs-12.morecat  

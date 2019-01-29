@@ -1972,9 +1972,17 @@ ul.portfolio-area li figure {
 	.typo-wthree h4 {
 		font-size: 1.7em;
 	}
+	.img-coupon{
+	height: auto;
+	width: 100%;
+}
 }
 
 @media screen and (max-width: 375px){
+	.img-coupon{
+	height: auto;
+	width: 100%;
+   }
 	.pat-space{
 	padding-right: 0 !important;
     }
@@ -2026,6 +2034,10 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 320px) {
+	.img-coupon{
+		height: auto;
+		width: 100%;
+		}
 	.pat-space{
 	padding-right: 0 !important;
     }
@@ -2865,6 +2877,10 @@ li.list-hor{
 .xxx{
 	margin-left: 0%;
     margin-right: 0%;
+}
+.img-coupon{
+	height: auto;
+	width: 100%;
 }
 
 }
@@ -5344,4 +5360,8 @@ button.close {
     width: 100%;
     height: auto;
     border-radius: 10%;
+}
+.img-coupon{
+	height: 150px;
+	width: 150px;
 }

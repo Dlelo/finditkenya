@@ -246,7 +246,7 @@ block content
           div.row.deal-main.deal-coup.row-eq-height.coupon(id=coupon.id,class=(coupon.users.some(function(x) { return x.user_id == user.id })) ? 'couponclicked' : 'couponadd', rel=user.id) 
             .card
               .row
-                .col-md-4
+                .col-md-4.col
                   img.p-3(src="/uploads/thumbs/coupons/"+ coupon.photo, style="height: 150px; width: 150px", alt=coupon.bizid.name +' on Findit Kenya')
                 .col-md-8.px-3
                   .card-block.px-3

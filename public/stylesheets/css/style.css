@@ -5341,7 +5341,7 @@ button.close {
 }
 
 .frontside .card .card-body img {
-    width: 120px;
-    height: 120px;
+    width: 100%;
+    height: auto;
     border-radius: 10%;
 }

@@ -5327,21 +5327,21 @@ button.close {
 
 .frontside .card,
 .backside .card {
-    min-height: 312px;
+    min-height: 250px;
 }
 
 .backside .card a {
-    font-size: 18px;
-    color: #007b5e !important;
+    font-size: 16px;
+    color: #c00000 !important;
 }
 
 .frontside .card .card-title,
 .backside .card .card-title {
-    color: #007b5e !important;
+    color: #04045a !important;
 }
 
 .frontside .card .card-body img {
     width: 120px;
     height: 120px;
-    border-radius: 50%;
+    border-radius: 10%;
 }

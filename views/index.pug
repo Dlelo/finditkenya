@@ -69,7 +69,8 @@ block content
                         .card-body.text-center
                           p
                             img.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name+ ' on FindIt Kenya')
-                          h4.card-title #{coupon.name}
+                          br
+                          h6.card-title #{coupon.name}
                           p.card-text #{coupon.tagline}
                           a.btn.btn-primary.btn-sm(href='/coupons')
                             i.fa.fa-plus

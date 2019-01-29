@@ -247,10 +247,10 @@ block content
             .card
               .row
                 .col-md-4
-                  img.w-100(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name +' on Findit Kenya')
+                  img.p-3(src="/uploads/thumbs/coupons/"+ coupon.photo, style="height: 150px; width: 150px", alt=coupon.bizid.name +' on Findit Kenya')
                 .col-md-8.px-3
                   .card-block.px-3
-                    h4.card-title #{coupon.name}
+                    h4.card-title(style="padding-top:2px") #{coupon.name}
                     p.card-text
                       h6
                       small

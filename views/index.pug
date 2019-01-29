@@ -62,6 +62,44 @@ block content
           each coupon,i in coupons
             if(i < 4)
               div.col-lg-3.col-md-3.col-sm-12.col-xm-12.w3-ab.my-md-0.my-sm-12.coup-container
+                .image-flip(ontouchstart="this.classList.toggle('hover');")
+                  .mainflip
+                    .frontside
+                      .card
+                        .card-body.text-center
+                          p
+                            img.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name+ ' on FindIt Kenya')
+                          h4.card-title #{coupon.name}
+                          p.card-text #{coupon.tagline}
+                          a.btn.btn-primary.btn-sm(href='/coupons')
+                            i.fa.fa-plus
+                    .backside
+                      .card
+                        .card-body.text-center.mt-4
+                          h4.card-title 
+                            strong
+                              | !{'@  ' + coupon.bizid.name}
+                          p.card-text
+                            =coupon.description
+                          a.btn.btn-primary.btn-sm(href='/coupons')
+                            i.fa.fa-gift
+                            span 
+                              a(href="/") View More coupons
+                          //ul.list-inline
+                            li.list-inline-item
+                              a.social-icon.text-xs-center(target='_blank' href='#')
+                                i.fa.fa-facebook
+                            li.list-inline-item
+                              a.social-icon.text-xs-center(target='_blank' href='#')
+                                i.fa.fa-twitter
+                            li.list-inline-item
+                              a.social-icon.text-xs-center(target='_blank' href='#')
+                                i.fa.fa-skype
+                            li.list-inline-item
+                              a.social-icon.text-xs-center(target='_blank' href='#')
+                                i.fa.fa-google
+              
+              //div  
                 div.w3-aicon.py-md-3
                   h6.my-3
                     span.findit-blue

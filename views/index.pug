@@ -237,7 +237,7 @@ block content
                   strong
                       =review.user_id.names
                       |  , Says
-                  img.img-fluid.category-img-wrapper(src="/uploads/thumbs/cover"+ review.bizid.photo, alt=review.bizid.name+ ' on FindIt Kenya')
+                  img.img-fluid(src="/uploads/thumbs/cover"+ review.bizid.photo, height="300px" alt=review.bizid.name+ ' on FindIt Kenya')
                   h6.text-center
                     strong
                       =review.bizid.name
@@ -299,13 +299,14 @@ block content
                   div.col-lg-12.col-md-12.col-sm-12.col-xs-12
                     i.the-review.content-col.content-col
                       if review.message.length > 100
-                        p !{review.message.substr(0, 100)+ '..... <strong id="showmore" style="color:#c00000;">Continue Reading</strong>'}
+                        | !{review.message.substr(0, 100)+ '..... <strong id="showmore" style="color:#c00000;">Continue Reading</strong>'}
                       else
-                        p !{review.message}
+                        | !{review.message}
                   
                 .col-12.text-right.content-col
                   .small
-                    =review.created_at
+                    p !{review.created_at}
+                    
         //div.text-center  
           a.bizlink(href="#expandcategories") 
             row.deal-main.column.text-center( onclick="toggle_visibility('expandcategories');")

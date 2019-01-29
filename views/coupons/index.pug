@@ -239,10 +239,11 @@ block content
                 span.strong
                   | Email. 
   
-    .row.deal-main(style="padding-left: 4rem; padding-right: 4rem; background-color: #f9f9f9;")
+    //.row.deal-main(style="padding-left: 4rem; padding-right: 4rem; background-color: #f9f9f9;")
+    .row.deal-main(style="background-color: #f9f9f9;")  
       each coupon, i in coupons
         div.col-md-3.all.well(class=coupon.bizid.subcategory)
-          div.row.deal-main.deal-coup.coupon-items.row-eq-height.coupon(id=coupon.id,class=(coupon.users.some(function(x) { return x.user_id == user.id })) ? 'couponclicked' : 'couponadd', rel=user.id) 
+          div.row.deal-main.deal-coup.row-eq-height.coupon(id=coupon.id,class=(coupon.users.some(function(x) { return x.user_id == user.id })) ? 'couponclicked' : 'couponadd', rel=user.id) 
               .div.col-md-12.col-sm-12.col-xs-12
                 strong
                   h3                  

@@ -71,7 +71,7 @@ block content
                             img.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name+ ' on FindIt Kenya')
                           br
                           h6.card-title(style="text-transform: capitalize;") #{coupon.name}
-                          p.card-text #{coupon.tagline}
+                          
                           
                     .backside
                       .card
@@ -79,6 +79,7 @@ block content
                           h4.card-title(style="text-transform: capitalize;")
                             strong
                               | !{'@  ' + coupon.bizid.name}
+                          .card-text #{coupon.tagline}
                           p.card-text #{coupon.description}
                           p
                             .btn.btn-primary.btn-sm(href='/coupons')

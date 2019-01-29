@@ -213,11 +213,11 @@ block content
             each category,i in categories
               if(i < 4)
                 div.col-lg-3.col-md-3.col-sm-12.col-xm-12.w3-ab.my-md-0.my-sm-12
-                    a.bizlink(href="/category/"+category.name)
-                      div.w3-aicon.py-lg-5.py-md-3
-                          img.img-fluid.category-img-wrapper(src="/uploads/thumbs/categories/"+category.photo, alt=category.name +' on FindIt Kenya', data-wow-delay="0.6s")
-                          h6.my-3
-                          =category.name
+                  a.bizlink(href="/category/"+category.name)
+                    div.w3-aicon.py-lg-5.py-md-3
+                        img.img-fluid.category-img-wrapper(src="/uploads/thumbs/categories/"+category.photo, alt=category.name +' on FindIt Kenya', data-wow-delay="0.6s")
+                        h6.my-3
+                        =category.name
           div.row.mt-sm-8.text-center
             each category,i in categories
               if(i > 3 && i < 7)
@@ -423,6 +423,54 @@ block content
                   | Shop Products
                 .card-text
                   | Coming Soon...
+    script(type="text/javascript").
+        var pos = {
+          lat: '',
+          lng: ''
+        };
+
+      navigator.geolocation.getCurrentPosition(function(position) {
+          pos.lat = position.coords.latitude;
+          pos.lng = position.coords.longitude;
+      
+        $(".bizlink").each(function () {
+          let url =$(this).attr("href")
+          let newUrl = url+'?lon='+pos.lng+'&lat='+pos.lat;
+          $(this).attr("href", newUrl);
+        });
+      });
+      function toggle_visibility(id) {
+        var e = document.getElementById(id);
+        e.style.display = ((e.style.display!='none') ? 'none' : '');
+      }
+      $(function() {
+        var options = {
+          url: function(phrase) {
+            return '/newsearch?search='+$('#search2').val()+'&lat='+pos.lat+'&lon='+pos.lng
+          },
+          getValue: function(element) {
+            return element.name;
+          },
+          list: {
+            onClickEvent: function() {
+              const item = $('#search2').getSelectedItemData().slug
+              navigator.geolocation.getCurrentPosition(function(position) {
+                var pos = {
+                  lat: position.coords.latitude,
+                  lng: position.coords.longitude
+                };
+                self.location = "/biz/"+item+"/?lat="+pos.lat+"&lon="+pos.lng;
+              });
+            } 
+          },
+          ajaxSettings: {
+            method: "GET"
+          }
+        };
+        var timer;      
+        $("#search2").easyAutocomplete(options);
+        $("#search2" ).focus();
+      });
 
     script(type="text/javascript").
       $(function() {
@@ -489,6 +537,7 @@ block content
               }
           });
       });
+  
  //Script for selecting coupons       
  //-script(type='text/javascript').
     //(function($) {
@@ -612,53 +661,5 @@ block content
     });
   
 
-  //script to toggle morecategories
-  script(type="text/javascript").
-
-      var pos = {
-        lat: '',
-        lng: ''
-      };
-
-    navigator.geolocation.getCurrentPosition(function(position) {
-        pos.lat = position.coords.latitude;
-        pos.lng = position.coords.longitude;
-    
-      $(".bizlink").each(function () {
-        let url =$(this).attr("href")
-        let newUrl = url+'?lon='+pos.lng+'&lat='+pos.lat;
-        $(this).attr("href", newUrl);
-      });
-    });
-    function toggle_visibility(id) {
-      var e = document.getElementById(id);
-      e.style.display = ((e.style.display!='none') ? 'none' : '');
-    }
-    $(function() {
-      var options = {
-        url: function(phrase) {
-          return '/newsearch?search='+$('#search2').val()+'&lat='+pos.lat+'&lon='+pos.lng
-        },
-        getValue: function(element) {
-          return element.name;
-        },
-        list: {
-          onClickEvent: function() {
-            const item = $('#search2').getSelectedItemData().slug
-            navigator.geolocation.getCurrentPosition(function(position) {
-              var pos = {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
-              };
-              self.location = "/biz/"+item+"/?lat="+pos.lat+"&lon="+pos.lng;
-            });
-          } 
-        },
-        ajaxSettings: {
-          method: "GET"
-        }
-      };
-      var timer;      
-      $("#search2").easyAutocomplete(options);
-      $("#search2" ).focus();
-    });
+//script to toggle morecategories
+  

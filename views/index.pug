@@ -221,21 +221,14 @@ block content
                     a.bizlink(href="/category/"+category.name)
                       strong
                         | See more 
-                    
-                  
-                  
-                                      
-                            
-                
-        // Latest review
-        div.border-bottom
        
-        div.row.latest-review
-          if(reviews.length>1)
-            div.col-12.my-col
-              h2.agile-title.h-order-category.text-center
-                | Latest Reviews
-          
+        
+      div.col-lg-4.col-md-4.col-sm-6.col-xs-6.text-center
+        div
+          h2.agile-title.h-order-category.text-center
+            | Latest reviews
+            // Categories
+        div
           each review, i in reviews
            if i<4
             div.col-lg-5.col-md-5.col-sm-12.col-xs-12.latest-review.latest-review-main.latest-review-container.coupon-col
@@ -316,25 +309,7 @@ block content
                 .col-12.text-left.content-col
                   .small
                     =review.created_at
-        
-      div.col-lg-4.col-md-4.col-sm-6.col-xs-6.text-center
-        div
-          h2.agile-title.h-order-category.text-center
-            | Find by Category
-            // Categories
-        div.text-center
-          each category,i in categories
-            if(i < 5)
-              a.bizlink(href="/category/"+category.name)
-                row.deal-main.column.text-center 
-                  a.bizlink(href="/category/"+category.name)
-                    .div.col-md-12.col-sm-12.col-xs-12
-                      .div.w3-aicon.py-lg-12.py-md-12
-                        h6.my-3
-                          span.findit-blue
-                            =category.name
-                        img.img-fluid(src="/uploads/thumbs/categories/"+category.photo, alt=category.name +' on FindIt Kenya', data-wow-delay="0.6s")
-        div.text-center  
+        //div.text-center  
           a.bizlink(href="#expandcategories") 
             row.deal-main.column.text-center( onclick="toggle_visibility('expandcategories');")
               .div.col-md-12.col-sm-12.col-xs-12

@@ -70,13 +70,13 @@ block content
                           p
                             img.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name+ ' on FindIt Kenya')
                           br
-                          h6.card-title #{coupon.name}
+                          h6.card-title(style="text-transform: capitalize;") #{coupon.name}
                           p.card-text #{coupon.tagline}
                           
                     .backside
                       .card
                         .card-body.text-center.mt-4
-                          h4.card-title 
+                          h4.card-title(style="text-transform: capitalize;")
                             strong
                               | !{'@  ' + coupon.bizid.name}
                           p.card-text #{coupon.description}

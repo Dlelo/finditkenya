@@ -245,8 +245,7 @@ block content
                     |  #{review.length} Reviews
                 div.col-12
 
-                  p
-                    
+                  p 
                     if reviews
                       if( reviews.length == 1) 
                         .col-md-6(class="rating medium star-icon value-"+review.star+" label-hidden")
@@ -273,7 +272,7 @@ block content
                               i.star-filled
                         
                       else if( reviews.length > 1)
-                        span.glyphicon.glyphicon-cog.glyph.border
+                        span
                           div(class="rating medium star-icon value-"+review.star+" label-hidden")
                             .star-container
                               .star

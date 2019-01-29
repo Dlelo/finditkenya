@@ -235,8 +235,9 @@ block content
               a(href="/biz/"+review.bizid.slug)  
                 div.col-lg-12.col-md-12.col-sm-12.col-xs-12
                   strong
-                      =review.user_id.names
-                      |  , Says
+                    =review.user_id.names
+                    |  , Says
+                  br
                   img.img-fluid(src="/uploads/thumbs/cover"+ review.bizid.photo, height="300px" alt=review.bizid.name+ ' on FindIt Kenya')
                   h6.text-center
                     strong

@@ -238,52 +238,58 @@ block content
                   | and 
                 span.strong
                   | Email. 
-  
+  .container-fluid(style="padding-right: 3%; padding-left: 3%;")
     //.row.deal-main(style="padding-left: 4rem; padding-right: 4rem; background-color: #f9f9f9;")
     .row.deal-main(style="background-color: #f9f9f9;")  
       each coupon, i in coupons
-        div.col-md-3.all.well(class=coupon.bizid.subcategory)
+        div.col-md-4.all.well(class=coupon.bizid.subcategory)
           div.row.deal-main.deal-coup.row-eq-height.coupon(id=coupon.id,class=(coupon.users.some(function(x) { return x.user_id == user.id })) ? 'couponclicked' : 'couponadd', rel=user.id) 
-            //.card
+            .card
               .row
                 .col-md-4
                   img.w-100(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name +' on Findit Kenya')
                 .col-md-8.px-3
                   .card-block.px-3
-                    h4.card-title Lorem ipsum dolor sit amet
+                    h4.card-title #{coupon.name}
                     p.card-text
-                      | Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    p.card-text
-                      | Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    a.btn.btn-primary(href='#') Read More
+                      h6
+                      small
+                        strong
+                          | @       
+                          =coupon.bizid.name
+                    p.card-text 
+                      small #{coupon.description}
+                    p.card-text 
+                      small #{coupon.tagline}
+                    a.btn.btn-primary.clipped  Clipped 
 
             
             
             
             //old  
-            .div.col-md-12.col-sm-12.col-xs-12
-              strong
-                h3                  
-                = coupon.name
-            .div.col-md-12.col-lg-12.col-sm-12.col-xs-12
-                img.coup-img-wrapper.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name +' on Findit Kenya')
-                .div.col-md-12.col-lg-12.col-sm-12.col-xs-12.float-left 
-                  h6
-                    small
-                      strong
-                        | @       
-                        =coupon.bizid.name
-                
-                .div.col-md-12.col-lg-12.col-sm-12.col-xs-12.float-left
-                    =coupon.description
+              .div.col-md-12.col-sm-12.col-xs-12
+                strong
+                  h3                  
+                  = coupon.name
+              .div.col-md-12.col-lg-12.col-sm-12.col-xs-12
+                  img.coup-img-wrapper.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name +' on Findit Kenya')
+                  .div.col-md-12.col-lg-12.col-sm-12.col-xs-12.float-left 
+                    h6
+                      small
+                        strong
+                          | @       
+                          =coupon.bizid.name
                   
-                .div.col-md-12.col-lg-12.col-sm-12.col-xs-12.center-left(style='color: #04045a;')
-                  =coupon.tagline 
-            .div.col-md-6.col-sm-12.col-xs-12.clipped.float-center
-              button.btn.btn.danger
-                | Clipped  
-                
-                
+                  .div.col-md-12.col-lg-12.col-sm-12.col-xs-12.float-left
+                      =coupon.description
+                    
+                  .div.col-md-12.col-lg-12.col-sm-12.col-xs-12.center-left(style='color: #04045a;')
+                    =coupon.tagline 
+              .div.col-md-6.col-sm-12.col-xs-12.clipped.float-center
+                button.btn.btn.danger
+                  | Clipped  
+                  
+                  
   script(src='/javascripts/bootstrapjs/filter-gallery.js')          
   //Script for selecting coupons       
   script(type='text/javascript').

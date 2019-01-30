@@ -5,8 +5,16 @@ block content
   #home.parallax-content-list.baner-content-listing-biz
     .container-fluid.container-margin-top(style="margin-top:0;")
       section#couponBanner
-        h4#couponBannerTitle How to use the Coupons
-        p#couponBannerDescription Obtaining coupons from Findit is the fastest and easiest way to save money!
+        //h4#couponBannerTitle How to use the Coupons
+        p#couponBannerDescription 
+          span.h4.coupon-title-start
+            | Free Coupons & Deals 
+          span.h6
+            |  are available for you! Just 
+          span.strong
+            | Click to save,  
+          span.strong
+            | Email.
         ul#couponBannerStepsWrapper
           li#couponBannerClickTile.couponBannerTile
             p.couponBannerTileText Click Coupon to obtain
@@ -105,15 +113,16 @@ block content
               div
                 .mycoupons#coupons-sticky
   .container-fluid
-    nav.navbar(style="background-color: #d8d8d8;")
+    nav.navbar(style="background: #ededed; background: linear-gradient(to bottom,hsl(0,0%,93%) 0,hsl(0,0%,95%) 30%,hsl(0,0%,95%) 70%,hsl(0,0%,93%) 100%);")
       .navbar-brand 
         .nav-item.dropdown.open
           button.btn.btn-cat.btn-light.form-control.dropdown-toggle(type='button', data-toggle='dropdown')
             h5.coupon-title
-              span.i.fas.fa-filter
-              span    Filter Coupons by Category
+              span
+                h6 Filter Coupons by Category
+                span.i.fas.fa-caret
               
-            span.caret
+            
           div#items.dropdown-menu.open.sub-catbag.dropdown-menu-coupon
             
             if groups 
@@ -138,11 +147,8 @@ block content
                   strong
                     =mycoupons.length
             span.text-center 
-              strong      coupon(s). 
-              span
-                strong.findit-blue   Click here
-              span
-                strong   to Redeem Coupon(s)            
+              strong      coupon(s) obtained. 
+                          
 
 
         div#myModal.modal
@@ -233,7 +239,7 @@ block content
             form.form-class(method='get', action='/search')
               div.input-group
                 input.search2.form-control-lg(type="text" placeholder="Businesses, Doctors, Lawyers, Hotels" ,style="width:100% !important" ,name='search', autofocus)              
-  .container-fluid(style="background-color: #f9f9f9;")        
+  //.container-fluid(style="background-color: #f9f9f9;")        
     .row.deal-main.text-center
       .col-md-12.col-sm-12.col-xs-12
               div.text-center

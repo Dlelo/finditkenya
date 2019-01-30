@@ -135,18 +135,22 @@ block content
                     strong  
                       =group._id + " (" + group.count + ")"
       .nav-item
-        #myBtn  
-          img(src="/img/coup.png")
-          span
-            .badge.badge-light  
-              #couponscount(style="color:#c00000")
-                h5 
-                  strong
-                    =mycoupons.length
-            span.text-center 
-              strong      coupon(s) obtained. 
-                          
+        #myBtn
+          button.coupon-button.mail-button
+            span.title
+              i.far.fa-envelop
+            span.number
+              img(src="/img/coup.png")
+              span
+                .badge
+                  #couponscount
+                    h5 
+                      strong
+                        =mycoupons.length
 
+          
+          span.text-center 
+              strong      coupon(s) obtained. 
 
         div#myModal.modal
           div.modal-content(style=" width: 60%;")
@@ -169,6 +173,8 @@ block content
                   h6
                     i(class="fa fa-envelope fa-fw" aria-hidden="true")
                     | Click here to receive all Coupons in your email
+      
+          
       .nav-item
         form.form-inline#searchCoup.form-class(method='get', action='/search')
           .input-group

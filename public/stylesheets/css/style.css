@@ -5460,7 +5460,7 @@ button.close {
     position: static;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: bold;
-    color: #fff;
+    /*color: #fff;*/
     font-size: 13px;
     border-radius: 3px;
     background: #c00000;
@@ -5482,7 +5482,7 @@ button.close {
     margin-top: 2px;
     padding: 0 15px;
 }
-.number.badge {
+.badge {
     display: inline-block;
     padding: .25em .2em;
     font-size: 28px;

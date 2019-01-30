@@ -244,7 +244,7 @@ block content
       each coupon, i in coupons
         div.col-md-4.all.well(class=coupon.bizid.subcategory)
           div.row.deal-main.deal-coup.row-eq-height.coupon(id=coupon.id,class=(coupon.users.some(function(x) { return x.user_id == user.id })) ? 'couponclicked' : 'couponadd', rel=user.id) 
-            .card
+            .card(style="border:none;")
               .row
                 .col-md-4.col
                   img.p-3.img-coupon(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name +' on Findit Kenya')

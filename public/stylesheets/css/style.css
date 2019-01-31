@@ -2666,7 +2666,7 @@ li.list-hor{
 	}
 	.container-margin-top {
 	margin-top: 0 !important;
-	padding-top: 0 !important;
+	padding-top: 3.5rem !important;
      }
 	.img-logo {
 	  width: 10rem !important;
@@ -3619,7 +3619,7 @@ fieldset, label {
 	padding-bottom:0.5rem !important;
 }
 .container-margin-top{
-	padding-top: 5rem;
+	padding-top: 3.5rem;
 }
 /****** Style Star Rating Widget *****/
 

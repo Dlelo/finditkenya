@@ -5,7 +5,7 @@ body {
 	font-family: sans-serif;
 	margin: 0;
 	background:#fff;
-	font-size: 1.2em;
+	font-size: 1.1em;
 }
 /*background:#fafbfc;*/
 /*font-family:'Source Sans Pro','Lato','open sans','Roboto', sans-serif;*/
@@ -37,7 +37,7 @@ h6 {
 p {
 	margin: 0;
 	color: #777;
-	font-size: 1.2em;
+	font-size: 1.1em;
 	line-height: 1.6;
 }
 
@@ -100,7 +100,7 @@ body a:focus {
 /* Main content */
 .main {
     margin-left: 200px; /* Same as the width of the sidenav */
-    font-size: 1.2em; /* Increased text to enable scrolling */
+    font-size: 1.1em; /* Increased text to enable scrolling */
     padding: 0px 10px;
 }
 

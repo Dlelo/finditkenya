@@ -1926,6 +1926,9 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 384px) {
+	.couponBannerTile:after {
+		display:none !important;
+	}
 	.coupon-banner{
 		margin-top:0;
 	}
@@ -1982,6 +1985,9 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 375px){
+	.couponBannerTile:after {
+		display:none !important;
+	}
 	.coupon-banner{
 		margin-top:0;
 	}
@@ -2040,6 +2046,9 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 320px) {
+	.couponBannerTile:after {
+		display:none !important;
+	}
 	.coupon-banner{
 		margin-top:0;
 	}
@@ -2730,6 +2739,13 @@ li.list-hor{
 
 
 @media screen and (max-width: 384px) {
+	.couponBannerTile:after {
+		display:none !important;
+	}
+	.couponBannerTileText {
+		margin-top: 5rem !important;
+		font-size: 12px !important;
+	}
 	.coupon-banner{
 		margin-top:0;
 	}
@@ -2803,6 +2819,13 @@ li.list-hor{
 
 
 @media screen and (max-width: 375px) {
+	.couponBannerTile:after {
+		display:none !important;
+	}
+		.couponBannerTileText {
+			margin-top: 5rem !important;
+			font-size: 12px !important;
+		}
 	.logo-res{
 	  width:30%
 	}
@@ -2898,6 +2921,13 @@ li.list-hor{
 }
 
 @media screen and (max-width: 320px) {
+	.couponBannerTile:after {
+		display:none !important;
+	}
+	.couponBannerTileText {
+		margin-top: 5rem !important;
+		font-size: 12px !important;
+	}
 	.logo-res{
 	  width:30%
 	}

@@ -365,7 +365,7 @@ block content
                       $('.mycoupons').html('');
                       carray.forEach(function(el) {
                         $('.mycoupons').append(
-                          '<div class="coupon coupon-modal"><img src="/uploads/thumbs/coupons/"+ 'el.photo', alt='el.name' + ' on Findit Kenya'><strong>'+el.name+'</strong>\
+                          '<div class="coupon coupon-modal"><strong>'+el.name+'</strong>\
                           <i id=#{user.id} class="fa fa-close fa-fw text-right  del-coupon" rel='+el._id+' aria-hidden="true">Remove</i></div>'
                         );
                       }); 

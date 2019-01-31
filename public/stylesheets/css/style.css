@@ -3932,7 +3932,7 @@ input, textarea, select, button {
 	visibility:hidden !important;
 }
 .navbar-brand {
-	padding-top: .1125rem !important;
+	padding-top: 1rem !important;
 }
 .fa-style{
 	background-color: #04045a;

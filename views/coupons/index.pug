@@ -166,7 +166,6 @@ block content
               .mycoupons#coupons-sticky
                 each mycoupon in mycoupons
                   .coupon.coupon-modal
-                  
                     strong 
                       img(src="/uploads/thumbs/coupons/"+ mycoupon.photo, alt=mycoupon.bizid.name +' on Findit Kenya')
                       span  
@@ -364,8 +363,8 @@ block content
                       $('.mycoupons').html('');
                       carray.forEach(function(el) {
                         $('.mycoupons').append(
-                          '<div class="coupon coupon-modal"><strong>'+el.name+'</strong>\
-                          <i id=#{user.id} class="fa fa-close fa-fw text-right  del-coupon" rel='+el._id+' aria-hidden="true"></i></div>'
+                          '<div class="coupon coupon-modal"><img src="/uploads/thumbs/coupons/"+ 'el.photo', alt='el.name' + ' on Findit Kenya'><strong>'+el.name+'</strong>\
+                          <i id=#{user.id} class="fa fa-close fa-fw text-right  del-coupon" rel='+el._id+' aria-hidden="true">Remove</i></div>'
                         );
                       }); 
                       $('.mycoupons').append( '<br><strong><span class="coup-msg">Click "Mail All" then, check your email to get coupon codes<span></strong>');             

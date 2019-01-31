@@ -1926,6 +1926,9 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 384px) {
+	.coupon-banner{
+		margin-top:0;
+	}
 	.container-ad .arrow{
 		display:none;
 	}
@@ -1979,6 +1982,9 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 375px){
+	.coupon-banner{
+		margin-top:0;
+	}
 	.img-coupon{
 	height: auto !important;
 	width: 100% !important;
@@ -2034,6 +2040,9 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 320px) {
+	.coupon-banner{
+		margin-top:0;
+	}
 	.img-coupon{
 		height: auto !important;
 		width: 100% !important;
@@ -2721,6 +2730,9 @@ li.list-hor{
 
 
 @media screen and (max-width: 384px) {
+	.coupon-banner{
+		margin-top:0;
+	}
 	.logo-res{
 	  width:30%
 	}
@@ -5490,4 +5502,7 @@ button.close {
     vertical-align: baseline;
 	border-radius: .25rem;
 	font-weight:800;
+}
+.coupon-banner{
+  margin-top: 3rem;
 }

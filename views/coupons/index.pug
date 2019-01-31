@@ -136,8 +136,10 @@ block content
                       =group._id + " (" + group.count + ")"
       .nav-item
         #myBtn
+          span.text-center 
+              strong      Checkout Now!
           button.coupon-button.mail-button
-            span.title
+            //span.title
               i.far.fa-envelop
             span.number
               img(src="/img/coup.png")
@@ -164,9 +166,16 @@ block content
               .mycoupons#coupons-sticky
                 each mycoupon in mycoupons
                   .coupon.coupon-modal
+                  
                     strong 
-                      =mycoupon.name
-                    i.fa.fa-close.fa-fw.text-right.del-coupon(rel=mycoupon._id, aria-hidden='true',id=user.id)
+                      img(src="/uploads/thumbs/coupons/"+ mycoupon.photo, alt=mycoupon.bizid.name +' on Findit Kenya')
+                      span  
+                        strong #{mycoupon.name}
+                      span
+                        p #{mycoupon.tagline}
+                      span
+                        p #{mycoupon.description}
+                      i.fa.fa-close.fa-fw.text-right.del-coupon(rel=mycoupon._id, aria-hidden='true',id=user.id)
             div
                 strong
                 a(href="/admin/email/coupons" class="text-center")

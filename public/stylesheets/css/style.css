@@ -2205,7 +2205,7 @@ ul.portfolio-area li figure {
 /* -- //Responsive code -- */
 .flash-button{
 	margin-right: 1rem;
-	margin-top:1rem;
+	margin-top: 1rem;
 	background:#04045a;
 	padding: 3px 3px 3px 3px;
 	color:#fff;
@@ -2664,7 +2664,7 @@ li.list-hor{
 		padding-top:1rem;
 	}
 	.container-margin-top {
-	margin-top: 0rem !important;
+	margin-top: 0 !important;
 	padding-top: 0 !important;
      }
 	.img-logo {
@@ -2932,7 +2932,7 @@ li.list-hor{
 	  width:30%
 	}
 	.container-margin-top {
-    margin-top: 4vh !important;
+    padding-top: 0 !important;
    }
 	.img-logo {
 	  width: 10rem !important;
@@ -3618,8 +3618,7 @@ fieldset, label {
 	padding-bottom:0.5rem !important;
 }
 .container-margin-top{
-	margin-top:7vh;
-	padding-top: 1rem;
+	padding-top: 5rem;
 }
 /****** Style Star Rating Widget *****/
 
@@ -3660,6 +3659,7 @@ fieldset, label {
 
 #showSearch{
 	visibility:hidden;
+	padding-top: 1rem;
 }
 .form-class{
 	flex-grow: 1;

@@ -4348,6 +4348,9 @@ section.the-products.items .item .item-info ul.price {
   box-shadow: 1px 0 1px 0 #eee;
 }
 @media (min-width: 768px) {
+	.coupResp .col-md-4 .col-md-8{
+	   max-width: 100%;
+	}
 
     /* show 3 items */
     #carouselExample .carousel-inner .active,

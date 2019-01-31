@@ -125,6 +125,9 @@ body a:focus {
 
 /* Some media queries for responsiveness */
 @media screen and (max-height: 450px) {
+	#couponBannerClickTile:before, #couponBannerEarnTile:before, #couponBannerShopTile:before{
+	height: 3rem !important;
+	}
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
 }
@@ -1776,6 +1779,9 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 480px) {
+	#couponBannerClickTile:before, #couponBannerEarnTile:before, #couponBannerShopTile:before{
+		height: 3rem !important;
+		}
 	.pat-space{
 	padding-right: 0 !important;
     }
@@ -1860,6 +1866,9 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 414px) {
+	#couponBannerClickTile:before, #couponBannerEarnTile:before, #couponBannerShopTile:before{
+	height: 3rem !important;
+	}
 	.pat-space{
 	padding-right: 0 !important;
     }
@@ -1927,6 +1936,9 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 384px) {
+	#couponBannerClickTile:before, #couponBannerEarnTile:before, #couponBannerShopTile:before{
+	  height: 3rem !important;
+	}
 	.couponBannerTile:after {
 		display:none !important;
 	}
@@ -1986,6 +1998,9 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 375px){
+	#couponBannerClickTile:before, #couponBannerEarnTile:before, #couponBannerShopTile:before{
+	height: 3rem !important;
+	}
 	.couponBannerTile:after {
 		display:none !important;
 	}
@@ -2047,6 +2062,9 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 320px) {
+	#couponBannerClickTile:before, #couponBannerEarnTile:before, #couponBannerShopTile:before{
+	  height: 3rem !important;
+	}
 	.couponBannerTile:after {
 		display:none !important;
 	}
@@ -2119,6 +2137,9 @@ ul.portfolio-area li figure {
 	}
 }
 @media screen and (max-width: 568px){
+	#couponBannerClickTile:before, #couponBannerEarnTile:before, #couponBannerShopTile:before{
+	   height: 3rem !important;
+	}
 	.category-zindex {
          z-index: 80 !important;
      }
@@ -5545,7 +5566,4 @@ button.close {
 }
 .tognavButton{
    margin-top: 1rem;
-}
-#couponBannerClickTile:before, #couponBannerEarnTile:before, #couponBannerShopTile:before{
-  height: 3rem;
 }

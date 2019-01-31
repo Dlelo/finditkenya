@@ -1930,7 +1930,7 @@ ul.portfolio-area li figure {
 		display:none !important;
 	}
 	.coupon-banner{
-		margin-top:0;
+		margin-top:0 !important;
 	}
 	.container-ad .arrow{
 		display:none;
@@ -1989,7 +1989,7 @@ ul.portfolio-area li figure {
 		display:none !important;
 	}
 	.coupon-banner{
-		margin-top:0;
+		margin-top:0 !important;
 	}
 	.img-coupon{
 	height: auto !important;
@@ -2050,7 +2050,7 @@ ul.portfolio-area li figure {
 		display:none !important;
 	}
 	.coupon-banner{
-		margin-top:0;
+		margin-top:0 !important;
 	}
 	.img-coupon{
 		height: auto !important;
@@ -2747,7 +2747,7 @@ li.list-hor{
 		font-size: 12px !important;
 	}
 	.coupon-banner{
-		margin-top:0;
+		margin-top:0 !important;
 	}
 	.logo-res{
 	  width:30%

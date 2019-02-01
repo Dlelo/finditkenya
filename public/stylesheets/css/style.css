@@ -5511,10 +5511,10 @@ button.close {
 }
 
 #couponBannerShopTile:before {
-    background-image: url(/img/email-coupon-icon.png);
+    background-image: url(/img/shop-step-coupon-icon.min.svg);
 }
 #couponBannerEarnTile:before {
-    background-image: url(/img/shop-step-coupon-icon.min.svg);
+    background-image: url(/img/email-coupon-icon.png);
 }
 /*.coupon-button.mail-button {
     display: inline-block;

@@ -134,8 +134,34 @@ block content
                                       span     km away
                               li
                                 if biz.reviews
-                                  if(biz.reviews.length == 1) 
-                                    .col-md-6(class="rating medium star-icon value-"+review.star+" label-hidden")
+                                if(biz.reviews.length == 1) 
+                                  .col-md-6(class="rating medium star-icon value-"+review.star+" label-hidden")
+                                    .star-container
+                                      .star
+                                        i.star-empty
+                                        i.star-half
+                                        i.star-filled
+                                      .star
+                                        i.star-empty
+                                        i.star-half
+                                        i.star-filled
+                                      .star
+                                        i.star-empty
+                                        i.star-half
+                                        i.star-filled
+                                      .star
+                                        i.star-empty
+                                        i.star-half
+                                        i.star-filled
+                                      .star
+                                        i.star-empty
+                                        i.star-half
+                                        i.star-filled
+                                  small
+                                      | #{biz.reviews.length} Review  
+                                else if(bizreviews.length > 1)
+                                  span
+                                    div(class="rating medium star-icon value-"+review.star+" label-hidden")
                                       .star-container
                                         .star
                                           i.star-empty
@@ -157,31 +183,6 @@ block content
                                           i.star-empty
                                           i.star-half
                                           i.star-filled
-                                    
-                                  else if( bizreviews.length > 1)
-                                    span
-                                      div(class="rating medium star-icon value-"+review.star+" label-hidden")
-                                        .star-container
-                                          .star
-                                            i.star-empty
-                                            i.star-half
-                                            i.star-filled
-                                          .star
-                                            i.star-empty
-                                            i.star-half
-                                            i.star-filled
-                                          .star
-                                            i.star-empty
-                                            i.star-half
-                                            i.star-filled
-                                          .star
-                                            i.star-empty
-                                            i.star-half
-                                            i.star-filled
-                                          .star
-                                            i.star-empty
-                                            i.star-half
-                                            i.star-filled
                             
                                 br
                                 small

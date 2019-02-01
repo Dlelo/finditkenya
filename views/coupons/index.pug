@@ -166,16 +166,14 @@ block content
               .mycoupons#coupons-sticky
                 each mycoupon in mycoupons
                   .coupon.coupon-modal
-                    span
-                      i.fa.fa-close.fa-fw.text-right.del-coupon(rel=mycoupon._id, aria-hidden='true',id=user.id)
-                    strong 
-                      img(src="/uploads/thumbs/coupons/"+ mycoupon.photo, alt=mycoupon.bizid.name +' on Findit Kenya')
-                      span  
-                        strong #{mycoupon.name}  @ #{mycoupon.bizid.name}
-                      span
-                        strong #{mycoupon.tagline}
-                      span
-                        | #{mycoupon.description}
+                    i.fa.fa-close.fa-fw.text-right.del-coupon(rel=mycoupon._id, aria-hidden='true',id=user.id)
+                    img.coup-img(src="/uploads/thumbs/coupons/"+ mycoupon.photo, alt=mycoupon.bizid.name +' on Findit Kenya') 
+                    p 
+                      strong #{mycoupon.name}  @ #{mycoupon.bizid.name}
+                    p
+                      strong #{mycoupon.tagline}
+                    p
+                      | #{mycoupon.description}
                       
             div
                 strong

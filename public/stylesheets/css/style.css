@@ -3479,14 +3479,14 @@ div.scrollmenu a {
     padding: 15px;
 }
 .coup-img {
-    height:3rem;
+    height:4rem;
     float: left;
 	margin-right: 0.3rem;
 	display: block;
     margin-left: auto;
 	margin-right: auto;
 	padding-left:2px;
-	padding-right:2px;
+	padding-right:5px;
 }
 .flowerwhite {
     background-color: #ffffff;

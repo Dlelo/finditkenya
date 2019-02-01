@@ -165,7 +165,7 @@ block content
               .mycoupons#coupons-sticky
                 each mycoupon in mycoupons
                   .coupon.coupon-modal
-                    i.fa.fa-close.fa-fw.text-right.del-coupon(rel=mycoupon._id, aria-hidden='true',id=user.id)
+                    i.fa.fa-trash.fa-fw.text-right.del-coupon(rel=mycoupon._id, aria-hidden='true',id=user.id)
                     img.coup-img(src="/uploads/thumbs/coupons/"+ mycoupon.photo, alt=mycoupon.bizid.name +' on Findit Kenya') 
                     p 
                       strong #{mycoupon.name}  @ #{mycoupon.bizid.name}
@@ -372,7 +372,7 @@ block content
                       carray.forEach(function(el) {
                         $('.mycoupons').append(
                           '<div class="coupon coupon-modal"><img src="/uploads/thumbs/coupons/'+el.photo+'" class="coup-img">\
-                          <i id=#{user.id} class="fa fa-close fa-fw text-right del-coupon" rel='+el._id+' aria-hidden="true"></i>\
+                          <i id=#{user.id} class="fa fa-trash fa-fw text-right del-coupon" rel='+el._id+' aria-hidden="true"></i>\
                           <p>'+el.name+' @ '+el.bizid.name+'</p>\
                           <p><strong>'+el.tagline+'</strong></p>\
                           <p>'+el.description+'</p></div>'
@@ -413,7 +413,7 @@ block content
                       data.mycoupons.forEach(function(el) {
                         $('.mycoupons').append(
                           '<div class="coupon coupon-modal"><img src="/uploads/thumbs/coupons/'+el.photo+'" class="coup-img">\
-                          <i id=#{user.id} class="fa fa-close fa-fw text-right del-coupon" rel='+el._id+' aria-hidden="true"></i>\
+                          <i id=#{user.id} class="fa fa-trash fa-fw text-right del-coupon" rel='+el._id+' aria-hidden="true"></i>\
                           <p><strong>'+el.name+' @ '+el.bizid.name+'</p>\
                           <p><strong>'+el.tagline+'</strong></p>\
                           <p>'+el.description+'</p></div>'
@@ -445,7 +445,7 @@ block content
                 data.mycoupons.forEach(function(el) {
                   $('.mycoupons').append(
                     '<div class="coupon coupon-modal"><img src="/uploads/thumbs/coupons/'+el.photo+'" class="coup-img">\
-                    <i id=#{user.id} class="fa fa-close fa-fw text-right del-coupon" rel='+el._id+' aria-hidden="true"></i>\
+                    <i id=#{user.id} class="fa fa-trash fa-fw text-right del-coupon" rel='+el._id+' aria-hidden="true"></i>\
                     <p><strong>'+el.name+' @ '+el.bizid.name+'</p>\
                     <p><strong>'+el.tagline+'</strong></p>\
                     <p>'+el.description+'</span></p>'

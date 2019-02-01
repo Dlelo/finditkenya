@@ -156,12 +156,11 @@ block content
 
         div#myModal.modal(style="overflow-x:hidden; overflow-y:auto")
           div.modal-content(style=" width: 60%;")
-            span.close.text-center
-              |&times;
-            div 
-            .coupon-title
-              h3.text-center
-                |  Selected Coupons
+            span.close.text-right
+              span close   
+              span &times;
+            span.coupon-title.text-center
+              h3  Selected Coupons
             div
               .mycoupons#coupons-sticky
                 each mycoupon in mycoupons
@@ -176,11 +175,20 @@ block content
                       | #{mycoupon.description}
                       
             div
-                strong
-                a(href="/admin/email/coupons" class="text-center")
-                  h6
-                    i(class="fa fa-envelope fa-fw" aria-hidden="true")
-                    | Click here to receive all Coupons in your email
+              .div(style="float: left; clear: left;")
+                span.close.text-right
+                  | Go Back
+                span.fa-status
+                
+                
+                                  
+              .div(style="float: right; clear: right;")
+                  strong
+                    a(href="/admin/email/coupons" class="text-right")
+                      h3
+                        i(class="fa fa-envelope fa-fw" aria-hidden="true")
+                        | Email Coupons Now
+                  
       
           
       //.nav-item
@@ -334,7 +342,7 @@ block content
         $(this).addClass('couponclicked');
         $(this).removeClass('couponadd');
         $(this).find('.clipped').show();
-        $(this).find('.fa-status').html('<i class="fa fa-window-close fa-2x" aria-hidden="true" style="display:block;text-align:right"></i>');
+        $(this).find('.fa-status').html('<i class="fa fa-window-close fa-2x" aria-hidden="true" style="display:block;float:right"> Close</i>');
         $.ajax({
             type: "GET",
             url: "/getcoupon/user/"+couponid,
@@ -370,7 +378,7 @@ block content
                           <p>'+el.description+'</p></div>'
                         );
                       }); 
-                      $('.mycoupons').append( '<br><strong><span class="coup-msg">Click "Mail All" then, check your email to get coupon codes<span></strong>');             
+                      //$('.mycoupons').append( '<br><strong><span class="coup-msg text-right">Email Coupon(s) Now! <span></strong>');             
                       console.log(data.code);
                     }
                 });
@@ -411,14 +419,14 @@ block content
                           <p>'+el.description+'</p></div>'
                         );
                       });
-                      $('.mycoupons').append('<br><strong><span class="coup-msg">Click "Mail All" then, check your email to get coupon codes<span></strong>');
+                      //$('.mycoupons').append('<br><strong><span class="coup-msg text-right">Email Coupon(s) Now!<span></strong>');
                     }
                 });
             }
         });
 
 
-        $(this).find('.fa-status').html('<i class="fa fa-plus-square fa-2x" aria-hidden="true" style="display:block;text-align:right"></i>');
+        $(this).find('.fa-status').html('<i class="fa fa-plus-square fa-2x" aria-hidden="true" style="display:block; float:right"> Close</i>');
       });
 
       $(document).on('click', ".del-coupon", function(event) {
@@ -443,7 +451,7 @@ block content
                     <p>'+el.description+'</span></p>'
                   );
                 });
-                $('.mycoupons').append('<br><strong><span class="coup-msg">Click "Mail All" then, check your email to get coupon codes<span></strong>');
+                //$('.mycoupons').append('<br><strong><span class="coup-msg text-right">Email Coupon Now!<span></strong>'  );
               }
           });
           }

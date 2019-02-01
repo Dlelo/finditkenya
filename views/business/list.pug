@@ -134,34 +134,8 @@ block content
                                       span     km away
                               li
                                 if biz.reviews
-                                if(biz.reviews.length == 1) 
-                                  .col-md-6(class="rating medium star-icon value-"+review.star+" label-hidden")
-                                    .star-container
-                                      .star
-                                        i.star-empty
-                                        i.star-half
-                                        i.star-filled
-                                      .star
-                                        i.star-empty
-                                        i.star-half
-                                        i.star-filled
-                                      .star
-                                        i.star-empty
-                                        i.star-half
-                                        i.star-filled
-                                      .star
-                                        i.star-empty
-                                        i.star-half
-                                        i.star-filled
-                                      .star
-                                        i.star-empty
-                                        i.star-half
-                                        i.star-filled
-                                  small
-                                      | #{biz.reviews.length} Review  
-                                else if(bizreviews.length > 1)
-                                  span
-                                    div(class="rating medium star-icon value-"+review.star+" label-hidden")
+                                if( biz.reviews.length == 1) 
+                                    .col-md-6.ratingsonCat.text-right(class="rating medium star-icon value-4 label-hidden")
                                       .star-container
                                         .star
                                           i.star-empty
@@ -183,7 +157,32 @@ block content
                                           i.star-empty
                                           i.star-half
                                           i.star-filled
-                            
+                                    small
+                                      | #{biz.reviews.length} Review
+                                else if( biz.reviews.length > 1)
+                                  span.glyphicon.glyphicon-cog.glyph.border
+                                    div.text-right(class="rating medium star-icon value-4 label-hidden")
+                                      .star-container
+                                        .star
+                                          i.star-empty
+                                          i.star-half
+                                          i.star-filled
+                                        .star
+                                          i.star-empty
+                                          i.star-half
+                                          i.star-filled
+                                        .star
+                                          i.star-empty
+                                          i.star-half
+                                          i.star-filled
+                                        .star
+                                          i.star-empty
+                                          i.star-half
+                                          i.star-filled
+                                        .star
+                                          i.star-empty
+                                          i.star-half
+                                          i.star-filled
                                 br
                                 small
                                   | #{biz.reviews.length} Reviews

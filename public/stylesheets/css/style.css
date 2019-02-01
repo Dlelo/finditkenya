@@ -3384,12 +3384,7 @@ padding-left:10px;
     background: #eee !important;
     padding: 1rem;
 }
-.mycoupons{
-	margin: 1rem !important;
-    border-top: 4px solid #eee !important;
-    background: #eee !important;
-    padding: 1rem;
-}
+
 
 .dropdown-category{
   position: relative; /* <-- Added */

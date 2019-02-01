@@ -3379,10 +3379,10 @@ padding-left:10px;
 	color:#04045a;
 }
 .coupon-modal{
-margin-top: 1px !important;
-border-top: 4px solid #eee !important;
-background: #eee !important;
-padding-left: 5px;
+    margin: 1rem !important;
+    border-top: 4px solid #eee !important;
+    background: #eee !important;
+    padding: 1rem;
 }
 
 .dropdown-category{

@@ -109,7 +109,7 @@ block content
                 |  Selected Coupons
               div
                 .mycoupons#coupons-sticky
-  .container-fluid(style="padding-right: 3%; padding-left: 3%;")
+  .container-fluid
     nav.navbar.navbar-light#homenavbar(style="background: #ededed; background: linear-gradient(to bottom,hsl(0,0%,93%) 0,hsl(0,0%,95%) 30%,hsl(0,0%,95%) 70%,hsl(0,0%,93%) 100%) !important;")
       .navbar-brand 
         .nav-item.dropdown.open
@@ -274,7 +274,7 @@ block content
                   | and 
                 span.strong
                   | Email. 
-  .container-fluid(style="padding-right: 3%; padding-left: 3%;")
+  .container-fluid(style="padding-top: 3%;")
     //.row.deal-main(style="padding-left: 4rem; padding-right: 4rem; background-color: #f9f9f9;")
     .row.deal-main(style="background-color: #f9f9f9;")  
       each coupon, i in coupons

@@ -110,7 +110,7 @@ block content
               div
                 .mycoupons#coupons-sticky
   .container-fluid(style="padding-right: 3%; padding-left: 3%;")
-    nav.navbar#searchCoup(style="background: #ededed; background: linear-gradient(to bottom,hsl(0,0%,93%) 0,hsl(0,0%,95%) 30%,hsl(0,0%,95%) 70%,hsl(0,0%,93%) 100%);")
+    nav.navbar#homenavbar(style="background: #ededed; background: linear-gradient(to bottom,hsl(0,0%,93%) 0,hsl(0,0%,95%) 30%,hsl(0,0%,95%) 70%,hsl(0,0%,93%) 100%);")
       .navbar-brand 
         .nav-item.dropdown.open
           button.btn.btn-cat.btn-light.form-control.dropdown-toggle(type='button', data-toggle='dropdown')
@@ -326,25 +326,6 @@ block content
                 button.btn.btn.danger
                   | Clipped  
                   
-  //sticky nav
-  script(type='text/javascript').
-    // When the user scrolls the page, execute myFunction 
-    window.onscroll = function() {myFunction()};
-
-    // Get the navbar
-    var navbar = document.getElementById("searchCoup");
-
-    // Get the offset position of the navbar
-    var sticky = navbar.offsetTop;
-
-    // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
-    function myFunction() {
-    if (window.pageYOffset >= sticky) {
-    navbar.classList.add("sticky")
-    } else {
-    navbar.classList.remove("sticky");
-    }
-    }                
   
   script(src='/javascripts/bootstrapjs/filter-gallery.js')          
   //Script for selecting coupons       
@@ -479,7 +460,7 @@ block content
     });
   
   //script to hide main menu on coupons page
-  script(type='text/javascript').
+  //-script(type='text/javascript').
     $(window).scroll(function() {
 
       if ($(this).scrollTop()>2)

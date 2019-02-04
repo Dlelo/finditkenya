@@ -14,14 +14,17 @@ block content
                       input.form-control-form.package#free(name='package', type='radio', value='free', required)
                       label#packagelabel(for='free')
                         .package-info.img-wrap-package 
-                          h3.free
+                          h4.free
                             img(src='/img/free-package.png')
                             strong
-                              |  Free (KES: 0)
+                              |  Free 
+                              hr
+                              span KES: 0
+                          br
                           ul
                             li
                               small Basic Information Only
-                        .info-wrap   
+                        //.info-wrap   
                           .action-wrap 
                             .btn-package.selectpackage
                               strong
@@ -31,20 +34,23 @@ block content
                       input.form-control-form.package#bronze(name='package', type='radio', value='bronze', required)
                       label#packagelabel(for='bronze')
                         .package-info.img-wrap-package 
-                          h3.bronze
+                          h4.bronze
                             img(src='/img/bronze-package.png')
                             strong
                               |   Bronze
-                              br
-                              span(style="text-decoration: line-through;")
-                                small
-                                  | Was (KES 8,000 /
-                              br
+                               
+                              hr
                               span
-                                small
-                                  | Now (KES 2,000 /  
-                              br
-                              small Per Annum)
+                                span(style="text-decoration: line-through;")
+                                  small
+                                    | Was KES 8,000
+                                br
+                                span
+                                  | Now  KES 2,000  
+                                br
+                          h5    
+                            strong Per Annum
+                          br
                           ul
                             li
                               small  Upto 6 Images
@@ -56,7 +62,7 @@ block content
                               small Map Location
                             li
                               small 1 catalog/Menu  
-                        .info-wrap   
+                        //.info-wrap   
                           .action-wrap 
                             .btn-package.selectpackage
                               strong
@@ -67,20 +73,22 @@ block content
                       input.form-control-form.package#silver(name='package', type='radio', value='silver', required)
                       label#packagelabel(for='silver')
                         .package-info.img-wrap-package 
-                          h3.silver
+                          h4.silver
                             img(src='/img/silver-package.png')
                             strong
-                              | Silver
-                              br
-                              span(style="text-decoration: line-through;")
-                                small
-                                  | Was (KES 15,000 /
-                              br
+                              strong
+                                | Silver
+                              hr
                               span
-                                small
-                                  | Now (KES: 5,000 /  
-                              br
-                              small Per Annum)
+                                span(style="text-decoration: line-through;")
+                                  small
+                                    | Was KES 15,000
+                                br
+                                span
+                                  | Now KES: 5,000   
+                          h5 
+                            strong Per Annum
+                          br
                           ul
                             li
                               small Upto 15 Images
@@ -96,7 +104,7 @@ block content
                               small Priority Listing one day per month
                             li
                               small 1 free news letter adverts per month  
-                        .info-wrap   
+                        //.info-wrap   
                           .action-wrap 
                             .btn-package.selectpackage
                               strong
@@ -106,20 +114,21 @@ block content
                       input.form-control-form.package#gold(name='package', type='radio', value='gold', required)
                       label#packagelabel(for='gold')
                         .package-info.img-wrap-package 
-                          h3.gold
+                          h4.gold
                             img(src='/img/gold-package.png')
                             strong
                               | Gold
-                              br
-                              span(style="text-decoration: line-through;")
-                                small
-                                  | Was (KES 30,000 /
-                              br
+                              hr
                               span
-                                small
-                                  | Now (KES: 12,000 /  
-                              br
-                              small Per Annum)
+                                span(style="text-decoration: line-through;")
+                                  small
+                                    | Was KES 30,000 
+                                br
+                                span
+                                  | Now KES: 12,000 
+                          h5
+                            strong Per Annum
+                          br
                           ul
                             li
                               small Unlimited Images
@@ -135,7 +144,7 @@ block content
                               small Priority Listing three day per month
                             li
                               small 3 free news letter adverts per month
-                        .info-wrap   
+                        //.info-wrap   
                           .action-wrap
                             .btn-package.selectpackage
                               strong
@@ -145,3 +154,4 @@ block content
                 strong
                 h4.findit-blue
                   | Select Package
+              br

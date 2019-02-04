@@ -3753,7 +3753,7 @@ fieldset, label {
 }
 .basic-content {
     width: 100%;
-    padding-top: 4vh;
+    padding-top: 1rem;
     text-align: center;
     vertical-align: middle;
 }
@@ -5571,5 +5571,8 @@ button.close {
 }
 .tognavButton{
    margin-top: 1rem;
+}
+.pricing-banner{
+	background-image: url(/img/findit-pricing.png);
 }
 

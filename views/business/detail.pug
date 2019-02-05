@@ -184,11 +184,25 @@ block content
                 .col-md-12.findit-red.padding20
                   strong
                     |  Opening & Closing Hours
+                  span(style="font-size: 1.05rem;")
+                    if (biz.openstatus.isOpen)
+                      if (biz.openstatus.isOpen == true)
+                        span.badge.badge-success
+                          span.fas.fa-check-circle  
+                            |  Now Open until  
+                            #day 
+                            each hour in biz.hours.monday
+                              |   #{hour.closes}
+                    else
+                      span.badge.badge-danger
+                        span.fas.fa-times-circle  
+                        |  Now Closed
+                    - var list = [1,2,3,4,5]
+                    - list.sort((a,b)=>{return Math.random()-0.5})  
                 .col-md-12
                   each hour in biz.hours.monday
                     if(hour.opens === hour.closes)
-                      p  Monday: Closed
-                        
+                      p  Monday: Closed      
                     else
                       p Monday: #{hour.opens} - #{hour.closes}
                   each hour in biz.hours.tuesday
@@ -797,3 +811,18 @@ block content
           infoWindow.open(map);
         }
       script(async, defer, src='https://maps.googleapis.com/maps/api/js?key=AIzaSyC9MX39yDkMJn6rjWi6vt4Rens5u_cVBQE&callback=initMap&zoom=18')
+      script.
+        $(document).ready(function(){
+          function getDayOfWeek(date){
+            //Create an array containing each day, starting with Sunday.
+            var DaysOfWeek = new Array(
+                "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
+            );
+            //Use the getDay() method to get the day.
+            var today = document.getElementById("day");
+            date.getDay();
+            //Return the element that corresponds to that index.
+            return DaysOfWeek[day];
+          }
+         });
+        

@@ -169,9 +169,9 @@ block content
                     img.coup-img(src="/uploads/thumbs/coupons/"+ mycoupon.photo, alt=mycoupon.bizid.name +' on Findit Kenya') 
                     p.findit-blue 
                       strong #{mycoupon.name}  @ #{mycoupon.bizid.name}
-                    p(style="color:#000")
+                    p.content-col
                       strong #{mycoupon.tagline}
-                    p(style="color:#000")
+                    p.content-col
                       | #{mycoupon.description}
                       
             div
@@ -373,9 +373,9 @@ block content
                         $('.mycoupons').append(
                           '<div class="coupon coupon-modal"><img src="/uploads/thumbs/coupons/'+el.photo+'" class="coup-img">\
                           <i id=#{user.id} class="fa fa-trash fa-fw text-right del-coupon" rel='+el._id+' aria-hidden="true"></i>\
-                          <p>'+el.name+' @ '+el.bizid.name+'</p>\
-                          <p><strong>'+el.tagline+'</strong></p>\
-                          <p>'+el.description+'</p></div>'
+                          <p class="findit-blue">'+el.name+' @ '+el.bizid.name+'</p>\
+                          <p class="content-col"><strong>'+el.tagline+'</strong></p>\
+                          <p class="content-col">'+el.description+'</p></div>'
                         );
                       }); 
                       //$('.mycoupons').append( '<br><strong><span class="coup-msg text-right">Email Coupon(s) Now! <span></strong>');             
@@ -414,9 +414,9 @@ block content
                         $('.mycoupons').append(
                           '<div class="coupon coupon-modal"><img src="/uploads/thumbs/coupons/'+el.photo+'" class="coup-img">\
                           <i id=#{user.id} class="fa fa-trash fa-fw text-right del-coupon" rel='+el._id+' aria-hidden="true"></i>\
-                          <p><strong>'+el.name+' @ '+el.bizid.name+'</p>\
-                          <p><strong>'+el.tagline+'</strong></p>\
-                          <p>'+el.description+'</p></div>'
+                          <p class="findit-blue"><strong>'+el.name+' @ '+el.bizid.name+'</p>\
+                          <p class="content-col"><strong>'+el.tagline+'</strong></p>\
+                          <p class="content-col">'+el.description+'</p></div>'
                         );
                       });
                       //$('.mycoupons').append('<br><strong><span class="coup-msg text-right">Email Coupon(s) Now!<span></strong>');
@@ -446,9 +446,9 @@ block content
                   $('.mycoupons').append(
                     '<div class="coupon coupon-modal"><img src="/uploads/thumbs/coupons/'+el.photo+'" class="coup-img">\
                     <i id=#{user.id} class="fa fa-trash fa-fw text-right del-coupon" rel='+el._id+' aria-hidden="true"></i>\
-                    <p><strong>'+el.name+' @ '+el.bizid.name+'</p>\
-                    <p><strong>'+el.tagline+'</strong></p>\
-                    <p>'+el.description+'</span></p>'
+                    <p class="findit-blue"><strong>'+el.name+' @ '+el.bizid.name+'</p>\
+                    <p class="content-col"><strong>'+el.tagline+'</strong></p>\
+                    <p class="content-col">'+el.description+'</span></p>'
                   );
                 });
                 //$('.mycoupons').append('<br><strong><span class="coup-msg text-right">Email Coupon Now!<span></strong>'  );

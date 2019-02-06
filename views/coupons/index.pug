@@ -167,9 +167,9 @@ block content
                   .coupon.coupon-modal
                     i.fa.fa-trash.fa-fw.text-right.del-coupon(rel=mycoupon._id, aria-hidden='true',id=user.id)
                     img.coup-img(src="/uploads/thumbs/coupons/"+ mycoupon.photo, alt=mycoupon.bizid.name +' on Findit Kenya') 
-                    p 
+                    p.findit-blue 
                       strong #{mycoupon.name}  @ #{mycoupon.bizid.name}
-                    p
+                    p(style="color:#000")
                       strong #{mycoupon.tagline}
                     p
                       | #{mycoupon.description}

@@ -5576,3 +5576,8 @@ button.close {
 	background-image: url(/img/findit-pricing.png);
 }
 
+#hours{
+	color: #28a745;
+    font-weight: bold;
+    font-size: 18px !important;
+}

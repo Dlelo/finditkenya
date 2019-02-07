@@ -162,73 +162,65 @@ block content
                     a.findit(href="/business/profile/"+biz.profile.filename, target="_blank")
                       |  View Company Profile  
                   
-            .col-md-12.text-center.findit-red
-              if biz.paid
-                span.badge.badge-success
-                  span.fa.fa-check-circle.strong(style="color:#2862ec;")
-                  strong
-                    |  Claimed
-              else
-                h4 Claim This Business
-                form(method='get', action='/claim-form/'+biz.id)
-                  .form-group
-                    input.form-control(name='phone', type='text', value='', placeholder='phone')
-                  .form-group
-                    input.form-control(name='email', type='text', value='', placeholder='email')
-                  .form-group
-                    button.btn.btn-danger.form-control(type='submit')                 
-                      | Claim Business
+            
             //if(branches
             if (biz.openstatus)
               .row
-                .col-md-12.findit-red.padding20
-                  strong
-                    |  Opening & Closing Hours
-                  span(style="font-size: 1.05rem;")
-                    if (biz.openstatus.isOpen)
-                      script.
-                        switch (new Date().getDay()) {
-                          case 0:
-                            day = "Sunday";
-                            break;
-                          case 1:
-                            day = "Monday";
-                            break;
-                          case 2:
-                            day = "Tuesday";
-                            break;
-                          case 3:
-                            day = "Wednesday";
-                            break;
-                          case 4:
-                            day = "Thursday";
-                            break;
-                          case 5:
-                            day = "Friday";
-                            break;
-                          case 6:
-                            day = "Saturday";
-                        }
-                      if (biz.openstatus.isOpen == true)
-                        span.badge.badge-success
-                          span.fas.fa-check-circle  
-                            small  Now Open until  
-                            #day 
-                            each hour in biz.hours.monday
-                              small   #{hour.closes}
-                    else
-                      span.badge.badge-danger
-                        span.fas.fa-times-circle  
-                          small  Now Closed
-                          each hour in biz.hours.monday
-                            small #{hour.opens}
-
-                    - var list = [1,2,3,4,5]
-                    - list.sort((a,b)=>{return Math.random()-0.5})  
-                .col-md-12
+                .col-md-12#hours
+                  div#sunday  
+                    each hour in biz.hours.sunday
+                      if(hour.opens === hour.closes)
+                        |  Closed
+                      else
+                        | Open Now.  #{hour.opens} - #{hour.closes}
+                  div#monday
+                    each hour in biz.hours.monday
+                      if(hour.opens === hour.closes)
+                        |  Closed      
+                      else
+                        | Open Now. #{hour.opens} - #{hour.closes}
+                  div#tuesday
+                    each hour in biz.hours.tuesday
+                      if(hour.opens === hour.closes)
+                        |  Closed
+                      else
+                        | Open Now #{hour.opens} - #{hour.closes}
+                  div#wednesday  
+                    each hour in biz.hours.wednesday
+                      if(hour.opens === hour.closes)
+                        |   Closed
+                      else
+                        | Open Now.  #{hour.opens} - #{hour.closes}
+                  div#thursday
+                    each hour in biz.hours.thursday
+                      if(hour.opens === hour.closes)
+                        | Closed
+                      else
+                        | Open Now.  #{hour.opens} - #{hour.closes}
+                  div#friday  
+                    each hour in biz.hours.friday
+                      if(hour.opens === hour.closes)
+                        |  Closed
+                      else
+                        | Open Now.  #{hour.opens} - #{hour.closes}
+                  div#saturday
+                    each hour in biz.hours.saturday
+                      if(hour.opens === hour.closes)
+                        |   Closed
+                      else
+                        | Open Now.  #{hour.opens} - #{hour.closes}
+            if (biz.openstatus)  
+              .row
+                a(href="#openingandclosing" onClick="$('#openingandclosing').show();")
+                  .col-md-12.padding20
+                    strong
+                      |  See Opening & Closing Hours
+              
+                .col-md-12#openingandclosing(style="display:none;")
                   each hour in biz.hours.monday
                     if(hour.opens === hour.closes)
-                      p  Monday: Closed      
+                      p  Monday: Closed
+                        
                     else
                       p Monday: #{hour.opens} - #{hour.closes}
                   each hour in biz.hours.tuesday
@@ -261,6 +253,23 @@ block content
                       p  Sunday: Closed
                     else
                       p Sunday: #{hour.opens} - #{hour.closes}
+          .row
+            .col-md-12.text-center.findit-red
+                if biz.paid
+                  span.badge.badge-success
+                    span.fa.fa-check-circle.strong(style="color:#2862ec;")
+                    strong
+                      |  Claimed
+                else
+                  h4 Claim This Business
+                  form(method='get', action='/claim-form/'+biz.id)
+                    .form-group
+                      input.form-control(name='phone', type='text', value='', placeholder='phone')
+                    .form-group
+                      input.form-control(name='email', type='text', value='', placeholder='email')
+                    .form-group
+                      button.btn.btn-danger.form-control(type='submit')                 
+                        | Claim Business
           if(biz.deliverylink)
             .row
               .col-md-12.col-md-offset-3(style="background-color:#00aabb;padding:5px;border-radius:25px;")
@@ -839,11 +848,20 @@ block content
       script(async, defer, src='https://maps.googleapis.com/maps/api/js?key=AIzaSyC9MX39yDkMJn6rjWi6vt4Rens5u_cVBQE&callback=initMap&zoom=18')
       script.
         $(document).ready(function(){
-          var date = new Date();
-          console.log(date);
-          var weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-          var weekday = weekdays[date.getDay()];
-          }
+          var dayOfWeek = (new Date).getDay();
+
+          var sunday = document.getElementById("sunday").innerHTML;
+          var monday = document.getElementById("monday").innerHTML;
+          var tuesday = document.getElementById("tuesday").innerHTML;
+          var wednesday = document.getElementById("wednesday").innerHTML;
+          var thursday = document.getElementById("thursday").innerHTML;
+          var friday = document.getElementById("friday").innerHTML;
+          var saturday = document.getElementById("saturday").innerHTML;
+          
+          var hours = [sunday, monday, tuesday, wednesday, thursday, friday, saturday];
+          console.log(hours);
+          var todaysHours = hours[dayOfWeek];
+          document.getElementById("hours").innerHTML = todaysHours;
         });
          
         

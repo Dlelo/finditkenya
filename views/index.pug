@@ -63,19 +63,20 @@ block content
             if(i < 4)
               div.col-lg-3.col-md-3.col-sm-12.col-xm-12.w3-ab.my-md-0.my-sm-12.coup-container
                 .image-flip(ontouchstart="this.classList.toggle('hover');")
-                  .mainflip
-                    .frontside
-                      .card
-                        .card-body.text-center
-                          p
-                            img.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name+ ' on FindIt Kenya')
-                          br
-                          h6.card-title(style="text-transform: capitalize;") #{coupon.name}
-                          h6.card-title(style="text-transform: capitalize;")
-                            small
-                              strong
-                              | !{'@  ' + coupon.bizid.name}
-                          
+                  a(href='/coupons')  
+                    .mainflip
+                      .frontside
+                        .card
+                          .card-body.text-center
+                            p
+                              img.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name+ ' on FindIt Kenya')
+                            br
+                            h6.card-title(style="text-transform: capitalize;") #{coupon.name}
+                            h6.card-title(style="text-transform: capitalize;")
+                              small
+                                strong
+                                | !{'@  ' + coupon.bizid.name}
+                            
                     //.backside
                       .card
                         .card-body.text-center.mt-4

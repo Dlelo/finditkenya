@@ -5346,7 +5346,7 @@ button.close {
     -ms-transform: rotateY(0deg);
     transform: rotateY(0deg);
     border-radius: .25rem;
-}*/
+}
 
 .image-flip:hover .frontside,
 .image-flip.hover .frontside {
@@ -5367,7 +5367,7 @@ button.close {
     transition: 1s;
     transform-style: preserve-3d;
     position: relative;
-}
+}*/
 
 .frontside {
     position: relative;

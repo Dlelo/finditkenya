@@ -5337,7 +5337,7 @@ button.close {
 /*#homenavbar{
 	padding-left: 2%;
     padding-right: 3%;
-}*/
+}
 .image-flip:hover .backside,
 .image-flip.hover .backside {
     -webkit-transform: rotateY(0deg);
@@ -5346,7 +5346,7 @@ button.close {
     -ms-transform: rotateY(0deg);
     transform: rotateY(0deg);
     border-radius: .25rem;
-}
+}*/
 
 .image-flip:hover .frontside,
 .image-flip.hover .frontside {
@@ -5383,17 +5383,17 @@ button.close {
     top: 0;
     left: 0;
     background: white;
-    -webkit-transform: rotateY(-180deg);
+    /*-webkit-transform: rotateY(-180deg);
     -moz-transform: rotateY(-180deg);
     -o-transform: rotateY(-180deg);
     -ms-transform: rotateY(-180deg);
-    transform: rotateY(-180deg);
+    transform: rotateY(-180deg);*/
     -webkit-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
     -moz-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
     box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
 }
 
-.frontside,
+/*.frontside,
 .backside {
     -webkit-backface-visibility: hidden;
     -moz-backface-visibility: hidden;
@@ -5409,7 +5409,7 @@ button.close {
     -ms-transform-style: preserve-3d;
     transition: 1s;
     transform-style: preserve-3d;
-}
+}*/
 
 .frontside .card,
 .backside .card {

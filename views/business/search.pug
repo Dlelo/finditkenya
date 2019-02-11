@@ -12,7 +12,7 @@ block content
           .col-md-12.search-padding
               strong
                 | Did you mean: 
-              a(href="search?search="+suggestion)
+              a.bizlink(href="search?search="+suggestion)
                   |  #{suggestion}
       .row          
         .col-md-12.search-padding
@@ -21,7 +21,7 @@ block content
             each biz in businesses       
               .row
                 if (typeof(biz.slug) !== 'undefined')
-                    a(href="/biz/"+biz.slug)
+                    a.bizlink(href="/biz/"+biz.slug)
                       div.cat-backgroundeven.cat-box.cat-shadow 
                         a.bizlink(href="/biz/"+biz.slug)
                           .row
@@ -35,7 +35,7 @@ block content
                                   li.text-center(style="text-align:center")
                                     if biz.features
                                       each feature in biz.features
-                                        a(href="/subcategory/btn/"+feature)
+                                        a.bizlink(href="/subcategory/btn/"+feature)
                                           strong
                                             i.fas.fa-tag
                                             | #{feature} |

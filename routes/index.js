@@ -1270,8 +1270,15 @@ router.get('/updatesearch',function(req,res){
   }).sort({paid:-1})
 
   var categories = Category.find({group: 'general'}); 
+  
+  //SIMILAR BUSINESSES ON SEARCH PAGE
+  var simbusinesses = Business.find({ features: req.params.name, branch: null, approved: true })
+    .sort([['paid', -1], ['datepaid', 1], ['slug', 1]]);
+  
+  //var features = Category.findOne({ subcategories: {$elemMatch: { name: req.params.name}} });
+  
 
-  Promise.all([q2,q1,categories]).then(values => {
+  Promise.all([q2, q1, simbusinesses, categories]).then(values => {
     
     var res2 = values[0].filter(function(biz){
       return biz.branch == typeof 'undefined' || biz.branch == false || biz.branch == null
@@ -1285,10 +1292,32 @@ router.get('/updatesearch',function(req,res){
     if(res2.length==0){
       res2 = res2.concat(res1)
     }
+    
+    //array  of current businesses features
+    //let currentBusiness = res2;
 
+    //array  of current businesses features
+    let currentBusinessFeatures = res2.features;
+
+    //currentBusinessFeatures.sort();
+
+    let similarbusinesses = simbusinesses;
+
+    for (let i = 0; i < similarbusinesses.length; i++) {
+
+      for (let k = 0; k < similarbusinesses[i].features.length; k++) {
+        similarbusinesses[i].features = similarbusinesses[i].features.filter(function (id) {
+          return currentBusinessFeatures.indexOf(id) > -1;
+        });
+      }
+
+    }
+    
+    
     res.render('business/search',{
       title: req.query.search,
       businesses: res2,
+      simbusinesses: similarbusinesses,
       categories: values[2],
       host: req.get('host')
     });

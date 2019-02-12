@@ -82,8 +82,9 @@ router.post('/add', role.auth, cpUpload, function(req, res, next) {
     instance.instagram = req.body.instagram;
     if(req.body.youtube){
       if(req.body.youtube.includes("watch?v=")){
-        instance.youtube = req.body.youtube.replace("watch?v=", "embed/");
-      }
+				instance.youtube = req.body.youtube.replace("watch?v=", "embed/");
+			  
+			}
     }
 
     instance.linkedin = req.body.linkedin;

@@ -1272,13 +1272,13 @@ router.get('/updatesearch',function(req,res){
   var categories = Category.find({group: 'general'}); 
   
   //SIMILAR BUSINESSES ON SEARCH PAGE
-  var simbusinesses = Business.find({ features: req.params.name, branch: null, approved: true })
-    .sort([['paid', -1], ['datepaid', 1], ['slug', 1]]);
   
   //var features = Category.findOne({ subcategories: {$elemMatch: { name: req.params.name}} });
   
-
-  Promise.all([q2, q1, simbusinesses, categories]).then(values => {
+  
+  
+  
+  Promise.all([q2, q1, categories]).then(values => {
     
     var res2 = values[0].filter(function(biz){
       return biz.branch == typeof 'undefined' || biz.branch == false || biz.branch == null
@@ -1292,31 +1292,67 @@ router.get('/updatesearch',function(req,res){
     if(res2.length==0){
       res2 = res2.concat(res1)
     }
-    
-    //array  of current businesses features
-    //let currentBusiness = res2;
-
-    //array  of current businesses features
-    let currentBusinessFeatures = res2.features;
+    var currentBusinessFeat;
+    //array  of current businesses features  
     //currentBusinessFeatures.sort();
+    //console.log(currentBusinessFeatures);
+    for (let i = 0; i < res2.length; i++) {
 
-    let similarbusinesses = simbusinesses;
+      for (let k = 0; k < res2[i].features.length; k++) {
+        let currentBusinessFeat = res2[i].features
+        console.log(currentBusinessFeat);
+      }
 
+    }
+    
+    let currentBusinessFeatures = currentBusinessFeat;
+
+    console.log(currentBusinessFeatures);
+    var q3 = Business.find({})
+      .then(function (data) {
+        Business.aggregate(
+          [{
+            '$geoNear': {
+              'near': point,
+              'spherical': true,
+              "query": {
+                "subcategory": data.subcategory,
+                "features": { "$in": data.features },
+                "slug": { "$ne": data.slug },
+                "branch": { "$ne": true },
+                "approved": true
+              },
+              'num': 6,
+              'distanceField': 'distance',
+              'maxDistance': 200000
+            }
+          }]
+        )
+      }).catch(err => {
+        console.log("Error", err)
+      })
+
+    let similarbusinesses = q3;
+    
     for (let i = 0; i < similarbusinesses.length; i++) {
+      console.log(similarbusinesses[i]);
+      for (let k = 0; k < similarbusinesses[i].Business.features.length; k++) {
+        let similarBusinessFeatures = similarbusinesses[i].Business.features
+        console.log(similarBusinessFeatures);
+        if(similarBusinessFeatures = currentBusinessFeatures)
+           similarbizness = similarbusinesses[i];
+        console.log(similarbizness);
 
-      for (let k = 0; k < similarbusinesses[i].features.length; k++) {
-        similarbusinesses[i].features = similarbusinesses[i].features.filter(function (id) {
-          return currentBusinessFeatures.indexOf(id) > -1;
-        });
       }
 
     }
     
     
+    
     res.render('business/search',{
       title: req.query.search,
       businesses: res2,
-      simbusinesses: similarbusinesses,
+      similarbusinesses: values[1],
       categories: values[2],
       host: req.get('host')
     });

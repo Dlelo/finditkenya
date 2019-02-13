@@ -160,7 +160,8 @@ block content
                   input#search2.form-control.form-control-lg(type="text" placeholder="..." ,name='search', autofocus)
           if(simbusinesses.length>1)
             h2.text-center Similar Businesses 
-            each biz in simbusinesses      
+            each biz in simbusinesses
+                  
               .row
                 if (typeof(biz.slug) !== 'undefined')
                     a.bizlink(href="/biz/"+biz.slug)

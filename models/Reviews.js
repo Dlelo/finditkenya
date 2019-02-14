@@ -7,8 +7,8 @@ mongoose.Promise =require('bluebird');
 const Schema = mongoose.Schema;
 
 const reviewSchema = new Schema({
-		//user_id:  { type: Schema.Types.ObjectId, ref: 'User' },
-	  user_id: { type: Schema.Types.ObjectId, required: true },
+		user_id:  { type: Schema.Types.ObjectId, ref: 'User' },
+	  //user_id: { type: Schema.Types.ObjectId, required: true },
 		bizid:  { type: Schema.Types.ObjectId, ref: 'Business' },
 		star: String,
 		message: String,

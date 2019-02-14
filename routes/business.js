@@ -232,16 +232,17 @@ router.post('/review',role.auth, function(req, res, next){
 	Business.findById(req.body.bizid)
 	.then(function(b){
 		b.reviews.push({rate: req.body.rating, msg: req.body.review});
-		b.user_id = res.role.user.names;
+		//b.user_id = res.role.user.names;
+		b.user_id = res.locals.user.names;
 		b.save(function(err){
 			if(err){
           console.log(err);
           res.redirect('/'+b.slug);
       }else{
         var review = new Review();
-        review.message = req.body.review;
+				review.message = req.body.review;
+				review.user_id = res.locals.user._id;
 				//review.user_id = res.locals.user._id;
-				review.user_id = res.locals.user.names;
         review.bizid = req.body.bizid;
         review.star = req.body.rating;
         review.created_at = new Date();

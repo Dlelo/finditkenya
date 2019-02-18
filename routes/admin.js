@@ -806,9 +806,16 @@ router.get('/reviews', role.auth, function (req, res) {
 
 router.get('/review/delete/:id', role.auth, function (req, res) {
 	if (req.user.role == 1) {
-		Reviews.findOneAndRemove({
+		/*Reviews.findOneAndRemove({
 			_id: req.params.id
-		})
+		})*/
+		Reviews.update(
+			{ _id: req.params.id },
+			{
+				$pull: { reviews: { _id: req.params.id } }
+			},
+			{ multi: true }
+			)
 			.then(function (data) {
 				res.redirect('/admin/reviews');
 			})

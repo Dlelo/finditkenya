@@ -25,6 +25,9 @@ var Product = require(__dirname + '/../models/Product');
 var Area = require(__dirname + '/../models/Areas');
 var Advert = require(__dirname + '/../models/Advert');
 
+var Reviews = require(__dirname + '/../models/Reviews');
+
+
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, './public/uploads/')
@@ -785,8 +788,37 @@ router.get('/advert/delete/:id',role.auth, function(req, res, next){
 		     console.log(err);
 		});
 });
+/********* REVIEWS */
+router.get('/reviews', role.auth, function (req, res) {
+	if (req.user.role == 1) {
+		Reviews.find({})
+			.populate('bizid')
+			.populate('users.user_id')
+			.sort([['order', 1]])
+			.then(function (data) {
+				res.render('reviews/dashboard', { title: "Reviews", reviews: data });
+			})
+			.catch(function (err) {
+				console.log(err);
+			});
+	}
+});
 
+router.get('/review/delete/:id', role.auth, function (req, res) {
+	if (req.user.role == 1) {
+		Reviews.findOneAndRemove({
+			_id: req.params.id
+		})
+			.then(function (data) {
+				res.redirect('/admin/reviews');
+			})
+			.catch(function (err) {
+				console.log(err);
+			});
+	} 
+});
 /***************** COUPONS ******************************/
+
 
 router.get('/coupons', role.auth, function(req, res){
 	if(req.user.role == 1){

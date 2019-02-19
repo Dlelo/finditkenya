@@ -87,15 +87,17 @@ html(lang='en')
     .container-fluid
       //header before navigation items
       nav#homenavbar.navbar.navbar-expand-lg.navbar-light.bg-gradient-secondary(style="padding-right: 5%; padding-left: 5%; box-shadow: none; border: 1px solid #e6e6e6;")
-        div(style="display:flex !important; flex-direction:row !important; width: 100% !important;")
+        div.showNavCancelclick
           div(style="flex-grow:0.1 !important")
             a.navbar-brand.text-white(href="/")
               img.img-logo(src="/img/findit-red-logo.png").img-fluid
-          div(style="flex-grow:0.1 !important")
+          div#hideOnSmall(style="flex-grow:0.1 !important")
             #showSearch  
               form.form-class(method='get', action='/updatesearch')
                 div.input-group
                   input.search2.form-control-lg(type="text" placeholder="Find a business" ,style="width:100% !important" ,name='search', autofocus)
+          div.showOnSmall(style="flex-grow:0.1 !important; display:none; padding: 1rem !important;")
+            span.fas.fa-search.fa-2x(style="color:#c00000")
           div(style="flex-grow:0.1 !important")      
             a(href="/coupons")
               button.btn.btn-light.w3ls-btn.coupons-btn.flash-button#coupbtn(type="button")
@@ -159,7 +161,14 @@ html(lang='en')
                       button.btn.btn-outline-primary.w3ls-btn.findit-blue
                         strong
                         |  Sign Up
-
+        .input-group.showOnclick(type="button" style="margin: 0.5rem;")
+          ul.navbar-nav.ml-auto.small
+            li.nav-item.active  
+              form.form-class(method='get', action='/updatesearch') 
+                div.input-group
+                  input.search2.form-control-lg(type="text" placeholder="Find a business" ,style="width:100% !important; border: none !important;" ,name='search', autofocus)
+                  .closeSearch(type="button")
+                    span.fas.fa-close.fa-2x(style="padding-left:4.5rem; color:#909090") 
 
     .container-fluid.container-padding
       //display errors
@@ -403,6 +412,20 @@ script(src='/javascripts/bootstrapjs/responsiveslides.min.js')
 
 <!-- start-smooth-scrolling -->
 script(src='/javascripts/bootstrapjs/easing.js')
+
+<!--Script to show and hide search bar on small screensizes-->
+script(type='text/javascript').
+  $('.showOnSmall').click(function(){
+      $('.showOnclick').addClass('shown');
+      $('.showNavCancelclick').addClass('hideit');
+  });
+<!--Script close search bar on small screensizes-->
+script(type='text/javascript').
+  $('.closeSearch').click(function(){
+      $('.showOnclick').removeClass('shown');
+      $('.showNavCancelclick').removeClass('hideit');
+  });
+
 
 <!--Start of Tawk.to Script-->
 script.

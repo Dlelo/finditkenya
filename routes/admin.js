@@ -49,6 +49,12 @@ var cpUpload = upload.fields([
 router.post('/edit/:id', role.auth, cpUpload, function(req, res, next) {
 	Business.findById(req.params.id)
 	.then(function(b){
+		if (req.user.role == 1) {
+			b.user_id = req.body.username;
+			console.log(user_id);
+		}else{
+			user_id: res.locals.user.username
+		}
 		b.replicate = true
 	  b.name = req.body.name
 		b.slug = slug(req.body.name);
@@ -91,13 +97,12 @@ router.post('/edit/:id', role.auth, cpUpload, function(req, res, next) {
         b.gallery.push(x);
       })
       //b.gallery.push(req.files['gallery']);
-		}
-		  b.user_id = req.body.username;
-	    b.hoursopen = req.body.hoursopen;
-	    b.hoursclose = req.body.hoursclose;
-	    b.extras = req.body.extras;
-	    b.street = req.body.street;
-	    b.building = req.body.building;
+		}		
+		b.hoursopen = req.body.hoursopen;
+		b.hoursclose = req.body.hoursclose;
+		b.extras = req.body.extras;
+		b.street = req.body.street;
+		b.building = req.body.building;
 
 	    //Social links
 	    b.facebook = req.body.facebook;
@@ -212,7 +217,7 @@ router.get('/edit/:id',role.auth, function(req, res, next){
 	  });
 });
 
-router.get('/delete/:id',role.auth, function(req, res, next){
+router.get('/delete/:id',role.auth, function(req, res){
 	if(req.user.role == 1){
 		Business.findOneAndRemove({
 		  _id: req.params.id
@@ -809,6 +814,13 @@ router.get('/review/delete/:id', role.auth, function (req, res) {
 		Reviews.findOneAndRemove({
 			_id: req.params.id
 		})
+		/*Reviews.update(
+			{ _id: req.params.id },
+			{
+				$pull: { reviews: { _id: req.params.id } }
+			},
+			{ multi: true }
+			)*/
 			.then(function (data) {
 				res.redirect('/admin/reviews');
 			})

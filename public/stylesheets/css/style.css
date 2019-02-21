@@ -5581,3 +5581,33 @@ button.close {
     font-weight: bold;
     font-size: 18px !important;
 }
+.showOnclick{
+	display:none;
+}
+.showNavCancelclick{
+	display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+[type=submit], [type=reset], button, html [type=button] .closeSearch{
+	-webkit-appearance: none;
+}
+@media screen and (max-width: 375px) {
+    #hideOnSmall {
+        display: none;
+	}
+	.showOnSmall{
+        display: block !important;
+	}
+	.showOnclick.shown {
+		display:block;
+	}
+	.showNavCancelclick.hideit{
+		display: none !important;
+	}
+	.hideit{
+		display: none !important;
+
+}
+
+

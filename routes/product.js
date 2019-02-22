@@ -518,21 +518,24 @@ router.get('/delete/:id', role.auth, function(req, res){
 
 router.get('/:bizname/:category/:subcat/:minicat/:slug',function(req, res){
   var categories = Category.find({group:'shopping'});
+  var owner = Business.find({
+    user_id: res.locals.user.username
+  })
   var product = Product.findOne({
     slug: req.params.slug,
     //status: true
   }).populate('bizid').populate('category');
   Promise.all([categories,product]).then(values => {
-    console.log(values[1].bizid.id);
-    User.findOne({ username: values[1].bizid.user_id }).populate('user_id').then(function(u){
-      //if(err) console.log(err);
-      console.log(values[1]);
-      res.render('product/detail',{product: values[1],title: values[1].name, categories: values[0], owner: u});
+  console.log(values[1].bizid.id);
+  //   User.findOne({ username: values[1].bizid.user_id }).populate('user_id').then(function(u){
+  //     //if(err) console.log(err);
+  //     console.log(values[1]);
+      res.render('product/detail',{product: values[1],title: values[1].name, categories: values[0], owner});
     }).catch(function(){
         // want to handle errors here
         console.log("error happened");
     });
   });
-});
+
 
 module.exports = router;

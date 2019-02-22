@@ -1,6 +1,6 @@
 
 {
-    "db_uri": "mongodb://findit:RUgCvQ5fkpJQUsx9@159.65.90.120:27017/findit",
+    "db_uri":"mongodb://viral:king2017@ds127126.mlab.com:27126/findit",
     "noreplyEmail": {
         "username": "noreply@findit.ke",
         "password": "noreplyfindit"

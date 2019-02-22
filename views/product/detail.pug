@@ -1,8 +1,8 @@
 extends ../layout-new
 
 block content
-  #home.parallax-content-list.baner-content-listing-biz
-    .container-fluid.container-margin-top.container-fluidpadding
+  #home.baner-content-listing-biz
+    .container-fluid.container-margin-top
       .card-single-product
         if product
           .row            
@@ -24,12 +24,13 @@ block content
               article.card-body.p-5
                 h3.title.mb-3
                   =product.name
-                p.price-detail-wrap
-                  span.price.h3.text-secondary
-                    span.currency KES. 
-                    span.num
-                     =product.price
-                  span 
+                if(product.price)
+                  p.price-detail-wrap
+                    span.price.h3.text-secondary
+                      span.currency KES. 
+                      span.num
+                      =product.price
+                    
                 dl.item-property
                   dt Description
                   dd
@@ -45,7 +46,7 @@ block content
                     p.contact 
                       strong #{owner.email}
 
-                    .btn.btn-lg.btn-outline-primary.text-uppercase.addtocart#showProduct(style="margin-top:1rem;")
+                    button#showProduct.btn.btn-lg.btn-outline-primary.text-uppercase.addtocart(style="margin-top:1rem;")
                        i.fas.fa-shopping-cart Contact Owner
                 
                      

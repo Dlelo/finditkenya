@@ -526,6 +526,11 @@ router.get('/:bizname/:category/:subcat/:minicat/:slug',function(req, res){
   console.log(values[1].bizid.id);
   owner = values[1].bizid.user_id;
   console.log(owner);
+  console.log(owner.names);
+  console.log(owner.phone);
+  console.log(owner.email);
+
+
 
   //   User.findOne({ username: values[1].bizid.user_id }).populate('user_id').then(function(u){
   //     //if(err) console.log(err);

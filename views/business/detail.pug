@@ -606,10 +606,7 @@ block content
                   h4.text-center
                     strong
                       | Our Products
-                      span#showproducts 
-                        small
-                          h6.findit-blue
-                            | see More Products
+                      
             .row
               .owl-carousel.owl-theme
                 each product, i in products
@@ -628,6 +625,11 @@ block content
                                 .price-new.findit-red
                                   small Now  
                                     span KES #{product.price}
+            .row.text-center
+              span#showproducts 
+                small
+                  strong.findit-blue
+                    | see More Products
             .row.productsMenu(style="display: none;")
               .owl-carousel.owl-theme
                 each product, i in products

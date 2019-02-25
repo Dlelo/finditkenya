@@ -48,7 +48,7 @@ router.post('/edit/:id', role.auth, cpUpload, function(req, res, next) {
 	.then(function(b){
 		if (req.user.role == 1) {
 			b.user_id = req.body.username;
-			console.log(user_id);
+			console.log(b.user_id);
 		}else{
 			user_id: res.locals.user.username
 		}

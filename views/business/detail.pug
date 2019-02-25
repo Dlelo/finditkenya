@@ -647,26 +647,26 @@ block content
                               .price-new.findit-red
                                 small Now  
                                   span KES #{product.price}
-        else
-          |              
-        //.col-md-3
-          if(branches)
-            .row
-              div.col-md-12.text-center
-                h4
-                  strong.text-center
-                    | Branches
-              div.col-md-12       
-                each branch, i in branches 
-                  if i<5         
-                    a.bizlink(href="/biz/"+branch.slug) 
-                      div.col-md-12.is-island
-                        h6.findit-red
-                          =branch.name
-                        if(!isNaN(branch.distance))  
-                          span 
-                            =(branch.distance/1000).toFixed(1)
-                            span     km away
+          else
+            |              
+          //.col-md-3
+            if(branches)
+              .row
+                div.col-md-12.text-center
+                  h4
+                    strong.text-center
+                      | Branches
+                div.col-md-12       
+                  each branch, i in branches 
+                    if i<5         
+                      a.bizlink(href="/biz/"+branch.slug) 
+                        div.col-md-12.is-island
+                          h6.findit-red
+                            =branch.name
+                          if(!isNaN(branch.distance))  
+                            span 
+                              =(branch.distance/1000).toFixed(1)
+                              span     km away
       .row.flowerwhite 
         .col-md-9
           if biz.youtube

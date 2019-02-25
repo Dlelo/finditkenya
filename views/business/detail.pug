@@ -625,11 +625,11 @@ block content
                                 .price-new.findit-red
                                   small Now  
                                     span KES #{product.price}
-            .row.text-center
+            .row
+            .col-md-12.text-center
               span#showproducts 
-                small
-                  strong.findit-blue
-                    | see More Products
+                strong.findit-blue
+                  | see More Products
             .row.productsMenu(style="display: none;")
               each product, i in products
                 if(i>5)

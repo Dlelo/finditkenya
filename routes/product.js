@@ -526,12 +526,16 @@ router.get('/:bizname/:category/:subcat/:minicat/:slug',function(req, res){
   console.log(values[1].bizid.id);
   owner = values[1].bizid.user_id;
 <<<<<<< HEAD
+<<<<<<< HEAD
   
   console.log(owner.names);
   console.log(owner.phone);
   console.log(owner.email);
 
 
+=======
+  console.log(owner);
+>>>>>>> parent of 62d89ade... view product
 =======
   console.log(owner);
 >>>>>>> parent of 62d89ade... view product

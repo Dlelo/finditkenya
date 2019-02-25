@@ -624,9 +624,10 @@ block content
                                 .price-old.findit-blue.strike
                                   small Was  
                                     span KES #{product.oldprice}
-                              .price-new.findit-red
-                                small Now  
-                                  span KES #{product.price}
+                              if product.price
+                                .price-new.findit-red
+                                  small Now  
+                                    span KES #{product.price}
           else
             |              
         //.col-md-3

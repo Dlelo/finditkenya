@@ -606,9 +606,9 @@ block content
                   h4.text-center
                     strong
                       | Our Products
-                    span 
+                    span#showproducts 
                       small
-                        a(href="#")
+                        h6.findit-blue
                           | see More Products
             .row
               .owl-carousel.owl-theme
@@ -628,7 +628,7 @@ block content
                                 .price-new.findit-red
                                   small Now  
                                     span KES #{product.price}
-            .row
+            .row.productsMenu(style="display: none;")
               .owl-carousel.owl-theme
                 each product, i in products
                   if(i>5)
@@ -757,6 +757,12 @@ block content
                     .col-md-12
                       button.button.btn.btn-danger.form-control(type='submit') Submit Review                 
       
+      script.
+        $(document).ready(function(){
+            $('#showproducts').click(function() {
+              $('.productsMenu').toggle("slide");
+            });
+        });
       script.
       
         // Note: This example requires that you consent to location sharing when

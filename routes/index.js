@@ -1310,60 +1310,35 @@ router.get('/updatesearch', function (req, res) {
     if (res2.length == 0) {
       res2 = res2.concat(res1)
     }
-    var currentBusinessFeat;
+   
     //array  of current businesses features  
     //currentBusinessFeatures.sort();
-    //console.log(currentBusinessFeatures);
+    console.log(q1);
     for (let i = 0; i < res2.length; i++) {
 
       for (let k = 0; k < res2[i].features.length; k++) {
         let currentBusinessFeat = res2[i].features
         console.log(currentBusinessFeat);
-      }
-
-    }
-
-    let currentBusinessFeatures = currentBusinessFeat;
-
-    console.log(currentBusinessFeatures);
-    var q3 = Business.find({})
-      .then(function (data) {
-        Business.aggregate(
-          [{
-            '$geoNear': {
-              'near': point,
-              'spherical': true,
-              "query": {
-                "subcategory": data.subcategory,
-                "features": { "$in": data.features },
-                "slug": { "$ne": data.slug },
-                "branch": { "$ne": true },
-                "approved": true
-              },
-              'num': 6,
-              'distanceField': 'distance',
-              'maxDistance': 200000
-            }
-          }]
-        )
-      }).catch(err => {
-        console.log("Error", err)
-      })
-
-    let similarbusinesses = q3;
-
-    for (let i = 0; i < similarbusinesses.length; i++) {
-      console.log(similarbusinesses[i]);
-      for (let k = 0; k < similarbusinesses[i].Business.features.length; k++) {
-        let similarBusinessFeatures = similarbusinesses[i].Business.features
-        console.log(similarBusinessFeatures);
-        if (similarBusinessFeatures = currentBusinessFeatures)
-          similarbizness = similarbusinesses[i];
-        console.log(similarbizness);
 
       }
 
     }
+
+    
+
+
+    // for (let i = 0; i < similarbusinesses.length; i++) {
+    //   console.log(similarbusinesses[i]);
+    //   for (let k = 0; k < similarbusinesses[i].Business.features.length; k++) {
+    //     let similarBusinessFeatures = similarbusinesses[i].Business.features
+    //     console.log(similarBusinessFeatures);
+    //     if (similarBusinessFeatures = currentBusinessFeatures)
+    //       similarbizness = similarbusinesses[i];
+    //     console.log(similarbizness);
+
+    //   }
+
+    //}
 
 
 

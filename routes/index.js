@@ -1289,14 +1289,36 @@ router.get('/updatesearch', function (req, res) {
 
   var categories = Category.find({ group: 'general' });
 
+  var q3 = Business.find({})
+    .then(function (data) {
+      Business.aggregate(
+        [{
+          '$geoNear': {
+            'near': point,
+            'spherical': true,
+            "query": {
+              "subcategory": data.subcategory,
+              "features": { "$in": data.features },
+              "slug": { "$ne": data.slug },
+              "branch": { "$ne": true },
+              "approved": true
+            },
+            'num': 6,
+            'distanceField': 'distance',
+            'maxDistance': 200000
+          }
+        }]
+      )
+    }).catch(err => {
+      console.log("Error", err)
+    })
+
   //SIMILAR BUSINESSES ON SEARCH PAGE
 
   //var features = Category.findOne({ subcategories: {$elemMatch: { name: req.params.name}} });
-
-
-
-
-  Promise.all([q2, q1, categories]).then(values => {
+  
+  
+  Promise.all([q2, q1, q3, categories]).then(values => {
 
     var res2 = values[0].filter(function (biz) {
       return biz.branch == typeof 'undefined' || biz.branch == false || biz.branch == null
@@ -1313,32 +1335,58 @@ router.get('/updatesearch', function (req, res) {
    
     //array  of current businesses features  
     //currentBusinessFeatures.sort();
-    console.log(q1);
-    for (let i = 0; i < res2.length; i++) {
+    
+    function getCurrentFeature() {
+      for (let i = 0; i < res2.length; i++) {
 
-      for (let k = 0; k < res2[i].features.length; k++) {
-        let currentBusinessFeat = res2[i].features
-        console.log(currentBusinessFeat);
+        for (let k = 0; k < res2[i].features.length; k++) {
+          let currentBusinessFeat = res2[i].features;
+
+          return currentBusinessFeat;
+
+        }
 
       }
-
     }
+    function getCurrentBizName() {
+      for (let i = 0; i < res2.length; i++) {
 
+        for (let k = 0; k < res2[i].features.length; k++) {
+          let CurrentBizName = res2[i].name;
+
+          return CurrentBizName;
+
+        }
+
+      }
+    }
     
-
-
-    // for (let i = 0; i < similarbusinesses.length; i++) {
-    //   console.log(similarbusinesses[i]);
-    //   for (let k = 0; k < similarbusinesses[i].Business.features.length; k++) {
-    //     let similarBusinessFeatures = similarbusinesses[i].Business.features
-    //     console.log(similarBusinessFeatures);
-    //     if (similarBusinessFeatures = currentBusinessFeatures)
-    //       similarbizness = similarbusinesses[i];
-    //     console.log(similarbizness);
+    // similar biz by search term
+    // function getSearchedFeature() {
+    //   for (let i = 0; i < q3.length; i++) {
+    //     var searchedBizFeature = [];
+    //     console.log(searchedBizFeature);
+    //     for (let k = 0; k < q3[i].Business.features.length; k++) {
+    //       searchedBizFeature.append(q3[i].Business.features);
+    //     }
+    //     return searchedBizFeature;
 
     //   }
+    // }
 
-    //}
+    //var similarBusinessFeatures = getSearchedFeature();
+    var currentBusinessFeatures = getCurrentFeature();
+    var theCurrentBizName = getCurrentBizName();
+
+    console.log(currentBusinessFeatures);
+    console.log(theCurrentBizName);
+
+    var similarbusinesses = q3;
+
+    // var similarbusinesses = similarBusinessFeatures.filter(function(similarFeatures){
+    //   return similarFeatures == currentBusinessFeatures;
+    // });
+    //console.log(similarbusinesses);
 
 
 
@@ -1347,16 +1395,18 @@ router.get('/updatesearch', function (req, res) {
       businesses: res2,
       similarbusinesses: values[1],
       categories: values[2],
+      currentBusinessFeatures:currentBusinessFeatures,
+      theCurrentBizName: theCurrentBizName,
       host: req.get('host')
-    });
-  })
-})
+    })
+  });
+});
 
 router.get('/search', function (req, res, next) {
   var neatString = req.query.search.trim();
   var result = neatString.split(/[,. \/-]/);
   const item = result[0];
-  const item2 = result[1]
+  const item2 = result[1];
   var bizArray = [];
   var skip = 0;
   if (req.query.skip) {

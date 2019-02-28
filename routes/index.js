@@ -1303,7 +1303,7 @@ router.get('/updatesearch', function (req, res) {
               "branch": { "$ne": true },
               "approved": true
             },
-            'num': 6,
+            'num': 20,
             'distanceField': 'distance',
             'maxDistance': 200000
           }
@@ -1375,13 +1375,26 @@ router.get('/updatesearch', function (req, res) {
     // }
 
     //var similarBusinessFeatures = getSearchedFeature();
-    var currentBusinessFeatures = getCurrentFeature();
+    var currentBusinessFeature = getCurrentFeature();
     var theCurrentBizName = getCurrentBizName();
 
-    console.log(currentBusinessFeatures);
-    console.log(theCurrentBizName);
+    //console.log(currentBusinessFeature);
+    //console.log(theCurrentBizName);
 
-    var similarbusinesses = q3;
+    
+    currentBusinessFeature.sort();
+
+    let similarbusinesses = q3;
+
+    for (let i = 0; i < similarbusinesses.length; i++) {
+
+      for (let k = 0; k < similarbusinesses[i].features.length; k++) {
+        similarbusinesses[i].features = similarbusinesses[i].features.filter(function (id) {
+          return currentBusinessFeature.indexOf(id) > -1;
+        });
+      }
+
+    }
 
     // var similarbusinesses = similarBusinessFeatures.filter(function(similarFeatures){
     //   return similarFeatures == currentBusinessFeatures;
@@ -1395,7 +1408,7 @@ router.get('/updatesearch', function (req, res) {
       businesses: res2,
       similarbusinesses: values[1],
       categories: values[2],
-      currentBusinessFeatures:currentBusinessFeatures,
+      currentBusinessFeature:currentBusinessFeature,
       theCurrentBizName: theCurrentBizName,
       host: req.get('host')
     })

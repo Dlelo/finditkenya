@@ -130,13 +130,13 @@ block content
                               .col-md-12   
                                 div.nav
                                   if(!isNaN(biz.distance))  
-                                    li(style="float:right;")
+                                    li(style="float:left;")
                                       small
                                         i.fas.fa-map-marker-alt
                                         span 
                                           =(biz.distance/1000).toFixed(1)
                                           span     km away
-                                  li(style="float:left")
+                                  li(style="float:right")
                                     if biz.reviews
                                     if( biz.reviews.length == 1)
                                       each review in biz.reviews 

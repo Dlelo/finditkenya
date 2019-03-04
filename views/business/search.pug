@@ -54,20 +54,22 @@ block content
                                     
                       a.bizlink(href="/biz/"+biz.slug)          
                         .row 
-                          .col-md-3       
-                            if(biz.photo)
-                              img.cat-image.cat-items-bottom(src="/uploads/thumbs/cover"+ biz.photo, alt=biz.name + ' on FindIt Kenya', height="200px")
-                            else
-                              img.cat-image.cat-items-bottom(src="/img/noimageavailable.jpg", alt=biz.name +' on FindIt Kenya', height="200px")
-                          .col-md-9
-                            row
-                              .col-md-12.description-cat
-                                if (typeof(biz.description) !== 'undefined')
-                                  if biz.description.length > 250
-                                    p.padding.text-left.description-cat  !{biz.description.substr(0, 250)+ '..... <strong style="background-color:#c00000; color:#fff; padding:1px">Read More</strong>'}
-                                      
-                                  else
-                                    =biz.description
+                          a.bizlink(href="/biz/"+biz.slug)
+                            .col-md-3       
+                              if(biz.photo)
+                                img.cat-image.cat-items-bottom(src="/uploads/thumbs/cover"+ biz.photo, alt=biz.name + ' on FindIt Kenya', height="200px")
+                              else
+                                img.cat-image.cat-items-bottom(src="/img/noimageavailable.jpg", alt=biz.name +' on FindIt Kenya', height="200px")
+                          a.bizlink(href="/biz/"+biz.slug)
+                            .col-md-9
+                              row
+                                .col-md-12.description-cat
+                                  if (typeof(biz.description) !== 'undefined')
+                                    if biz.description.length > 250
+                                      p.padding.text-left.description-cat  !{biz.description.substr(0, 250)+ '..... <strong style="background-color:#c00000; color:#fff; padding:1px">Read More</strong>'}
+                                        
+                                    else
+                                      =biz.description
 
                                     
                             row
@@ -76,7 +78,7 @@ block content
                                   if(biz.website)
                                     a.findit(href=biz.website,target="_blank" class="fa-layers fa-1x")
                                       i.fas.fa-globe
-                                    | website 
+                                      | website 
                                       
                                   else
                                     |

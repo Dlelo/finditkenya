@@ -136,12 +136,38 @@ block content
                         a.bizlink(href="/biz/"+biz.slug)         
                           row
                             a.bizlink(href="/biz/"+biz.slug)
-                              .col-md-12   
-                                div.text-right
-                                    if biz.reviews
-                                    if( biz.reviews.length == 1)
-                                      each review in biz.reviews 
-                                        .col-md-6.ratingsonCat.text-right(class="rating medium star-icon value-"+review.rate+" label-hidden")
+                              .col-md-12.text-right
+                                  if biz.reviews
+                                  if( biz.reviews.length == 1)
+                                    each review in biz.reviews 
+                                      .col-md-12.ratingsonCat.text-right(class="rating medium star-icon value-"+review.rate+" label-hidden")
+                                        .star-container
+                                          .star
+                                            i.star-empty
+                                            i.star-half
+                                            i.star-filled
+                                          .star
+                                            i.star-empty
+                                            i.star-half
+                                            i.star-filled
+                                          .star
+                                            i.star-empty
+                                            i.star-half
+                                            i.star-filled
+                                          .star
+                                            i.star-empty
+                                            i.star-half
+                                            i.star-filled
+                                          .star
+                                            i.star-empty
+                                            i.star-half
+                                            i.star-filled
+                                      small
+                                        | #{biz.reviews.length} Review
+                                  else if( biz.reviews.length > 1)
+                                    each review, i in biz.reviews
+                                      if(i==0)
+                                        .col-md-6.ratingsonCat.text-right(class="rating medium star-icon value-"+review.rate+" label-hidden")  
                                           .star-container
                                             .star
                                               i.star-empty
@@ -163,37 +189,10 @@ block content
                                               i.star-empty
                                               i.star-half
                                               i.star-filled
+                                        br
                                         small
-                                          | #{biz.reviews.length} Review
-                                    else if( biz.reviews.length > 1)
-                                      each review, i in biz.reviews
-                                        if(i==0)
-                                          .col-md-6.ratingsonCat.text-right(class="rating medium star-icon value-"+review.rate+" label-hidden")  
-                                            .star-container
-                                              .star
-                                                i.star-empty
-                                                i.star-half
-                                                i.star-filled
-                                              .star
-                                                i.star-empty
-                                                i.star-half
-                                                i.star-filled
-                                              .star
-                                                i.star-empty
-                                                i.star-half
-                                                i.star-filled
-                                              .star
-                                                i.star-empty
-                                                i.star-half
-                                                i.star-filled
-                                              .star
-                                                i.star-empty
-                                                i.star-half
-                                                i.star-filled
-                                          br
-                                          small
-                                            | #{biz.reviews.length} Reviews
-                                          br
+                                          | #{biz.reviews.length} Reviews
+                                        br
                                   
             //ul.pagination.row
               - var n = 1;

@@ -123,20 +123,21 @@ block content
                                 each feature,i in biz.features
                                   span
                                     strong 
-                                      | #{feature} | 
+                                      | #{feature} |
+                            a.bizlink(href="/biz/"+biz.slug)
+                              .col-md-12.description-cat 
+                                if(!isNaN(biz.distance))  
+                                  span(style="float:left;")
+                                    small
+                                      i.fas.fa-map-marker-alt
+                                      span 
+                                        =(biz.distance/1000).toFixed(1)
+                                        span     km away
                         a.bizlink(href="/biz/"+biz.slug)         
                           row
                             a.bizlink(href="/biz/"+biz.slug)
                               .col-md-12   
-                                div.nav
-                                  if(!isNaN(biz.distance))  
-                                    li(style="float:left;")
-                                      small
-                                        i.fas.fa-map-marker-alt
-                                        span 
-                                          =(biz.distance/1000).toFixed(1)
-                                          span     km away
-                                  li(style="float:right")
+                                div.text-right
                                     if biz.reviews
                                     if( biz.reviews.length == 1)
                                       each review in biz.reviews 

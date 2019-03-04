@@ -1287,8 +1287,6 @@ router.get('/updatesearch', function (req, res) {
     ]
   }).sort({ paid: -1 })
 
-  var categories = Category.find({ group: 'general' });
-
   var q3 = Business.find({})
     .then(function (data) {
       Business.aggregate(
@@ -1316,7 +1314,7 @@ router.get('/updatesearch', function (req, res) {
   //SIMILAR BUSINESSES ON SEARCH PAGE
 
   //var features = Category.findOne({ subcategories: {$elemMatch: { name: req.params.name}} });
-  
+  var categories = Category.find({ group: 'general' });
   
   Promise.all([q2, q1, q3, categories]).then(values => {
 
@@ -1411,7 +1409,7 @@ router.get('/updatesearch', function (req, res) {
       currentBusinessFeature:currentBusinessFeature,
       theCurrentBizName: theCurrentBizName,
       host: req.get('host')
-    })
+    });
   });
 });
 

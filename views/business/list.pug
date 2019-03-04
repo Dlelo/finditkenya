@@ -134,7 +134,7 @@ block content
                                     span 
                                       =(biz.distance/1000).toFixed(1)
                                       span     km away
-                              li
+                              li(style="float:left")
                                 if biz.reviews
                                 if( biz.reviews.length == 1)
                                   each review in biz.reviews 

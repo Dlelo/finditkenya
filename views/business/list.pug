@@ -126,9 +126,9 @@ block content
                         a.bizlink(href="/biz/"+biz.slug)         
                           row
                           .col-md-12.text-right    
-                            div.nav(style="float: right;")
+                            div.nav
                               if(!isNaN(biz.distance))  
-                                li
+                                li(style="float: right;")
                                   small
                                     i.fas.fa-map-marker-alt
                                     span 

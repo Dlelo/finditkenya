@@ -20,8 +20,7 @@ block content
           if(businesses.length)
             each biz in businesses       
               .row
-                if (typeof(biz.slug) !== 'undefined')
-                    a.bizlink(href="/biz/"+biz.slug)
+                  a.bizlink(href="/biz/"+biz.slug)
                       div.cat-backgroundeven.cat-box.cat-shadow 
                         a.bizlink(href="/biz/"+biz.slug)
                           .row

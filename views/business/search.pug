@@ -19,38 +19,39 @@ block content
           
           if(businesses.length)
             each biz in businesses       
-              .row
+              a.bizlink(href="/biz/"+biz.slug)  
+                .row
                   a.bizlink(href="/biz/"+biz.slug)
-                      div.cat-backgroundeven.cat-box.cat-shadow 
-                        a.bizlink(href="/biz/"+biz.slug)
-                          .row
-                            .col-md-12.findit-blue.cat-items-top.cat-header 
-                                h4.findit-blue.catbiz-name
-                                  =biz.name  
-                                  if (biz.paid == true)
-                                    small.findit-red                    
-                                      span.list-social.far.fa-check-square  
-                                div.nav   
-                                  li.text-center(style="text-align:center")
-                                    if biz.features
-                                      each feature in biz.features
-                                        a.bizlink(href="/subcategory/btn/"+feature)
-                                          strong
-                                            i.fas.fa-tag
-                                            | #{feature} |
-                                  if(biz.facebook)
-                                    a.findit(href="http://"+biz.facebook,target="_blank" class="fa-layers fa-2x")
-                                        i.list-social.fab.fa-facebook-f                  
-                                  if(biz.twitter)
-                                    a.findit(href="http://"+biz.twitter,target="_blank" class="fa-layers fa-2x")
-                                        i.list-social.fab.fa-twitter            
-                                  if(biz.instagram)
-                                    a.findit(href="http://"+biz.instagram,target="_blank" class="fa-layers fa-2x")
-                                        i.list-social.fab.fa-instagram                   
-                                  if(biz.youtube)
-                                    a.findit(href="http://"+biz.youtube,target="_blank" class="fa-layers fa-2x")
-                                        i.list-social.fab.fa-youtube  
-                                      
+                    div.cat-backgroundeven.cat-box.cat-shadow 
+                      a.bizlink(href="/biz/"+biz.slug)
+                        .row
+                          .col-md-12.findit-blue.cat-items-top.cat-header 
+                              h4.findit-blue.catbiz-name
+                                =biz.name  
+                                if (biz.paid == true)
+                                  small.findit-red                    
+                                    span.list-social.far.fa-check-square  
+                              div.nav   
+                                li.text-center(style="text-align:center")
+                                  if biz.features
+                                    each feature in biz.features
+                                      a.bizlink(href="/subcategory/btn/"+feature)
+                                        strong
+                                          i.fas.fa-tag
+                                          | #{feature} |
+                                if(biz.facebook)
+                                  a.findit(href="http://"+biz.facebook,target="_blank" class="fa-layers fa-2x")
+                                      i.list-social.fab.fa-facebook-f                  
+                                if(biz.twitter)
+                                  a.findit(href="http://"+biz.twitter,target="_blank" class="fa-layers fa-2x")
+                                      i.list-social.fab.fa-twitter            
+                                if(biz.instagram)
+                                  a.findit(href="http://"+biz.instagram,target="_blank" class="fa-layers fa-2x")
+                                      i.list-social.fab.fa-instagram                   
+                                if(biz.youtube)
+                                  a.findit(href="http://"+biz.youtube,target="_blank" class="fa-layers fa-2x")
+                                      i.list-social.fab.fa-youtube  
+                                    
                                 
                           .row 
                             .col-md-3       

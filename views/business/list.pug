@@ -193,7 +193,11 @@ block content
                                             small
                                               | #{biz.reviews.length} Reviews
                                             br
-                                              
+            else
+                .findit-red Oops!!! No Businesses available
+                span 
+                  a(href='/business/newpackage') Add yor business Now!
+                                                  
             //ul.pagination.row
               - var n = 1;
               while n <= bizcount

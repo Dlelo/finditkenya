@@ -278,7 +278,10 @@ block content
                     span
                        | , Says
                   br
-                  img.img-fluid(src="/uploads/thumbs/cover"+ review.bizid.photo, height="300px" alt=review.bizid.name+ ' on FindIt Kenya')
+                  if review.bizid.photo
+                    img.img-fluid(src="/uploads/thumbs/cover"+ review.bizid.photo, height="300px" alt=review.bizid.name+ ' on FindIt Kenya')
+                  else 
+                    img.cat-image.cat-items-bottom(src="/img/noimageavailable.jpg", alt=review.bizid.name+ ' on FindIt Kenya') 
                   h6.text-center
                     strong
                       =review.bizid.name

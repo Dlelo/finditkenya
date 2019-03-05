@@ -16,6 +16,7 @@ block content
         =coupon.description
     .col-md-12
       each user, i in coupon.users
-        h2(style="color:green")
-          =user.code
-        br
+        if(user.user_id != null)
+          h2(style="color:green")
+            =user.code
+          br

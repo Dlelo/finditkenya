@@ -1076,7 +1076,8 @@ router.get('/email/coupons', role.auth, function(req, res){
   	    	if (err) {
             console.log(err);
   	    	}else{
-            console.log("EMAIL SENT!!");
+						console.log("EMAIL SENT!!");
+						console.log(cp);
   	    	}
   	  	});
       });

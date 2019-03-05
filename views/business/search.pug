@@ -160,7 +160,7 @@ block content
                   -var currentBizName = theCurrentBizName
                   -console.log(currentBizName)
                   each biz ,i in similarbusinesses
-                    if currentBusiness[]
+                    if (currentBusiness.length < 1 || currentBusiness == undefined)
                       if (JSON.stringify(currentBusiness[0]) === JSON.stringify(biz.features[0]))  
                         if (biz.name !== currentBizName)
                           .row   

@@ -28,6 +28,17 @@ block content
                   option(data-icon='glyphicon-wrench', value='') Select Business
                   each biz in businesses
                     option(data-icon='glyphicon-gift', value=biz.id) #{biz.name}
+            .form-group  
+              .col-sm-6(id="startcoupondate")
+                strong
+                  h6.findit-red
+                    | Start Offer Date
+                input#startdate.form-control-form(type='text', name='startcoupondate', placeholder='Start Offer Date',class='datetimepicker')
+              .col-sm-6(id="endcoupondate")
+                strong
+                  h6.findit-red
+                    | End Offer Date
+                input#startdate.form-control-form(type='text', name='endcoupondate', placeholder='End Offer Date',class='datetimepicker') 
             .form-group
               .col-sm-6
                 select.selectpicker.form-control(name='type')

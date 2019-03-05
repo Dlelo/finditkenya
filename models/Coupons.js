@@ -18,6 +18,8 @@ const couponSchema = new Schema({
 	tagline: String,
 	photo: String,
 	star: Boolean,
+	startcoupondate: Date,
+	endcoupondate: Date,
 	order: Number,
 	users: [
 		{

@@ -923,7 +923,16 @@ router.post('/coupon/update/:id', role.auth,cpUpload, function(req, res){
     coupon.ownerid = res.locals.user._id;
     coupon.bizid = req.body.bizid;
     coupon.tagline = req.body.tagline;
-    coupon.type = req.body.type;
+		coupon.type = req.body.type;
+		
+		//start and end offer
+		if (req.body.startcoupondate) {
+			coupon.startcoupondate = new Date(moment(req.body.startcoupondate, 'MM-DD-YYYY HH:mm:ss'));
+		}
+		if (req.body.endcoupondate) {
+			coupon.endcoupondate = new Date(moment(req.body.endcoupondate, 'MM-DD-YYYY HH:mm:ss'));
+		}
+
     if (req.files['photo']){
       console.log(req.files['photo'][0]);
       coupon.photo = req.files['photo'][0].filename;

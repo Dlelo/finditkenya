@@ -18,6 +18,7 @@ block content
       each user, i in coupon.users
         each codeuser, i in user.user_id
           if(codeuser != null)
-            h2(style="color:green")
-              =user.code
-            br
+            if i<1
+              h2(style="color:green")
+                =user.code
+            

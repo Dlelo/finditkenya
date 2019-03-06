@@ -16,6 +16,7 @@ block content
         =coupon.description
     .col-md-12
       each user, i in coupon.users
+        -console.log(coupon.users) 
         if(user.user_id != null)
           if i<2
             h2(style="color:green")

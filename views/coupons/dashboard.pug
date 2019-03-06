@@ -44,7 +44,7 @@ block content
                             if(user.role == 1)
                               a(href="/admin/coupon/star/"+coupon.id, title="Star Coupon")
                                 i.fa.fa-star.fa-fw(aria-hidden='true')                               
-                    .panel-collapse.collapse(role='tabpanel', aria-labelledby='headingTwo', id='collapse'+i)
+                    .panel-collapse.collapse.fa.fa-plus(role='tabpanel', aria-labelledby='headingTwo', id='collapse'+i)
                       .panel-body
                         each usr,i in coupon.users
                           p

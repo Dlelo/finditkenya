@@ -29,13 +29,13 @@ block content
                   each biz in businesses
                     option(data-icon='glyphicon-gift', value=biz.id) #{biz.name}
             br
-            .form-group  
-              .col-sm-6(id="startcoupondate")
+            .form-group 
+              .col-sm-6(id="startcoupondate" style="padding-top:1rem")
                 strong
                   h6.findit-red
                     | Start Offer Date
                 input#startdate.form-control-form(type='text', name='startcoupondate', placeholder='Start Offer Date',class='datetimepicker')
-              .col-sm-6(id="endcoupondate")
+              .col-sm-6(id="endcoupondate" style="padding-top:1rem")
                 strong
                   h6.findit-red
                     | End Offer Date

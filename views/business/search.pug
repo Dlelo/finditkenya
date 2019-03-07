@@ -98,7 +98,7 @@ block content
                                   if biz.reviews
                                     if( biz.reviews.length == 1) 
                                       each review, i in biz.reviews
-                                        .col-md-12.ratingsonCat(class="rating medium star-icon value-"+review.rate+" label-hidden" style="margin-left: 430px !important")
+                                        .col-md-12.ratingsonCat(class="rating medium star-icon value-"+review.rate+" label-hidden")
                                           .star-container
                                             .star
                                               i.star-empty
@@ -125,7 +125,7 @@ block content
                                     else if( biz.reviews.length > 1)
                                       each review, i in biz.reviews
                                         if(i==0)
-                                          .col-md-12.ratingsonCat(class="rating medium star-icon value-"+review.rate+" label-hidden" style="margin-left: 430px !important")
+                                          .col-md-12.ratingsonCat(class="rating medium star-icon value-"+review.rate+" label-hidden")
                                             .star-container
                                               .star
                                                 i.star-empty

@@ -1,0 +1,36 @@
+extends admin-layout
+
+block content
+  .row
+    .col-md-12.col-lg-12.col-sm-12.dash-padding
+      .white-box
+        h3.box-title.text-center Reviews
+        .table-responsive
+          table.table
+            thead
+              tr
+                th #
+                th BUSINESS NAME
+                th MESSAGE
+                th RATING
+                th REVIEW BY
+                th ACTIONS
+            tbody
+              each review, i in reviews
+                tr
+                  td
+                    =i
+                  td 
+                    =review.bizid.name
+                  td.txt-oflo 
+                    =review.message
+                  td
+                    span
+                      =review.rating
+                  td
+                    span.text-success
+                      =review.user_id
+                  td
+                    span.text-danger
+                      a(href="/review/delete/"+user.id, title="Delete Review")
+                        i.fa.fa-trash.fa-fw(aria-hidden='true')

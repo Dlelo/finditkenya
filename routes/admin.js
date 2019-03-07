@@ -794,9 +794,12 @@ router.get('/advert/delete/:id',role.auth, function(req, res, next){
 
 router.get('/review/delete/:id', role.auth, function (req, res) {
 	if (req.user.role == 1) {
-		Reviews.remove({
-			msg: req.params.msg
-		})
+		db.businesses.update({"_id": ObjectId('5ab252fc5d05e656d23e1a9e')}, { "$pull": { "reviews": {"_id": ObjectId('5c7fcca095ce5443c2028a65')}}});
+		Businesses.update(
+			{ _id: req.params.id },
+			{
+				$pull: { reviews: { _id: req.params.id } }
+			})
 			.then(function (data) {
 				res.redirect('/admin/reviews');
 			})

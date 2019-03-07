@@ -794,16 +794,9 @@ router.get('/advert/delete/:id',role.auth, function(req, res, next){
 
 router.get('/review/delete/:id', role.auth, function (req, res) {
 	if (req.user.role == 1) {
-		Reviews.findOneAndRemove({
-			_id: req.params.id
+		Reviews.remove({
+			msg: req.params.msg
 		})
-		/*Reviews.update(
-			{ _id: req.params.id },
-			{
-				$pull: { reviews: { _id: req.params.id } }
-			},
-			{ multi: true }
-			)*/
 			.then(function (data) {
 				res.redirect('/admin/reviews');
 			})

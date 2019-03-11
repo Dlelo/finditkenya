@@ -692,6 +692,8 @@ block content
                   .row               
                     .col-md-1.text-left 
                       span.fas.fa-comment-alt
+                      a(href="/admin/review/delete/"+review.id, title="Delete Review", onclick="return confirm('Are you sure You want to Delete this Review?')")
+                        i.fa.fa-trash.fa-fw(aria-hidden='true')
                     .col-md-12
                       .col-md-12(class="rating medium star-icon value-"+review.rate+" label-hidden")
                         .star-container

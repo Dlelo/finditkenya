@@ -24,6 +24,7 @@ var Sale = require(__dirname + '/../models/Sales');
 var Product = require(__dirname + '/../models/Product');
 var Area = require(__dirname + '/../models/Areas');
 var Advert = require(__dirname + '/../models/Advert');
+var Reviews = require(__dirname + '/../models/Reviews');
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -779,6 +780,8 @@ router.get('/adverts/confirm/:id', role.auth, function(req, res){
   });
 });
 
+
+
 router.get('/advert/delete/:id',role.auth, function(req, res, next){
 		Advert.findOneAndRemove({
 		  _id: req.params.id
@@ -791,21 +794,41 @@ router.get('/advert/delete/:id',role.auth, function(req, res, next){
 		});
 });
 
-
-router.get('/review/delete/:id', role.auth, function (req, res) {
+// ******** REVIEWS *********
+router.get('/reviews', role.auth, function (req, res) {
 	if (req.user.role == 1) {
-		db.businesses.update({"_id": ObjectId('5ab252fc5d05e656d23e1a9e')}, { "$pull": { "reviews": {"_id": ObjectId('5c7fcca095ce5443c2028a65')}}});
-		Businesses.update(
-			{ _id: req.params.id },
-			{
-				$pull: { reviews: { _id: req.params.id } }
-			})
+		Reviews.find({})
+			.populate('bizid')
+			.populate('users.user_id')
+			.sort([['order', 1]])
 			.then(function (data) {
-				res.redirect('/admin/reviews');
+				res.render('admin/reviews', { title: "Reviews", reviews: data });
 			})
 			.catch(function (err) {
 				console.log(err);
 			});
+	}
+});
+router.get('/review/delete/:id', role.admin, function (req, res) {
+	if (req.user.role == 1) {
+		//db.businesses.update({"_id": ObjectId('5ab252fc5d05e656d23e1a9e')}, { "$pull": { "reviews": {"_id": ObjectId('5c7fcca095ce5443c2028a65')}}});
+		// Business.update(
+		// 	{ _id: req.params.id },
+		// 	{
+		// 		$pull: { reviews: {id: req.params.id } }
+		// 	})
+		// 	.then(function (data) {
+		// 		res.redirect('/admin/reviews');
+		// 	})
+		Reviews.deleteMany({
+			_id: req.params.id
+		})
+		.then(function (data) {
+		res.redirect('/admin/reviews');
+		})
+		.catch(function (err) {
+			console.log(err);
+		});
 	} 
 });
 

@@ -1,4 +1,5 @@
 config.json
+config.json.save
 /public/uploads/
 /node-modules/
 

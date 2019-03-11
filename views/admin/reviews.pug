@@ -12,7 +12,6 @@ block content
                 th #
                 th BUSINESS NAME
                 th MESSAGE
-                th RATING
                 th REVIEW BY
                 th ACTIONS
             tbody
@@ -25,12 +24,9 @@ block content
                   td.txt-oflo 
                     =review.message
                   td
-                    span
-                      =review.rating
-                  td
                     span.text-success
                       =review.user_id
                   td
                     span.text-danger
-                      a(href="/review/delete/"+user.id, title="Delete Review")
+                      a(href="/admin/review/delete/"+review.id, title="Delete Review", onclick="return confirm('Are you sure You want to Delete this Review?')")
                         i.fa.fa-trash.fa-fw(aria-hidden='true')

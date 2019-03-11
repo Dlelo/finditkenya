@@ -641,7 +641,10 @@ block content
                       .card.h-100(style="border:none !important; box-shadow: 0 0 2px 0 rgba(46,62,72,.12), 0 2px 4px 0 rgba(46,62,72,.12);")
                           img.card-img-top.w-100.product-img-home(src='/uploads/product/thumbs/'+product.photo, alt=product.name +' on FindIt Kenya', style="width: 200px !important; height: 200px !important;")
                           .card-text
-                            =product.name
+                            if product.name.length > 20
+                                | !{product.name.substr(0, 20)+ '...'}
+                            else
+                              | !{product.name}
                             if product.oldprice
                               .price-old.findit-blue.strike
                                 small Was  

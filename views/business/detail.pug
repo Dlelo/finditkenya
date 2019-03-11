@@ -616,7 +616,7 @@ block content
                             img.card-img-top.w-100.product-img-home(src='/uploads/product/thumbs/'+product.photo, alt=product.name +' on FindIt Kenya', style="width: 200px !important; height: 200px !important;")
                             .card-text
                               if product.name.length > 20
-                                | !{product.name.substr(0, 20)+ '...'}
+                                | !{product.name.substr(0, 18)+ '...'}
                               else
                                 | !{product.name}
                               
@@ -642,7 +642,7 @@ block content
                           img.card-img-top.w-100.product-img-home(src='/uploads/product/thumbs/'+product.photo, alt=product.name +' on FindIt Kenya', style="width: 200px !important; height: 200px !important;")
                           .card-text
                             if product.name.length > 20
-                                | !{product.name.substr(0, 20)+ '...'}
+                                | !{product.name.substr(0, 18)+ '...'}
                             else
                               | !{product.name}
                             if product.oldprice

@@ -5607,5 +5607,15 @@ button.close {
 	}
 	.hideit{
 		display: none !important;
+	}
 
+}
+#showUser:hover {
+	background-color: #eee;
+}
+#showUser:hover .showOnHover{
+	display:block;
+}
+.showOnHover{
+	display:none;
 }

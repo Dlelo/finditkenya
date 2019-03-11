@@ -280,10 +280,13 @@ block content
       each coupon, i in coupons
         div.col-md-4.all.well(class=coupon.bizid.subcategory)
           div.row.deal-main.deal-coup.row-eq-height.coupon(id=coupon.id,class=(coupon.users.some(function(x) { return x.user_id == user.id })) ? 'couponclicked' : 'couponadd', rel=user.id) 
-            .card(style="border:none;")
+            .card#showUser(style="border:none;")
               .row
                 .col-md-4.col-sm-4
                   img.p-3.img-coupon(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name +' on Findit Kenya')
+                  span 
+                    small 
+                      strong.showOnHover Click to Claim Coupon
                 .col-md-8.col-sm-8.px-3
                   .card-block.px-3
                     h4.card-title(style="padding-top:2px") #{coupon.name}

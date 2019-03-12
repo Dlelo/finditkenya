@@ -5033,6 +5033,9 @@ h5 {
 #show-more{
 	display:none;
 }
+.lessText{
+	display:none;
+}
 /*.dropdown-toggle::after, .dropup .dropdown-toggle::after {
     width: 0;
     height: 0;

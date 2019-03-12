@@ -636,7 +636,10 @@ block content
             .col-md-12.text-center
               span#showproducts 
                 strong.findit-blue
-                  | See More Products
+                  span.moreText
+                    | See More Products
+                  span.lessText
+                    | See Less Products
             .row.productsMenu(style="display: none;")
               each product, i in products
                 if(i>5)

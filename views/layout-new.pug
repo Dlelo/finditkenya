@@ -683,3 +683,14 @@ script(type='text/javascript').
         $("#mobile-view").show();
     });
   });
+script(type='text/javascript').
+  $(document).ready(function(){
+    $("#showproducts").click(function(){
+        $(".moreText").hide();
+        $(".lessText").show();
+    });
+    $("#showless").click(function(){
+        $(".lessText").hide();
+        $(".moreText").show();
+    });
+  });

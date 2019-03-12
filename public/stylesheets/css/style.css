@@ -3782,26 +3782,19 @@ fieldset, label {
     margin-bottom: 5px;
 }
 .free {
-	color: #04045a;
+	color: #CD7F32;
 }
 
-.bronze {
+/*.bronze {
     color: #CD7F32;
-}
+}*/
 .silver {
     color: #C0C0C0;
 }
 .gold {
     color: #FFD700;
 }
-.btn-package {
-    color: #270303;
-    background-color: #fff;
-    border-color: #ccc;
-    padding: 10px;
-	border: 1px solid #ccc;
-	border-radius: 5px;
-}
+
 input[type="radio"].package {
     display: none;
 }
@@ -4050,7 +4043,7 @@ section.the-products.items .item .item-info ul.price {
     border-radius: 3px 3px 0 0;
     overflow: hidden;
     position: relative;
-    height: 28rem;
+    height: 23rem;
 	text-align: center; }
 	.card-single-product {
     position: relative;
@@ -4074,7 +4067,90 @@ section.the-products.items .item .item-info ul.price {
     cursor: zoom-in;
 }*/
 
+.ps-top-to-bottom-bronze {
+  position: relative;
+  border-top: 3px solid #CD7F32;
 
+}
+.ps-top-to-bottom-bronze:before, .ps-top-to-bottom-bronze:after {
+  content: "";
+  position: absolute;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#CD7F32), to(transparent));
+  background-image: -webkit-linear-gradient(#CD7F32, transparent);
+  background-image: -moz-linear-gradient(#CD7F32, transparent);
+  background-image: -o-linear-gradient(#CD7F32, transparent);
+  background-image: linear-gradient(#CD7F32, transparent);
+  top: -3px;
+  bottom: -3px;
+  width: 3px;
+}
+.ps-top-to-bottom-bronze:before {
+  left: -3px;
+}
+.ps-top-to-bottom-bronze:after {
+  right: -3px;
+}
+.btn-bronze {
+  background-image: linear-gradient(to right, #ffecd2 0%, #CD7F32 100%, #ffecd2 0%);
+  border-radius: 5px;
+  color:#000;
+}
+.ps-top-to-bottom-silver {
+  position: relative;
+  border-top: 3px solid #C0C0C0;
+
+}
+.ps-top-to-bottom-silver:before, .ps-top-to-bottom-silver:after {
+  content: "";
+  position: absolute;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#C0C0C0), to(transparent));
+  background-image: -webkit-linear-gradient(#C0C0C0, transparent);
+  background-image: -moz-linear-gradient(#C0C0C0, transparent);
+  background-image: -o-linear-gradient(#C0C0C0, transparent);
+  background-image: linear-gradient(#C0C0C0, transparent);
+  top: -3px;
+  bottom: -3px;
+  width: 3px;
+}
+.ps-top-to-bottom-silver:before {
+  left: -3px;
+}
+.ps-top-to-bottom-silver:after {
+  right: -3px;
+}
+.btn-silver {
+  background-image: linear-gradient(to right, #ffecd2 0%, #C0C0C0 100%, #ffecd2 0%);
+  border-radius: 5px;
+  color:#000;
+}
+.ps-top-to-bottom-gold {
+  position: relative;
+  border-top: 3px solid #FFD700;
+
+}
+.ps-top-to-bottom-gold:before, .ps-top-to-bottom-gold:after {
+  content: "";
+  position: absolute;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#FFD700), to(transparent));
+  background-image: -webkit-linear-gradient(#FFD700, transparent);
+  background-image: -moz-linear-gradient(#FFD700, transparent);
+  background-image: -o-linear-gradient(#FFD700, transparent);
+  background-image: linear-gradient(#FFD700, transparent);
+  top: -3px;
+  bottom: -3px;
+  width: 3px;
+}
+.ps-top-to-bottom-gold:before {
+  left: -3px;
+}
+.ps-top-to-bottom-gold:after {
+  right: -3px;
+}
+.btn-gold {
+  background-image: linear-gradient(to right, #ffecd2 0%, #FFD700 100%, #ffecd2 0%);
+  border-radius: 5px;
+  color:#000;
+}
 .gallery-wrap .img-small-wrap .item-gallery {
     width: 50px;
     height: 50px;

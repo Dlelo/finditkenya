@@ -7,69 +7,67 @@ block content
           h4 Select A Package For Your Business
           form(method='post', action='/business/newpackage')
             .form-group
-              .row
-                section#package
-                  .col-md-3.packages-padding
-                    .card.card-product
+              .row#package
+                .col-md-4.packages-padding
+                  .card.card-product
+                    .div.ps-top-to-bottom-bronze(style="margin:1rem")
                       input.form-control-form.package#free(name='package', type='radio', value='free', required)
                       label#packagelabel(for='free')
                         .package-info.img-wrap-package 
                           h4.free
-                            img(src='/img/free-package.png')
-                            strong
-                              |  Free 
-                              hr
-                              span KES: 0
-                          br
-                          ul
-                            li
-                              small Basic Information Only
-                        //.info-wrap   
-                          .action-wrap 
-                            .btn-package.selectpackage
-                              strong
-                                small Select Free Package
-                  .col-md-3.packages-padding
-                    .card.card-product
-                      input.form-control-form.package#bronze(name='package', type='radio', value='bronze', required)
-                      label#packagelabel(for='bronze')
-                        .package-info.img-wrap-package 
-                          h4.bronze
                             img(src='/img/bronze-package.png')
                             strong
-                              |   Bronze
-                               
-                              hr
-                              span
-                                span(style="text-decoration: line-through;")
-                                  small
-                                    | Was KES 8,000
-                                br
-                                span
-                                  | Now  KES 2,000  
-                                br
-                          h5    
-                            strong Per Annum
+                              |  BRONZE
                           br
                           ul
                             li
-                              small  Upto 6 Images
-                            li
-                              small 50 Words to describe your business  
-                            li
-                              small 10 keywords
-                            li
-                              small Map Location
-                            li
-                              small 1 catalog/Menu  
-                        //.info-wrap   
+                              small Basic Company Information Only
+                        .info-wrap   
                           .action-wrap 
-                            .btn-package.selectpackage
-                              strong
-                                small Select Bronze Package(KES 2,000)
+                            .btn-package.selectpackage.btn-bronze
+                              strong FREE
+                //.col-md-3.packages-padding
+                  .card.card-product
+                    input.form-control-form.package#bronze(name='package', type='radio', value='bronze', required)
+                    label#packagelabel(for='bronze')
+                      .package-info.img-wrap-package 
+                        h4.bronze
+                          img(src='/img/bronze-package.png')
+                          strong
+                            |   Bronze
+                              
+                            hr
+                            span
+                              span(style="text-decoration: line-through;")
+                                small
+                                  | Was KES 8,000
+                              br
+                              span
+                                | Now  KES 2,000  
+                              br
+                        h5    
+                          strong Per Annum
+                        br
+                        ul
+                          li
+                            small  Upto 6 Images
+                          li
+                            small 50 Words to describe your business  
+                          li
+                            small 10 keywords
+                          li
+                            small Map Location
+                          li
+                            small 1 catalog/Menu  
+                      //.info-wrap   
+                        .action-wrap 
+                          .btn-package.selectpackage
+                            strong
+                              small Select Bronze Package(KES 2,000)
 
-                  .col-md-3.packages-padding
-                    .card.card-product
+                .col-md-4.packages-padding
+                  .card.card-product
+                    .div.ps-top-to-bottom-silver(style="margin:1rem")
                       input.form-control-form.package#silver(name='package', type='radio', value='silver', required)
                       label#packagelabel(for='silver')
                         .package-info.img-wrap-package 
@@ -77,8 +75,8 @@ block content
                             img(src='/img/silver-package.png')
                             strong
                               strong
-                                | Silver
-                              hr
+                                | SILVER
+                              br
                               span
                                 span(style="text-decoration: line-through;")
                                   small
@@ -104,21 +102,21 @@ block content
                               small Priority Listing one day per month
                             li
                               small 1 free news letter adverts per month  
-                        //.info-wrap   
+                        .info-wrap   
                           .action-wrap 
-                            .btn-package.selectpackage
-                              strong
-                                small  Select Silver Package(KES 5,000)                                    
-                  .col-md-3.packages-padding 
-                    .card.card-product                               
+                            .btn-package.selectpackage.btn-silver
+                              strong KES 5,000                                  
+                .col-md-4.packages-padding 
+                  .card.card-product
+                    .div.ps-top-to-bottom-gold(style="margin:1rem")                               
                       input.form-control-form.package#gold(name='package', type='radio', value='gold', required)
                       label#packagelabel(for='gold')
                         .package-info.img-wrap-package 
                           h4.gold
                             img(src='/img/gold-package.png')
                             strong
-                              | Gold
-                              hr
+                              | GOLD
+                              br
                               span
                                 span(style="text-decoration: line-through;")
                                   small
@@ -144,14 +142,13 @@ block content
                               small Priority Listing three day per month
                             li
                               small 3 free news letter adverts per month
-                        //.info-wrap   
+                        .info-wrap   
                           .action-wrap
-                            .btn-package.selectpackage
-                              strong
-                                small  Select Gold Package (KES: 12,000)
-              .form-group
-              button.btn.btn-claim.form-control-form.btn-gp(type='submit', style='color:#5050ff')                 
-                strong
-                h4.findit-blue
-                  | Select Package
-              br
+                            .btn-gold.selectpackage
+                              strong KES: 12,000
+            .form-group
+            button.btn.btn-claim.form-control-form.btn-gp(type='submit', style='color:#5050ff')                 
+              strong
+              h4.findit-blue
+                | Select Package
+            br

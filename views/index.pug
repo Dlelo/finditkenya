@@ -234,7 +234,9 @@ block content
                   div.w3-aicon.py-lg-5.py-md-3
                     button.btn.btn-light(type="button")
                       span.findit-blue
-                        | More Categories
+                        span(onclick="lessCatFunction()")
+                          span#moreTextCategory
+                            | More Categories
                     img.img-fluid.category-img-wrapper(src="/img/more_categories.png", alt="Find It Kenya - Find Anything and Everything", data-wow-delay="0.6s")                            
                       
         div.row#expandcategories( style="display:none; padding-top:5rem; border-top: 1px solid #eee")

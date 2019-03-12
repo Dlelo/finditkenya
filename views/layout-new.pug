@@ -683,4 +683,13 @@ script(type='text/javascript').
         $("#mobile-view").show();
     });
   });
+script.
+    function lessCatFunction() {
+      var x = document.getElementById("moreTextCategory");
+      if (x.innerHTML === "More Categories") {
+        x.innerHTML = "Less Categories";
+      } else {
+        x.innerHTML = "More Categories";
+      }
+    }
 

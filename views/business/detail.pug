@@ -314,7 +314,7 @@ block content
                         .panel-body
                           p.padding-p 
                             if biz.description.length > 400
-                              p.padding-p   !{biz.description.substr(0, 400)+ '..... <strong id="showmore" style="background-color:#c00000; color:#fff; padding:1px">Read More</strong>'}
+                              p.padding-p   !{biz.description.substr(0, 400)+ '... <strong id="showmore" style="background-color:#c00000; color:#fff; padding:1px">Read More</strong>'}
                             else
                               p.padding-p  !{biz.description}
                     .hideonclick
@@ -335,7 +335,7 @@ block content
                           strong More Information
                         .panel-body
                           p.padding-p  !{biz.description} 
-                            | ..... 
+                            | . 
                             strong(id="showless" style="background-color:#c00000; color:#fff; padding:1px") Read Less 
               else if (biz.branch && hq.replicate)
                 .row

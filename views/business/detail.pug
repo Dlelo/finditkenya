@@ -313,8 +313,8 @@ block content
                           strong More Information
                         .panel-body
                           p.padding-p 
-                            if biz.description.length > 600
-                              p.padding-p   !{biz.description.substr(0, 600)+ '..... <strong id="showmore" style="background-color:#c00000; color:#fff; padding:1px">Read More</strong>'}
+                            if biz.description.length > 400
+                              p.padding-p   !{biz.description.substr(0, 400)+ '..... <strong id="showmore" style="background-color:#c00000; color:#fff; padding:1px">Read More</strong>'}
                             else
                               p.padding-p  !{biz.description}
                     .hideonclick

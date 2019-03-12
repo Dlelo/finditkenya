@@ -340,12 +340,12 @@ block content
               else if (biz.branch && hq.replicate)
                 .row
                   .col-md-12
-                    #web-view
-                      .panel
-                        .findit-red.padding10top
-                          strong More Information
-                        .panel-body
-                          p.padding-p  !{hq.description}
+                    //- #web-view
+                    //-   .panel
+                    //-     .findit-red.padding10top
+                    //-       strong More Information
+                    //-     .panel-body
+                    //-       p.padding-p  !{hq.description}
                     .hideonclick
                       #mobile-view
                         .panel
@@ -353,8 +353,8 @@ block content
                             strong More Information
                           .panel-body
                             p.padding-p 
-                              if hq.description.length > 250
-                                p.padding.text-left.description-cat  !{hq.description.substr(0, 250)+ '..... <strong id="showmore" style="background-color:#c00000; color:#fff; padding:1px">Read More</strong>'}
+                              if hq.description.length > 350
+                                p.padding.text-left.description-cat  !{hq.description.substr(0, 350)+ '... <strong id="showmore" style="background-color:#c00000; color:#fff; padding:1px">Read More</strong>'}
                     #show-more
                       .panel
                         .findit-red.padding10top

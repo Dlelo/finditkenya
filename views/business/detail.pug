@@ -634,13 +634,11 @@ block content
                                     span KES #{product.price}
             .row
             .col-md-12.text-center
-              span#showproducts 
+              span#showproducts
                 strong.findit-blue
-                  span.moreText
-                    | See More Products
-                  span.lessText
-                    #showLessText
-                      | See Less Products
+                  span(onclick="showlessFunction()")
+                    span#moreText
+                      | See More Products
             .row.productsMenu(style="display: none;")
               each product, i in products
                 if(i>5)
@@ -790,6 +788,15 @@ block content
               $('.productsMenu').hide("slide");
             });
         });
+      script.
+        function showlessFunction() {
+          var x = document.getElementById("moreText");
+          if (x.innerHTML === "See More Products") {
+            x.innerHTML = "See Less Products";
+          } else {
+            x.innerHTML = "See More Products";
+          }
+        }
       script.
       
         // Note: This example requires that you consent to location sharing when

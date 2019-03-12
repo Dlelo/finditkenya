@@ -312,7 +312,11 @@ block content
                         .findit-red.padding10top
                           strong More Information
                         .panel-body
-                          p.padding-p  !{biz.description}
+                          p.padding-p 
+                            if biz.description.length > 600
+                              p.padding.text-left.description-cat  !{biz.description.substr(0, 250)+ '..... <strong id="showmore" style="background-color:#c00000; color:#fff; padding:1px">Read More</strong>'}
+                            else
+                              p.padding-p  !{biz.description}
                     .hideonclick
                       #mobile-view
                         .panel

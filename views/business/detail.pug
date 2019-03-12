@@ -307,16 +307,16 @@ block content
               if biz.description
                 .row
                   .col-md-12
-                    #web-view
-                      .panel
-                        .findit-red.padding10top
-                          strong More Information
-                        .panel-body
-                          p.padding-p 
-                            if biz.description.length > 400
-                              p.padding-p   !{biz.description.substr(0, 400)+ '... <strong id="showmore" style="background-color:#c00000; color:#fff; padding:1px">Read More</strong>'}
-                            else
-                              p.padding-p  !{biz.description}
+                    //- #web-view
+                    //-   .panel
+                    //-     .findit-red.padding10top
+                    //-       strong More Information
+                    //-     .panel-body
+                    //-       p.padding-p 
+                    //-         if biz.description.length > 350
+                    //-           p.padding-p   !{biz.description.substr(0, 350)+ '... <strong id="showmore" style="background-color:#c00000; color:#fff; padding:1px">Read More</strong>'}
+                    //-         else
+                    //-           p.padding-p  !{biz.description}
                     .hideonclick
                       #mobile-view
                         .panel
@@ -324,8 +324,8 @@ block content
                             strong More Information
                           .panel-body
                             p.padding-p 
-                              if biz.description.length > 250
-                                p.padding.text-left.description-cat  !{biz.description.substr(0, 250)+ '..... <strong id="showmore" style="background-color:#c00000; color:#fff; padding:1px">Read More</strong>'}
+                              if biz.description.length > 350
+                                p.padding.text-left.description-cat  !{biz.description.substr(0, 350)+ '..... <strong id="showmore" style="background-color:#c00000; color:#fff; padding:1px">Read More</strong>'}
                               else
                                 p.padding-p  !{biz.description}
                                 

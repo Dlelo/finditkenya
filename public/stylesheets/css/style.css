@@ -2614,12 +2614,6 @@ padding-right:1px;
     width: 10rem !important;
     height: 2rem !important;
 	  }
-	#mobile-view{
-	  display:none;
-	  }
-	#web-view{
-		display:block !important;
-	}
 
 	.modal-content{
 		width: 70% !important;
@@ -2688,12 +2682,7 @@ li.list-hor{
 }
 
 @media screen and (max-width: 414px) {
-	#mobile-view{
-	  display:none;
-	  }
-	#web-view{
-		display:block !important;
-	}
+	
 	.own-biz{
 		padding-top:1rem;
 	}
@@ -2773,12 +2762,7 @@ li.list-hor{
 
 
 @media screen and (max-width: 384px) {
-	#mobile-view{
-	  display:block !important;
-	  }
-	#web-view{
-		display: none;
-	}
+	
 	.couponBannerTile:after {
 		display:none !important;
 	}
@@ -2872,12 +2856,12 @@ li.list-hor{
 	.parallax-content-list {
     margin-top: 6vh;
 	 }
-	#mobile-view{
+	/* #mobile-view{
 	  display:block !important;
 	  }
 	#web-view{
 		display: none;
-	}
+	} */
 	
 	.img-logo {
 	    width: 10rem !important;

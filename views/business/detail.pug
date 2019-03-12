@@ -639,7 +639,8 @@ block content
                   span.moreText
                     | See More Products
                   span.lessText
-                    | See Less Products
+                    #showLessText
+                      | See Less Products
             .row.productsMenu(style="display: none;")
               each product, i in products
                 if(i>5)

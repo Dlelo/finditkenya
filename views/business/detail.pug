@@ -355,6 +355,8 @@ block content
                             p.padding-p 
                               if hq.description.length > 350
                                 p.padding.text-left.description-cat  !{hq.description.substr(0, 350)+ '... <strong id="showmore" style="background-color:#c00000; color:#fff; padding:1px">Read More</strong>'}
+                              else
+                                p.padding-p  !{biz.description}
                     #show-more
                       .panel
                         .findit-red.padding10top

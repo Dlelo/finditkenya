@@ -9,10 +9,10 @@ block content
           form.form-horizontal(method="post",action="/admin/edit/"+biz._id,enctype="multipart/form-data")
             .form-group
               .col-sm-12
-                input#name.form-control-form(type='text', name='name', placeholder='Name',value=biz.name)
+                input#name.form-control-form(type='text', name='name', placeholder='Company Name',value=biz.name)
             .form-group
               .col-sm-12
-                textarea#description.form-control-form(name='description',rows=20,cols=30)
+                textarea#description.form-control-form(name='description', placeholder="Company description",rows=20,cols=30)
                   =biz.description
             .form-group
               .col-sm-12

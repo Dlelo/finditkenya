@@ -63,137 +63,139 @@ html(lang='en')
     //custom template files
   body
     //.container-fluid.container-padding
-    //.container-fluid
-      ul.othersites#nav(style="list-style: none; text-align:center; overflow: hidden; background-color: #eae6e6; opacity: 0.7;")
-        //li(style=" display:inline;")  
-          a.pat-space(href='https://www.findit.ke/business/newpackage' style="display:inline-block; text-align: center;")
-            img(src='/img/favicon-16x16.png')
-            small 
-              strong   Add your business
-        li(style=" display:inline;")  
-          a.pat-space(href='https://sokoestate.com/' target='_blank' style="display:inline-block; text-align: center;")
-            img(src='/img/sokoestateicon.png')
-            small 
-              strong    Find Housing
-        li(style=" display:inline;") 
-          a.pat-space(href='https://sokompare.com/' target='_blank' style="display:inline-block; text-align: center;")
-            img(src='/img/sokompareicon.png')
-            small 
-              strong     Find Cars
+      //.container-fluid
+        ul.othersites#nav(style="list-style: none; text-align:center; overflow: hidden; background-color: #eae6e6; opacity: 0.7;")
+          //li(style=" display:inline;")  
+            a.pat-space(href='https://www.findit.ke/business/newpackage' style="display:inline-block; text-align: center;")
+              img(src='/img/favicon-16x16.png')
+              small 
+                strong   Add your business
+          li(style=" display:inline;")  
+            a.pat-space(href='https://sokoestate.com/' target='_blank' style="display:inline-block; text-align: center;")
+              img(src='/img/sokoestateicon.png')
+              small 
+                strong    Find Housing
+          li(style=" display:inline;") 
+            a.pat-space(href='https://sokompare.com/' target='_blank' style="display:inline-block; text-align: center;")
+              img(src='/img/sokompareicon.png')
+              small 
+                strong     Find Cars
+                
+          
+      //banner - only on homepage
+      //.container-fluid.container-padding
+    .main-wrapper
+      .container-fluid.main-wrapper
+        //header before navigation items
+        nav#homenavbar.navbar.navbar-expand-lg.navbar-light.bg-gradient-secondary(style="padding-right: 5%; padding-left: 5%; box-shadow: none; border: 1px solid #e6e6e6;")
+          div.showNavCancelclick
+            div(style="flex-grow:0.1 !important")
+              a.navbar-brand.text-white(href="/")
+                img.img-logo(src="/img/findit-red-logo.png").img-fluid
+            div#hideOnSmall(style="flex-grow:0.1 !important")
+              #showSearch  
+                form.form-class(method='get', action='/updatesearch')
+                  div.input-group
+                    input.search2.form-control-lg(type="text" placeholder="Find a business" ,style="width:100% !important" ,name='search', autofocus)
+            div.showOnSmall(style="flex-grow:0.1 !important; display:none; padding: 1rem !important;")
+              span.fas.fa-search.fa-2x(style="color:#c00000")
+            div(style="flex-grow:0.1 !important")      
+              a(href="/coupons")
+                button.btn.btn-light.w3ls-btn.coupons-btn.flash-button#coupbtn(type="button")
+                  span.fas.fa-gift.coupons-text-color
+                  | View deals
+            div(style="flex-grow:0.5 !important")
+              //site navigation 
+              button.navbar-toggler.ml-md-auto.tognavButton(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                  aria-expanded="false" aria-label="Toggle navigation")
+                    span.navbar-toggler-icon
+              div#navbarSupportedContent.collapse.navbar-collapse.nav-padding
               
-        
-    //banner - only on homepage
-    //.container-fluid.container-padding
-    .container-fluid
-      //header before navigation items
-      nav#homenavbar.navbar.navbar-expand-lg.navbar-light.bg-gradient-secondary(style="padding-right: 5%; padding-left: 5%; box-shadow: none; border: 1px solid #e6e6e6;")
-        div.showNavCancelclick
-          div(style="flex-grow:0.1 !important")
-            a.navbar-brand.text-white(href="/")
-              img.img-logo(src="/img/findit-red-logo.png").img-fluid
-          div#hideOnSmall(style="flex-grow:0.1 !important")
-            #showSearch  
-              form.form-class(method='get', action='/updatesearch')
-                div.input-group
-                  input.search2.form-control-lg(type="text" placeholder="Find a business" ,style="width:100% !important" ,name='search', autofocus)
-          div.showOnSmall(style="flex-grow:0.1 !important; display:none; padding: 1rem !important;")
-            span.fas.fa-search.fa-2x(style="color:#c00000")
-          div(style="flex-grow:0.1 !important")      
-            a(href="/coupons")
-              button.btn.btn-light.w3ls-btn.coupons-btn.flash-button#coupbtn(type="button")
-                span.fas.fa-gift.coupons-text-color
-                | View deals
-          div(style="flex-grow:0.5 !important")
-            //site navigation 
-            button.navbar-toggler.ml-md-auto.tognavButton(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="Toggle navigation")
-                  span.navbar-toggler-icon
-            div#navbarSupportedContent.collapse.navbar-collapse.nav-padding
-            
-              ul.nav.navbar-nav.ml-lg-auto.nav.justify-content-end(style="float:right")
-                li.nav-item.mr-3
-                  a.nav-link(href='/business/newpackage')
-                    span.fas.fa-database
-                    strong Add Business
-                li.dropdown.nav-item.mr-3
-                  a.nav-link.dropdown-toggle(href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")    
-                    span.fa.fa-bars
-                    strong Categories 
-                    
-                  div.dropdown-menu.dropdown-menu-right.mega-menu(aria-labelledby="navbarDropdown" style="width: -webkit-fill-available;")
-                    if categories 
-                      div.row
-                        each category,i in categories
-                          div.col-md-4.col-sm-12.col-xs-12
-                            a.dropdown-item(href="/category/"+category.name)
-                                strong.findit-blue
-                                  i.fas.fa-1x(aria-hidden='true', class=category.icon) 
-                                  small.findit-blue(style="font-size: 85%;")
-                                    strong   
-                                      =category.name
-                        
-                            
-                //li.nav-item.mr-3
-                  a(href="/")
-                    span.fas.fa-home.fas-menu 
-                    strong
-                    |  Home
-                if (loggedin)
-                  li.nav-item.mr-3                  
-                    a(href='/dashboard')  
-                      span.fas.fa-user.fas-menu
+                ul.nav.navbar-nav.ml-lg-auto.nav.justify-content-end(style="float:right")
+                  li.nav-item.mr-3
+                    a.nav-link(href='/business/newpackage')
+                      span.fas.fa-database
+                      strong Add Business
+                  li.dropdown.nav-item.mr-3
+                    a.nav-link.dropdown-toggle(href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")    
+                      span.fa.fa-bars
+                      strong Categories 
+                      
+                    div.dropdown-menu.dropdown-menu-right.mega-menu(aria-labelledby="navbarDropdown" style="width: -webkit-fill-available;")
+                      if categories 
+                        div.row
+                          each category,i in categories
+                            div.col-md-4.col-sm-12.col-xs-12
+                              a.dropdown-item(href="/category/"+category.name)
+                                  strong.findit-blue
+                                    i.fas.fa-1x(aria-hidden='true', class=category.icon) 
+                                    small.findit-blue(style="font-size: 85%;")
+                                      strong   
+                                        =category.name
+                          
+                              
+                  //li.nav-item.mr-3
+                    a(href="/")
+                      span.fas.fa-home.fas-menu 
                       strong
-                      |  View Profile          
-                if (loggedin)                
-                  li.nav-item.mr-3
-                    a(href='/logout') 
-                      span.fas.fa-sign-out-alt.fas-menu
-                      strong
-                      |  Logout
-                else
-                  li.nav-item.mr-3
-                    a(href='/login')
-                      button.btn.btn-primary.w3ls-btn
+                      |  Home
+                  if (loggedin)
+                    li.nav-item.mr-3                  
+                      a(href='/dashboard')  
+                        span.fas.fa-user.fas-menu
                         strong
-                          | Login
-                  li.nav-item.mr-3
-                    a(href="/register")
-                      button.btn.btn-outline-primary.w3ls-btn.findit-blue
+                        |  View Profile          
+                  if (loggedin)                
+                    li.nav-item.mr-3
+                      a(href='/logout') 
+                        span.fas.fa-sign-out-alt.fas-menu
                         strong
-                        |  Sign Up
-        .input-group.showOnclick(type="button" style="margin: 0.5rem;")
-          ul.navbar-nav.ml-auto.small
-            li.nav-item.active  
-              form.form-class(method='get', action='/updatesearch') 
-                div.input-group(autofocus)
-                  input.search2.form-control-lg(type="text", placeholder="Find a business" ,style="width:100% !important; border: none !important;" ,name='search', autofocus)
-                  .closeSearch(type="button")
-                    span.fas.fa-close.fa-2x(style="padding-left:4.5rem; color:#909090") 
+                        |  Logout
+                  else
+                    li.nav-item.mr-3
+                      a(href='/login')
+                        button.btn.btn-primary.w3ls-btn
+                          strong
+                            | Login
+                    li.nav-item.mr-3
+                      a(href="/register")
+                        button.btn.btn-outline-primary.w3ls-btn.findit-blue
+                          strong
+                          |  Sign Up
+          .input-group.showOnclick(type="button" style="margin: 0.5rem;")
+            ul.navbar-nav.ml-auto.small
+              li.nav-item.active  
+                form.form-class(method='get', action='/updatesearch') 
+                  div.input-group(autofocus)
+                    input.search2.form-control-lg(type="text", placeholder="Find a business" ,style="width:100% !important; border: none !important;" ,name='search', autofocus)
+                    .closeSearch(type="button")
+                      span.fas.fa-close.fa-2x(style="padding-left:4.5rem; color:#909090") 
 
-    .container-fluid.container-padding
-      //display errors
-      .errors
-        if errors
-          each error in errors
-            .alert.xxx-error.alert-danger
+      .container-fluid.container-padding
+        //display errors
+        .errors
+          if errors
+            each error in errors
+              .alert.xxx-error.alert-danger
+                = error
+          
+          if message
+            .alert.xxx-error.alert-info
+              = message
+          if success_msg.length
+            .alert.xxx-error.alert-success 
+              = success_msg
+          if error_msg.length
+            .alert.xxx-error.alert-danger 
+              = error_msg
+          if error.length
+            .alert.xxx-error.alert-danger 
               = error
-        
-        if message
-          .alert.xxx-error.alert-info
-            = message
-        if success_msg.length
-          .alert.xxx-error.alert-success 
-            = success_msg
-        if error_msg.length
-          .alert.xxx-error.alert-danger 
-            = error_msg
-        if error.length
-          .alert.xxx-error.alert-danger 
-            = error
-      button#back-top-Btn(onclick="topFunction()"  title="Go to top")
-        span
-          i.fas.fa-chevron-up
-    block content
+        button#back-top-Btn(onclick="topFunction()"  title="Go to top")
+          span
+            i.fas.fa-chevron-up
+      block content
+    
     //footer
     div.container-fluid
       

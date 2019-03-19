@@ -89,7 +89,7 @@ router.post('/edit/:id', role.auth, cpUpload, function(req, res, next) {
 		}
 		b.keywords = req.body.keywords;
 
-		if(req.files['gallery']!= null){
+		if(req.files['gallery'] != null){
 			//b.gallery = req.files['gallery'];
       req.files['gallery'].forEach(function(x){
         b.gallery.push(x);

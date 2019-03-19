@@ -36,16 +36,16 @@ block content
                   option(data-icon='glyphicon-gift', value=biz.id) #{biz.name}
           .form-group
             .col-sm-6
-              select#cat.selectpicker.form-control.cat(name='cat',data-live-search="true")
+              select#cat.selectpicker.form-control.cat(name='cat',data-live-search="true" required)
                 option(data-icon='glyphicon-wrench', value='')  Select Category 
                 each cat in categories
                   option(data-icon='glyphicon-gift', value=cat.id) #{cat.name}
           .form-group
             .col-sm-6
-              select#subcat.selectpicker.form-control.subcat(name='subcat', placeholder='Select Sub-Category', data-live-search="true")
+              select#subcat.selectpicker.form-control.subcat(name='subcat', placeholder='Select Sub-Category', data-live-search="true" required)
                 option(data-icon='glyphicon-wrench', value='')  Select Sub-Category 
             .col-sm-6
-              select#minicat.selectpicker.form-control.subcat(name='minicat', placeholder='Select Mini-Category',data-live-search="true")
+              select#minicat.selectpicker.form-control.subcat(name='minicat', placeholder='Select Mini-Category',data-live-search="true" required)
                 option(data-icon='glyphicon-wrench', value='')  Select Mini-Category 
           //.form-group.input-group.col-sm-6
             .col-sm-12

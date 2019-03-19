@@ -52,14 +52,16 @@ block content
                 input.form-control-form(type='text', name='building', placeholder='building',value=biz.building)
               .col-sm-6
                 select.form-control-form(name='category', data-selected-text-format='count > 5')
-                  option(data-icon='glyphicon-wrench', value=biz.category) #{biz.category}
+                  if biz.category
+                    option(data-icon='glyphicon-wrench', value=biz.category) #{biz.category}
                   option(data-icon='glyphicon-gift', value='business') Business
                   option(data-icon='glyphicon glyphicon-glass',value='service') Service 
             
               .col-sm-3
                 select#subcategory.form-control-form-select(name='subcategory',data-selected-text-format='count > 5', class='subcategory')
-                  option(data-icon='fa ', value=biz.subcategory) 
-                    =biz.subcategory
+                  if biz.subcategory
+                    option(data-icon='fa ', value=biz.subcategory) 
+                      =biz.subcategory
                   each category in categories
                     option(data-icon='fa '+category.icon, value=category.name) 
                         =category.name

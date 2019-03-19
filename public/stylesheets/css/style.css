@@ -3993,6 +3993,10 @@ section.the-products.items .item .item-info ul.price {
 	background-color: #fff;
 	display: inline-flex;
 }
+.card-product{
+	box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)!important;
+}
+
 .card-product:after {
     content: "";
     display: table;
@@ -5653,9 +5657,9 @@ button.close {
 .tognavButton{
    margin-top: 1rem;
 }
-.pricing-banner{
+/*.pricing-banner{
 	background-image: url(/img/findit-pricing.png);
-}
+}*/
 
 #hours{
 	color: #28a745;
@@ -5705,7 +5709,7 @@ button.close {
 
   /* Equal to height of footer */
   /* But also accounting for potential margin-bottom of last child */
-  margin-bottom: -50px;
+  margin-bottom: -10px;
 }
 
 html, body {

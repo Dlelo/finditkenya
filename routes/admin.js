@@ -95,7 +95,14 @@ router.post('/edit/:id', role.auth, cpUpload, function(req, res, next) {
         b.gallery.push(x);
       })
       //b.gallery.push(req.files['gallery']);
-		}		
+		}	else{
+			Jimp.read("./public/uploads/"+gallery.filename).then(function (cover) {
+				return cover.resize(200, 140)     // resize
+						 .quality(100)                 // set JPEG quality
+						 .greyscale()                 // set greyscale
+						 .write("./public/uploads/thumbs/gallery-"+gallery.filename); // save
+		})
+		}	
 		b.hoursopen = req.body.hoursopen;
 		b.hoursclose = req.body.hoursclose;
 		b.extras = req.body.extras;

@@ -88,21 +88,24 @@ router.post('/edit/:id', role.auth, cpUpload, function(req, res, next) {
 			b.features = req.body.ssubcategory;
 		}
 		b.keywords = req.body.keywords;
+		
 
-		if(req.files['gallery'] != null){
-			//b.gallery = req.files['gallery'];
-      req.files['gallery'].forEach(function(x){
-        b.gallery.push(x);
-      })
-      //b.gallery.push(req.files['gallery']);
-		}	else{
-			Jimp.read("./public/uploads/"+gallery.filename).then(function (cover) {
-				return cover.resize(200, 140)     // resize
-						 .quality(100)                 // set JPEG quality
-						 .greyscale()                 // set greyscale
-						 .write("./public/uploads/thumbs/gallery-"+gallery.filename); // save
-		})
-		}	
+
+		// if(req.files['gallery']){
+		// 	//b.gallery = req.files['gallery'];
+    //   req.files['gallery'].forEach(function(x){
+    //     b.gallery.push(x);
+    //   })
+    //   //b.gallery.push(req.files['gallery']);
+		// }	
+		if(req.files['gallery']){
+			b.gallery = req.files['gallery'];
+      if (b.gallery != null){
+				b.gallery.forEach(function(x){
+					b.gallery.push(x);
+				})
+			}
+
 		b.hoursopen = req.body.hoursopen;
 		b.hoursclose = req.body.hoursclose;
 		b.extras = req.body.extras;

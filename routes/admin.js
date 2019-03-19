@@ -105,6 +105,7 @@ router.post('/edit/:id', role.auth, cpUpload, function(req, res, next) {
 					b.gallery.push(x);
 				})
 			}
+		}
 
 		b.hoursopen = req.body.hoursopen;
 		b.hoursclose = req.body.hoursclose;

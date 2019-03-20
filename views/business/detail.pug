@@ -635,16 +635,16 @@ block content
                                   small Now  
                                     span KES #{product.price}
             .row
-            .col-md-12.text-center
-              span#showproducts
-                strong.findit-blue
-                  span(onclick="showlessFunction()")
-                    span#moreText
-                      | See More Products
+              .col-md-12.text-center
+                span#showproducts
+                  strong.findit-blue
+                    span(onclick="showlessFunction()")
+                      span#moreText
+                        | See More Products
             .row.productsMenu(style="display: none;")
               each product, i in products
                 if(i>5)  
-                  .item.py-2(style="border:none")
+                  .col-md-12(style="border:none")
                     if product.category.name
                       a(href="/product/"+biz.slug+"/"+product.category.name+"/"+product.subcategory+"/"+product.minicategory+"/"+product.slug)
                         .row

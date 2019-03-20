@@ -644,7 +644,7 @@ block content
             .row.productsMenu(style="display: none;")
               each product, i in products
                 if(i>5)  
-                  .col-md-12(style="border:none")
+                  .col-md-2(style="border:none")
                     if product.category.name
                       a(href="/product/"+biz.slug+"/"+product.category.name+"/"+product.subcategory+"/"+product.minicategory+"/"+product.slug)
                         .row

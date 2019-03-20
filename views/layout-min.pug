@@ -51,7 +51,13 @@ html
     link(rel='stylesheet', href='/stylesheets/lightbox.css')
     //old selector css//link(rel='stylesheet', href='/stylesheets/bootstrap-select.min.css')
     link(rel='stylesheet', href='/stylesheets/bootstrap-datetimepicker.min.css')
-    
+    // Global site tag (gtag.js) - Google Analytics
+    script(async='' src='https://www.googletagmanager.com/gtag/js?id=UA-133566211-2')
+    script.
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-133566211-2');
 
     script(type='text/javascript').
         addEventListener("load", function () {

@@ -13,6 +13,13 @@ html
     link(rel='stylesheet', href='/stylesheets/bootstrap-theme.min.css')
     link(rel='stylesheet', href='/stylesheets/fontAwesome.css')
     link(rel='stylesheet', href='/stylesheets/templatemo-style.css')
+    // Global site tag (gtag.js) - Google Analytics
+    script(async='' src='https://www.googletagmanager.com/gtag/js?id=UA-133566211-2')
+    script.
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-133566211-2');
     style.
       /* Always set the map height explicitly to define the size of the div
       * element that contains the map. */

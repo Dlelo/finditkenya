@@ -31,6 +31,13 @@ html(lang='en')
     link(rel='stylesheet', href='https://cdn.datatables.net/v/bs/jszip-2.5.0/dt-1.10.16/af-2.2.2/b-1.5.1/b-html5-1.5.1/b-print-1.5.1/cr-1.4.1/r-2.2.1/sc-1.4.4/sl-1.2.5/datatables.min.css')
 
     script(src='/javascripts/jquery.min.js')
+    // Global site tag (gtag.js) - Google Analytics
+    script(async='' src='https://www.googletagmanager.com/gtag/js?id=UA-133566211-2')
+    script.
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-133566211-2');
   body.fix-header
     // ==============================================================
     // Preloader

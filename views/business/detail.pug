@@ -651,7 +651,7 @@ block content
                            .col-md-12
                               .card.h-100#showUser(style="border:none !important; box-shadow: 0 0 2px 0 rgba(46,62,72,.12), 0 2px 4px 0 rgba(46,62,72,.12);")
                                   img.card-img-top.w-100.product-img-home(src='/uploads/product/thumbs/'+product.photo, alt=product.name +' on FindIt Kenya', style="width: 100% !important; height: 200px !important;")
-                                  .card-text
+                                  .card-text(style="text-align:center")
                                     if product.name.length > 20
                                         | !{product.name.substr(0, 18)+ '...'}
                                     else

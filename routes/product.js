@@ -160,12 +160,12 @@ router.post('/update/:id',role.auth,cpUpload, function(req,res){
     p.gallery = req.files['gallery'];
     p.price = req.body.price;
     p.quantity = req.body.quantity;
+    p.subcategory = req.body.subcat;
+    p.minicategory = req.body.minicat;
     p.status = req.body.status;
     p.oldprice = req.body.oldprice;
     p.bizid = req.body.bizid;
-    p.subcategory = req.body.subcategory;
     p.category = req.body.cat;
-    p.subcategory = req.body.subcat;
     p.save(function(err){
       if(err)
         console.log("err");
@@ -215,7 +215,6 @@ router.post('/create',role.auth, cpUpload, function(req, res){
   p.oldprice = req.body.oldprice;
   p.bizid = req.body.bizid;
   p.category = req.body.cat;
-  p.subcategory = req.body.subcat;
   p.save(function(err){
     if(err)
       console.log("err");

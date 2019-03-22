@@ -39,22 +39,22 @@ block content
               select#cat.selectpicker.form-control.cat(name='cat',data-live-search="true" required)
                 if product.category
                   option(data-icon='glyphicon-wrench', value=product.category)  #{product.category} 
-                each cat in categories
+                each cat in category
                   option(data-icon='glyphicon-gift', value=cat.id) #{cat.name}
-          .form-group
-            .col-sm-6
-              select#subcat.selectpicker.form-control.subcat(name='subcat', placeholder='Select Sub-Category', data-live-search="true" required)
-                if product.category
-                  option(data-icon='glyphicon-wrench', value=product.subcategory)  #{product.subcategory}
-                each subcat in subcategory
-                  option(data-icon='glyphicon-wrench', value=subcat.id) #{subcat.name} 
-            .col-sm-6
-              select#minicat.selectpicker.form-control.subcat(name='minicat', placeholder='Select Mini-Category',data-live-search="true" required)
-                if product.minicategory
-                  option(data-icon='glyphicon-wrench', value=product.minicategory)  #{product.minicategory}
-                each minicat in minicategory
-                  option(data-icon='glyphicon-wrench', value=minicat.id) #{minicat.name}
-                 
+        .form-group
+          .col-sm-6
+            select#subcat.selectpicker.form-control.subcat(name='subcat', placeholder='Select Sub-Category', data-live-search="true" required)
+              if product.subcategory
+                option(data-icon='glyphicon-wrench', value=product.subcategory)  #{product.subcategory}
+              each subcat in subcategory
+                option(data-icon='glyphicon-wrench', value=subcat.id) #{subcat.name} 
+          .col-sm-6
+            select#minicat.selectpicker.form-control.subcat(name='minicat', placeholder='Select Mini-Category',data-live-search="true" required)
+              if product.minicategory
+                option(data-icon='glyphicon-wrench', value=product.minicategory)  #{product.minicategory}
+              each minicat in minicategory
+                option(data-icon='glyphicon-wrench', value=minicat.id) #{minicat.name}
+                
         .form-group
           .col-sm-6
             input.form-control-form(name='price',type='number',style ="margin-top:12px;",placeholder="Price of Product",value=product.price)

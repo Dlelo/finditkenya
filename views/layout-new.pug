@@ -29,6 +29,29 @@ html(lang='en')
     link(href="//fonts.googleapis.com/css?family=Josefin+Sans:100,100i,300,300i,400,400i,600,600i,700,700i" rel="stylesheet")
     script(src="/javascripts/jquery-3.3.1.min.js") 
     script(src='/javascripts/jquery.easy-autocomplete.min.js')
+
+    // Global site tag (gtag.js) - Google Analytics
+    script(async='' src='https://www.googletagmanager.com/gtag/js?id=UA-136579356-1')
+    script.
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-136579356-1');
+    // Facebook Pixel Code
+    script.
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '560982094388264');
+      fbq('track', 'PageView');
+    noscript
+      img(height='1' width='1' style='display:none' src='https://www.facebook.com/tr?id=560982094388264&ev=PageView&noscript=1')
+    // End Facebook Pixel Code
     
    
     link(rel='stylesheet', href='/stylesheets/lightbox.css')

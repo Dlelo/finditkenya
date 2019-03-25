@@ -1380,7 +1380,7 @@ router.get('/updatesearch', function (req, res) {
     //console.log(theCurrentBizName);
 
     
-    currentBusinessFeature.sort();
+    //currentBusinessFeature.sort();
 
     let similarbusinesses = q3;
 

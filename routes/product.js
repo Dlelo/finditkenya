@@ -528,11 +528,12 @@ router.get('/:bizname/:category/:subcat/:minicat/:slug',function(req, res){
   bizSlug = values[1].bizid.slug;
   bizName = values[1].bizid.name;
   bizDescription = values[1].bizid.description;
-  bizPhone = values[1].bizid.phone;
+  phonNo = values[1].bizid.phone;
   bizEmail = values[1].bizid.email;
 
-
-  console.log(bizPhone);
+  var bizPhone;
+  bizPhone = phonNo.split(","); 
+  console.log(phonNo);
   console.log(bizEmail);
 
   owner = values[1].bizid.user_id;

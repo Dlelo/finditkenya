@@ -66,15 +66,16 @@ block content
       row
         if product
           .col-md-12
-            ul.nav
-              li.nav-item
-                a.nav-link.active(href='#') Active
+            ul.nav.nav-pills
+              li.active
+                a(href='#1a' data-toggle='tab') 
                   dl.item-property
                     dt 
                       h3.title.mb-3.findit-red.text-center
                         | Company Information
-                    dd
-                      p #{bizDescription}
+            .tab-content.clearfix
+              #1a.tab-pane.active
+                p #{bizDescription}
 
                          
 

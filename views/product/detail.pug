@@ -68,11 +68,12 @@ block content
           .col-md-12
             ul.nav.nav-pills
               li.active
-                a(href='#1a' data-toggle='tab') 
-                  dl.item-property
-                    dt 
-                      h3.title.mb-3.findit-red.text-center
-                        | Company Information
+                if bizDescription
+                  a(href='#1a' data-toggle='tab') 
+                    dl.item-property
+                      dt 
+                        h3.title.mb-3.findit-red.text-center
+                          | Company Information
             .tab-content.clearfix
               #1a.tab-pane.active
                 p #{bizDescription}

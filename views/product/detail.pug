@@ -51,11 +51,8 @@ block content
                     p.contact
                       each phone in bizPhone
                         span.fas.fa-phone
-                        //remove style="display:none" on phoneno
-                        a.findit.phoneno(href="tel:"+phone)
-                          |  #{phone}
-                        //a.findit.phonenofake(href="#")
-                          |  Get Contacts
+                        |  #{phone}
+                        
                     p.contact
                       strong.findit-blue
                         a.findit(href="mailto:"+bizEmail)

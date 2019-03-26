@@ -49,6 +49,9 @@ block content
                 hr
                 div
                     p.contact
+                      - var bizPhone ;
+                      -phone = bizPhone.split(","); 
+                      -console.log(bizPhone);
                       span.fas.fa-phone
                       |  #{bizPhone}
                         

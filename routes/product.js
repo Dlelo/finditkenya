@@ -542,7 +542,7 @@ router.get('/:bizname/:category/:subcat/:minicat/:slug',function(req, res){
   //   User.findOne({ username: values[1].bizid.user_id }).populate('user_id').then(function(u){
   //     //if(err) console.log(err);
   //     console.log(values[1]);
-      res.render('product/detail',{product: values[1],title: values[1].name, categories: values[0], owner, bizPhone, bizEmail, bizName, bizSlug});
+      res.render('product/detail',{product: values[1],title: values[1].name, categories: values[0], owner, bizPhone, bizEmail, bizName, bizSlug, bizDescription});
     }).catch(function(){
         // want to handle errors here
         console.log("error happened");

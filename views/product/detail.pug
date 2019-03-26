@@ -50,8 +50,6 @@ block content
                 div
                     p.contact
                       each phone in bizPhone
-                        span#biz-id(style="display:none")
-                          =biz.id
                         span.fas.fa-phone
                         //remove style="display:none" on phoneno
                         a.findit.phoneno(href="tel:"+phone)

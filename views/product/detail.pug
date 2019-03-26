@@ -49,8 +49,12 @@ block content
                 hr
                 div
                     p.contact
-                      span.fas.fa-phone
-                      |  #{bizPhone}
+                      each phone in bizPhone
+                        span.fas.fa-phone
+                        a.findit.phoneno(href="tel:"+phone)
+                          |  #{phone}
+                      //- span.fas.fa-phone
+                      //- |  #{bizPhone}
                         
                     p.contact
                       strong.findit-blue

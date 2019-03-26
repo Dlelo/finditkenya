@@ -66,12 +66,15 @@ block content
       row
         if product
           .col-md-12
-            dl.item-property
-              dt 
-                h3.title.mb-3.findit-red.text-center
-                  | Company Information
-              dd
-                p #{bizDescription}
+            ul.nav
+              li.nav-item
+                a.nav-link.active(href='#') Active
+                  dl.item-property
+                    dt 
+                      h3.title.mb-3.findit-red.text-center
+                        | Company Information
+                    dd
+                      p #{bizDescription}
 
                          
 

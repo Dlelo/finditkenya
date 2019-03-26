@@ -50,9 +50,9 @@ block content
                 div
                     p.contact
                       each phone in bizPhone
-                        span.fas.fa-phone
+                        span.findit-red.fas.fa-phone
                         a.findit.phoneno(href="tel:"+phone)
-                          |    #{phone}
+                          strong  #{phone}
                         br
                       //- span.fas.fa-phone
                       //- |  #{bizPhone}

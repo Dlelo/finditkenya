@@ -33,12 +33,13 @@ block content
                         strong
                           |    Go back to Company Profile
                  
-                p.price-detail-wrap
-                  span.price.h3.text-secondary
-                    span.currency KES. 
-                    span.num
-                     =product.price
-                  span 
+                if product.price
+                  p.price-detail-wrap
+                    span.price.h3.text-secondary
+                      span.currency KES. 
+                      span.num
+                      =product.price
+                    span 
                 if product.description
                   dl.item-property
                     dt Description

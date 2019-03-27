@@ -51,32 +51,32 @@ block content
                         //-     | #{usr.code} | #{usr.status} | #{usr.user_id} 
                         //-     a(href="/admin/coupon/markused/"+user.id, title="Mark This Coupon as Used")
                         //-       i.fa.fa-check.fa-fw(aria-hidden='true')
-                        .table-responsive
-                          table.table
-                            thead
+                      
+                        table.table
+                          thead
+                            tr
+                              th #
+                              th DATE
+                              th COUPON CODE
+                              th NAME
+                              th PHONE
+                              th EMAIL
+                              th MARK AS USED
+                              
+                          tbody
+                            -console.log(coupon.users)
+                            each usr,i in coupon.users
                               tr
-                                th #
-                                th DATE
-                                th COUPON CODE
-                                th NAME
-                                th PHONE
-                                th EMAIL
-                                th MARK AS USED
-                                
-                            tbody
-                              -console.log(coupon.users)
-                              each usr,i in coupon.users
-                                tr
-                                  td
-                                    =i
-                                  td 
-                                    | Date and time
-                                  td #{usr.code} 
-                                  td #{usr.user_id}
-                                  -console.log(usr.user_id)
-                                  td 
-                                    a(href="/admin/coupon/markused/"+user.id, title="Mark This Coupon as Used")
-                                      i.fa.fa-check.fa-fw(aria-hidden='true')
+                                td
+                                  =i
+                                td 
+                                  | Date and time
+                                td #{usr.code} 
+                                td #{usr.user_id}
+                                -console.log(usr.user_id)
+                                td 
+                                  a(href="/admin/coupon/markused/"+user.id, title="Mark This Coupon as Used")
+                                    i.fa.fa-check.fa-fw(aria-hidden='true')
     script(src="/javascripts/admin/Sortable.min.js")
     script(src="/javascripts/axios.min.js")
     script(src='/javascripts/notify.js')

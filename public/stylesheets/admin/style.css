@@ -229,4 +229,4 @@ label{font-weight:500}
 .rTableHeading { display: table-header-group; }
 .rTableBody { display: table-row-group; }
 .rTableFoot { display: table-footer-group; }
-.rTableCell, .rTableHead { display: table-cell; }
+.rTableCell, .rTableHead { display: table-cell; padding: 3px 10px }

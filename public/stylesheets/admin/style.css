@@ -224,3 +224,9 @@ label{font-weight:500}
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     margin-top: 3px;
 }
+.rTable { display: table; }
+.rTableRow { display: table-row; }
+.rTableHeading { display: table-header-group; }
+.rTableBody { display: table-row-group; }
+.rTableFoot { display: table-footer-group; }
+.rTableCell, .rTableHead { display: table-cell; }

@@ -6,24 +6,17 @@ block content
     #home.baner-content-listing-biz
       .container-fluid.container-margin-top
         if(products.length)
-            each product, i in products  
+            each p, i in product 
                 .col-md-2(style="border:none; margin-top: 1rem; margin-bottom: 1rem;")
-                    if product.category.name
-                        a(href="/product/"+biz.slug+"/"+product.category.name+"/"+product.subcategory+"/"+product.minicategory+"/"+product.slug)
+                    if p.category.name
+                        a(href="/product/"+biz.slug+"/"+p.category.name+"/"+p.subcategory+"/"+p.minicategory+"/"+p.slug)
                             .row
                                 .col-md-12
                                     .card.h-100#showUser(style="border:none !important; box-shadow: 0 0 2px 0 rgba(46,62,72,.12), 0 2px 4px 0 rgba(46,62,72,.12);")
-                                        img.card-img-top.w-100.product-img-home(src='/uploads/product/thumbs/'+product.photo, alt=product.name +' on FindIt Kenya', style="width: 100% !important; height: 200px !important;")
+                                        img.card-img-top.w-100.product-img-home(src='/uploads/product/thumbs/'+p.photo, alt=p.name +' on FindIt Kenya', style="width: 100% !important; height: 200px !important;")
                                         .card-text(style="text-align:center")
-                                            if product.name.length > 20
-                                                | !{product.name.substr(0, 18)+ '...'}
+                                            if p.name.length > 20
+                                                | !{p.name.substr(0, 18)+ '...'}
                                             else
                                                 | !{product.name}
-                                            if product.oldprice
-                                                .price-old.findit-blue.strike
-                                                small Was  
-                                                    span KES #{product.oldprice}
-                                            if product.price
-                                                .price-new.findit-red
-                                                small Now  
-                                                    span KES #{product.price}
+                                            

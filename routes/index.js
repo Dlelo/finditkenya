@@ -1197,6 +1197,96 @@ router.get('/newindex', function (req, res) {
   });
 })
 
+//start of product search
+router.get('/productsearch',function(req,res){
+  let query = req.query.search.trim().toLowerCase();
+
+  // let lon =req.query.lon ? Number(req.query.lon):36.8219;
+  // let lat =req.query.lat ? Number(req.query.lat):-1.2921;
+  
+  let multi = query.split(' ');
+  let catSearch = [false,''];
+  let subCatSearch = [false,''];
+  multi = multi.filter(function(word){
+    return word != 'in'
+  })
+  if(multi.length<1){
+    multi.push(multi[0])
+  }
+  for(let i = 0; i < multi.length; i++){
+    if(CATS.includes(multi[i])){
+      catSearch[0] = true;
+      catSearch[1] = multi[i]
+    }
+    if(SUBCATS.includes(multi[i])){
+      subCatSearch[0] = true;
+      subCatSearch[1] = multi[i]
+    }
+  }
+  
+  if(subCatSearch[0]){
+    const subcat = subCatSearch[1].replace(/^\w/, c => c.toUpperCase());
+    res.redirect('subcategory/undefined/'+subcat+'?lat='+lat+'&lon='+lon)
+  }
+    
+//   let point = {
+//     "type": "Point",
+//     "coordinates": [lon,lat]
+//   };
+
+  // var q1 = Product.aggregate([{
+  //   [ 
+  //           {name:{
+  //             $regex:query,
+  //             $options:'i'
+  //           }},
+  //           {name:{
+  //             $regex:multi[0].substr(0,multi[0].length/1.5),
+  //             $options:'i'
+  //             }}
+  //           ]
+  //     } ]);
+  
+  var q2 = Product.find({$or: [
+    {
+      name: { "$regex": query, "$options": "i" }
+    },
+    {
+      description: { "$regex": query, "$options": "i" }
+    },
+    {
+      minicategory: { "$regex": query, "$options": "i" }
+    }
+    ]
+  })
+
+  var categories = Category.find({group: 'general'}); 
+
+  Promise.all([q2,categories]).then(values => {
+    
+    // var res2 = values[0].filter(function(biz){
+    //   return biz.branch == typeof 'undefined' || biz.branch == false || biz.branch == null
+    // })
+
+    var res1 = values[1].filter(function(prod){
+      return prod.name.trim().toLowerCase().startsWith(multi[0].substr(0,2)) ||
+      prod.name.trim().toLowerCase().includes(multi[1]) || prod.name.trim().toLowerCase().includes(multi[0]) 
+    })
+
+    // if(res2.length==0){
+    //   res2 = res2.concat(res1)
+    // }
+
+    res.render('product/search',{
+      title: req.query.search,
+      products: res1,
+      categories: values[2],
+      host: req.get('host')
+    });
+  })
+})
+// End of product search
+//Start of business search
 router.get('/updatesearch', function (req, res) {
   let query = req.query.search.trim().toLowerCase();
 
@@ -1412,6 +1502,7 @@ router.get('/updatesearch', function (req, res) {
     });
   });
 });
+// End of business search
 
 router.get('/search', function (req, res, next) {
   var neatString = req.query.search.trim();

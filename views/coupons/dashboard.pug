@@ -46,11 +46,11 @@ block content
                                 i.fa.fa-star.fa-fw(aria-hidden='true')                               
                     .panel-collapse.collapse.fa.fa-plus(role='tabpanel', aria-labelledby='headingTwo', id='collapse'+i)
                       .panel-body
-                        each usr,i in coupon.users
-                          p
-                            | #{usr.code} | #{usr.status} | #{usr.user_id} 
-                            a(href="/admin/coupon/markused/"+user.id, title="Mark This Coupon as Used")
-                              i.fa.fa-check.fa-fw(aria-hidden='true')
+                        //- each usr,i in coupon.users
+                        //-   p
+                        //-     | #{usr.code} | #{usr.status} | #{usr.user_id} 
+                        //-     a(href="/admin/coupon/markused/"+user.id, title="Mark This Coupon as Used")
+                        //-       i.fa.fa-check.fa-fw(aria-hidden='true')
                         .table-responsive
                           table.table
                             thead

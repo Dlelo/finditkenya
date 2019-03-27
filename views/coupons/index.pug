@@ -283,7 +283,7 @@ block content
             .card#showUser(style="border:none;")
               .row
                 .col-md-4.col-sm-4
-                  img.p-3.img-coupon(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name +' on Findit Kenya')
+                  img.p-3.img-coupon(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name +' on Findit Kenya' style="padding-top:1.5rem")
                   span 
                     small 
                       strong.showOnHover Click to Claim Coupon
@@ -302,7 +302,7 @@ block content
                       small
                         strong #{coupon.tagline}
                     a.btn.btn-primary.clipped(style="color:#fff !important")  Clipped 
-            .viewBusiness(style="position: absolute; top: 20%; right: 0;") 
+            .viewBusiness(style="position: absolute; top: 0; left: 0;") 
               a(href="/biz/"+coupon.bizid.slug)
                 small
                   strong 

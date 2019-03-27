@@ -70,8 +70,14 @@ block content
                                     =i
                                   td 
                                     | Date and time
-                                  -var usrs = JSON.stringify(usr.user_id)
-                                  -console.log(usrs
+                                  td
+                                    each us, i in usr.user_id
+                                      if i<1
+                                        td 
+                                      else if i>0 && i<2
+                                        td 
+                                      else if i>1 && i<3
+                                      td #{us.email}
                                   td 
                                     a(href="/admin/coupon/markused/"+user.id, title="Mark This Coupon as Used")
                                       i.fa.fa-check.fa-fw(aria-hidden='true')

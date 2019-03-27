@@ -70,8 +70,8 @@ block content
                                     =i
                                   td 
                                     | Date and time
-                                  td usr.user_id
-                                    -console.log(usr.user_id)
+                                  td #{usr.user_id}
+                                  -console.log(usr.user_id)
                                     
                                   td 
                                     a(href="/admin/coupon/markused/"+user.id, title="Mark This Coupon as Used")

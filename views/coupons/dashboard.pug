@@ -73,6 +73,8 @@ block content
                                   td #{usr.code} 
                                   td #{usr.user_id}
                                   -console.log(usr.user_id)
+                                  each user in usr.user_id
+                                    -console.log(user.names)
                                     
                                   td 
                                     a(href="/admin/coupon/markused/"+user.id, title="Mark This Coupon as Used")

@@ -70,13 +70,11 @@ block content
                                     =i
                                   td 
                                     | Date and time
-                                  td
-                                    span.text-success #{usr.code}
-                                    -console.log(usr.user_id)
-                                    each us in usr.user_id
-                                      td #{us.names}
-                                      td #{us.phone}
-                                      td #{us.email}
+                                  -var usrs = usr.user_id[0]
+                                  each us in usrs
+                                    td #{us.names}
+                                    td #{us.phone}
+                                    td #{us.email}
                                   td 
                                     a(href="/admin/coupon/markused/"+user.id, title="Mark This Coupon as Used")
                                       i.fa.fa-check.fa-fw(aria-hidden='true')

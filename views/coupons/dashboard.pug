@@ -64,6 +64,7 @@ block content
                                 th MARK AS USED
                                 
                             tbody
+                              -console.log(coupon.users)
                               each usr,i in coupon.users
                                 tr
                                   td
@@ -73,9 +74,6 @@ block content
                                   td #{usr.code} 
                                   td #{usr.user_id}
                                   -console.log(usr.user_id)
-                                  each user in usr.user_id
-                                    -console.log(user.names)
-                                    
                                   td 
                                     a(href="/admin/coupon/markused/"+user.id, title="Mark This Coupon as Used")
                                       i.fa.fa-check.fa-fw(aria-hidden='true')

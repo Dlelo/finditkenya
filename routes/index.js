@@ -67,7 +67,6 @@ const SUBCATS = [
   "credit information ",
   "debt collection agencies",
   "advisory",
-  "financial advisory",
   "transporters",
   "warning defaulters",
   "kitchen",
@@ -2132,19 +2131,15 @@ router.get('/category/:cat', function (req, res, next) {
   }
   if (req.params.cat == 'Events') {
     var businesses = Business.find({
-      //$query: { subcategory: req.params.cat, approved: true },
-      $query: { features: req.params.name, approved: true },
+      $query: { subcategory: req.params.cat, approved: true },
       $orderby: { starteventdate: -1 },
       "starteventdate": { $gt: new Date() }
     }).sort([['paid', -1], ['datepaid', 1]]);
-    //fix bug on category
     var features = Category.aggregate([
       { $match: { name: req.params.cat } },
       { "$unwind": "$subcategories" },
       { "$sort": { "subcategories.name": 1 } }
     ]);
-   // var features = Category.find({ subcategories: {$elemMatch: { name: req.params.name}} });
-    //fix bug on category
     var categories = Category.find({ approved: true, group: 'general' }).sort([['order', 1]]);
     Promise.all([businesses, features, categories]).then(values => {
       //console.log(values[1]);
@@ -2170,8 +2165,7 @@ router.get('/category/:cat', function (req, res, next) {
           'near': point,
           'spherical': true,
           "query": {
-            //subcategory: req.params.cat,
-            features: req.params.name,
+            subcategory: req.params.cat,
             approved: true,
             branch: { $ne: true }
           },
@@ -2186,16 +2180,12 @@ router.get('/category/:cat', function (req, res, next) {
         subcategory: req.params.cat,
         approved: true
       });
-      //fix bug on categories
 
       var features = Category.aggregate([
         { $match: { name: req.params.cat } },
         { "$unwind": "$subcategories" },
         { "$sort": { "subcategories.name": 1 } }
       ]);
-      
-      //end of fixing bug
-
       //as
       var categories = Category.find({ approved: true, group: 'general' }).sort([['order', 1]]);
 
@@ -2226,8 +2216,7 @@ router.get('/category/:cat', function (req, res, next) {
     } else {
       var businesses = Business.find({
         $query: {
-          //subcategory: req.params.cat,
-          features: req.params.name,
+          subcategory: req.params.cat,
           approved: true,
           branch: { $ne: true }
           //pending: { $ne: true }
@@ -2241,13 +2230,13 @@ router.get('/category/:cat', function (req, res, next) {
         subcategory: req.params.cat,
         approved: true
       });
-      // Fix bug on subcategories
+
       var features = Category.aggregate([
         { $match: { name: req.params.cat } },
         { "$unwind": "$subcategories" },
         { "$sort": { "subcategories.name": 1 } }
       ]);
-      //End of fix bug on subcategories
+
       var categories = Category.find({ approved: true, group: 'general' }).sort([['order', 1]]);
 
       Promise.all([businesses, features, categories, bizcount]).then(values => {

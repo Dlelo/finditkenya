@@ -2136,11 +2136,14 @@ router.get('/category/:cat', function (req, res, next) {
       $orderby: { starteventdate: -1 },
       "starteventdate": { $gt: new Date() }
     }).sort([['paid', -1], ['datepaid', 1]]);
-    var features = Category.aggregate([
-      { $match: { name: req.params.cat } },
-      { "$unwind": "$subcategories" },
-      { "$sort": { "subcategories.name": 1 } }
-    ]);
+    //fix bug on category
+    // var features = Category.aggregate([
+    //   { $match: { name: req.params.cat } },
+    //   { "$unwind": "$subcategories" },
+    //   { "$sort": { "subcategories.name": 1 } }
+    // ]);
+    var features = Category.find({ subcategories: {$elemMatch: { name: req.params.name}} });
+    //fix bug on category
     var categories = Category.find({ approved: true, group: 'general' }).sort([['order', 1]]);
     Promise.all([businesses, features, categories]).then(values => {
       //console.log(values[1]);

@@ -2027,12 +2027,16 @@ router.get('/category/:cat', function (req, res, next) {
         subcategory: req.params.cat,
         approved: true
       });
+      //fix bug on categories
 
-      var features = Category.aggregate([
-        { $match: { name: req.params.cat } },
-        { "$unwind": "$subcategories" },
-        { "$sort": { "subcategories.name": 1 } }
-      ]);
+      // var features = Category.aggregate([
+      //   { $match: { name: req.params.cat } },
+      //   { "$unwind": "$subcategories" },
+      //   { "$sort": { "subcategories.name": 1 } }
+      // ]);
+      var features = Category.find({ subcategories: {$elemMatch: { name: req.params.name}} });
+      //end of fixing bug
+
       //as
       var categories = Category.find({ approved: true, group: 'general' }).sort([['order', 1]]);
 

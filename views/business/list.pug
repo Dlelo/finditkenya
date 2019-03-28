@@ -41,13 +41,12 @@ block content
                     li.text-left.sub-list
                         h6.findit-red
                           | Filter #{category} by Subcategory
-                    each category ,i in categories
-                      each cat in category.subcategories
-                        .panel-heading.category
-                          li.text-left.sub-list
-                            a(href="/subcategory/"+categoryTitle+"/"+cat.name style="color:#212529")
-                              strong  
-                                =cat.name
+                    each feature in features
+                      .panel-heading.category
+                        li.text-left.sub-list
+                          a(href="/subcategory/"+categoryTitle+"/"+feature.subcategories.name style="color:#212529")
+                            strong  
+                              =feature.subcategories.name
           .col-md-9.category-zindex
             if businesses.length>1
               div.cathead-background.cat-box.findit-blue
@@ -195,11 +194,10 @@ block content
                                               | #{biz.reviews.length} Reviews
                                             br
             else
-                h1
-                  .findit-red(style="padding-top:1rem;") Oops!!! No Businesses or service available
-                  span 
-                    a(href='/business/newpackage') 
-                      strong Add your business or service Now!
+                .findit-red(style="padding-top:1rem;") Oops!!! No Businesses or service available
+                span 
+                  a(href='/business/newpackage') 
+                    strong Add yor business or service Here!
                                                   
             //ul.pagination.row
               - var n = 1;

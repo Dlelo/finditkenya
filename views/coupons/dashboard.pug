@@ -46,11 +46,36 @@ block content
                                 i.fa.fa-star.fa-fw(aria-hidden='true')                               
                     .panel-collapse.collapse.fa.fa-plus(role='tabpanel', aria-labelledby='headingTwo', id='collapse'+i)
                       .panel-body
-                        each usr,i in coupon.users
-                          p
-                            | #{usr.code} | #{usr.status} | #{usr.user_id} 
-                            a(href="/admin/coupon/markused/"+user.id, title="Mark This Coupon as Used")
-                              i.fa.fa-check.fa-fw(aria-hidden='true')
+                        
+                        //- each usr,i in coupon.users
+                        //-   p
+                        //-     | #{usr.code} | #{usr.status} | #{usr.user_id} 
+                        //-     a(href="/admin/coupon/markused/"+user.id, title="Mark This Coupon as Used")
+                        //-       i.fa.fa-check.fa-fw(aria-hidden='true')
+                        
+                         
+                        .rTable
+                          .rTableRow
+                            .rTableHead
+                              strong Date and Time
+                            .rTableHead
+                              span(style='font-weight: bold;') Coupon Code
+                            .rTableHead
+                              span(style='font-weight: bold;') User Details
+                            .rTableHead
+                              span(style='font-weight: bold;') Mark coupon as used
+                            .rTableHead &nbsp;
+                          each usr,i in coupon.users
+                            .rTableRow
+                              .rTableCell Date 
+                              .rTableCell #{usr.code} 
+                              .rTableCell #{usr.user_id}
+                              -console.log(usr.user_id)
+                              .rTableCell 
+                                a(href="/admin/coupon/markused/"+user.id, title="Mark This Coupon as Used")
+                                  i.fa.fa-check.fa-fw(aria-hidden='true')
+                        else
+                          | Coupon not claimed
     script(src="/javascripts/admin/Sortable.min.js")
     script(src="/javascripts/axios.min.js")
     script(src='/javascripts/notify.js')

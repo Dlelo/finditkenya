@@ -3,7 +3,7 @@ extends ../layout-min
 block content
   #home.baner-content-listing-biz
     .container.container-margin-top
-      h4.text-center
+      h4.text-center(style="margin-top:1rem")
         | Claim This Business
       form(method='post', action='/claim/'+bizid)
         .form-group
@@ -15,78 +15,91 @@ block content
         .form-group
           .row
             section#package
-              .col-md-4
-                input.form-control-form.package#bronze(name='package', type='radio', value='bronze', required)
-                label#packagelabel(for='bronze')
-                  .bronze
-                    h3
-                      strong
-                        |  Bronze (KES: 2320)
-                  ul
-                    li
-                      | Upto 6 Images
-                    li
-                      | 50 Words to describe your business  
-                    li
-                      | 10 keywords
-                    li
-                      | Map Location
-                    li
-                      | 1 catalog/Menu  
-                  .btn-package.form-control.selectpackage
-                    strong
-                      |  Select Package
-
-              .col-md-4
-                input.form-control-form.package#silver(name='package', type='radio', value='silver', required)
-                label#packagelabel(for='silver')
-                  .silver
-                    h3
-                      strong
-                      |  Silver (KES: 5800)
-                  ul
-                    li
-                      | Upto 15 Images
-                    li
-                      | 120 Words to describe your business  
-                    li
-                      | Upto 25 keywords
-                    li
-                      | Map Location
-                    li
-                      | Upto 3 catalog/Menu(s)
-                    li
-                      | Priority Listing one day per month
-                    li
-                      | 1 free news letter adverts per month  
-                  .btn-package.form-control.selectpackage
-                    strong
-                      |  Select Package                                      
-              .col-md-4                                 
-                input.form-control-form.package#gold(name='package', type='radio', value='gold', required)
-                label#packagelabel(for='gold')
-                  .gold 
-                    h3
-                      strong
-                      |  Gold (KES: 13920)
-                  ul
-                    li
-                      | Unlimited Images
-                    li
-                      | 250 Words to describe your business  
-                    li
-                      | Upto 100 keywords
-                    li
-                      | Map Location
-                    li
-                      | Unlimited catalog/Menu(s)
-                    li
-                      | Priority Listing three day per month
-                    li
-                      | 3 free news letter adverts per month
-                  .btn-package.form-control.selectpackage
-                    strong
-                      |  Select Package
+              .col-md-6.packages-padding
+                .card.card-product
+                  .div.ps-top-to-bottom-silver(style="margin:1rem")
+                    input.form-control-form.package#silver(name='package', type='radio', value='silver', required)
+                    label#packagelabel(for='silver')
+                      .package-info.img-wrap-package 
+                        h4.silver
+                          img(src='/img/silver-package.png')
+                          strong
+                            strong
+                              | SILVER
+                            br
+                            span
+                              span(style="text-decoration: line-through;")
+                                small
+                                  | Was KES 15,000
+                              br
+                              span
+                                | Now KES: 5,000   
+                        h5 
+                          strong Per Annum
+                        br
+                        ul
+                          li
+                            small Upto 15 Images
+                          li
+                            small 120 Words to describe your business  
+                          li
+                            small Upto 25 keywords
+                          li
+                            small Map Location
+                          li
+                            small Upto 3 catalog/Menu(s)
+                          li
+                            small Priority Listing one day per month
+                          li
+                            small 1 free news letter adverts per month  
+                          li
+                            small Add upto 20 products
+                      .info-wrap   
+                        .action-wrap 
+                          .btn-package.selectpackage.btn-silver
+                            strong KES 5,000                                  
+              .col-md-6.packages-padding 
+                .card.card-product
+                  .div.ps-top-to-bottom-gold(style="margin:1rem")                               
+                    input.form-control-form.package#gold(name='package', type='radio', value='gold', required)
+                    label#packagelabel(for='gold')
+                      .package-info.img-wrap-package 
+                        h4.gold
+                          img(src='/img/gold-package.png')
+                          strong
+                            | GOLD
+                            br
+                            span
+                              span(style="text-decoration: line-through;")
+                                small
+                                  | Was KES 30,000 
+                              br
+                              span
+                                | Now KES: 12,000 
+                        h5
+                          strong Per Annum
+                        br
+                        ul
+                          li
+                            small Unlimited Images
+                          li
+                            small 250 Words to describe your business  
+                          li
+                            small Upto 100 keywords
+                          li
+                            small Map Location
+                          li
+                            small Unlimited catalog/Menu(s)
+                          li
+                            small Priority Listing three day per month
+                          li
+                            small 3 free news letter adverts per month
+                          li
+                            small Add upto upto 100 products
+                      .info-wrap   
+                        .action-wrap
+                          .btn-gold.selectpackage
+                            strong KES: 12,000
         .form-group
           button.btn.btn-claim.form-control-form.btn-gp(type='submit', style='color:#5050ff')                 
             strong

@@ -25,31 +25,66 @@ block content
               article.card-body.p-5
                 h3.title.mb-3
                   =product.name
-                p.price-detail-wrap
-                  span.price.h3.text-secondary
-                    span.currency KES. 
-                    span.num
-                     =product.price
-                  span 
-                dl.item-property
-                  dt Description
-                  dd
-                    p 
-                     | !{product.description}
+                a.bizlink(href="/biz/"+bizSlug)
+                  h4.title.mb-3
+                    small
+                      =bizName
+                      span(style="float:right")
+                        strong
+                          |    Go back to Company Profile
+                 
+                if product.price
+                  p.price-detail-wrap
+                    span.price.h3.text-secondary
+                      span.currency KES. 
+                      span.num
+                      =product.price
+                    span 
+                if product.description
+                  dl.item-property
+                    dt Description
+                    dd
+                      p 
+                      | !{product.description}
                 
                 hr
                 div
-                    p.contact 
-                      strong #{owner.name}
-                    p.contact 
-                      strong #{owner.phone}
-                    p.contact 
-                      strong #{owner.email}
+                    p.contact
+                      each phone in bizPhone
+                        span.findit-red.fas.fa-phone
+                        a.findit.phoneno(href="tel:"+phone)
+                          strong  #{phone}
+                        br
+                      //- span.fas.fa-phone
+                      //- |  #{bizPhone}
+                        
+                    p.contact
+                      strong.findit-blue
+                        a.findit(href="mailto:"+bizEmail)
+                          span.fas.fa-envelope
+                            |  Email Seller
+                      //strong #{bizEmail}
 
                     .btn.btn-lg.btn-outline-primary.text-uppercase.addtocart#showProduct(style="margin-top:1rem;")
-                       i.fas.fa-shopping-cart Contact Owner
-                
-                     
+                       i.fas.fa-shopping-cart Contact seller
+    hr
+    .container          
+      row
+        if product
+          .col-md-12
+            ul.nav.nav-pills
+              li.active
+                if bizDescription
+                  a(href='#1a' data-toggle='tab') 
+                    dl.item-property
+                      dt 
+                        h3.title.mb-3.findit-red.text-center
+                          | Company Information
+            .tab-content.clearfix
+              #1a.tab-pane.active
+                p #{bizDescription}
+
+                         
 
      
     
@@ -58,11 +93,34 @@ block content
     script(src='https://hammerjs.github.io/dist/hammer.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/js/foundation.min.js')
     script(type='text/javascript').
-     $(document).ready(function(){
-        $("#showProduct").click(function(){
-            $(".contact").show();
+      $(document).ready(function(){
+          $("#showProduct").click(function(){
+              $(".contact").toggle();
+          });
         });
+      
+
+    //script to put navitems open by default
+    script(type='text/javascript').
+      $(document).ready(function(){
+          console.log(!{JSON.stringify(businesses)});
+          if($(window).width() >= 600){
+            $(".dropdown-toggle").dropdown("toggle");
+          }  
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            /// ------- attach users location to url
+            $(".bizlink").each(function () {
+              let url =$(this).attr("href")
+              let newUrl = url+'?lon='+pos.lng+'&lat='+pos.lat;
+              $(this).attr("href", newUrl);
+            });
+          });            
       });
+
     script(type='text/javascript').
       (function ($) {
         $(document).ready(function() {

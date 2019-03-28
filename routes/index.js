@@ -1978,7 +1978,8 @@ router.get('/category/:cat', function (req, res, next) {
   }
   if (req.params.cat == 'Events') {
     var businesses = Business.find({
-      $query: { subcategory: req.params.cat, approved: true },
+      //$query: { subcategory: req.params.cat, approved: true },
+      $query: { features: req.params.name, approved: true },
       $orderby: { starteventdate: -1 },
       "starteventdate": { $gt: new Date() }
     }).sort([['paid', -1], ['datepaid', 1]]);
@@ -2012,7 +2013,8 @@ router.get('/category/:cat', function (req, res, next) {
           'near': point,
           'spherical': true,
           "query": {
-            subcategory: req.params.cat,
+            //subcategory: req.params.cat,
+            features: req.params.name,
             approved: true,
             branch: { $ne: true }
           },
@@ -2063,7 +2065,8 @@ router.get('/category/:cat', function (req, res, next) {
     } else {
       var businesses = Business.find({
         $query: {
-          subcategory: req.params.cat,
+          //subcategory: req.params.cat,
+          features: req.params.name,
           approved: true,
           branch: { $ne: true }
           //pending: { $ne: true }

@@ -2186,12 +2186,12 @@ router.get('/category/:cat', function (req, res, next) {
       });
       //fix bug on categories
 
-      // var features = Category.aggregate([
-      //   { $match: { name: req.params.cat } },
-      //   { "$unwind": "$subcategories" },
-      //   { "$sort": { "subcategories.name": 1 } }
-      // ]);
-      var features = Category.find({ subcategories: {$elemMatch: { name: req.params.name}} });
+      var features = Category.aggregate([
+        { $match: { name: req.params.cat } },
+        { "$unwind": "$subcategories" },
+        { "$sort": { "subcategories.name": 1 } }
+      ]);
+      
       //end of fixing bug
 
       //as
@@ -2239,12 +2239,11 @@ router.get('/category/:cat', function (req, res, next) {
         approved: true
       });
       // Fix bug on subcategories
-      // var features = Category.aggregate([
-      //   { $match: { name: req.params.cat } },
-      //   { "$unwind": "$subcategories" },
-      //   { "$sort": { "subcategories.name": 1 } }
-      // ]);
-      var features = Category.find({ subcategories: {$elemMatch: { name: req.params.name}} });
+      var features = Category.aggregate([
+        { $match: { name: req.params.cat } },
+        { "$unwind": "$subcategories" },
+        { "$sort": { "subcategories.name": 1 } }
+      ]);
       //End of fix bug on subcategories
       var categories = Category.find({ approved: true, group: 'general' }).sort([['order', 1]]);
 

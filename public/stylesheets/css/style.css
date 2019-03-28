@@ -3402,8 +3402,9 @@ padding-left:10px;
 
 }
 
+
 .show {
-  display: block;
+  display: block !important;
 }
 
 .banner-background{
@@ -5719,4 +5720,16 @@ html, body {
 .footer,
 .push {
 height: 50px;
+}
+.owl-prev{
+	float:left !important;
+}
+.owl-next{
+	float:right !important;
+}
+.owl-theme .owl-nav {
+    margin-top: -100 !important;
+    z-index: 1000 !important;
+    position: relative !important;
+    top: -12rem !important;
 }

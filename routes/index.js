@@ -67,6 +67,7 @@ const SUBCATS = [
   "credit information ",
   "debt collection agencies",
   "advisory",
+  "financial advisory",
   "transporters",
   "warning defaulters",
   "kitchen",
@@ -1197,6 +1198,158 @@ router.get('/newindex', function (req, res) {
   });
 })
 
+//start of product search
+router.get('/productsearch', function (req, res) {
+  var neatString = req.query.search.trim();
+  var result = neatString.split(/[,. \/-]/);
+  const item = result[0];
+  const item2 = result[1];
+  var bizArray = [];
+  var skip = 0;
+  if (req.query.skip) {
+    skip = parseInt(req.query.skip);
+  }
+
+  Product.find({ name: 1})
+    .then(function (d) {
+      d.forEach(function (x) {
+        console.log(x.name);
+        var result = x.name.split(/[,. \/-]/);
+        result.forEach(function (g) {
+          bizArray.push(g);
+        });
+      });
+      res.json(bizArray);
+      console.log(result);
+      function isInArray(value, array) {
+        return array.indexOf(value) > -1;
+      }
+      function capitalize(string) {
+        return string[0].toUpperCase() + string.slice(1);
+      }
+      var words_in_negation = ['and', 'in', 'the', 'kenya', 'nairobi', 'of', 'ltd', 'Ltd', 'shop', 'shops'];
+      var special_words = bizArray;
+      console.log(bizArray);
+
+      var newstring = [];
+      result.forEach(function (x) {
+        var capitalX = capitalize(x);
+        if (isInArray(x, words_in_negation)) {
+          //newstring.push(x);
+        } else if (isInArray(capitalX, special_words)) {
+          newstring.push(x);
+        }
+        else if (isInArray(x, special_words)) {
+          newstring.push(x);
+        }
+        else {
+          //SPELL CHECK
+          var checka = dictionary.check(x);
+          var checkb = dictionary.check(capitalize(x));
+          if (checka || checkb) {
+            if (checka) {
+              newstring.push(x);
+            } else {
+              newstring.push(capitalize(x));
+            }
+          } else {
+            var a = dictionary.suggest(x);
+          }
+          //console.log(a);
+          if (a === undefined || a.length == 0) {
+            //newstring.push(x);
+          } else {
+            newstring.push(a[0]);
+          }
+        }
+      });
+      var searchString = newstring.join(' ');
+      var product = Product.aggregate([
+        {
+          "$match": {
+            "$text": {
+              "$search": searchString
+            },
+          }
+        },
+        {
+          "$project": {
+            "_id": "$_id",
+            "name": "$name",
+            "slug": "$slug",
+            "bizid":"bizid",
+            "category":"$category",
+            "subcategory": "$subcategory",
+            "minicategory":"$minicategory",
+            "photo": "$photo",
+            "description": "$description",
+            "score": {
+              "$meta": "textScore"
+            }
+          }
+        },
+        {
+          "$match": {
+            "score": { "$gt": 10 }
+          }
+        },
+        {
+          "$sort": {
+            "score": {
+              $meta: "textScore"
+            }
+          }
+        },
+        { $limit: 20 },
+        { $skip: skip }
+      ]);
+
+
+      /*var businesses = Business.find({
+          $query: { approved: true},
+        },
+        {
+          name:1,subcategory:1,keywords:1,description:1,features:1,reviews:1,slug:1,paid:1,
+          website:1,photo: 1,instagram: 1,youtube:1,twitter:1,facebook:1, _id:0
+        }
+      ).sort([['paid', -1],['datepaid', 1]]);*/
+      var array_of_suggestions = dictionary.suggest(req.query.search);
+      var categories = Category.find({ group: 'general' });
+      var business = Business.find({group:'general'});
+      Promise.all([product, business, categories]).then(values => {
+        var list = values[0];
+        console.log(list);
+        /*var options = {
+          shouldSort: true,
+          includeScore: true,
+          matchAllTokens: true,
+          threshold: 0.5,
+          tokenize: true,
+          maxPatternLength: 64,
+          minMatchCharLength: 10,
+          keys: [
+            "name",
+            "subcategory",
+            "features"
+        ]
+        };
+        var fuse = new Fuse(list, options); // "list" is the item array
+        var result = fuse.search(req.query.search);*/
+        //console.log(values[0]);
+        res.render('product/search', {
+          title: req.query.search,
+          product: values[0],
+          categories: values[1],
+          business: values[2],
+          suggestion: array_of_suggestions[0],
+          host: req.get('host')
+        });
+      });
+    });
+
+});
+// End of product search
+//Start of business search
 router.get('/updatesearch', function (req, res) {
   let query = req.query.search.trim().toLowerCase();
 
@@ -1380,7 +1533,7 @@ router.get('/updatesearch', function (req, res) {
     //console.log(theCurrentBizName);
 
     
-    currentBusinessFeature.sort();
+    //currentBusinessFeature.sort();
 
     let similarbusinesses = q3;
 
@@ -1412,6 +1565,7 @@ router.get('/updatesearch', function (req, res) {
     });
   });
 });
+// End of business search
 
 router.get('/search', function (req, res, next) {
   var neatString = req.query.search.trim();

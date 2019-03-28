@@ -41,12 +41,13 @@ block content
                     li.text-left.sub-list
                         h6.findit-red
                           | Filter #{category} by Subcategory
-                    each feature in features
-                      .panel-heading.category
-                        li.text-left.sub-list
-                          a(href="/subcategory/"+categoryTitle+"/"+feature.subcategories.name style="color:#212529")
-                            strong  
-                              =feature.subcategories.name
+                    each category ,i in categories
+                      each cat in category.subcategories
+                        .panel-heading.category
+                          li.text-left.sub-list
+                            a(href="/subcategory/"+categoryTitle+"/"+cat.name style="color:#212529")
+                              strong  
+                                =cat.name
           .col-md-9.category-zindex
             if businesses.length>1
               div.cathead-background.cat-box.findit-blue

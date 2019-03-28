@@ -67,6 +67,7 @@ const SUBCATS = [
   "credit information ",
   "debt collection agencies",
   "advisory",
+  "financial advisory",
   "transporters",
   "warning defaulters",
   "kitchen",

@@ -53,27 +53,27 @@ block content
                         //-     a(href="/admin/coupon/markused/"+user.id, title="Mark This Coupon as Used")
                         //-       i.fa.fa-check.fa-fw(aria-hidden='true')
                         
-                        if coupon.users  
-                          .rTable
+                         
+                        .rTable
+                          .rTableRow
+                            .rTableHead
+                              strong Date and Time
+                            .rTableHead
+                              span(style='font-weight: bold;') Coupon Code
+                            .rTableHead
+                              span(style='font-weight: bold;') User Details
+                            .rTableHead
+                              span(style='font-weight: bold;') Mark coupon as used
+                            .rTableHead &nbsp;
+                          each usr,i in coupon.users
                             .rTableRow
-                              .rTableHead
-                                strong Date and Time
-                              .rTableHead
-                                span(style='font-weight: bold;') Coupon Code
-                              .rTableHead
-                                span(style='font-weight: bold;') User Details
-                              .rTableHead
-                                span(style='font-weight: bold;') Mark coupon as used
-                              .rTableHead &nbsp;
-                            each usr,i in coupon.users
-                              .rTableRow
-                                .rTableCell Date 
-                                .rTableCell #{usr.code} 
-                                .rTableCell #{usr.user_id}
-                                -console.log(usr.user_id)
-                                .rTableCell 
-                                  a(href="/admin/coupon/markused/"+user.id, title="Mark This Coupon as Used")
-                                    i.fa.fa-check.fa-fw(aria-hidden='true')
+                              .rTableCell Date 
+                              .rTableCell #{usr.code} 
+                              .rTableCell #{usr.user_id}
+                              -console.log(usr.user_id)
+                              .rTableCell 
+                                a(href="/admin/coupon/markused/"+user.id, title="Mark This Coupon as Used")
+                                  i.fa.fa-check.fa-fw(aria-hidden='true')
                         else
                           | Coupon not claimed
     script(src="/javascripts/admin/Sortable.min.js")

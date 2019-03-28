@@ -293,6 +293,48 @@ router.get('/deletephoto/:id/',role.auth, function(req, res, next){
 		});
 	}
 });
+//DELETE MENU 
+router.get('/deletemenu/:id/',role.auth, function(req, res, next){
+	if(req.user.role == 1){
+		Business.findOne({
+		  _id: req.params.id
+		})
+		.then(function(data){
+      var result = data.catalog.filter(function(e, i) {
+        return e.filename != req.query.catalog
+      });
+      data.catalog = result;
+      data.save(function(err){
+  			if(err)
+  				res.redirect('/admin/edit/'+data.id);
+  			res.redirect('/admin/edit/'+data.id);
+  		});
+		  //res.redirect('/dashboard');
+		})
+		.catch(function(err){
+		    console.log(err);
+		});
+	}else{
+		Business.findOne({
+		  _id: req.params.id,
+		  user_id : res.locals.user.username
+		})
+		.then(function(data){
+      var result = data.catalog.filter(function(e, i) {
+        return e.filename != req.query.catalog
+      });
+      data.catalog = result;
+      data.save(function(err){
+        if(err)
+          res.redirect('/admin/edit/'+data.id);
+        res.redirect('/admin/edit/'+data.id);
+      });
+		})
+		.catch(function(err){
+		    console.log(err);
+		});
+	}
+});
 
 
 router.get('/fakepaid/:id/:package',role.admin, function(req, res, next){
@@ -1063,11 +1105,12 @@ router.get('/email/coupon/:id', role.auth, function(req, res){
     .then(function(data){
     	console.log(res.locals.user.email);
     	var holder = emailModel.app;
-	  	var mailer = emailModel.mailer;
+			var mailer = emailModel.mailer;
+			var today = new Date();
 	  	holder.mailer.send('email/coupon', {
 	    	to: res.locals.user.email, // REQUIRED. This can be a comma delimited string just like a normal email to field.
 	    	subject: 'Coupon: ' + data.name, // REQUIRED.
-	    	coupon:  data// All additional properties are also passed to the template as local variables.
+	    	coupon:  data  + today// All additional properties are also passed to the template as local variables.
 	  	}, function (err) {
 	    	if (err) {
 	      		// handle error
@@ -1095,18 +1138,19 @@ router.get('/email/coupons', role.auth, function(req, res){
 	.populate('users.user_id','status code')
     .then(function(data){
       var holder = emailModel.app;
-  	  var mailer = emailModel.mailer;
+			var mailer = emailModel.mailer;
+			var today = new Date();
       data.forEach(function(cp){
   	  	holder.mailer.send('email/coupon', {
   	    	to: res.locals.user.email, // REQUIRED. This can be a comma delimited string just like a normal email to field.
   	    	subject: 'Coupon: ' + cp.name, // REQUIRED.
-  	    	coupon:  cp,
+  	    	coupon:  cp + today,
           host: req.get('host') // All additional properties are also passed to the template as local variables.
   	  	}, function (err) {
   	    	if (err) {
             console.log(err);
   	    	}else{
-						console.log("EMAIL SENT!!");
+						console.log("EMAIL SENT ON: " + today );
 						console.log(cp);
   	    	}
   	  	});

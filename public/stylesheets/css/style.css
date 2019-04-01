@@ -5769,3 +5769,6 @@ height: 50px;
     position: relative !important;
     top: -12rem !important;
 }
+.coupclip:before {
+		content: 'Obtained';	
+}

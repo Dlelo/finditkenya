@@ -172,7 +172,11 @@ block content
                     p.content-col
                       strong #{mycoupon.tagline}
                     p.content-col
-                      | #{mycoupon.description}
+                      if mycoupon.description.length > 50
+                        |  #{mycoupon.description.substr(0, 50)+ '. '}
+                      else
+                        | #{mycoupon.description}
+                    
                       
             div
               //.div(style="float: left; clear: left;")
@@ -307,7 +311,7 @@ block content
                 small
                   strong 
                    | View Business
-            
+            .viewmore         
             
             
             //old  
@@ -349,6 +353,8 @@ block content
         $(this).addClass('couponclicked');
         $(this).removeClass('couponadd');
         $(this).find('.clipped').show();
+        $(this).addClass('coupclip');
+
         $(this).find('.fa-status').html('<i class="fa fa-window-close fa-2x" aria-hidden="true" style="display:block;float:right"> Close</i>');
         $.ajax({
             type: "GET",

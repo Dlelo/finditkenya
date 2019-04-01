@@ -1933,6 +1933,10 @@ ul.portfolio-area li figure {
 	.form-inline button {
 		font-size: 1em;
 	}
+	.img-coupon {
+		height: 100% !important;
+		width: 100% !important;
+	}
 }
 
 @media screen and (max-width: 384px) {
@@ -1992,7 +1996,7 @@ ul.portfolio-area li figure {
 		font-size: 1.7em;
 	}
 	.img-coupon{
-	height: auto !important;
+	height: 100 !important;
 	width: 100% !important;
 }
 }
@@ -2008,7 +2012,7 @@ ul.portfolio-area li figure {
 		margin-top:0 !important;
 	}
 	.img-coupon{
-	height: auto !important;
+	height: 100% !important;
 	width: 100% !important;
    }
 	.pat-space{
@@ -2072,9 +2076,9 @@ ul.portfolio-area li figure {
 		margin-top:0 !important;
 	}
 	.img-coupon{
-		height: auto !important;
+		height: 100% !important;
 		width: 100% !important;
-		}
+	   }
 	.pat-space{
 	padding-right: 0 !important;
     }
@@ -2938,9 +2942,9 @@ li.list-hor{
     margin-right: 0%;
 }
 .img-coupon{
-	height: auto !important;
+	height: 100% !important;
 	width: 100% !important;
-}
+   }
 
 }
 

@@ -172,10 +172,7 @@ block content
                     p.content-col
                       strong #{mycoupon.tagline}
                     p.content-col
-                      if mycoupon.description.length > 50
-                        |  #{mycoupon.description.substr(0, 50)+ '. '}
-                      else
-                        | #{mycoupon.description}
+                      | #{mycoupon.description}
                     
                       
             div
@@ -288,9 +285,6 @@ block content
               .row
                 .col-md-4.col-sm-4
                   img.p-3.img-coupon(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name +' on Findit Kenya' style="padding-top:1.5rem !important")
-                  span 
-                    small 
-                      strong.showOnHover Click to Claim Coupon
                 .col-md-8.col-sm-8.px-3
                   .card-block.px-3
                     h4.card-title(style="padding-top:2px") #{coupon.name}
@@ -301,17 +295,31 @@ block content
                           | @       
                           =coupon.bizid.name
                     p.card-text 
-                      small #{coupon.description}
+                      small 
+                        if coupon.description.length > 50
+                          |  #{coupon.description.substr(0, 50)+ '. '}
+                        else
+                          | #{coupon.description}
                     p.card-text.findit-blue 
                       small
                         strong #{coupon.tagline}
-                    a.btn.btn-primary.clipped(style="color:#fff !important")  Clipped 
+                  .limited.card-block.px-3
+                     p.card-text 
+                       small #{coupon.description}
+                  
+              .row
+                .col-md-6 
+                  small 
+                    strong.showOnHover Click to Claim Coupon
+                .col-md-5.text-left
+                  a.btn.btn-primary.clipped(style="color:#fff !important")  Clipped 
+                .col-md-1.text-right.mored(style="background-color:#04045a; color:#fff") +
             .viewBusiness(style="position: absolute; top: 0; left: 0;") 
               a(href="/biz/"+coupon.bizid.slug, target="_blank")
                 small
                   strong 
                    | View Business
-            .viewmore         
+                      
             
             
             //old  
@@ -338,7 +346,13 @@ block content
                   | Clipped  
                   
   
-  script(src='/javascripts/bootstrapjs/filter-gallery.js')          
+  script(src='/javascripts/bootstrapjs/filter-gallery.js')   
+  script(ype='text/javascript').
+    $('.mored').hover(function () {
+        $('.limited', this).stop(true, true).slideDown("normal");
+    }, function () {
+        $('.limited', this).stop(true, true).hide();
+    });    
   //Script for selecting coupons       
   script(type='text/javascript').
     //(function($) {
@@ -353,7 +367,6 @@ block content
         $(this).addClass('couponclicked');
         $(this).removeClass('couponadd');
         $(this).find('.clipped').show();
-        $(this).addClass('coupclip');
 
         $(this).find('.fa-status').html('<i class="fa fa-window-close fa-2x" aria-hidden="true" style="display:block;float:right"> Close</i>');
         $.ajax({

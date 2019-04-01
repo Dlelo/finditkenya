@@ -5772,3 +5772,9 @@ height: 50px;
 .coupclip:before {
 		content: 'Obtained';	
 }
+.limited{
+	display: none;
+    z-index:999;
+	position:relative;
+	background-color:#eee;
+}

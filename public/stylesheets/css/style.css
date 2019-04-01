@@ -129,7 +129,11 @@ body a:focus {
 	height: 3rem !important;
 	}
     .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
+	.sidenav a {font-size: 18px;}
+	.img-coupon{
+		height: 100% !important;
+		width: 100% !important;
+	   }
 }
 
 /*-- bottom-to-top --*/
@@ -1776,6 +1780,10 @@ ul.portfolio-area li figure {
 	.slide-right h5 {
 		font-size: 1.5em;
 	}
+	.img-coupon{
+		height: 100% !important;
+		width: 100% !important;
+	   }
 }
 
 @media screen and (max-width: 480px) {
@@ -1862,6 +1870,10 @@ ul.portfolio-area li figure {
 	.error_agileinfo {
 		min-height: 415px;
 	}
+	.img-coupon{
+		height: 100% !important;
+		width: 100% !important;
+	   }
 
 }
 
@@ -2063,6 +2075,10 @@ ul.portfolio-area li figure {
 	.slide {
 		min-height: 239px;
 	}
+	.img-coupon{
+		height: 100% !important;
+		width: 100% !important;
+	   }
 }
 
 @media screen and (max-width: 320px) {
@@ -2139,6 +2155,10 @@ ul.portfolio-area li figure {
 	.error_agileinfo h3 {
 		font-size: 2em;
 	}
+	.img-coupon{
+		height: 100% !important;
+		width: 100% !important;
+	   }
 }
 @media screen and (max-width: 568px){
 	#couponBannerClickTile:before, #couponBannerEarnTile:before, #couponBannerShopTile:before{
@@ -2159,6 +2179,10 @@ ul.portfolio-area li figure {
 	.banner-text-top{
     padding-top: 2.6rem;
 	}
+	.img-coupon{
+		height: 100% !important;
+		width: 100% !important;
+	   }
 }
 .input-group-addon {
 	border: 0px solid #ccc;
@@ -5289,6 +5313,10 @@ color:#fff;
     width: auto;
     pointer-events: none;
 }
+.img-coupon{
+	height: 100% !important;
+	width: 100% !important;
+   }
 .modal-content {
     position: relative;
     display: -ms-flexbox;
@@ -5698,6 +5726,10 @@ button.close {
 	.hideit{
 		display: none !important;
 	}
+	.img-coupon{
+		height: 100% !important;
+		width: 100% !important;
+	   }
 
 }
 #showUser:hover {

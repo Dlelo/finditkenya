@@ -5518,8 +5518,8 @@ button.close {
     border-radius: 10%;
 }
 .img-coupon{
-	height: 150px;
-	width: 150px;
+	height: 100%;
+	width: 100%;
 }
 #couponBanner {
     display: flex;

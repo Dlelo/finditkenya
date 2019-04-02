@@ -194,11 +194,12 @@ block content
                                               small
                                                 | #{biz.reviews.length} Reviews
                                               br
-                div
-                  script(async='' src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js')
-                  ins.adsbygoogle(style='display:block' data-ad-format='autorelaxed' data-ad-client='ca-pub-9965055906014205' data-ad-slot='5203174038')
-                  script.
-                    (adsbygoogle = window.adsbygoogle || []).push({});      
+              div(style="height:200px;")
+                script(async='' src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js')
+                ins.adsbygoogle(style='display:block' data-ad-format='autorelaxed' data-ad-client='ca-pub-9965055906014205' data-ad-slot='5203174038')
+                script.
+                  (adsbygoogle = window.adsbygoogle || []).push({}); 
+              each biz,i in businesses     
                 if (i>10)
                   //if column is even
                   //if (typeof(biz.slug) != 'undefined')

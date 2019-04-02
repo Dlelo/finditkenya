@@ -24,7 +24,7 @@ block content
                       a(href="/admin/review/delete/"+review.id, title="Delete Review", onclick="return confirm('Are you sure You want to Delete this Review?')")
                         i.fa.fa-trash.fa-fw(aria-hidden='true')
                   td 
-                    =review.bizid
+                    =review.bizid.slug
                   td.txt-oflo 
                     =review.message
                   td

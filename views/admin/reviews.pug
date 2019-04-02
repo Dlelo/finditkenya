@@ -10,15 +10,19 @@ block content
             thead
               tr
                 th #
-                th BUSINESS NAME
+                th ACTION
                 th MESSAGE
                 th REVIEW BY
-                th ACTIONS
+                th BUSINESS NAME
             tbody
               each review, i in reviews
                 tr
                   td
                     =i
+                  td
+                    span.text-danger
+                      a(href="/admin/review/delete/"+review.id, title="Delete Review", onclick="return confirm('Are you sure You want to Delete this Review?')")
+                        i.fa.fa-trash.fa-fw(aria-hidden='true')
                   td 
                     =review.bizid
                   td.txt-oflo 
@@ -26,7 +30,4 @@ block content
                   td
                     span.text-success
                       =review.user_id
-                  td
-                    span.text-danger
-                      a(href="/admin/review/delete/"+review.id, title="Delete Review", onclick="return confirm('Are you sure You want to Delete this Review?')")
-                        i.fa.fa-trash.fa-fw(aria-hidden='true')
+                  

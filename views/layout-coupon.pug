@@ -107,19 +107,17 @@ html(lang='en')
       header
         //header before navigation items
         nav.navbar.navbar-expand-lg.navbar-light.bg-gradient-secondary
-          div(style="display:flex !important; flex-direction:row !important; width: 100% !important;")
+          div.showNavCancelclick
             div(style="flex-grow:0.1 !important")
               a.navbar-brand.text-white(href="/")
-                img.img-logo(src="/img/findit-red-logo.png").img-fluid
-            div(style="flex-grow:0.1 !important")
-                form.form-class.nav-padding(method='get', action='/updatesearch')
+                img.img-fluid(src="/img/findit-red-logo.png" alt="find restaurants, doctors lawyers" style="width:75% !important")
+            div#hideOnSmall(style="flex-grow:0.1 !important")
+              .div(style="padding-top: 1rem;")  
+                form.form-class(method='get', action='/updatesearch')
                   div.input-group
-                    input.search2.form-control-lg(type="text" placeholder="Businesses, Doctors, Lawyers, Hotels" ,style="width:100% !important" ,name='search', autofocus)
-            //div(style="flex-grow:0.1 !important")      
-              a(href="/coupons")
-                button.btn.btn-light.w3ls-btn.coupons-btn.flash-button#coupbtn(type="button")
-                  span.fas.fa-gift.coupons-text-color
-                  | View deals
+                    input.search2.form-control-lg(type="text" placeholder="Find a business" ,style="width:100% !important" ,name='search', autofocus)
+            div.showOnSmall(style="flex-grow:0.1 !important; display:none; padding-top: 1rem !important;")
+              span.fas.fa-search.fa-2x(style="color:#c00000")
             div(style="flex-grow:0.5 !important")
               //site navigation 
               button.navbar-toggler.ml-md-auto.tognavButton(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"

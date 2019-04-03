@@ -1734,6 +1734,12 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 568px) {
+	#hideOnSmall {
+        display: none;
+	}
+	.showOnSmall{
+        display: block !important;
+	}
 	.pat-space{
 	padding-right: 0 !important;
     }
@@ -1793,6 +1799,12 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 480px) {
+	#hideOnSmall {
+        display: none;
+	}
+	.showOnSmall{
+        display: block !important;
+	}
 	#couponBannerClickTile:before, #couponBannerEarnTile:before, #couponBannerShopTile:before{
 		height: 3rem !important;
 		}
@@ -1884,6 +1896,12 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 414px) {
+	#hideOnSmall {
+        display: none;
+	}
+	.showOnSmall{
+        display: block !important;
+	}
 	#couponBannerClickTile:before, #couponBannerEarnTile:before, #couponBannerShopTile:before{
 	height: 3rem !important;
 	}
@@ -1958,6 +1976,12 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 384px) {
+	#hideOnSmall {
+        display: none;
+	}
+	.showOnSmall{
+        display: block !important;
+	}
 	#couponBannerClickTile:before, #couponBannerEarnTile:before, #couponBannerShopTile:before{
 	  height: 3rem !important;
 	}

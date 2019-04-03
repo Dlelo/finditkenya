@@ -90,11 +90,13 @@ html(lang='en')
                 img.img-circle(src='/plugins/images/users/user.png', alt=user.name, width='36')
                 b.hidden-xs 
                 if user
-                  =user.names
+                 h6
+                   =user.names
             li
               a(href='/logout')
                 b.hidden-xs 
-                | logout
+                  h6
+                   | logout
         // /.navbar-header
         // /.navbar-top-links
         // /.navbar-static-side

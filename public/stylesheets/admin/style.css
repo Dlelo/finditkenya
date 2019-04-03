@@ -230,3 +230,16 @@ label{font-weight:500}
 .rTableBody { display: table-row-group; }
 .rTableFoot { display: table-footer-group; }
 .rTableCell, .rTableHead { display: table-cell; padding: 3px 10px }
+.white-box.row{margin-right: 0 !important; margin-left:0!important; margin-top:1.5rem;}
+.navbar-default {
+    background-image: -webkit-linear-gradient(top,#fff 0,#f8f8f8 100%);
+    background-image: -o-linear-gradient(top,#fff 0,#f8f8f8 100%);
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#fff),to(#f8f8f8));
+    background-image: linear-gradient(to bottom,#fff 0,#f8f8f8 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#fff8f8f8', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+    background-repeat: repeat-x;
+    border-radius: 4px;
+    -webkit-box-shadow: none !important; 
+    box-shadow: none !important;
+}

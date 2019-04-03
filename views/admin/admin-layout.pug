@@ -168,14 +168,10 @@ html(lang='en')
                 a.waves-effect(href='404.html')
                   i.fa.fa-info-circle.fa-fw(aria-hidden='true')
                   | Error 404          
-          .center.p-10
-            a.btn.btn-info.btn-block.waves-effect.waves-light(href='/business/freeadd') Add More Business
-          .center.p-10  
-            a.btn.btn-info.btn-block.waves-effect.waves-light(href='/product/new') Add Products
           
           if(user.role == 1)
             .center.p-10
-              a.btn.btn-info.btn-block.waves-effect.waves-light(href='/shopping/newsubcategory') Add Shopping Subcategory
+              a.btn.btn-info.btn-block.waves-effect.waves-light(href='/business/freeadd') Add More Business
             .center.p-10
               a.btn.btn-info.btn-block.waves-effect.waves-light(href='/admin/category/add') Add Business Category
             .center.p-10
@@ -209,7 +205,7 @@ html(lang='en')
         .container-fluid          
           .row.bg-title
             .col-lg-12.col-sm-12.col-md-12.col-xs-12                
-              ul.nav.pull-right.text-right.addbusiness
+              ul.nav.pull-left.text-right.addbusiness
                 li(style="float: left;")
                   a(href='/product/new')
                     span.fa.fa-suitcase.text-default.glyph
@@ -225,17 +221,17 @@ html(lang='en')
                     a(href='/shopping/newcategory')
                       span.fa.fa-plus-square.text-default.glyph
                       strong
-                        |  Add Category
+                        |  Add Product Category
                   li(style="float: left;")
                     a(href='/shopping/newsubcategory')
                       span.fa.fa-plus-circle.text-default.glyph
                       strong
-                        |  Add Subcategory
+                        |  Add Product Subcategory
                   li(style="float: left;")
                     a(href='/shopping/newminicategory')
                       span.fa.fa-archive.text-default.glyph
                       strong
-                        |  Add Minicategory
+                        |  Add Product Minicategory
                   li(style="float: left;")
                     a(href='/admin/areas/new')
                       span.fa.fa-map-pin.text-default.glyph

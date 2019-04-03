@@ -125,6 +125,12 @@ body a:focus {
 
 /* Some media queries for responsiveness */
 @media screen and (max-height: 450px) {
+	#hideOnSmall {
+        display: none;
+	}
+	.showOnSmall{
+        display: block !important;
+	}
 	#couponBannerClickTile:before, #couponBannerEarnTile:before, #couponBannerShopTile:before{
 	height: 3rem !important;
 	}
@@ -3631,12 +3637,7 @@ fieldset, label {
 	color: darkcyan;
 }
 @media(max-width:500px){
-	#hideOnSmall {
-        display: none;
-	}
-	.showOnSmall{
-        display: block !important;
-	}
+	
 	.mega-menu{
 		width: 300px;
 	}
@@ -5339,12 +5340,6 @@ color:#fff;
     transform: translate(0,0);
 }
 @media (min-width: 576px){
-	#hideOnSmall {
-        display: none;
-	}
-	.showOnSmall{
-        display: block !important;
-	}
  .modal-dialog {
     max-width: 500px;
     margin: 1.75rem auto;

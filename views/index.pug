@@ -282,22 +282,26 @@ block content
            if i<4
             div.col-lg-12.col-md-12.col-sm-12.col-xs-12.latest-review-main.latest-review-container
               a(href="/biz/"+review.bizid.slug)  
-                div.col-lg-12.col-md-12.col-sm-12.col-xs-12
+                div.col-lg-12.col-md-12.col-sm-12.col-xs-12.text-left
                   strong
-                    span(style="color:#000") #{review.user_id.names}
+                    span.text-left(style="color:#000") #{review.user_id.names}
                     span
-                      | , Says
+                      | , 
+                    br 
+                    | Says
                   br
+                div.col-lg-12.col-md-12.col-sm-12.col-xs-12
                   if review.bizid.photo
-                    img.img-fluid(src="/uploads/thumbs/cover"+ review.bizid.photo, height="300px" alt=review.bizid.name+ ' on FindIt Kenya')
+                    img.img-fluid(src="/uploads/thumbs/cover"+ review.bizid.photo, height="300px" alt=review.bizid.name+ ' on FindIt Kenya' style="width:100%")
                   else 
-                    img.cat-image.cat-items-bottom(src="/img/noimageavailable.jpg", alt=review.bizid.name+ ' on FindIt Kenya') 
-                  h6.text-center
+                    img.cat-items-bottom(src="/img/noimageavailable.jpg", alt=review.bizid.name+ ' on FindIt Kenya' style="width:100%") 
+                div.col-lg-12.col-md-12.col-sm-12.col-xs-12.text-left  
+                  h6
                     strong
                       =review.bizid.name
                   //small.text-center.content-col
                     |  #{review.length} Reviews
-                div.col-12
+                div.col-lg-12.col-md-12.col-sm-12.col-xs-12.text-left 
 
                   p 
                     if reviews
@@ -349,15 +353,14 @@ block content
                                 i.star-empty
                                 i.star-half
                                 i.star-filled
-                div.col-lg-12.col-md-12.col-sm-12.col-xs-12
-                  div.col-lg-12.col-md-12.col-sm-12.col-xs-12
-                    i.the-review.content-col.content-col
-                      if review.message.length > 100
-                        | !{review.message.substr(0, 100)+ '..... <strong id="showmore" style="color:#c00000;">Continue Reading</strong>'}
-                      else
-                        | !{review.message}
+                div.col-lg-12.col-md-12.col-sm-12.col-xs-12.text-left 
+                  i.the-review.content-col.content-col
+                    if review.message.length > 100
+                      | !{review.message.substr(0, 100)+ '..... <strong id="showmore" style="color:#c00000;">Continue Reading</strong>'}
+                    else
+                      | !{review.message}
                   
-                .col-12.text-right.content-col
+                div.col-lg-12.col-md-12.col-sm-12.col-xs-12.text-left 
                   .small
                     p !{review.created_at}
             br        

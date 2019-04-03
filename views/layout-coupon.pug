@@ -133,7 +133,7 @@ html(lang='en')
                   li.dropdown.nav-item.mr-3
                     a.nav-link.dropdown-toggle(href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")    
                       span.fa.fa-bars
-                      strong Categories 
+                      strong Categories
                       
                     div.dropdown-menu.dropdown-menu-right.mega-menu(aria-labelledby="navbarDropdown" style="width: -webkit-fill-available;")
                       if categories 
@@ -390,6 +390,18 @@ script(type='text/javascript').
     navbar.classList.remove("sticky");
     }
     }
+<!--Script to show and hide search bar on small screensizes-->
+script(type='text/javascript').
+  $('.showOnSmall').click(function(){
+      $('.showOnclick').addClass('shown');
+      $('.showNavCancelclick').addClass('hideit');
+  });
+<!--Script close search bar on small screensizes-->
+script(type='text/javascript').
+  $('.closeSearch').click(function(){
+      $('.showOnclick').removeClass('shown');
+      $('.showNavCancelclick').removeClass('hideit');
+  });
 <!-- script for password match -->
 script(type='text/javascript').
         window.onload = function () {

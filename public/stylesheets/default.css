@@ -18,12 +18,11 @@
   left: calc(50% - 3.5px);
 }
 /*Just change your choise color here its theme Colors*/
-body {
-  background: #fff !important;
-	font-family: 'Ubuntu';
+bbody {
+  font-family: sans-serif;
   margin: 0;
-  font-weight:400;
-
+  background: #fff;
+  font-size: 1.1em;
 }
 a{
   color:#04045a;

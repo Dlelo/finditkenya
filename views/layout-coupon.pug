@@ -107,9 +107,15 @@ html(lang='en')
       header
         //header before navigation items
         nav.navbar.navbar-expand-lg.navbar-light.bg-gradient-secondary
-          div.showNavCancelclick
-            div(style="flex-grow:0.5 !important")
-              //site navigation 
+          div(style="display:flex !important; flex-direction:row !important; width: 100% !important;")
+            div(style="flex-grow:0.1 !important")
+              a.navbar-brand.text-white(href="/")
+                img.img-fluid(src="/img/findit-red-logo.png" alt="find restaurants, doctors lawyers" style="width:75% !important")
+            div(style="flex-grow:0.1 !important")
+                form.form-class.nav-padding(method='get', action='/updatesearch')
+                  div.input-group
+                    input.search2.form-control-lg(type="text" placeholder="Businesses, Doctors, Lawyers, Hotels" ,style="width:100% !important" ,name='search', autofocus)
+            div(style="flex-grow:0.5 !important")  
               button.navbar-toggler.ml-md-auto.tognavButton(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                   aria-expanded="false" aria-label="Toggle navigation")
                     span.navbar-toggler-icon

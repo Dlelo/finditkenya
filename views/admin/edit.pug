@@ -354,11 +354,9 @@ block content
                   .col-sm-2.col-xs-12  
                     label
                       | Select Parent company (Hq)
-                    if biz.branch == true
-                      - console.log(biz.bizparent)
                   .col-sm-4.col-xs-12 
-                    if biz.branch == true
-                     select#bizparent.form-control-form-select(name='bizparent',class='bizparent', data-live-search='true')
+                    if biz.bizparent
+                     select#bizparent.form-control-form-select(name='bizparent',class='bizparent', value=biz.bizparent, data-live-search='true')
                     else
                      select#bizparent.form-control-form-select(name='bizparent',class='bizparent', data-live-search='true')
                       

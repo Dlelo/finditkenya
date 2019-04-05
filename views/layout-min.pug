@@ -111,6 +111,13 @@ html
               div(style="flex-grow:0.1 !important")
                 a.navbar-brand.text-white(href="/")
                   img.img-fluid(src="/img/findit-red-logo.png" alt="find restaurants, doctors lawyers" style="width:75% !important")
+              div#hideOnSmall(style="flex-grow:0.1 !important")
+                #showSearch  
+                  form.form-class(method='get', action='/updatesearch')
+                    div.input-group
+                      input.search2.form-control.form-control-lg(type="text" placeholder="Find a business" ,style="width:100% !important" ,name='search', autofocus)
+              div.showOnSmall(style="flex-grow:0.1 !important; display:none; padding-top: 1rem !important;")
+                span.fas.fa-search.fa-2x(style="color:#c00000")
               div(style="flex-grow:0.1 !important")      
                 a(href="/coupons")
                   button.btn.btn-light.w3ls-btn.coupons-btn.flash-button#coupbtn(type="button")
@@ -119,12 +126,11 @@ html
               div(style="flex-grow:0.5 !important")
                 //site navigation 
                 button.navbar-toggler.ml-md-auto.tognavButton(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                  aria-expanded="false" aria-label="Toggle navigation")
-                    span.navbar-toggler-icon
+                    aria-expanded="false" aria-label="Toggle navigation")
+                      span.navbar-toggler-icon
                 div#navbarSupportedContent.collapse.navbar-collapse.nav-padding
                 
                   ul.nav.navbar-nav.ml-lg-auto.nav.justify-content-end(style="float:right")
-                    
                     li.nav-item.mr-3
                       a.nav-link(href='/business/newpackage')
                         span.fas.fa-database
@@ -152,7 +158,14 @@ html
                         button.btn.btn-outline-primary.w3ls-btn.findit-blue
                           strong
                           |  Sign Up
-                        
+            .input-group.showOnclick(type="button" style="margin: 0.5rem;")
+              ul.navbar-nav.ml-auto.small
+                li.nav-item.active  
+                  form.form-class(method='get', action='/updatesearch') 
+                    div.input-group(autofocus)
+                      input.search2.form-control-lg(type="text", placeholder="Find a business" ,style="width:100% !important; border: none !important;" ,name='search', autofocus)
+                      .closeSearch(type="button")
+                        span.fas.fa-close.fa-2x(style="position:absolute; top:0; color:#909090")             
             
       
         //display errors

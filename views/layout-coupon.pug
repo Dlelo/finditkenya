@@ -106,11 +106,11 @@ html(lang='en')
     div.container-fluid
       header
         //header before navigation items
-        nav#homenavbar.navbar.navbar-expand-lg.navbar-light.bg-gradient-secondary(style="padding-right: 5%; padding-left: 5%; box-shadow: none; border: 1px solid #e6e6e6;")
+        nav.navbar.navbar-expand-lg.navbar-light.bg-gradient-secondary(style="padding-right: 5%; padding-left: 5%; box-shadow: none; border: 1px solid #e6e6e6;")
           div.showNavCancelclick
             div(style="flex-grow:0.1 !important")
               a.navbar-brand.text-white(href="/")
-                img.img-fluid(src="/img/findit-red-logo.png" alt="find restaurants, doctors lawyers" style="width:75% !important")
+                img.img-fluid(src="/img/findit-red-logo.png" alt="find restaurants, doctors lawyers" style="width:65% !important")
             div#hideOnSmall(style="flex-grow:0.1 !important")
               #showSearch  
                 form.form-class(method='get', action='/updatesearch')

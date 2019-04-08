@@ -146,7 +146,7 @@ block content
                 each catalogue, i in biz.catalog
                   if (catalogue)
                     strong
-                      p
+                      p.findit-blue
                         span.fas.fa-bars
                         
                         a.findit(href="/business/catalog/"+catalogue.filename, target="_blank")
@@ -157,8 +157,8 @@ block content
             if(biz.profile)
               .col-md-12.text-left 
                 strong
-                  p
-                    span.fas.fa-bars
+                  p.findit-blue
+                    span.fas.fa-book
                     a.findit(href="/business/profile/"+biz.profile, target="_blank")
                       |  View Company Profile  
                   

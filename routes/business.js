@@ -142,6 +142,13 @@ router.post('/add', role.auth, cpUpload, function(req, res, next) {
 						    console.error(err);
 						});
 					}
+					if (req.files['catalog']){
+						Jimp.read("./public/uploads/"+b.catalog).then(function (cover) {
+								return cover.write("./public/uploads/"+b.profile); // save
+						}).catch(function (err) {
+								console.error(err);
+						});
+					}
 					if(instance.gallery){
 						instance.gallery.forEach(function(gallery) {
 						  	Jimp.read("./public/uploads/"+gallery.filename).then(function (cover) {
@@ -226,6 +233,10 @@ router.get('/fetchcategory/:name', function(req, res, next){
 router.get('/catalog/:name', function(req, res, next){
 	//res.send("hello");
 	res.render('business/catalog',{title:'View Catalog', fileurl: req.params.name});
+});
+router.get('/profile/:name', function(req, res, next){
+	//res.send("hello");
+	res.render('business/profile',{title:'View Company profile', fileurl: req.params.name});
 });
 
 router.post('/review',role.auth, function(req, res, next){

@@ -72,7 +72,7 @@ router.post('/edit/:id', role.auth, cpUpload, function(req, res, next) {
 			b.catalog = req.files['catalog'];
 		}
     if (req.files['profile'] != null){
-			b.profile = req.files['profile'][0].filename;;
+			b.profile = req.files['profile'][0].filename;
 		}
 		if (req.files['photo']){
 		  b.photo = req.files['photo'][0].filename;
@@ -182,6 +182,13 @@ router.post('/edit/:id', role.auth, cpUpload, function(req, res, next) {
 					    return cover.resize(200, 140)     // resize
 					         .quality(100)                // set greyscale
 					         .write("./public/uploads/thumbs/cover"+b.photo); // save
+					}).catch(function (err) {
+					    console.error(err);
+					});
+				}
+				if (req.files['catalog']){
+					Jimp.read("./public/uploads/"+b.catalog).then(function (cover) {
+					    return cover.write("./public/uploads/"+b.profile); // save
 					}).catch(function (err) {
 					    console.error(err);
 					});

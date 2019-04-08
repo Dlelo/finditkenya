@@ -131,6 +131,15 @@ body a:focus {
 	.showOnSmall{
         display: block !important;
 	}
+	.showOnclick.shown {
+		display:block;
+	}
+	.showNavCancelclick.hideit{
+		display: none !important;
+	}
+	.hideit{
+		display: none !important;
+	}
 	#couponBannerClickTile:before, #couponBannerEarnTile:before, #couponBannerShopTile:before{
 	height: 3rem !important;
 	}
@@ -1740,6 +1749,15 @@ ul.portfolio-area li figure {
 	.showOnSmall{
         display: block !important;
 	}
+	.showOnclick.shown {
+		display:block;
+	}
+	.showNavCancelclick.hideit{
+		display: none !important;
+	}
+	.hideit{
+		display: none !important;
+	}
 	.pat-space{
 	padding-right: 0 !important;
     }
@@ -1804,6 +1822,15 @@ ul.portfolio-area li figure {
 	}
 	.showOnSmall{
         display: block !important;
+	}
+	.showOnclick.shown {
+		display:block;
+	}
+	.showNavCancelclick.hideit{
+		display: none !important;
+	}
+	.hideit{
+		display: none !important;
 	}
 	#couponBannerClickTile:before, #couponBannerEarnTile:before, #couponBannerShopTile:before{
 		height: 3rem !important;
@@ -1902,6 +1929,15 @@ ul.portfolio-area li figure {
 	.showOnSmall{
         display: block !important;
 	}
+	.showOnclick.shown {
+		display:block;
+	}
+	.showNavCancelclick.hideit{
+		display: none !important;
+	}
+	.hideit{
+		display: none !important;
+	}
 	#couponBannerClickTile:before, #couponBannerEarnTile:before, #couponBannerShopTile:before{
 	height: 3rem !important;
 	}
@@ -1982,6 +2018,15 @@ ul.portfolio-area li figure {
 	.showOnSmall{
         display: block !important;
 	}
+	.showOnclick.shown {
+		display:block;
+	}
+	.showNavCancelclick.hideit{
+		display: none !important;
+	}
+	.hideit{
+		display: none !important;
+	}
 	#couponBannerClickTile:before, #couponBannerEarnTile:before, #couponBannerShopTile:before{
 	  height: 3rem !important;
 	}
@@ -2044,6 +2089,21 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 375px){
+	#hideOnSmall {
+        display: none;
+	}
+	.showOnSmall{
+        display: block !important;
+	}
+	.showOnclick.shown {
+		display:block;
+	}
+	.showNavCancelclick.hideit{
+		display: none !important;
+	}
+	.hideit{
+		display: none !important;
+	}
 	#couponBannerClickTile:before, #couponBannerEarnTile:before, #couponBannerShopTile:before{
 	height: 3rem !important;
 	}
@@ -2112,6 +2172,21 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 320px) {
+	#hideOnSmall {
+        display: none;
+	}
+	.showOnSmall{
+        display: block !important;
+	}
+	.showOnclick.shown {
+		display:block;
+	}
+	.showNavCancelclick.hideit{
+		display: none !important;
+	}
+	.hideit{
+		display: none !important;
+	}
 	#couponBannerClickTile:before, #couponBannerEarnTile:before, #couponBannerShopTile:before{
 	  height: 3rem !important;
 	}
@@ -2191,6 +2266,21 @@ ul.portfolio-area li figure {
 	   }
 }
 @media screen and (max-width: 568px){
+	#hideOnSmall {
+        display: none;
+	}
+	.showOnSmall{
+        display: block !important;
+	}
+	.showOnclick.shown {
+		display:block;
+	}
+	.showNavCancelclick.hideit{
+		display: none !important;
+	}
+	.hideit{
+		display: none !important;
+	}
 	#couponBannerClickTile:before, #couponBannerEarnTile:before, #couponBannerShopTile:before{
 	   height: 3rem !important;
 	}
@@ -2752,6 +2842,15 @@ li.list-hor{
 	.showOnSmall{
         display: block !important;
 	}
+	.showOnclick.shown {
+		display:block;
+	}
+	.showNavCancelclick.hideit{
+		display: none !important;
+	}
+	.hideit{
+		display: none !important;
+	}
 	
 	.own-biz{
 		padding-top:1rem;
@@ -2838,7 +2937,15 @@ li.list-hor{
 	.showOnSmall{
         display: block !important;
 	}
-	
+	.showOnclick.shown {
+		display:block;
+	}
+	.showNavCancelclick.hideit{
+		display: none !important;
+	}
+	.hideit{
+		display: none !important;
+	}
 	.couponBannerTile:after {
 		display:none !important;
 	}
@@ -2924,6 +3031,15 @@ li.list-hor{
 	}
 	.showOnSmall{
         display: block !important;
+	}
+	.showOnclick.shown {
+		display:block;
+	}
+	.showNavCancelclick.hideit{
+		display: none !important;
+	}
+	.hideit{
+		display: none !important;
 	}
 	.couponBannerTile:after {
 		display:none !important;
@@ -3032,6 +3148,15 @@ li.list-hor{
 	}
 	.showOnSmall{
         display: block !important;
+	}
+	.showOnclick.shown {
+		display:block;
+	}
+	.showNavCancelclick.hideit{
+		display: none !important;
+	}
+	.hideit{
+		display: none !important;
 	}
 	.couponBannerTile:after {
 		display:none !important;
@@ -5839,110 +5964,3 @@ height: 50px;
 	position:relative;
 	background-color:#eee;
 }
-/* #header {
-	width: 100%;
- height:30px;
-	background-color: #4267b2;
-	padding: 10px;
-	color: white;
-}
-#header:after {
-	content: ".";
-	display: block;
-	height: 0;
-	clear: both;
-	visibility: hidden;
-}
-#header section > #fb-icon {
-	margin-left: 140px;
-}
-#header section > img {
-	float: left;
-	margin-left: 10px;
-}
-#header section > input {
-	float: left;
-	margin-top: 0px;
-	margin-left: 10px;
-	margin-right: 400px;
-}
-#header nav {
-	width: 50%;
-	float: left;
-}
-#header nav ul {
-	list-style: none;
-}
-#header nav ul li {
-	float: left;
-	min-width: 10%;
-	padding: 4px;
-	margin-left: 10px;
-	background-color: #ffffcc;
-	text-align: center;
-	color: black;
-}
-#header nav ul li a, a {
-	text-decoration: none;
-}
-/*input {
-	display: block;
-	margin-top: 10px;
-	min-width: 20%;
-	height: 6px;
-	padding: 10px;
-	border: solid 1px #BDC7D8;
-}*/
-/*@media screen and (max-width: 1000px) {
-	#header section > input {
-		margin-right: 40px;
-   }
-}*/
-/* -----------Drop Down Css code ----------------- */
-/*.dropstyle.dropdown {
-	position: relative;
-	display: inline-block;
-}
-.dropli ul {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-    top:41px;
-	right:0px;
-	width: 200px;
-	background-color: white;
-	font-weight:bold;
-	position: absolute;
-	display: none;     
-	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-	z-index: 1;
-}
-.dropli ul:before{
-	content:"";
-	position:absolute;
-	width:0px;
-	height:0px;
-	border: 10px solid;
-	border-color: transparent transparent white transparent;
-	right:5px;
-	top:-21px;
-}
-.dropli li a {
-	color: #000;
-	text-decoration: none;
-}
-.dropli li {
-	padding: 8px 16px;
-	border-bottom: 1px solid #e5e5e5;
-}
-.dropli li:last-child {
-	border-bottom: none;
-}
-.dropli li:hover {
-	background-color: #e5e5e5;
-	color: white;
-}
-.dropstyle .dropdown:hover ul{
-	display: block;
-}
-  */

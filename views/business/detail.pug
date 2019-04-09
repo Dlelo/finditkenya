@@ -3,6 +3,11 @@ extends ../layout-new
 block content
   #home.baner-content-listing-biz
     .container-fluid.container-margin-top
+      .row
+        .col-md-12
+          if(biz.coverphoto)
+            img.img-responsive.logo-res(src="/uploads/thumbs/cover"+ biz.coverphoto, alt=biz.name +' on FindIt Kenya', width='100%') 
+          
       .row.flowerwhite
         .col-md-2.col-xs-2
           if(biz.photo)

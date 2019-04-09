@@ -222,55 +222,55 @@ block content
                         each photo in biz.gallery
                           img(src="/uploads/"+ photo.filename, width="200px")
                       #gallerypreview
-          .row
-              .col-md-6      
-                .form-group
-                  .row
+            .row
+                .col-md-6      
+                  .form-group
+                    .row
+                      .col-sm-2
+                        label(for='catalog') Catalog/Menu (pdf)*
+                      .col-sm-10
+                        input#catalog.form-control-form.catalogmenu(type='file', name='catalog', placeholder='catalog/menu', multiple='')
+                .col-md-6      
+                  .form-group
+                    .row      
+                      .col-sm-2
+                        label(for='profile') Company Profile (pdf)*
+                      .col-sm-10
+                        input#profile.form-control-form.catalogmenu(type='file', name='profile', placeholder='company profile', multiple='')
+            .row
+                .col-md-12
+                  .form-group
                     .col-sm-2
-                      label(for='catalog') Catalog/Menu (pdf)*
+                      label(for='coverphoto') Cover Photo
+                    //.col-sm-6
+                      img(src="/uploads/thumbs/cover"+ biz.photo, width="200px")
+                      img(src="",id="coverphotopreview", width="200px")
                     .col-sm-10
-                      input#catalog.form-control-form.catalogmenu(type='file', name='catalog', placeholder='catalog/menu', multiple='')
-              .col-md-6      
-                .form-group
-                  .row      
-                    .col-sm-2
-                      label(for='profile') Company Profile (pdf)*
-                    .col-sm-10
-                      input#profile.form-control-form.catalogmenu(type='file', name='profile', placeholder='company profile', multiple='')
-          .row
-              .col-md-12
-                .form-group
-                  .col-sm-2
-                    label(for='coverphoto') Cover Photo
-                  //.col-sm-6
-                    img(src="/uploads/thumbs/cover"+ biz.photo, width="200px")
-                    img(src="",id="coverphotopreview", width="200px")
-                  .col-sm-10
-                    input#photod.form-control-form(type='file', name='coverphoto', placeholder='coverphoto')
-          .row
-            .col-sm-12.text-center
-              strong
-                |  Social Links
-            .form-group
-              .row
-                .col-sm-6
-                  input.form-control-form(type='text', name='youtube', placeholder='youtube url')
-                .col-sm-6
-                  input.form-control-form(type='text', name='facebook', placeholder='facebook Url')
-                .col-sm-6
-                  input.form-control-form(type='text', name='twitter', placeholder='twitter Url')
-                .col-sm-6
-                  input.form-control-form(type='text', name='instagram', placeholder='Instagram Url')
-                .col-sm-6
-                  input.form-control-form(type='text', name='linkedin', placeholder='linkedin Url')
-                  if(categories.pendingstatus)
-                    input#map.form-control-form(type='hidden', name='pending', value='true')
-                  if(categories.packagepaid)
-                    input#map.form-control-form(type='hidden', name='packagepaid', value=categories.packagepaid)
-          
-          .row     
-            .form-group
-              button.button.btn.btn-warning.form-control-form(type='submit') Create
+                      input#photod.form-control-form(type='file', name='coverphoto', placeholder='coverphoto')
+            .row
+              .col-sm-12.text-center
+                strong
+                  |  Social Links
+              .form-group
+                .row
+                  .col-sm-6
+                    input.form-control-form(type='text', name='youtube', placeholder='youtube url')
+                  .col-sm-6
+                    input.form-control-form(type='text', name='facebook', placeholder='facebook Url')
+                  .col-sm-6
+                    input.form-control-form(type='text', name='twitter', placeholder='twitter Url')
+                  .col-sm-6
+                    input.form-control-form(type='text', name='instagram', placeholder='Instagram Url')
+                  .col-sm-6
+                    input.form-control-form(type='text', name='linkedin', placeholder='linkedin Url')
+                    if(categories.pendingstatus)
+                      input#map.form-control-form(type='hidden', name='pending', value='true')
+                    if(categories.packagepaid)
+                      input#map.form-control-form(type='hidden', name='packagepaid', value=categories.packagepaid)
+            
+            .row     
+              .form-group
+                button.button.btn.btn-warning.form-control-form(type='submit') Create
     script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9MX39yDkMJn6rjWi6vt4Rens5u_cVBQE")
     script(type='text/javascript').
       $(document).ready(function() {

@@ -38,7 +38,8 @@ var storage = multer.diskStorage({
 
 var upload = multer({ storage: storage });
 var cpUpload = upload.fields([
-  { name: 'photo', maxCount: 1 },
+	{ name: 'photo', maxCount: 1 },
+	{ name: 'coverphoto', maxCount: 1 },
   { name: 'profile', maxCount: 1 },
   { name: 'catalog', maxCount: 5 },
   { name: 'gallery', maxCount: 30 }
@@ -187,6 +188,16 @@ router.post('/edit/:id', role.auth, cpUpload, function(req, res, next) {
 					         .write("./public/uploads/thumbs/cover"+b.photo); // save
 					}).catch(function (err) {
 					    console.error(err);
+					});
+				}
+				if (req.files['coverphoto'] != null){
+					Jimp.read("./public/uploads/"+b.coverphoto).then(function (cover) {
+							return cover.resize(1000, 200)     // resize
+									 .quality(100)                 // set JPEG quality
+									 .greyscale()                 // set greyscale
+									 .write("./public/uploads/thumbs/cover"+b.coverphoto); // save
+					}).catch(function (err) {
+							console.error(err);
 					});
 				}
 				if (req.files['profile']){

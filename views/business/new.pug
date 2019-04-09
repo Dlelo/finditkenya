@@ -181,37 +181,7 @@ block content
                     button.btn.btn-danger.form-control-form.alert-danger.btnclose
                       |  Closed
             .row
-              .col-md-6
-                .form-group
-                  .row
-                    .col-sm-3
-                      label(for='photo') Cover Photo
-                    .col-sm-5
-                      img(src="",id="coverphotopreview", width="200px")
-                    .col-sm-4
-                      input#photod.form-control-form(type='file', name='photo', placeholder='photo')                  
-                .form-group
-                  .row
-                    .col-sm-3
-                      label(for='gallery') Gallery
-                    .col-sm-5
-                      if gallery
-                        each photo in biz.gallery
-                          img(src="/uploads/"+ photo.filename, width="200px")
-                      #gallerypreview
-                    .col-sm-4
-                      input#gallery.form-control-form.imagegallery(type='file', name='gallery', placeholder='gallery', multiple='')
-                .form-group
-                  .row
-                    .col-sm-3
-                      label(for='catalog') Catalog/Menu (pdf)*
-                    .col-sm-3
-                      input#catalog.form-control-form.catalogmenu(type='file', name='catalog', placeholder='catalog/menu', multiple='')
-                    .col-sm-3
-                      label(for='profile') Company Profile (pdf)*
-                    .col-sm-3
-                      input#profile.form-control-form.catalogmenu(type='file', name='profile', placeholder='company profile', multiple='')
-              .col-md-6
+              .col-md-12
                 .form-group
                   fieldset.gllpLatlonPicker
                     .row
@@ -219,36 +189,74 @@ block content
                         input.gllpSearchField.form-control(type='text')
                       .col-md-4
                         input.gllpSearchButton.form-control.btn.btn-primary(type='button', value='search', placeholder="search your city")
-                      br
+                    br
                     .row
-                      .col-md-8
-                        .gllpMap Google Maps
+                      .col-md-12
+                        .gllpMap(style= "width:100%") Google Maps
                         input#lati.gllpLatitude(type='hidden',name='lati')
                         input#long.gllpLongitude(type='hidden',name='long')
                         input#zoom.gllpZoom(type='hidden',,name='zoom')
             .row
-              .col-sm-12.text-center
-                strong
-                  |  Social Links
-              .form-group
-                .row
-                  .col-sm-6
-                    input.form-control-form(type='text', name='youtube', placeholder='youtube url')
-                  .col-sm-6
-                    input.form-control-form(type='text', name='facebook', placeholder='facebook Url')
-                  .col-sm-6
-                    input.form-control-form(type='text', name='twitter', placeholder='twitter Url')
-                  .col-sm-6
-                    input.form-control-form(type='text', name='instagram', placeholder='Instagram Url')
-                  .col-sm-6
-                    input.form-control-form(type='text', name='linkedin', placeholder='linkedin Url')
-                    if(categories.pendingstatus)
-                      input#map.form-control-form(type='hidden', name='pending', value='true')
-                    if(categories.packagepaid)
-                      input#map.form-control-form(type='hidden', name='packagepaid', value=categories.packagepaid)
+              .col-md-6
+                .form-group
+                  .row
+                    .col-sm-2
+                      label(for='photo') Cover Photo
+                    .col-sm-6
+                      img(src="",id="coverphotopreview", width="200px")
+                    .col-sm-4
+                      input#photod.form-control-form(type='file', name='photo', placeholder='photo')                  
+              .col-md-6  
+                .form-group
+                  .row
+                    .col-sm-2
+                      label(for='gallery') Gallery
+                    .col-sm-6
+                      if gallery
+                        each photo in biz.gallery
+                          img(src="/uploads/"+ photo.filename, width="200px")
+                      #gallerypreview
+                    .col-sm-4
+                      input#gallery.form-control-form.imagegallery(type='file', name='gallery', placeholder='gallery', multiple='')
+          .row
+              .col-md-6      
+                .form-group
+                  .row
+                    .col-sm-2
+                      label(for='catalog') Catalog/Menu (pdf)*
+                    .col-sm-10
+                      input#catalog.form-control-form.catalogmenu(type='file', name='catalog', placeholder='catalog/menu', multiple='')
+              .col-md-6      
+                .form-group
+                  .row      
+                    .col-sm-2
+                      label(for='profile') Company Profile (pdf)*
+                    .col-sm-10
+                      input#profile.form-control-form.catalogmenu(type='file', name='profile', placeholder='company profile', multiple='')
+            
+          .row
+            .col-sm-12.text-center
+              strong
+                |  Social Links
             .form-group
               .row
-                button.button.btn.btn-warning.form-control-form(type='submit') Create
+                .col-sm-6
+                  input.form-control-form(type='text', name='youtube', placeholder='youtube url')
+                .col-sm-6
+                  input.form-control-form(type='text', name='facebook', placeholder='facebook Url')
+                .col-sm-6
+                  input.form-control-form(type='text', name='twitter', placeholder='twitter Url')
+                .col-sm-6
+                  input.form-control-form(type='text', name='instagram', placeholder='Instagram Url')
+                .col-sm-6
+                  input.form-control-form(type='text', name='linkedin', placeholder='linkedin Url')
+                  if(categories.pendingstatus)
+                    input#map.form-control-form(type='hidden', name='pending', value='true')
+                  if(categories.packagepaid)
+                    input#map.form-control-form(type='hidden', name='packagepaid', value=categories.packagepaid)
+          .row     
+            .form-group
+              button.button.btn.btn-warning.form-control-form(type='submit') Create
     script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9MX39yDkMJn6rjWi6vt4Rens5u_cVBQE")
     script(type='text/javascript').
       $(document).ready(function() {

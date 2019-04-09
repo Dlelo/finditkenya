@@ -77,6 +77,9 @@ router.post('/edit/:id', role.auth, cpUpload, function(req, res, next) {
 		if (req.files['photo']){
 		  b.photo = req.files['photo'][0].filename;
 		}
+		if (req.files['coverphoto']){
+			b.photo = req.files['coverphoto'][0].filename;
+		}
 		if(req.body.category){
 			b.category = req.body.category;
 		}
@@ -186,8 +189,8 @@ router.post('/edit/:id', role.auth, cpUpload, function(req, res, next) {
 					    console.error(err);
 					});
 				}
-				if (req.files['catalog']){
-					Jimp.read("./public/uploads/"+b.catalog).then(function (cover) {
+				if (req.files['profile']){
+					Jimp.read("./public/uploads/"+b.profile).then(function (cover) {
 					    return cover.write("./public/uploads/"+b.profile); // save
 					}).catch(function (err) {
 					    console.error(err);

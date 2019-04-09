@@ -26,6 +26,7 @@ const bizSchema = new Schema({
 			unique: true
 		},
 		photo: String,
+		coverphoto:String,
 		catalog: Array,
 		profile: String,
 		category: String,

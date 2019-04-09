@@ -256,19 +256,35 @@ block content
                   button.btn.btn-danger.form-control-form.alert-danger.btnclose
                     |  Closed
             .row
+               .col-md-12
+                .form-group
+                  fieldset.gllpLatlonPicker
+                    .row
+                      .col-md-8
+                        input.gllpSearchField.form-control(type='text')
+                      .col-md-4
+                        input.gllpSearchButton.form-control.btn.btn-info(type='button', value='search', placeholder="search your city")
+                    br
+                    .row
+                      .gllpMap(style= "width:100%") Google Maps
+                      input#lati.gllpLatitude(type='hidden', value=biz.map.coordinates[1], name='lati')
+                      input#long.gllpLongitude(type='hidden', value=biz.map.coordinates[0], name='long')
+                      input#zoom.gllpZoom(type='hidden', value=biz.map.zoom, name='zoom')
+            .row
               .col-md-6
                 .form-group
-                  .col-sm-3
-                    label(for='photo') Cover Photo
-                  .col-sm-5
+                  .col-sm-2
+                    label(for='photo') Profile Photo
+                  .col-sm-6
                     img(src="/uploads/thumbs/cover"+ biz.photo, width="200px")
                     img(src="",id="coverphotopreview", width="200px")
                   .col-sm-4
                     input#photod.form-control-form(type='file', name='photo', placeholder='photo')                  
+              .col-md-6
                 .form-group
-                  .col-sm-3
+                  .col-sm-2
                     label(for='gallery') Gallery
-                  .col-sm-4
+                  .col-sm-6
                     input#gallery.form-control-form.imagegallery(type='file', name='gallery', placeholder='gallery', multiple)
                 .form-group
                   .col-sm-12#accordion
@@ -279,58 +295,63 @@ block content
                             a(href="/admin/deletephoto/"+biz.id+"?photo="+photo.filename, id=photo.filename)
                               i.fa.fa-trash(aria-hidden="true",class='col-md-1')                 
                   #gallerypreview.col-md-12
-                .form-group
-                  .row
-                    .col-sm-3
-                      label(for='catalog') Catalog/Menu (pdf)*
-                    .col-sm-3
-                      input#catalog.form-control-form.catalogmenu(type='file', name='catalog', placeholder='catalog/menu', multiple='')
-                    .col-sm-3
-                      label(for='profile') Company Profile (pdf)*
-                    .col-sm-3
-                      input#profile.form-control-form.catalogmenu(type='file', name='profile', placeholder='company profile', multiple='')
-                    
-                if biz.catalog
-                  .form-group
-                    .row
-                      .col-sm-12
-                        each catal in biz.catalog
-                          embed(src="/uploads/"+catal.filename, width='50%', height='300px')
-                if biz.profile
-                  .form-group
-                    .row
-                      .col-sm-12
-                        embed(src="/uploads/"+biz.profile.filename, width='50%', height='300px')
+            .row
               .col-md-6
                 .form-group
-                  fieldset.gllpLatlonPicker
-                    .row
-                      .col-md-8
-                        input.gllpSearchField.form-control(type='text')
-                      .col-md-4
-                        input.gllpSearchButton.form-control.btn.btn-info(type='button', value='search', placeholder="search your city")
-                    .gllpMap Google Maps
-                    input#lati.gllpLatitude(type='hidden', value=biz.map.coordinates[1], name='lati')
-                    input#long.gllpLongitude(type='hidden', value=biz.map.coordinates[0], name='long')
-                    input#zoom.gllpZoom(type='hidden', value=biz.map.zoom, name='zoom')
-            .form-group
-              .col-sm-12.text-center
-                strong
-                  |  Social Links
-              .col-sm-6
-                input.form-control-form(type='text', name='youtube', placeholder='youtube url',value=biz.youtube)
-              .col-sm-6
-                input.form-control-form(type='text', name='facebook', placeholder='facebook Url',value=biz.facebook)
-              .col-sm-6
-                input.form-control-form(type='text', name='twitter', placeholder='twitter Url',value=biz.twitter)
-              .col-sm-6
-                input.form-control-form(type='text', name='instagram', placeholder='Instagram Url',value=biz.instagram)
-              .col-sm-6
-                input.form-control-form(type='text', name='linkedin', placeholder='Linkedin Url',value=biz.linkedin)
-              if(user.role == 1)
+                  .row
+                    .col-sm-2
+                      label(for='catalog') Catalog/Menu (pdf)*
+                    .col-sm-10
+                      input#catalog.form-control-form.catalogmenu(type='file', name='catalog', placeholder='catalog/menu', multiple='')
+                  .row        
+                    if biz.catalog
+                      .form-group
+                        .row
+                          .col-sm-12
+                            each catal in biz.catalog
+                              embed(src="/uploads/"+catal.filename, width='50%', height='300px')
+              .col-md-6    
+                .form-group
+                  .row
+                    .col-sm-2
+                      label(for='profile') Company Profile (pdf)*
+                    .col-sm-10
+                      input#profile.form-control-form.catalogmenu(type='file', name='profile', placeholder='company profile', multiple='')
+                  .row
+                    if biz.profile
+                      .form-group
+                        .row
+                          .col-sm-12
+                            embed(src="/uploads/"+biz.profile.filename, width='50%', height='300px')
+            .row
+              .col-md-12
+                .form-group
+                  .col-sm-2
+                    label(for='photo') Cover Photo
+                  //.col-sm-6
+                    img(src="/uploads/thumbs/cover"+ biz.photo, width="200px")
+                    img(src="",id="coverphotopreview", width="200px")
+                  .col-sm-10
+                    input#photod.form-control-form(type='file', name='coverphoto', placeholder='coverphoto')
+            .row  
+              .form-group
+                .col-sm-12.text-center
+                  strong
+                    |  Social Links
                 .col-sm-6
-                  input.form-control-form(type='text', name='username', placeholder='Username',value=biz.user_id)
-            
+                  input.form-control-form(type='text', name='youtube', placeholder='youtube url',value=biz.youtube)
+                .col-sm-6
+                  input.form-control-form(type='text', name='facebook', placeholder='facebook Url',value=biz.facebook)
+                .col-sm-6
+                  input.form-control-form(type='text', name='twitter', placeholder='twitter Url',value=biz.twitter)
+                .col-sm-6
+                  input.form-control-form(type='text', name='instagram', placeholder='Instagram Url',value=biz.instagram)
+                .col-sm-6
+                  input.form-control-form(type='text', name='linkedin', placeholder='Linkedin Url',value=biz.linkedin)
+                if(user.role == 1)
+                  .col-sm-6
+                    input.form-control-form(type='text', name='username', placeholder='Username',value=biz.user_id)
+            .row
               .col-sm-12
                 .row
                   .col-sm-2.col-xs-12

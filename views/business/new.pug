@@ -267,16 +267,7 @@ block content
                     input#map.form-control-form(type='hidden', name='pending', value='true')
                   if(categories.packagepaid)
                     input#map.form-control-form(type='hidden', name='packagepaid', value=categories.packagepaid)
-          .row
-              .col-md-12
-                .form-group
-                  .col-sm-2
-                    label(for='coverphoto') Cover Photo
-                  //.col-sm-6
-                    img(src="/uploads/thumbs/cover"+ biz.photo, width="200px")
-                    img(src="",id="coverphotopreview", width="200px")
-                  .col-sm-10
-                    input#photod.form-control-form(type='file', name='coverphoto', placeholder='coverphoto')
+          
           .row     
             .form-group
               button.button.btn.btn-warning.form-control-form(type='submit') Create

@@ -275,16 +275,17 @@ block content
                 .form-group
                   .col-sm-2
                     label(for='photo') Profile Photo
-                  .col-sm-6
+                  .col-sm-10
+                    input#photod.form-control-form(type='file', name='photo', placeholder='photo')  
+                .form-group
+                  .col-sm-12
                     img(src="/uploads/thumbs/cover"+ biz.photo, width="200px")
-                    img(src="",id="coverphotopreview", width="200px")
-                  .col-sm-4
-                    input#photod.form-control-form(type='file', name='photo', placeholder='photo')                  
+                    img(src="",id="coverphotopreview", width="200px")                
               .col-md-6
                 .form-group
                   .col-sm-2
                     label(for='gallery') Gallery
-                  .col-sm-6
+                  .col-sm-10
                     input#gallery.form-control-form.imagegallery(type='file', name='gallery', placeholder='gallery', multiple)
                 .form-group
                   .col-sm-12#accordion

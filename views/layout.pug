@@ -58,89 +58,90 @@ html
       img(height='1' width='1' style='display:none' src='https://www.facebook.com/tr?id=560982094388264&ev=PageView&noscript=1')
     // End Facebook Pixel Code
   body
-    div.container-fluid(style="border-bottom: 1px solid #ccc;")
-      nav.navbar.navbar-inverse
-        .navbar-header(style="display:flex !important; flex-direction:row !important; width: 100% !important;")
-          div(style="flex-grow:0.1 !important")
-            a.navbar-brand.text-white(href="/")
-                img.img-logo(src="/img/findit-red-logo.png").img-fluid
-          div(style="flex-grow:0.1 !important")
-            #showSearch
-              form.form-class(method='get', action='/search')
-                div.input-group
-                  input.search2.form-control-lg(type="text" placeholder="" ,style="width:100% !important" ,name='search', autofocus)
-          div(style="flex-grow:0.1 !important")
-            a(href="/coupons")
-              button.btn.btn-light.w3ls-btn.coupons-btn.flash-button#coupbtn(type="button" style="font-size: 16px;")
-                span.fa-style.fa.fa-gift.coupons-text-color
-                |   View deals
-              
-          div(style="flex-grow:0.5 !important")      
-            #main-nav.collapse.navbar-collapse
-              ul.nav.navbar-nav.navbar-right(style="padding-top:1rem")
-                //li.dropdown.dropdown-large
-                    a.dropdown-toggle(href="#" data-toggle="dropdown")    
-                      strong
-                      |  Categories
-                      b.caret
-                    ul.dropdown-menu.dropdown-menu-large.row
-                      if categories 
-                        div.row
-                          each category,i in categories
-                            div.col-md-4.col-sm-12.col-xs-12
-                              a.dropdown-item(href="/category/"+category.name)
-                                  strong.findit-blue
-                                    i.fas.fa-1x(aria-hidden='true', class=category.icon) 
-                                    small.findit-blue
-                                      strong   
-                                        =category.name                  
-                if (loggedin)
-                  li                  
-                    a(href='/dashboard')  
-                      span.findit-blue.fa.fa-user
-                      strong
-                      |  View Profile          
-                if (loggedin)                
-                  li
-                    a(href='/logout') 
-                      span.findit-blue.fa.fa-sign-out-alt
-                      strong
-                      |  Logout
-                else
-                  li
-                    a(href='/login')
-                      button.btn.btn-primary.w3ls-btn
+    .container-fluid(style="margin-bottom: -10px; min-height: 100%;")
+      div.container-fluid(style="border-bottom: 1px solid #ccc;")
+        nav.navbar.navbar-inverse
+          .navbar-header(style="display:flex !important; flex-direction:row !important; width: 100% !important;")
+            div(style="flex-grow:0.1 !important")
+              a.navbar-brand.text-white(href="/")
+                  img.img-logo(src="/img/findit-red-logo.png").img-fluid
+            div(style="flex-grow:0.1 !important")
+              #showSearch
+                form.form-class(method='get', action='/search')
+                  div.input-group
+                    input.search2.form-control-lg(type="text" placeholder="" ,style="width:100% !important" ,name='search', autofocus)
+            div(style="flex-grow:0.1 !important")
+              a(href="/coupons")
+                button.btn.btn-light.w3ls-btn.coupons-btn.flash-button#coupbtn(type="button" style="font-size: 16px;")
+                  span.fa-style.fa.fa-gift.coupons-text-color
+                  |   View deals
+                
+            div(style="flex-grow:0.5 !important")      
+              #main-nav.collapse.navbar-collapse
+                ul.nav.navbar-nav.navbar-right(style="padding-top:1rem")
+                  //li.dropdown.dropdown-large
+                      a.dropdown-toggle(href="#" data-toggle="dropdown")    
                         strong
-                          | Login
-                  li
-                  a(href="/register")
-                    button.btn.btn-outline-primary.w3ls-btn.findit-blue
-                      strong
-                      |  Sign Up
+                        |  Categories
+                        b.caret
+                      ul.dropdown-menu.dropdown-menu-large.row
+                        if categories 
+                          div.row
+                            each category,i in categories
+                              div.col-md-4.col-sm-12.col-xs-12
+                                a.dropdown-item(href="/category/"+category.name)
+                                    strong.findit-blue
+                                      i.fas.fa-1x(aria-hidden='true', class=category.icon) 
+                                      small.findit-blue
+                                        strong   
+                                          =category.name                  
+                  if (loggedin)
+                    li                  
+                      a(href='/dashboard')  
+                        span.findit-blue.fa.fa-user
+                        strong
+                        |  View Profile          
+                  if (loggedin)                
+                    li
+                      a(href='/logout') 
+                        span.findit-blue.fa.fa-sign-out-alt
+                        strong
+                        |  Logout
+                  else
+                    li
+                      a(href='/login')
+                        button.btn.btn-primary.w3ls-btn
+                          strong
+                            | Login
+                    li
+                    a(href="/register")
+                      button.btn.btn-outline-primary.w3ls-btn.findit-blue
+                        strong
+                        |  Sign Up
 
-          // /.navbar-collapse
-        // /.navbar
-      // /.container
-    // /.header
-    .errors.container
-      if errors
-        each error in errors
-          .alert.xxx-error.alert-danger
+            // /.navbar-collapse
+          // /.navbar
+        // /.container
+      // /.header
+      .errors.container
+        if errors
+          each error in errors
+            .alert.xxx-error.alert-danger
+              = error
+        
+        if message
+          .alert.alert-info
+            = message
+        if success_msg.length
+          .alert.xxx-error.alert-success 
+            = success_msg
+        if error_msg.length
+          .alert.xxx-error.alert-danger 
+            = error_msg
+        if error.length
+          .alert.xxx-error.alert-danger 
             = error
-      
-      if message
-        .alert.alert-info
-          = message
-      if success_msg.length
-        .alert.xxx-error.alert-success 
-          = success_msg
-      if error_msg.length
-        .alert.xxx-error.alert-danger 
-          = error_msg
-      if error.length
-        .alert.xxx-error.alert-danger 
-          = error
-    block content
+      block content
     div.container-fluid
       
       div.row.text-center.footer-style

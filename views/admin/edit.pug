@@ -2,8 +2,8 @@ extends ../layout
 
 block content
   #home.parallax-content-list.baner-content-listing-biz
-    .container.container-margin-top(style="padding-top: 4rem")
-        .col-md-offset-3.col-md-6.col-md-offset-3
+    .container.container-margin-top(style='background-color: #eee; margin-top:2rem')
+        .col-md-offset-3.col-md-6.col-md-offset-3(style='padding:1rem')
             h3.text-center Edit #{biz.slug}
         .col-md-offset-0.col-md-12.col-md-offset-0
           form.form-horizontal(method="post",action="/admin/edit/"+biz._id,enctype="multipart/form-data")
@@ -261,7 +261,7 @@ block content
                   fieldset.gllpLatlonPicker
                     .row
                       .col-md-8
-                        input.gllpSearchField.form-control(type='text')
+                        input.gllpSearchField.form-control.form(type='text')
                       .col-md-4
                         input.gllpSearchButton.form-control.btn.btn-info(type='button', value='search', placeholder="search your city")
                     br
@@ -280,7 +280,8 @@ block content
                 .form-group
                   .col-sm-12
                     img(src="/uploads/thumbs/cover"+ biz.photo, width="200px")
-                    img(src="",id="coverphotopreview", width="200px")                
+                    img(src="",id="coverphotopreview", width="200px")  
+                    h2 #{biz.packagepaid}              
               .col-md-6
                 .form-group
                   .col-sm-2
@@ -327,12 +328,12 @@ block content
             .row
               .col-md-12
                 .form-group
-                  .col-sm-2
+                  .col-sm-1
                     label(for='coverphoto') Cover Photo
                   //.col-sm-6
                     img(src="/uploads/thumbs/cover"+ biz.photo, width="200px")
                     img(src="",id="coverphotopreview", width="200px")
-                  .col-sm-10
+                  .col-sm-11
                     input#photod.form-control-form(type='file', name='coverphoto', placeholder='coverphoto')
             .row  
               .form-group

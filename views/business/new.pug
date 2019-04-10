@@ -2,9 +2,9 @@ extends ../layout
 
 block content
   #home.baner-content-listing-biz
-    .container.container-margin-top
+    .container(style='background-color: #eee; margin-top:2rem')
         .col-md-offset-3.col-md-6.col-md-offset-3
-            h3.text-center.findit-blue Add Business
+            h3.text-center.findit-blue(style='padding:1rem') Add Business
         .col-md-offset-0.col-md-12.col-md-offset-0
           form.form-horizontal(method="post",action="/business/add",enctype="multipart/form-data")
             .form-group
@@ -176,7 +176,7 @@ block content
                   .col-sm-3(id="hoursopen",class="timeopen")
                     input#hours.form-control-form(type='text', name='hoursopensun', placeholder='Opening Hours Sunday',class='timepicker hoursopened hoursopencloseoption')
                   .col-sm-3(id="hoursclose",class="hoursclose")
-                    input#hours.form-control-form(type='text', name='hoursclosesun', placeholder='Closes Hours Sunday',class='timepicker hoursclosed hoursopencloseoption')
+                    input#hours.form-control(type='text', name='hoursclosesun', placeholder='Closes Hours Sunday',class='timepicker hoursclosed hoursopencloseoption')
                   .col-sm-2.text-center
                     button.btn.btn-danger.form-control-form.alert-danger.btnclose
                       |  Closed
@@ -186,9 +186,9 @@ block content
                   fieldset.gllpLatlonPicker
                     .row
                       .col-md-8
-                        input.gllpSearchField.form-control(type='text')
+                        input.gllpSearchField.form-control.form(type='text')
                       .col-md-4
-                        input.gllpSearchButton.form-control.btn.btn-primary(type='button', value='search', placeholder="search your city")
+                        input.gllpSearchButton.form-control.form.btn.btn-primary(type='button', value='search', placeholder="search your city")
                     br
                     .row
                       .col-md-12
@@ -240,12 +240,12 @@ block content
             .row
                 .col-md-12
                   .form-group
-                    .col-sm-2
+                    .col-sm-1
                       label(for='coverphoto') Cover Photo
                     //.col-sm-6
                       img(src="/uploads/thumbs/cover"+ biz.photo, width="200px")
                       img(src="",id="coverphotopreview", width="200px")
-                    .col-sm-10
+                    .col-sm-11
                       input#photod.form-control-form(type='file', name='coverphoto', placeholder='coverphoto')
             .row
               .col-sm-12.text-center

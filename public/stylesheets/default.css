@@ -50,6 +50,7 @@ a{
 .navbar-top-links > li > a {
   color: #04045a;
   font-weight: 600;
+  font-size: 1.1em;
 }
 .sidebar .sidebar-head {
   background: #ffffff;

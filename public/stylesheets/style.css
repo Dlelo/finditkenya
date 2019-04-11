@@ -703,8 +703,8 @@ END OF CARD DESIGN
 *******/
 
 .btn-claim:hover, .selectpackage:hover{
-  background-color: #5050ff;
-  color: #fdfdfd !important;
+  background-color: #04045a;
+  color: #fff !important;
 }
 
 .btn-package{

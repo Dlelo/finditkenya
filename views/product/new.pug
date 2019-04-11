@@ -3,8 +3,8 @@ extends ../layout
 block content
   #home.parallax-content-list.baner-content-listing-biz
     .container-fluid.container-margin-top.container-fluidpadding
-      .container
-        h3.text-center
+      .container(style='background-color: #eee; margin-top:2rem')
+        h3.text-center(style='padding:1rem')
           | Add Product
         form(method='post', action='/product/create',enctype='multipart/form-data')
           .form-group
@@ -13,7 +13,7 @@ block content
           .form-group
              .col-sm-12
                 textarea#descriptionw.form-control-form(name='description',type='text',placeholder="Describe the product in a few words", required) 
-                  
+          br        
           .form-group
             .col-sm-1
               label(for='photo') Cover Photo            
@@ -59,15 +59,17 @@ block content
             .col-sm-6
               input.form-control-form(name='price',type='number',style ="margin-top:12px;",placeholder="Price of Product")
           .form-group
-            .col-sm-6
+            .col-sm-10
               input.form-control-form(name='quantity',type='text', style ="margin-top:12px;",placeholder="Quantity of Products")
-            .col-sm-6
+            .col-sm-2
               .row
                 .col-sm-6(style="padding: 10px")
                   | VAT
                 .col-sm-6
                   input.form-control(name='vat',type='radio',value=true, style ="")
           .form-group
-            .col-sm-12    
-              button.btn.btn-primary.form-control-form(type='submit' style ="margin-top:12px;")
-                | Create
+            .col-sm-12  
+              button.btn.btn-claim.form-control-form.btn-gp(type='submit', style='color:#5050ff; margin-top:12px;')                 
+                strong
+                  h4.findit-blue  Create
+                

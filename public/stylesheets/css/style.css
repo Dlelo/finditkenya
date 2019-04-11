@@ -3517,7 +3517,11 @@ padding-left:10px;
   background-color: #333;
   z-index:1000;
 }
-
+.nav-item{
+	font-weight: 600 !important;
+	font-size: 1.2em !important;
+  }
+  
 /* Navbar links */
 #navbar a {
   float: left;

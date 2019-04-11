@@ -102,14 +102,16 @@ ul {
 	color: #04045a !important;
 	text-shadow: none;
 	line-height: inherit;
-	font-size: 16px;
+	font-size: 1.2em;
 	padding: 0px;
 	letter-spacing: 0.5px;
 }
 
 .navbar-nav>li {
 	margin-left: 3rem;
-    margin-right: 3rem;
+	margin-right: 3rem;
+	font-size: 1.5em;
+	font-weight: 600;
 }
 
 .header.active .navbar-nav>li>a {

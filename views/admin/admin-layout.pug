@@ -175,7 +175,8 @@ html(lang='en')
                   | Error 404          
           
           .center.p-10
-              a.btn.btn-info.btn-block.waves-effect.waves-light(href='/business/freeadd') Add Product
+              a.btn.btn-info.btn-block.waves-effect.waves-light(href='/product/new') Add Product
+            
           if(user.role == 1)
             .center.p-10
               a.btn.btn-info.btn-block.waves-effect.waves-light(href='/business/freeadd') Add More Business
@@ -185,8 +186,7 @@ html(lang='en')
               a.btn.btn-info.btn-block.waves-effect.waves-light(href='/admin/subcategory/add') Add Business Sub Category
             .center.p-10
               a.btn.btn-warning.btn-block.waves-effect.waves-light(href='/admin/agent/add') Add Agent
-            
-            
+        
       // ==============================================================
       // End Left Sidebar
       // ==============================================================

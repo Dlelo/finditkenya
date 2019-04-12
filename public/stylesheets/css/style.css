@@ -5974,3 +5974,6 @@ height: 50px;
 	position:relative;
 	background-color:#eee;
 }
+.nav-item.w3ls-btn{
+	font-size:1.1em;
+}

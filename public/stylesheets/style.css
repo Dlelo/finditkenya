@@ -1162,3 +1162,6 @@ input[type="radio"].package:checked + #packagelabel {
 .form-wrapper{
   width: 500px;
 }
+.box-title{
+  color:#c00000;
+}

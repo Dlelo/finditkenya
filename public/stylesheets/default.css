@@ -183,3 +183,54 @@ a{
 .panel-theme a:hover {
   color: #0791e6;
 }
+
+/* Responsive design*/
+@media (max-width: 568px){
+
+  .pull-left.addbusiness{
+    padding-top: 15rem !important;
+  }
+
+}
+@media (max-width: 500px){
+  .pull-left.addbusiness{
+    padding-top: 15rem !important;
+  }
+
+
+}
+@media (max-width: 480px){
+  .pull-left.addbusiness{
+    padding-top: 15rem !important;
+  }
+
+
+}
+@media (max-width: 414px){
+  .pull-left.addbusiness{
+    padding-top: 15rem !important;
+  }
+
+
+}
+@media (max-width: 384px){
+  .pull-left.addbusiness{
+    padding-top: 15rem !important;
+  }
+
+
+}
+@media (max-width: 375px){
+  .pull-left.addbusiness{
+    padding-top: 15rem !important;
+  }
+
+
+}
+@media (max-width: 320px){
+  .pull-left.addbusiness{
+    padding-top: 15rem !important;
+  }
+
+
+}

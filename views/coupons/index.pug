@@ -283,7 +283,7 @@ block content
           div.row.deal-main.deal-coup.row-eq-height.coupon(id=coupon.id,class=(coupon.users.some(function(x) { return x.user_id == user.id })) ? 'couponclicked' : 'couponadd', rel=user.id) 
             .card#showUser(style="border:none;")
               .row
-                .col-md-5.col-sm-5(style="width:150px; height:150px;")
+                .col-md-5.col-sm-5
                   img.img-coupon(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name +' on Findit Kenya' style="padding-top:1.5rem !important; width: 150px; height: 150px; padding-right: 0 !important; padding-right: 0 !important;")
                 .col-md-7.col-sm-7.px-3
                   .card-block.px-3

@@ -216,7 +216,7 @@ app.post('/register',
   [
   check('names', 'Full name can not be empty')
     .exists(),
-  check('phone', 'Phone should have 10 characters e.g. (0700123123 or +254700123123)')
+  check('phone', 'Phone number should have 10 characters e.g. (0700123123 or +254700123123)')
     .isLength({ min: 3, max: 13 }),
   check('email')
     .isEmail().withMessage('must be an email')
@@ -224,7 +224,7 @@ app.post('/register',
     .normalizeEmail(),
 
   // General error messages can be given as a 2nd argument in the check APIs
-  check('password', 'passwords must be at least 5 chars long and contain one number')
+  check('password', 'Passwords must be at least 5 characters long and contain at least one number')
     .isLength({ min: 4 })
     .matches(/\d/)
     .custom((value,{req, loc, path}) => {

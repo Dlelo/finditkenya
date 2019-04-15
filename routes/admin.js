@@ -103,10 +103,12 @@ router.post('/edit/:id', role.auth, cpUpload, function(req, res, next) {
     //   //b.gallery.push(req.files['gallery']);
 		// }	
 		if(req.files['gallery']){
-			b.gallery = req.files['gallery'];
-      if (b.gallery != null){
-				b.gallery.forEach(function(x){
+			bizgallery = req.files['gallery'];
+			console.log(b.gallery);
+      if (bizgallery != null){
+				bizgallery.forEach(function(x){
 					b.gallery.push(x);
+					console.log(b.gallery)
 				})
 			}
 		}

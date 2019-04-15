@@ -165,15 +165,15 @@ html(lang='en')
                   if (loggedin)
                     li.nav-item.mr-3                  
                       a(href='/dashboard')  
-                        span.fas.fa-user.fas-menu
+                        span.fas.fa-user.fas-menu(style="font-size:1.1em")
                         strong
                         |  View Profile          
                   if (loggedin)                
                     li.nav-item.mr-3
                       a(href='/logout') 
-                        span.fas.fa-sign-out-alt.fas-menu
+                        span.fas.fa-sign-out-alt.fas-menu(style="font-size:1.1em")
                         strong
-                        |  Logout
+                          |  Logout
                   else
                     li.nav-item.mr-3
                       a(href='/login')

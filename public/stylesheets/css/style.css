@@ -1472,11 +1472,27 @@ ul.portfolio-area li figure {
 		font-size: 1.8em;
 	}
 }
+@media screen and (max-width: 1080px) {
+	
+	.easy-autocomplete {
+    width: 89% !important;
+      }
+	.easy-autocomplete.eac-description {
+    width: 89% !important;
+	   }
+}
 
 @media screen and (max-width: 1080px) {
 	h3.agile-title {
 		font-size: 1.55rem;
 	}
+	
+	.easy-autocomplete {
+    width: 89% !important;
+      }
+	.easy-autocomplete.eac-description {
+    width: 89% !important;
+       }
 	.captn {
 		left: 4%;
 	}
@@ -1492,6 +1508,7 @@ ul.portfolio-area li figure {
 	.check-btn {
 		margin-top: 1.5em;
 	}
+	
 }
 
 @media screen and (max-width: 1024px) {

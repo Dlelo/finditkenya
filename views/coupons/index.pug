@@ -305,7 +305,11 @@ block content
                           | #{coupon.description}
                     p.card-text.findit-blue 
                       small
-                        strong #{coupon.tagline}
+                        strong 
+                          if oupon.description.length > 30
+                            | #{coupon.tagline}
+                          else
+                            |  !{coupon.description.substr(0, 30)+ ' <strong id="showmore" style="background-color:#c00000; color:#fff; padding:1px">Read More</strong>'}
                       .row
                         .col-md-12.col-sm-12
                           small 

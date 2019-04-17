@@ -300,14 +300,14 @@ block content
                     p.card-text 
                       small 
                         if coupon.description.length > 50
-                          |  !{coupon.description.substr(0, 50)+ ' <strong id="showmore" style="background-color:#c00000; color:#fff; padding:1px">Read More</strong>'}
+                          |  !{coupon.description.substr(0, 50)+ ' <strong id="showmore" style="background-color:#c00000; color:#fff; padding:1px"><a data-toggle="modal" data-target="#product_view">Read More</a></strong>'}
                         else
                           | #{coupon.description}
                     p.card-text.findit-blue 
                       small
                         strong 
                           if coupon.tagline.length > 30
-                            |  !{coupon.tagline.substr(0, 30)+ ' <strong id="showmore" style="background-color:#c00000; color:#fff; padding:1px">Read More</strong>'}
+                            |  !{coupon.tagline.substr(0, 30)+ ' <strong id="showmore" style="background-color:#c00000; color:#fff; padding:1px"><a data-toggle="modal" data-target="#product_view">Read More</a></strong>'}
                           else
                             |  #{coupon.tagline}
                       .row
@@ -326,7 +326,7 @@ block content
                       .modal-header.text-center
                         a.class(href='#' data-dismiss='modal')
                           span.glyphicon.glyphicon-remove
-                        h3.modal-title 
+                        h4.modal-title
                           | #{coupon.name}
                           button.close(type='button' data-dismiss='modal') &times;
                       .modal-body

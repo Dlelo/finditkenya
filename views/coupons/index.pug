@@ -307,9 +307,9 @@ block content
                       small
                         strong 
                           if coupon.tagline.length > 30
-                            | #{coupon.tagline}
-                          else
                             |  !{coupon.tagline.substr(0, 30)+ ' <strong id="showmore" style="background-color:#c00000; color:#fff; padding:1px">Read More</strong>'}
+                          else
+                            |  #{coupon.tagline}
                       .row
                         .col-md-12.col-sm-12
                           small 

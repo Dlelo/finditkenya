@@ -287,7 +287,7 @@ block content
                   .cd-items.cd-container
                     .cd-item
                       img.img-coupon(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name +' on Findit Kenya' style="padding-top:1.5rem !important; width: 150px; height: 150px;")
-                      a.cd-trigger(type="button" class="btn btn-primary" data-toggle="modal" data-target="#product_view" style='color: #fff; background-color: #04045a;') Quick View
+                      a.cd-trigger(type="button" class="btn btn-primary" data-toggle="modal" data-target='#'+coupon.bizid.slug, style='color: #fff; background-color: #04045a;') Quick View
                 .col-md-7.col-sm-7.px-3
                   .card-block.px-3
                     h4.card-title(style="padding-top:2px") #{coupon.name}
@@ -300,14 +300,14 @@ block content
                     p.card-text 
                       small 
                         if coupon.description.length > 50
-                          |  !{coupon.description.substr(0, 50)+ '... <strong id="showmore" style="background-color:#c00000; color:#fff; padding:1px"><a data-toggle="modal" data-target="#product_view">Read More</a></strong>'}
+                          |  !{coupon.description.substr(0, 50)+ '... <strong id="showmore" style="background-color:#c00000; color:#fff; padding:1px"><a data-toggle="modal" data-target="#"+'+coupon.bizid.slug+'>Read More</a></strong>'}
                         else
                           | #{coupon.description}
                     p.card-text.findit-blue 
                       small
                         strong 
                           if coupon.tagline.length > 30
-                            |  !{coupon.tagline.substr(0, 30)+ ' ... <strong id="showmore" style="background-color:#c00000; color:#fff; padding:1px"><a data-toggle="modal" data-target="#product_view">Read More</a></strong>'}
+                            |  !{coupon.tagline.substr(0, 30)+ ' ... <strong id="showmore" style="background-color:#c00000; color:#fff; padding:1px"><a data-toggle="modal" data-target="#"+'+coupon.bizid.slug+'>Read More</a></strong>'}
                           else
                             |  #{coupon.tagline}
                       .row
@@ -320,7 +320,7 @@ block content
                       p.card-text 
                         small #{coupon.description}
               .row
-                #product_view.modal.fade.product_view
+                .modal.fade.product_view(id=coupon.bizid.slug)
                   .modal-dialog
                     .modal-content
                       .modal-header.text-center

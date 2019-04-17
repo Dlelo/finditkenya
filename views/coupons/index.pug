@@ -284,7 +284,10 @@ block content
             .card#showUser(style="border:none; width: 100%;")
               .row
                 .col-md-5.col-sm-5(style="padding-right: 0 !important; padding-left: 0 !important;")
-                  img.img-coupon(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name +' on Findit Kenya' style="padding-top:1.5rem !important; width: 150px; height: 150px;")
+                  .cd-items.cd-container
+                    .cd-item
+                      img.img-coupon(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name +' on Findit Kenya' style="padding-top:1.5rem !important; width: 150px; height: 150px;")
+                      a.cd-trigger(type="button" class="btn btn-primary" data-toggle="modal" data-target="#product_view" style='color: #fff; background-color: #04045a;') Quick View
                 .col-md-7.col-sm-7.px-3
                   .card-block.px-3
                     h4.card-title(style="padding-top:2px") #{coupon.name}
@@ -297,31 +300,61 @@ block content
                     p.card-text 
                       small 
                         if coupon.description.length > 50
-                          |  #{coupon.description.substr(0, 50)+ '. '}
+                          |  !{coupon.description.substr(0, 50)+ ' <strong id="showmore" style="background-color:#c00000; color:#fff; padding:1px">Read More</strong>'}
                         else
                           | #{coupon.description}
                     p.card-text.findit-blue 
                       small
                         strong #{coupon.tagline}
-                  .limited.card-block.px-3
-                     p.card-text 
-                       small #{coupon.description}
-                  
+                      .row
+                        .col-md-12.col-sm-12
+                          small 
+                            strong.showOnHover Click to Claim Coupon
+                        .col-md-12.col-sm-12.text-left
+                          a.btn.btn-primary.clipped(style="color:#fff !important")  Clipped 
+                    //.limited.card-block.px-3
+                      p.card-text 
+                        small #{coupon.description}
               .row
-                .col-md-6.col-sm-12
-                  small 
-                    strong.showOnHover Click to Claim Coupon
-                .col-md-5.col-sm-11.text-left
-                  a.btn.btn-primary.clipped(style="color:#fff !important")  Clipped 
-                .col-md-1.col-sm-1.text-right.mored(style="background-color:#04045a; color:#fff") +
+                #product_view.modal.fade.product_view
+                  .modal-dialog
+                    .modal-content
+                      .modal-header.text-center
+                        a.class(href='#' data-dismiss='modal')
+                          span.glyphicon.glyphicon-remove
+                        h3.modal-title 
+                          | #{coupon.name}
+                          button.close(type='button' data-dismiss='modal') &times;
+                      .modal-body
+                        .row
+                          .col-md-6.product_img
+                            img.img-coupon(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name +' on Findit Kenya' style="padding-top:1.5rem !important; width: 100px; height: 100px;")
+                          .col-md-6.product_content
+                            h4
+                              small
+                                strong
+                                  | @  
+                                  a(href="/biz/"+coupon.bizid.slug, target="_blank")     
+                                    =coupon.bizid.name 
+                            p(style="color:#fff")  #{coupon.tagline}  
+                            p  #{coupon.description}
+                            
+                            .btn-ground
+                              button.btn.btn-danger(type='button')
+                                span.glyphicon.glyphicon-shopping-cart
+                                |  Claim Coupon
+                              a.btn.btn-primary.clipped(style="color:#fff !important")
+                                span.glyphicon.glyphicon-heart
+                                | Clipped
+              
             .viewBusiness(style="position: absolute; top: 0; left: 0;") 
               a(href="/biz/"+coupon.bizid.slug, target="_blank")
                 small
                   strong 
                    | View Business
-                      
             
-            
+                    
+        
             //old  
               .div.col-md-12.col-sm-12.col-xs-12
                 strong
@@ -589,4 +622,159 @@ block content
         this.className += " active";
       });
     }
-        
+  script(type='text/javascript').
+    document.ready(function($){
+      //final width --> this is the quick view image slider width
+      //maxQuickWidth --> this is the max-width of the quick-view panel
+      var sliderFinalWidth = 400,
+        maxQuickWidth = 900;
+
+      //open the quick view panel
+      $('.cd-trigger').on('click', function(event){
+        var selectedImage = $(this).parent('.cd-item').children('img'),
+          slectedImageUrl = selectedImage.attr('src');
+
+        $('body').addClass('overlay-layer');
+        animateQuickView(selectedImage, sliderFinalWidth, maxQuickWidth, 'open');
+
+        //update the visible slider image in the quick view panel
+        //you don't need to implement/use the updateQuickView if retrieving the quick view data with ajax
+        updateQuickView(slectedImageUrl);
+      });
+
+      //close the quick view panel
+      $('body').on('click', function(event){
+        if( $(event.target).is('.cd-close') || $(event.target).is('body.overlay-layer')) {
+          closeQuickView( sliderFinalWidth, maxQuickWidth);
+        }
+      });
+      $(document).keyup(function(event){
+        //check if user has pressed 'Esc'
+          if(event.which=='27'){
+          closeQuickView( sliderFinalWidth, maxQuickWidth);
+        }
+      });
+
+      //quick view slider implementation
+      $('.cd-quick-view').on('click', '.cd-slider-navigation a', function(){
+        updateSlider($(this));
+      });
+
+      //center quick-view on window resize
+      $(window).on('resize', function(){
+        if($('.cd-quick-view').hasClass('is-visible')){
+          window.requestAnimationFrame(resizeQuickView);
+        }
+      });
+
+      function updateSlider(navigation) {
+        var sliderConatiner = navigation.parents('.cd-slider-wrapper').find('.cd-slider'),
+          activeSlider = sliderConatiner.children('.selected').removeClass('selected');
+        if ( navigation.hasClass('cd-next') ) {
+          ( !activeSlider.is(':last-child') ) ? activeSlider.next().addClass('selected') : sliderConatiner.children('li').eq(0).addClass('selected'); 
+        } else {
+          ( !activeSlider.is(':first-child') ) ? activeSlider.prev().addClass('selected') : sliderConatiner.children('li').last().addClass('selected');
+        } 
+      }
+
+      function updateQuickView(url) {
+        $('.cd-quick-view .cd-slider li').removeClass('selected').find('img[src="'+ url +'"]').parent('li').addClass('selected');
+      }
+
+      function resizeQuickView() {
+        var quickViewLeft = ($(window).width() - $('.cd-quick-view').width())/2,
+          quickViewTop = ($(window).height() - $('.cd-quick-view').height())/2;
+        $('.cd-quick-view').css({
+            "top": quickViewTop,
+            "left": quickViewLeft,
+        });
+      } 
+
+      function closeQuickView(finalWidth, maxQuickWidth) {
+        var close = $('.cd-close'),
+          activeSliderUrl = close.siblings('.cd-slider-wrapper').find('.selected img').attr('src'),
+          selectedImage = $('.empty-box').find('img');
+        //update the image in the gallery
+        if( !$('.cd-quick-view').hasClass('velocity-animating') && $('.cd-quick-view').hasClass('add-content')) {
+          selectedImage.attr('src', activeSliderUrl);
+          animateQuickView(selectedImage, finalWidth, maxQuickWidth, 'close');
+        } else {
+          closeNoAnimation(selectedImage, finalWidth, maxQuickWidth);
+        }
+      }
+
+      function animateQuickView(image, finalWidth, maxQuickWidth, animationType) {
+        //store some image data (width, top position, ...)
+        //store window data to calculate quick view panel position
+        var parentListItem = image.parent('.cd-item'),
+          topSelected = image.offset().top - $(window).scrollTop(),
+          leftSelected = image.offset().left,
+          widthSelected = image.width(),
+          heightSelected = image.height(),
+          windowWidth = $(window).width(),
+          windowHeight = $(window).height(),
+          finalLeft = (windowWidth - finalWidth)/2,
+          finalHeight = finalWidth * heightSelected/widthSelected,
+          finalTop = (windowHeight - finalHeight)/2,
+          quickViewWidth = ( windowWidth * .8 < maxQuickWidth ) ? windowWidth * .8 : maxQuickWidth ,
+          quickViewLeft = (windowWidth - quickViewWidth)/2;
+
+        if( animationType == 'open') {
+          //hide the image in the gallery
+          parentListItem.addClass('empty-box');
+          //place the quick view over the image gallery and give it the dimension of the gallery image
+          $('.cd-quick-view').css({
+              "top": topSelected,
+              "left": leftSelected,
+              "width": widthSelected,
+          }).velocity({
+            //animate the quick view: animate its width and center it in the viewport
+            //during this animation, only the slider image is visible
+              'top': finalTop+ 'px',
+              'left': finalLeft+'px',
+              'width': finalWidth+'px',
+          }, 1000, [ 400, 20 ], function(){
+            //animate the quick view: animate its width to the final value
+            $('.cd-quick-view').addClass('animate-width').velocity({
+              'left': quickViewLeft+'px',
+                'width': quickViewWidth+'px',
+            }, 300, 'ease' ,function(){
+              //show quick view content
+              $('.cd-quick-view').addClass('add-content');
+            });
+          }).addClass('is-visible');
+        } else {
+          //close the quick view reverting the animation
+          $('.cd-quick-view').removeClass('add-content').velocity({
+              'top': finalTop+ 'px',
+              'left': finalLeft+'px',
+              'width': finalWidth+'px',
+          }, 300, 'ease', function(){
+            $('body').removeClass('overlay-layer');
+            $('.cd-quick-view').removeClass('animate-width').velocity({
+              "top": topSelected,
+                "left": leftSelected,
+                "width": widthSelected,
+            }, 500, 'ease', function(){
+              $('.cd-quick-view').removeClass('is-visible');
+              parentListItem.removeClass('empty-box');
+            });
+          });
+        }
+      }
+      function closeNoAnimation(image, finalWidth, maxQuickWidth) {
+        var parentListItem = image.parent('.cd-item'),
+          topSelected = image.offset().top - $(window).scrollTop(),
+          leftSelected = image.offset().left,
+          widthSelected = image.width();
+
+        $('body').removeClass('overlay-layer');
+        parentListItem.removeClass('empty-box');
+        $('.cd-quick-view').velocity("stop").removeClass('add-content animate-width is-visible').css({
+          "top": topSelected,
+            "left": leftSelected,
+            "width": widthSelected,
+        });
+      }
+    });  
+            

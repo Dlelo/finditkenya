@@ -10,13 +10,13 @@ block content
           form(method='post', action='/admin/coupon/create',enctype='multipart/form-data')
             .form-group
               .col-sm-12
-                input.form-control-form(name='name',type='text',placeholder="Name of Coupon", maxlength="30") 
+                input.form-control-form(name='name',type='text',placeholder="Name of Coupon", maxlength="40") 
             .form-group
               .col-sm-12
-                textarea.form-control-form(name='description',type='text',placeholder="Coupon description", maxlength="50") 
+                textarea.form-control-form(name='description',type='text',placeholder="Coupon description", maxlength="100") 
             .form-group
               .col-sm-12
-                input.form-control-form(name='tagline',type='text',placeholder="Tagline" maxlength="40") 
+                input.form-control-form(name='tagline',type='text',placeholder="Tagline" maxlength="50") 
             .form-group
               .col-sm-4
                 label(for='photo') Cover Photo

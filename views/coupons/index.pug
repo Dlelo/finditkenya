@@ -308,7 +308,7 @@ block content
                       small
                         strong 
                           if coupon.tagline.length > 30
-                            |  !{coupon.tagline.substr(0, 30)+ ' ... <strong id="showmore" style="background-color:#c00000; color:#fff; padding:1px"><a data-toggle="modal" data-target="#'+coupon.bizid.slug+'">Read More</a></strong>'}
+                            |  !{coupon.tagline.substr(0, 30)+ '... <strong id="showmore" style="background-color:#c00000; color:#fff; padding:1px"><a data-toggle="modal" data-target="#'+coupon.bizid.slug+'">Read More</a></strong>'}
                           else
                             |  #{coupon.tagline}
                       .row

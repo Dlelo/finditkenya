@@ -1175,7 +1175,7 @@ router.get('/newindex', function (req, res) {
 
   var coupons = Coupons.find({
     status: true
-  }).populate('bizid').sort([['order', 1], ['star', -1]]).limit(5);
+  }).populate('bizid').sort([['order', 1], ['star', -1]]).limit(10);
   var reviews = Review.find().sort([['created_at', -1]]).populate('bizid').populate('user_id').limit(5);
   var categories = Category.find({ approved: true, group: 'general' }).sort([['order', 1]]);
   var description = "Find It is a leading online directory to find businesses, service providers and their information in one single platform. Find it or be found. Register today and add your business.";
@@ -2082,7 +2082,7 @@ router.get('/', function (req, res, next) {
 
   var coupons = Coupons.find({
     status: true
-  }).populate('bizid').sort([['order', 1], ['star', -1]]).limit(5);
+  }).populate('bizid').sort([['order', 1], ['star', -1]]).limit(10);
   var reviews = Review.find().sort([['created_at', -1]]).populate('bizid').populate('user_id').limit(5);
   var categories = Category.find({ approved: true, group: 'general' }).sort([['order', 1]]);
   var description = "Business contact information, deals from the best businesses, shopping, special offers & much more only on Findit in Kenya."

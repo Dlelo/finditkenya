@@ -12,13 +12,13 @@ block content
             form(method='post', action='/admin/coupon/update/'+coupon._id,enctype='multipart/form-data')
                 .form-group
                     .col-sm-12
-                        input.form-control-form(name='name',type='text',value=coupon.name, maxlength="30") 
+                        input.form-control-form(name='name',type='text',value=coupon.name, maxlength="40") 
                 .form-group
                     .col-sm-12
-                        textarea.form-control-form(name='description',type='text',value=coupon.description, maxlength="50") #{coupon.description} 
+                        textarea.form-control-form(name='description',type='text',value=coupon.description, maxlength="100") #{coupon.description} 
                 .form-group
                     .col-sm-12
-                        input.form-control-form(name='tagline',type='text',value=coupon.tagline, maxlength="40") 
+                        input.form-control-form(name='tagline',type='text',value=coupon.tagline, maxlength="50") 
                 .form-group
                     .col-sm-4
                         label(for='photo') Cover Photo

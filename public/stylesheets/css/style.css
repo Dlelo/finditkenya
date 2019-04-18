@@ -126,14 +126,11 @@ body a:focus {
 /* Some media queries for responsiveness */
 @media screen and (max-height: 450px) {
 	#hideMobileView{
-		display:none;
+		display:none !important;
 	}
 	
 	#hideOnSmall {
         display: none;
-	}
-	#hideMobileView{
-		display:none;
 	}
 	.showOnSmall{
         display: block !important;
@@ -1778,7 +1775,7 @@ ul.portfolio-area li figure {
         display: block !important;
 	}
 	#hideMobileView{
-		display:none;
+		display:none !important;
 	}
 	.showOnclick.shown {
 		display:block;
@@ -1849,7 +1846,7 @@ ul.portfolio-area li figure {
 
 @media screen and (max-width: 480px) {
 	#hideMobileView{
-		display:none;
+		display:none !important;
 	}
 	#hideOnSmall {
         display: none;
@@ -1958,7 +1955,7 @@ ul.portfolio-area li figure {
 
 @media screen and (max-width: 414px) {
 	#hideMobileView{
-		display:none;
+		display:none !important;
 	}
 	#hideOnSmall {
         display: none;
@@ -2050,7 +2047,7 @@ ul.portfolio-area li figure {
 
 @media screen and (max-width: 384px) {
 	#hideMobileView{
-		display:none;
+		display:none !important;
 	}
 	#hideOnSmall {
         display: none;
@@ -2130,7 +2127,7 @@ ul.portfolio-area li figure {
 
 @media screen and (max-width: 375px){
 	#hideMobileView{
-		display:none;
+		display:none !important;
 	}
 	#hideOnSmall {
         display: none;
@@ -2216,7 +2213,7 @@ ul.portfolio-area li figure {
 
 @media screen and (max-width: 320px) {
 	#hideMobileView{
-		display:none;
+		display:none !important;
 	}
 	#hideOnSmall {
         display: none;
@@ -2313,7 +2310,7 @@ ul.portfolio-area li figure {
 }
 @media screen and (max-width: 568px){
 	#hideMobileView{
-		display:none;
+		display:none !important;
 	}
 	#hideOnSmall {
         display: none;
@@ -2887,7 +2884,7 @@ li.list-hor{
 
 @media screen and (max-width: 414px) {
 	#hideMobileView{
-		display:none;
+		display:none !important;
 	}
 	#hideOnSmall {
         display: none;
@@ -2985,7 +2982,7 @@ li.list-hor{
 
 @media screen and (max-width: 384px) {
 	#hideMobileView{
-		display:none;
+		display:none !important;
 	}
 	#hideOnSmall {
         display: none;
@@ -3083,7 +3080,7 @@ li.list-hor{
 
 @media screen and (max-width: 375px) {
 	#hideMobileView{
-		display:none;
+		display:none !important;
 	}
 	#hideOnSmall {
         display: none;
@@ -3203,7 +3200,7 @@ li.list-hor{
 
 @media screen and (max-width: 320px) {
 	#hideMobileView{
-		display:none;
+		display:none !important;
 	}
 	#hideOnSmall {
         display: none;
@@ -3854,7 +3851,7 @@ fieldset, label {
 }
 @media(max-width:500px){
 	#hideMobileView{
-		display:none;
+		display:none !important;
 	}
 	
 	.mega-menu{
@@ -5968,7 +5965,7 @@ button.close {
 }
 @media screen and (max-width: 375px) {
 	#hideMobileView{
-		display:none;
+		display:none !important;
 	}
     #hideOnSmall {
         display: none;

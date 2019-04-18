@@ -6395,4 +6395,18 @@ height: 50px;
 	-moz-transition: -moz-transform .3s 0s, visibility 0s 0s;
 	transition: transform .3s 0s, visibility 0s 0s;
   }
-  
+	/*Coupon colums responsive*/
+	@media only screen and  (max-width: 768px) and (max-width: 768px){
+		.coupon-descr {
+			-webkit-box-flex: 0 !important;
+			-ms-flex: 0 0 100% !important;
+			flex: 0 0 100% !important;
+			max-width: 100% !important;
+		}
+		.coupon-photo {
+			-webkit-box-flex: 0 !important;
+			-ms-flex: 0 0 100% !important;
+			flex: 0 0 100% !important;
+			max-width: 100% !important;
+	}
+	}

@@ -21,7 +21,6 @@ block content
             p.couponBannerTileText Confirm & Check your Email
         
       //.row.couponbg-color
-
         div.col-md-9(style="padding-right:0; padding-left:15px;")
           row.my-row
             
@@ -30,7 +29,6 @@ block content
                   li.active(data-target="#carouselExampleIndicators" data-slide-to="0")
                   li(data-target="#carouselExampleIndicators" data-slide-to="1")
                   li(data-target="#carouselExampleIndicators" data-slide-to="2")
-
                 
                 div.carousel-inner
                   each coupon, i in coupons
@@ -66,7 +64,6 @@ block content
     
                 a.carousel-control-prev(href="#carouselExampleFade" role="button" data-slide="prev")
                   span.carousel-control-prev-icon(aria-hidden="true")
-
                 a.carousel-control-next(href="#carouselExampleFade" role="button" data-slide="next")
                   span.carousel-control-next-icon(aria-hidden="true")
       
@@ -102,7 +99,6 @@ block content
                             
                     
                   
-
           //row
               h5
               .coupon-title
@@ -523,7 +519,6 @@ block content
   //script to hide main menu on coupons page
   //-script(type='text/javascript').
     $(window).scroll(function() {
-
       if ($(this).scrollTop()>2)
       {
           $(function() {
@@ -544,7 +539,6 @@ block content
         
       }
     });
-
     //hide coupons button on coupons page 
     window.onload = function() {
       document.getElementById('coupbtn').className = 'hide-coupbtn';
@@ -552,7 +546,6 @@ block content
     
     
   //end of hide coupons buttons on coupons page
-
   //script for opening modal
   script(type='text/javascript').
     // Get the modal
@@ -624,4 +617,3 @@ block content
         this.className += " active";
       });
     }
- 

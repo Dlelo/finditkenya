@@ -125,8 +125,14 @@ body a:focus {
 
 /* Some media queries for responsiveness */
 @media screen and (max-height: 450px) {
+	#hideMobileView{
+		display:none;
+	}
 	#hideOnSmall {
         display: none;
+	}
+	#hideMobileView{
+		display:none;
 	}
 	.showOnSmall{
         display: block !important;
@@ -1770,6 +1776,9 @@ ul.portfolio-area li figure {
 	.showOnSmall{
         display: block !important;
 	}
+	#hideMobileView{
+		display:none;
+	}
 	.showOnclick.shown {
 		display:block;
 	}
@@ -1838,6 +1847,9 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 480px) {
+	#hideMobileView{
+		display:none;
+	}
 	#hideOnSmall {
         display: none;
 	}
@@ -1944,6 +1956,9 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 414px) {
+	#hideMobileView{
+		display:none;
+	}
 	#hideOnSmall {
         display: none;
 	}
@@ -2033,6 +2048,9 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 384px) {
+	#hideMobileView{
+		display:none;
+	}
 	#hideOnSmall {
         display: none;
 	}
@@ -2110,6 +2128,9 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 375px){
+	#hideMobileView{
+		display:none;
+	}
 	#hideOnSmall {
         display: none;
 	}
@@ -2193,6 +2214,9 @@ ul.portfolio-area li figure {
 }
 
 @media screen and (max-width: 320px) {
+	#hideMobileView{
+		display:none;
+	}
 	#hideOnSmall {
         display: none;
 	}
@@ -2287,6 +2311,9 @@ ul.portfolio-area li figure {
 	   }
 }
 @media screen and (max-width: 568px){
+	#hideMobileView{
+		display:none;
+	}
 	#hideOnSmall {
         display: none;
 	}
@@ -2953,6 +2980,9 @@ li.list-hor{
 
 
 @media screen and (max-width: 384px) {
+	#hideMobileView{
+		display:none;
+	}
 	#hideOnSmall {
         display: none;
 	}
@@ -3048,6 +3078,9 @@ li.list-hor{
 
 
 @media screen and (max-width: 375px) {
+	#hideMobileView{
+		display:none;
+	}
 	#hideOnSmall {
         display: none;
 	}
@@ -3165,6 +3198,9 @@ li.list-hor{
 }
 
 @media screen and (max-width: 320px) {
+	#hideMobileView{
+		display:none;
+	}
 	#hideOnSmall {
         display: none;
 	}
@@ -3813,6 +3849,9 @@ fieldset, label {
 	color: darkcyan;
 }
 @media(max-width:500px){
+	#hideMobileView{
+		display:none;
+	}
 	
 	.mega-menu{
 		width: 300px;
@@ -5924,6 +5963,9 @@ button.close {
 	-webkit-appearance: none;
 }
 @media screen and (max-width: 375px) {
+	#hideMobileView{
+		display:none;
+	}
     #hideOnSmall {
         display: none;
 	}
@@ -6409,4 +6451,7 @@ height: 50px;
 			flex: 0 0 100% !important;
 			max-width: 100% !important;
 	}
+	}
+  #hideMobileView{
+		display:block;
 	}

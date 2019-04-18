@@ -82,24 +82,25 @@ block content
                               small
                                 strong
                                 | !{'@  ' + coupon.bizid.name}
-        div.row.mt-sm-8.text-center#hideMobileView
-          each coupon,i in coupons
-            if(i > 3 && i < 8)
-              div.col-lg-3.col-md-3.col-sm-12.col-xm-12.w3-ab.my-md-0.my-sm-12.coup-container
-                .image-flip(ontouchstart="this.classList.toggle('hover');")
-                  a(href='/coupons')  
-                    .mainflip
-                      .frontside
-                        .card(style="border:none !important")
-                          .card-body.text-left(style="padding:0 !important")
-                            p
-                              img.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name+ ' on FindIt Kenya')
-                            br
-                            h6.card-title(style="text-transform: capitalize; margin-bottom: 0; ") #{coupon.name}
-                            h6.card-title(style="text-transform: capitalize; margin-bottom: 0; color:#000!important;")
-                              small
-                                strong
-                                | !{'@  ' + coupon.bizid.name}
+        #hideMobileView
+          div.row.mt-sm-8.text-center
+            each coupon,i in coupons
+              if(i > 3 && i < 8)
+                div.col-lg-3.col-md-3.col-sm-12.col-xm-12.w3-ab.my-md-0.my-sm-12.coup-container
+                  .image-flip(ontouchstart="this.classList.toggle('hover');")
+                    a(href='/coupons')  
+                      .mainflip
+                        .frontside
+                          .card(style="border:none !important")
+                            .card-body.text-left(style="padding:0 !important")
+                              p
+                                img.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name+ ' on FindIt Kenya')
+                              br
+                              h6.card-title(style="text-transform: capitalize; margin-bottom: 0; ") #{coupon.name}
+                              h6.card-title(style="text-transform: capitalize; margin-bottom: 0; color:#000!important;")
+                                small
+                                  strong
+                                  | !{'@  ' + coupon.bizid.name}
                             
                    
         row

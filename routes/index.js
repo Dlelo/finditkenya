@@ -3039,7 +3039,7 @@ router.get('/removecoupon/:id', role.auth, function (req, res) {
           }
         });
       } else {
-        res.json({ msg: 'You done have this coupon' });
+        res.json({ msg: 'You dont have this coupon' });
       }
     })
     .catch(function (err) {

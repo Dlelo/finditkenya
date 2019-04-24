@@ -1046,7 +1046,7 @@ router.post('/coupon/update/:id', role.auth,cpUpload, function(req, res){
               return cover.resize(200, 150)     // resize
                    .quality(100)              // set greyscale
                    .write("./public/uploads/thumbs/coupons/"+coupon.photo); // save
-           req.flash("success_msg", "Coupon Successfully Created");
+           req.flash("success_msg", "Coupon Successfully Updated");
            res.redirect('/admin/coupons');
           }).catch(function (err) {
               console.error(err);

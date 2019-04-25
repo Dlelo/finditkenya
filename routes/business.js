@@ -300,7 +300,7 @@ router.get('/review/delete/:id', role.admin, function (req, res) {
 		// 	.then(function (data) {
 		// 		res.redirect('/admin/reviews');
 		// 	})
-		Reviews.deleteMany({
+		Review.deleteMany({
 			_id: req.params.id
 		})
 		.then(function (data) {

@@ -80,8 +80,8 @@ block content
                             h6.card-title(style="text-transform: capitalize; margin-bottom: 0; ") #{coupon.name}
                             h6.card-title(style="text-transform: capitalize; margin-bottom: 0; color:#000!important;")
                               small
-                                strong
-                                | !{'@  ' + coupon.bizid.name}
+                                //-strong
+                                  | !{'@  ' + coupon.bizid.name}
         #hideMobileView
           div.row.mt-sm-8.text-center
             each coupon,i in coupons

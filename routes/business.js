@@ -290,26 +290,16 @@ router.post('/review',role.auth, function(req, res, next){
 });
 //delete review
 router.get('/review/delete/:id', role.admin, function (req, res) {
-	if (req.user.role == 1) {
-		//db.businesses.update({"_id": ObjectId('5ab252fc5d05e656d23e1a9e')}, { "$pull": { "reviews": {"_id": ObjectId('5c7fcca095ce5443c2028a65')}}});
-		// Business.update(
-		// 	{ _id: req.params.id },
-		// 	{
-		// 		$pull: { reviews: {id: req.params.id } }
-		// 	})
-		// 	.then(function (data) {
-		// 		res.redirect('/admin/reviews');
-		// 	})
-		Review.deleteMany({
-			_id: req.params.id
-		})
-		.then(function (data) {
-		res.redirect('/biz/'+b.slug);
-		})
-		.catch(function (err) {
-			console.log(err);
-		});
-	} 
+	Business.findById(req.body.bizid)
+	.then(function(b){
+		b.reviews.splice(b.reviews.indexOf({rate: req.body.rating, msg: req.body.review}), 1);
+		//b.user_id = res.role.user.username;
+		b.user_id = res.locals.user.names;
+		
+	})
+	.catch(function(err){
+	     console.log(err);
+	});
 });
 
 router.get('/gallery/reorder/:bizid',role.auth,function(req, res, next){

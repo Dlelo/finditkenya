@@ -74,13 +74,15 @@ block content
                       .frontside
                         .card(style="border:none !important")
                           .card-body.text-left(style="padding:0 !important")
-                            //-p
-                              img.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name+ ' on FindIt Kenya')
+                            if(coupon.bizid.name)
+                              p
+                                img.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name+ ' on FindIt Kenya')
                             br
                             h6.card-title(style="text-transform: capitalize; margin-bottom: 0; ") #{coupon.name}
                             h6.card-title(style="text-transform: capitalize; margin-bottom: 0; color:#000!important;")
-                              small
-                                //-strong
+                              if(coupon.bizid.name)
+                                small
+                                  strong
                                   | !{'@  ' + coupon.bizid.name}
         #hideMobileView
           div.row.mt-sm-8.text-center
@@ -93,14 +95,16 @@ block content
                         .frontside
                           .card(style="border:none !important")
                             .card-body.text-left(style="padding:0 !important")
-                              //-p
-                                img.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name+ ' on FindIt Kenya')
+                              if(coupon.bizid.name)
+                                p
+                                  img.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name+ ' on FindIt Kenya')
                               br
                               h6.card-title(style="text-transform: capitalize; margin-bottom: 0; ") #{coupon.name}
                               h6.card-title(style="text-transform: capitalize; margin-bottom: 0; color:#000!important;")
-                                small
-                                  //-strong
-                                   | !{'@  ' + coupon.bizid.name}
+                                if(coupon.bizid.name)
+                                  small
+                                    strong
+                                    | !{'@  ' + coupon.bizid.name}
                             
                    
         row
@@ -134,7 +138,8 @@ block content
                 h6.my-3
                   span.findit-blue
                     =coupon.name
-                //- img.img-fluid.category-img-wrapper(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name+ ' on FindIt Kenya')
+                if(coupon.bizid.name)
+                  img.img-fluid.category-img-wrapper(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name+ ' on FindIt Kenya')
                   
               div.p-md-3.py-4.overlay
                 div.coup-text
@@ -143,9 +148,10 @@ block content
                   p.coupp
                     
                     =coupon.description
-                  //- p
-                    strong
-                      | !{'@  ' + coupon.bizid.name}
+                  if(coupon.bizid.name)
+                    p
+                      strong
+                        | !{'@  ' + coupon.bizid.name}
                   
                   p 
                     a(href="/coupons" style="color:#fff;")   
@@ -244,9 +250,10 @@ block content
                   else 
                     img.cat-items-bottom(src="/img/noimageavailable.jpg", alt=review.bizid.name+ ' on FindIt Kenya' style="width:150px") 
                 div.col-lg-12.col-md-12.col-sm-12.col-xs-12.text-left  
-                  h6
-                    strong
-                      =review.bizid.name
+                  if(review.bizid.name)
+                    h6
+                      strong
+                        =review.bizid.name
                   //small.text-center.content-col
                     |  #{review.length} Reviews
                 div.col-lg-12.col-md-12.col-sm-12.col-xs-12.text-left 

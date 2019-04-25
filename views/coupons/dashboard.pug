@@ -65,12 +65,15 @@ block content
                             .rTableHead
                               span(style='font-weight: bold;') Mark coupon as used
                             .rTableHead &nbsp;
+                            -console.log(coupon);
                           each usr,i in coupon.users
                             .rTableRow
                               .rTableCell Date 
                               .rTableCell #{usr.code} 
-                              .rTableCell #{usr.user_id}
-                              -console.log(usr.user_id)
+                              .rTableCell #{usr.names}
+                              //- var myArray = usr.user_id; for(let i = 0; i < myArray.length; i++){let childArray = myArray[i].child; for(let j = 0; j < childArray.length; j++){console.log(childArray[j]);} }
+                              //- console.log(typeof usr.user_id);
+                              //-console.log(client.names);
                               .rTableCell 
                                 a(href="/admin/coupon/markused/"+user.id, title="Mark This Coupon as Used")
                                   i.fa.fa-check.fa-fw(aria-hidden='true')

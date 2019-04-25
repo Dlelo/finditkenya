@@ -289,18 +289,18 @@ router.post('/review',role.auth, function(req, res, next){
 	});
 });
 //delete review
-router.get('/review/delete/:id', role.admin, function (req, res) {
-	Business.findById(req.body.bizid)
-	.then(function(b){
-		b.reviews.splice(b.reviews.indexOf({rate: req.body.rating, msg: req.body.review}), 1);
-		//b.user_id = res.role.user.username;
-		b.user_id = res.locals.user.names;
+// router.get('/review/delete/:id', role.admin, function (req, res) {
+// 	Business.findById(req.body.bizid)
+// 	.then(function(b){
+// 		b.reviews.splice(b.reviews.indexOf({rate: req.body.rating, msg: req.body.review}), 1);
+// 		//b.user_id = res.role.user.username;
+// 		b.user_id = res.locals.user.names;
 		
-	})
-	.catch(function(err){
-	     console.log(err);
-	});
-});
+// 	})
+// 	.catch(function(err){
+// 	     console.log(err);
+// 	});
+// });
 
 router.get('/gallery/reorder/:bizid',role.auth,function(req, res, next){
 	//res.json(req.query.order);

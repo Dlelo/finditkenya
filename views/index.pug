@@ -74,13 +74,13 @@ block content
                       .frontside
                         .card(style="border:none !important")
                           .card-body.text-left(style="padding:0 !important")
-                            if(coupon.bizid.name)
+                            if(coupon)
                               p
                                 img.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name+ ' on FindIt Kenya')
                             br
                             h6.card-title(style="text-transform: capitalize; margin-bottom: 0; ") #{coupon.name}
                             h6.card-title(style="text-transform: capitalize; margin-bottom: 0; color:#000!important;")
-                              if(coupon.bizid.name)
+                              if(coupon)
                                 small
                                   strong
                                   | !{'@  ' + coupon.bizid.name}
@@ -95,13 +95,13 @@ block content
                         .frontside
                           .card(style="border:none !important")
                             .card-body.text-left(style="padding:0 !important")
-                              if(coupon.bizid.name)
+                              if(coupon)
                                 p
                                   img.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name+ ' on FindIt Kenya')
                               br
                               h6.card-title(style="text-transform: capitalize; margin-bottom: 0; ") #{coupon.name}
                               h6.card-title(style="text-transform: capitalize; margin-bottom: 0; color:#000!important;")
-                                if(coupon.bizid.name)
+                                if(coupon)
                                   small
                                     strong
                                     | !{'@  ' + coupon.bizid.name}
@@ -138,7 +138,7 @@ block content
                 h6.my-3
                   span.findit-blue
                     =coupon.name
-                if(coupon.bizid.name)
+                if(coupon)
                   img.img-fluid.category-img-wrapper(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name+ ' on FindIt Kenya')
                   
               div.p-md-3.py-4.overlay
@@ -148,7 +148,7 @@ block content
                   p.coupp
                     
                     =coupon.description
-                  if(coupon.bizid.name)
+                  if(coupon)
                     p
                       strong
                         | !{'@  ' + coupon.bizid.name}
@@ -250,7 +250,7 @@ block content
                   else 
                     img.cat-items-bottom(src="/img/noimageavailable.jpg", alt=review.bizid.name+ ' on FindIt Kenya' style="width:150px") 
                 div.col-lg-12.col-md-12.col-sm-12.col-xs-12.text-left  
-                  if(review.bizid.name)
+                  if(review)
                     h6
                       strong
                         =review.bizid.name

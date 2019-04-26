@@ -332,7 +332,8 @@ block content
                       .modal-body
                         .row
                           .col-md-6.product_img
-                            img.img-coupon(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name +' on Findit Kenya' style="padding-top:1.5rem !important; width: 100px; height: 100px;")
+                            img.img-coupon(src="/uploads/thumbs/coupons/"+ coupon.photo, alt='Findit Kenya' style="padding-top:1.5rem !important; width: 100px; height: 100px;")
+                            //img.img-coupon(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name +' on Findit Kenya' style="padding-top:1.5rem !important; width: 100px; height: 100px;")
                           .col-md-6.product_content
                             h4
                               small
@@ -349,20 +350,21 @@ block content
                                 | Clipped
               
             .viewBusiness(style="position: absolute; top: 0; left: 0;") 
-              a(href="/biz/"+coupon.bizid.slug, target="_blank")
+              //- a(href="/biz/"+coupon.bizid.slug, target="_blank")
+              a(href="/coupons", target="_blank")
                 small
                   strong 
                    | View Business
             
                     
         
-            //old  
+            //- old  dont restore
               .div.col-md-12.col-sm-12.col-xs-12
                 strong
                   h3                  
                   = coupon.name
               .div.col-md-12.col-lg-12.col-sm-12.col-xs-12
-                  img.coup-img-wrapper.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name +' on Findit Kenya')
+                 //- img.coup-img-wrapper.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name +' on Findit Kenya')
                   .div.col-md-12.col-lg-12.col-sm-12.col-xs-12.float-left 
                     h6
                       small

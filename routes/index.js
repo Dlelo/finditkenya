@@ -3321,14 +3321,17 @@ router.get('/biz/:name', function (req, res, next) {
               'maxDistance': 1000000000000
             }
           }]);
+        
+        var review = Review.find().sort([['created_at', -1]]).populate('bizid').populate('user_id');
 
-        Promise.all([coupons, businesses, categories, branches, products, hq]).then(values => {
+        Promise.all([coupons, businesses, categories, branches, products, hq, review]).then(values => {
           var coupons = values[0];
           var businesses = values[1];
           var categories = values[2];
           var products = values[4];
           var branches;
           var hq = values[5];
+          var review = values[5];
           if (values[3].length) {
             branches = values[3];
           } else {

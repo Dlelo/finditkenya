@@ -35,6 +35,7 @@ block content
                         a.collapsed(role='button', data-toggle='collapse', data-parent='#accordion', href='#collapse'+i, aria-expanded='false', aria-controls='collapse'+i)
                           strong
                             //| #{coupon.name} | #{coupon.bizid.name} | #{coupon.status} | Star(#{coupon.star}) | Order(#{coupon.order})
+                            | #{coupon.name} | #{coupon.bizid.name} | #{coupon.status} | Star(#{coupon.star}) | Order(#{coupon.order})
                             a(href="/admin/coupon/activate/"+coupon.id, title="Toggle Coupon Status")
                               i.fa.fa-eye.fa-fw(aria-hidden='true')
                             a(href="/admin/coupon/delete/"+coupon.id, title="Delete Coupon", onclick="return confirm('Are you sure You want to Delete this Coupon?')")

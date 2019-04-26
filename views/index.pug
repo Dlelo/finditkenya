@@ -95,6 +95,7 @@ block content
                         .frontside
                           .card(style="border:none !important")
                             .card-body.text-left(style="padding:0 !important")
+                              if(coupon)  
                                 p
                                   //- img.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name+ ' on FindIt Kenya')
                                   img.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt='FindIt Kenya')

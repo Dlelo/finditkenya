@@ -162,9 +162,10 @@ block content
                 each mycoupon in mycoupons
                   .coupon.coupon-modal
                     i.fa.fa-trash.fa-fw.text-right.del-coupon(rel=mycoupon._id, aria-hidden='true',id=user.id)
-                    img.coup-img(src="/uploads/thumbs/coupons/"+ mycoupon.photo, alt=mycoupon.bizid.name +' on Findit Kenya') 
+                    img.coup-img(src="/uploads/thumbs/coupons/"+ mycoupon.photo, alt=' Findit Kenya') 
+                    //- img.coup-img(src="/uploads/thumbs/coupons/"+ mycoupon.photo, alt=mycoupon.bizid.name +' on Findit Kenya') 
                     p.findit-blue 
-                      strong #{mycoupon.name}  @ #{mycoupon.bizid.name}
+                     //- strong #{mycoupon.name}  @ #{mycoupon.bizid.name}
                     p.content-col
                       strong #{mycoupon.tagline}
                     p.content-col
@@ -282,13 +283,14 @@ block content
                 .col-md-5.col-sm-5(style="padding-right: 0 !important; padding-left: 0 !important;")
                   .cd-items.cd-container
                     .cd-item
-                      img.img-coupon(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name +' on Findit Kenya' style="padding-top:1.5rem !important; width: 150px; height: 150px;")
+                      img.img-coupon(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=' Findit Kenya' style="padding-top:1.5rem !important; width: 150px; height: 150px;")
+                      //- img.img-coupon(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name +' on Findit Kenya' style="padding-top:1.5rem !important; width: 150px; height: 150px;")
                       a.cd-trigger(type="button" class="btn btn-primary" data-toggle="modal" data-target='#'+coupon.name, style='color: #fff; background-color: #04045ab5;') Quick View
                 .col-md-7.col-sm-7.px-3
                   .card-block.px-3
                     h4.card-title(style="padding-top:2px") 
                       strong #{coupon.name}
-                    p.card-text
+                    //-p.card-text
                       h6
                       small
                         strong
@@ -335,7 +337,7 @@ block content
                               small
                                 strong
                                   | @  
-                                  a(href="/biz/"+coupon.bizid.slug, target="_blank")     
+                                  //-a(href="/biz/"+coupon.bizid.slug, target="_blank")     
                                     =coupon.bizid.name 
                             p(style="color:#000")  #{coupon.tagline}  
                             p  #{coupon.description}

@@ -1382,7 +1382,7 @@ router.get('/updatesearch', function (req, res) {
   // }else if(catSearch[0]){
   //   const cat = catSearch[1].replace(/^\w/, c => c.toUpperCase());
   //   res.redirect('category/'+cat+'?lat='+lat+'&lon='+lon)
-  // } 
+  // }
 
   let point = {
     "type": "Point",
@@ -1467,7 +1467,7 @@ router.get('/updatesearch', function (req, res) {
 
   //var features = Category.findOne({ subcategories: {$elemMatch: { name: req.params.name}} });
   var categories = Category.find({ group: 'general' });
-  
+
   Promise.all([q2, q1, q3, categories]).then(values => {
 
     var res2 = values[0].filter(function (biz) {
@@ -1482,10 +1482,10 @@ router.get('/updatesearch', function (req, res) {
     if (res2.length == 0) {
       res2 = res2.concat(res1)
     }
-   
-    //array  of current businesses features  
+
+    //array  of current businesses features
     //currentBusinessFeatures.sort();
-    
+
     function getCurrentFeature() {
       for (let i = 0; i < res2.length; i++) {
 
@@ -1510,7 +1510,7 @@ router.get('/updatesearch', function (req, res) {
 
       }
     }
-    
+
     // similar biz by search term
     // function getSearchedFeature() {
     //   for (let i = 0; i < q3.length; i++) {
@@ -1531,7 +1531,7 @@ router.get('/updatesearch', function (req, res) {
     //console.log(currentBusinessFeature);
     //console.log(theCurrentBizName);
 
-    
+
     //currentBusinessFeature.sort();
 
     let similarbusinesses = q3;
@@ -2835,7 +2835,6 @@ router.get('/coupons', function (req, res) {
   })
     .populate('bizid')
     .sort([['order', 1], ['star', -1]]);
-
   var mycoupons = Coupons.find({
     'users.user_id': res.locals.user.id,
     'status': true
@@ -2918,6 +2917,7 @@ router.get('/coupons', function (req, res) {
   var categories = Category.find({ approved: true }).sort([['order', 1]]);
   Promise.all([coupons, categories, groups, populars, mycoupons]).then(values => {
     //console.log("Mycoupons Size:"+values[4].length);
+    //console.log(values[0]);
     res.render('coupons/index', {
       title: 'Findit: Deals in Kenya',
       coupons: values[0],
@@ -3321,7 +3321,7 @@ router.get('/biz/:name', function (req, res, next) {
               'maxDistance': 1000000000000
             }
           }]);
-        
+
         var review = Review.find().sort([['created_at', -1]]).populate('bizid').populate('user_id');
 
         Promise.all([coupons, businesses, categories, branches, products, hq, review]).then(values => {

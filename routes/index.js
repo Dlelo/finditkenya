@@ -3417,7 +3417,9 @@ router.get('/biz/:name', function (req, res, next) {
           parent = data._id;
         }
         var hq = Business.findById(parent);
-        Promise.all([coupons, businesses, categories, branches, products, hq]).then(values => {
+
+        var review = Review.find({bizid: data.id}).sort([['created_at', -1]]).populate('bizid').populate('user_id');
+        Promise.all([coupons, businesses, categories, branches, products, hq, review]).then(values => {
           var coupons = values[0];
           var businesses = values[1];
           var categories = values[2];
@@ -3432,6 +3434,7 @@ router.get('/biz/:name', function (req, res, next) {
           }
           var branch;
           var hq = values[5];
+          var review = values[6];
           if (values[3].length) {
             branch = values[3];
           } else {
@@ -3453,6 +3456,7 @@ router.get('/biz/:name', function (req, res, next) {
               categories: categories,
               branches: branch,
               products: products,
+              review: review
             });
             //res.end();
           } else {

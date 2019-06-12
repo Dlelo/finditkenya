@@ -3322,7 +3322,7 @@ router.get('/biz/:name', function (req, res, next) {
             }
           }]);
 
-        var review = Review.find().sort([['created_at', -1]]).populate('bizid').populate('user_id');
+        var review = Review.find({bizid: data.id}).sort([['created_at', -1]]).populate('bizid').populate('user_id');
 
         Promise.all([coupons, businesses, categories, branches, products, hq, review]).then(values => {
           var coupons = values[0];

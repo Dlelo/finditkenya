@@ -59,11 +59,11 @@ router.post('/edit/:id', role.auth, cpUpload, function(req, res, next) {
 		b.slug = slug(req.body.name);
 		b.description = req.body.description;
 		b.city = req.body.city;
-		
+
 		let mappy = {
 			type:"Point",
 			coordinates:[Number(req.body.long),Number(req.body.lati)],
-			zoom:req.body.zoom 
+			zoom:req.body.zoom
 		}
 		b.map = mappy;
 		b.website = req.body.website;
@@ -92,7 +92,7 @@ router.post('/edit/:id', role.auth, cpUpload, function(req, res, next) {
 			b.features = req.body.ssubcategory;
 		}
 		b.keywords = req.body.keywords;
-		
+
 
 
 		// if(req.files['gallery']){
@@ -101,7 +101,7 @@ router.post('/edit/:id', role.auth, cpUpload, function(req, res, next) {
     //     b.gallery.push(x);
     //   })
     //   //b.gallery.push(req.files['gallery']);
-		// }	
+		// }
 		if(req.files['gallery']){
 			bizgallery = req.files['gallery'];
 			console.log(b.gallery);
@@ -223,7 +223,7 @@ router.post('/edit/:id', role.auth, cpUpload, function(req, res, next) {
 				res.redirect('/dashboard');
 			}
 		});
-	})                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+	})
 	.catch(function(err){
 	     console.log(err);
 	});
@@ -319,7 +319,7 @@ router.get('/deletephoto/:id/',role.auth, function(req, res, next){
 		});
 	}
 });
-//DELETE MENU 
+//DELETE MENU
 router.get('/deletemenu/:id/',role.auth, function(req, res, next){
 	if(req.user.role == 1){
 		Business.findOne({
@@ -505,7 +505,8 @@ router.get('/allanalytics',role.auth, function(req, res, next){
              as: "biz"
            }
          },
-         { "$sort": { "time": -1 } }
+         { "$sort": { "time": -1 } },
+         { "$limit" : 5000 }
       ]).allowDiskUse(true)
   	.then(function(data){
        //console.log(data);
@@ -908,7 +909,7 @@ router.get('/review/delete/:id', role.admin, function (req, res) {
 		.catch(function (err) {
 			console.log(err);
 		});
-	} 
+	}
 });
 
 /***************** COUPONS ******************************/
@@ -1022,7 +1023,7 @@ router.post('/coupon/update/:id', role.auth,cpUpload, function(req, res){
     coupon.bizid = req.body.bizid;
     coupon.tagline = req.body.tagline;
 		coupon.type = req.body.type;
-		
+
 		//start and end offer
 		if (req.body.startcoupondate) {
 			coupon.startcoupondate = new Date(moment(req.body.startcoupondate, 'MM-DD-YYYY HH:mm:ss'));

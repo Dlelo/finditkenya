@@ -486,7 +486,8 @@ router.get('/allanalytics',role.auth, function(req, res, next){
         }
       }
     },
-    { "$sort": { "_id": 1 } }
+    { "$sort": { "_id": 1 } },
+    { "$limit" : 5000 }
   ], function(err, rst){
     var result = Object.keys(rst).map(function(key) {
       return [rst[key]._id, rst[key].views, rst[key].contacts];
@@ -505,8 +506,7 @@ router.get('/allanalytics',role.auth, function(req, res, next){
              as: "biz"
            }
          },
-         { "$sort": { "time": -1 } },
-         { "$limit" : 5000 }
+         { "$sort": { "time": -1 } }
       ]).allowDiskUse(true)
   	.then(function(data){
        //console.log(data);

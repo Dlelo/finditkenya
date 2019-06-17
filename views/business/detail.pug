@@ -94,9 +94,9 @@ block content
                     =biz.id
                   span.fas.fa-phone
                   //remove style="display:none" on phoneno
-                  a.findit.phoneno(href="tel:"+phone)
+                  a.findit.phoneno(href="tel:"+phone,style="display:none")
                     |  #{phone}
-                  //a.findit.phonenofake(href="#")
+                  a.findit.phonenofake(href="#")
                     |  Get Contacts
                   br
               hr.nomargin
@@ -791,6 +791,21 @@ block content
         $(document).ready(function(){
             $('#showproducts').click(function() {
               $('.productsMenu').toggle("slide");
+            });
+            $('.phonenofake').click(function(){
+              $('.phoneno').show();
+              $('.phonenofake').hide();
+              $.ajax({
+                  type: "POST",
+                  url: "/biz/analytics/"+#{biz.id},
+                  dataType: "json",
+                  success: function (result, status, xhr) {
+                      
+                  },
+                  error: function (xhr, status, error) {
+                      alert("Result: " + status + " " + error + " " + xhr.status + " " + xhr.statusText)
+                  }
+              });
             });
         });
       script.

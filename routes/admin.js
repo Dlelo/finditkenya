@@ -1229,24 +1229,45 @@ router.post('/coupon/create', role.auth,cpUpload, function(req, res){
 
 router.get('/coupon/reorder/:id/:order', role.admin, function(req, res){
   Coupons.findById(req.params.id)
-    .then(function(data){
-    	data.order = req.params.order;
-    	data.save(function(err){
-        Coupons.find({ order: { $gte: req.params.order }})
-        .sort([['order', 1]])
-        .then(function(data){
-          var count = 1;
-          data.forEach(function(d){
-            d.order = parseInt(req.params.order) + count;
+    .then(function(record){
+      Coupons.find({})
+      .sort([['order', 1]])
+      .then(function(data){
+        let count = 0;
+        let couponsCount = data.length;
+        data.forEach(function(d){
+          //business to be replaced in the order
+          if(count == parseInt(req.params.order) && d.id != req.params.id){
+            //NOT THE BUSINESS BEING REORDERED
+            //d.order = count + 1;
+            if(parseInt(d.order) > count){
+              d.order = count - 1;
+            }else{
+              d.order = count + 1;
+            }
+          }else{
+            //THE OTHER BUSINESSES
+            // if(parseInt(d.order) > count){
+            //   d.order = count + 1;
+            // }else{
+            //   d.order = count - 1;
+            // }
+            d.order = count;
+          }
+          count = count + 1;
+          if(req.params.id != d.id){
             d.save(function(err){
               console.log("reordered");
             });
-            count = count + 1;
-          });
-          res.json('reordered');
-        })
-    		//res.redirect('/admin/coupons');
-    	});
+          }else{
+            d.order = req.params.order;
+            d.save(function(err){
+              console.log("reordered");
+            });
+          }
+        });
+        res.json('reordered');
+      });
     })
     .catch(function(err){
        console.log(err);

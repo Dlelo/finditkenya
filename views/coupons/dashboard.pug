@@ -86,22 +86,22 @@ block content
       $(function() {
         var el = document.getElementById('accordion');
         function reorder(couponId,order){
-          alert(order);
+          /* alert(order);
           $.ajax({
               type:'GET',
               url:'/admin/coupon/reorder/'+couponId+'/'+order,
               success:function(response){
                   console.log(response);
               }
-          });
+          }); */
         }
         var sortable = Sortable.create(el, {
           onEnd: function (/**Event*/evt) {
             //alert("sorting done: "+evt.to);
             var couponId = evt.item.id;
             var order = evt.newIndex;
-            reorder(couponId,order);
-            /*axios.get('/admin/coupon/reorder/'+couponId+'/'+order)
+            console.log(order);
+            axios.get('/admin/coupon/reorder/'+couponId+'/'+order)
             .then(function (response) {
               // handle success
               alert(response);
@@ -119,7 +119,6 @@ block content
             .then(function () {
               // always executed
             });
-            */
             //console.log(evt);
             //alert(evt.item.id)
             var itemEl = evt.item;  // dragged HTMLElement

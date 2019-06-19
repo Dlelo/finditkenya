@@ -1237,13 +1237,16 @@ router.get('/coupon/reorder/:id/:order', role.admin, function(req, res){
         let couponsCount = data.length;
         data.forEach(function(d){
           //business to be replaced in the order
+          let countplus = count+1;
           if(count == parseInt(req.params.order) && d.id != req.params.id){
             //NOT THE BUSINESS BEING REORDERED
             //d.order = count + 1;
-            if(parseInt(d.order) > count){
-              d.order = count - 1;
-            }else{
+            if(parseInt(record.order) > count){
               d.order = count + 1;
+              count = count + 1;
+            }else{
+              d.order = count - 1;
+              count = count - 1;
             }
           }else{
             //THE OTHER BUSINESSES

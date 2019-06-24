@@ -283,7 +283,9 @@ block content
       $(document).ready(function() {
         
         //INITIALIZE TEXT EDITOR 
-        $('#description').summernote();
+        $('#description').summernote({
+          placeholder: 'Describe your business...'
+        });
         
         
         $('.btnclose').on("click", function(e){

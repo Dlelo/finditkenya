@@ -1,5 +1,10 @@
 extends ../layout
 
+block additions
+  // include summernote css/js
+  link(href='http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css' rel='stylesheet')
+  script(src='http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js')
+  
 block content
   #home.parallax-content-list.baner-content-listing-biz
     .container.container-margin-top(style='background-color: #eee; margin-top:2rem')
@@ -391,8 +396,13 @@ block content
                     h4.findit-blue  Update
               .row
     script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9MX39yDkMJn6rjWi6vt4Rens5u_cVBQE")
+
     script(type='text/javascript').
       $(function() {
+        //INITIALIZE TEXT EDITOR 
+        $('#description').summernote({
+          placeholder: 'Describe your business...'
+        });
         //BRANCHING Businesses
         $('.branch').on("click",function(event){
           //$(this).attr('rel');

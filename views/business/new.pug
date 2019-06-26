@@ -2,8 +2,8 @@ extends ../layout
 
 block additions
   // include summernote css/js
-  link(href='https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css' rel='stylesheet')
-  script(src='https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js')
+  link(href='https://cdn.quilljs.com/1.3.6/quill.snow.css' rel='stylesheet')
+  script(src='https://cdn.quilljs.com/1.3.6/quill.js')
 
 block content
   #home.baner-content-listing-biz
@@ -283,8 +283,30 @@ block content
       $(document).ready(function() {
         
         //INITIALIZE TEXT EDITOR 
-        $('#description').summernote({
-          placeholder: 'Describe your business...'
+        var toolbarOptions = [
+        //[{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+        [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+        ['bold', 'italic','underline', 'strike'],
+        ['link'],
+        ['blockquote', 'code-block'],
+        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+        [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+        [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+        [{ 'direction': 'rtl' }],                         // text direction
+
+        [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+        //[{ 'font': [] }],
+        ];
+        var quill = new Quill('#description', {
+          modules: {
+            toolbar: toolbarOptions,
+            history: {
+              delay: 2000,
+              maxStack: 500,
+              userOnly: true
+            }
+          },
+          theme: 'snow'
         });
         
         

@@ -1350,219 +1350,227 @@ router.get('/productsearch', function (req, res) {
 // End of product search
 //Start of business search
 router.get('/updatesearch', function (req, res) {
-  let query = req.query.search.trim().toLowerCase();
+  if(req.query.type == "product"){
+    let query = req.query.search.trim().toLowerCase();
+    let products = Product.find({ $text: { $search: query }})
+    .then(function(d){
+      res.status(200).json(d);
+    });
+  }else{
+    let query = req.query.search.trim().toLowerCase();
 
-  let lon = req.query.lon ? Number(req.query.lon) : 36.8219;
-  let lat = req.query.lat ? Number(req.query.lat) : -1.2921;
+    let lon = req.query.lon ? Number(req.query.lon) : 36.8219;
+    let lat = req.query.lat ? Number(req.query.lat) : -1.2921;
 
-  let multi = query.split(' ');
-  let catSearch = [false, ''];
-  let subCatSearch = [false, ''];
-  multi = multi.filter(function (word) {
-    return word != 'in'
-  })
-  if (multi.length < 1) {
-    multi.push(multi[0])
-  }
-  for (let i = 0; i < multi.length; i++) {
-    if (CATS.includes(multi[i])) {
-      catSearch[0] = true;
-      catSearch[1] = multi[i]
+    let multi = query.split(' ');
+    let catSearch = [false, ''];
+    let subCatSearch = [false, ''];
+    multi = multi.filter(function (word) {
+      return word != 'in'
+    })
+    if (multi.length < 1) {
+      multi.push(multi[0])
     }
-    if (SUBCATS.includes(multi[i])) {
-      subCatSearch[0] = true;
-      subCatSearch[1] = multi[i]
-    }
-  }
-
-  if (subCatSearch[0]) {
-    const subcat = subCatSearch[1].replace(/^\w/, c => c.toUpperCase());
-    res.redirect('subcategory/undefined/' + subcat + '?lat=' + lat + '&lon=' + lon)
-  }
-  // }else if(catSearch[0]){
-  //   const cat = catSearch[1].replace(/^\w/, c => c.toUpperCase());
-  //   res.redirect('category/'+cat+'?lat='+lat+'&lon='+lon)
-  // }
-
-  let point = {
-    "type": "Point",
-    "coordinates": [lon, lat]
-  };
-
-  var q1 = Business.aggregate([{
-    '$geoNear': {
-      'near': point,
-      'spherical': true,
-      "query": {
-        $and: [
-          {
-            $or: [
-              { branch: false },
-              { branch: null }
-            ]
-          },
-          {
-            $or: [
-              {
-                name: {
-                  $regex: query,
-                  $options: 'i'
-                }
-              },
-              {
-                name: {
-                  $regex: multi[0].substr(0, multi[0].length / 1.5),
-                  $options: 'i'
-                }
-              }
-            ]
-          }
-        ]
-      },
-      'distanceField': 'distance',
-      'maxDistance': 1000000000000
-    }
-  }
-  ]);
-
-  var q2 = Business.find({
-    $or: [
-      {
-        name: { "$regex": query, "$options": "i" }
-      },
-      {
-        keywords: { "$regex": query, "$options": "i" }
-      },
-      {
-        subcategory: { "$regex": query, "$options": "i" }
+    for (let i = 0; i < multi.length; i++) {
+      if (CATS.includes(multi[i])) {
+        catSearch[0] = true;
+        catSearch[1] = multi[i]
       }
-    ]
-  }).sort({ paid: -1 })
-
-  var q3 = Business.find({})
-    .then(function (data) {
-      Business.aggregate(
-        [{
-          '$geoNear': {
-            'near': point,
-            'spherical': true,
-            "query": {
-              "subcategory": data.subcategory,
-              "features": { "$in": data.features },
-              "slug": { "$ne": data.slug },
-              "branch": { "$ne": true },
-              "approved": true
-            },
-            'num': 20,
-            'distanceField': 'distance',
-            'maxDistance': 200000
-          }
-        }]
-      )
-    }).catch(err => {
-      console.log("Error", err)
-    })
-
-  //SIMILAR BUSINESSES ON SEARCH PAGE
-
-  //var features = Category.findOne({ subcategories: {$elemMatch: { name: req.params.name}} });
-  var categories = Category.find({ group: 'general' });
-
-  Promise.all([q2, q1, q3, categories]).then(values => {
-
-    var res2 = values[0].filter(function (biz) {
-      return biz.branch == typeof 'undefined' || biz.branch == false || biz.branch == null
-    })
-
-    var res1 = values[1].filter(function (biz) {
-      return biz.name.trim().toLowerCase().startsWith(multi[0].substr(0, 2)) ||
-        biz.name.trim().toLowerCase().includes(multi[1]) || biz.name.trim().toLowerCase().includes(multi[0])
-    })
-
-    if (res2.length == 0) {
-      res2 = res2.concat(res1)
-    }
-
-    //array  of current businesses features
-    //currentBusinessFeatures.sort();
-
-    function getCurrentFeature() {
-      for (let i = 0; i < res2.length; i++) {
-
-        for (let k = 0; k < res2[i].features.length; k++) {
-          let currentBusinessFeat = res2[i].features;
-
-          return currentBusinessFeat;
-
-        }
-
-      }
-    }
-    function getCurrentBizName() {
-      for (let i = 0; i < res2.length; i++) {
-
-        for (let k = 0; k < res2[i].features.length; k++) {
-          let CurrentBizName = res2[i].name;
-
-          return CurrentBizName;
-
-        }
-
+      if (SUBCATS.includes(multi[i])) {
+        subCatSearch[0] = true;
+        subCatSearch[1] = multi[i]
       }
     }
 
-    // similar biz by search term
-    // function getSearchedFeature() {
-    //   for (let i = 0; i < q3.length; i++) {
-    //     var searchedBizFeature = [];
-    //     console.log(searchedBizFeature);
-    //     for (let k = 0; k < q3[i].Business.features.length; k++) {
-    //       searchedBizFeature.append(q3[i].Business.features);
-    //     }
-    //     return searchedBizFeature;
-
-    //   }
+    if (subCatSearch[0]) {
+      const subcat = subCatSearch[1].replace(/^\w/, c => c.toUpperCase());
+      res.redirect('subcategory/undefined/' + subcat + '?lat=' + lat + '&lon=' + lon)
+    }
+    // }else if(catSearch[0]){
+    //   const cat = catSearch[1].replace(/^\w/, c => c.toUpperCase());
+    //   res.redirect('category/'+cat+'?lat='+lat+'&lon='+lon)
     // }
 
-    //var similarBusinessFeatures = getSearchedFeature();
-    var currentBusinessFeature = getCurrentFeature();
-    var theCurrentBizName = getCurrentBizName();
+    let point = {
+      "type": "Point",
+      "coordinates": [lon, lat]
+    };
 
-    //console.log(currentBusinessFeature);
-    //console.log(theCurrentBizName);
+    var q1 = Business.aggregate([{
+      '$geoNear': {
+        'near': point,
+        'spherical': true,
+        "query": {
+          $and: [
+            {
+              $or: [
+                { branch: false },
+                { branch: null }
+              ]
+            },
+            {
+              $or: [
+                {
+                  name: {
+                    $regex: query,
+                    $options: 'i'
+                  }
+                },
+                {
+                  name: {
+                    $regex: multi[0].substr(0, multi[0].length / 1.5),
+                    $options: 'i'
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        'distanceField': 'distance',
+        'maxDistance': 1000000000000
+      }
+    }
+    ]);
 
+    var q2 = Business.find({
+      $or: [
+        {
+          name: { "$regex": query, "$options": "i" }
+        },
+        {
+          keywords: { "$regex": query, "$options": "i" }
+        },
+        {
+          subcategory: { "$regex": query, "$options": "i" }
+        }
+      ]
+    }).sort({ paid: -1 })
 
-    //currentBusinessFeature.sort();
+    var q3 = Business.find({})
+      .then(function (data) {
+        Business.aggregate(
+          [{
+            '$geoNear': {
+              'near': point,
+              'spherical': true,
+              "query": {
+                "subcategory": data.subcategory,
+                "features": { "$in": data.features },
+                "slug": { "$ne": data.slug },
+                "branch": { "$ne": true },
+                "approved": true
+              },
+              'num': 20,
+              'distanceField': 'distance',
+              'maxDistance': 200000
+            }
+          }]
+        )
+      }).catch(err => {
+        console.log("Error", err)
+      })
 
-    let similarbusinesses = q3;
+    //SIMILAR BUSINESSES ON SEARCH PAGE
 
-    for (let i = 0; i < similarbusinesses.length; i++) {
+    //var features = Category.findOne({ subcategories: {$elemMatch: { name: req.params.name}} });
+    var categories = Category.find({ group: 'general' });
 
-      for (let k = 0; k < similarbusinesses[i].features.length; k++) {
-        similarbusinesses[i].features = similarbusinesses[i].features.filter(function (id) {
-          return currentBusinessFeature.indexOf(id) > -1;
-        });
+    Promise.all([q2, q1, q3, categories]).then(values => {
+
+      var res2 = values[0].filter(function (biz) {
+        return biz.branch == typeof 'undefined' || biz.branch == false || biz.branch == null
+      })
+
+      var res1 = values[1].filter(function (biz) {
+        return biz.name.trim().toLowerCase().startsWith(multi[0].substr(0, 2)) ||
+          biz.name.trim().toLowerCase().includes(multi[1]) || biz.name.trim().toLowerCase().includes(multi[0])
+      })
+
+      if (res2.length == 0) {
+        res2 = res2.concat(res1)
       }
 
-    }
+      //array  of current businesses features
+      //currentBusinessFeatures.sort();
 
-    // var similarbusinesses = similarBusinessFeatures.filter(function(similarFeatures){
-    //   return similarFeatures == currentBusinessFeatures;
-    // });
-    //console.log(similarbusinesses);
+      function getCurrentFeature() {
+        for (let i = 0; i < res2.length; i++) {
+
+          for (let k = 0; k < res2[i].features.length; k++) {
+            let currentBusinessFeat = res2[i].features;
+
+            return currentBusinessFeat;
+
+          }
+
+        }
+      }
+      function getCurrentBizName() {
+        for (let i = 0; i < res2.length; i++) {
+
+          for (let k = 0; k < res2[i].features.length; k++) {
+            let CurrentBizName = res2[i].name;
+
+            return CurrentBizName;
+
+          }
+
+        }
+      }
+
+      // similar biz by search term
+      // function getSearchedFeature() {
+      //   for (let i = 0; i < q3.length; i++) {
+      //     var searchedBizFeature = [];
+      //     console.log(searchedBizFeature);
+      //     for (let k = 0; k < q3[i].Business.features.length; k++) {
+      //       searchedBizFeature.append(q3[i].Business.features);
+      //     }
+      //     return searchedBizFeature;
+
+      //   }
+      // }
+
+      //var similarBusinessFeatures = getSearchedFeature();
+      var currentBusinessFeature = getCurrentFeature();
+      var theCurrentBizName = getCurrentBizName();
+
+      //console.log(currentBusinessFeature);
+      //console.log(theCurrentBizName);
+
+
+      //currentBusinessFeature.sort();
+
+      let similarbusinesses = q3;
+
+      for (let i = 0; i < similarbusinesses.length; i++) {
+
+        for (let k = 0; k < similarbusinesses[i].features.length; k++) {
+          similarbusinesses[i].features = similarbusinesses[i].features.filter(function (id) {
+            return currentBusinessFeature.indexOf(id) > -1;
+          });
+        }
+
+      }
+
+      // var similarbusinesses = similarBusinessFeatures.filter(function(similarFeatures){
+      //   return similarFeatures == currentBusinessFeatures;
+      // });
+      //console.log(similarbusinesses);
 
 
 
-    res.render('business/search', {
-      title: req.query.search,
-      businesses: res2,
-      similarbusinesses: values[1],
-      categories: values[2],
-      currentBusinessFeature:currentBusinessFeature,
-      theCurrentBizName: theCurrentBizName,
-      host: req.get('host')
+      res.render('business/search', {
+        title: req.query.search,
+        businesses: res2,
+        similarbusinesses: values[1],
+        categories: values[2],
+        currentBusinessFeature:currentBusinessFeature,
+        theCurrentBizName: theCurrentBizName,
+        host: req.get('host')
+      });
     });
-  });
+  }
 });
 // End of business search
 

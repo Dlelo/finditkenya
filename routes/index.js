@@ -1352,13 +1352,12 @@ router.get('/productsearch', function (req, res) {
 router.get('/updatesearch', function (req, res) {
   if(req.query.type == "product"){
     let query = req.query.search.trim().toLowerCase();
-    let products = Product.find({ $text: { $search: query }})
+    Product.find({ $text: { $search: query }})
     .then(function(d){
       res.status(200).json(d);
     });
   }else{
     let query = req.query.search.trim().toLowerCase();
-
     let lon = req.query.lon ? Number(req.query.lon) : 36.8219;
     let lat = req.query.lat ? Number(req.query.lat) : -1.2921;
 

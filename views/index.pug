@@ -29,6 +29,9 @@ block content
         div.banner-text#hideSearch
           form(method='get', action='/updatesearch')
             div.input-group
+              .input-group-prepend
+                span#basic-addon1.input-group-text 
+                  i.fas.fa-search.text-center
               input#search2.form-control.form-control-lg(type="text" placeholder="Restaurants, Holidays, Businesses, Lawyers, Doctors..." ,name='search', autofocus)
               button.btn.finditbutton(type="submit") Find
           //- form(method='get', action='/productsearch')

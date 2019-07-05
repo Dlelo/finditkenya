@@ -1352,9 +1352,10 @@ router.get('/productsearch', function (req, res) {
 router.get('/updatesearch', function (req, res) {
   if(req.query.type == "product"){
     let query = req.query.search.trim().toLowerCase();
-    Product.find({ $text: { $search: query }})
-    .then(function(d){
-      res.status(200).json(d);
+    let categories = Category.find({group:'shopping'});
+    let products = Product.find({ $text: { $search: query }}).populate('bizid');
+    Promise.all([products, categories]).then(values => {
+      res.render('shopping/search',{products: values[0],categories: values[1]});
     });
   }else{
     let query = req.query.search.trim().toLowerCase();
@@ -3228,7 +3229,7 @@ router.get('/replicate/:name', function (req, res) {
     slug: req.params.name
   }).then(console.log)
   res.redirect('/biz/' + req.params.name)
-})
+});
 
 router.get('/biz/:name', function (req, res, next) {
   Business.findOne({

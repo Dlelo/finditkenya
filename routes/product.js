@@ -515,39 +515,43 @@ router.get('/delete/:id', role.auth, function(req, res){
   }
 });
 
-router.get('/:bizname/:category/:subcat/:minicat/:slug',function(req, res){
-  var categories = Category.find({group:'shopping'});
-  var product = Product.findOne({
+router.get('/item/:slug',async function(req, res){
+  var categories = await Category.find({group:'shopping'});
+  var product = await Product.findOne({
     slug: req.params.slug,
     //status: true
   }).populate('bizid').populate('category');
-  Promise.all([categories,product]).then(values => {
 
-  console.log(values[1].bizid.id);
+  let bizSlug,bizName,bizDescription,bizEmail,phonNo,owner,bizPhone;
+
+  if(product.bizid){
+    console.log(product.bizid.id);
+    bizSlug = product.bizid.slug;
+    bizName = product.bizid.name;
+    bizDescription = product.bizid.description;
+    phonNo = product.bizid.phone;
+    bizEmail = product.bizid.email;
+    bizPhone = phonNo.split(","); 
+    console.log(phonNo);
+    console.log(bizEmail);
+
+    owner = product.bizid.user_id;
+
+    console.log(owner);
+  }
   
-  bizSlug = values[1].bizid.slug;
-  bizName = values[1].bizid.name;
-  bizDescription = values[1].bizid.description;
-  phonNo = values[1].bizid.phone;
-  bizEmail = values[1].bizid.email;
-
-  var bizPhone;
-  bizPhone = phonNo.split(","); 
-  console.log(phonNo);
-  console.log(bizEmail);
-
-  owner = values[1].bizid.user_id;
-
-  console.log(owner);
 
   //   User.findOne({ username: values[1].bizid.user_id }).populate('user_id').then(function(u){
   //     //if(err) console.log(err);
   //     console.log(values[1]);
-      res.render('product/detail',{product: values[1],title: values[1].name, categories: values[0], owner, bizPhone, bizEmail, bizName, bizSlug, bizDescription});
-    }).catch(function(){
-        // want to handle errors here
-        console.log("error happened");
-    });
+      res.render('product/detail',{
+        product: product,
+        title: product.name, 
+        categories: categories, 
+        owner, bizPhone, 
+        bizEmail, bizName, 
+        bizSlug, bizDescription
+      });
   });
 
 

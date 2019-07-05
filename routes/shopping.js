@@ -48,12 +48,6 @@ router.get('/',function(req, res){
   });
 });
 
-router.get('/async', async (req, res, next) => {
-  var categories = await Product.find({});
-  console.log(categories);
-  res.status(200).json("{done}");
-})
-
 router.get('/newsubcategory',function(req, res){
   Category.find({group:'shopping'})
 	.then(function(data){
@@ -167,6 +161,11 @@ router.get('/viewcategories',function(req, res){
      console.log(err);
   });
 });
+
+router.get('/item/:slug', async (req, res, next) => {
+  var product = await Product.find({'slug': req.param.slug}).populate('bizid');
+  res.status(200).json(product);
+})
 
 
 module.exports = router;

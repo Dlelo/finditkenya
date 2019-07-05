@@ -8,7 +8,7 @@ block content
         if product
           .row            
             aside.col-sm-6.border-right 
-              article.gallery-wrap 
+              article.gallery-wrap
                 div.img-big-wrap
                   div.row.xzoom-container
                     a(href="#")
@@ -28,10 +28,12 @@ block content
                 a.bizlink(href="/biz/"+bizSlug)
                   h4.title.mb-3
                     small
-                      =bizName
+                      if(product.bizid)
+                        strong
+                          =product.bizid.name
                       span(style="float:right")
                         strong
-                          |    Go back to Company Profile
+                          | Go back to Company Profile
                  
                 if product.price
                   p.price-detail-wrap
@@ -50,19 +52,20 @@ block content
                 hr
                 div
                     p.contact
-                      each phone in bizPhone
-                        span.findit-red.fas.fa-phone
-                        a.findit.phoneno(href="tel:"+phone)
-                          strong  #{phone}
-                        br
-                      //- span.fas.fa-phone
-                      //- |  #{bizPhone}
-                        
+                      if(bizPhone)
+                        each phone in bizPhone
+                          span.findit-red.fas.fa-phone
+                          a.findit.phoneno(href="tel:"+phone)
+                            strong  #{phone}
+                          br
+                        //- span.fas.fa-phone
+                        //- |  #{bizPhone}
+                          
                     p.contact
                       strong.findit-blue
                         a.findit(href="mailto:"+bizEmail)
                           span.fas.fa-envelope
-                            |  Email Seller
+                            | Email Seller
                       //strong #{bizEmail}
 
                     .btn.btn-lg.btn-outline-primary.text-uppercase.addtocart#showProduct(style="margin-top:1rem;")

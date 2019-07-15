@@ -17,7 +17,15 @@ block content
                 input#name.form-control-form(type='text', name='name', placeholder='Company Name',value=biz.name)
             .form-group
               .col-sm-12
-                textarea#description.form-control-form(name='description', placeholder="Describe your business",rows=20,cols=30)
+                #editor
+                  p Describe your
+                  p
+                    | Some initial 
+                    strong bold
+                    |  Business Here
+                  p
+                    br
+                textarea#description.form-control-form(name='description', placeholder="Describe your business",rows=20,cols=30, style="display:none;")
                   =biz.description
             .form-group
               .col-sm-12
@@ -414,17 +422,31 @@ block content
         [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
         //[{ 'font': [] }],
         ];
-        var quill = new Quill('#description', {
+        var quill = new Quill('#editor', {
           modules: {
             toolbar: toolbarOptions,
             history: {
-              delay: 2000,
-              maxStack: 500,
+              delay: 1000,
+              //maxStack: 500,
               userOnly: true
             }
           },
           theme: 'snow'
         });
+
+        quill.setText("#{biz.description}");
+        quill.on('text-change', function(delta, oldDelta, source) {
+          if (source == 'api') {
+            console.log("An API call triggered this change.");
+          } else if (source == 'user') {
+            console.log("A user action triggered this change.");
+          }
+          var text = quill.getText();
+          $("#description").text(text);
+        });
+
+        $('.ql-editor').css('background-color', 'white');
+        
         
         //BRANCHING Businesses
         $('.branch').on("click",function(event){

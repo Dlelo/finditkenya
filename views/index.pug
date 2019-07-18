@@ -2,7 +2,7 @@ extends layout-new
 
 block content
  //div.container-fluid.container-padding(style="padding-top:3.8rem")
- div.container-fluid(style="padding-top: 50px;")
+ div.container-fluid(style="padding-top: 20px;")
   div#home.banner(style="object-fit: cover;")
     div.row.justify-content-end.my-row    
       div.col-md-5.col-sm-12.col-xm-12.my-col.text-right
@@ -451,8 +451,12 @@ block content
       });
 
     script(type="text/javascript").
-      $(function() {
-        var images = [
+      
+      $(function() {        
+        //Add Random Generator//
+        //setInterval(swapImages(),4000);
+        setInterval(function() {
+          var images = [
           ['vitafoam4.jpg','/biz/Vitafoam-Products-Limited'],
           ['best-banner.jpg','/category/Restaurants'],
           ['doctor.jpg','/category/Medical'],
@@ -467,18 +471,18 @@ block content
           ['newmatic1.jpg', '/biz/Newmatic-Africa'], 
           ['newmatic2.jpg', '/biz/Newmatic-Africa'], 
           ['newmatic3.jpg', '/biz/Newmatic-Africa']];
-        var randomimagegenerator = images[Math.floor(Math.random() * images.length)] 
-        $('.banner').css({'background-image': 'url(banner-img/' + randomimagegenerator[0] +')'});
-        //var idHome = document.getElementById("home");
-        //var aTag = document.createElement('a');
-        var aTagWithLink = $('.link').attr('href',randomimagegenerator[1]);
 
-        console.log(aTagWithLink);
-       
-        //document.body.insertBefore(aTagWithLink, idHome);
-      
-        console.log(randomimagegenerator[1]);
-        
+          var randomimagegenerator = images[Math.floor(Math.random() * images.length)] 
+          $('.banner').css({'background-image': 'url(banner-img/' + randomimagegenerator[0] +')'}).fadeIn(3000);
+          //$('.banner').animate({ opacity: 1 }, { duration: 1000 });
+          //$('.banner').fadeTo(3000, 1);
+          //var idHome = document.getElementById("home");
+          //var aTag = document.createElement('a');
+          var aTagWithLink = $('.link').attr('href',randomimagegenerator[1]);
+          console.log(aTagWithLink);       
+          //document.body.insertBefore(aTagWithLink, idHome);      
+          console.log(randomimagegenerator[1]);
+        }, 7000);        
         
       });
     //animation
@@ -487,6 +491,7 @@ block content
     script(type='text/javascript').
       function loadResults() {
         var coupons = "";
+        let result = null;
         for (var i = 0; i < 10; i++) {
             result += "<li>Result " + i + "</li>";
         }

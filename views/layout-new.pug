@@ -351,11 +351,7 @@ script(type='text/javascript').
     }
 <!-- script for password match -->
 script(type='text/javascript').
-        window.onload = function () {
-            document.getElementById("password1").onchange = validatePassword;
-            document.getElementById("password2").onchange = validatePassword;
-        }
-
+        
         function validatePassword() {
             var pass2 = document.getElementById("password2").value;
             var pass1 = document.getElementById("password1").value;
@@ -364,6 +360,10 @@ script(type='text/javascript').
             else
                 document.getElementById("password2").setCustomValidity('');
             //empty string means no validation error
+        }
+        window.onload = function () {          
+            //document.getElementById("password1").onchange = validatePassword();
+            //document.getElementById("password2").onchange = validatePassword();
         }
 <!-- Script for hiding search and showng it on the nav on scroll -->
 

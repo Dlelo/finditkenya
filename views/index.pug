@@ -473,7 +473,7 @@ block content
           ['newmatic3.jpg', '/biz/Newmatic-Africa']];
 
           var randomimagegenerator = images[Math.floor(Math.random() * images.length)] 
-          $('.banner').css({'background-image': 'url(banner-img/' + randomimagegenerator[0] +')'}).fadeIn(3000);
+          $('.banner').css({'background-image': 'url(banner-img/' + randomimagegenerator[0] +')'}).animate({ opacity: 0.8 }, { duration: 3000 });
           //$('.banner').animate({ opacity: 1 }, { duration: 1000 });
           //$('.banner').fadeTo(3000, 1);
           //var idHome = document.getElementById("home");

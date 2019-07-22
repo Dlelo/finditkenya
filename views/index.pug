@@ -29,12 +29,15 @@ block content
         div.banner-text#hideSearch
           form(method='get', action='/updatesearch')
             div.input-group
-              .input-group-prepend
-                span#basic-addon1.input-group-text 
-                  i.fas.fa-search.text-center
+              select.input-group-addon.finditbutton(name="type")
+                option(value="business")
+                  | Business
+                option(value="product")
+                  | Product
               input#search2.form-control.form-control-lg(type="text" placeholder="Restaurants, Holidays, Businesses, Lawyers, Doctors..." ,name='search', autofocus)
-              button.btn.finditbutton(type="submit") Find
-          //- form(method='get', action='/productsearch')
+              button.finditbutton.input-group-addon(type="submit",value="") Find
+
+                        //- form(method='get', action='/productsearch')
           //-   div.input-group
           //-     span.input-group-addon#basic-addon1.finditbutton.input-group-addon.text-center
           //-       h5

@@ -12,7 +12,7 @@ block content
                     h5.card-title 
                         =product.name
                     p.card-text
-                        =product.description
+                      p.padding.text-left.description-cat  !{product.description.substr(0, 350)+ '..... <strong id="showmore" style="background-color:#c00000; color:#fff; padding:1px">Read More</strong>'}
                     ul.list-group.list-group-flush
                         li.list-group-item 
                           .alert.alert-danger(role='alert')

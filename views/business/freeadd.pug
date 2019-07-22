@@ -45,10 +45,12 @@ block content
               input.form-control-form(type='text', name='street', placeholder='street')
           .form-group
             .col-sm-6
-              input.form-control-form(type='text', name='building', placeholder='building')
-          
+              input.form-control-form(type='text', name='building', placeholder='building')          
             .col-sm-6
               input.form-control-form(type='text', name='email', placeholder='email1,email2')
+          .form-group
+            .col-sm-12
+              input#photod.form-control-form(type='file', name='photo', placeholder='photo') 
           .form-group  
             .col-sm-6
               select.selectpicker.form-control(name='category', data-selected-text-format='count > 5',class='category', required)

@@ -120,13 +120,14 @@ router.post('/edit/:id', role.auth, cpUpload, function(req, res, next) {
 		b.building = req.body.building;
 
 	    //Social links
-	    b.facebook = req.body.facebook;
-	    b.twitter = req.body.twitter;
-	    b.instagram = req.body.instagram;
+	    b.facebook = req.body.facebook.trim();
+	    b.twitter = req.body.twitter.trim();
+	    b.instagram = req.body.instagram.trim();
       if(req.body.youtube.includes("watch?v=")){
-        b.youtube = req.body.youtube.replace("watch?v=", "embed/");
+		let youtube = req.body.youtube.replace("watch?v=", "embed/");
+		b.youtube = youtube.trim();
       }
-	    b.linkedin = req.body.linkedin;
+	    b.linkedin = req.body.linkedin.trim();
 
 	    //Booking and Ordering
 	    b.bookinglink = req.body.bookinglink;

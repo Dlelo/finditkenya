@@ -1351,11 +1351,24 @@ router.get('/productsearch', function (req, res) {
 //Start of business search
 router.get('/updatesearch', function (req, res) {
   if(req.query.type == "product"){
+    // let query = req.query.search.trim().toLowerCase();
+    // let categories = Category.find({group:'shopping'});
+    // let products = Product.find({ $text: { $search: query }}).populate('bizid');
+    // Promise.all([products, categories]).then(values => {
+    //   res.render('shopping/search',{products: values[0],categories: values[1]});
+    // });
+
     let query = req.query.search.trim().toLowerCase();
-    let categories = Category.find({group:'shopping'});
-    let products = Product.find({ $text: { $search: query }}).populate('bizid');
-    Promise.all([products, categories]).then(values => {
-      res.render('shopping/search',{products: values[0],categories: values[1]});
+    var categories = Category.find({group:'shopping'});
+    var products = Product.find({$text: {$search: query}}).populate('bizid').limit(50);
+    var total = 0;
+    if(req.session.cart){
+      req.session.cart.forEach(function(i,index){
+        total += i.count * i.price;
+      });
+    }
+  	Promise.all([products, categories]).then(values => {
+      res.render('product/index',{title: "Products on Findit", products: values[0],categories: values[1],cart: req.session.cart,total:total});
     });
   }else{
     let query = req.query.search.trim().toLowerCase();

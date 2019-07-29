@@ -139,8 +139,7 @@ router.post('/add', role.auth, cpUpload, function(req, res, next) {
 					if (req.files['photo'] != null){
 						Jimp.read("./public/uploads/"+instance.photo).then(function (cover) {
 						    return cover.resize(200, 140)     // resize
-						         .quality(100)                 // set JPEG quality
-						         .greyscale()                 // set greyscale
+						         .quality(100)                 // set greyscale
 						         .write("./public/uploads/thumbs/cover"+instance.photo); // save
 						}).catch(function (err) {
 						    console.error(err);
@@ -150,7 +149,6 @@ router.post('/add', role.auth, cpUpload, function(req, res, next) {
 						Jimp.read("./public/uploads/"+instance.coverphoto).then(function (cover) {
 						    return cover.resize(1000, 200)     // resize
 						         .quality(100)                 // set JPEG quality
-						         .greyscale()                 // set greyscale
 						         .write("./public/uploads/thumbs/cover"+instance.coverphoto); // save
 						}).catch(function (err) {
 						    console.error(err);
@@ -168,7 +166,6 @@ router.post('/add', role.auth, cpUpload, function(req, res, next) {
 						  	Jimp.read("./public/uploads/"+gallery.filename).then(function (cover) {
 							    return cover.resize(200, 140)     // resize
 							         .quality(100)                 // set JPEG quality
-							         .greyscale()                 // set greyscale
 							         .write("./public/uploads/thumbs/gallery-"+gallery.filename); // save
 							}).catch(function (err) {
 							    console.error(err);

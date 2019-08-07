@@ -55,7 +55,7 @@ block content
           each review,i in reviews
             li.products-list__item
               figure.products-list__product-thumb
-                a(href="/coupons")
+                a(href="/biz/"+review.bizid.slug)
                   img(src="/uploads/thumbs/cover"+ review.bizid.photo alt='')
               .products-list__inner
                 .products-list__product-ratings

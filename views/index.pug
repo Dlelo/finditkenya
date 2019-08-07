@@ -1,552 +1,306 @@
-doctype html
-head
-  //
-    Basic Page Needs
-    ==================================================
-  title Find it
-  meta(charset='utf-8')
-  meta(http-equiv='X-UA-Compatible' content='IE=edge')
-  meta(name='description' content='Find business in Kenya, Africa')
-  meta(name='author' content='UXCraft')
-  meta(name='keywords' content='Find business')
-  //
-    Favicons
-    ==================================================
-  link(rel='shortcut icon' href='assets/images/favicon.png')
-  //
-    Mobile Specific Metas
-    ==================================================
-  meta(name='viewport' content='width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0')
-  //
-    Google Web Fonts
-    ==================================================
-  link(href='https://fonts.googleapis.com/css?family=Montserrat:400,700%7CSource+Sans+Pro:400,700' rel='stylesheet')
-  //
-    CSS
-    ==================================================
-  // Vendor CSS
-  link(href='assets/vendor/bootstrap/css/bootstrap.css' rel='stylesheet')
-  link(href='assets/fonts/font-awesome/css/font-awesome.min.css' rel='stylesheet')
-  link(href='assets/fonts/simple-line-icons/css/simple-line-icons.css' rel='stylesheet')
-  link(href='assets/vendor/magnific-popup/dist/magnific-popup.css' rel='stylesheet')
-  link(href='assets/vendor/slick/slick.css' rel='stylesheet')
-  // Template CSS
-  link(href='assets/css/style-soccer.css' rel='stylesheet')
-  // Custom CSS
-  link(href='assets/css/custom.css' rel='stylesheet')
-.site-wrapper.clearfix
-  .site-overlay
-  //
-    Header
-    ==================================================
-  // Header Mobile
-  #header-mobile.header-mobile.clearfix
-    .header-mobile__logo
-      a(href='index.html')
-        img.header-mobile__logo-img(src='assets/images/logo.png' alt='findit logo')
-    .header-mobile__inner
-      a#header-mobile__toggle.burger-menu-icon
-        span.burger-menu-icon__line
-      span#header-mobile__search-icon.header-mobile__search-icon
-  // Header Desktop
-  header.header
-    // Header Primary
-    .header__primary
-      .container
-        .header__primary-inner
-          // Header Logo
-          .header-logo
-            a(href='index.html')
-              img.header-mobile__logo-img(src='assets/images/logo.png' alt='findit logo')
-          // Header Logo / End
-          // Main Navigation
-          nav.main-nav.clearfix
-            // Header Search Form
-            .header-search-form
-              form#mobile-search-form.search-form(action='#')
-                input.form-control.header-mobile__search-control(type='text' value='' placeholder='Enter your search here...')
-                button.header-mobile__search-submit(type='submit')
-                  i.fa.fa-search
-            // Header Search Form / End
-            ul.main-nav__list
-              li
-                a(href='#') Add A business
-              li
-                a(href='#') Categories
-              li
-                a(href='#') Login
-              li
-                a(href='#') Sign Up
-          // Main Navigation / End
-    // Header Primary / End
-  // Header / End
-  //
-    Content
-    ==================================================
-  .site-content
-    .container
-      .row
-        // Content
-        .content.col-md-9.feat
-          // Featured News
-          .card--clean
-            .card__content
-              // Slider
-              .slick.posts.posts--slider-featured.posts-slider.posts-slider--center
-                .posts__item.posts__item--category-1
-                  a.posts__link-wrapper(href='#')
-                    figure.posts__thumb
-                      img(src='assets/images/rest.jpg' alt='')
-                    .posts__inner
-                      .posts__cat
-                        span.label.posts__cat-label Cuisines
-                      h3.posts__title
-                        | Chinese food 
-                        span.posts__title-higlight  this May 4th
-                        |  at the chancery
-                      .post-author
-                        figure.post-author__avatar
-                          img(src='assets/images/samples/avatar-4.jpg' alt='Post Author Avatar')
-                        .post-author__info
-                          h4.post-author__name Jesse Stevens
-                          time.posts__date(datetime='2017-08-28') August 28th, 2018
-                .posts__item.posts__item--category-3
-                  a.posts__link-wrapper(href='#')
-                    figure.posts__thumb
-                      img(src='assets/images/dest1.jpg' alt='')
-                    .posts__inner
-                      .posts__cat
-                        span.label.posts__cat-label Travel
-                      h3.posts__title
-                        | The Planettroters will 
-                        span.posts__title-higlight for the 
-                        |  next December
-                      .post-author
-                        figure.post-author__avatar
-                          img(src='assets/images/samples/avatar-1.jpg' alt='Post Author Avatar')
-                        .post-author__info
-                          h4.post-author__name James Spiegel
-                          time.posts__date(datetime='2017-08-28') June 28th, 2018
-              // Slider / End
-          // Featured News / End
-        // Content / End
-        // Sidebar
-        #sidebar.sidebar.col-md-3
-          aside.widget.card.widget--sidebar.widget-products
-            .widget__title.card__header
-              h4 Latest Reviews
-            .widget__content.card__content
-              ul.products-list
-                li.products-list__item
-                  figure.products-list__product-thumb
-                    a(href='#')
-                      img(src='assets/images/hosp.jpg' alt='')
-                  .products-list__inner
-                    .products-list__product-ratings
-                      i.fa.fa-star
-                      i.fa.fa-star
-                      i.fa.fa-star
-                      i.fa.fa-star
-                      i.fa.fa-star.empty
-                    h5.products-list__product-name
-                      a(href='#') Rovina Restaurant
-                    span.products-list__product-cat Mind blowing sea food
-                    .products-list__product-sum
-                      span.products-list__product-price --- Richard
-                li.products-list__item
-                  figure.products-list__product-thumb
-                    a(href='#')
-                      img(src='assets/images/dest1.jpg' alt='')
-                  .products-list__inner
-                    .products-list__product-ratings
-                      i.fa.fa-star
-                      i.fa.fa-star
-                      i.fa.fa-star
-                      i.fa.fa-star
-                      i.fa.fa-star.empty
-                    h5.products-list__product-name
-                      a(href='#') The Hub Karen
-                    span.products-list__product-cat Mind blowing sea food
-                    .products-list__product-sum
-                      span.products-list__product-price --- Kimani
-                li.products-list__item
-                  figure.products-list__product-thumb
-                    a(href='#')
-                      img(src='assets/images/office.jpg' alt='')
-                  .products-list__inner
-                    .products-list__product-ratings
-                      i.fa.fa-star
-                      i.fa.fa-star
-                      i.fa.fa-star
-                      i.fa.fa-star
-                      i.fa.fa-star.empty
-                    h5.products-list__product-name
-                      a(href='#') Thika Thina
-                    span.products-list__product-cat Amazing Aacohol experience
-                    .products-list__product-sum
-                      span.products-list__product-price --- Richard
-                li.products-list__item
-                  figure.products-list__product-thumb
-                    a(href='#')
-                      img(src='assets/images/rest.jpg' alt='')
-                  .products-list__inner
-                    .products-list__product-ratings
-                      i.fa.fa-star
-                      i.fa.fa-star
-                      i.fa.fa-star
-                      i.fa.fa-star
-                      i.fa.fa-star.empty
-                    h5.products-list__product-name
-                      a(href='#') Rovina Restaurant
-                    span.products-list__product-cat Mind blowing sea food
-                    .products-list__product-sum
-                      span.products-list__product-price --- Richard
-                li.products-list__item
-                  a.btn.btn-primary.btn-sm.btn-icon-right.ml-5(href='#')
-                    | See All Reviews 
-                    i.fa.fa-plus
-        // Sidebar / End
-        header.post__header.col-md-12.pb-5.pt-5.pl-0
-          h2.post__title TOP DEALS
-          ul.post__meta.meta
-            li.meta__item.meta__item--date
-              time(datetime='2017-08-23') August 23rd, 2017
-            li.meta__item.meta__item--views 2369
-            li.meta__item.meta__item--likes
-              a(href='#')
-                i.meta-like.icon-heart
-                |  530
-            li.meta__item.meta__item--comments
-              a(href='#') 18
-        .gallery.row
-          .gallery__item.col-12.col-md-2
-            a.gallery__item-inner.card(href='404.html')
-              figure.gallery__thumb
+extends layout
+
+block content
+  // Content
+  .content.col-md-9.feat
+    // Featured News
+    .card--clean
+      .card__content
+        // Slider
+        .slick.posts.posts--slider-featured.posts-slider.posts-slider--center
+          .posts__item.posts__item--category-1
+            a.posts__link-wrapper(href='#')
+              figure.posts__thumb
+                img(src='assets/images/rest.jpg' alt='')
+              .posts__inner
+                .posts__cat
+                  span.label.posts__cat-label Cuisines
+                h3.posts__title
+                  | Chinese food 
+                  span.posts__title-higlight  this May 4th
+                  |  at the chancery
+                .post-author
+                  figure.post-author__avatar
+                    img(src='assets/images/samples/avatar-4.jpg' alt='Post Author Avatar')
+                  .post-author__info
+                    h4.post-author__name Jesse Stevens
+                    time.posts__date(datetime='2017-08-28') August 28th, 2018
+          .posts__item.posts__item--category-3
+            a.posts__link-wrapper(href='#')
+              figure.posts__thumb
                 img(src='assets/images/dest1.jpg' alt='')
-                span.btn-fab.gallery__btn-fab
-              .gallery__content.card__content
-                span.gallery__icon
-                  span.icon-location-pin
-                .gallery__details
-                  h4.gallery__name Peninsula Beach Resort
-                  .gallery__date Mauritius
-          .gallery__item.col-12.col-md-2
-            a.gallery__item-inner.card(href='404.html')
-              figure.gallery__thumb
-                img(src='assets/images/rest.jpg' alt='')
-                span.btn-fab.gallery__btn-fab
-              .gallery__content.card__content
-                span.gallery__icon
-                  span.icon-location-pin
-                .gallery__details
-                  h4.gallery__name
-                    | Anelia Resort &amp; Spa Mauritius 4
-                  .gallery__date Mauritius
-          .gallery__item.col-12.col-md-2
-            a.gallery__item-inner.card(href='404.html')
-              figure.gallery__thumb
-                img(src='assets/images/office.jpg' alt='')
-                span.btn-fab.gallery__btn-fab
-              .gallery__content.card__content
-                span.gallery__icon
-                  span.icon-location-pin
-                .gallery__details
-                  h4.gallery__name Outrigger Mauritius Beach Resort 5
-                  .gallery__date Mauritius
-          .gallery__item.col-12.col-md-2
-            a.gallery__item-inner.card(href='404.html')
-              figure.gallery__thumb
-                img(src='assets/images/dest2.jpg' alt='')
-                span.btn-fab.gallery__btn-fab
-              .gallery__content.card__content
-                span.gallery__icon
-                  span.icon-location-pin
-                .gallery__details
-                  h4.gallery__name Ravenala Attitude Resort 
-                  .gallery__date Mauritius
-          .gallery__item.col-12.col-md-2
-            a.gallery__item-inner.card(href='404.html')
-              figure.gallery__thumb
-                img(src='assets/images/dest3.jpg' alt='')
-                span.btn-fab.gallery__btn-fab
-              .gallery__content.card__content
-                span.gallery__icon
-                  span.icon-location-pin
-                .gallery__details
-                  h4.gallery__name Egypt Israel tour
-                  .gallery__date Mauritius
-          .gallery__item.col-12.col-md-2
-            // Player Card #
-            .post-grid__item.col-sm-12.team-roster__item
-              .posts__item.posts__item--card.posts__item--quote(style='background-image: url(assets/images/Laikipia.jpg);')
-                .card__content
-                  blockquote.blockquote.blockquote--card
-                    footer.blockquote__footer
-                      cite.blockquote__cite
-                        span.blockquote__author-name GET MORE FOR LESS
-                        a.btn.btn-primary.btn-sm.btn-icon-right(href='#')
-                          | View More 
-                          i.fa.fa-plus
-            // Player Card # / End
-        header.post__header.col-md-12.pb-5.pt-5.pl-0
-          h2.post__title BUSINESSES BY CATEGORY
-          ul.post__meta.meta
-            li.meta__item.meta__item--date
-              time(datetime='2017-08-23') August 23rd, 2017
-            li.meta__item.meta__item--views 2369
-            li.meta__item.meta__item--likes
-              a(href='#')
-                i.meta-like.icon-heart
-                |  530
-            li.meta__item.meta__item--comments
-              a(href='#') 18
-        .gallery.gala2.row
-          .gallery__item.col-12.col-md-2
-            a.gallery__item-inner.card(href='404.html')
-              figure.gallery__thumb
-                img(src='assets/images/dest1.jpg' alt='')
-                span.btn-fab.gallery__btn-fab
-              .gallery__content.card__content
-                span.gallery__icon
-                  span.icon-camera
-                .gallery__details
-                  h4.gallery__name Travel
-                  .gallery__date Getaway wonderlust
-          .gallery__item.col-12.col-md-2
-            a.gallery__item-inner.card(href='404.html')
-              figure.gallery__thumb
-                img(src='assets/images/hosp.jpg' alt='')
-                span.btn-fab.gallery__btn-fab
-              .gallery__content.card__content
-                span.gallery__icon
-                  span.icon-camera
-                .gallery__details
-                  h4.gallery__name Hospitality
-                  .gallery__date Leisure &amp; Unwind
-          .gallery__item.col-12.col-md-2
-            a.gallery__item-inner.card(href='404.html')
-              figure.gallery__thumb
-                img(src='assets/images/rest.jpg' alt='')
-                span.btn-fab.gallery__btn-fab
-              .gallery__content.card__content
-                span.gallery__icon
-                  span.icon-camera
-                .gallery__details
-                  h4.gallery__name Restaurants
-                  .gallery__date Food &amp; Cuisines
-          .gallery__item.col-12.col-md-2
-            a.gallery__item-inner.card(href='404.html')
-              figure.gallery__thumb
-                img(src='assets/images/office.jpg' alt='')
-                span.btn-fab.gallery__btn-fab
-              .gallery__content.card__content
-                span.gallery__icon
-                  span.icon-camera
-                .gallery__details
-                  h4.gallery__name Office
-                  .gallery__date Work &amp; Spaces
-          .gallery__item.col-12.col-md-2
-            a.gallery__item-inner.card(href='404.html')
-              figure.gallery__thumb
-                img(src='assets/images/medical.jpg' alt='')
-                span.btn-fab.gallery__btn-fab
-              .gallery__content.card__content
-                span.gallery__icon
-                  span.icon-camera
-                .gallery__details
-                  h4.gallery__name Medical
-                  .gallery__date Health &amp; Well being
-          .gallery__item.col-12.col-md-2
-            a.gallery__item-inner.card(href='404.html')
-              figure.gallery__thumb
-                img(src='assets/images/finance.jpg' alt='')
-                span.btn-fab.gallery__btn-fab
-              .gallery__content.card__content
-                span.gallery__icon
-                  span.icon-camera
-                .gallery__details
-                  h4.gallery__name Finance
-                  .gallery__date Investments &amp; Money
-          .gallery__item.col-12.col-md-2
-            a.gallery__item-inner.card(href='404.html')
-              figure.gallery__thumb
-                img(src='assets/images/real.jpg' alt='')
-                span.btn-fab.gallery__btn-fab
-              .gallery__content.card__content
-                span.gallery__icon
-                  span.icon-camera
-                .gallery__details
-                  h4.gallery__name Real Estate
-                  .gallery__date Living
-          .gallery__item.col-12.col-md-2
-            a.gallery__item-inner.card(href='404.html')
-              figure.gallery__thumb
-                img(src='assets/images/rest.jpg' alt='')
-                span.btn-fab.gallery__btn-fab
-              .gallery__content.card__content
-                span.gallery__icon
-                  span.icon-camera
-                .gallery__details
-                  h4.gallery__name Restaurants
-                  .gallery__date Food &amp; Cuisines
-          .gallery__item.col-12.col-md-2
-            a.gallery__item-inner.card(href='404.html')
-              figure.gallery__thumb
-                img(src='assets/images/office.jpg' alt='')
-                span.btn-fab.gallery__btn-fab
-              .gallery__content.card__content
-                span.gallery__icon
-                  span.icon-camera
-                .gallery__details
-                  h4.gallery__name Restaurants
-                  .gallery__date Food &amp; Cuisines
-          .gallery__item.col-12.col-md-2
-            a.gallery__item-inner.card(href='404.html')
-              figure.gallery__thumb
-                img(src='assets/images/medical.jpg' alt='')
-                span.btn-fab.gallery__btn-fab
-              .gallery__content.card__content
-                span.gallery__icon
-                  span.icon-camera
-                .gallery__details
-                  h4.gallery__name Restaurants
-                  .gallery__date Food &amp; Cuisines
-          .gallery__item.col-12.col-md-2
-            a.gallery__item-inner.card(href='404.html')
-              figure.gallery__thumb
-                img(src='assets/images/finance.jpg' alt='')
-                span.btn-fab.gallery__btn-fab
-              .gallery__content.card__content
-                span.gallery__icon
-                  span.icon-camera
-                .gallery__details
-                  h4.gallery__name Restaurants
-                  .gallery__date Food &amp; Cuisines
-          .gallery__item.col-12.col-md-2
-            // Player Card #
-            .post-grid__item.col-sm-12.team-roster__item
-              .posts__item.posts__item--card.posts__item--quote(style='background-image: url(assets/images/Laikipia.jpg);')
-                .card__content
-                  blockquote.blockquote.blockquote--card
-                    footer.blockquote__footer
-                      cite.blockquote__cite
-                        span.blockquote__author-name Checkout All Categories
-                        a.btn.btn-secondary.btn-sm.btn-icon-right(href='#')
-                          | View More 
-                          i.fa.fa-plus
-            // Player Card # / End
+              .posts__inner
+                .posts__cat
+                  span.label.posts__cat-label Travel
+                h3.posts__title
+                  | The Planettroters will 
+                  span.posts__title-higlight for the 
+                  |  next December
+                .post-author
+                  figure.post-author__avatar
+                    img(src='assets/images/samples/avatar-1.jpg' alt='Post Author Avatar')
+                  .post-author__info
+                    h4.post-author__name James Spiegel
+                    time.posts__date(datetime='2017-08-28') June 28th, 2018
+        // Slider / End
+    // Featured News / End
   // Content / End
-  //
-    Footer
-    ==================================================
-  footer#footer.footer
-    // Footer Widgets
-    .footer-widgets
-      .footer-widgets__inner
-        .container
-          .row
-            .col-sm-6.col-md-3
-              .footer-col-inner
-                // Footer Logo
-                .footer-logo.footer-logo--has-txt
-                  a(href='index.html')
-                    .footer-logo__heading
-                      h5.footer-logo__txt About Us
-                      h6.footer-logo__txt Who We are
-                // Footer Logo / End
-                // Widget: Contact Info
-                .widget.widget--footer.widget-contact-info
-                  .widget__content
-                    .widget-contact-info__desc
-                      p
-                        | List your business on Find It today!
-                        | Reach new Customers at the most affordable
-                        | packages, Show case your products and publish
-                        | special offers.
-                        | Get Started by Listing your business
-                // Widget: Contact Info / End
-            .col-sm-6.col-md-3
-              .footer-col-inner
-                // Footer Logo
-                .footer-logo.footer-logo--has-txt
-                  a(href='index.html')
-                    .footer-logo__heading
-                      h6.footer-logo__txt Find Everything
-                // Footer Logo / End
-                // Widget: Contact Info
-                .widget.widget--footer.widget-contact-info
-                  .widget__content
-                    .widget-contact-info__desc
-                      p
-                        | List your business on Find It today!
-                        | Reach new Customers at the most affordable
-                        | packages, Show case your products and publish
-                        | special offers.
-                        | Get Started by Listing your business
-                // Widget: Contact Info / End
-            .col-sm-6.col-md-3
-              .footer-col-inner
-                // Footer Logo
-                .footer-logo.footer-logo--has-txt
-                  a(href='index.html')
-                    .footer-logo__heading
-                      h6.footer-logo__txt Do You Own A Business?
-                // Footer Logo / End
-                // Widget: Contact Info
-                .widget.widget--footer.widget-contact-info
-                  .widget__content
-                    .widget-contact-info__desc
-                      p
-                        | From Manufacturers to Retailers,
-                        | Doctors or Dentists, Legal
-                        | Advisors or Consultants or
-                        | maybe hotels and Restaurants.
-                        | We have it all.
-                // Widget: Contact Info / End
-          .row
-            .info-block__item.info-block__item--nopadding
-              ul.social-links
-                li.social-links__item
-                  a.social-links__link(href='#')
-                    i.fa.fa-facebook
-                    |  Facebook
-                li.social-links__item
-                  a.social-links__link(href='#')
-                    i.fa.fa-twitter
-                    |  Twitter
-                li.social-links__item
-                  a.social-links__link(href='#')
-                    i.fa.fa-google-plus
-                    |  Google+
-    // Footer Widgets / End
-    // Footer Secondary
-    .footer-secondary
-      .container
-        .footer-secondary__inner
-          .row
-            .col-md-4
-              .footer-copyright
-                a(href='_soccer_index.html') find it
-                |  2019 &nbsp; | &nbsp; All Rights Reserved
-            .col-md-8
-              ul.footer-nav.footer-nav--right.footer-nav--condensed.footer-nav--sm
-                li.footer-nav__item
-                  a(href='_soccer_index.html') Home
-                li.footer-nav__item
-                  a(href='_soccer_features-shortcodes.html') About
-                li.footer-nav__item
-                  a(href='_soccer_team-standings.html') Contacts
-    // Footer Secondary / End
-  // Footer / End
-//
-  Javascript Files
-  ==================================================
-// Core JS
-script(src='assets/vendor/jquery/jquery.min.js')
-script(src='assets/vendor/bootstrap/js/bootstrap.bundle.js')
-script(src='assets/js/core.js')
-// Vendor JS
-script(src='assets/vendor/twitter/jquery.twitter.js')
-// Template JS
-script(src='assets/js/init.js')
-script(src='assets/js/custom.js')
+  // Sidebar
+  #sidebar.sidebar.col-md-3
+    aside.widget.card.widget--sidebar.widget-products
+      .widget__title.card__header
+        h4 Latest Reviews
+      .widget__content.card__content
+        ul.products-list
+          each review,i in reviews
+            li.products-list__item
+              figure.products-list__product-thumb
+                a(href="/coupons")
+                  img(src="/uploads/thumbs/"+ review.bizid.photo alt='')
+              .products-list__inner
+                .products-list__product-ratings
+                  i.fa.fa-star
+                  i.fa.fa-star
+                  i.fa.fa-star
+                  i.fa.fa-star
+                  i.fa.fa-star.empty
+                h5.products-list__product-name
+                  a(href='/biz/'+ review.bizid.slug) #{review.bizid.name}
+                span.products-list__product-cat #{review.message}
+                .products-list__product-sum
+                  span.products-list__product-price --- #{review.user_id.names}
+            
+          li.products-list__item
+            a.btn.btn-primary.btn-sm.btn-icon-right.ml-5(href='#')
+              | See All Reviews 
+              i.fa.fa-plus
+  // Sidebar / End
+  header.post__header.col-md-12.pb-5.pt-5.pl-0
+    h2.post__title TOP DEALS
+    ul.post__meta.meta
+      li.meta__item.meta__item--date
+        time(datetime='2017-08-23') August 23rd, 2017
+      li.meta__item.meta__item--views 2369
+      li.meta__item.meta__item--likes
+        a(href='#')
+          i.meta-like.icon-heart
+          |  530
+      li.meta__item.meta__item--comments
+        a(href='#') 18
+  .gallery.row
+    .gallery__item.col-12.col-md-2
+      a.gallery__item-inner.card(href='404.html')
+        figure.gallery__thumb
+          img(src='assets/images/dest1.jpg' alt='')
+          span.btn-fab.gallery__btn-fab
+        .gallery__content.card__content
+          span.gallery__icon
+            span.icon-location-pin
+          .gallery__details
+            h4.gallery__name Peninsula Beach Resort
+            .gallery__date Mauritius
+    .gallery__item.col-12.col-md-2
+      a.gallery__item-inner.card(href='404.html')
+        figure.gallery__thumb
+          img(src='assets/images/rest.jpg' alt='')
+          span.btn-fab.gallery__btn-fab
+        .gallery__content.card__content
+          span.gallery__icon
+            span.icon-location-pin
+          .gallery__details
+            h4.gallery__name
+              | Anelia Resort &amp; Spa Mauritius 4
+            .gallery__date Mauritius
+    .gallery__item.col-12.col-md-2
+      a.gallery__item-inner.card(href='404.html')
+        figure.gallery__thumb
+          img(src='assets/images/office.jpg' alt='')
+          span.btn-fab.gallery__btn-fab
+        .gallery__content.card__content
+          span.gallery__icon
+            span.icon-location-pin
+          .gallery__details
+            h4.gallery__name Outrigger Mauritius Beach Resort 5
+            .gallery__date Mauritius
+    .gallery__item.col-12.col-md-2
+      a.gallery__item-inner.card(href='404.html')
+        figure.gallery__thumb
+          img(src='assets/images/dest2.jpg' alt='')
+          span.btn-fab.gallery__btn-fab
+        .gallery__content.card__content
+          span.gallery__icon
+            span.icon-location-pin
+          .gallery__details
+            h4.gallery__name Ravenala Attitude Resort 
+            .gallery__date Mauritius
+    .gallery__item.col-12.col-md-2
+      a.gallery__item-inner.card(href='404.html')
+        figure.gallery__thumb
+          img(src='assets/images/dest3.jpg' alt='')
+          span.btn-fab.gallery__btn-fab
+        .gallery__content.card__content
+          span.gallery__icon
+            span.icon-location-pin
+          .gallery__details
+            h4.gallery__name Egypt Israel tour
+            .gallery__date Mauritius
+    .gallery__item.col-12.col-md-2
+      // Player Card #
+      .post-grid__item.col-sm-12.team-roster__item
+        .posts__item.posts__item--card.posts__item--quote(style='background-image: url(assets/images/Laikipia.jpg);')
+          .card__content
+            blockquote.blockquote.blockquote--card
+              footer.blockquote__footer
+                cite.blockquote__cite
+                  span.blockquote__author-name GET MORE FOR LESS
+                  a.btn.btn-primary.btn-sm.btn-icon-right(href='#')
+                    | View More 
+                    i.fa.fa-plus
+      // Player Card # / End
+  header.post__header.col-md-12.pb-5.pt-5.pl-0
+    h2.post__title BUSINESSES BY CATEGORY
+    ul.post__meta.meta
+      li.meta__item.meta__item--date
+        time(datetime='2017-08-23') August 23rd, 2017
+      li.meta__item.meta__item--views 2369
+      li.meta__item.meta__item--likes
+        a(href='#')
+          i.meta-like.icon-heart
+          |  530
+      li.meta__item.meta__item--comments
+        a(href='#') 18
+  .gallery.gala2.row
+    .gallery__item.col-12.col-md-2
+      a.gallery__item-inner.card(href='404.html')
+        figure.gallery__thumb
+          img(src='assets/images/dest1.jpg' alt='')
+          span.btn-fab.gallery__btn-fab
+        .gallery__content.card__content
+          span.gallery__icon
+            span.icon-camera
+          .gallery__details
+            h4.gallery__name Travel
+            .gallery__date Getaway wonderlust
+    .gallery__item.col-12.col-md-2
+      a.gallery__item-inner.card(href='404.html')
+        figure.gallery__thumb
+          img(src='assets/images/hosp.jpg' alt='')
+          span.btn-fab.gallery__btn-fab
+        .gallery__content.card__content
+          span.gallery__icon
+            span.icon-camera
+          .gallery__details
+            h4.gallery__name Hospitality
+            .gallery__date Leisure &amp; Unwind
+    .gallery__item.col-12.col-md-2
+      a.gallery__item-inner.card(href='404.html')
+        figure.gallery__thumb
+          img(src='assets/images/rest.jpg' alt='')
+          span.btn-fab.gallery__btn-fab
+        .gallery__content.card__content
+          span.gallery__icon
+            span.icon-camera
+          .gallery__details
+            h4.gallery__name Restaurants
+            .gallery__date Food &amp; Cuisines
+    .gallery__item.col-12.col-md-2
+      a.gallery__item-inner.card(href='404.html')
+        figure.gallery__thumb
+          img(src='assets/images/office.jpg' alt='')
+          span.btn-fab.gallery__btn-fab
+        .gallery__content.card__content
+          span.gallery__icon
+            span.icon-camera
+          .gallery__details
+            h4.gallery__name Office
+            .gallery__date Work &amp; Spaces
+    .gallery__item.col-12.col-md-2
+      a.gallery__item-inner.card(href='404.html')
+        figure.gallery__thumb
+          img(src='assets/images/medical.jpg' alt='')
+          span.btn-fab.gallery__btn-fab
+        .gallery__content.card__content
+          span.gallery__icon
+            span.icon-camera
+          .gallery__details
+            h4.gallery__name Medical
+            .gallery__date Health &amp; Well being
+    .gallery__item.col-12.col-md-2
+      a.gallery__item-inner.card(href='404.html')
+        figure.gallery__thumb
+          img(src='assets/images/finance.jpg' alt='')
+          span.btn-fab.gallery__btn-fab
+        .gallery__content.card__content
+          span.gallery__icon
+            span.icon-camera
+          .gallery__details
+            h4.gallery__name Finance
+            .gallery__date Investments &amp; Money
+    .gallery__item.col-12.col-md-2
+      a.gallery__item-inner.card(href='404.html')
+        figure.gallery__thumb
+          img(src='assets/images/real.jpg' alt='')
+          span.btn-fab.gallery__btn-fab
+        .gallery__content.card__content
+          span.gallery__icon
+            span.icon-camera
+          .gallery__details
+            h4.gallery__name Real Estate
+            .gallery__date Living
+    .gallery__item.col-12.col-md-2
+      a.gallery__item-inner.card(href='404.html')
+        figure.gallery__thumb
+          img(src='assets/images/rest.jpg' alt='')
+          span.btn-fab.gallery__btn-fab
+        .gallery__content.card__content
+          span.gallery__icon
+            span.icon-camera
+          .gallery__details
+            h4.gallery__name Restaurants
+            .gallery__date Food &amp; Cuisines
+    .gallery__item.col-12.col-md-2
+      a.gallery__item-inner.card(href='404.html')
+        figure.gallery__thumb
+          img(src='assets/images/office.jpg' alt='')
+          span.btn-fab.gallery__btn-fab
+        .gallery__content.card__content
+          span.gallery__icon
+            span.icon-camera
+          .gallery__details
+            h4.gallery__name Restaurants
+            .gallery__date Food &amp; Cuisines
+    .gallery__item.col-12.col-md-2
+      a.gallery__item-inner.card(href='404.html')
+        figure.gallery__thumb
+          img(src='assets/images/medical.jpg' alt='')
+          span.btn-fab.gallery__btn-fab
+        .gallery__content.card__content
+          span.gallery__icon
+            span.icon-camera
+          .gallery__details
+            h4.gallery__name Restaurants
+            .gallery__date Food &amp; Cuisines
+    .gallery__item.col-12.col-md-2
+      a.gallery__item-inner.card(href='404.html')
+        figure.gallery__thumb
+          img(src='assets/images/finance.jpg' alt='')
+          span.btn-fab.gallery__btn-fab
+        .gallery__content.card__content
+          span.gallery__icon
+            span.icon-camera
+          .gallery__details
+            h4.gallery__name Restaurants
+            .gallery__date Food &amp; Cuisines
+    .gallery__item.col-12.col-md-2
+      // Player Card #
+      .post-grid__item.col-sm-12.team-roster__item
+        .posts__item.posts__item--card.posts__item--quote(style='background-image: url(assets/images/Laikipia.jpg);')
+          .card__content
+            blockquote.blockquote.blockquote--card
+              footer.blockquote__footer
+                cite.blockquote__cite
+                  span.blockquote__author-name Checkout All Categories
+                  a.btn.btn-secondary.btn-sm.btn-icon-right(href='#')
+                    | View More 
+                    i.fa.fa-plus
+      // Player Card # / End

@@ -1,190 +1,224 @@
 doctype html
-html
-  head
-    meta(charset='utf-8')
-    meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
-    title= title
-    meta(name='description', content=description)
-    meta(name='keywords', content=keywords)
-    meta(name='viewport', content='width=device-width, initial-scale=1')
-    meta(name='google-site-verification' content='DpUYbtMZzsHblw-ExaLpPB1mZGeOSG4sCkdRzz0LUhs')
-    meta(name='msvalidate.01' content='4A18298E08EB3621E0BBC327D77F33A3')
-    
-    link(href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800', rel='stylesheet')
-    link(href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900', rel='stylesheet')
-
-    link(rel='apple-touch-icon', href='apple-touch-icon.png')
-    link(rel="icon" type="image/png" sizes="32x32" href="/img/favicon.png")
-    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
-    link(href="/stylesheets/css/style.css" type="text/css" rel="stylesheet" media="all")
-    link(rel='stylesheet', href='/stylesheets/bootstrap-theme.min.css')
-    link(rel='stylesheet', href='/stylesheets/fontAwesome.css')
-    //link(rel='stylesheet', href='/stylesheets/hero-slider.css')
-    link(rel='stylesheet', href='/stylesheets/owl.carousel.min.css')
-    link(rel='stylesheet', href='/stylesheets/owl.theme.default.min.css')
-    link(rel='stylesheet', href='/stylesheets/templatemo-style.css')
-    link(rel='stylesheet', href='/stylesheets/lightbox.css')
-    link(rel='stylesheet', href='/stylesheets/style.css')
-    link(rel='stylesheet', href='/stylesheets/bootstrap-select.min.css')
-    link(rel='stylesheet', href='/stylesheets/easy-autocomplete.min.css')
-    link(rel='stylesheet', href='/stylesheets/easy-autocomplete.themes.min.css')
-    link(rel='stylesheet', href='/stylesheets/jquery-gmaps-latlon-picker.css')
-    link(rel='stylesheet', href='/stylesheets/star-rating.min.css')
-    link(rel='stylesheet', href='/stylesheets/lightgallery.min.css')
-    link(rel='stylesheet', href='/stylesheets/bootstrap-datetimepicker.min.css')
-    link(href='https://fonts.googleapis.com/css?family=Arimo|Montserrat', rel='stylesheet')
-    script(src='/javascripts/vendor/modernizr-2.8.3-respond-1.4.2.min.js')
-    script(src='/javascripts/jquery.min.js')
-    // Global site tag (gtag.js) - Google Analytics
-    block additions
-    
-    script(async='' src='https://www.googletagmanager.com/gtag/js?id=UA-136579356-1')
-    script.
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'UA-136579356-1');
-    // Facebook Pixel Code
-    script.
-      !function(f,b,e,v,n,t,s)
-      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)}(window, document,'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', '560982094388264');
-      fbq('track', 'PageView');
-    noscript
-      img(height='1' width='1' style='display:none' src='https://www.facebook.com/tr?id=560982094388264&ev=PageView&noscript=1')
-    // End Facebook Pixel Code
-  body
-    .container-fluid(style="margin-bottom: -10px; min-height: 100%;")
-      div.container-fluid(style="padding-right:0; padding-left: 0;")
-        nav.navbar.navbar-inverse(style="width: 100%; left: 0; background: rgba(255,255,255,0.9); box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.1); padding-bottom: 1rem;")
-          .navbar-header(style="display:flex !important; flex-direction:row !important; width: 100% !important;")
-            div(style="flex-grow:0.1 !important")
-              a.navbar-brand.text-white(href="/")
-                img.img-fluid(src="/img/findit-red-logo.png" alt="find restaurants, doctors lawyers" style="width:85% !important")
-            div(style="flex-grow:0.1 !important")
-              #showSearch
-                form.form-class(method='get', action='/search')
-                  div.input-group
-                    input.search2.form-control-lg(type="text" placeholder="" ,style="width:100% !important" ,name='search', autofocus)
-            div(style="flex-grow:0.1 !important")
-              a(href="/coupons")
-                button.btn.btn-light.w3ls-btn.coupons-btn.flash-button#coupbtn(type="button" style="font-size: 16px;")
-                  span.fa-style.fa.fa-gift.coupons-text-color
-                  |   View deals
-                
-            div(style="flex-grow:0.5 !important")      
-              #main-nav.collapse.navbar-collapse
-                ul.nav.navbar-nav.navbar-right(style="padding-top:1rem")
-                  //li.dropdown.dropdown-large
-                      a.dropdown-toggle(href="#" data-toggle="dropdown")    
-                        strong
-                        |  Categories
-                        b.caret
-                      ul.dropdown-menu.dropdown-menu-large.row
-                        if categories 
-                          div.row
-                            each category,i in categories
-                              div.col-md-4.col-sm-12.col-xs-12
-                                a.dropdown-item(href="/category/"+category.name)
-                                    strong.findit-blue
-                                      i.fas.fa-1x(aria-hidden='true', class=category.icon) 
-                                      small.findit-blue
-                                        strong   
-                                          =category.name                  
-                  if (loggedin)
-                    li                  
-                      a(href='/dashboard')  
-                        span.findit-blue.fa.fa-user
-                        strong
-                        |  View Profile          
-                  if (loggedin)                
-                    li
-                      a(href='/logout') 
-                        span.findit-blue.fa.fa-sign-out-alt
-                        strong
-                        |  Logout
-                  else
-                    li
-                      a(href='/login')
-                        button.btn.btn-primary.w3ls-btn
-                          strong
-                            | Login
-                    li
-                    a(href="/register")
-                      button.btn.btn-outline-primary.w3ls-btn.findit-blue
-                        strong
-                        |  Sign Up
-
-            // /.navbar-collapse
-          // /.navbar
-        // /.container
-      // /.header
-      .errors.container
-        if errors
-          each error in errors
-            .alert.xxx-error.alert-danger
+head
+  //
+    Basic Page Needs
+    ==================================================
+  title Find it
+  meta(charset='utf-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='description' content='Find business in Kenya, Africa')
+  meta(name='author' content='UXCraft')
+  meta(name='keywords' content='Find business')
+  //
+    Favicons
+    ==================================================
+  link(rel='shortcut icon' href='assets/images/favicon.png')
+  //
+    Mobile Specific Metas
+    ==================================================
+  meta(name='viewport' content='width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0')
+  //
+    Google Web Fonts
+    ==================================================
+  link(href='https://fonts.googleapis.com/css?family=Montserrat:400,700%7CSource+Sans+Pro:400,700' rel='stylesheet')
+  //
+    CSS
+    ==================================================
+  // Vendor CSS
+  link(href='assets/vendor/bootstrap/css/bootstrap.css' rel='stylesheet')
+  link(href='assets/fonts/font-awesome/css/font-awesome.min.css' rel='stylesheet')
+  link(href='assets/fonts/simple-line-icons/css/simple-line-icons.css' rel='stylesheet')
+  link(href='assets/vendor/magnific-popup/dist/magnific-popup.css' rel='stylesheet')
+  link(href='assets/vendor/slick/slick.css' rel='stylesheet')
+  // Template CSS
+  link(href='assets/css/style-soccer.css' rel='stylesheet')
+  // Custom CSS
+  link(href='assets/css/custom.css' rel='stylesheet')
+.site-wrapper.clearfix
+  .site-overlay
+  //
+    Header
+    ==================================================
+  // Header Mobile
+  #header-mobile.header-mobile.clearfix
+    .header-mobile__logo
+      a(href='index.html')
+        img.header-mobile__logo-img(src='assets/images/logo.png' alt='findit logo')
+    .header-mobile__inner
+      a#header-mobile__toggle.burger-menu-icon
+        span.burger-menu-icon__line
+      span#header-mobile__search-icon.header-mobile__search-icon
+  // Header Desktop
+  header.header
+    // Header Primary
+    .header__primary
+      .container
+        .header__primary-inner
+          // Header Logo
+          .header-logo
+            a(href='index.html')
+              img.header-mobile__logo-img(src='assets/images/logo.png' alt='findit logo')
+          // Header Logo / End
+          // Main Navigation
+          nav.main-nav.clearfix
+            // Header Search Form
+            .header-search-form
+              form#mobile-search-form.search-form(action='#')
+                input.form-control.header-mobile__search-control(type='text' value='' placeholder='Enter your search here...')
+                button.header-mobile__search-submit(type='submit')
+                  i.fa.fa-search
+            // Header Search Form / End
+            ul.main-nav__list
+              li
+                a(href='#') Add A business
+              li
+                a(href='#') Categories
+              li
+                a(href='#') Login
+              li
+                a(href='#') Sign Up
+          // Main Navigation / End
+    // Header Primary / End
+  // Header / End
+  //
+    Content
+    ==================================================
+  .site-content
+    .container
+      .row
+        .errors.container
+          if errors
+            each error in errors
+              .alert.xxx-error.alert-danger
+                = error
+          if message
+            .alert.alert-info
+              = message
+          if success_msg.length
+            .alert.xxx-error.alert-success 
+              = success_msg
+          if error_msg.length
+            .alert.xxx-error.alert-danger 
+              = error_msg
+          if error.length
+            .alert.xxx-error.alert-danger 
               = error
-        
-        if message
-          .alert.alert-info
-            = message
-        if success_msg.length
-          .alert.xxx-error.alert-success 
-            = success_msg
-        if error_msg.length
-          .alert.xxx-error.alert-danger 
-            = error_msg
-        if error.length
-          .alert.xxx-error.alert-danger 
-            = error
-      block content
-    div.container-fluid
-      
-      div.row.text-center.footer-style
-        .col-md-4
-          .terms-policy.footer-text
-                ul
-                  li
-                    a.footer-text(href='https://www.instagram.com/finditkenya/?hl=en', target='_blank', class="fa-layers fa-2x")
-                      i.list-social.fa.fa-facebook-f
-                  li
-                    a.footer-text(href='https://twitter.com/findit254?lang=en', target='_blank', class="fa-layers fa-2x")
-                      i.list-social.fa.fa-twitter 
-                  li
-                    a.footer-text(href='https://www.instagram.com/finditkenya/?hl=en', target='_blank', class="fa-layers fa-2x")
-                      i.list-social.fa.fa-instagram
-        .col-md-4
-          .terms-policy.footer-text
-                ul
-                  li
-                    a.footer-text(href='/terms-and-conditions', target='_blank')
-                      |  Terms and Conditions
-                  li
-                    a.footer-text(href='/privacy-policy', target='_blank')
-                      |  Privacy Policy
-        .col-md-4
-          .terms-policy.footer-text
-                ul
-                  li
-                    a.footer-text(href="/coupons", target='_parent')
-                      |  View Deals
-                  li
-                    a.footer-text(href='/business/newpackage', target='_parent')
-                      |  Pricing
-                  li
-                    a.footer-text(href='https://lookfindkenya.wordpress.com/', target='_blank')
-                      |  Blog
-                  
-      .col-md-12.col-sm-12.text-center.footer-style     
-          p
-            | © 2019 Find it Kenya. All rights reserved | FinditKe
-script(src='/javascripts/bootstrap.min.js')
+        block content
+  footer#footer.footer
+  // Footer Widgets
+  .footer-widgets
+    .footer-widgets__inner
+      .container
+        .row
+          .col-sm-6.col-md-3
+            .footer-col-inner
+              // Footer Logo
+              .footer-logo.footer-logo--has-txt
+                a(href='index.html')
+                  .footer-logo__heading
+                    h5.footer-logo__txt About Us
+                    h6.footer-logo__txt Who We are
+              // Footer Logo / End
+              // Widget: Contact Info
+              .widget.widget--footer.widget-contact-info
+                .widget__content
+                  .widget-contact-info__desc
+                    p
+                      | List your business on Find It today!
+                      | Reach new Customers at the most affordable
+                      | packages, Show case your products and publish
+                      | special offers.
+                      | Get Started by Listing your business
+              // Widget: Contact Info / End
+          .col-sm-6.col-md-3
+            .footer-col-inner
+              // Footer Logo
+              .footer-logo.footer-logo--has-txt
+                a(href='index.html')
+                  .footer-logo__heading
+                    h6.footer-logo__txt Find Everything
+              // Footer Logo / End
+              // Widget: Contact Info
+              .widget.widget--footer.widget-contact-info
+                .widget__content
+                  .widget-contact-info__desc
+                    p
+                      | List your business on Find It today!
+                      | Reach new Customers at the most affordable
+                      | packages, Show case your products and publish
+                      | special offers.
+                      | Get Started by Listing your business
+              // Widget: Contact Info / End
+          .col-sm-6.col-md-3
+            .footer-col-inner
+              // Footer Logo
+              .footer-logo.footer-logo--has-txt
+                a(href='index.html')
+                  .footer-logo__heading
+                    h6.footer-logo__txt Do You Own A Business?
+              // Footer Logo / End
+              // Widget: Contact Info
+              .widget.widget--footer.widget-contact-info
+                .widget__content
+                  .widget-contact-info__desc
+                    p
+                      | From Manufacturers to Retailers,
+                      | Doctors or Dentists, Legal
+                      | Advisors or Consultants or
+                      | maybe hotels and Restaurants.
+                      | We have it all.
+              // Widget: Contact Info / End
+        .row
+          .info-block__item.info-block__item--nopadding
+            ul.social-links
+              li.social-links__item
+                a.social-links__link(href='#')
+                  i.fa.fa-facebook
+                  |  Facebook
+              li.social-links__item
+                a.social-links__link(href='#')
+                  i.fa.fa-twitter
+                  |  Twitter
+              li.social-links__item
+                a.social-links__link(href='#')
+                  i.fa.fa-google-plus
+                  |  Google+
+  // Footer Widgets / End
+  // Footer Secondary
+  .footer-secondary
+    .container
+      .footer-secondary__inner
+        .row
+          .col-md-4
+            .footer-copyright
+              a(href='_soccer_index.html') find it
+              |  2019 &nbsp; | &nbsp; All Rights Reserved
+          .col-md-8
+            ul.footer-nav.footer-nav--right.footer-nav--condensed.footer-nav--sm
+              li.footer-nav__item
+                a(href='_soccer_index.html') Home
+              li.footer-nav__item
+                a(href='_soccer_features-shortcodes.html') About
+              li.footer-nav__item
+                a(href='_soccer_team-standings.html') Contacts
+    // Footer Secondary / End
+  // Footer / End
+//
+  Javascript Files
+  ==================================================
+// Core JS
+script(src='assets/vendor/jquery/jquery.min.js')
+script(src='assets/vendor/bootstrap/js/bootstrap.bundle.js')
+script(src='assets/js/core.js')
+// Vendor JS
+script(src='assets/vendor/twitter/jquery.twitter.js')
+// Template JS
+script(src='assets/js/init.js')
+script(src='assets/js/custom.js')
+
+
+//PREVIOUS JAVASCRIPTS
+//script(src='/javascripts/bootstrap.min.js')
 script(src='/javascripts/plugins.js')
 script(src="/javascripts/owl.carousel.min.js")
 script(src='/javascripts/main.js')

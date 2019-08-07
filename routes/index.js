@@ -2704,14 +2704,17 @@ router.post('/resetpassword/:id', function (req, res) {
   } else {
     User.findById(req.params.id)
       .then(function (d) {
+        console.log(d)
         var salt = bcrypt.genSaltSync(10);
         var hash = bcrypt.hashSync(req.body.password, salt);
         d.password = hash;
-        d.save(function (err) {
+        d.save(function (err, success) {
           if (err) {
             req.flash('error', 'Some Error Occured, Kindly try again');
             res.redirect(ssn.returnUrl);
           } else {
+            console.log(req.body.password);
+            console.log(hash);
             req.flash('success_msg', 'Password Changed Successfully');
             res.redirect('/login');
           }

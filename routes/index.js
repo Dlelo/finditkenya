@@ -2110,7 +2110,7 @@ router.get('/', function (req, res, next) {
   var keywords = "Findit,findit,Businesses,restaurants,Nairobi,Kenya,dentists,doctors,hotels,deals,special offers,lawyers,hospitals,salon,spa,pizza,movies,ice cream,shopping mall,bakeries";
   var title = 'Find the best businesses & services in Kenya, restaurants, lawyers, doctors, salons, findit';
   Promise.all([categories, toprestaurants, topsearches, coupons, reviews]).then(values => {
-    //console.log(values[4]);
+    console.log(values[0]);
     res.render('index', {
       title: title,
       categories: values[0],

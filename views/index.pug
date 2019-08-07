@@ -92,62 +92,18 @@ block content
       li.meta__item.meta__item--comments
         a(href='#') 18
   .gallery.row
-    .gallery__item.col-12.col-md-2
-      a.gallery__item-inner.card(href='404.html')
-        figure.gallery__thumb
-          img(src='assets/images/dest1.jpg' alt='')
-          span.btn-fab.gallery__btn-fab
-        .gallery__content.card__content
-          span.gallery__icon
-            span.icon-location-pin
-          .gallery__details
-            h4.gallery__name Peninsula Beach Resort
-            .gallery__date Mauritius
-    .gallery__item.col-12.col-md-2
-      a.gallery__item-inner.card(href='404.html')
-        figure.gallery__thumb
-          img(src='assets/images/rest.jpg' alt='')
-          span.btn-fab.gallery__btn-fab
-        .gallery__content.card__content
-          span.gallery__icon
-            span.icon-location-pin
-          .gallery__details
-            h4.gallery__name
-              | Anelia Resort &amp; Spa Mauritius 4
-            .gallery__date Mauritius
-    .gallery__item.col-12.col-md-2
-      a.gallery__item-inner.card(href='404.html')
-        figure.gallery__thumb
-          img(src='assets/images/office.jpg' alt='')
-          span.btn-fab.gallery__btn-fab
-        .gallery__content.card__content
-          span.gallery__icon
-            span.icon-location-pin
-          .gallery__details
-            h4.gallery__name Outrigger Mauritius Beach Resort 5
-            .gallery__date Mauritius
-    .gallery__item.col-12.col-md-2
-      a.gallery__item-inner.card(href='404.html')
-        figure.gallery__thumb
-          img(src='assets/images/dest2.jpg' alt='')
-          span.btn-fab.gallery__btn-fab
-        .gallery__content.card__content
-          span.gallery__icon
-            span.icon-location-pin
-          .gallery__details
-            h4.gallery__name Ravenala Attitude Resort 
-            .gallery__date Mauritius
-    .gallery__item.col-12.col-md-2
-      a.gallery__item-inner.card(href='404.html')
-        figure.gallery__thumb
-          img(src='assets/images/dest3.jpg' alt='')
-          span.btn-fab.gallery__btn-fab
-        .gallery__content.card__content
-          span.gallery__icon
-            span.icon-location-pin
-          .gallery__details
-            h4.gallery__name Egypt Israel tour
-            .gallery__date Mauritius
+    each coupon incoupons
+      .gallery__item.col-12.col-md-2
+        a.gallery__item-inner.card(href='/coupons')
+          figure.gallery__thumb
+            img(src='/uploads/thumbs/coupons/'+coupon.photo alt='')
+            span.btn-fab.gallery__btn-fab
+          .gallery__content.card__content
+            span.gallery__icon
+              span.icon-location-pin
+            .gallery__details
+              h4.gallery__name #{coupon.name}
+              .gallery__date #{coupon.bizid.name}
     .gallery__item.col-12.col-md-2
       // Player Card #
       .post-grid__item.col-sm-12.team-roster__item
@@ -174,127 +130,19 @@ block content
       li.meta__item.meta__item--comments
         a(href='#') 18
   .gallery.gala2.row
-    .gallery__item.col-12.col-md-2
-      a.gallery__item-inner.card(href='404.html')
-        figure.gallery__thumb
-          img(src='assets/images/dest1.jpg' alt='')
-          span.btn-fab.gallery__btn-fab
-        .gallery__content.card__content
-          span.gallery__icon
-            span.icon-camera
-          .gallery__details
-            h4.gallery__name Travel
-            .gallery__date Getaway wonderlust
-    .gallery__item.col-12.col-md-2
-      a.gallery__item-inner.card(href='404.html')
-        figure.gallery__thumb
-          img(src='assets/images/hosp.jpg' alt='')
-          span.btn-fab.gallery__btn-fab
-        .gallery__content.card__content
-          span.gallery__icon
-            span.icon-camera
-          .gallery__details
-            h4.gallery__name Hospitality
-            .gallery__date Leisure &amp; Unwind
-    .gallery__item.col-12.col-md-2
-      a.gallery__item-inner.card(href='404.html')
-        figure.gallery__thumb
-          img(src='assets/images/rest.jpg' alt='')
-          span.btn-fab.gallery__btn-fab
-        .gallery__content.card__content
-          span.gallery__icon
-            span.icon-camera
-          .gallery__details
-            h4.gallery__name Restaurants
-            .gallery__date Food &amp; Cuisines
-    .gallery__item.col-12.col-md-2
-      a.gallery__item-inner.card(href='404.html')
-        figure.gallery__thumb
-          img(src='assets/images/office.jpg' alt='')
-          span.btn-fab.gallery__btn-fab
-        .gallery__content.card__content
-          span.gallery__icon
-            span.icon-camera
-          .gallery__details
-            h4.gallery__name Office
-            .gallery__date Work &amp; Spaces
-    .gallery__item.col-12.col-md-2
-      a.gallery__item-inner.card(href='404.html')
-        figure.gallery__thumb
-          img(src='assets/images/medical.jpg' alt='')
-          span.btn-fab.gallery__btn-fab
-        .gallery__content.card__content
-          span.gallery__icon
-            span.icon-camera
-          .gallery__details
-            h4.gallery__name Medical
-            .gallery__date Health &amp; Well being
-    .gallery__item.col-12.col-md-2
-      a.gallery__item-inner.card(href='404.html')
-        figure.gallery__thumb
-          img(src='assets/images/finance.jpg' alt='')
-          span.btn-fab.gallery__btn-fab
-        .gallery__content.card__content
-          span.gallery__icon
-            span.icon-camera
-          .gallery__details
-            h4.gallery__name Finance
-            .gallery__date Investments &amp; Money
-    .gallery__item.col-12.col-md-2
-      a.gallery__item-inner.card(href='404.html')
-        figure.gallery__thumb
-          img(src='assets/images/real.jpg' alt='')
-          span.btn-fab.gallery__btn-fab
-        .gallery__content.card__content
-          span.gallery__icon
-            span.icon-camera
-          .gallery__details
-            h4.gallery__name Real Estate
-            .gallery__date Living
-    .gallery__item.col-12.col-md-2
-      a.gallery__item-inner.card(href='404.html')
-        figure.gallery__thumb
-          img(src='assets/images/rest.jpg' alt='')
-          span.btn-fab.gallery__btn-fab
-        .gallery__content.card__content
-          span.gallery__icon
-            span.icon-camera
-          .gallery__details
-            h4.gallery__name Restaurants
-            .gallery__date Food &amp; Cuisines
-    .gallery__item.col-12.col-md-2
-      a.gallery__item-inner.card(href='404.html')
-        figure.gallery__thumb
-          img(src='assets/images/office.jpg' alt='')
-          span.btn-fab.gallery__btn-fab
-        .gallery__content.card__content
-          span.gallery__icon
-            span.icon-camera
-          .gallery__details
-            h4.gallery__name Restaurants
-            .gallery__date Food &amp; Cuisines
-    .gallery__item.col-12.col-md-2
-      a.gallery__item-inner.card(href='404.html')
-        figure.gallery__thumb
-          img(src='assets/images/medical.jpg' alt='')
-          span.btn-fab.gallery__btn-fab
-        .gallery__content.card__content
-          span.gallery__icon
-            span.icon-camera
-          .gallery__details
-            h4.gallery__name Restaurants
-            .gallery__date Food &amp; Cuisines
-    .gallery__item.col-12.col-md-2
-      a.gallery__item-inner.card(href='404.html')
-        figure.gallery__thumb
-          img(src='assets/images/finance.jpg' alt='')
-          span.btn-fab.gallery__btn-fab
-        .gallery__content.card__content
-          span.gallery__icon
-            span.icon-camera
-          .gallery__details
-            h4.gallery__name Restaurants
-            .gallery__date Food &amp; Cuisines
+    each category in categories
+      .gallery__item.col-12.col-md-2
+        a.gallery__item-inner.card(href="/category/"+category.name)
+          figure.gallery__thumb
+            img(src="/uploads/thumbs/categories/"+category.photo, alt=category.name +' on FindIt Kenya')
+            span.btn-fab.gallery__btn-fab
+          .gallery__content.card__content
+            span.gallery__icon
+              span.icon-camera
+            .gallery__details
+              h4.gallery__name #{category.name}
+              .gallery__date Getaway wonderlust
+    
     .gallery__item.col-12.col-md-2
       // Player Card #
       .post-grid__item.col-sm-12.team-roster__item

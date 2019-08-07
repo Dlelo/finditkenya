@@ -1,662 +1,552 @@
-extends layout-new
-
-block content
- //div.container-fluid.container-padding(style="padding-top:3.8rem")
- div.container-fluid(style="padding-top: 20px;")
-  div#home.banner(style="object-fit: cover;")
-    div.row.justify-content-end.my-row    
-      div.col-md-5.col-sm-12.col-xm-12.my-col.text-right
-        div.banner-text-top
-          //nav.navbar.navbar-expand-sm.addbusiness.nav-bar-addbusiness.navbar-nav.ml-lg-auto.text-center
-            ul.navbar-nav
-              li.nav-item
-                a.nav-link(href='/business/newpackage')
-                  span.fas.fa-database.user-fav
-                  strong
-                    |  Add Business
-              //li.nav-item
-                a.nav-link(href='/add-agent')
-                  span.fas.fa-user-tie.user-fav
-                  strong
-                    |  Apply as an Agent
-                                                       
-        a.link(href="")
-          .banner-visit-page
-            button.input-group-addon#basic-addon1.finditbutton.input-group-addon.text-center
-              | Visit Page
-    div.row.my-row.justify-content-start
-      div.col-md-8.col-sm-8.col-xm-8.my-col
-        div.banner-text#hideSearch
-          form(method='get', action='/updatesearch')
-            div.input-group
-              select.input-group-addon.finditbutton(name="type")
-                option(value="business")
-                  | Business
-                option(value="product")
-                  | Product
-              input#search2.form-control.form-control-lg(type="text" placeholder="Restaurants, Holidays, Businesses, Lawyers, Doctors..." ,name='search', autofocus)
-              button.finditbutton.input-group-addon(type="submit",value="") Find
-
-                        //- form(method='get', action='/productsearch')
-          //-   div.input-group
-          //-     span.input-group-addon#basic-addon1.finditbutton.input-group-addon.text-center
-          //-       h5
-          //-       |  Find Product
-          //-     input.search3.form-control.form-control-lg(type="text" placeholder=" Clothes, Furniture, Jewellery ...." ,name='search', autofocus)
-          //.nav.listhome-nav
-            each category,i in categories
-              ul
-                if i <4
-                  a(href="/category/"+category.name)
-                    li.listItems-home
-                      i.fas.fa-1x(aria-hidden='true', class=category.icon)
-                      strong   
-                        =category.name 
-
-  //search by category
-  //center
-  //section.wthree-row.py-sm-5.py-3.w3-about
- div.container-fluid.container-padding
-    
-    //main categories and coupon row
-    div.row.my-row.justify-content-center
-      //categories
-      div.col-md-8.col-lg-8.col-sm-12.col-sm-12.my-col
-        h2.agile-title.h-order-category.text-center.findit-red
-          | Top deals
-        div.row.mt-sm-8.text-center
-          ins.adsbygoogle(style='display:block', data-ad-client='ca-pub-9965055906014205', data-ad-slot='7358207938', data-ad-format='auto')
-          script.
-            window.onload = function() {  (adsbygoogle = window.adsbygoogle || []).push({});}
-        div.row.mt-sm-8.text-center
-          each coupon,i in coupons
-            if(i < 4)
-              div.col-lg-3.col-md-3.col-sm-12.col-xm-12.w3-ab.my-md-0.my-sm-12.coup-container
-                .image-flip(ontouchstart="this.classList.toggle('hover');")
-                  a(href='/coupons')  
-                    .mainflip
-                      .frontside
-                        .card(style="border:none !important")
-                          .card-body.text-left(style="padding:0 !important")
-                            if(coupon)
-                              p
-                                img.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt='FindIt Kenya')
-                                //-img.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name+ ' on FindIt Kenya')
-                            br
-                            h6.card-title(style="text-transform: capitalize; margin-bottom: 0; ") #{coupon.name}
-                            //-h6.card-title(style="text-transform: capitalize; margin-bottom: 0; color:#000!important;")
-                                small
-                                  strong
-                                  | !{'@  ' + coupon.bizid.name}
-        #hideMobileView
-          div.row.mt-sm-8.text-center
-            each coupon,i in coupons
-              if(i > 3 && i < 8)
-                div.col-lg-3.col-md-3.col-sm-12.col-xm-12.w3-ab.my-md-0.my-sm-12.coup-container
-                  .image-flip(ontouchstart="this.classList.toggle('hover');")
-                    a(href='/coupons')  
-                      .mainflip
-                        .frontside
-                          .card(style="border:none !important")
-                            .card-body.text-left(style="padding:0 !important")
-                              if(coupon)  
-                                p
-                                  //- img.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name+ ' on FindIt Kenya')
-                                  img.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt='FindIt Kenya')
-                              br
-                              h6.card-title(style="text-transform: capitalize; margin-bottom: 0; ") #{coupon.name}
-                              h6.card-title(style="text-transform: capitalize; margin-bottom: 0; color:#000!important;")
-                                //-small
-                                    strong
-                                    | !{'@  ' + coupon.bizid.name}
-                            
-                   
-        row
-          div.col-lg-12.col-md-12.col-sm-12.col-xm-12.w3-ab.my-md-0.my-sm-12.coup-container.text-center( onclick="toggle_visibility('expandcoupons');")
-            a(href="/coupons")
-              span.findit-blue
-                span
-                  | See More Deals
-        br
-
-        
-        
-        //div.col-lg-3.col-md-3.col-sm-12.col-xm-12.w3-ab.my-md-0.my-sm-12.coup-container( onclick="toggle_visibility('expandcoupons');")
-          a(href="#expandcoupons")
-            div.w3-aicon.py-md-3
-              span.findit-blue(style='padding-top:2rem')
-                span.Show
-                  | See more Coupons
-                span.Hide
-                  | Hide more Coupons
-                //img.img-fluid.category-img-wrapper(src="/img/more_categories.png", alt="Find It Kenya - Find Anything and Everything", data-wow-delay="0.6s")  
-        //- div.row.mt-sm-8.text-center.scrollpane#expandcoupons(style="display:none; padding-top:4rem;")
-          div.col-lg-12.col-md-12.col-sm-12.col-xm-12.w3-ab.my-md-0.my-sm-12.text-center
-              span.h4.coupon-title-start
-                | More Free Coupons & Deals 
-              span.h6
-                |  ...  
-          each coupon,i in coupons
-            div.col-lg-3.col-md-3.col-sm-12.col-xm-12.w3-ab.my-md-0.my-sm-12.coup-container#result
-              div.w3-aicon.py-md-3
-                h6.my-3
-                  span.findit-blue
-                    =coupon.name
-                if(coupon)
-                  img.img-fluid.category-img-wrapper(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name+ ' on FindIt Kenya')
-                  
-              div.p-md-3.py-4.overlay
-                div.coup-text
-                  h6.text-uppercase
-                    =coupon.tagline
-                  p.coupp
-                    
-                    =coupon.description
-                  if(coupon)
-                    p
-                      strong
-                        | !{'@  ' + coupon.bizid.name}
-                  
-                  p 
-                    a(href="/coupons" style="color:#fff;")   
-                      h6
-                        span 
-                          i.fas.fa-gift
-                        .text-uppercase Claim Now!!!
-          //div.col-lg-3.col-md-3.w3-ab.my-md-0.my-sm-8( onclick="toggle_visibility('expandcategories');")
-            a(href="#expandcategories")
-                div.w3-aicon.py-lg-5.py-md-3
-                  button.btn.btn-light(type="button")
-                    span.findit-blue
-                      | See more Coupons
-                  img.img-fluid.category-img-wrapper(src="/img/more_categories.png", alt="Find It Kenya - Find Anything and Everything", data-wow-delay="0.6s")                            
-        div(style="border-top: 1px solid #eee")
-          h2.agile-title.h-order-category.text-center
-            | Find Businesses by category
-          div.row.mt-sm-8.text-center
-            ins.adsbygoogle(style='display:block', data-ad-client='ca-pub-9965055906014205', data-ad-slot='7358207938', data-ad-format='auto')
-            script.
-              window.onload = function() {  (adsbygoogle = window.adsbygoogle || []).push({});}
-          div.row.mt-sm-8.text-center  
-            each category,i in categories
-              if(i < 4)
-                div.col-lg-3.col-md-3.col-sm-12.col-xm-12.w3-ab.my-md-0.my-sm-12
-                  a.bizlink(href="/category/"+category.name)
-                    div.w3-aicon.py-lg-5.py-md-3
-                        img.img-fluid.category-img-wrapper(src="/uploads/thumbs/categories/"+category.photo, alt=category.name +' on FindIt Kenya', data-wow-delay="0.6s")
-                        h6.my-3
-                        =category.name
-          div.row.mt-sm-8.text-center
-            each category,i in categories
-              if(i > 3 && i < 7)
-                div.col-lg-3.col-md-3.col-sm-12.col-xm-12.w3-ab.my-md-0.my-sm-12
-                  a.bizlink(href="/category/"+category.name)
-                    div.w3-aicon.py-lg-5.py-md-3
-                        img.img-fluid.category-img-wrapper(src="/uploads/thumbs/categories/"+category.photo, alt=category.name + ' on FindIt Kenya',data-wow-delay="0.6s")
-                        h6.my-3
-                          =category.name
-            div.col-lg-3.col-md-3.w3-ab.my-md-0.my-sm-8( onclick="toggle_visibility('expandcategories');")
-              a(href="#expandcategories")
-                  div.w3-aicon.py-lg-5.py-md-3
-                    button.btn.btn-light(type="button")
-                      span.findit-blue
-                        span(onclick="lessCatFunction()")
-                          span#moreTextCategory
-                            | More Categories
-                    img.img-fluid.category-img-wrapper(src="/img/more_categories.png", alt="Find It Kenya - Find Anything and Everything", data-wow-delay="0.6s")                            
-                      
-        div.row#expandcategories( style="display:none; padding-top:5rem; border-top: 1px solid #eee")
-          each category,i in categories
-            div.col-md-4.col-sm-12.col-xs-12.morecat  
-              a.bizlink(href="/category/"+category.name)
-                strong
-                  i.fas.fa-1x(aria-hidden='true', class=category.icon, class=category.slug ) 
-                  small.site-text-color.small-cart
-                    strong   
-                      =category.name
-              hr.hr-cat(class=category.slug)
-              .div.row
-                ul
-                  each subcat, i in category.subcategories
-                    if(i<5)
-                      li
-                        small.small-cart
-                          i(class="fas fa-check-circle" aria-hidden="true" class=category.slug style="margin-right:2px; font-size: 12px;")
-                          a.bizlink.sub-cat-color(href="/subcategory/sub/"+subcat.name)
-                            =subcat.name
-                  div
-                    a.bizlink(href="/category/"+category.name)
-                      strong
-                        | See more 
-       
-        
-      div.col-lg-4.col-md-4.col-sm-6.col-xs-6.text-center
-        div
-          h2.agile-title.h-order-category.text-center.findit-red
-            | Latest reviews
-            // Categories
-        div
-          each review, i in reviews
-           if i<4
-            div.col-lg-12.col-md-12.col-sm-12.col-xs-12.latest-review-main.latest-review-container
-              a(href="/biz/"+review.bizid.slug)  
-                div.col-lg-12.col-md-12.col-sm-12.col-xs-12.text-left
-                  strong
-                    span.text-left(style="color:#000") #{review.user_id.names}
-                    span
-                      | , 
-                    br 
-                    | Says
-                  br
-                div.col-lg-12.col-md-12.col-sm-12.col-xs-12
-                  if review.bizid.photo
-                    img.img-fluid(src="/uploads/thumbs/cover"+ review.bizid.photo, height="150px" alt=review.bizid.name+ ' on FindIt Kenya' style="width:150px")
-                  else 
-                    img.cat-items-bottom(src="/img/noimageavailable.jpg", alt=review.bizid.name+ ' on FindIt Kenya' style="width:150px") 
-                div.col-lg-12.col-md-12.col-sm-12.col-xs-12.text-left  
-                  if(review)
-                    h6
-                      strong
-                        =review.bizid.name
-                  //small.text-center.content-col
-                    |  #{review.length} Reviews
-                div.col-lg-12.col-md-12.col-sm-12.col-xs-12.text-left 
-
-                  p 
-                    if reviews
-                      if( reviews.length == 1) 
-                        .col-md-6(class="rating medium star-icon value-"+review.star+" label-hidden")
-                          .star-container
-                            .star
-                              i.star-empty
-                              i.star-half
-                              i.star-filled
-                            .star
-                              i.star-empty
-                              i.star-half
-                              i.star-filled
-                            .star
-                              i.star-empty
-                              i.star-half
-                              i.star-filled
-                            .star
-                              i.star-empty
-                              i.star-half
-                              i.star-filled
-                            .star
-                              i.star-empty
-                              i.star-half
-                              i.star-filled
-                        
-                      else if( reviews.length > 1)
-                        span
-                          div(class="rating medium star-icon value-"+review.star+" label-hidden")
-                            .star-container
-                              .star
-                                i.star-empty
-                                i.star-half
-                                i.star-filled
-                              .star
-                                i.star-empty
-                                i.star-half
-                                i.star-filled
-                              .star
-                                i.star-empty
-                                i.star-half
-                                i.star-filled
-                              .star
-                                i.star-empty
-                                i.star-half
-                                i.star-filled
-                              .star
-                                i.star-empty
-                                i.star-half
-                                i.star-filled
-                div.col-lg-12.col-md-12.col-sm-12.col-xs-12.text-left 
-                  i.the-review.content-col.content-col
-                    if review.message.length > 100
-                      | !{review.message.substr(0, 100)+ '..... <strong id="showmore" style="color:#c00000;">Continue Reading</strong>'}
-                    else
-                      | !{review.message}
-                  
-                div.col-lg-12.col-md-12.col-sm-12.col-xs-12.text-left 
-                  .small
-                    p !{review.created_at}
-            br        
-        //div.text-center  
-          a.bizlink(href="#expandcategories") 
-            row.deal-main.column.text-center( onclick="toggle_visibility('expandcategories');")
-              .div.col-md-12.col-sm-12.col-xs-12
-                .div.w3-aicon.py-lg-12.py-md-12
-                  h6.my-3
-                    span.findit-blue.text-center
-                      span.Showcat More Categories
-                      span.Hidecat Few Categories
-                img.img-fluid(src="/img/more_categories.png", alt="Find It Kenya - Find Anything and Everything", data-wow-delay="0.6s")                                           
-                    
- //about
- div.container-fluid
-    #about
-      section.aboutsection
-        div.banner-des
-          .titl
-            | About Us
-          div.details
-            div.about-content
-              div.row 
-                .col-md-6
-                  h3.agile-title
-                    | Who we are
-                  div
-                    | Findit.ke is Kenya’s first online directory to showcase your products. With access to thousands of businesses already signed up we are able to provide updated business information to our users.
-                    br
-                    | From Manufacturers to Retailers, Doctors or Dentists, Legal Advisors or Consultants, hotels and Restaurants.   
-                    br
-                    | We have it all.
-                  
-                .col-md-6.own-biz
-                  h3.agile-title
-                    | Do you Own a Business?
-                  div
-                    | List your business on Find It today!
-                    br
-                    | Reach new Customers at the most affordable packages, 
-                    br
-                    | Show case your products and publish special offers. 
-                  div
-                    a(href='/business/newpackage')
-                      | Get Started by Listing your business
-                      span
-                        i(class="arrow right")
-      section
-        div.row 
-          .col-md-4(style="padding: 1rem 3rem 1rem 3rem;")
-              .card-body
-                h4.card-title.agile-title.about-header-category
-                  | View Deals
-                .card-text
-                  | Save money, We have over 100’s of offers for you
-                  p
-                    a(href="/coupons")
-                      | View Available deals
-                      span| 
-                        i(class="arrow right") 
-                
-          
-          .col-md-4(style="padding: 1rem 3rem 1rem 3rem;")
-              .card-body
-                h4.card-title.agile-title.about-header-category
-                  | Find Everything
-                .card-text
-                  | From Manufacturers to Retailers, Doctors or Dentists, Legal Advisors or Consultants or maybe hotels and Restaurants. We have it all.
-                  p
-                    a(href="#hideSearch")
-                      | Get Started
-                      span| 
-                        i(class="arrow right") 
-          .col-md-4(style="padding: 1rem 3rem 1rem 3rem;")
-              .card-body
-                h4.card-title.agile-title.about-header-category
-                  | Shop Products
-                .card-text
-                  | Coming Soon...
-    script(type="text/javascript").
-        var pos = {
-          lat: '',
-          lng: ''
-        };
-
-      navigator.geolocation.getCurrentPosition(function(position) {
-          pos.lat = position.coords.latitude;
-          pos.lng = position.coords.longitude;
-      
-        $(".bizlink").each(function () {
-          let url =$(this).attr("href")
-          let newUrl = url+'?lon='+pos.lng+'&lat='+pos.lat;
-          $(this).attr("href", newUrl);
-        });
-      });
-      function toggle_visibility(id) {
-        var e = document.getElementById(id);
-        e.style.display = ((e.style.display!='none') ? 'none' : '');
-      }
-      $(function() {
-        var options = {
-          url: function(phrase) {
-            return '/newsearch?search='+$('#search2').val()+'&lat='+pos.lat+'&lon='+pos.lng
-          },
-          getValue: function(element) {
-            return element.name;
-          },
-          list: {
-            onClickEvent: function() {
-              const item = $('#search2').getSelectedItemData().slug
-              const product = $('.search3').getSelectedItemData().slug
-
-              navigator.geolocation.getCurrentPosition(function(position) {
-                var pos = {
-                  lat: position.coords.latitude,
-                  lng: position.coords.longitude
-                };
-                self.location = "/biz/"+item+"/?lat="+pos.lat+"&lon="+pos.lng;
-              });
-            } 
-          },
-          ajaxSettings: {
-            method: "GET"
-          }
-        };
-        var timer;      
-        $("#search2").easyAutocomplete(options);
-        $("#search2" ).focus();
-        $(".search3").easyAutocomplete(options);
-        $(".search3" ).focus();
-      });
-
-    script(type="text/javascript").
-      
-      $(function() {        
-        //Add Random Generator//
-        //setInterval(swapImages(),4000);
-        setInterval(function() {
-          var images = [
-          ['vitafoam4.jpg','/biz/Vitafoam-Products-Limited'],
-          ['best-banner.jpg','/category/Restaurants'],
-          ['doctor.jpg','/category/Medical'],
-          ['office.jpg','/category/Office'], 
-          ['find.jpeg','/category/Travel'],
-          ['furnitures.jpg','/biz/Furniture-palace-international-kenya-ltd'],
-          ['velvex-chan.png','/biz/Chandaria-Industries-Ltd'],
-          ['ibis.jpg','/biz/Ibis-Styles-Hotel-Nairobi'], 
-          ['sajceramic.jpg','/biz/Saj-Ceramics-Ltd' ],
-          ['sajceramics01.jpg','/biz/Saj-Ceramics-Ltd'],
-          ['seramic02.jpg','/biz/Saj-Ceramics-Ltd'],
-          ['newmatic1.jpg', '/biz/Newmatic-Africa'], 
-          ['newmatic2.jpg', '/biz/Newmatic-Africa'], 
-          ['newmatic3.jpg', '/biz/Newmatic-Africa']];
-
-          var randomimagegenerator = images[Math.floor(Math.random() * images.length)] 
-          $('.banner').css({'background-image': 'url(banner-img/' + randomimagegenerator[0] +')'}).animate({ opacity: 0.8 }, { duration: 3000 });
-          //$('.banner').animate({ opacity: 1 }, { duration: 1000 });
-          //$('.banner').fadeTo(3000, 1);
-          //var idHome = document.getElementById("home");
-          //var aTag = document.createElement('a');
-          var aTagWithLink = $('.link').attr('href',randomimagegenerator[1]);
-          console.log(aTagWithLink);       
-          //document.body.insertBefore(aTagWithLink, idHome);      
-          console.log(randomimagegenerator[1]);
-        }, 7000);        
-        
-      });
-    //animation
-  
-    //function  to load more coupons on page scroll
-    script(type='text/javascript').
-      function loadResults() {
-        var coupons = "";
-        let result = null;
-        for (var i = 0; i < 10; i++) {
-            result += "<li>Result " + i + "</li>";
-        }
-        $.ajax({
-            url:"/api/mycoupons/",
-            type: "post",
-            data: {
-                html: result,
-                delay: 3
-            },
-            beforeSend: function(xhr) {
-                $("#results").after($("<li class='loading'>Loading...</li>").fadeIn('slow')).data("loading", true);
-            },
-            success: function(data) {
-                var $results = $("#results");
-                $(".loading").fadeOut('fast', function() {
-                    $(this).remove();
-                });
-                var $data = $(data);
-                $data.hide();
-                $results.append($data);
-                $data.fadeIn();
-                $results.removeData("loading");
-            }
-        });
-      };
-
-      $(function() {
-          loadResults();
-
-          $(".scrollpane").scroll(function() {
-              var $this = $(this);
-              var $results = $("#results");
-
-              if (!$results.data("loading")) {
-
-                  if ($this.scrollTop() + $this.height() == $results.height()) {
-                      loadResults();
-                  }
-              }
-          });
-      });
-  
- //Script for selecting coupons       
- //-script(type='text/javascript').
-    //(function($) {
-    $(function(){
-          //script for sticky coupons on scroll
-      $("#coupons-sticky").stick_in_parent();
-      $(".clipped").hide();
-      var cartCount = #{mycoupons.length};
-      $(document).on('click', '.couponadd', function(event) {
-        //alert("clicked");
-        var couponid = $(this).attr("id");
-        $(this).addClass('couponclicked');
-        $(this).removeClass('couponadd');
-        $(this).find('.clipped').show();
-        $(this).find('.fa-status').html('<i class="fa fa-window-close fa-2x" aria-hidden="true" style="display:block;text-align:right"></i>');
-        $.ajax({
-            type: "GET",
-            url: "/getcoupon/user/"+couponid,
-            success: function(data){
-                if(#{loggedin} == false){
-                  //alert("not logged in");
-                  window.location.href = "/login";
-                  throw new Error("kindly login!");
-                }
-                Notify.toast(data.msg, {
-                  fn: function () {
-                    // custom function here
-                  }
-                });
-                if(data.msg == 'Coupon Obtained'){
-                  cartCount = cartCount + 1;
-                  if(cartCount >= 0){
-                    $('#couponscount').text(cartCount);
-                  }
-                }
-                $.ajax({
-                    type: "GET",
-                    url: "/api/mycoupons/",
-                    success: function(data){
-                      var carray = data.mycoupons; 
-                      $('.mycoupons').html('');
-                      carray.forEach(function(el) {
-                        $('.mycoupons').append(
-                          '<div class="coupon coupon-modal"><strong>'+el.name+'</strong>\
-                          <i id=#{user.id} class="fa fa-close fa-fw text-right  del-coupon" rel='+el._id+' aria-hidden="true"></i></div>'
-                        );
-                      }); 
-                      $('.mycoupons').append( '<br><strong><span class="coup-msg">Click "Mail All" then, check your email to get coupon codes<span></strong>');             
-                      console.log(data.code);
-                    }
-                });
-            }
-        });                    
-      });
-      $(document).on('click', ".couponclicked", function(event) {
-        $(this).removeClass('couponclicked');
-        $(this).addClass('couponadd');
-        $(this).find('.clipped').hide();
-        var userid = $(this).attr("rel");
-        $.ajax({
-            type: "GET",
-            url: "/removecoupon/"+ userid,
-            success: function(data){
-                Notify.toast(data.msg, {
-                  fn: function () {
-                    // custom function here
-                  }
-                });
-                if(data.msg == 'Coupon Removed'){
-                  cartCount = cartCount - 1;
-                  if(cartCount >= 0){
-                    $('#couponscount').text(cartCount);
-                  }
-                }
-                $.ajax({
-                    type: "GET",
-                    url: "/api/mycoupons/",
-                    success: function(data){
-                      $('.mycoupons').html('');
-                      data.mycoupons.forEach(function(el) {
-                        $('.mycoupons').append(
-                          '<div class="coupon"><strong>'+el.name+'</strong>\
-                          <i id=#{user.id} class="fa fa-close fa-fw  del-coupon" rel='+el._id+' aria-hidden="true"></i></div>'
-                        );
-                      });
-                      $('.mycoupons').append('<br><strong><span class="coup-msg">Click "Mail All" then, check your email to get coupon codes<span></strong>');
-                    }
-                });
-            }
-        });
-
-
-        $(this).find('.fa-status').html('<i class="fa fa-plus-square fa-2x" aria-hidden="true" style="display:block;text-align:right"></i>');
-      });
-
-      $(document).on('click', ".del-coupon", function(event) {
-        //alert($(this).attr("rel"));
-        $('#'+$(this).attr("rel")).removeClass('couponclicked');
-        $('#'+$(this).attr("rel")).addClass('couponadd');
-        $.ajax({
-          type: "GET",
-          url: "/removecoupon/"+$(this).attr("id"),
-          success: function(data){
-            $.ajax({
-              type: "GET",
-              url: "/api/mycoupons/",
-              success: function(data){
-                $('.mycoupons').html('');
-                data.mycoupons.forEach(function(el) {
-                  $('.mycoupons').append(
-                    '<div class="coupon"><strong>'+el.name+'</strong>\
-                    <i id=#{user.id} class="fa fa-close fa-fw  del-coupon" rel='+el._id+' aria-hidden="true"></i></div>'
-                  );
-                });
-                $('.mycoupons').append('<br><strong><span class="coup-msg">Click "Mail All" then, check your email to get coupon codes<span></strong>');
-              }
-          });
-          }
-        });
-      });
-     });
-  
+doctype html
+head
+  //
+    Basic Page Needs
+    ==================================================
+  title Find it
+  meta(charset='utf-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='description' content='Find business in Kenya, Africa')
+  meta(name='author' content='UXCraft')
+  meta(name='keywords' content='Find business')
+  //
+    Favicons
+    ==================================================
+  link(rel='shortcut icon' href='assets/images/favicon.png')
+  //
+    Mobile Specific Metas
+    ==================================================
+  meta(name='viewport' content='width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0')
+  //
+    Google Web Fonts
+    ==================================================
+  link(href='https://fonts.googleapis.com/css?family=Montserrat:400,700%7CSource+Sans+Pro:400,700' rel='stylesheet')
+  //
+    CSS
+    ==================================================
+  // Vendor CSS
+  link(href='assets/vendor/bootstrap/css/bootstrap.css' rel='stylesheet')
+  link(href='assets/fonts/font-awesome/css/font-awesome.min.css' rel='stylesheet')
+  link(href='assets/fonts/simple-line-icons/css/simple-line-icons.css' rel='stylesheet')
+  link(href='assets/vendor/magnific-popup/dist/magnific-popup.css' rel='stylesheet')
+  link(href='assets/vendor/slick/slick.css' rel='stylesheet')
+  // Template CSS
+  link(href='assets/css/style-soccer.css' rel='stylesheet')
+  // Custom CSS
+  link(href='assets/css/custom.css' rel='stylesheet')
+.site-wrapper.clearfix
+  .site-overlay
+  //
+    Header
+    ==================================================
+  // Header Mobile
+  #header-mobile.header-mobile.clearfix
+    .header-mobile__logo
+      a(href='index.html')
+        img.header-mobile__logo-img(src='assets/images/logo.png' alt='findit logo')
+    .header-mobile__inner
+      a#header-mobile__toggle.burger-menu-icon
+        span.burger-menu-icon__line
+      span#header-mobile__search-icon.header-mobile__search-icon
+  // Header Desktop
+  header.header
+    // Header Primary
+    .header__primary
+      .container
+        .header__primary-inner
+          // Header Logo
+          .header-logo
+            a(href='index.html')
+              img.header-mobile__logo-img(src='assets/images/logo.png' alt='findit logo')
+          // Header Logo / End
+          // Main Navigation
+          nav.main-nav.clearfix
+            // Header Search Form
+            .header-search-form
+              form#mobile-search-form.search-form(action='#')
+                input.form-control.header-mobile__search-control(type='text' value='' placeholder='Enter your search here...')
+                button.header-mobile__search-submit(type='submit')
+                  i.fa.fa-search
+            // Header Search Form / End
+            ul.main-nav__list
+              li
+                a(href='#') Add A business
+              li
+                a(href='#') Categories
+              li
+                a(href='#') Login
+              li
+                a(href='#') Sign Up
+          // Main Navigation / End
+    // Header Primary / End
+  // Header / End
+  //
+    Content
+    ==================================================
+  .site-content
+    .container
+      .row
+        // Content
+        .content.col-md-9.feat
+          // Featured News
+          .card--clean
+            .card__content
+              // Slider
+              .slick.posts.posts--slider-featured.posts-slider.posts-slider--center
+                .posts__item.posts__item--category-1
+                  a.posts__link-wrapper(href='#')
+                    figure.posts__thumb
+                      img(src='assets/images/rest.jpg' alt='')
+                    .posts__inner
+                      .posts__cat
+                        span.label.posts__cat-label Cuisines
+                      h3.posts__title
+                        | Chinese food 
+                        span.posts__title-higlight  this May 4th
+                        |  at the chancery
+                      .post-author
+                        figure.post-author__avatar
+                          img(src='assets/images/samples/avatar-4.jpg' alt='Post Author Avatar')
+                        .post-author__info
+                          h4.post-author__name Jesse Stevens
+                          time.posts__date(datetime='2017-08-28') August 28th, 2018
+                .posts__item.posts__item--category-3
+                  a.posts__link-wrapper(href='#')
+                    figure.posts__thumb
+                      img(src='assets/images/dest1.jpg' alt='')
+                    .posts__inner
+                      .posts__cat
+                        span.label.posts__cat-label Travel
+                      h3.posts__title
+                        | The Planettroters will 
+                        span.posts__title-higlight for the 
+                        |  next December
+                      .post-author
+                        figure.post-author__avatar
+                          img(src='assets/images/samples/avatar-1.jpg' alt='Post Author Avatar')
+                        .post-author__info
+                          h4.post-author__name James Spiegel
+                          time.posts__date(datetime='2017-08-28') June 28th, 2018
+              // Slider / End
+          // Featured News / End
+        // Content / End
+        // Sidebar
+        #sidebar.sidebar.col-md-3
+          aside.widget.card.widget--sidebar.widget-products
+            .widget__title.card__header
+              h4 Latest Reviews
+            .widget__content.card__content
+              ul.products-list
+                li.products-list__item
+                  figure.products-list__product-thumb
+                    a(href='#')
+                      img(src='assets/images/hosp.jpg' alt='')
+                  .products-list__inner
+                    .products-list__product-ratings
+                      i.fa.fa-star
+                      i.fa.fa-star
+                      i.fa.fa-star
+                      i.fa.fa-star
+                      i.fa.fa-star.empty
+                    h5.products-list__product-name
+                      a(href='#') Rovina Restaurant
+                    span.products-list__product-cat Mind blowing sea food
+                    .products-list__product-sum
+                      span.products-list__product-price --- Richard
+                li.products-list__item
+                  figure.products-list__product-thumb
+                    a(href='#')
+                      img(src='assets/images/dest1.jpg' alt='')
+                  .products-list__inner
+                    .products-list__product-ratings
+                      i.fa.fa-star
+                      i.fa.fa-star
+                      i.fa.fa-star
+                      i.fa.fa-star
+                      i.fa.fa-star.empty
+                    h5.products-list__product-name
+                      a(href='#') The Hub Karen
+                    span.products-list__product-cat Mind blowing sea food
+                    .products-list__product-sum
+                      span.products-list__product-price --- Kimani
+                li.products-list__item
+                  figure.products-list__product-thumb
+                    a(href='#')
+                      img(src='assets/images/office.jpg' alt='')
+                  .products-list__inner
+                    .products-list__product-ratings
+                      i.fa.fa-star
+                      i.fa.fa-star
+                      i.fa.fa-star
+                      i.fa.fa-star
+                      i.fa.fa-star.empty
+                    h5.products-list__product-name
+                      a(href='#') Thika Thina
+                    span.products-list__product-cat Amazing Aacohol experience
+                    .products-list__product-sum
+                      span.products-list__product-price --- Richard
+                li.products-list__item
+                  figure.products-list__product-thumb
+                    a(href='#')
+                      img(src='assets/images/rest.jpg' alt='')
+                  .products-list__inner
+                    .products-list__product-ratings
+                      i.fa.fa-star
+                      i.fa.fa-star
+                      i.fa.fa-star
+                      i.fa.fa-star
+                      i.fa.fa-star.empty
+                    h5.products-list__product-name
+                      a(href='#') Rovina Restaurant
+                    span.products-list__product-cat Mind blowing sea food
+                    .products-list__product-sum
+                      span.products-list__product-price --- Richard
+                li.products-list__item
+                  a.btn.btn-primary.btn-sm.btn-icon-right.ml-5(href='#')
+                    | See All Reviews 
+                    i.fa.fa-plus
+        // Sidebar / End
+        header.post__header.col-md-12.pb-5.pt-5.pl-0
+          h2.post__title TOP DEALS
+          ul.post__meta.meta
+            li.meta__item.meta__item--date
+              time(datetime='2017-08-23') August 23rd, 2017
+            li.meta__item.meta__item--views 2369
+            li.meta__item.meta__item--likes
+              a(href='#')
+                i.meta-like.icon-heart
+                |  530
+            li.meta__item.meta__item--comments
+              a(href='#') 18
+        .gallery.row
+          .gallery__item.col-12.col-md-2
+            a.gallery__item-inner.card(href='404.html')
+              figure.gallery__thumb
+                img(src='assets/images/dest1.jpg' alt='')
+                span.btn-fab.gallery__btn-fab
+              .gallery__content.card__content
+                span.gallery__icon
+                  span.icon-location-pin
+                .gallery__details
+                  h4.gallery__name Peninsula Beach Resort
+                  .gallery__date Mauritius
+          .gallery__item.col-12.col-md-2
+            a.gallery__item-inner.card(href='404.html')
+              figure.gallery__thumb
+                img(src='assets/images/rest.jpg' alt='')
+                span.btn-fab.gallery__btn-fab
+              .gallery__content.card__content
+                span.gallery__icon
+                  span.icon-location-pin
+                .gallery__details
+                  h4.gallery__name
+                    | Anelia Resort &amp; Spa Mauritius 4
+                  .gallery__date Mauritius
+          .gallery__item.col-12.col-md-2
+            a.gallery__item-inner.card(href='404.html')
+              figure.gallery__thumb
+                img(src='assets/images/office.jpg' alt='')
+                span.btn-fab.gallery__btn-fab
+              .gallery__content.card__content
+                span.gallery__icon
+                  span.icon-location-pin
+                .gallery__details
+                  h4.gallery__name Outrigger Mauritius Beach Resort 5
+                  .gallery__date Mauritius
+          .gallery__item.col-12.col-md-2
+            a.gallery__item-inner.card(href='404.html')
+              figure.gallery__thumb
+                img(src='assets/images/dest2.jpg' alt='')
+                span.btn-fab.gallery__btn-fab
+              .gallery__content.card__content
+                span.gallery__icon
+                  span.icon-location-pin
+                .gallery__details
+                  h4.gallery__name Ravenala Attitude Resort 
+                  .gallery__date Mauritius
+          .gallery__item.col-12.col-md-2
+            a.gallery__item-inner.card(href='404.html')
+              figure.gallery__thumb
+                img(src='assets/images/dest3.jpg' alt='')
+                span.btn-fab.gallery__btn-fab
+              .gallery__content.card__content
+                span.gallery__icon
+                  span.icon-location-pin
+                .gallery__details
+                  h4.gallery__name Egypt Israel tour
+                  .gallery__date Mauritius
+          .gallery__item.col-12.col-md-2
+            // Player Card #
+            .post-grid__item.col-sm-12.team-roster__item
+              .posts__item.posts__item--card.posts__item--quote(style='background-image: url(assets/images/Laikipia.jpg);')
+                .card__content
+                  blockquote.blockquote.blockquote--card
+                    footer.blockquote__footer
+                      cite.blockquote__cite
+                        span.blockquote__author-name GET MORE FOR LESS
+                        a.btn.btn-primary.btn-sm.btn-icon-right(href='#')
+                          | View More 
+                          i.fa.fa-plus
+            // Player Card # / End
+        header.post__header.col-md-12.pb-5.pt-5.pl-0
+          h2.post__title BUSINESSES BY CATEGORY
+          ul.post__meta.meta
+            li.meta__item.meta__item--date
+              time(datetime='2017-08-23') August 23rd, 2017
+            li.meta__item.meta__item--views 2369
+            li.meta__item.meta__item--likes
+              a(href='#')
+                i.meta-like.icon-heart
+                |  530
+            li.meta__item.meta__item--comments
+              a(href='#') 18
+        .gallery.gala2.row
+          .gallery__item.col-12.col-md-2
+            a.gallery__item-inner.card(href='404.html')
+              figure.gallery__thumb
+                img(src='assets/images/dest1.jpg' alt='')
+                span.btn-fab.gallery__btn-fab
+              .gallery__content.card__content
+                span.gallery__icon
+                  span.icon-camera
+                .gallery__details
+                  h4.gallery__name Travel
+                  .gallery__date Getaway wonderlust
+          .gallery__item.col-12.col-md-2
+            a.gallery__item-inner.card(href='404.html')
+              figure.gallery__thumb
+                img(src='assets/images/hosp.jpg' alt='')
+                span.btn-fab.gallery__btn-fab
+              .gallery__content.card__content
+                span.gallery__icon
+                  span.icon-camera
+                .gallery__details
+                  h4.gallery__name Hospitality
+                  .gallery__date Leisure &amp; Unwind
+          .gallery__item.col-12.col-md-2
+            a.gallery__item-inner.card(href='404.html')
+              figure.gallery__thumb
+                img(src='assets/images/rest.jpg' alt='')
+                span.btn-fab.gallery__btn-fab
+              .gallery__content.card__content
+                span.gallery__icon
+                  span.icon-camera
+                .gallery__details
+                  h4.gallery__name Restaurants
+                  .gallery__date Food &amp; Cuisines
+          .gallery__item.col-12.col-md-2
+            a.gallery__item-inner.card(href='404.html')
+              figure.gallery__thumb
+                img(src='assets/images/office.jpg' alt='')
+                span.btn-fab.gallery__btn-fab
+              .gallery__content.card__content
+                span.gallery__icon
+                  span.icon-camera
+                .gallery__details
+                  h4.gallery__name Office
+                  .gallery__date Work &amp; Spaces
+          .gallery__item.col-12.col-md-2
+            a.gallery__item-inner.card(href='404.html')
+              figure.gallery__thumb
+                img(src='assets/images/medical.jpg' alt='')
+                span.btn-fab.gallery__btn-fab
+              .gallery__content.card__content
+                span.gallery__icon
+                  span.icon-camera
+                .gallery__details
+                  h4.gallery__name Medical
+                  .gallery__date Health &amp; Well being
+          .gallery__item.col-12.col-md-2
+            a.gallery__item-inner.card(href='404.html')
+              figure.gallery__thumb
+                img(src='assets/images/finance.jpg' alt='')
+                span.btn-fab.gallery__btn-fab
+              .gallery__content.card__content
+                span.gallery__icon
+                  span.icon-camera
+                .gallery__details
+                  h4.gallery__name Finance
+                  .gallery__date Investments &amp; Money
+          .gallery__item.col-12.col-md-2
+            a.gallery__item-inner.card(href='404.html')
+              figure.gallery__thumb
+                img(src='assets/images/real.jpg' alt='')
+                span.btn-fab.gallery__btn-fab
+              .gallery__content.card__content
+                span.gallery__icon
+                  span.icon-camera
+                .gallery__details
+                  h4.gallery__name Real Estate
+                  .gallery__date Living
+          .gallery__item.col-12.col-md-2
+            a.gallery__item-inner.card(href='404.html')
+              figure.gallery__thumb
+                img(src='assets/images/rest.jpg' alt='')
+                span.btn-fab.gallery__btn-fab
+              .gallery__content.card__content
+                span.gallery__icon
+                  span.icon-camera
+                .gallery__details
+                  h4.gallery__name Restaurants
+                  .gallery__date Food &amp; Cuisines
+          .gallery__item.col-12.col-md-2
+            a.gallery__item-inner.card(href='404.html')
+              figure.gallery__thumb
+                img(src='assets/images/office.jpg' alt='')
+                span.btn-fab.gallery__btn-fab
+              .gallery__content.card__content
+                span.gallery__icon
+                  span.icon-camera
+                .gallery__details
+                  h4.gallery__name Restaurants
+                  .gallery__date Food &amp; Cuisines
+          .gallery__item.col-12.col-md-2
+            a.gallery__item-inner.card(href='404.html')
+              figure.gallery__thumb
+                img(src='assets/images/medical.jpg' alt='')
+                span.btn-fab.gallery__btn-fab
+              .gallery__content.card__content
+                span.gallery__icon
+                  span.icon-camera
+                .gallery__details
+                  h4.gallery__name Restaurants
+                  .gallery__date Food &amp; Cuisines
+          .gallery__item.col-12.col-md-2
+            a.gallery__item-inner.card(href='404.html')
+              figure.gallery__thumb
+                img(src='assets/images/finance.jpg' alt='')
+                span.btn-fab.gallery__btn-fab
+              .gallery__content.card__content
+                span.gallery__icon
+                  span.icon-camera
+                .gallery__details
+                  h4.gallery__name Restaurants
+                  .gallery__date Food &amp; Cuisines
+          .gallery__item.col-12.col-md-2
+            // Player Card #
+            .post-grid__item.col-sm-12.team-roster__item
+              .posts__item.posts__item--card.posts__item--quote(style='background-image: url(assets/images/Laikipia.jpg);')
+                .card__content
+                  blockquote.blockquote.blockquote--card
+                    footer.blockquote__footer
+                      cite.blockquote__cite
+                        span.blockquote__author-name Checkout All Categories
+                        a.btn.btn-secondary.btn-sm.btn-icon-right(href='#')
+                          | View More 
+                          i.fa.fa-plus
+            // Player Card # / End
+  // Content / End
+  //
+    Footer
+    ==================================================
+  footer#footer.footer
+    // Footer Widgets
+    .footer-widgets
+      .footer-widgets__inner
+        .container
+          .row
+            .col-sm-6.col-md-3
+              .footer-col-inner
+                // Footer Logo
+                .footer-logo.footer-logo--has-txt
+                  a(href='index.html')
+                    .footer-logo__heading
+                      h5.footer-logo__txt About Us
+                      h6.footer-logo__txt Who We are
+                // Footer Logo / End
+                // Widget: Contact Info
+                .widget.widget--footer.widget-contact-info
+                  .widget__content
+                    .widget-contact-info__desc
+                      p
+                        | List your business on Find It today!
+                        | Reach new Customers at the most affordable
+                        | packages, Show case your products and publish
+                        | special offers.
+                        | Get Started by Listing your business
+                // Widget: Contact Info / End
+            .col-sm-6.col-md-3
+              .footer-col-inner
+                // Footer Logo
+                .footer-logo.footer-logo--has-txt
+                  a(href='index.html')
+                    .footer-logo__heading
+                      h6.footer-logo__txt Find Everything
+                // Footer Logo / End
+                // Widget: Contact Info
+                .widget.widget--footer.widget-contact-info
+                  .widget__content
+                    .widget-contact-info__desc
+                      p
+                        | List your business on Find It today!
+                        | Reach new Customers at the most affordable
+                        | packages, Show case your products and publish
+                        | special offers.
+                        | Get Started by Listing your business
+                // Widget: Contact Info / End
+            .col-sm-6.col-md-3
+              .footer-col-inner
+                // Footer Logo
+                .footer-logo.footer-logo--has-txt
+                  a(href='index.html')
+                    .footer-logo__heading
+                      h6.footer-logo__txt Do You Own A Business?
+                // Footer Logo / End
+                // Widget: Contact Info
+                .widget.widget--footer.widget-contact-info
+                  .widget__content
+                    .widget-contact-info__desc
+                      p
+                        | From Manufacturers to Retailers,
+                        | Doctors or Dentists, Legal
+                        | Advisors or Consultants or
+                        | maybe hotels and Restaurants.
+                        | We have it all.
+                // Widget: Contact Info / End
+          .row
+            .info-block__item.info-block__item--nopadding
+              ul.social-links
+                li.social-links__item
+                  a.social-links__link(href='#')
+                    i.fa.fa-facebook
+                    |  Facebook
+                li.social-links__item
+                  a.social-links__link(href='#')
+                    i.fa.fa-twitter
+                    |  Twitter
+                li.social-links__item
+                  a.social-links__link(href='#')
+                    i.fa.fa-google-plus
+                    |  Google+
+    // Footer Widgets / End
+    // Footer Secondary
+    .footer-secondary
+      .container
+        .footer-secondary__inner
+          .row
+            .col-md-4
+              .footer-copyright
+                a(href='_soccer_index.html') find it
+                |  2019 &nbsp; | &nbsp; All Rights Reserved
+            .col-md-8
+              ul.footer-nav.footer-nav--right.footer-nav--condensed.footer-nav--sm
+                li.footer-nav__item
+                  a(href='_soccer_index.html') Home
+                li.footer-nav__item
+                  a(href='_soccer_features-shortcodes.html') About
+                li.footer-nav__item
+                  a(href='_soccer_team-standings.html') Contacts
+    // Footer Secondary / End
+  // Footer / End
+//
+  Javascript Files
+  ==================================================
+// Core JS
+script(src='assets/vendor/jquery/jquery.min.js')
+script(src='assets/vendor/bootstrap/js/bootstrap.bundle.js')
+script(src='assets/js/core.js')
+// Vendor JS
+script(src='assets/vendor/twitter/jquery.twitter.js')
+// Template JS
+script(src='assets/js/init.js')
+script(src='assets/js/custom.js')

@@ -1,0 +1,662 @@
+extends layout-new
+
+block content
+ //div.container-fluid.container-padding(style="padding-top:3.8rem")
+ div.container-fluid(style="padding-top: 20px;")
+  div#home.banner(style="object-fit: cover;")
+    div.row.justify-content-end.my-row    
+      div.col-md-5.col-sm-12.col-xm-12.my-col.text-right
+        div.banner-text-top
+          //nav.navbar.navbar-expand-sm.addbusiness.nav-bar-addbusiness.navbar-nav.ml-lg-auto.text-center
+            ul.navbar-nav
+              li.nav-item
+                a.nav-link(href='/business/newpackage')
+                  span.fas.fa-database.user-fav
+                  strong
+                    |  Add Business
+              //li.nav-item
+                a.nav-link(href='/add-agent')
+                  span.fas.fa-user-tie.user-fav
+                  strong
+                    |  Apply as an Agent
+                                                       
+        a.link(href="")
+          .banner-visit-page
+            button.input-group-addon#basic-addon1.finditbutton.input-group-addon.text-center
+              | Visit Page
+    div.row.my-row.justify-content-start
+      div.col-md-8.col-sm-8.col-xm-8.my-col
+        div.banner-text#hideSearch
+          form(method='get', action='/updatesearch')
+            div.input-group
+              select.input-group-addon.finditbutton(name="type")
+                option(value="business")
+                  | Business
+                option(value="product")
+                  | Product
+              input#search2.form-control.form-control-lg(type="text" placeholder="Restaurants, Holidays, Businesses, Lawyers, Doctors..." ,name='search', autofocus)
+              button.finditbutton.input-group-addon(type="submit",value="") Find
+
+                        //- form(method='get', action='/productsearch')
+          //-   div.input-group
+          //-     span.input-group-addon#basic-addon1.finditbutton.input-group-addon.text-center
+          //-       h5
+          //-       |  Find Product
+          //-     input.search3.form-control.form-control-lg(type="text" placeholder=" Clothes, Furniture, Jewellery ...." ,name='search', autofocus)
+          //.nav.listhome-nav
+            each category,i in categories
+              ul
+                if i <4
+                  a(href="/category/"+category.name)
+                    li.listItems-home
+                      i.fas.fa-1x(aria-hidden='true', class=category.icon)
+                      strong   
+                        =category.name 
+
+  //search by category
+  //center
+  //section.wthree-row.py-sm-5.py-3.w3-about
+ div.container-fluid.container-padding
+    
+    //main categories and coupon row
+    div.row.my-row.justify-content-center
+      //categories
+      div.col-md-8.col-lg-8.col-sm-12.col-sm-12.my-col
+        h2.agile-title.h-order-category.text-center.findit-red
+          | Top deals
+        div.row.mt-sm-8.text-center
+          ins.adsbygoogle(style='display:block', data-ad-client='ca-pub-9965055906014205', data-ad-slot='7358207938', data-ad-format='auto')
+          script.
+            window.onload = function() {  (adsbygoogle = window.adsbygoogle || []).push({});}
+        div.row.mt-sm-8.text-center
+          each coupon,i in coupons
+            if(i < 4)
+              div.col-lg-3.col-md-3.col-sm-12.col-xm-12.w3-ab.my-md-0.my-sm-12.coup-container
+                .image-flip(ontouchstart="this.classList.toggle('hover');")
+                  a(href='/coupons')  
+                    .mainflip
+                      .frontside
+                        .card(style="border:none !important")
+                          .card-body.text-left(style="padding:0 !important")
+                            if(coupon)
+                              p
+                                img.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt='FindIt Kenya')
+                                //-img.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name+ ' on FindIt Kenya')
+                            br
+                            h6.card-title(style="text-transform: capitalize; margin-bottom: 0; ") #{coupon.name}
+                            //-h6.card-title(style="text-transform: capitalize; margin-bottom: 0; color:#000!important;")
+                                small
+                                  strong
+                                  | !{'@  ' + coupon.bizid.name}
+        #hideMobileView
+          div.row.mt-sm-8.text-center
+            each coupon,i in coupons
+              if(i > 3 && i < 8)
+                div.col-lg-3.col-md-3.col-sm-12.col-xm-12.w3-ab.my-md-0.my-sm-12.coup-container
+                  .image-flip(ontouchstart="this.classList.toggle('hover');")
+                    a(href='/coupons')  
+                      .mainflip
+                        .frontside
+                          .card(style="border:none !important")
+                            .card-body.text-left(style="padding:0 !important")
+                              if(coupon)  
+                                p
+                                  //- img.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name+ ' on FindIt Kenya')
+                                  img.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt='FindIt Kenya')
+                              br
+                              h6.card-title(style="text-transform: capitalize; margin-bottom: 0; ") #{coupon.name}
+                              h6.card-title(style="text-transform: capitalize; margin-bottom: 0; color:#000!important;")
+                                //-small
+                                    strong
+                                    | !{'@  ' + coupon.bizid.name}
+                            
+                   
+        row
+          div.col-lg-12.col-md-12.col-sm-12.col-xm-12.w3-ab.my-md-0.my-sm-12.coup-container.text-center( onclick="toggle_visibility('expandcoupons');")
+            a(href="/coupons")
+              span.findit-blue
+                span
+                  | See More Deals
+        br
+
+        
+        
+        //div.col-lg-3.col-md-3.col-sm-12.col-xm-12.w3-ab.my-md-0.my-sm-12.coup-container( onclick="toggle_visibility('expandcoupons');")
+          a(href="#expandcoupons")
+            div.w3-aicon.py-md-3
+              span.findit-blue(style='padding-top:2rem')
+                span.Show
+                  | See more Coupons
+                span.Hide
+                  | Hide more Coupons
+                //img.img-fluid.category-img-wrapper(src="/img/more_categories.png", alt="Find It Kenya - Find Anything and Everything", data-wow-delay="0.6s")  
+        //- div.row.mt-sm-8.text-center.scrollpane#expandcoupons(style="display:none; padding-top:4rem;")
+          div.col-lg-12.col-md-12.col-sm-12.col-xm-12.w3-ab.my-md-0.my-sm-12.text-center
+              span.h4.coupon-title-start
+                | More Free Coupons & Deals 
+              span.h6
+                |  ...  
+          each coupon,i in coupons
+            div.col-lg-3.col-md-3.col-sm-12.col-xm-12.w3-ab.my-md-0.my-sm-12.coup-container#result
+              div.w3-aicon.py-md-3
+                h6.my-3
+                  span.findit-blue
+                    =coupon.name
+                if(coupon)
+                  img.img-fluid.category-img-wrapper(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name+ ' on FindIt Kenya')
+                  
+              div.p-md-3.py-4.overlay
+                div.coup-text
+                  h6.text-uppercase
+                    =coupon.tagline
+                  p.coupp
+                    
+                    =coupon.description
+                  if(coupon)
+                    p
+                      strong
+                        | !{'@  ' + coupon.bizid.name}
+                  
+                  p 
+                    a(href="/coupons" style="color:#fff;")   
+                      h6
+                        span 
+                          i.fas.fa-gift
+                        .text-uppercase Claim Now!!!
+          //div.col-lg-3.col-md-3.w3-ab.my-md-0.my-sm-8( onclick="toggle_visibility('expandcategories');")
+            a(href="#expandcategories")
+                div.w3-aicon.py-lg-5.py-md-3
+                  button.btn.btn-light(type="button")
+                    span.findit-blue
+                      | See more Coupons
+                  img.img-fluid.category-img-wrapper(src="/img/more_categories.png", alt="Find It Kenya - Find Anything and Everything", data-wow-delay="0.6s")                            
+        div(style="border-top: 1px solid #eee")
+          h2.agile-title.h-order-category.text-center
+            | Find Businesses by category
+          div.row.mt-sm-8.text-center
+            ins.adsbygoogle(style='display:block', data-ad-client='ca-pub-9965055906014205', data-ad-slot='7358207938', data-ad-format='auto')
+            script.
+              window.onload = function() {  (adsbygoogle = window.adsbygoogle || []).push({});}
+          div.row.mt-sm-8.text-center  
+            each category,i in categories
+              if(i < 4)
+                div.col-lg-3.col-md-3.col-sm-12.col-xm-12.w3-ab.my-md-0.my-sm-12
+                  a.bizlink(href="/category/"+category.name)
+                    div.w3-aicon.py-lg-5.py-md-3
+                        img.img-fluid.category-img-wrapper(src="/uploads/thumbs/categories/"+category.photo, alt=category.name +' on FindIt Kenya', data-wow-delay="0.6s")
+                        h6.my-3
+                        =category.name
+          div.row.mt-sm-8.text-center
+            each category,i in categories
+              if(i > 3 && i < 7)
+                div.col-lg-3.col-md-3.col-sm-12.col-xm-12.w3-ab.my-md-0.my-sm-12
+                  a.bizlink(href="/category/"+category.name)
+                    div.w3-aicon.py-lg-5.py-md-3
+                        img.img-fluid.category-img-wrapper(src="/uploads/thumbs/categories/"+category.photo, alt=category.name + ' on FindIt Kenya',data-wow-delay="0.6s")
+                        h6.my-3
+                          =category.name
+            div.col-lg-3.col-md-3.w3-ab.my-md-0.my-sm-8( onclick="toggle_visibility('expandcategories');")
+              a(href="#expandcategories")
+                  div.w3-aicon.py-lg-5.py-md-3
+                    button.btn.btn-light(type="button")
+                      span.findit-blue
+                        span(onclick="lessCatFunction()")
+                          span#moreTextCategory
+                            | More Categories
+                    img.img-fluid.category-img-wrapper(src="/img/more_categories.png", alt="Find It Kenya - Find Anything and Everything", data-wow-delay="0.6s")                            
+                      
+        div.row#expandcategories( style="display:none; padding-top:5rem; border-top: 1px solid #eee")
+          each category,i in categories
+            div.col-md-4.col-sm-12.col-xs-12.morecat  
+              a.bizlink(href="/category/"+category.name)
+                strong
+                  i.fas.fa-1x(aria-hidden='true', class=category.icon, class=category.slug ) 
+                  small.site-text-color.small-cart
+                    strong   
+                      =category.name
+              hr.hr-cat(class=category.slug)
+              .div.row
+                ul
+                  each subcat, i in category.subcategories
+                    if(i<5)
+                      li
+                        small.small-cart
+                          i(class="fas fa-check-circle" aria-hidden="true" class=category.slug style="margin-right:2px; font-size: 12px;")
+                          a.bizlink.sub-cat-color(href="/subcategory/sub/"+subcat.name)
+                            =subcat.name
+                  div
+                    a.bizlink(href="/category/"+category.name)
+                      strong
+                        | See more 
+       
+        
+      div.col-lg-4.col-md-4.col-sm-6.col-xs-6.text-center
+        div
+          h2.agile-title.h-order-category.text-center.findit-red
+            | Latest reviews
+            // Categories
+        div
+          each review, i in reviews
+           if i<4
+            div.col-lg-12.col-md-12.col-sm-12.col-xs-12.latest-review-main.latest-review-container
+              a(href="/biz/"+review.bizid.slug)  
+                div.col-lg-12.col-md-12.col-sm-12.col-xs-12.text-left
+                  strong
+                    span.text-left(style="color:#000") #{review.user_id.names}
+                    span
+                      | , 
+                    br 
+                    | Says
+                  br
+                div.col-lg-12.col-md-12.col-sm-12.col-xs-12
+                  if review.bizid.photo
+                    img.img-fluid(src="/uploads/thumbs/cover"+ review.bizid.photo, height="150px" alt=review.bizid.name+ ' on FindIt Kenya' style="width:150px")
+                  else 
+                    img.cat-items-bottom(src="/img/noimageavailable.jpg", alt=review.bizid.name+ ' on FindIt Kenya' style="width:150px") 
+                div.col-lg-12.col-md-12.col-sm-12.col-xs-12.text-left  
+                  if(review)
+                    h6
+                      strong
+                        =review.bizid.name
+                  //small.text-center.content-col
+                    |  #{review.length} Reviews
+                div.col-lg-12.col-md-12.col-sm-12.col-xs-12.text-left 
+
+                  p 
+                    if reviews
+                      if( reviews.length == 1) 
+                        .col-md-6(class="rating medium star-icon value-"+review.star+" label-hidden")
+                          .star-container
+                            .star
+                              i.star-empty
+                              i.star-half
+                              i.star-filled
+                            .star
+                              i.star-empty
+                              i.star-half
+                              i.star-filled
+                            .star
+                              i.star-empty
+                              i.star-half
+                              i.star-filled
+                            .star
+                              i.star-empty
+                              i.star-half
+                              i.star-filled
+                            .star
+                              i.star-empty
+                              i.star-half
+                              i.star-filled
+                        
+                      else if( reviews.length > 1)
+                        span
+                          div(class="rating medium star-icon value-"+review.star+" label-hidden")
+                            .star-container
+                              .star
+                                i.star-empty
+                                i.star-half
+                                i.star-filled
+                              .star
+                                i.star-empty
+                                i.star-half
+                                i.star-filled
+                              .star
+                                i.star-empty
+                                i.star-half
+                                i.star-filled
+                              .star
+                                i.star-empty
+                                i.star-half
+                                i.star-filled
+                              .star
+                                i.star-empty
+                                i.star-half
+                                i.star-filled
+                div.col-lg-12.col-md-12.col-sm-12.col-xs-12.text-left 
+                  i.the-review.content-col.content-col
+                    if review.message.length > 100
+                      | !{review.message.substr(0, 100)+ '..... <strong id="showmore" style="color:#c00000;">Continue Reading</strong>'}
+                    else
+                      | !{review.message}
+                  
+                div.col-lg-12.col-md-12.col-sm-12.col-xs-12.text-left 
+                  .small
+                    p !{review.created_at}
+            br        
+        //div.text-center  
+          a.bizlink(href="#expandcategories") 
+            row.deal-main.column.text-center( onclick="toggle_visibility('expandcategories');")
+              .div.col-md-12.col-sm-12.col-xs-12
+                .div.w3-aicon.py-lg-12.py-md-12
+                  h6.my-3
+                    span.findit-blue.text-center
+                      span.Showcat More Categories
+                      span.Hidecat Few Categories
+                img.img-fluid(src="/img/more_categories.png", alt="Find It Kenya - Find Anything and Everything", data-wow-delay="0.6s")                                           
+                    
+ //about
+ div.container-fluid
+    #about
+      section.aboutsection
+        div.banner-des
+          .titl
+            | About Us
+          div.details
+            div.about-content
+              div.row 
+                .col-md-6
+                  h3.agile-title
+                    | Who we are
+                  div
+                    | Findit.ke is Kenya’s first online directory to showcase your products. With access to thousands of businesses already signed up we are able to provide updated business information to our users.
+                    br
+                    | From Manufacturers to Retailers, Doctors or Dentists, Legal Advisors or Consultants, hotels and Restaurants.   
+                    br
+                    | We have it all.
+                  
+                .col-md-6.own-biz
+                  h3.agile-title
+                    | Do you Own a Business?
+                  div
+                    | List your business on Find It today!
+                    br
+                    | Reach new Customers at the most affordable packages, 
+                    br
+                    | Show case your products and publish special offers. 
+                  div
+                    a(href='/business/newpackage')
+                      | Get Started by Listing your business
+                      span
+                        i(class="arrow right")
+      section
+        div.row 
+          .col-md-4(style="padding: 1rem 3rem 1rem 3rem;")
+              .card-body
+                h4.card-title.agile-title.about-header-category
+                  | View Deals
+                .card-text
+                  | Save money, We have over 100’s of offers for you
+                  p
+                    a(href="/coupons")
+                      | View Available deals
+                      span| 
+                        i(class="arrow right") 
+                
+          
+          .col-md-4(style="padding: 1rem 3rem 1rem 3rem;")
+              .card-body
+                h4.card-title.agile-title.about-header-category
+                  | Find Everything
+                .card-text
+                  | From Manufacturers to Retailers, Doctors or Dentists, Legal Advisors or Consultants or maybe hotels and Restaurants. We have it all.
+                  p
+                    a(href="#hideSearch")
+                      | Get Started
+                      span| 
+                        i(class="arrow right") 
+          .col-md-4(style="padding: 1rem 3rem 1rem 3rem;")
+              .card-body
+                h4.card-title.agile-title.about-header-category
+                  | Shop Products
+                .card-text
+                  | Coming Soon...
+    script(type="text/javascript").
+        var pos = {
+          lat: '',
+          lng: ''
+        };
+
+      navigator.geolocation.getCurrentPosition(function(position) {
+          pos.lat = position.coords.latitude;
+          pos.lng = position.coords.longitude;
+      
+        $(".bizlink").each(function () {
+          let url =$(this).attr("href")
+          let newUrl = url+'?lon='+pos.lng+'&lat='+pos.lat;
+          $(this).attr("href", newUrl);
+        });
+      });
+      function toggle_visibility(id) {
+        var e = document.getElementById(id);
+        e.style.display = ((e.style.display!='none') ? 'none' : '');
+      }
+      $(function() {
+        var options = {
+          url: function(phrase) {
+            return '/newsearch?search='+$('#search2').val()+'&lat='+pos.lat+'&lon='+pos.lng
+          },
+          getValue: function(element) {
+            return element.name;
+          },
+          list: {
+            onClickEvent: function() {
+              const item = $('#search2').getSelectedItemData().slug
+              const product = $('.search3').getSelectedItemData().slug
+
+              navigator.geolocation.getCurrentPosition(function(position) {
+                var pos = {
+                  lat: position.coords.latitude,
+                  lng: position.coords.longitude
+                };
+                self.location = "/biz/"+item+"/?lat="+pos.lat+"&lon="+pos.lng;
+              });
+            } 
+          },
+          ajaxSettings: {
+            method: "GET"
+          }
+        };
+        var timer;      
+        $("#search2").easyAutocomplete(options);
+        $("#search2" ).focus();
+        $(".search3").easyAutocomplete(options);
+        $(".search3" ).focus();
+      });
+
+    script(type="text/javascript").
+      
+      $(function() {        
+        //Add Random Generator//
+        //setInterval(swapImages(),4000);
+        setInterval(function() {
+          var images = [
+          ['vitafoam4.jpg','/biz/Vitafoam-Products-Limited'],
+          ['best-banner.jpg','/category/Restaurants'],
+          ['doctor.jpg','/category/Medical'],
+          ['office.jpg','/category/Office'], 
+          ['find.jpeg','/category/Travel'],
+          ['furnitures.jpg','/biz/Furniture-palace-international-kenya-ltd'],
+          ['velvex-chan.png','/biz/Chandaria-Industries-Ltd'],
+          ['ibis.jpg','/biz/Ibis-Styles-Hotel-Nairobi'], 
+          ['sajceramic.jpg','/biz/Saj-Ceramics-Ltd' ],
+          ['sajceramics01.jpg','/biz/Saj-Ceramics-Ltd'],
+          ['seramic02.jpg','/biz/Saj-Ceramics-Ltd'],
+          ['newmatic1.jpg', '/biz/Newmatic-Africa'], 
+          ['newmatic2.jpg', '/biz/Newmatic-Africa'], 
+          ['newmatic3.jpg', '/biz/Newmatic-Africa']];
+
+          var randomimagegenerator = images[Math.floor(Math.random() * images.length)] 
+          $('.banner').css({'background-image': 'url(banner-img/' + randomimagegenerator[0] +')'}).animate({ opacity: 0.8 }, { duration: 3000 });
+          //$('.banner').animate({ opacity: 1 }, { duration: 1000 });
+          //$('.banner').fadeTo(3000, 1);
+          //var idHome = document.getElementById("home");
+          //var aTag = document.createElement('a');
+          var aTagWithLink = $('.link').attr('href',randomimagegenerator[1]);
+          console.log(aTagWithLink);       
+          //document.body.insertBefore(aTagWithLink, idHome);      
+          console.log(randomimagegenerator[1]);
+        }, 7000);        
+        
+      });
+    //animation
+  
+    //function  to load more coupons on page scroll
+    script(type='text/javascript').
+      function loadResults() {
+        var coupons = "";
+        let result = null;
+        for (var i = 0; i < 10; i++) {
+            result += "<li>Result " + i + "</li>";
+        }
+        $.ajax({
+            url:"/api/mycoupons/",
+            type: "post",
+            data: {
+                html: result,
+                delay: 3
+            },
+            beforeSend: function(xhr) {
+                $("#results").after($("<li class='loading'>Loading...</li>").fadeIn('slow')).data("loading", true);
+            },
+            success: function(data) {
+                var $results = $("#results");
+                $(".loading").fadeOut('fast', function() {
+                    $(this).remove();
+                });
+                var $data = $(data);
+                $data.hide();
+                $results.append($data);
+                $data.fadeIn();
+                $results.removeData("loading");
+            }
+        });
+      };
+
+      $(function() {
+          loadResults();
+
+          $(".scrollpane").scroll(function() {
+              var $this = $(this);
+              var $results = $("#results");
+
+              if (!$results.data("loading")) {
+
+                  if ($this.scrollTop() + $this.height() == $results.height()) {
+                      loadResults();
+                  }
+              }
+          });
+      });
+  
+ //Script for selecting coupons       
+ //-script(type='text/javascript').
+    //(function($) {
+    $(function(){
+          //script for sticky coupons on scroll
+      $("#coupons-sticky").stick_in_parent();
+      $(".clipped").hide();
+      var cartCount = #{mycoupons.length};
+      $(document).on('click', '.couponadd', function(event) {
+        //alert("clicked");
+        var couponid = $(this).attr("id");
+        $(this).addClass('couponclicked');
+        $(this).removeClass('couponadd');
+        $(this).find('.clipped').show();
+        $(this).find('.fa-status').html('<i class="fa fa-window-close fa-2x" aria-hidden="true" style="display:block;text-align:right"></i>');
+        $.ajax({
+            type: "GET",
+            url: "/getcoupon/user/"+couponid,
+            success: function(data){
+                if(#{loggedin} == false){
+                  //alert("not logged in");
+                  window.location.href = "/login";
+                  throw new Error("kindly login!");
+                }
+                Notify.toast(data.msg, {
+                  fn: function () {
+                    // custom function here
+                  }
+                });
+                if(data.msg == 'Coupon Obtained'){
+                  cartCount = cartCount + 1;
+                  if(cartCount >= 0){
+                    $('#couponscount').text(cartCount);
+                  }
+                }
+                $.ajax({
+                    type: "GET",
+                    url: "/api/mycoupons/",
+                    success: function(data){
+                      var carray = data.mycoupons; 
+                      $('.mycoupons').html('');
+                      carray.forEach(function(el) {
+                        $('.mycoupons').append(
+                          '<div class="coupon coupon-modal"><strong>'+el.name+'</strong>\
+                          <i id=#{user.id} class="fa fa-close fa-fw text-right  del-coupon" rel='+el._id+' aria-hidden="true"></i></div>'
+                        );
+                      }); 
+                      $('.mycoupons').append( '<br><strong><span class="coup-msg">Click "Mail All" then, check your email to get coupon codes<span></strong>');             
+                      console.log(data.code);
+                    }
+                });
+            }
+        });                    
+      });
+      $(document).on('click', ".couponclicked", function(event) {
+        $(this).removeClass('couponclicked');
+        $(this).addClass('couponadd');
+        $(this).find('.clipped').hide();
+        var userid = $(this).attr("rel");
+        $.ajax({
+            type: "GET",
+            url: "/removecoupon/"+ userid,
+            success: function(data){
+                Notify.toast(data.msg, {
+                  fn: function () {
+                    // custom function here
+                  }
+                });
+                if(data.msg == 'Coupon Removed'){
+                  cartCount = cartCount - 1;
+                  if(cartCount >= 0){
+                    $('#couponscount').text(cartCount);
+                  }
+                }
+                $.ajax({
+                    type: "GET",
+                    url: "/api/mycoupons/",
+                    success: function(data){
+                      $('.mycoupons').html('');
+                      data.mycoupons.forEach(function(el) {
+                        $('.mycoupons').append(
+                          '<div class="coupon"><strong>'+el.name+'</strong>\
+                          <i id=#{user.id} class="fa fa-close fa-fw  del-coupon" rel='+el._id+' aria-hidden="true"></i></div>'
+                        );
+                      });
+                      $('.mycoupons').append('<br><strong><span class="coup-msg">Click "Mail All" then, check your email to get coupon codes<span></strong>');
+                    }
+                });
+            }
+        });
+
+
+        $(this).find('.fa-status').html('<i class="fa fa-plus-square fa-2x" aria-hidden="true" style="display:block;text-align:right"></i>');
+      });
+
+      $(document).on('click', ".del-coupon", function(event) {
+        //alert($(this).attr("rel"));
+        $('#'+$(this).attr("rel")).removeClass('couponclicked');
+        $('#'+$(this).attr("rel")).addClass('couponadd');
+        $.ajax({
+          type: "GET",
+          url: "/removecoupon/"+$(this).attr("id"),
+          success: function(data){
+            $.ajax({
+              type: "GET",
+              url: "/api/mycoupons/",
+              success: function(data){
+                $('.mycoupons').html('');
+                data.mycoupons.forEach(function(el) {
+                  $('.mycoupons').append(
+                    '<div class="coupon"><strong>'+el.name+'</strong>\
+                    <i id=#{user.id} class="fa fa-close fa-fw  del-coupon" rel='+el._id+' aria-hidden="true"></i></div>'
+                  );
+                });
+                $('.mycoupons').append('<br><strong><span class="coup-msg">Click "Mail All" then, check your email to get coupon codes<span></strong>');
+              }
+          });
+          }
+        });
+      });
+     });
+  

@@ -255,8 +255,8 @@ input.header-mobile__search-control:focus {
         color: #5366ff;
     }
 .slick-slider {
-    max-height: 570px;
-    min-height: 300px;
+    max-height: 450px;
+    min-height: 200px;
     overflow: hidden;
     border-radius: 5px;
 }
@@ -266,8 +266,6 @@ input.header-mobile__search-control:focus {
 .footer-widgets {
     background-color: #4c70dc;
 }
-
-
 .footer-secondary__inner, .footer-secondary {
     background-color: #6082e8;
 }

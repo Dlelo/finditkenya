@@ -2104,7 +2104,7 @@ router.get('/', function (req, res, next) {
   var coupons = Coupons.find({
     status: true
   }).populate('bizid').sort([['order', 1], ['star', -1]]).limit(10);
-  var reviews = Review.find().sort([['created_at', -1]]).populate('bizid').populate('user_id').limit(4);
+  var reviews = Review.find().sort([['created_at', -1]]).populate('bizid').populate('user_id').limit(3);
   var categories = Category.find({ approved: true, group: 'general' }).sort([['order', 1]]);
   var description = "Business contact information, deals from the best businesses, shopping, special offers & much more only on Findit in Kenya."
   var keywords = "Findit,findit,Businesses,restaurants,Nairobi,Kenya,dentists,doctors,hotels,deals,special offers,lawyers,hospitals,salon,spa,pizza,movies,ice cream,shopping mall,bakeries";

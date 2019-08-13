@@ -6456,3 +6456,12 @@ height: 50px;
   #hideMobileView{
 		display:block;
 	}
+	.unsticky {
+		position: relative;
+	   }
+	   .sticky {
+		position: fixed;
+		top: 0;
+		width: 100%;
+		background-color: #ffffff;
+	   }

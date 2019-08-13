@@ -634,3 +634,13 @@ input.header-mobile__search-control:focus {
         max-width: 100%;
     }
     }
+
+    .unsticky {
+        position: relative;
+       }
+       .sticky {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: #ffffff;
+       }

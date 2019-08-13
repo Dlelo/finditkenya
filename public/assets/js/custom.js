@@ -1,12 +1,10 @@
 // Add your custom JS code here
 // DOES WORK
-$('.gallery').slick({
+$('.gallery, .products-list').slick({
 
     dots: true,
     infinite: false,
     speed: 300,
-    slidesToShow: 4,
-    slidesToScroll: 4,
     responsive: [
         {
             breakpoint: 4480,
@@ -21,8 +19,8 @@ $('.gallery').slick({
       {
         breakpoint: 769,
         settings: {
-            slidesToShow: 4,
-            slidesToScroll: 4,
+            slidesToShow: 3,
+            slidesToScroll: 3,
             dots: true,
             focusOnSelect: false,
             arrows: true,
@@ -34,8 +32,8 @@ $('.gallery').slick({
       {
         breakpoint: 480,
         settings: {
-            slidesToShow: 2,
-            slidesToScroll: 2,
+            slidesToShow: 1,
+            slidesToScroll: 1,
             dots: true,
             focusOnSelect: false,
             arrows: true,

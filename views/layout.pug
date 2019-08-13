@@ -3,16 +3,16 @@ head
   //
     Basic Page Needs
     ==================================================
-  title Find it
+  title=title
   meta(charset='utf-8')
   meta(http-equiv='X-UA-Compatible' content='IE=edge')
-  meta(name='description' content='Find business in Kenya, Africa')
-  meta(name='author' content='UXCraft')
-  meta(name='keywords' content='Find business')
+  meta(name='description' content=description)
+  meta(name='author' content='UXCraft, Kev and Viral')
+  meta(name='keywords' content=keywords)
   //
     Favicons
     ==================================================
-  link(rel='shortcut icon' href='assets/images/favicon.png')
+  link(rel='shortcut icon' href='/assets/images/favicon.png')
   //
     Mobile Specific Metas
     ==================================================
@@ -25,15 +25,91 @@ head
     CSS
     ==================================================
   // Vendor CSS
-  link(href='assets/vendor/bootstrap/css/bootstrap.css' rel='stylesheet')
-  link(href='assets/fonts/font-awesome/css/font-awesome.min.css' rel='stylesheet')
-  link(href='assets/fonts/simple-line-icons/css/simple-line-icons.css' rel='stylesheet')
-  link(href='assets/vendor/magnific-popup/dist/magnific-popup.css' rel='stylesheet')
-  link(href='assets/vendor/slick/slick.css' rel='stylesheet')
+  link(href='/assets/vendor/bootstrap/css/bootstrap.css' rel='stylesheet')
+  link(href='/assets/fonts/font-awesome/css/font-awesome.min.css' rel='stylesheet')
+  link(href='/assets/fonts/simple-line-icons/css/simple-line-icons.css' rel='stylesheet')
+  link(href='/assets/vendor/magnific-popup/dist/magnific-popup.css' rel='stylesheet')
+  link(href='/assets/vendor/slick/slick.css' rel='stylesheet')
   // Template CSS
-  link(href='assets/css/style-soccer.css' rel='stylesheet')
+  link(href='/assets/css/style-soccer.css' rel='stylesheet')
+  link(href="/stylesheets/css/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css" rel="stylesheet")
   // Custom CSS
-  link(href='assets/css/custom.css' rel='stylesheet')
+  link(href='/assets/css/custom.css' rel='stylesheet')
+// Login/Register Tabs Modal
+#modal-login-register-tabs.modal.fade(tabindex='-1' role='dialog')
+  .modal-dialog.modal-lg.modal--login.modal--login-only(role='document')
+    .modal-content
+      .modal-header
+        button.close(type='button' data-dismiss='modal' aria-label='Close')
+          span(aria-hidden='true') &times;
+      .modal-body
+        .modal-account-holder
+          .modal-account__item.modal-account__item--logo
+            p.modal-account__item-register-txt
+              | Don&rsquo;t have an account? 
+              a(href='#') Register Now
+              |  and enjoy all our benefits!
+          .modal-account__item
+            // Tab panes
+            .tab-content
+              // Tab: Login
+              #tab-login.tab-pane.fade.show.active(role='tabpanel')
+                // Login Form
+                form.modal-form(action='/login' method="post")
+                  h5 Login to your account
+                  .form-group
+                    input.form-control(type='text' placeholder='Enter your email address...' name='username')
+                  .form-group
+                    input.form-control(type='password' placeholder='Enter your password...' name='password')
+                  .form-group.form-group--pass-reminder
+                    label.checkbox.checkbox-inline
+                      input#inlineCheckbox1(type='checkbox' value='option1' checked='')
+                      |  Remember Me
+                      span.checkbox-indicator
+                    a(href='#') Forgot your password?
+                  .form-group.form-group--submit
+                    input.btn.btn-primary-inverse.btn-block(type='submit' value='Enter to your account' ) 
+                    
+                  .modal-form--social
+                    h6 or Login with your social profile:
+                    ul.social-links.social-links--btn.text-center
+                      li.social-links__item
+                        a.social-links__link.social-links__link--lg.social-links__link--fb(href='#')
+                          i.fa.fa-facebook
+                      li.social-links__item
+                        a.social-links__link.social-links__link--lg.social-links__link--twitter(href='#')
+                          i.fa.fa-twitter
+                      li.social-links__item
+                        a.social-links__link.social-links__link--lg.social-links__link--gplus(href='#')
+                          i.fa.fa-google-plus
+                // Login Form / End
+              // Tab: Login / End
+              // Tab: Register
+              #tab-register.tab-pane.fade(role='tabpanel')
+                // Register Form
+                form.modal-form(action='#')
+                  h5 Register Now!
+                  .form-group
+                    input.form-control(type='email' placeholder='Enter your email address...')
+                  .form-group
+                    input.form-control(type='password' placeholder='Enter your password...')
+                  .form-group
+                    input.form-control(type='password' placeholder='Repeat your password...')
+                  .form-group.form-group--submit
+                    a.btn.btn-success.btn-block(href='_soccer_shop-account.html') Create Your Account
+                  .modal-form--note
+                    | You&rsquo;ll receive a confirmation email in your inbox with a link to activate your account.
+                // Register Form / End
+              // Tab: Register / End
+            // Nav tabs
+            .nav-tabs-login-wrapper
+              ul.nav.nav-tabs.nav-justified.nav-tabs--login(role='tablist')
+                li.nav-item
+                  a.nav-link.active(href='#tab-login' role='tab' data-toggle='tab') Login
+                li.nav-item
+                  a.nav-link(href='#tab-register' role='tab' data-toggle='tab') Register
+            // Nav tabs / End
+// Login/Register Tabs Modal / End
 .site-wrapper.clearfix
   .site-overlay
   //
@@ -42,8 +118,8 @@ head
   // Header Mobile
   #header-mobile.header-mobile.clearfix
     .header-mobile__logo
-      a(href='index.html')
-        img.header-mobile__logo-img(src='assets/images/logo.png' alt='findit logo')
+      a(href='/')
+        img.header-mobile__logo-img(src='/assets/images/logo.png' alt='findit logo')
     .header-mobile__inner
       a#header-mobile__toggle.burger-menu-icon
         span.burger-menu-icon__line
@@ -56,27 +132,33 @@ head
         .header__primary-inner
           // Header Logo
           .header-logo
-            a(href='index.html')
-              img.header-mobile__logo-img(src='assets/images/logo.png' alt='findit logo')
+            a(href='/')
+              img.header-mobile__logo-img(src='/assets/images/logo.png' alt='findit logo')
           // Header Logo / End
           // Main Navigation
           nav.main-nav.clearfix
             // Header Search Form
             .header-search-form
-              form#mobile-search-form.search-form(action='#')
-                input.form-control.header-mobile__search-control(type='text' value='' placeholder='Enter your search here...')
+              form#mobile-search-form.search-form(method='get', action='/updatesearch')
+                input.form-control.header-mobile__search-control(type='text' value='' placeholder='Enter your search here...' name='search')
                 button.header-mobile__search-submit(type='submit')
                   i.fa.fa-search
             // Header Search Form / End
             ul.main-nav__list
               li
-                a(href='#') Add A business
+                a(href='/business/newpackage') Add A business
               li
                 a(href='#') Categories
-              li
-                a(href='#') Login
-              li
-                a(href='#') Sign Up
+              if (!loggedin)
+                li
+                  a(href='#' data-toggle='modal' data-target='#modal-login-register-tabs') Login
+                li
+                  a(href='#' data-toggle='modal' data-target='#modal-login-register-tabs') Sign Up
+              else
+                li
+                  a(href='/dashboard') View Profile
+                li
+                  a(href='/logout') Logout 
           // Main Navigation / End
     // Header Primary / End
   // Header / End
@@ -86,135 +168,119 @@ head
   .site-content
     .container
       .row
-        .errors.container
-          if errors
-            each error in errors
-              .alert.xxx-error.alert-danger
-                = error
-          if message
-            .alert.alert-info
-              = message
-          if success_msg.length
-            .alert.xxx-error.alert-success 
-              = success_msg
-          if error_msg.length
-            .alert.xxx-error.alert-danger 
-              = error_msg
-          if error.length
-            .alert.xxx-error.alert-danger 
-              = error
         block content
   footer#footer.footer
-  // Footer Widgets
-  .footer-widgets
-    .footer-widgets__inner
+    // Footer Widgets
+    .footer-widgets
+      .footer-widgets__inner
+        .container
+          .row
+            .col-sm-6.col-md-3
+              .footer-col-inner
+                // Footer Logo
+                .footer-logo.footer-logo--has-txt
+                  a(href='index.html')
+                    .footer-logo__heading
+                      h5.footer-logo__txt About Us
+                      h6.footer-logo__txt Who We are
+                // Footer Logo / End
+                // Widget: Contact Info
+                .widget.widget--footer.widget-contact-info
+                  .widget__content
+                    .widget-contact-info__desc
+                      p
+                        | List your business on Find It today!
+                        | Reach new Customers at the most affordable
+                        | packages, Show case your products and publish
+                        | special offers.
+                        | Get Started by Listing your business
+                // Widget: Contact Info / End
+            .col-sm-6.col-md-3
+              .footer-col-inner
+                // Footer Logo
+                .footer-logo.footer-logo--has-txt
+                  a(href='index.html')
+                    .footer-logo__heading
+                      h6.footer-logo__txt Find Everything
+                // Footer Logo / End
+                // Widget: Contact Info
+                .widget.widget--footer.widget-contact-info
+                  .widget__content
+                    .widget-contact-info__desc
+                      p
+                        | List your business on Find It today!
+                        | Reach new Customers at the most affordable
+                        | packages, Show case your products and publish
+                        | special offers.
+                        | Get Started by Listing your business
+                // Widget: Contact Info / End
+            .col-sm-6.col-md-3
+              .footer-col-inner
+                // Footer Logo
+                .footer-logo.footer-logo--has-txt
+                  a(href='index.html')
+                    .footer-logo__heading
+                      h6.footer-logo__txt Do You Own A Business?
+                // Footer Logo / End
+                // Widget: Contact Info
+                .widget.widget--footer.widget-contact-info
+                  .widget__content
+                    .widget-contact-info__desc
+                      p
+                        | From Manufacturers to Retailers,
+                        | Doctors or Dentists, Legal
+                        | Advisors or Consultants or
+                        | maybe hotels and Restaurants.
+                        | We have it all.
+                // Widget: Contact Info / End
+          .row
+            .info-block__item.info-block__item--nopadding
+              ul.social-links
+                li.social-links__item
+                  a.social-links__link(href='https://www.facebook.com/findit254')
+                    i.fab.fa-facebook-f.fa-1x.pl-3
+                    |   Facebook
+                li.social-links__item
+                  a.social-links__link(href='https://twitter.com/findit254?lang=en')
+                    i.fab.fa-twitter
+                    |   Twitter
+                li.social-links__item
+                  a.social-links__link(href='https://www.instagram.com/finditkenya/?hl=en')
+                    i.fab.fa-google-plus
+                    |   Google+
+    // Footer Widgets / End
+    // Footer Secondary
+    .footer-secondary
       .container
-        .row
-          .col-sm-6.col-md-3
-            .footer-col-inner
-              // Footer Logo
-              .footer-logo.footer-logo--has-txt
-                a(href='index.html')
-                  .footer-logo__heading
-                    h5.footer-logo__txt About Us
-                    h6.footer-logo__txt Who We are
-              // Footer Logo / End
-              // Widget: Contact Info
-              .widget.widget--footer.widget-contact-info
-                .widget__content
-                  .widget-contact-info__desc
-                    p
-                      | List your business on Find It today!
-                      | Reach new Customers at the most affordable
-                      | packages, Show case your products and publish
-                      | special offers.
-                      | Get Started by Listing your business
-              // Widget: Contact Info / End
-          .col-sm-6.col-md-3
-            .footer-col-inner
-              // Footer Logo
-              .footer-logo.footer-logo--has-txt
-                a(href='index.html')
-                  .footer-logo__heading
-                    h6.footer-logo__txt Find Everything
-              // Footer Logo / End
-              // Widget: Contact Info
-              .widget.widget--footer.widget-contact-info
-                .widget__content
-                  .widget-contact-info__desc
-                    p
-                      | List your business on Find It today!
-                      | Reach new Customers at the most affordable
-                      | packages, Show case your products and publish
-                      | special offers.
-                      | Get Started by Listing your business
-              // Widget: Contact Info / End
-          .col-sm-6.col-md-3
-            .footer-col-inner
-              // Footer Logo
-              .footer-logo.footer-logo--has-txt
-                a(href='index.html')
-                  .footer-logo__heading
-                    h6.footer-logo__txt Do You Own A Business?
-              // Footer Logo / End
-              // Widget: Contact Info
-              .widget.widget--footer.widget-contact-info
-                .widget__content
-                  .widget-contact-info__desc
-                    p
-                      | From Manufacturers to Retailers,
-                      | Doctors or Dentists, Legal
-                      | Advisors or Consultants or
-                      | maybe hotels and Restaurants.
-                      | We have it all.
-              // Widget: Contact Info / End
-        .row
-          .info-block__item.info-block__item--nopadding
-            ul.social-links
-              li.social-links__item
-                a.social-links__link(href='#')
-                  i.fa.fa-facebook
-                  |  Facebook
-              li.social-links__item
-                a.social-links__link(href='#')
-                  i.fa.fa-twitter
-                  |  Twitter
-              li.social-links__item
-                a.social-links__link(href='#')
-                  i.fa.fa-google-plus
-                  |  Google+
-  // Footer Widgets / End
-  // Footer Secondary
-  .footer-secondary
-    .container
-      .footer-secondary__inner
-        .row
-          .col-md-4
-            .footer-copyright
-              a(href='_soccer_index.html') find it
-              |  2019 &nbsp; | &nbsp; All Rights Reserved
-          .col-md-8
-            ul.footer-nav.footer-nav--right.footer-nav--condensed.footer-nav--sm
-              li.footer-nav__item
-                a(href='_soccer_index.html') Home
-              li.footer-nav__item
-                a(href='_soccer_features-shortcodes.html') About
-              li.footer-nav__item
-                a(href='_soccer_team-standings.html') Contacts
+        .footer-secondary__inner
+          .row
+            .col-md-4
+              .footer-copyright
+                a(href='_soccer_index.html') find it
+                |  2019 &nbsp; | &nbsp; All Rights Reserved
+            .col-md-8
+              ul.footer-nav.footer-nav--right.footer-nav--condensed.footer-nav--sm
+                li.footer-nav__item
+                  a(href='/') Home
+                li.footer-nav__item
+                  a(href='#footer') About
+                li.footer-nav__item
+                  a(href='#footer') Contacts
     // Footer Secondary / End
   // Footer / End
+
 //
   Javascript Files
   ==================================================
 // Core JS
-script(src='assets/vendor/jquery/jquery.min.js')
-script(src='assets/vendor/bootstrap/js/bootstrap.bundle.js')
-script(src='assets/js/core.js')
+script(src='/assets/vendor/jquery/jquery.min.js')
+script(src='/assets/vendor/bootstrap/js/bootstrap.bundle.js')
+script(src='/assets/js/core.js')
 // Vendor JS
-script(src='assets/vendor/twitter/jquery.twitter.js')
+script(src='/assets/vendor/twitter/jquery.twitter.js')
 // Template JS
-script(src='assets/js/init.js')
-script(src='assets/js/custom.js')
+script(src='/assets/js/init.js')
+script(src='/assets/js/custom.js')
 
 
 //PREVIOUS JAVASCRIPTS

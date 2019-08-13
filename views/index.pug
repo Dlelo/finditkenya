@@ -67,8 +67,8 @@ block content
                 h5.products-list__product-name
                   a(href='/biz/'+ review.bizid.slug) #{review.bizid.name}
                 span.products-list__product-cat 
-                  if review.message.length > 100
-                    | !{review.message.substr(0, 100)+ '..... <strong id="showmore" style="color:#c00000;">Continue Reading</strong>'}
+                  if review.message.length > 60
+                    | !{review.message.substr(0, 60)+ '..... <strong id="showmore" style="color:#5366ff;">Continue Reading</strong>'}
                   else
                     | !{review.message}
                 .products-list__product-sum
@@ -113,7 +113,7 @@ block content
               footer.blockquote__footer
                 cite.blockquote__cite
                   span.blockquote__author-name GET MORE FOR LESS
-                  a.btn.btn-primary.btn-sm.btn-icon-right(href='#')
+                  a.btn.btn-primary.btn-sm.btn-icon-left(href='#',style="width:100%")
                     | View More 
                     i.fa.fa-plus
       // Player Card # / End
@@ -152,7 +152,7 @@ block content
               footer.blockquote__footer
                 cite.blockquote__cite
                   span.blockquote__author-name Checkout All Categories
-                  a.btn.btn-secondary.btn-sm.btn-icon-right(href='#')
+                  a.btn.btn-secondary.btn-sm.btn-icon-left(href='#',style="width:100%")
                     | View More 
                     i.fa.fa-plus
       // Player Card # / End

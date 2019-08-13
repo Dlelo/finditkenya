@@ -1,530 +1,196 @@
-extends ../layout-new
+extends ../layout
 
 block content
-  div.container-fluid
-    #home.baner-content-listing-biz
-      .container-fluid.container-margin-top
-        .row
-          .col-md-3
-              if subcategory
-                  .panel-heading.category
-                    .text-left.cat-items(style="padding-top:1rem;")
-                      a(href="/subcategory/undefined/"+subcategory)
-                        strong  
-                          =subcategory
-              
-              if subcategory
-                if features.length
-                  .panel.panel-warning
-                    .panel-body.black.cat-items
-                      strong Filter   
-                        .panel-heading.category.cat-items
-                          a(href="/nearby/"+features[0].name+"/"+subcategory)
-                            strong 
-                              span.findit-red 
-                                span.fas.fa-map-marker 
-                              |  Nearby
+ .col-lg-9.p-csm-0.col-12.order-md-2
+  // Shop List
+  .card.card--clean
+    header.card__header.card__header--shop-filter
+      .shop-filter
+        h5.shop-filter__result Showing 6 of 98 Restaurants
+        ul.shop-filter__params
+          li.shop-filter__control
+            select.form-control.input-xs
+              option Restaurants Price
+              option Low to High
+              option High to Low
+          li.shop-filter__control
+            select.form-control.input-xs
+              option Newest First
+              option Oldest First
+          li.shop-filter__control
+            select.form-control.input-xs
+              option Show 6 per page
+              option Show 12 per page
+              option Show 24 per page
+        .shop-filter__layout
+          a.shop-filter__grid-layout.icon-grid-layout(href='_soccer_shop-grid.html')
+            span.icon-grid-layout__inner
+              span.icon-grid-layout__item
+              span.icon-grid-layout__item
+              span.icon-grid-layout__item
+          a.shop-filter__list-layout.icon-list-layout.icon-list-layout--active(href='_soccer_shop-list.html')
+            span.icon-list-layout__inner
+              span.icon-list-layout__item
+              span.icon-list-layout__item
+              span.icon-list-layout__item
+    .card__content
+      // Products
+      if businesses.length>0
+       each biz,i in businesses
+        ul.products.products--list.products--list-condensed
+         // Product #0
+         li.product__item.card
+          .product__img
+            .product__img-holder
+              if(biz.photo)
+                img(src="/uploads/thumbs/cover"+ biz.photo, alt=biz.name +' on FindIt Kenya')
               else
-                .panel.panel-warning
-                  a(href="/nearby/"+category)
-                    strong  
-                      span.findit-red 
-                        span.fas.fa-map-marker   
-                      |    See Nearby  #{category}
-              .dropdown.open.dropdown-category(style="padding-left: 1rem;")
-                a.nav-link.dropdown-toggle(href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
-                  | Filter Sub Categories  
-                  span.caret
-                  
-                ul.dropdown-menu.open.sub-catbag.drop-down-sub(style="z-index: 100; overflow: hidden; border: 0px solid rgba(0,0,0,.15) !important")
-                  if features 
-                    li.text-left.sub-list
-                        h6.findit-red
-                          | Filter #{category} by Subcategory
-                    each feature in features
-                      .panel-heading.category
-                        li.text-left.sub-list
-                          a(href="/subcategory/"+categoryTitle+"/"+feature.subcategories.name style="color:#212529")
-                            strong  
-                              =feature.subcategories.name
-          .col-md-9.category-zindex
-            if businesses.length>0
-              div.cathead-background.cat-box.findit-blue
-                h6.cat-heading
-                  | CATEGORY:  
-                  =category
-              each biz,i in businesses
-                if i<11
-                  //if column is even
-                  //if (typeof(biz.slug) != 'undefined')
-                  a.bizlink(href="/biz/"+biz.slug)
-                    div.cat-backgroundeven.cat-box.cat-shadow 
-                      a.bizlink(href="/biz/"+biz.slug)  
-                        .row
-                          a.bizlink(href="/biz/"+biz.slug)
-                            .col-md-12.findit-blue.cat-items-top.cat-header 
-                              h4.findit-blue.catbiz-name
-                                =biz.name  
-                                if (biz.paid == true)
-                                  small.findit-red                    
-                                    span.list-social.far.fa-check-square  
-                              div.nav   
-                                if(biz.facebook)
-                                  a.findit(href="http://"+biz.facebook,target="_blank" class="fa-layers fa-2x")
-                                      i.list-social.fab.fa-facebook-f                  
-                                if(biz.twitter)
-                                  a.findit(href="http://"+biz.twitter,target="_blank" class="fa-layers fa-2x")
-                                      i.list-social.fab.fa-twitter            
-                                if(biz.instagram)
-                                  a.findit(href="http://"+biz.instagram,target="_blank" class="fa-layers fa-2x")
-                                      i.list-social.fab.fa-instagram                   
-                                if(biz.youtube)
-                                  a.findit(href="http://"+biz.youtube,target="_blank" class="fa-layers fa-2x")
-                                      i.list-social.fab.fa-youtube  
-                                    
-                      a.bizlink(href="/biz/"+biz.slug)      
-                        .row 
-                          .col-md-3       
-                            if(biz.photo)
-                              img.cat-image.cat-items-bottom(src="/uploads/thumbs/cover"+ biz.photo, alt=biz.name +' on FindIt Kenya', height="200px")
-                            else
-                              img.cat-image.cat-items-bottom(src="/img/noimageavailable.jpg", alt=biz.name+ ' on FindIt Kenya', height="200px")
-                          .col-md-9
-                            row
-                              .col-md-12.description-cat
-                                if (typeof(biz.description) !== 'undefined')
-                                  if biz.description.length > 250
-                                    p.padding.text-left.description-cat  !{biz.description.substr(0, 250)+ '..... <strong style="background-color:#c00000; color:#fff; padding:1px">Read More</strong>'}
-                                      
-                                  else
-                                    =biz.description
-                              .col-md-12.description-cat
-                                a.bizlink(href="/biz/"+biz.slug)        
-                                  row
-                                    .col-md-12   
-                                      div.findit-blue 
-                                        if(biz.website)
-                                          a.findit(href=biz.website,target="_blank" class="fa-layers fa-1x")
-                                            i.fas.fa-globe
-                                          | website 
-                                            
-                                        else
-                                          |
-                                        if(biz.phone)
-                                          a.findit(class="fa-layers fa-1x")
-                                            i.fas.fa-mobile-alt 
-                                          //a.findit.phoneno(href="tel:"+phone,style="color:#2c155a;display:none")
-                                              |  #{biz.phone}
-                                          a.bizlink(href="/biz/"+biz.slug)
-                                            |  Get Phone Number
-                                        else
-                                          | 
-                              a.bizlink(href="/biz/"+biz.slug)
-                                .col-md-12.description-cat  
-                                  each feature,i in biz.features
-                                    span
-                                      strong 
-                                        | #{feature} |
-                              a.bizlink(href="/biz/"+biz.slug)
-                                .col-md-12.description-cat 
-                                  if(!isNaN(biz.distance))  
-                                    span(style="float:left;")
-                                      small
-                                        i.fas.fa-map-marker-alt
-                                        span 
-                                          =(biz.distance/1000).toFixed(1)
-                                          span     km away
-                              a.bizlink(href="/biz/"+biz.slug)         
-                                row
-                                  a.bizlink(href="/biz/"+biz.slug)
-                                    .col-md-12.text-right
-                                        if biz.reviews
-                                        if( biz.reviews.length == 1)
-                                          each review in biz.reviews 
-                                            .col-md-12.ratingsonCat(class="rating medium star-icon value-"+review.rate+" label-hidden")
-                                              .star-container
-                                                .star
-                                                  i.star-empty
-                                                  i.star-half
-                                                  i.star-filled
-                                                .star
-                                                  i.star-empty
-                                                  i.star-half
-                                                  i.star-filled
-                                                .star
-                                                  i.star-empty
-                                                  i.star-half
-                                                  i.star-filled
-                                                .star
-                                                  i.star-empty
-                                                  i.star-half
-                                                  i.star-filled
-                                                .star
-                                                  i.star-empty
-                                                  i.star-half
-                                                  i.star-filled
-                                            small
-                                              | #{biz.reviews.length} Review
-                                        else if( biz.reviews.length > 1)
-                                          each review, i in biz.reviews
-                                            if(i==0)
-                                              .col-md-12.ratingsonCat(class="rating medium star-icon value-"+review.rate+" label-hidden")  
-                                                .star-container
-                                                  .star
-                                                    i.star-empty
-                                                    i.star-half
-                                                    i.star-filled
-                                                  .star
-                                                    i.star-empty
-                                                    i.star-half
-                                                    i.star-filled
-                                                  .star
-                                                    i.star-empty
-                                                    i.star-half
-                                                    i.star-filled
-                                                  .star
-                                                    i.star-empty
-                                                    i.star-half
-                                                    i.star-filled
-                                                  .star
-                                                    i.star-empty
-                                                    i.star-half
-                                                    i.star-filled
-                                              br
-                                              small
-                                                | #{biz.reviews.length} Reviews
-                                              br
-              div.cat-backgroundeven.cat-box.cat-shadow(style="height:200px;")
-                script(async='' src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js')
-                ins.adsbygoogle(style='display:block' data-ad-format='autorelaxed' data-ad-client='ca-pub-9965055906014205' data-ad-slot='5203174038')
-                script.
-                  (adsbygoogle = window.adsbygoogle || []).push({}); 
-              each biz,i in businesses     
-                if (i>10 && i<21)
-                  //if column is even
-                  //if (typeof(biz.slug) != 'undefined')
-                  a.bizlink(href="/biz/"+biz.slug)
-                    div.cat-backgroundeven.cat-box.cat-shadow 
-                      a.bizlink(href="/biz/"+biz.slug)  
-                        .row
-                          a.bizlink(href="/biz/"+biz.slug)
-                            .col-md-12.findit-blue.cat-items-top.cat-header 
-                              h4.findit-blue.catbiz-name
-                                =biz.name  
-                                if (biz.paid == true)
-                                  small.findit-red                    
-                                    span.list-social.far.fa-check-square  
-                              div.nav   
-                                if(biz.facebook)
-                                  a.findit(href="http://"+biz.facebook,target="_blank" class="fa-layers fa-2x")
-                                      i.list-social.fab.fa-facebook-f                  
-                                if(biz.twitter)
-                                  a.findit(href="http://"+biz.twitter,target="_blank" class="fa-layers fa-2x")
-                                      i.list-social.fab.fa-twitter            
-                                if(biz.instagram)
-                                  a.findit(href="http://"+biz.instagram,target="_blank" class="fa-layers fa-2x")
-                                      i.list-social.fab.fa-instagram                   
-                                if(biz.youtube)
-                                  a.findit(href="http://"+biz.youtube,target="_blank" class="fa-layers fa-2x")
-                                      i.list-social.fab.fa-youtube  
-                                    
-                      a.bizlink(href="/biz/"+biz.slug)      
-                        .row 
-                          .col-md-3       
-                            if(biz.photo)
-                              img.cat-image.cat-items-bottom(src="/uploads/thumbs/cover"+ biz.photo, alt=biz.name +' on FindIt Kenya', height="200px")
-                            else
-                              img.cat-image.cat-items-bottom(src="/img/noimageavailable.jpg", alt=biz.name+ ' on FindIt Kenya', height="200px")
-                          .col-md-9
-                            row
-                              .col-md-12.description-cat
-                                if (typeof(biz.description) !== 'undefined')
-                                  if biz.description.length > 250
-                                    p.padding.text-left.description-cat  !{biz.description.substr(0, 250)+ '..... <strong style="background-color:#c00000; color:#fff; padding:1px">Read More</strong>'}
-                                      
-                                  else
-                                    =biz.description
-                              .col-md-12.description-cat
-                                a.bizlink(href="/biz/"+biz.slug)        
-                                  row
-                                    .col-md-12   
-                                      div.findit-blue 
-                                        if(biz.website)
-                                          a.findit(href=biz.website,target="_blank" class="fa-layers fa-1x")
-                                            i.fas.fa-globe
-                                          | website 
-                                            
-                                        else
-                                          |
-                                        if(biz.phone)
-                                          a.findit(class="fa-layers fa-1x")
-                                            i.fas.fa-mobile-alt 
-                                          //a.findit.phoneno(href="tel:"+phone,style="color:#2c155a;display:none")
-                                              |  #{biz.phone}
-                                          a.bizlink(href="/biz/"+biz.slug)
-                                            |  Get Phone Number
-                                        else
-                                          | 
-                              a.bizlink(href="/biz/"+biz.slug)
-                                .col-md-12.description-cat  
-                                  each feature,i in biz.features
-                                    span
-                                      strong 
-                                        | #{feature} |
-                              a.bizlink(href="/biz/"+biz.slug)
-                                .col-md-12.description-cat 
-                                  if(!isNaN(biz.distance))  
-                                    span(style="float:left;")
-                                      small
-                                        i.fas.fa-map-marker-alt
-                                        span 
-                                          =(biz.distance/1000).toFixed(1)
-                                          span     km away
-                              a.bizlink(href="/biz/"+biz.slug)         
-                                row
-                                  a.bizlink(href="/biz/"+biz.slug)
-                                    .col-md-12.text-right
-                                        if biz.reviews
-                                        if( biz.reviews.length == 1)
-                                          each review in biz.reviews 
-                                            .col-md-12.ratingsonCat(class="rating medium star-icon value-"+review.rate+" label-hidden")
-                                              .star-container
-                                                .star
-                                                  i.star-empty
-                                                  i.star-half
-                                                  i.star-filled
-                                                .star
-                                                  i.star-empty
-                                                  i.star-half
-                                                  i.star-filled
-                                                .star
-                                                  i.star-empty
-                                                  i.star-half
-                                                  i.star-filled
-                                                .star
-                                                  i.star-empty
-                                                  i.star-half
-                                                  i.star-filled
-                                                .star
-                                                  i.star-empty
-                                                  i.star-half
-                                                  i.star-filled
-                                            small
-                                              | #{biz.reviews.length} Review
-                                        else if( biz.reviews.length > 1)
-                                          each review, i in biz.reviews
-                                            if(i==0)
-                                              .col-md-12.ratingsonCat(class="rating medium star-icon value-"+review.rate+" label-hidden")  
-                                                .star-container
-                                                  .star
-                                                    i.star-empty
-                                                    i.star-half
-                                                    i.star-filled
-                                                  .star
-                                                    i.star-empty
-                                                    i.star-half
-                                                    i.star-filled
-                                                  .star
-                                                    i.star-empty
-                                                    i.star-half
-                                                    i.star-filled
-                                                  .star
-                                                    i.star-empty
-                                                    i.star-half
-                                                    i.star-filled
-                                                  .star
-                                                    i.star-empty
-                                                    i.star-half
-                                                    i.star-filled
-                                              br
-                                              small
-                                                | #{biz.reviews.length} Reviews
-                                              br 
-              div.cat-backgroundeven.cat-box.cat-shadow(style="height:200px;")
-                script(async='' src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js')
-                ins.adsbygoogle(style='display:block' data-ad-format='autorelaxed' data-ad-client='ca-pub-9965055906014205' data-ad-slot='5203174038')
-                script.
-                  (adsbygoogle = window.adsbygoogle || []).push({}); 
-              each biz,i in businesses     
-                if (i>20)
-                  //if column is even
-                  //if (typeof(biz.slug) != 'undefined')
-                  a.bizlink(href="/biz/"+biz.slug)
-                    div.cat-backgroundeven.cat-box.cat-shadow 
-                      a.bizlink(href="/biz/"+biz.slug)  
-                        .row
-                          a.bizlink(href="/biz/"+biz.slug)
-                            .col-md-12.findit-blue.cat-items-top.cat-header 
-                              h4.findit-blue.catbiz-name
-                                =biz.name  
-                                if (biz.paid == true)
-                                  small.findit-red                    
-                                    span.list-social.far.fa-check-square  
-                              div.nav   
-                                if(biz.facebook)
-                                  a.findit(href="http://"+biz.facebook,target="_blank" class="fa-layers fa-2x")
-                                      i.list-social.fab.fa-facebook-f                  
-                                if(biz.twitter)
-                                  a.findit(href="http://"+biz.twitter,target="_blank" class="fa-layers fa-2x")
-                                      i.list-social.fab.fa-twitter            
-                                if(biz.instagram)
-                                  a.findit(href="http://"+biz.instagram,target="_blank" class="fa-layers fa-2x")
-                                      i.list-social.fab.fa-instagram                   
-                                if(biz.youtube)
-                                  a.findit(href="http://"+biz.youtube,target="_blank" class="fa-layers fa-2x")
-                                      i.list-social.fab.fa-youtube  
-                                    
-                      a.bizlink(href="/biz/"+biz.slug)      
-                        .row 
-                          .col-md-3       
-                            if(biz.photo)
-                              img.cat-image.cat-items-bottom(src="/uploads/thumbs/cover"+ biz.photo, alt=biz.name +' on FindIt Kenya', height="200px")
-                            else
-                              img.cat-image.cat-items-bottom(src="/img/noimageavailable.jpg", alt=biz.name+ ' on FindIt Kenya', height="200px")
-                          .col-md-9
-                            row
-                              .col-md-12.description-cat
-                                if (typeof(biz.description) !== 'undefined')
-                                  if biz.description.length > 250
-                                    p.padding.text-left.description-cat  !{biz.description.substr(0, 250)+ '..... <strong style="background-color:#c00000; color:#fff; padding:1px">Read More</strong>'}
-                                      
-                                  else
-                                    =biz.description
-                              .col-md-12.description-cat
-                                a.bizlink(href="/biz/"+biz.slug)        
-                                  row
-                                    .col-md-12   
-                                      div.findit-blue 
-                                        if(biz.website)
-                                          a.findit(href=biz.website,target="_blank" class="fa-layers fa-1x")
-                                            i.fas.fa-globe
-                                          | website 
-                                            
-                                        else
-                                          |
-                                        if(biz.phone)
-                                          a.findit(class="fa-layers fa-1x")
-                                            i.fas.fa-mobile-alt 
-                                          //a.findit.phoneno(href="tel:"+phone,style="color:#2c155a;display:none")
-                                              |  #{biz.phone}
-                                          a.bizlink(href="/biz/"+biz.slug)
-                                            |  Get Phone Number
-                                        else
-                                          | 
-                              a.bizlink(href="/biz/"+biz.slug)
-                                .col-md-12.description-cat  
-                                  each feature,i in biz.features
-                                    span
-                                      strong 
-                                        | #{feature} |
-                              a.bizlink(href="/biz/"+biz.slug)
-                                .col-md-12.description-cat 
-                                  if(!isNaN(biz.distance))  
-                                    span(style="float:left;")
-                                      small
-                                        i.fas.fa-map-marker-alt
-                                        span 
-                                          =(biz.distance/1000).toFixed(1)
-                                          span     km away
-                              a.bizlink(href="/biz/"+biz.slug)         
-                                row
-                                  a.bizlink(href="/biz/"+biz.slug)
-                                    .col-md-12.text-right
-                                        if biz.reviews
-                                        if( biz.reviews.length == 1)
-                                          each review in biz.reviews 
-                                            .col-md-12.ratingsonCat(class="rating medium star-icon value-"+review.rate+" label-hidden")
-                                              .star-container
-                                                .star
-                                                  i.star-empty
-                                                  i.star-half
-                                                  i.star-filled
-                                                .star
-                                                  i.star-empty
-                                                  i.star-half
-                                                  i.star-filled
-                                                .star
-                                                  i.star-empty
-                                                  i.star-half
-                                                  i.star-filled
-                                                .star
-                                                  i.star-empty
-                                                  i.star-half
-                                                  i.star-filled
-                                                .star
-                                                  i.star-empty
-                                                  i.star-half
-                                                  i.star-filled
-                                            small
-                                              | #{biz.reviews.length} Review
-                                        else if( biz.reviews.length > 1)
-                                          each review, i in biz.reviews
-                                            if(i==0)
-                                              .col-md-12.ratingsonCat(class="rating medium star-icon value-"+review.rate+" label-hidden")  
-                                                .star-container
-                                                  .star
-                                                    i.star-empty
-                                                    i.star-half
-                                                    i.star-filled
-                                                  .star
-                                                    i.star-empty
-                                                    i.star-half
-                                                    i.star-filled
-                                                  .star
-                                                    i.star-empty
-                                                    i.star-half
-                                                    i.star-filled
-                                                  .star
-                                                    i.star-empty
-                                                    i.star-half
-                                                    i.star-filled
-                                                  .star
-                                                    i.star-empty
-                                                    i.star-half
-                                                    i.star-filled
-                                              br
-                                              small
-                                                | #{biz.reviews.length} Reviews
-                                              br 
+                img(src="/img/noimageavailable.jpg", alt=biz.name+ ' on FindIt Kenya')
+          .product__content.card__content
+            header.product__header
+              .product__header-inner                
+                span.product__category | BBQ
+                h2.product__title
+                  a(href='singleproduct.html') #{biz.name}
+                .product__ratings
+                  i.fa.fa-star
+                  i.fa.fa-star
+                  i.fa.fa-star
+                  i.fa.fa-star
+                  i.fa.fa-star.empty
+            .product__excerpt
+              if(biz.description != '' )
+                if(biz.description.length > 150)
+                  p !{biz.description.substr(0, 150)+ '... <strong style="background-color: #5366ff; color:#fff; padding-left: 4px;padding-right: 6px;border-radius: 5px;">Read More</strong>'}
+                else 
+                  p !{biz.description.substr(0, 150)+ '...'}
+            footer.product__footer
+              ul.post__meta.meta.float-right
+                if(biz.website)
+                  li.meta__item.meta__item--likes
+                  a(href=biz.website,target="_blank" )
+                    i.meta-like.icon-globe
+                    |   www.website.com
+                li.meta__item.meta__item--likes
+                a(href='#')
+                  i.meta-like.icon-envelope-letter
+                  |   mag@website.com
+                if(biz.phone)
+                  li.meta__item.meta__item--likes
+                  a(href='#')
+                    i.meta-like.icon-screen-smartphone
+                    |   #{biz.phone}
+              each feature,i in biz.features
+                span.label.posts__cat-label #{feature}
+        
+        // Product #5 / End
+      // Products / End
+  // Shop List / End
+  // Shop Pagination
+  nav.shop-pagination(aria-label='Shop navigation')
+    ul.pagination.pagination--condensed.pagination--lg.justify-content-end
+      li.page-item.active
+        a.page-link(href='#') 1
+      li.page-item
+        a.page-link(href='#') 2
+      li.page-item
+        a.page-link(href='#') 3
+      li.page-item
+        span.page-link ...
+      li.page-item
+        a.page-link(href='#') 16
+  // Shop Pagination / End
+ .sidebar.sidebar--shop.col-md-3.col-sm-12.order-md-1
+  // Widget: Categories
+  aside.widget.card.widget--sidebar.widget_categories
+    
+    .widget__title.card__header
+      h4 Categories Filter
+      .p-0.col-md-12.mt-3
+        form#mobile-search-form.search-form(action='#')
+          input#filtr.form-control.header-mobile__search-control(type='text' value='' placeholder='Search by category...')
+    .widget__content.card__content
+      ul#filtul.widget__list
+        if subcategory
+          li
+            a(href="/subcategory/undefined/"+subcategory)
+              strong  
+                =subcategory
+        if subcategory
+          if features.length
+            li
+              a(href="/nearby/"+features[0].name+"/"+subcategory)
+                strong 
+                  span.findit-red 
+                   span.fas.fa-map-marker 
+                    |  Nearby
+        else
+          li
+            a(href="/nearby/"+category)
+              strong  
+               span.findit-red 
+                span.fas.fa-map-marker   
+               |    See Nearby  #{category}
+        if features
+          each feature in features
+            li
+              a(href="/subcategory/"+categoryTitle+"/"+feature.subcategories.name) 
+                =feature.subcategories.name
+        
+  // Widget: Categories / End
+  // Widget: Hot Products
+  aside.widget.card.widget--sidebar.widget-products
+    .widget__title.card__header
+      h4 Hot Deals
+    .widget__content.card__content
+      ul.products-list
+        li.products-list__item
+          figure.products-list__product-thumb
+            a(href='#')
+              img(src='assets/images/rest.jpg' alt='')
+          .products-list__inner
+            span.products-list__product-cat Bao Box
+            h5.products-list__product-name
+              a(href='#') Burgers @ half price 
+            .products-list__product-ratings
+              i.fa.fa-star
+              i.fa.fa-star
+              i.fa.fa-star
+              i.fa.fa-star
+              i.fa.fa-star.empty
+            .products-list__product-sum
+              span.products-list__product-price Ksh 28.00
+        li.products-list__item
+          figure.products-list__product-thumb
+            a(href='#')
+              img(src='assets/images/rest2.jpg' alt='')
+          .products-list__inner
+            span.products-list__product-cat Bao Box
+            h5.products-list__product-name
+              a(href='#') Burgers @ half price 
+            .products-list__product-ratings
+              i.fa.fa-star
+              i.fa.fa-star
+              i.fa.fa-star
+              i.fa.fa-star
+              i.fa.fa-star.empty
+            .products-list__product-sum
+              span.products-list__product-price Ksh 28.00
+        li.products-list__item
+          figure.products-list__product-thumb
+            a(href='#')
+              img(src='assets/images/burger.jpg' alt='')
+          .products-list__inner
+            span.products-list__product-cat Bao Box
+            h5.products-list__product-name
+              a(href='#') Burgers @ half price 
+            .products-list__product-ratings
+              i.fa.fa-star
+              i.fa.fa-star
+              i.fa.fa-star
+              i.fa.fa-star
+              i.fa.fa-star.empty
+            .products-list__product-sum
+              span.products-list__product-price Ksh 28.00
+  // Widget: Hot Products / End
 
-            else
-              h1
-                .findit-red(style="padding-top:1rem;") Oops!!! No Businesses or service available
-                span 
-                  a(href='/business/newpackage') 
-                    strong Add your business or service Now!
-                                                  
-            //ul.pagination.row
-              - var n = 1;
-              while n <= bizcount
-                li.page-item(width="10%")
-                  - if(n == page  )
-                    a.page-link(href="#", style='color: #f6f9f6;background: #0056b3;') 
-                      = n
-                      - n++
-                  - else 
-                    a.page-link(href=uri+'?page='+n) 
-                      = n
-                      - n++
-                
-            
-        //script to put navitems open by default
-        script(type='text/javascript').
-          $(document).ready(function(){
-              console.log(!{JSON.stringify(businesses)});
-              if($(window).width() >= 600){
-                $(".dropdown-toggle").dropdown("toggle");
-              }  
-              navigator.geolocation.getCurrentPosition(function(position) {
-                var pos = {
-                  lat: position.coords.latitude,
-                  lng: position.coords.longitude
-                };
-                /// ------- attach users location to url
-                $(".bizlink").each(function () {
-                  let url =$(this).attr("href")
-                  let newUrl = url+'?lon='+pos.lng+'&lat='+pos.lat;
-                  $(this).attr("href", newUrl);
-                });
-              });            
-          });

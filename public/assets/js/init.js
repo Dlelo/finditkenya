@@ -7,7 +7,22 @@
 
 ;(function($){
 	"use strict";
-
+	function myFunction() {
+		var input, filter, ul, li, a, i, txtValue;
+		input = document.getElementById("filtr");
+		filter = input.value.toUpperCase();
+		ul = document.getElementById("filtul");
+		li = ul.getElementsByTagName("li");
+		for (i = 0; i < li.length; i++) {
+			a = li[i].getElementsByTagName("a")[0];
+			txtValue = a.textContent || a.innerText;
+			if (txtValue.toUpperCase().indexOf(filter) > -1) {
+				li[i].style.display = "";
+			} else {
+				li[i].style.display = "none";
+			}
+		}
+	}
 	$('body:not(.page-loader-disable)').jpreLoader({
 		showSplash: false,
 		loaderVPos: "50%",
@@ -674,7 +689,7 @@
 					slidesToScroll: 1,
 					asNavFor: $slick_product_soccer,
 					focusOnSelect: true,
-					vertical: true,
+					vertical: false,
 				});
 			}
 

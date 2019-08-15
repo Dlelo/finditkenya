@@ -1,625 +1,236 @@
-extends ../layout-coupon
+extends ../layout
 
 block content
-  div.container-fluid
-  #home.baner-content-listing-biz
-    .container-fluid.container-margin-top
-      section#couponBanner
-        //h4#couponBannerTitle How to use the Coupons
-        p#couponBannerDescription 
-          span.h4.coupon-title-start
-            | Coupons & Deals 
-          span.h6.coupon-title-start
-            |for you!
-          
-        ul#couponBannerStepsWrapper
-          li#couponBannerClickTile.couponBannerTile
-            p.couponBannerTileText Click the coupon(s) to obtain it
-          li#couponBannerShopTile.couponBannerTile
-            p.couponBannerTileText Click on the Checkout button
-          li#couponBannerEarnTile.couponBannerTile
-            p.couponBannerTileText Confirm & Check your Email
-        
-      //.row.couponbg-color
-        div.col-md-9(style="padding-right:0; padding-left:15px;")
-          row.my-row
-            
-              div#carouselExampleFade.carousel.slide.carousel-fade(data-ride="carousel")
-                ol.carousel-indicators
-                  li.active(data-target="#carouselExampleIndicators" data-slide-to="0")
-                  li(data-target="#carouselExampleIndicators" data-slide-to="1")
-                  li(data-target="#carouselExampleIndicators" data-slide-to="2")
-                
-                div.carousel-inner
-                  each coupon, i in coupons
-                    if (i==0)
-                      div.carousel-item.active
-                          img.d-block.w-100.coupons-img.carousel-img(src="/uploads/" + coupon.photo, alt=coupon.bizid.name +' on FindIt Kenya')
-                          a(href="/biz/"+coupon.bizid.slug)
-                            div.carousel-caption.d-none.d-md-block
-                              div(style="color:#fff")
-                                h3.text-left
-                                  =coupon.bizid.name
-                                h4.text-left
-                                  =coupon.description
-                                span.text-left.badge.badge-light.findit-red
-                                  h6.findit-red
-                                    =coupon.tagline
-                  each coupon, i in coupons
-                    if (i>0 && i<3)
-                      div.carousel-item
-                          img.d-block.w-100.coupons-img.carousel-img(src="/uploads/" + coupon.photo, alt=coupon.bizid.name + ' on FindIt')
-                          a(href="/biz/"+coupon.bizid.slug)
-                            div.carousel-caption.d-none.d-md-block
-                              div(style="color:#fff")
-                                h3.text-left
-                                  =coupon.bizid.name
-                                h4.text-left
-                                  =coupon.description
-                                span.text-left.badge.badge-light.findit-red
-                                  h6.findit-red
-                                    =coupon.tagline
-          
-                    
-    
-                a.carousel-control-prev(href="#carouselExampleFade" role="button" data-slide="prev")
-                  span.carousel-control-prev-icon(aria-hidden="true")
-                a.carousel-control-next(href="#carouselExampleFade" role="button" data-slide="next")
-                  span.carousel-control-next-icon(aria-hidden="true")
-      
-        
-        div.col-md-3
-          row
-              h5
-                .coupon-title
-                  | Popular Coupons
-              each popular, i in populars
-                if i<2  
-                  row.deal-main.deal-home.deal-coup
-                    .col-md-12
-                      small
-                        h6
-                          =popular.name
-                      each bz in popular.biz
-                        img.coup-img(src="/uploads/thumbs/coupons/"+ popular.photo, alt=bz.name + ' on FindIt Kenya')
-                      p
-                        small
-                            p
-                              =popular.description
-                            p
-                            each bz in popular.biz
-                              | @  
-                              =bz.name
-                            p
-                            strong.findit-red
-                              =popular.tagline 
-                              
-                              
-                          
-                            
-                    
-                  
-          //row
-              h5
-              .coupon-title
-                |  Selected Coupons
-              div
-                .mycoupons#coupons-sticky
-  .container-fluid
-    nav.navbar.navbar-light#homenavbar(style="background: #ededed; background: linear-gradient(to bottom,hsl(0,0%,93%) 0,hsl(0,0%,95%) 30%,hsl(0,0%,95%) 70%,hsl(0,0%,93%) 100%) !important;")
-      .navbar-brand 
-        .nav-item.dropdown.open
-          button.btn.btn-cat.btn-light.form-control.dropdown-toggle(type='button', data-toggle='dropdown')
-            h5.coupon-title
-              span
-                h6 Filter Coupons by Category
-                span.i.fas.fa-caret
-              
-            
-          div#items.dropdown-menu.open.sub-catbag.dropdown-menu-coupon
-            
-            if groups 
-              button(class="btn btn-light category-button" data-filter = "all")
-                strong
-                  |  All Categories (
-                span
-                  =groups.length + ')'
-              each group in groups
-                div.text-left.sub-list
-                  //a(href="#"+group._id)
-                  button(class="btn btn-light category-button" data-filter = ''+group._id+'')
-                    strong  
-                      =group._id + " (" + group.count + ")"
-      .nav-item
-        #myBtn(style="border: 1px solid #28a745; background: #28a745; padding: 0.1rem;")
-          span.text-center 
-              strong      Checkout
-          button.coupon-button.mail-button(style="border-top-width: 0px; border-bottom-width: 0px; border-right-width: 0px; border-left-width: 0px;")
-            //span.title
-              i.far.fa-envelop
-            span.number
-              img(src="/img/coup.png")
-              span
-                .badge
-                  #couponscount
-                    h5 
-                      strong
-                        =mycoupons.length
-
-          
-          span.text-center 
-              strong      coupon(s) obtained. 
-
-        div#myModal.modal(style="overflow-x:hidden; overflow-y:auto")
-          div.modal-content(style=" width: 60%;")
-            span.close.text-right
-              span close   
-              span &times;
-            span.coupon-title.text-center
-              h3  Selected Coupons
-            div
-              .mycoupons#coupons-sticky
-                each mycoupon in mycoupons
-                  .coupon.coupon-modal
-                    i.fa.fa-trash.fa-fw.text-right.del-coupon(rel=mycoupon._id, aria-hidden='true',id=user.id)
-                    img.coup-img(src="/uploads/thumbs/coupons/"+ mycoupon.photo, alt=' Findit Kenya') 
-                    //- img.coup-img(src="/uploads/thumbs/coupons/"+ mycoupon.photo, alt=mycoupon.bizid.name +' on Findit Kenya') 
-                    p.findit-blue 
-                     //- strong #{mycoupon.name}  @ #{mycoupon.bizid.name}
-                    p.content-col
-                      strong #{mycoupon.tagline}
-                    p.content-col
-                      | #{mycoupon.description}
-                    
-                      
-            div
-              //.div(style="float: left; clear: left;")
-                span.close.text-right
-                  | Go Back
-                span.fa-status
-                
-                
-                                  
-              .div(style="float: right; clear: right;")
-                  strong
-                    a(href="/admin/email/coupons" class="text-right")
-                      h3
-                        i(class="fa fa-envelope fa-fw" aria-hidden="true")
-                        | Email Coupons Now
-                  
-      
-          
-      //.nav-item
-        form.form-inline#searchCoup.form-class(method='get', action='/search')
-          .input-group
-            div.input-group
-              input.search2.form-control-lg(type="text" placeholder="Businesses, Doctors, Lawyers, Hotels" ,style="width:100% !important" ,name='search', autofocus) 
-        
-    //nav.navbar.navbar-expand-lg.bg-light#homenavbar
-      ul.navbar-nav.mr-auto
-        li.nav-item.dropdown.open.text-left
-            button.btn.btn-cat.btn-light.form-control.dropdown-toggle(type='button', data-toggle='dropdown')
-              h5.coupon-title
-                span.i.fas.fa-filter
-                span    Filter Coupons by Category
-                
-              span.caret
-            div#items.dropdown-menu.open.sub-catbag.drop-down-sub.dropdown-menu-coupon.dropdown-category
-              
-              if groups 
-                button(class="btn btn-light category-button" data-filter = "all")
-                  strong
-                    |  All Categories (
-                  span
-                    =groups.length + ')'
-                each group in groups
-                  div.text-left.sub-list
-                    //a(href="#"+group._id)
-                    button(class="btn btn-light category-button" data-filter = ''+group._id+'')
-                      strong  
-                        =group._id + " (" + group.count + ")" 
-        li.nav-item
-          row
-            .col-md-6.col-sm-12.col-xs-12
-              button#myBtn.btn.btn-danger.btn-cat-coupon.selected-coupon-left
-                h4.agile-title.text-center
-                  =  "  Selected Coupons  "
-                  span.badge.badge-light  
-                    span#couponscount(style="color:#c00000") 
-                        =mycoupons.length
-                  span.fas.fa-envelope                    
-        
-            .col-md-6.col-sm-12.col-xs-12
-              div#myModal.modal
-                div.modal-content
-                  span.close.text-right
-                    |&times;
-                  div 
-                  .coupon-title
-                    h3.text-center
-                      |  Selected Coupons
-                  div
-                    .mycoupons#coupons-sticky
-                      each mycoupon in mycoupons
-                        .coupon.coupon-modal
-                          strong 
-                            =mycoupon.name
-                          i.fa.fa-close.fa-fw.text-right.del-coupon(rel=mycoupon._id, aria-hidden='true',id=user.id)
-                  div
-                     strong
-                      a(href="/admin/email/coupons" class="text-center")
-                        h4
-                          i(class="fa fa-envelope fa-fw" aria-hidden="true")
-                          | Mail All
-        li.nav-item
-          div#searchCoup
-            form.form-class(method='get', action='/search')
-              div.input-group
-                input.search2.form-control-lg(type="text" placeholder="Businesses, Doctors, Lawyers, Hotels" ,style="width:100% !important" ,name='search', autofocus)              
-  //.container-fluid(style="background-color: #f9f9f9;")        
-    .row.deal-main.text-center
-      .col-md-12.col-sm-12.col-xs-12
-              div.text-center
-                span.h4.coupon-title-start
-                  | Free Coupons & Deals 
-                span.h6
-                  |  are available for you! Just 
-                span.strong
-                  | Click, 
-                span.strong
-                  | Save 
-                span
-                  | and 
-                span.strong
-                  | Email. 
-  .container-fluid(style="padding-top: 3%;")
-    //.row.deal-main(style="padding-left: 4rem; padding-right: 4rem; background-color: #f9f9f9;")
-    .row.deal-main(style="background-color: #f9f9f9;")  
-      each coupon, i in coupons
-        //-div.col-md-4.all.well(class=coupon.bizid.subcategory)
-        div.col-md-4.all.well
-          div.row.deal-main.deal-coup.row-eq-height.coupon(id=coupon.id,class=(coupon.users.some(function(x) { return x.user_id == user.id })) ? 'couponclicked' : 'couponadd', rel=user.id) 
-            .card#showUser(style="border:none; width: 100%;")
-              .row
-                .col-md-5.col-sm-5(style="padding-right: 0 !important; padding-left: 0 !important;")
-                  .cd-items.cd-container
-                    .cd-item
-                      img.img-coupon(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=' Findit Kenya' style="padding-top:1.5rem !important; width: 150px; height: 150px;")
-                      //- img.img-coupon(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name +' on Findit Kenya' style="padding-top:1.5rem !important; width: 150px; height: 150px;")
-                      a.cd-trigger(type="button" class="btn btn-primary" data-toggle="modal" data-target='#'+coupon.name, style='color: #fff; background-color: #04045ab5;') Quick View
-                .col-md-7.col-sm-7.px-3
-                  .card-block.px-3
-                    h4.card-title(style="padding-top:2px") 
-                      strong #{coupon.name}
-                    //-p.card-text
-                      h6
-                      small
-                        strong
-                          | @       
-                          =coupon.bizid.name
-                    p.card-text 
-                      small 
-                        if coupon.description.length > 50
-                          |  !{coupon.description.substr(0, 50)+ '... <strong id="showmore" style="background-color:#c00000; color:#fff; padding:1px"><a data-toggle="modal" data-target="#'+coupon.name+'">Read More</a></strong>'} 
-                        else
-                          | #{coupon.description}
-                    p.card-text.findit-blue 
-                      small
-                        strong 
-                          if coupon.tagline.length > 30
-                            |  !{coupon.tagline.substr(0, 30)+ '... <strong id="showmore" style="background-color:#c00000; color:#fff; padding:1px"><a data-toggle="modal" data-target="#'+coupon.name+'">Read More</a></strong>'}
-                          else
-                            |  #{coupon.tagline}
-                      .row
-                        .col-md-12.col-sm-12
-                          small 
-                            strong.showOnHover Click to Claim Coupon
-                        .col-md-12.col-sm-12.text-left
-                          a.btn.btn-primary.clipped(style="color:#fff !important")  Clipped 
-                    //.limited.card-block.px-3
-                      p.card-text 
-                        small #{coupon.description}
-              .row
-                .modal.fade.product_view(id=coupon.name)
-                  .modal-dialog
-                    .modal-content
-                      .modal-header.text-center
-                        a.class(href='#' data-dismiss='modal')
-                          span.glyphicon.glyphicon-remove
-                        h4.findit-red.text-center.modal-title
-                          strong #{coupon.name}
-                          button.close(type='button' data-dismiss='modal') &times;
-                      .modal-body
-                        .row
-                          .col-md-6.product_img
-                            img.img-coupon(src="/uploads/thumbs/coupons/"+ coupon.photo, alt='Findit Kenya' style="padding-top:1.5rem !important; width: 100px; height: 100px;")
-                            //img.img-coupon(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name +' on Findit Kenya' style="padding-top:1.5rem !important; width: 100px; height: 100px;")
-                          .col-md-6.product_content
-                            h4
-                              small
-                                strong
-                                  | @  
-                                  //-a(href="/biz/"+coupon.bizid.slug, target="_blank")     
-                                    =coupon.bizid.name 
-                            p(style="color:#000")  #{coupon.tagline}  
-                            p  #{coupon.description}
-                            
-                            .btn-ground
-                              a.btn.btn-primary.clipped(style="color:#fff !important")
-                                span.glyphicon.glyphicon-heart
-                                | Clipped
-              
-            .viewBusiness(style="position: absolute; top: 0; left: 0;") 
-              //- a(href="/biz/"+coupon.bizid.slug, target="_blank")
-              if(coupon.bizid)
-                a(href="/biz/"+coupon.bizid.slug, target="_blank")
-                  small
-                    strong 
-                       =coupon.bizid.name
-            
-                    
-        
-            //- old  dont restore
-              .div.col-md-12.col-sm-12.col-xs-12
-                strong
-                  h3                  
-                  = coupon.name
-              .div.col-md-12.col-lg-12.col-sm-12.col-xs-12
-                 //- img.coup-img-wrapper.img-fluid(src="/uploads/thumbs/coupons/"+ coupon.photo, alt=coupon.bizid.name +' on Findit Kenya')
-                  .div.col-md-12.col-lg-12.col-sm-12.col-xs-12.float-left 
-                    h6
-                      small
-                        strong
-                          | @       
-                          =coupon.bizid.name
-                  
-                  .div.col-md-12.col-lg-12.col-sm-12.col-xs-12.float-left
-                      =coupon.description
-                    
-                  .div.col-md-12.col-lg-12.col-sm-12.col-xs-12.center-left(style='color: #04045a;')
-                    =coupon.tagline 
-              .div.col-md-6.col-sm-12.col-xs-12.clipped.float-center
-                button.btn.btn.danger
-                  | Clipped  
-                  
-  
-  script(src='/javascripts/bootstrapjs/filter-gallery.js')   
-  script(ype='text/javascript').
-    $('.mored').hover(function () {
-        $('.limited', this).stop(true, true).slideDown("normal");
-    }, function () {
-        $('.limited', this).stop(true, true).hide();
-    });    
-  //Script for selecting coupons       
-  script(type='text/javascript').
-    //(function($) {
-    $(function(){
-          //script for sticky coupons on scroll
-      $("#coupons-sticky").stick_in_parent();
-      //$(".clipped").hide();
-      var cartCount = #{mycoupons.length};
-      $(document).on('click', '.couponadd', function(event) {
-        //alert("clicked");
-        var couponid = $(this).attr("id");
-        $(this).addClass('couponclicked');
-        $(this).removeClass('couponadd');
-        $(this).find('.clipped').show();
-
-        $(this).find('.fa-status').html('<i class="fa fa-window-close fa-2x" aria-hidden="true" style="display:block;float:right"> Close</i>');
-        $.ajax({
-            type: "GET",
-            url: "/getcoupon/user/"+couponid,
-            success: function(data){
-                if(#{loggedin} == false){
-                  //alert("not logged in");
-                  window.location.href = "/login";
-                  throw new Error("kindly login!");
-                }
-                Notify.toast(data.msg, {
-                  fn: function () {
-                    // custom function here
-                  }
-                });
-                if(data.msg == 'Coupon Obtained'){
-                  cartCount = cartCount + 1;
-                  if(cartCount >= 0){
-                    $('#couponscount').text(cartCount);
-                  }
-                }
-                $.ajax({
-                    type: "GET",
-                    url: "/api/mycoupons/",
-                    success: function(data){
-                      var carray = data.mycoupons; 
-                      $('.mycoupons').html('');
-                      carray.forEach(function(el) {
-                        $('.mycoupons').append(
-                          '<div class="coupon coupon-modal"><img src="/uploads/thumbs/coupons/'+el.photo+'" class="coup-img">\
-                          <i id=#{user.id} class="fa fa-trash fa-fw text-right del-coupon" rel='+el._id+' aria-hidden="true"></i>\
-                          <p class="findit-blue">'+el.name+' @ '+el.bizid.name+'</p>\
-                          <p class="content-col"><strong>'+el.tagline+'</strong></p>\
-                          <p class="content-col">'+el.description+'</p></div>'
-                        );
-                      }); 
-                      //$('.mycoupons').append( '<br><strong><span class="coup-msg text-right">Email Coupon(s) Now! <span></strong>');             
-                      console.log(data.code);
-                    }
-                });
-            }
-        });                    
-      });
-      $(document).on('click', ".couponclicked", function(event) {
-        $(this).removeClass('couponclicked');
-        $(this).addClass('couponadd');
-        $(this).find('.clipped').hide();
-        var userid = $(this).attr("rel");
-        $.ajax({
-            type: "GET",
-            url: "/removecoupon/"+ userid,
-            success: function(data){
-                Notify.toast(data.msg, {
-                  fn: function () {
-                    // custom function here
-                  }
-                });
-                if(data.msg == 'Coupon Removed'){
-                  cartCount = cartCount - 1;
-                  if(cartCount >= 0){
-                    $('#couponscount').text(cartCount);
-                  }
-                }
-                $.ajax({
-                    type: "GET",
-                    url: "/api/mycoupons/",
-                    success: function(data){
-                      $('.mycoupons').html('');
-                      data.mycoupons.forEach(function(el) {
-                        $('.mycoupons').append(
-                          '<div class="coupon coupon-modal"><img src="/uploads/thumbs/coupons/'+el.photo+'" class="coup-img">\
-                          <i id=#{user.id} class="fa fa-trash fa-fw text-right del-coupon" rel='+el._id+' aria-hidden="true"></i>\
-                          <p class="findit-blue"><strong>'+el.name+' @ '+el.bizid.name+'</p>\
-                          <p class="content-col"><strong>'+el.tagline+'</strong></p>\
-                          <p class="content-col">'+el.description+'</p></div>'
-                        );
-                      });
-                      //$('.mycoupons').append('<br><strong><span class="coup-msg text-right">Email Coupon(s) Now!<span></strong>');
-                    }
-                });
-            }
-        });
-
-
-        $(this).find('.fa-status').html('<i class="fa fa-plus-square fa-2x" aria-hidden="true" style="display:block; float:right"> Close</i>');
-      });
-
-      $(document).on('click', ".del-coupon", function(event) {
-        //alert($(this).attr("rel"));
-        $('#'+$(this).attr("rel")).removeClass('couponclicked');
-        $('#'+$(this).attr("rel")).addClass('couponadd');
-        $.ajax({
-          type: "GET",
-          url: "/removecoupon/"+$(this).attr("id"),
-          success: function(data){
-            $.ajax({
-              type: "GET",
-              url: "/api/mycoupons/",
-              success: function(data){
-                $('.mycoupons').html('');
-                data.mycoupons.forEach(function(el) {
-                  $('.mycoupons').append(
-                    '<div class="coupon coupon-modal"><img src="/uploads/thumbs/coupons/'+el.photo+'" class="coup-img">\
-                    <i id=#{user.id} class="fa fa-trash fa-fw text-right del-coupon" rel='+el._id+' aria-hidden="true"></i>\
-                    <p class="findit-blue"><strong>'+el.name+' @ '+el.bizid.name+'</p>\
-                    <p class="content-col"><strong>'+el.tagline+'</strong></p>\
-                    <p class="content-col">'+el.description+'</span></p>'
-                  );
-                });
-                //$('.mycoupons').append('<br><strong><span class="coup-msg text-right">Email Coupon Now!<span></strong>'  );
-              }
-          });
-          }
-        });
-      });
-    });
-  
-  //script to hide main menu on coupons page
-  //-script(type='text/javascript').
-    $(window).scroll(function() {
-      if ($(this).scrollTop()>2)
-      {
-          $(function() {
-            $("#homenavbar").hide();
-            $("#searchCoup").show();
-            
-            
-          });
-          
-      }
-      else
-      {
-        $(function() {
-            $("#homenavbar").show();
-            $("#searchCoup").hide();
-           
-          });
-        
-      }
-    });
-    //hide coupons button on coupons page 
-    window.onload = function() {
-      document.getElementById('coupbtn').className = 'hide-coupbtn';
-    };
-    
-    
-  //end of hide coupons buttons on coupons page
-  //script for opening modal
-  script(type='text/javascript').
-    // Get the modal
-    var modal = document.getElementById('myModal');
-
-    // Get the button that opens the modal
-    var btn = document.getElementById("myBtn");
-
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
-
-    // When the user clicks the button, open the modal 
-    btn.onclick = function() {
-        modal.style.display = "block";
-    }
-
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-  //script for filteing coupons based on category
-  script(type='text/javascript').
-    filterSelection("all")
-    function filterSelection(c) {
-      var x, i;
-      x = document.getElementsByClassName("filterDiv");
-      if (c == "all") c = "";
-      for (i = 0; i < x.length; i++) {
-        w3RemoveClass(x[i], "show");
-        if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
-      }
-    }
-
-    function w3AddClass(element, name) {
-      var i, arr1, arr2;
-      arr1 = element.className.split(" ");
-      arr2 = name.split(" ");
-      for (i = 0; i < arr2.length; i++) {
-        if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
-      }
-    }
-
-    function w3RemoveClass(element, name) {
-      var i, arr1, arr2;
-      arr1 = element.className.split(" ");
-      arr2 = name.split(" ");
-      for (i = 0; i < arr2.length; i++) {
-        while (arr1.indexOf(arr2[i]) > -1) {
-          arr1.splice(arr1.indexOf(arr2[i]), 1);     
-        }
-      }
-      element.className = arr1.join(" ");
-    }
-
-    // Add active class to the current button (highlight it)
-    var btnContainer = document.getElementById("myBtnContainer");
-    var btns = btnContainer.getElementsByClassName("btn");
-    for (var i = 0; i < btns.length; i++) {
-      btns[i].addEventListener("click", function(){
-        var current = document.getElementsByClassName("active");
-        current[0].className = current[0].className.replace(" active", "");
-        this.className += " active";
-      });
-    }
+  header.post__header.col-md-12.pb-5
+    h2.post__title Restaurants
+    ol.page-heading__breadcrumb.breadcrumb
+      li.breadcrumb-item
+        a(href='_soccer_index.html') Coupons
+      li.breadcrumb-item.active(aria-current='page') Restaurants
+  // Products
+  .col-lg-9.p-csm-0.col-12.order-md-2
+    // Shop List
+    .bg-white
+      header.card__header.card__header--shop-filter
+        .shop-filter
+          h5.shop-filter__result Showing 6 of 98 Restaurants
+          ul.shop-filter__params
+            li.shop-filter__control
+              select.form-control.input-xs
+                option Restaurants Price
+                option Low to High
+                option High to Low
+            li.shop-filter__control
+              select.form-control.input-xs
+                option Newest First
+                option Oldest First
+            li.shop-filter__control
+              select.form-control.input-xs
+                option Show 6 per page
+                option Show 12 per page
+                option Show 24 per page
+          .shop-filter__layout
+            a.shop-filter__grid-layout.icon-grid-layout(href='_soccer_shop-grid.html')
+              span.icon-grid-layout__inner
+                span.icon-grid-layout__item
+                span.icon-grid-layout__item
+                span.icon-grid-layout__item
+            a.shop-filter__list-layout.icon-list-layout.icon-list-layout--active(href='_soccer_shop-list.html')
+              span.icon-list-layout__inner
+                span.icon-list-layout__item
+                span.icon-list-layout__item
+                span.icon-list-layout__item
+      .row
+        .col-md-4.col-sm-12.mb-3.mt-3
+          .posts__item.posts__item--card.posts__item--quote(style='background-image: url(assets/images/dest2.jpg);')
+            .card__content
+              blockquote.blockquote.blockquote--card
+                p.blockquote__content
+                  cite.blockquote__cite
+                    span.small Agile Homes Ltd
+                  span.blockquote-stress CORAL STRAND SMART CHOICE, SEYCHELLES
+                  |  Offer: 50% discount on bed &amp; breakfast rates Booking period: up to 30 Sep 2...
+                .product__ratings
+                  i.fa.fa-star
+                  i.fa.fa-star
+                  i.fa.fa-star
+                  i.fa.fa-star
+                  i.fa.fa-star.empty
+                a.text-white.blockquote__cite.small.claimrr(href='')
+                  | Claim coupon now 
+                  span(style='background-image: url(assets/images/claimrr.png);')
+                footer.blockquote__footer
+                  a.btn.btn-sm.btn-primary.float-left(href='') Read More
+        .col-md-4.col-sm-12.mb-3.mt-3
+          .posts__item.posts__item--card.posts__item--quote(style='background-image: url(assets/images/rest.jpg);')
+            .card__content
+              blockquote.blockquote.blockquote--card
+                p.blockquote__content
+                  cite.blockquote__cite
+                    span.small Agile Homes Ltd
+                  span.blockquote-stress CORAL STRAND SMART CHOICE, SEYCHELLES
+                  |  Offer: 50% discount on bed &amp; breakfast rates Booking period: up to 30 Sep 2...
+                .product__ratings
+                  i.fa.fa-star
+                  i.fa.fa-star
+                  i.fa.fa-star
+                  i.fa.fa-star
+                  i.fa.fa-star.empty
+                a.text-white.blockquote__cite.small.claimrr(href='')
+                  | Claim coupon now 
+                  span(style='background-image: url(assets/images/claimrr.png);')
+                footer.blockquote__footer
+                  a.btn.btn-sm.btn-primary.float-left(href='') Read More
+        .col-md-4.col-sm-12.mb-3.mt-3
+          .posts__item.posts__item--card.posts__item--quote(style='background-image: url(assets/images/rest.jpg);')
+            .card__content
+              blockquote.blockquote.blockquote--card
+                p.blockquote__content
+                  cite.blockquote__cite
+                    span.small Agile Homes Ltd
+                  span.blockquote-stress CORAL STRAND SMART CHOICE, SEYCHELLES
+                  |  Offer: 50% discount on bed &amp; breakfast rates Booking period: up to 30 Sep 2...
+                .product__ratings
+                  i.fa.fa-star
+                  i.fa.fa-star
+                  i.fa.fa-star
+                  i.fa.fa-star
+                  i.fa.fa-star.empty
+                a.text-white.blockquote__cite.small.claimrr(href='')
+                  | Claim coupon now 
+                  span(style='background-image: url(assets/images/claimrr.png);')
+                footer.blockquote__footer
+                  a.btn.btn-sm.btn-primary.float-left(href='') Read More
+        .col-md-4.col-sm-12.mb-3.mt-3
+          .posts__item.posts__item--card.posts__item--quote(style='background-image: url(assets/images/dest1.jpg);')
+            .card__content
+              blockquote.blockquote.blockquote--card
+                p.blockquote__content
+                  cite.blockquote__cite
+                    span.small Agile Homes Ltd
+                  span.blockquote-stress CORAL STRAND SMART CHOICE, SEYCHELLES
+                  |  Offer: 50% discount on bed &amp; breakfast rates Booking period: up to 30 Sep 2...
+                .product__ratings
+                  i.fa.fa-star
+                  i.fa.fa-star
+                  i.fa.fa-star
+                  i.fa.fa-star
+                  i.fa.fa-star.empty
+                a.text-white.blockquote__cite.small.claimrr(href='')
+                  | Claim coupon now 
+                  span(style='background-image: url(assets/images/claimrr.png);')
+                footer.blockquote__footer
+                  a.btn.btn-sm.btn-primary.float-left(href='') Read More
+        .col-md-4.col-sm-12.mb-3.mt-3
+          .posts__item.posts__item--card.posts__item--quote(style='background-image: url(assets/images/dest3.jpg);')
+            .card__content
+              blockquote.blockquote.blockquote--card
+                p.blockquote__content
+                  cite.blockquote__cite
+                    span.small Agile Homes Ltd
+                  span.blockquote-stress CORAL STRAND SMART CHOICE, SEYCHELLES
+                  |  Offer: 50% discount on bed &amp; breakfast rates Booking period: up to 30 Sep 2...
+                .product__ratings
+                  i.fa.fa-star
+                  i.fa.fa-star
+                  i.fa.fa-star
+                  i.fa.fa-star
+                  i.fa.fa-star.empty
+                a.text-white.blockquote__cite.small.claimrr(href='')
+                  | Claim coupon now 
+                  span(style='background-image: url(assets/images/claimrr.png);')
+                footer.blockquote__footer
+                  a.btn.btn-sm.btn-primary.float-left(href='') Read More
+    // Shop Pagination
+    nav.shop-pagination(aria-label='Shop navigation')
+      ul.pagination.pagination--condensed.pagination--lg.justify-content-end
+        li.page-item.active
+          a.page-link(href='#') 1
+        li.page-item
+          a.page-link(href='#') 2
+        li.page-item
+          a.page-link(href='#') 3
+        li.page-item
+          span.page-link ...
+        li.page-item
+          a.page-link(href='#') 16
+    // Shop Pagination / End
+  // Products / End
+  // Sidebar
+  .sidebar.sidebar--shop.col-md-3.col-sm-12.order-md-1
+    // Widget: Categories
+    aside.widget.card.widget--sidebar.widget_categories
+      .widget__title.card__header
+        h4 Categories Filter
+        .p-0.col-md-12.mt-3
+          form#mobile-search-form.search-form(action='#')
+            input#filtr.form-control.header-mobile__search-control(type='text', value='', placeholder='Search by category...')
+      .widget__content.card__content
+        ul#filtul.widget__list
+          li
+            a(href='#') All Restaurants
+          li
+            a(href='#') BBQ
+          li
+            a(href='#') African
+          li
+            a(href='#') Bars
+          li
+            a(href='#') Bistros
+    // Widget: Categories / End
+    // Widget: Hot Products
+    aside.widget.card.widget--sidebar.widget-products
+      .widget__title.card__header
+        h4 Hot Deals
+      .widget__content.card__content
+        ul.products-list
+          li.products-list__item
+            figure.products-list__product-thumb
+              a(href='#')
+                img(src='assets/images/rest.jpg', alt='')
+            .products-list__inner
+              span.products-list__product-cat Bao Box
+              h5.products-list__product-name
+                a(href='#') Burgers @ half price 
+              .products-list__product-ratings
+                i.fa.fa-star
+                i.fa.fa-star
+                i.fa.fa-star
+                i.fa.fa-star
+                i.fa.fa-star.empty
+              .products-list__product-sum
+                span.products-list__product-price Ksh 28.00
+          li.products-list__item
+            figure.products-list__product-thumb
+              a(href='#')
+                img(src='assets/images/rest2.jpg', alt='')
+            .products-list__inner
+              span.products-list__product-cat Bao Box
+              h5.products-list__product-name
+                a(href='#') Burgers @ half price 
+              .products-list__product-ratings
+                i.fa.fa-star
+                i.fa.fa-star
+                i.fa.fa-star
+                i.fa.fa-star
+                i.fa.fa-star.empty
+              .products-list__product-sum
+                span.products-list__product-price Ksh 28.00
+          li.products-list__item
+            figure.products-list__product-thumb
+              a(href='#')
+                img(src='assets/images/burger.jpg', alt='')
+            .products-list__inner
+              span.products-list__product-cat Bao Box
+              h5.products-list__product-name
+                a(href='#') Burgers @ half price 
+              .products-list__product-ratings
+                i.fa.fa-star
+                i.fa.fa-star
+                i.fa.fa-star
+                i.fa.fa-star
+                i.fa.fa-star.empty
+              .products-list__product-sum
+                span.products-list__product-price Ksh 28.00
+    // Widget: Hot Products / End
+  // Sidebar / End

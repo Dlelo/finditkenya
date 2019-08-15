@@ -41,14 +41,16 @@ block content
                 span.icon-list-layout__item
                 span.icon-list-layout__item
       .row
-        .col-md-4.col-sm-12.mb-3.mt-3
-          .posts__item.posts__item--card.posts__item--quote(style='background-image: url(assets/images/dest2.jpg);')
+        each coupon in coupons
+         .col-md-4.col-sm-12.mb-3.mt-3
+          .posts__item.posts__item--card.posts__item--quote(style='background-image: url("/uploads/'+ coupon.photo+'") no-repeat center center fixed; -webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;')
             .card__content
               blockquote.blockquote.blockquote--card
                 p.blockquote__content
-                  cite.blockquote__cite
-                    span.small Agile Homes Ltd
-                  span.blockquote-stress CORAL STRAND SMART CHOICE, SEYCHELLES
+                  if(coupon.bizid)
+                   cite.blockquote__cite
+                    span.small #{coupon.bizid.name}
+                  span.blockquote-stress #{coupon.name}
                   |  Offer: 50% discount on bed &amp; breakfast rates Booking period: up to 30 Sep 2...
                 .product__ratings
                   i.fa.fa-star
@@ -61,86 +63,7 @@ block content
                   span(style='background-image: url(assets/images/claimrr.png);')
                 footer.blockquote__footer
                   a.btn.btn-sm.btn-primary.float-left(href='') Read More
-        .col-md-4.col-sm-12.mb-3.mt-3
-          .posts__item.posts__item--card.posts__item--quote(style='background-image: url(assets/images/rest.jpg);')
-            .card__content
-              blockquote.blockquote.blockquote--card
-                p.blockquote__content
-                  cite.blockquote__cite
-                    span.small Agile Homes Ltd
-                  span.blockquote-stress CORAL STRAND SMART CHOICE, SEYCHELLES
-                  |  Offer: 50% discount on bed &amp; breakfast rates Booking period: up to 30 Sep 2...
-                .product__ratings
-                  i.fa.fa-star
-                  i.fa.fa-star
-                  i.fa.fa-star
-                  i.fa.fa-star
-                  i.fa.fa-star.empty
-                a.text-white.blockquote__cite.small.claimrr(href='')
-                  | Claim coupon now 
-                  span(style='background-image: url(assets/images/claimrr.png);')
-                footer.blockquote__footer
-                  a.btn.btn-sm.btn-primary.float-left(href='') Read More
-        .col-md-4.col-sm-12.mb-3.mt-3
-          .posts__item.posts__item--card.posts__item--quote(style='background-image: url(assets/images/rest.jpg);')
-            .card__content
-              blockquote.blockquote.blockquote--card
-                p.blockquote__content
-                  cite.blockquote__cite
-                    span.small Agile Homes Ltd
-                  span.blockquote-stress CORAL STRAND SMART CHOICE, SEYCHELLES
-                  |  Offer: 50% discount on bed &amp; breakfast rates Booking period: up to 30 Sep 2...
-                .product__ratings
-                  i.fa.fa-star
-                  i.fa.fa-star
-                  i.fa.fa-star
-                  i.fa.fa-star
-                  i.fa.fa-star.empty
-                a.text-white.blockquote__cite.small.claimrr(href='')
-                  | Claim coupon now 
-                  span(style='background-image: url(assets/images/claimrr.png);')
-                footer.blockquote__footer
-                  a.btn.btn-sm.btn-primary.float-left(href='') Read More
-        .col-md-4.col-sm-12.mb-3.mt-3
-          .posts__item.posts__item--card.posts__item--quote(style='background-image: url(assets/images/dest1.jpg);')
-            .card__content
-              blockquote.blockquote.blockquote--card
-                p.blockquote__content
-                  cite.blockquote__cite
-                    span.small Agile Homes Ltd
-                  span.blockquote-stress CORAL STRAND SMART CHOICE, SEYCHELLES
-                  |  Offer: 50% discount on bed &amp; breakfast rates Booking period: up to 30 Sep 2...
-                .product__ratings
-                  i.fa.fa-star
-                  i.fa.fa-star
-                  i.fa.fa-star
-                  i.fa.fa-star
-                  i.fa.fa-star.empty
-                a.text-white.blockquote__cite.small.claimrr(href='')
-                  | Claim coupon now 
-                  span(style='background-image: url(assets/images/claimrr.png);')
-                footer.blockquote__footer
-                  a.btn.btn-sm.btn-primary.float-left(href='') Read More
-        .col-md-4.col-sm-12.mb-3.mt-3
-          .posts__item.posts__item--card.posts__item--quote(style='background-image: url(assets/images/dest3.jpg);')
-            .card__content
-              blockquote.blockquote.blockquote--card
-                p.blockquote__content
-                  cite.blockquote__cite
-                    span.small Agile Homes Ltd
-                  span.blockquote-stress CORAL STRAND SMART CHOICE, SEYCHELLES
-                  |  Offer: 50% discount on bed &amp; breakfast rates Booking period: up to 30 Sep 2...
-                .product__ratings
-                  i.fa.fa-star
-                  i.fa.fa-star
-                  i.fa.fa-star
-                  i.fa.fa-star
-                  i.fa.fa-star.empty
-                a.text-white.blockquote__cite.small.claimrr(href='')
-                  | Claim coupon now 
-                  span(style='background-image: url(assets/images/claimrr.png);')
-                footer.blockquote__footer
-                  a.btn.btn-sm.btn-primary.float-left(href='') Read More
+        
     // Shop Pagination
     nav.shop-pagination(aria-label='Shop navigation')
       ul.pagination.pagination--condensed.pagination--lg.justify-content-end

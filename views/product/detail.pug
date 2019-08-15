@@ -1,92 +1,331 @@
-extends ../layout-new
+extends ../layout
 
 block content
-
-  #home.baner-content-listing-biz
-    .container-fluid.container-margin-top
-      .card-single-product(style="margin-top:1rem;")
-        if product
-          .row            
-            aside.col-sm-6.border-right 
-              article.gallery-wrap
-                div.img-big-wrap
-                  div.row.xzoom-container
-                    a(href="#")
-                      img.xzoom#xzoom-default(width="500" src='/uploads/product/'+product.photo,  xoriginal='/uploads/product/'+product.photo, alt=product.name +' on FindIt Kenya' )
-                      div.xzoom-thumbs
-                        a(href='/uploads/product/'+product.photo)
-                              img.xzoom-gallery(width="80", height="80", src='/uploads/product/'+product.photo, alt=product.name +' on FindIt Kenya')
-                        if product.gallery
-                          each image in product.gallery
-                            a(href='/uploads/product/gallery-'+image.filename)
-                              img.xzoom-gallery(width="80" height="80" src='/uploads/product/thumbs/gallery-'+image.filename, alt=product.name +' on FindIt Kenya')
-                              
-            aside.col-sm-6
-              article.card-body.p-5
-                h3.title.mb-3
-                  =product.name
-                a.bizlink(href="/biz/"+bizSlug)
-                  h4.title.mb-3
-                    small
-                      if(product.bizid)
-                        strong
-                          =product.bizid.name
-                      span(style="float:right")
-                        strong
-                          | Go back to Company Profile
-                 
-                if product.price
-                  p.price-detail-wrap
-                    span.price.h3.text-secondary
-                      span.currency KES. 
-                      span.num
-                      =product.price
-                    span 
-                if product.description
-                  dl.item-property
-                    dt Description
-                    dd
-                      p 
-                      | !{product.description}
-                
-                hr
-                div
-                    p.contact
-                      if(bizPhone)
-                        each phone in bizPhone
-                          span.findit-red.fas.fa-phone
-                          a.findit.phoneno(href="tel:"+phone)
-                            strong  #{phone}
-                          br
-                        //- span.fas.fa-phone
-                        //- |  #{bizPhone}
-                          
-                    p.contact
-                      strong.findit-blue
-                        a.findit(href="mailto:"+bizEmail)
-                          span.fas.fa-envelope
-                            | Email Seller
-                      //strong #{bizEmail}
-
-                    .btn.btn-lg.btn-outline-primary.text-uppercase.addtocart#showProduct(style="margin-top:1rem;")
-                       i.fas.fa-shopping-cart Contact seller
-    hr
-    .container          
-      row
-        if product
-          .col-md-12(style="padding-bottom: 1rem;")
-            ul.nav.nav-pills
-              li.active
-                if bizDescription
-                  a(href='#1a' data-toggle='tab') 
-                    dl.item-property
-                      dt 
-                        h3.title.mb-3.findit-red.text-center
-                          | Company Information
-            .tab-content.clearfix
-              #1a.tab-pane.active
-                p #{bizDescription}
-
+  // Single Product
+  .products.products--list.products--list-lg
+    .product__item.card
+      .product__img
+        .product__img-holder
+          // Product Slider - Soccer
+          .product__slider-soccer-wrapper
+            // Product Thumbs
+            .product__slider-thumbs
+              .product__slide-thumb
+                .product__slide-thumb-holder
+                  img(src='/uploads/product/thumbs/'+product.photo, alt=product.photo +' findit Kenya')
+              each image in product.gallery
+                .product__slide-thumb
+                  .product__slide-thumb-holder
+                    img(src='/uploads/product/thumbs/gallery-'+image.filename, alt=image.filename +' findit Kenya')
+              
+            // Product Thumbs / End
+            // Product Slider
+            .product__slider-soccer
+              .product__slide
+                img(src='/uploads/product/'+product.photo, alt='')
+              each image in product.gallery
+                .product__slide
+                  img(src='/uploads/product/'+product.photo, alt='')
+              
+            // Product Slider / End
+          // Product Slider - Soccer / End
+      .product__content.card__content.pd-sm
+        header.product__header
+          .product__header-inner
+            span.product__category Travel
+            h2.product__title #{product.name}
+            .product__ratings
+              i.fa.fa-star
+              i.fa.fa-star
+              i.fa.fa-star
+              i.fa.fa-star
+              i.fa.fa-star.empty
+          .product__price #{product.price}
+        .product__excerpt.product__excerpt--sm
+          h6 Description
+          | !{product.description}
+        form.product__params(action='#')
+          .product__param-item.product__param-item--quantity
+            label Quantity
+            .quantity-control
+              button.btn.btn-xs
+                i.fa.fa-minus
+              input.form-control.input-sm(type='number', step='1', value='2', size='4')
+              button.btn.btn-xs
+                i.fa.fa-plus
+        footer.product__footer
+          a.btn.btn-sm.btn-primary-inverse.btn-icon.product__add-to-cart(href='cart.html')
+            i.icon-bag
+            |  Add to Cart
+          a.btn.btn-sm.btn-default.product__wish(href='404.html')
+            i.icon-heart  &#x9;
+            |  Add to wishlist
+  // Single Product / End
+  // Single Product Tabbed Content
+  .product-tabs.card.card--xlg
+    // Nav tabs
+    ul.nav.nav-tabs.nav-justified.nav-product-tabs(role='tablist')
+      li.nav-item
+        a.nav-link.active(href='#tab-desciption', role='tab', data-toggle='tab')
+          small Product
+          | Full Description
+      li.nav-item
+        a.nav-link(href='#tab-info', role='tab', data-toggle='tab')
+          small Product
+          | Additional Information
+      li.nav-item
+        a.nav-link(href='#tab-reviews', role='tab', data-toggle='tab')
+          small Product
+          | Customer Reviews (3)
+    // Tab panes
+    .tab-content.card__content
+      // Tab: Description
+      #tab-desciption.tab-pane.fade.show.active(role='tabpanel')
+        header.product-tabs__header
+          h2 Product Full Description
+        p
+          if bizDescription
+            | !{bizDescription}
+        .spacer
+        h4 Itinerary
+        p
+          | Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+        p
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        .spacer
+        .row
+          .col-md-4
+            // Icobox
+            .icobox.icobox--center
+              .icobox__icon.icobox__icon--filled.icobox__icon--lg.icobox__icon--circle
+                i.icon-badge
+              .icobox__content
+                h4.icobox__title.icobox__title--lg Quality Assurance
+                .icobox__description
+                  | Lorem ipsum dolor sit amet, consectetur enrume adipisicing elit, sed eiusmod tempor incididun labore dolore magna aliqua en lorem.
+            // Icobox / End
+          .col-md-4
+            // Icobox
+            .icobox.icobox--center
+              .icobox__icon.icobox__icon--filled.icobox__icon--lg.icobox__icon--circle
+                i.icon-energy
+              .icobox__content
+                h4.icobox__title.icobox__title--lg Ultra Durability
+                .icobox__description
+                  | Lorem ipsum dolor sit amet, consectetur enrume adipisicing elit, sed eiusmod tempor incididun labore dolore magna aliqua en lorem.
+            // Icobox / End
+          .col-md-4
+            // Icobox
+            .icobox.icobox--center
+              .icobox__icon.icobox__icon--filled.icobox__icon--lg.icobox__icon--circle
+                i.icon-like
+              .icobox__content
+                h4.icobox__title.icobox__title--lg Super Comfort
+                .icobox__description
+                  | Lorem ipsum dolor sit amet, consectetur enrume adipisicing elit, sed eiusmod tempor incididun labore dolore magna aliqua en lorem.
+            // Icobox / End
+      // Tab: Description / End
+      // Tab: Shipping
+      #tab-info.tab-pane.fade(role='tabpanel')
+        header.product-tabs__header
+          h2 Additional Information
+        p
+          | Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+        .spacer
+        h4 About Our Safaris
+        p
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis eder nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        p
+          | Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      // Tab: Shipping / End
+      // Tab: Reviews
+      #tab-reviews.tab-pane.fade(role='tabpanel')
+        section.product-tabs__section
+          header.product-tabs__header
+            h2 3 Customer Reviews
+            .ratings
+              i.fa.fa-star
+              i.fa.fa-star
+              i.fa.fa-star
+              i.fa.fa-star
+              i.fa.fa-star.empty
+              span.ratings-result
+                | 4.33/5 out of 3 reviews
+          // Product Reviews
+          ul.comments.comments--left-thumb
+            li.comments__item
+              .comments__inner
+                header.comment__header
+                  .comment__author
+                    figure.comment__author-avatar
+                      img(src='assets/images/avatar1.jpg', alt='')
+                    .comment__author-info
+                      h5.comment__author-name Jennifer Stevens
+                      time.comment__post-date(datetime='2016-08-23') 5 hours ago
+                      .comment__ratings.ratings
+                        i.fa.fa-star
+                        i.fa.fa-star
+                        i.fa.fa-star
+                        i.fa.fa-star
+                        i.fa.fa-star.empty
+                .comment__body
+                  h4.comment__title Incredible Tour!!
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis eder nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            li.comments__item
+              .comments__inner
+                header.comment__header
+                  .comment__author
+                    figure.comment__author-avatar
+                      img(src='assets/images/avatar2.jpg', alt='')
+                    .comment__author-info
+                      h5.comment__author-name Jake Casspon
+                      time.comment__post-date(datetime='2016-08-23') 2 days ago
+                      .comment__ratings.ratings
+                        i.fa.fa-star
+                        i.fa.fa-star
+                        i.fa.fa-star
+                        i.fa.fa-star
+                        i.fa.fa-star
+                .comment__body
+                  h4.comment__title The Best Crew I&rsquo;ve ever Seen
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis eder nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            li.comments__item
+              .comments__inner
+                header.comment__header
+                  .comment__author
+                    figure.comment__author-avatar
+                      img(src='assets/images/avatar1.jpg', alt='')
+                    .comment__author-info
+                      h5.comment__author-name The Speedtester
+                      time.comment__post-date(datetime='2016-08-23') 4 months ago
+                      .comment__ratings.ratings
+                        i.fa.fa-star
+                        i.fa.fa-star
+                        i.fa.fa-star
+                        i.fa.fa-star
+                        i.fa.fa-star.empty
+                .comment__body
+                  h4.comment__title Comfort and Price, all in One!
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis eder nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          // Product Reviews / End
+        section.product-tabs__section
+          header.product-tabs__header
+            h2 Write a Review
+          // Reviews Form
+          form.reviews-form(action='#')
+            .row
+              .col-md-4
+                .form-group
+                  label.control-label(for='review-stars') Review Stars
+                  select#review-stars.form-control(name='review-stars')
+                    option(value='5') 5 Stars Rating
+                    option(value='4') 4 Stars Rating
+                    option(value='3') 3 Stars Rating
+                    option(value='2') 2 Stars Rating
+                    option(value='1') 1 Star Rating
+                .form-group
+                  label.control-label(for='review-title') Review Title
+                  input#review-title.form-control(type='text', name='review-title')
+              .col-md-8
+                .form-group
+                  label.control-label(for='textarea-review') Your Review
+                  textarea#textarea-review.form-control(name='textarea-review', rows='5')
+            .form-group.form-group--submit
+              button.btn.btn-default.btn-block.btn-lg(type='submit') Post Your Review
+          // Reviews Form / End
+      // Tab: Reviews / End
+  // Single Product Tabbed Content / End
+  // Related Products
+  .card.card--clean
+    header.card__header.p-5
+      h4 Related Products
+    .card__content
+      // Products
+      ul.products.products--grid.products--grid-condensed.products--grid-light.products--grid-4
+        li.product__item.card
+          .product__img
+            .product__img-holder
+              a(href='_soccer_shop-product.html')
+                img(src='assets/images/dest1.jpg', alt='')
+          .product__content.card__content
+            header.product__header
+              .product__header-inner
+                span.product__category BBQ
+                .product__ratings
+                  i.fa.fa-star
+                  i.fa.fa-star
+                  i.fa.fa-star
+                  i.fa.fa-star
+                  i.fa.fa-star.empty
+                h2.product__title
+                  a(href='_soccer_shop-product.html') Big Knife
+                .product__price
+                  | Ksh 28.00
+        // Product #2 / End
+        // Product #3
+        li.product__item.card
+          .product__img
+            .product__img-holder
+              a(href='_soccer_shop-product.html')
+                img(src='assets/images/rest4.jpg', alt='')
+          .product__content.card__content
+            header.product__header
+              .product__header-inner
+                span.product__category BBQ
+                .product__ratings
+                  i.fa.fa-star
+                  i.fa.fa-star
+                  i.fa.fa-star
+                  i.fa.fa-star
+                  i.fa.fa-star.empty
+                h2.product__title
+                  a(href='_soccer_shop-product.html') Big Knife
+                .product__price
+                  | Ksh 28.00
+        // Product #3 / End
+        // Product #4
+        li.product__item.card
+          .product__img
+            .product__img-holder
+              a(href='_soccer_shop-product.html')
+                img(src='assets/images/finance.jpg', alt='')
+          .product__content.card__content
+            header.product__header
+              .product__header-inner
+                span.product__category BBQ
+                .product__ratings
+                  i.fa.fa-star
+                  i.fa.fa-star
+                  i.fa.fa-star
+                  i.fa.fa-star
+                  i.fa.fa-star.empty
+                h2.product__title
+                  a(href='_soccer_shop-product.html') Big Knife
+                .product__price
+                  | Ksh 28.00
+        // Product #4 / End
+        // Product #5
+        li.product__item.card
+          .product__img
+            .product__img-holder
+              a(href='_soccer_shop-product.html')
+                img(src='assets/images/rest3.jpg', alt='')
+          .product__content.card__content
+            header.product__header
+              .product__header-inner
+                span.product__category BBQ
+                .product__ratings
+                  i.fa.fa-star
+                  i.fa.fa-star
+                  i.fa.fa-star
+                  i.fa.fa-star
+                  i.fa.fa-star.empty
+                h2.product__title
+                  a(href='_soccer_shop-product.html') Big Knife
+                .product__price
+                  | Ksh 28.00
+        // Product #5 / End
+      // Products / End
                          
 
      

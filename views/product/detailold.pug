@@ -1,0 +1,280 @@
+extends ../layout-new
+
+block content
+
+  #home.baner-content-listing-biz
+    .container-fluid.container-margin-top
+      .card-single-product(style="margin-top:1rem;")
+        if product
+          .row            
+            aside.col-sm-6.border-right 
+              article.gallery-wrap
+                div.img-big-wrap
+                  div.row.xzoom-container
+                    a(href="#")
+                      img.xzoom#xzoom-default(width="500" src='/uploads/product/'+product.photo,  xoriginal='/uploads/product/'+product.photo, alt=product.name +' on FindIt Kenya' )
+                      div.xzoom-thumbs
+                        a(href='/uploads/product/'+product.photo)
+                              img.xzoom-gallery(width="80", height="80", src='/uploads/product/'+product.photo, alt=product.name +' on FindIt Kenya')
+                        if product.gallery
+                          each image in product.gallery
+                            a(href='/uploads/product/gallery-'+image.filename)
+                              img.xzoom-gallery(width="80" height="80" src='/uploads/product/thumbs/gallery-'+image.filename, alt=product.name +' on FindIt Kenya')
+                              
+            aside.col-sm-6
+              article.card-body.p-5
+                h3.title.mb-3
+                  =product.name
+                a.bizlink(href="/biz/"+bizSlug)
+                  h4.title.mb-3
+                    small
+                      if(product.bizid)
+                        strong
+                          =product.bizid.name
+                      span(style="float:right")
+                        strong
+                          | Go back to Company Profile
+                 
+                if product.price
+                  p.price-detail-wrap
+                    span.price.h3.text-secondary
+                      span.currency KES. 
+                      span.num
+                      =product.price
+                    span 
+                if product.description
+                  dl.item-property
+                    dt Description
+                    dd
+                      p 
+                      | !{product.description}
+                
+                hr
+                div
+                    p.contact
+                      if(bizPhone)
+                        each phone in bizPhone
+                          span.findit-red.fas.fa-phone
+                          a.findit.phoneno(href="tel:"+phone)
+                            strong  #{phone}
+                          br
+                        //- span.fas.fa-phone
+                        //- |  #{bizPhone}
+                          
+                    p.contact
+                      strong.findit-blue
+                        a.findit(href="mailto:"+bizEmail)
+                          span.fas.fa-envelope
+                            | Email Seller
+                      //strong #{bizEmail}
+
+                    .btn.btn-lg.btn-outline-primary.text-uppercase.addtocart#showProduct(style="margin-top:1rem;")
+                       i.fas.fa-shopping-cart Contact seller
+    hr
+    .container          
+      row
+        if product
+          .col-md-12(style="padding-bottom: 1rem;")
+            ul.nav.nav-pills
+              li.active
+                if bizDescription
+                  a(href='#1a' data-toggle='tab') 
+                    dl.item-property
+                      dt 
+                        h3.title.mb-3.findit-red.text-center
+                          | Company Information
+            .tab-content.clearfix
+              #1a.tab-pane.active
+                p #{bizDescription}
+
+                         
+
+     
+    
+    script(src='https://code.jquery.com/jquery-2.1.1.js')
+    script(src='https://unpkg.com/xzoom/dist/xzoom.min.js')
+    script(src='https://hammerjs.github.io/dist/hammer.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/js/foundation.min.js')
+    script(type='text/javascript').
+      $(document).ready(function(){
+          $("#showProduct").click(function(){
+              $(".contact").toggle();
+          });
+        });
+      
+
+    //script to put navitems open by default
+    script(type='text/javascript').
+      $(document).ready(function(){
+          console.log(!{JSON.stringify(businesses)});
+          //- if($(window).width() >= 600){
+          //-   $(".dropdown-toggle").dropdown("toggle");
+          //- }  
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            /// ------- attach users location to url
+            $(".bizlink").each(function () {
+              let url =$(this).attr("href")
+              let newUrl = url+'?lon='+pos.lng+'&lat='+pos.lat;
+              $(this).attr("href", newUrl);
+            });
+          });            
+      });
+
+    script(type='text/javascript').
+      (function ($) {
+        $(document).ready(function() {
+            $('.xzoom, .xzoom-gallery').xzoom({zoomWidth: 250, title: true, tint: '#333', Xoffset: 15});
+            $('.xzoom2, .xzoom-gallery2').xzoom({position: '#xzoom2-id', tint: '#ffa200'});
+            $('.xzoom3, .xzoom-gallery3').xzoom({position: 'lens', lensShape: 'circle', sourceClass: 'xzoom-hidden'});
+            $('.xzoom4, .xzoom-gallery4').xzoom({tint: '#006699', Xoffset: 15});
+            $('.xzoom5, .xzoom-gallery5').xzoom({tint: '#006699', Xoffset: 15});
+
+            //Integration with hammer.js
+            var isTouchSupported = 'ontouchstart' in window;
+
+            if (isTouchSupported) {
+                //If touch device
+                $('.xzoom, .xzoom2, .xzoom3, .xzoom4, .xzoom5').each(function(){
+                    var xzoom = $(this).data('xzoom');
+                    xzoom.eventunbind();
+                });
+                
+                $('.xzoom, .xzoom2, .xzoom3').each(function() {
+                    var xzoom = $(this).data('xzoom');
+                    $(this).hammer().on("tap", function(event) {
+                        event.pageX = event.gesture.center.pageX;
+                        event.pageY = event.gesture.center.pageY;
+                        var s = 1, ls;
+        
+                        xzoom.eventmove = function(element) {
+                            element.hammer().on('drag', function(event) {
+                                event.pageX = event.gesture.center.pageX;
+                                event.pageY = event.gesture.center.pageY;
+                                xzoom.movezoom(event);
+                                event.gesture.preventDefault();
+                            });
+                        }
+        
+                        xzoom.eventleave = function(element) {
+                            element.hammer().on('tap', function(event) {
+                                xzoom.closezoom();
+                            });
+                        }
+                        xzoom.openzoom(event);
+                    });
+                });
+
+            $('.xzoom4').each(function() {
+                var xzoom = $(this).data('xzoom');
+                $(this).hammer().on("tap", function(event) {
+                    event.pageX = event.gesture.center.pageX;
+                    event.pageY = event.gesture.center.pageY;
+                    var s = 1, ls;
+
+                    xzoom.eventmove = function(element) {
+                        element.hammer().on('drag', function(event) {
+                            event.pageX = event.gesture.center.pageX;
+                            event.pageY = event.gesture.center.pageY;
+                            xzoom.movezoom(event);
+                            event.gesture.preventDefault();
+                        });
+                    }
+
+                    var counter = 0;
+                    xzoom.eventclick = function(element) {
+                        element.hammer().on('tap', function() {
+                            counter++;
+                            if (counter == 1) setTimeout(openfancy,300);
+                            event.gesture.preventDefault();
+                        });
+                    }
+
+                    function openfancy() {
+                        if (counter == 2) {
+                            xzoom.closezoom();
+                            $.fancybox.open(xzoom.gallery().cgallery);
+                        } else {
+                            xzoom.closezoom();
+                        }
+                        counter = 0;
+                    }
+                xzoom.openzoom(event);
+                });
+            });
+            
+            $('.xzoom5').each(function() {
+                var xzoom = $(this).data('xzoom');
+                $(this).hammer().on("tap", function(event) {
+                    event.pageX = event.gesture.center.pageX;
+                    event.pageY = event.gesture.center.pageY;
+                    var s = 1, ls;
+
+                    xzoom.eventmove = function(element) {
+                        element.hammer().on('drag', function(event) {
+                            event.pageX = event.gesture.center.pageX;
+                            event.pageY = event.gesture.center.pageY;
+                            xzoom.movezoom(event);
+                            event.gesture.preventDefault();
+                        });
+                    }
+
+                    var counter = 0;
+                    xzoom.eventclick = function(element) {
+                        element.hammer().on('tap', function() {
+                            counter++;
+                            if (counter == 1) setTimeout(openmagnific,300);
+                            event.gesture.preventDefault();
+                        });
+                    }
+
+                    function openmagnific() {
+                        if (counter == 2) {
+                            xzoom.closezoom();
+                            var gallery = xzoom.gallery().cgallery;
+                            var i, images = new Array();
+                            for (i in gallery) {
+                                images[i] = {src: gallery[i]};
+                            }
+                            $.magnificPopup.open({items: images, type:'image', gallery: {enabled: true}});
+                        } else {
+                            xzoom.closezoom();
+                        }
+                        counter = 0;
+                    }
+                    xzoom.openzoom(event);
+                });
+            });
+
+            } else {
+                //If not touch device
+
+                //Integration with fancybox plugin
+                $('#xzoom-fancy').bind('click', function(event) {
+                    var xzoom = $(this).data('xzoom');
+                    xzoom.closezoom();
+                    $.fancybox.open(xzoom.gallery().cgallery, {padding: 0, helpers: {overlay: {locked: false}}});
+                    event.preventDefault();
+                });
+              
+                //Integration with magnific popup plugin
+                $('#xzoom-magnific').bind('click', function(event) {
+                    var xzoom = $(this).data('xzoom');
+                    xzoom.closezoom();
+                    var gallery = xzoom.gallery().cgallery;
+                    var i, images = new Array();
+                    for (i in gallery) {
+                        images[i] = {src: gallery[i]};
+                    }
+                    $.magnificPopup.open({items: images, type:'image', gallery: {enabled: true}});
+                    event.preventDefault();
+                });
+            }
+        });
+     })
+     (jQuery);
+      
+      

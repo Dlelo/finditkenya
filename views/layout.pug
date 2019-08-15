@@ -140,9 +140,15 @@ head
             // Header Search Form
             .header-search-form
               form#mobile-search-form.search-form(method='get', action='/updatesearch')
-                input.form-control.header-mobile__search-control(type='text' value='' placeholder='Enter your search here...' name='search')
-                button.header-mobile__search-submit(type='submit')
-                  i.fa.fa-search
+                div.input-group
+                  select.input-group-addon(name="type")
+                    option(value="business")
+                      | Business
+                    option(value="product")
+                      | Product
+                  input.form-control.header-mobile__search-control(type='text' value='' placeholder='Enter your search here...' name='search')
+                  button.header-mobile__search-submit(type='submit')
+                    i.fa.fa-search
             // Header Search Form / End
             ul.main-nav__list
               li

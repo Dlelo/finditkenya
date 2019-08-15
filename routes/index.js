@@ -1368,6 +1368,7 @@ router.get('/updatesearch', function (req, res) {
       });
     }
   	Promise.all([products, categories]).then(values => {
+      console.log(values[1]);
       res.render('product/index',{title: "Products on Findit", products: values[0],categories: values[1],cart: req.session.cart,total:total});
     });
   }else{

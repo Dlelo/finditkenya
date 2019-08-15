@@ -1,0 +1,127 @@
+extends ../layout-new
+
+block content
+  #home.parallax-content-list.baner-content-listing-biz
+    .container-fluid.container-margin-top.container-fluidpadding
+      section
+        .row
+          .col-md-9
+            .row
+              .col-md-12
+                nav.text-right
+                  a(href='/product/cart')
+                    #cart.row
+                     
+              each product in products
+                .col-md-3.col-product
+                  .col-md-12(id=product.slug,class="productid")
+                    figure.card.card-product
+                      a(href="/product/item/"+product.slug)
+                        .img-wrap
+                          img(src='/uploads/product/thumbs/'+product.photo)
+                          //span.button.btn.btn-light(style="display:none;" data-toggle="modal" data-target="#qModal") Quick Look
+                          //The QuicklookModal
+                          //div(class="modal" id="qModal")
+                            div(class="modal-dialog")
+                              div(class="modal-content")
+                                div(class="modal-header")
+                                  h4(class="modal-title") Modal Heading
+                                  button(type="button" class="close" data-dismiss="modal") &times;
+                                div(class="modal-body") Product description here body..
+                                  div(class="modal-footer")
+                                    button(type="button" class="btn btn-danger" data-dismiss="modal")  Close
+              
+                      figcaption.info-wrap
+                        h6.title.text-dots
+                          =product.name       
+                        div.action-wrap
+                          row.price-wrap
+                            if(product.oldprice)
+                              .col-sm-12
+                                .price-old.strike
+                                  small
+                                    | Was  
+                                    span
+                                      |  KES #{product.oldprice}
+                                .price-new
+                                  small
+                                    | Now  
+                                    span.findit-red
+                                      |  KES #{product.price}  
+                            else
+                                .price-new
+                                  small
+                                    .findit-red
+                                      |  KES #{product.price}
+                               
+                            row
+                              .col-sm-12
+                                input(type="number" value="0" min="0" max="100")
+                                button.btn.btn-outline-primary.w3ls-btn.findit-blue.addtocart(id=product.slug)
+                                  | Add
+          .col-md-3
+            .sticky-top(style="z-index:100; padding-top:20px;")
+              .card(style="width:fit-content;")
+                .card-body
+                  row
+                    .col-sm-12
+                      h4.card-title
+                        | Total Price:   KES   
+                        span#totalprice
+                          =total
+                        a(href='/product/cart')
+                          i.findit-blue(class="fas fa-cart-arrow-down fa-2x")
+                      p.card-text
+                        | Some example text some example text. Incase of a price cut due to offer
+                      hr
+                      a(href="/product/shipping")
+                        button.btn.btn-primary
+                          | Checkout
+              .div#previewcart
+                .card(style="width:fit-content;")
+                  .card-body 
+                    //if cartExists
+                    .col-sm-12
+                      .row#cartsidepreview
+                        if(cartexists)
+                          each p in cart        
+                            row
+                              .card(style= "border: none; border-top: 1px solid #eee; padding: 10px;")
+                                .row
+                                  .col-md-3.card-text
+                                    #inc-button(style='border:1px solid #eee; border-radius: 10%; padding:2px')
+                                      | +
+                                    .div
+                                      | 1
+                                    #dec-button(style='border:1px solid #eee; border-radius: 10%; padding:2px')
+                                      | -
+                                  .col-md-6.card-text
+                                    img(src='/uploads/product/thumbs/'+p.photo, style="width: 66px; height: 66px; margin-right: 4px; padding-top:4px")
+                                  .col-md-3
+                                    i.findit-blue(class="fas fa-close fa-1x")
+                                .row
+                                  .col-md-12.card-text 
+                                    small.text-left
+                                      =p.name    
+                                    span.findit-blue
+                                      small.text-right
+                                        |   KES    
+                                        span
+                                          =p.price 
+
+              button.btn-btn-primary(style="margin-top:400px; z-index=100000")
+                | View Full Busket
+                    
+                              
+  script(type='text/javascript').
+    $(function(){
+      //
+    })
+  script(type='text/javascript').
+    $(document).ready(function () {
+    $('.img-wrap').hover(function () {
+        $(this).find('span').show();
+    }, function () {
+        $(this).find('span').hide();
+      });
+    });

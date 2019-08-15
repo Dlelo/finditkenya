@@ -1,127 +1,155 @@
-extends ../layout-shop
+extends ../layout
 
 block content
-  #home.parallax-content-list.baner-content-listing-biz
-    .container-fluid.container-margin-top.container-fluidpadding
-      section
-        .row
-          .col-md-9
-            .row
-              .col-md-12
-                nav.text-right
-                  a(href='/product/cart')
-                    #cart.row
-                     
-              each product in products
-                .col-md-3.col-product
-                  .col-md-12(id=product.slug,class="productid")
-                    figure.card.card-product
-                      a(href="/product/item/"+product.slug)
-                        .img-wrap
-                          img(src='/uploads/product/thumbs/'+product.photo)
-                          //span.button.btn.btn-light(style="display:none;" data-toggle="modal" data-target="#qModal") Quick Look
-                          //The QuicklookModal
-                          //div(class="modal" id="qModal")
-                            div(class="modal-dialog")
-                              div(class="modal-content")
-                                div(class="modal-header")
-                                  h4(class="modal-title") Modal Heading
-                                  button(type="button" class="close" data-dismiss="modal") &times;
-                                div(class="modal-body") Product description here body..
-                                  div(class="modal-footer")
-                                    button(type="button" class="btn btn-danger" data-dismiss="modal")  Close
-              
-                      figcaption.info-wrap
-                        h6.title.text-dots
-                          =product.name       
-                        div.action-wrap
-                          row.price-wrap
-                            if(product.oldprice)
-                              .col-sm-12
-                                .price-old.strike
-                                  small
-                                    | Was  
-                                    span
-                                      |  KES #{product.oldprice}
-                                .price-new
-                                  small
-                                    | Now  
-                                    span.findit-red
-                                      |  KES #{product.price}  
-                            else
-                                .price-new
-                                  small
-                                    .findit-red
-                                      |  KES #{product.price}
-                               
-                            row
-                              .col-sm-12
-                                input(type="number" value="0" min="0" max="100")
-                                button.btn.btn-outline-primary.w3ls-btn.findit-blue.addtocart(id=product.slug)
-                                  | Add
-          .col-md-3
-            .sticky-top(style="z-index:100; padding-top:20px;")
-              .card(style="width:fit-content;")
-                .card-body
-                  row
-                    .col-sm-12
-                      h4.card-title
-                        | Total Price:   KES   
-                        span#totalprice
-                          =total
-                        a(href='/product/cart')
-                          i.findit-blue(class="fas fa-cart-arrow-down fa-2x")
-                      p.card-text
-                        | Some example text some example text. Incase of a price cut due to offer
-                      hr
-                      a(href="/product/shipping")
-                        button.btn.btn-primary
-                          | Checkout
-              .div#previewcart
-                .card(style="width:fit-content;")
-                  .card-body 
-                    //if cartExists
-                    .col-sm-12
-                      .row#cartsidepreview
-                        if(cartexists)
-                          each p in cart        
-                            row
-                              .card(style= "border: none; border-top: 1px solid #eee; padding: 10px;")
-                                .row
-                                  .col-md-3.card-text
-                                    #inc-button(style='border:1px solid #eee; border-radius: 10%; padding:2px')
-                                      | +
-                                    .div
-                                      | 1
-                                    #dec-button(style='border:1px solid #eee; border-radius: 10%; padding:2px')
-                                      | -
-                                  .col-md-6.card-text
-                                    img(src='/uploads/product/thumbs/'+p.photo, style="width: 66px; height: 66px; margin-right: 4px; padding-top:4px")
-                                  .col-md-3
-                                    i.findit-blue(class="fas fa-close fa-1x")
-                                .row
-                                  .col-md-12.card-text 
-                                    small.text-left
-                                      =p.name    
-                                    span.findit-blue
-                                      small.text-right
-                                        |   KES    
-                                        span
-                                          =p.price 
-
-              button.btn-btn-primary(style="margin-top:400px; z-index=100000")
-                | View Full Busket
-                    
-                              
-  script(type='text/javascript').
-    $(function(){
-      //
-    })
-  script(type='text/javascript').
-    $(document).ready(function () {
-    $('.img-wrap').hover(function () {
-        $(this).find('span').show();
-    }, function () {
-        $(this).find('span').hide();
-      });
-    });
+ header.post__header.col-md-12.pb-3
+  h2.post__title Products
+  ol.page-heading__breadcrumb.breadcrumb
+    li.breadcrumb-item
+      a(href='_soccer_index.html') Home
+    li.breadcrumb-item.active(aria-current='page') Products
+ // Products
+ .col-lg-9.p-csm-0.col-12.order-md-2
+  // Shop List
+  .card.card--clean
+    header.card__header.card__header--shop-filter
+      .shop-filter
+        h5.shop-filter__result Showing 6 of 98 Products
+        ul.shop-filter__params
+          li.shop-filter__control
+            select.form-control.input-xs
+              option Restaurants Price
+              option Low to High
+              option High to Low
+          li.shop-filter__control
+            select.form-control.input-xs
+              option Newest First
+              option Oldest First
+          li.shop-filter__control
+            select.form-control.input-xs
+              option Show 6 per page
+              option Show 12 per page
+              option Show 24 per page
+        .shop-filter__layout
+          a.shop-filter__grid-layout.icon-grid-layout(href='_soccer_shop-grid.html')
+            span.icon-grid-layout__inner
+              span.icon-grid-layout__item
+              span.icon-grid-layout__item
+              span.icon-grid-layout__item
+          a.shop-filter__list-layout.icon-list-layout.icon-list-layout--active(href='_soccer_shop-list.html')
+            span.icon-list-layout__inner
+              span.icon-list-layout__item
+              span.icon-list-layout__item
+              span.icon-list-layout__item
+    .card__content
+      // Products
+      ul.products.products--grid.products--grid-condensed.products--grid-light
+        // Product #0
+        each product in products
+         li.product__item.card
+          .product__img
+            .product__img-holder
+              a(href="/product/item/"+product.slug)
+                img(src='/uploads/product/thumbs/'+product.photo, alt='')
+          .product__content.card__content
+            header.product__header
+              .product__header-inner
+                span.product__category BBQ
+                .product__ratings
+                  i.fa.fa-star
+                  i.fa.fa-star
+                  i.fa.fa-star
+                  i.fa.fa-star
+                  i.fa.fa-star.empty
+                h2.product__title
+                  a(href='singleproduct.html') #{product.name}
+                .product__price
+                  |  KES #{product.price}
+        //END of products
+  // Shop List / End
+  // Shop Pagination
+  nav.shop-pagination(aria-label='Shop navigation')
+    ul.pagination.pagination--condensed.pagination--lg.justify-content-end
+      li.page-item.active
+        a.page-link(href='#') 1
+      li.page-item
+        a.page-link(href='#') 2
+      li.page-item
+        a.page-link(href='#') 3
+      li.page-item
+        span.page-link ...
+      li.page-item
+        a.page-link(href='#') 16
+  // Shop Pagination / End
+ // Products / End
+ // Sidebar
+ .sidebar.sidebar--shop.col-md-3.col-sm-12.order-md-1
+  // Widget: Categories
+  aside.widget.card.widget--sidebar.widget_categories
+    .widget__title.card__header
+      h4 Products Filter
+      .p-0.col-md-12.mt-3
+        form#mobile-search-form.search-form(action='#')
+          input#filtr.form-control.header-mobile__search-control(type='text', value='', placeholder='Search by products...')
+    .widget__content.card__content
+      ul#filtul.widget__list
+        each cat in categories
+         li
+          a(href='/category/'+cat.name)
+            | #{cat.name}
+        
+  // Widget: Categories / End
+  // Widget: Hot Products
+  aside.widget.card.widget--sidebar.widget-products
+    .widget__title.card__header
+      h4 Hot Deals
+    .widget__content.card__content
+      ul.products-list
+        li.products-list__item
+          figure.products-list__product-thumb
+            a(href='#')
+              img(src='assets/images/rest.jpg', alt='')
+          .products-list__inner
+            span.products-list__product-cat Bao Box
+            h5.products-list__product-name
+              a(href='#') Burgers @ half price 
+            .products-list__product-ratings
+              i.fa.fa-star
+              i.fa.fa-star
+              i.fa.fa-star
+              i.fa.fa-star
+              i.fa.fa-star.empty
+            .products-list__product-sum
+              span.products-list__product-price Ksh 28.00
+        li.products-list__item
+          figure.products-list__product-thumb
+            a(href='#')
+              img(src='assets/images/rest2.jpg', alt='')
+          .products-list__inner
+            span.products-list__product-cat Bao Box
+            h5.products-list__product-name
+              a(href='#') Burgers @ half price 
+            .products-list__product-ratings
+              i.fa.fa-star
+              i.fa.fa-star
+              i.fa.fa-star
+              i.fa.fa-star
+              i.fa.fa-star.empty
+            .products-list__product-sum
+              span.products-list__product-price Ksh 28.00
+        li.products-list__item
+          figure.products-list__product-thumb
+            a(href='#')
+              img(src='assets/images/burger.jpg', alt='')
+          .products-list__inner
+            span.products-list__product-cat Bao Box
+            h5.products-list__product-name
+              a(href='#') Burgers @ half price 
+            .products-list__product-ratings
+              i.fa.fa-star
+              i.fa.fa-star
+              i.fa.fa-star
+              i.fa.fa-star
+              i.fa.fa-star.empty
+            .products-list__product-sum
+              span.products-list__product-price Ksh 28.00
+  // Widget: Hot Products / End

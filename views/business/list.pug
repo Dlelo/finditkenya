@@ -38,50 +38,54 @@ block content
       if businesses.length>0
        each biz,i in businesses
         ul.products.products--list.products--list-condensed
-         // Product #0
-         li.product__item.card
-          .product__img
-            .product__img-holder
-              if(biz.photo)
-                img(src="/uploads/thumbs/cover"+ biz.photo, alt=biz.name +' on FindIt Kenya')
-              else
-                img(src="/img/noimageavailable.jpg", alt=biz.name+ ' on FindIt Kenya')
-          .product__content.card__content
-            header.product__header
-              .product__header-inner                
-                span.product__category | BBQ
-                h2.product__title
-                  a(href='singleproduct.html') #{biz.name}
-                .product__ratings
-                  i.fa.fa-star
-                  i.fa.fa-star
-                  i.fa.fa-star
-                  i.fa.fa-star
-                  i.fa.fa-star.empty
-            .product__excerpt
-              if(biz.description != '' )
-                if(biz.description.length > 150)
-                  p !{biz.description.substr(0, 150)+ '... <strong style="background-color: #5366ff; color:#fff; padding-left: 4px;padding-right: 6px;border-radius: 5px;">Read More</strong>'}
-                else 
-                  p !{biz.description.substr(0, 150)+ '...'}
-            footer.product__footer
-              ul.post__meta.meta.float-right
-                if(biz.website)
-                  li.meta__item.meta__item--likes
-                  a(href=biz.website,target="_blank" )
-                    i.meta-like.icon-globe
-                    |   www.website.com
-                li.meta__item.meta__item--likes
-                a(href='#')
-                  i.meta-like.icon-envelope-letter
-                  |   mag@website.com
-                if(biz.phone)
-                  li.meta__item.meta__item--likes
-                  a(href='#')
-                    i.meta-like.icon-screen-smartphone
-                    |   #{biz.phone}
-              each feature,i in biz.features
-                span.label.posts__cat-label #{feature}
+          // Product #0
+          a(href="/biz/"+biz.slug)
+           li.product__item.card 
+            .product__img
+              .product__img-holder
+                if(biz.photo)
+                  img(src="/uploads/thumbs/cover"+ biz.photo, alt=biz.name +' on FindIt Kenya')
+                else
+                  img(src="/img/noimageavailable.jpg", alt=biz.name+ ' on FindIt Kenya')
+            .product__content.card__content
+              header.product__header
+                .product__header-inner                
+                  span.product__category | BBQ
+                  h2.product__title
+                    a(href="/biz/"+biz.slug) #{biz.name}
+                  .product__ratings
+                    i.fa.fa-star
+                    i.fa.fa-star
+                    i.fa.fa-star
+                    i.fa.fa-star
+                    i.fa.fa-star.empty
+              .product__excerpt
+                if(biz.description != '' )
+                  if(biz.description.length > 150)
+                    p !{biz.description.substr(0, 150)+ '... <strong style="background-color: #5366ff; color:#fff; padding-left: 4px;padding-right: 6px;border-radius: 5px;">Read More</strong>'}
+                  else 
+                    p !{biz.description.substr(0, 150)+ '...'}
+              footer.product__footer
+                .row
+                  .col-md-12
+                    each feature,i in biz.features
+                      span.label.posts__cat-label.m-1 #{feature}
+                  .col-md-12
+                    ul.post__meta.meta.float-left
+                      if(biz.website)
+                        li.meta__item.meta__item--likes
+                        a(href=biz.website,target="_blank" )
+                          i.meta-like.icon-globe
+                          |   #{biz.website}
+                      li.meta__item.meta__item--likes.p-2
+                      a(href='#')
+                        i.meta-like.icon-envelope-letter
+                        |   mag@website.com
+                      if(biz.phone)
+                        li.meta__item.meta__item--likes.p-2
+                        a(href='#')
+                          i.meta-like.icon-screen-smartphone
+                          |   #{biz.phone}
         
         // Product #5 / End
       // Products / End

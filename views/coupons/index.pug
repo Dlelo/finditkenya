@@ -443,11 +443,42 @@ block content
                 $('#couponscount').text(data.mycoupons.length);
                 data.mycoupons.forEach(function(el) {
                   $('.mycoupons').append(
-                    '<div class="coupon coupon-modal"><img src="/uploads/thumbs/coupons/'+el.photo+'" class="coup-img">\
-                    <i id=#{user.id} class="fa fa-trash fa-fw text-right del-coupon" rel='+el._id+' aria-hidden="true"></i>\
-                    <p class="findit-blue"><strong>'+el.name+' @ '+el.bizid.name+'</p>\
-                    <p class="content-col"><strong>'+el.tagline+'</strong></p>\
-                    <p class="content-col">'+el.description+'</span></p>'
+                    '<li class="product__item card">\
+                            <div class="product__img">\
+                              <div class="product__img-holder">\
+                                <img src="/uploads/thumbs/coupons/'+el.photo+'" alt=" Findit Kenya">\
+                              </div>\
+                            </div>\
+                            <div class="product__content card__content">\
+                              <header class="product__header">\
+                                <div class="product__header-inner">\
+                                  <span class="product__category">\
+                                    <a href="/biz/Royal-Kitchen-at-Pride-Inn">'+el.bizid.name+'</a>\
+                                  </span>\
+                                  <h2 class="product__title">\
+                                    <a href="#">'+el.tagline+'</a>\
+                                  </h2>\
+                                  <div class="product__ratings">\
+                                    <i class="fa fa-star"></i>\
+                                    <i class="fa fa-star"></i>\
+                                    <i class="fa fa-star"></i>\
+                                    <i class="fa fa-star"></i>\
+                                    <i class="fa fa-star empty"></i>\
+                                  </div>\
+                                </div>\
+                              </header>\
+                            <div class="product__excerpt">\
+                              <p style="font-size:15px"> '+el.description.substr(0, 250)+ '...'+'</p>\
+                            </div>\
+                            <footer class="product__footer">\
+                              <ul class="post__meta meta float-left">\
+                                <span class="label label-success pr-2">Clipped</span>\
+                                <span class="label label-default">\
+                                  <i class="fa fa-trash fa-fw text-right del-coupon" rel='+el._id+' aria-hidden="true" id=#{user.id}></i>\
+                                </span>\
+                              </ul>\
+                            </footer>\
+                          </div></li>'
                   );
                 });
                 //$('.mycoupons').append('<br><strong><span class="coup-msg text-right">Email Coupon Now!<span></strong>'  );

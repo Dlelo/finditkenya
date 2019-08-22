@@ -1,7 +1,7 @@
 extends ../layout
 
 block content
-  header.post__header.col-md-12.pb-2
+  header.post__header.col-md-12.pb-2#coupons-sticky
     h2.post__title Restaurants
     ol.page-heading__breadcrumb.breadcrumb
       li.breadcrumb-item
@@ -16,19 +16,11 @@ block content
           h5.shop-filter__result Showing 6 of 98 Restaurants
           ul.shop-filter__params
             li.shop-filter__control
-              select.form-control.input-xs
-                option Restaurants Price
-                option Low to High
-                option High to Low
-            li.shop-filter__control
-              select.form-control.input-xs
-                option Newest First
-                option Oldest First
-            li.shop-filter__control
-              select.form-control.input-xs
-                option Show 6 per page
-                option Show 12 per page
-                option Show 24 per page
+              a.icon-grid-layout(href='#' data-toggle="modal" data-target="#couponallview") 
+                h5.shop-filter__result Coupons
+                  span.badge.badge-pill.badge-success.ml-2.p-1#couponscount
+                    if(mycoupons) 
+                      =mycoupons.length
           .shop-filter__layout
             a.shop-filter__grid-layout.icon-grid-layout(href='_soccer_shop-grid.html')
               span.icon-grid-layout__inner
@@ -44,14 +36,15 @@ block content
         each coupon in coupons
          .col-md-4.col-sm-12.mb-3.mt-3
           .posts__item.posts__item--card.posts__item--quote(style='background: url("/uploads/'+ coupon.photo+'") no-repeat center center; -webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;')
-            .card__content
+            .card__content(id=coupon.id,class=(coupon.users.some(function(x) { return x.user_id == user.id })) ? 'couponclicked' : 'couponadd', rel=user.id)
               blockquote.blockquote.blockquote--card(style="background-color: rgba(0, 0, 0, 0.53);padding: 5px; border-radius: 5px;")
                 p.blockquote__content
                   if(coupon.bizid)
                    cite.blockquote__cite
                     span.small #{coupon.bizid.name}
                   span.blockquote-stress #{coupon.name}
-                  |  Offer: 50% discount on bed &amp; breakfast rates Booking period: up to 30 Sep 2...
+                  if(coupon.description)
+                    p.text-white(style="font-size:15px") !{coupon.description.substr(0, 150)+ '...'}
                 .product__ratings
                   i.fa.fa-star
                   i.fa.fa-star
@@ -157,3 +150,413 @@ block content
                 span.products-list__product-price Ksh 28.00
     // Widget: Hot Products / End
   // Sidebar / End
+  // coupons Modal
+  #couponview.modal.couponview(tabindex='-1' role='dialog' aria-labelledby='mySmallModalLabel' aria-hidden='true')
+    .modal-dialog.modal-lg
+      .modal-content
+        .modal-header.pt-0.pb-0
+          h5.mt-3
+            | The Tavern Bar &amp; Grill 
+            br
+            span.small.text-light At the king post
+          button.close(type='button' data-dismiss='modal' aria-label='Close')
+            span(aria-hidden='true') &times;
+        .modal-body.p-0
+          .card__content.p-2
+            // Products
+            ul.products.products--list.products--list-condensed
+              // Product #0
+              li.product__item.card
+                .product__img
+                  .product__img-holder
+                    img(src='assets/images/rest.jpg' alt='')
+                .product__content.card__content
+                  header.product__header
+                    .product__header-inner
+                      span.product__category bbq
+                      h2.product__title
+                        a(href='singleproduct.html') Big Knife
+                      .product__ratings
+                        i.fa.fa-star
+                        i.fa.fa-star
+                        i.fa.fa-star
+                        i.fa.fa-star
+                        i.fa.fa-star.empty
+                  .product__excerpt
+                    | Lorem ipsum dolor sit amet, consectetur adipisi nel elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  footer.product__footer
+                    ul.post__meta.meta.float-right
+                      span.label.posts__cat-label Clipped
+                      span.label.posts__cat-label.lbl2.ml-3
+                        a(href='') Claim Coupon
+              // Product #0 / End
+            // Products / End
+  // /coupons Modal / End
+  // coupons Modal
+  #couponallview.modal.couponview(tabindex='-1' role='dialog' aria-labelledby='mySmallModalLabel' aria-hidden='true')
+    .modal-dialog.modal-lg
+      .modal-content
+        .modal-header.pt-0.pb-0
+          h5.mt-3 Your Selected Coupons 
+          button.close(type='button' data-dismiss='modal' aria-label='Close')
+            span(aria-hidden='true') &times;
+        .modal-body.p-0
+          .card__content.p-0
+            // Products
+            ul.products.products--list.products--list-condensed.mycoupons
+              // Product #0
+              each mycoupon in mycoupons
+                li.product__item.card
+                  .product__img
+                    .product__img-holder
+                      img(src="/uploads/thumbs/coupons/"+ mycoupon.photo, alt=' Findit Kenya')
+                  .product__content.card__content
+                    header.product__header
+                      .product__header-inner
+                        span.product__category 
+                          a(href="/biz/"+mycoupon.bizid.slug)
+                            | #{mycoupon.bizid.name}
+                        h2.product__title
+                          a(href='#') #{mycoupon.tagline}
+                        .product__ratings
+                          i.fa.fa-star
+                          i.fa.fa-star
+                          i.fa.fa-star
+                          i.fa.fa-star
+                          i.fa.fa-star.empty
+                    .product__excerpt
+                      if(mycoupon.description)
+                        p(style="font-size:15px") !{mycoupon.description.substr(0, 250)+ '...'}
+                    footer.product__footer
+                      ul.post__meta.meta.float-left
+                        span.label.label-success.pr-2 Clipped
+                        span.label.label-default
+                          i.fa.fa-trash.fa-fw.text-right.del-coupon(rel=mycoupon._id, aria-hidden='true',id=user.id)
+                  
+                
+            // Products / End
+  // /coupons Modal / End
+  script(src='/javascripts/bootstrapjs/filter-gallery.js')   
+  script(ype='text/javascript').
+
+
+    window.onscroll = function() {myFunction()};
+        
+        var navbar = document.getElementById("coupons-sticky");
+        var sticky = navbar.offsetTop;
+        
+        function myFunction() {
+          if (window.pageYOffset >= sticky) {
+            navbar.classList.remove("unsticky");
+            navbar.classList.add("sticky");
+          } else {
+            navbar.classList.remove("sticky");
+            navbar.classList.add("unsticky");
+          }
+        }
+
+
+    $('.mored').hover(function () {
+        $('.limited', this).stop(true, true).slideDown("normal");
+    }, function () {
+        $('.limited', this).stop(true, true).hide();
+    });    
+  //Script for selecting coupons       
+  script(type='text/javascript').
+    //(function($) {
+    $(function(){
+          //script for sticky coupons on scroll
+      //$("#coupons-sticky").stick_in_parent();
+      //$(".clipped").hide();
+      var cartCount = #{mycoupons.length};
+      $(document).on('click', '.couponadd', function(event) {
+        //alert("clicked");
+        var couponid = $(this).attr("id");
+        $(this).addClass('couponclicked');
+        $(this).removeClass('couponadd');
+        $(this).find('.clipped').show();
+
+        $(this).find('.fa-status').html('<i class="fa fa-window-close fa-2x" aria-hidden="true" style="display:block;float:right"> Close</i>');
+        $.ajax({
+            type: "GET",
+            url: "/getcoupon/user/"+couponid,
+            success: function(data){
+                if(#{loggedin} == false){
+                  //alert("not logged in");
+                  window.location.href = "/login";
+                  throw new Error("kindly login!");
+                }
+                Notify.toast(data.msg, {
+                  fn: function () {
+                    // custom function here
+                  }
+                });
+                if(data.msg == 'Coupon Obtained'){
+                  cartCount = cartCount + 1;
+                  if(cartCount >= 0){
+                    $('#couponscount').text(cartCount);
+                  }
+                }
+                $.ajax({
+                    type: "GET",
+                    url: "/api/mycoupons/",
+                    success: function(data){
+                      var carray = data.mycoupons;
+                      console.log(carray);
+                      $('.mycoupons').html('');
+                      carray.forEach(function(el) {
+                        $('.mycoupons').append(
+                          '<li class="product__item card">\
+                            <div class="product__img">\
+                              <div class="product__img-holder">\
+                                <img src="/uploads/thumbs/coupons/'+el.photo+'" alt=" Findit Kenya">\
+                              </div>\
+                            </div>\
+                            <div class="product__content card__content">\
+                              <header class="product__header">\
+                                <div class="product__header-inner">\
+                                  <span class="product__category">\
+                                    <a href="/biz/Royal-Kitchen-at-Pride-Inn">'+el.bizid.name+'</a>\
+                                  </span>\
+                                  <h2 class="product__title">\
+                                    <a href="#">'+el.tagline+'</a>\
+                                  </h2>\
+                                  <div class="product__ratings">\
+                                    <i class="fa fa-star"></i>\
+                                    <i class="fa fa-star"></i>\
+                                    <i class="fa fa-star"></i>\
+                                    <i class="fa fa-star"></i>\
+                                    <i class="fa fa-star empty"></i>\
+                                  </div>\
+                                </div>\
+                              </header>\
+                            <div class="product__excerpt">\
+                              <p style="font-size:15px"> '+el.description.substr(0, 250)+ '...'+'</p>\
+                            </div>\
+                            <footer class="product__footer">\
+                              <ul class="post__meta meta float-left">\
+                                <span class="label label-success pr-2">Clipped</span>\
+                                <span class="label label-default">\
+                                  <i class="fa fa-trash fa-fw text-right del-coupon" rel='+el._id+' aria-hidden="true" id=#{user.id}></i>\
+                                </span>\
+                              </ul>\
+                            </footer>\
+                          </div></li>'
+                        );
+                      }); 
+                      //$('.mycoupons').append( '<br><strong><span class="coup-msg text-right">Email Coupon(s) Now! <span></strong>');             
+                      console.log(data.code);
+                    }
+                });
+            }
+        });                    
+      });
+      $(document).on('click', ".couponclicked", function(event) {
+        $(this).removeClass('couponclicked');
+        $(this).addClass('couponadd');
+        $(this).find('.clipped').hide();
+        var userid = $(this).attr("rel");
+        $.ajax({
+            type: "GET",
+            url: "/removecoupon/"+ userid,
+            success: function(data){
+                Notify.toast(data.msg, {
+                  fn: function () {
+                    // custom function here
+                  }
+                });
+                if(data.msg == 'Coupon Removed'){
+                  cartCount = cartCount - 1;
+                  if(cartCount >= 0){
+                    $('#couponscount').text(cartCount);
+                  }
+                }
+                $.ajax({
+                    type: "GET",
+                    url: "/api/mycoupons/",
+                    success: function(data){
+                      $('.mycoupons').html('');
+                      data.mycoupons.forEach(function(el) {
+                        $('.mycoupons').append(
+                          '<li class="product__item card">\
+                            <div class="product__img">\
+                              <div class="product__img-holder">\
+                                <img src="/uploads/thumbs/coupons/'+el.photo+'" alt=" Findit Kenya">\
+                              </div>\
+                            </div>\
+                            <div class="product__content card__content">\
+                              <header class="product__header">\
+                                <div class="product__header-inner">\
+                                  <span class="product__category">\
+                                    <a href="/biz/Royal-Kitchen-at-Pride-Inn">'+el.bizid.name+'</a>\
+                                  </span>\
+                                  <h2 class="product__title">\
+                                    <a href="#">'+el.tagline+'</a>\
+                                  </h2>\
+                                  <div class="product__ratings">\
+                                    <i class="fa fa-star"></i>\
+                                    <i class="fa fa-star"></i>\
+                                    <i class="fa fa-star"></i>\
+                                    <i class="fa fa-star"></i>\
+                                    <i class="fa fa-star empty"></i>\
+                                  </div>\
+                                </div>\
+                              </header>\
+                            <div class="product__excerpt">\
+                              <p style="font-size:15px"> '+el.description.substr(0, 250)+ '...'+'</p>\
+                            </div>\
+                            <footer class="product__footer">\
+                              <ul class="post__meta meta float-left">\
+                                <span class="label label-success pr-2">Clipped</span>\
+                                <span class="label label-default">\
+                                  <i class="fa fa-trash fa-fw text-right del-coupon" rel='+el._id+' aria-hidden="true" id=#{user.id}></i>\
+                                </span>\
+                              </ul>\
+                            </footer>\
+                          </div></li>'
+                        );
+                      });
+                      //$('.mycoupons').append('<br><strong><span class="coup-msg text-right">Email Coupon(s) Now!<span></strong>');
+                    }
+                });
+            }
+        });
+
+
+        $(this).find('.fa-status').html('<i class="fa fa-plus-square fa-2x" aria-hidden="true" style="display:block; float:right"> Close</i>');
+      });
+
+      $(document).on('click', ".del-coupon", function(event) {
+        //alert($(this).attr("rel"));
+        $('#'+$(this).attr("rel")).removeClass('couponclicked');
+        $('#'+$(this).attr("rel")).addClass('couponadd');
+        //alert("delete coupon");
+        $.ajax({
+          type: "GET",
+          url: "/removecoupon/"+$(this).attr("id"),
+          success: function(data){
+            $.ajax({
+              type: "GET",
+              url: "/api/mycoupons/",
+              success: function(data){
+                $('.mycoupons').html('');
+                $('#couponscount').text(data.mycoupons.length);
+                data.mycoupons.forEach(function(el) {
+                  $('.mycoupons').append(
+                    '<div class="coupon coupon-modal"><img src="/uploads/thumbs/coupons/'+el.photo+'" class="coup-img">\
+                    <i id=#{user.id} class="fa fa-trash fa-fw text-right del-coupon" rel='+el._id+' aria-hidden="true"></i>\
+                    <p class="findit-blue"><strong>'+el.name+' @ '+el.bizid.name+'</p>\
+                    <p class="content-col"><strong>'+el.tagline+'</strong></p>\
+                    <p class="content-col">'+el.description+'</span></p>'
+                  );
+                });
+                //$('.mycoupons').append('<br><strong><span class="coup-msg text-right">Email Coupon Now!<span></strong>'  );
+              }
+          });
+          }
+        });
+      });
+    });
+  
+  //script to hide main menu on coupons page
+  //-script(type='text/javascript').
+    $(window).scroll(function() {
+      if ($(this).scrollTop()>2)
+      {
+          $(function() {
+            $("#homenavbar").hide();
+            $("#searchCoup").show();
+            
+            
+          });
+          
+      }
+      else
+      {
+        $(function() {
+            $("#homenavbar").show();
+            $("#searchCoup").hide();
+           
+          });
+        
+      }
+    });
+    //hide coupons button on coupons page 
+    window.onload = function() {
+      document.getElementById('coupbtn').className = 'hide-coupbtn';
+    };
+    
+    
+  //end of hide coupons buttons on coupons page
+  //script for opening modal
+  script(type='text/javascript').
+    // Get the modal
+    var modal = document.getElementById('myModal');
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal 
+    //- btn.onclick = function() {
+    //-     modal.style.display = "block";
+    //- }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+  //script for filteing coupons based on category
+  script(type='text/javascript').
+    filterSelection("all")
+    function filterSelection(c) {
+      var x, i;
+      x = document.getElementsByClassName("filterDiv");
+      if (c == "all") c = "";
+      for (i = 0; i < x.length; i++) {
+        w3RemoveClass(x[i], "show");
+        if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+      }
+    }
+
+    function w3AddClass(element, name) {
+      var i, arr1, arr2;
+      arr1 = element.className.split(" ");
+      arr2 = name.split(" ");
+      for (i = 0; i < arr2.length; i++) {
+        if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+      }
+    }
+
+    function w3RemoveClass(element, name) {
+      var i, arr1, arr2;
+      arr1 = element.className.split(" ");
+      arr2 = name.split(" ");
+      for (i = 0; i < arr2.length; i++) {
+        while (arr1.indexOf(arr2[i]) > -1) {
+          arr1.splice(arr1.indexOf(arr2[i]), 1);     
+        }
+      }
+      element.className = arr1.join(" ");
+    }
+
+    // Add active class to the current button (highlight it)
+    //- var btnContainer = document.getElementById("myBtnContainer");
+    //- var btns = btnContainer.getElementsByClassName("btn");
+    //- for (var i = 0; i < btns.length; i++) {
+    //-   btns[i].addEventListener("click", function(){
+    //-     var current = document.getElementsByClassName("active");
+    //-     current[0].className = current[0].className.replace(" active", "");
+    //-     this.className += " active";
+    //-   });
+    //- }
+

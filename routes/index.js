@@ -2943,6 +2943,7 @@ router.get('/coupons', function (req, res) {
     //console.log(values[0]);
     res.render('coupons/index', {
       title: 'Findit: Deals in Kenya',
+      couponspage: true,
       coupons: values[0],
       categories: values[1],
       groups: values[2],

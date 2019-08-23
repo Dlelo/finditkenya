@@ -1,60 +1,43 @@
-extends ../layout-min
+extends ../layout
 
 block content
   div.container-fluid
-  #home.baner-content-listing-biz
-    .container.container-margin-top
-      .div.xxx
-        div.col-12.my-col
-           h3.agile-title.login-title.text-center
-             | Login
-        a.btn-gp-link(href="/auth/facebook")
-          button.btn.btn-primary.facebook-google-btn.form-control
-            i.fab.fa-facebook-f.pull-left(aria-hidden='true') 
-                       
-            | &nbsp; Login with Facebook
-        .div
-           
-        a.btn-gp-link(href="/auth/google")
-          button.btn.btn-danger.facebook-google-btn.form-control
-            i.fab.fa-google.pull-left(aria-hidden='true')          
-            |  &nbsp;   Login with Google
-
-        
-        .div.signup-or-separator.login-form
-          span.h6.signup-or-separator--text
-          
-        form(method="post", action="/login")
-           .form-group
-            .input-group
-              .input-group-addon.form-control
-                input#exampleInputEmaillog.form-control-form.form-control(type='text', placeholder='Email address or Username',name='username')
-           .form-group
-            .input-group
-              .input-group-addon.form-control
-                input#exampleInputPasswordpas.form-control-form.form-control(type='password', placeholder='Password',name='password')
-           .form-group
-              .row
-                .col-md-6.pull-left
-                  input(type="checkbox" checked class="custom-control-input custom-control form-control-lg custom-checkbox" id="customCheck1" style = "width: 20px; height: 20px;")
-                  label(class="custom-control-label" for="customCheck1" style="margin-left:5px")
-                    |      Remember me   
-          
-                .col-md-6.col-md-offset-2.pull-right
+    .container
+      .row
+        .card(style="margin: 0 auto;")
+          .card__header
+            h4 Login to your Account
+          .card__content
+            // Login Form
+            form(action='/login', method="post")
+              .form-group
+                label(for='login-name') Your Email
+                input#login-name.form-control(type='text' name='username' placeholder='Enter your email address...' required)
+              .form-group
+                label(for='login-password') Your Password
+                input#login-password.form-control(type='password' name='password' placeholder='Enter your password...' required)
+              .form-group.form-group--password-forgot
+                label.checkbox.checkbox-inline
+                  input#inlineCheckbox1(type='checkbox' value='option1' checked='')
+                  |  Remember Me
+                  span.checkbox-indicator
+                span.password-reminder
                   a(href="/forgotpassword")
                     p.frgt-pswd(data-toggle='modal', data-dismiss='modal', data-target='#at-reset-pswd') Forgot Password ?
-           .row
-             .col-md-12
-               button.btn.btn-primary.w3ls-btn(type='submit') Login
-           hr
-           .row
-            .col-md-6
-              p.ta-l.text-center.text-muted.small 
-                |Don't have an account ? 
-            .col-md-4.col-md-offset-2
-              a(href="/register")
-                .btn.btn-default Sign Up
-          
-        
-             
-        
+              .form-group.form-group--sm
+                input.form-control.btn.btn-primary-inverse.btn-lg.btn-block(type="submit", value="Sign in to your account")
+              .row
+                .col-md-6
+                  a.btn-gp-link(href="/auth/facebook")
+                    button.btn.btn-facebook.btn-icon.btn.btn-success.w3ls-btn
+                      i.fab.fa-facebook-f
+                      |  Sign In via Facebook
+                .col-md-6
+                  a.btn-gp-link(href="/auth/google")
+                    button.btn.btn-google.btn-icon.btn.btn-danger.w3ls-btn
+                      i.fab.fa-google
+                      |  Sign in via Google
+                .col-md-12.text-center
+                  br
+                  a.btn.form-control(href="/register")
+                    | Sign Up

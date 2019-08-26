@@ -222,10 +222,8 @@ block content
       .modal-content
         .modal-header.pt-0.pb-0
           h5.mt-3
-            | Contacts 
+            | #{product.bizid.name} Contacts 
             br
-            if(product.bizid)
-          h3 #{product.bizid.name}
           button.close(type='button' data-dismiss='modal' aria-label='Close')
             span(aria-hidden='true') &times;
         .modal-body.p-0

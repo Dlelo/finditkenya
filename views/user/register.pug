@@ -1,62 +1,63 @@
-extends ../layout-min
+extends ../layout
 
 block content
-  #home.baner-content-listing-biz
-    .container.container-margin-top
+  div.container-fluid
+    .container
       if validationerrors
         each error in validationerrors
           .alert.alert-danger.xxx-error
             = error.msg
-      .xxx
-         p
-          //| Sign up with 
-          //- a(href='#') Facebook
-          //- |   or 
-          a.btn-gp-link(href="/auth/google")
-            button.btn.btn-danger.facebook-google-btn.form-control
-              i.fab.fa-google.pull-left(aria-hidden='true')          
-              |  &nbsp;   Sign up with Google
-          .div
-          a.btn-gp-link(href="/auth/facebook")
-            button.btn.btn-primary.facebook-google-btn.form-control
-              i.fab.fa-facebook-f.pull-left(aria-hidden='true') 
-              | &nbsp; Sign up with Facebook
-         .text-center
-            | Or     
-         form(method="post", action="/register")
-          .form-group
-            input#names.form-control-form(type='text', placeholder='Full Name', name='names',value=form.nameholder)
-          .form-group
-            input#email.form-control-form(type='email', placeholder='Email', name='email',value=form.emailholder)
-          .form-group
-            input#phone.form-control-form(type='text', placeholder='Phone', name='phone', value=form.phoneholder)
-          .form-group
-            input#password.form-control-form(type='password', placeholder='Password', name='password')
-          .form-group
-            input#password.form-control-form(type='password', placeholder='Confirm Password', name='cpassword')
-          .form-group
-            .row
-              .col-md-12
-                .input-group
-                  .checkbox
-                    label
-                      input(type="checkbox" checked class="custom-control-input custom-control form-control-lg custom-checkbox" id="customCheck1" style = "width: 20px; height: 20px;")
-                      label(class="custom-control-label" for="customCheck1")
-                        small(style="margin-left:25px")
-                          | I’d like to receive coupons and newsletters from Find It
-                  p
-                    small
-                      | By signing up, I agree to Find It’s, 
-                      a(href='/terms-and-conditions') Terms of Service
-                      | , 
-                      a(href='/privacy-policy') Privacy Policy
-                      | .
-          .form-group
-            button.btn.btn-primary.w3ls-btn(type='submit') Sign Up
-          hr
-          .row
-            .col-md-6.text-center
-              p.ta-l Already a Member? 
-            .col-md-6.text-center
-              a(href='/login')
-               .btn.btn-default(data-toggle='modal', data-dismiss='modal', data-target='#at-login') Login Here
+      .row
+        .card(style="margin: 0 auto;")
+          .card__header
+            h4 Sign Up for an Account
+          .card__content
+            // Login Form
+            form(action='/login', method="post")
+              .form-group
+                label(for='names') Your Names
+                input#names.form-control(type='text' name='names' placeholder='Enter your names...' required)
+              .form-group
+                label(for='email') Your Email
+                input#email.form-control(type='email' name='email' placeholder='Enter your email...' required)
+              .form-group
+                label(for='login-password') Your Phone
+                input#phone.form-control(type='text' name='phone' placeholder='Enter your phone...' required)
+              .form-group
+                input#password.form-control(type='password', placeholder='Password', name='password')
+              .form-group
+                input#password.form-control(type='password', placeholder='Confirm Password', name='cpassword')
+              .form-group
+                .row
+                  .col-md-12
+                    .input-group
+                      .checkbox
+                        label
+                          input(type="checkbox" checked class="custom-control-input custom-control form-control-lg custom-checkbox" id="customCheck1" style = "width: 20px; height: 20px;")
+                          label(class="custom-control-label" for="customCheck1")
+                            small(style="")
+                              | I’d like to receive coupons and newsletters from Find It
+                      p
+                        small
+                          | By signing up, I agree to Find It’s, 
+                          a(href='/terms-and-conditions') Terms of Service
+                          | , 
+                          a(href='/privacy-policy') Privacy Policy
+                          | .
+              .form-group.form-group--sm
+                input.form-control.btn.btn-primary-inverse.btn-lg.btn-block(type="submit", value="Sign in to your account")
+              .row
+                .col-md-6
+                  a.btn-gp-link(href="/auth/facebook")
+                    button.btn.btn-facebook.btn-icon.btn.btn-success.w3ls-btn
+                      i.fab.fa-facebook-f
+                      |  Sign In via Facebook
+                .col-md-6
+                  a.btn-gp-link(href="/auth/google")
+                    button.btn.btn-google.btn-icon.btn.btn-danger.w3ls-btn
+                      i.fab.fa-google
+                      |  Sign in via Google
+                .col-md-12.text-center
+                  br
+                  a.btn.form-control(href="/login")
+                    | Sign In

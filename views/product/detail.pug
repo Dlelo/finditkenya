@@ -45,15 +45,6 @@ block content
         .product__excerpt.product__excerpt--sm
           h6 Description
           | !{product.description}
-        form.product__params(action='#')
-          .product__param-item.product__param-item--quantity
-            label Quantity
-            .quantity-control
-              button.btn.btn-xs
-                i.fa.fa-minus
-              input.form-control.input-sm(type='number', step='1', value='2', size='4')
-              button.btn.btn-xs
-                i.fa.fa-plus
         footer.product__footer
           if(product.bizid)
             a.btn.btn-sm.btn-primary-inverse.btn-icon.product__add-to-cart(href="#" data-toggle="modal" data-target="#contactsView")

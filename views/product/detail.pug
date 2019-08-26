@@ -237,6 +237,10 @@ block content
                 .product__content.card__content
                   header.product__header
                     .product__header-inner
+                      span.product__category 
+                        a(href="/biz/"+mycoupon.bizid.slug)
+                          | #{mycoupon.bizid.name}
+                    .product__header-inner
                       h2.product__title
                         if(product.bizid)
                           p !{product.bizid.email}

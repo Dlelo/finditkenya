@@ -524,6 +524,7 @@ router.get('/item/:slug',async function(req, res){
 
   let bizSlug,bizName,bizDescription,bizEmail,phonNo,owner,bizPhone;
   console.log(product);
+  let similarProds = await Product.find({subcategory: product.subcategory});
   if(product.bizid){
     
     bizSlug = product.bizid.slug;
@@ -549,7 +550,8 @@ router.get('/item/:slug',async function(req, res){
         title: product.name, 
         categories: categories, 
         owner, bizPhone, 
-        bizEmail, bizName, 
+        bizEmail, bizName,
+        similarproducts: similarProds, 
         bizSlug, bizDescription
       });
   });

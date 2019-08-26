@@ -188,95 +188,34 @@ block content
       // Tab: Reviews / End
   // Single Product Tabbed Content / End
   // Related Products
-  .card.card--clean
+  if(similarproducts)
+   .card.card--clean
     header.card__header.p-5
       h4 Related Products
     .card__content
       // Products
       ul.products.products--grid.products--grid-condensed.products--grid-light.products--grid-4
-        li.product__item.card
-          .product__img
-            .product__img-holder
-              a(href='_soccer_shop-product.html')
-                img(src='assets/images/dest1.jpg', alt='')
-          .product__content.card__content
-            header.product__header
-              .product__header-inner
-                span.product__category BBQ
-                .product__ratings
-                  i.fa.fa-star
-                  i.fa.fa-star
-                  i.fa.fa-star
-                  i.fa.fa-star
-                  i.fa.fa-star.empty
-                h2.product__title
-                  a(href='_soccer_shop-product.html') Big Knife
-                .product__price
-                  | Ksh 28.00
-        // Product #2 / End
-        // Product #3
-        li.product__item.card
-          .product__img
-            .product__img-holder
-              a(href='_soccer_shop-product.html')
-                img(src='assets/images/rest4.jpg', alt='')
-          .product__content.card__content
-            header.product__header
-              .product__header-inner
-                span.product__category BBQ
-                .product__ratings
-                  i.fa.fa-star
-                  i.fa.fa-star
-                  i.fa.fa-star
-                  i.fa.fa-star
-                  i.fa.fa-star.empty
-                h2.product__title
-                  a(href='_soccer_shop-product.html') Big Knife
-                .product__price
-                  | Ksh 28.00
-        // Product #3 / End
-        // Product #4
-        li.product__item.card
-          .product__img
-            .product__img-holder
-              a(href='_soccer_shop-product.html')
-                img(src='assets/images/finance.jpg', alt='')
-          .product__content.card__content
-            header.product__header
-              .product__header-inner
-                span.product__category BBQ
-                .product__ratings
-                  i.fa.fa-star
-                  i.fa.fa-star
-                  i.fa.fa-star
-                  i.fa.fa-star
-                  i.fa.fa-star.empty
-                h2.product__title
-                  a(href='_soccer_shop-product.html') Big Knife
-                .product__price
-                  | Ksh 28.00
-        // Product #4 / End
-        // Product #5
-        li.product__item.card
-          .product__img
-            .product__img-holder
-              a(href='_soccer_shop-product.html')
-                img(src='assets/images/rest3.jpg', alt='')
-          .product__content.card__content
-            header.product__header
-              .product__header-inner
-                span.product__category BBQ
-                .product__ratings
-                  i.fa.fa-star
-                  i.fa.fa-star
-                  i.fa.fa-star
-                  i.fa.fa-star
-                  i.fa.fa-star.empty
-                h2.product__title
-                  a(href='_soccer_shop-product.html') Big Knife
-                .product__price
-                  | Ksh 28.00
-        // Product #5 / End
+        each prod in similarproducts
+          li.product__item.card
+            .product__img
+              .product__img-holder
+                a(href='_soccer_shop-product.html')
+                  img(src='assets/images/dest1.jpg', alt='')
+            .product__content.card__content
+              header.product__header
+                .product__header-inner
+                  span.product__category #{prod.subcategory}
+                  .product__ratings
+                    i.fa.fa-star
+                    i.fa.fa-star
+                    i.fa.fa-star
+                    i.fa.fa-star
+                    i.fa.fa-star.empty
+                  h2.product__title
+                    a(href='_soccer_shop-product.html') #{prod.name}
+                  .product__price
+                    | KES #{prod.price}
+          
       // Products / End
   #contactsView.modal.couponview(tabindex='-1' role='dialog' aria-labelledby='mySmallModalLabel' aria-hidden='true')
     .modal-dialog.modal-md

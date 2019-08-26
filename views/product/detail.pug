@@ -242,7 +242,9 @@ block content
                       h2.product__title
                         if(product.bizid)
                           p !{product.bizid.email}
-                          p !{product.bizid.phone}
+                          if(product.bizid)
+                            each p in bizPhone
+                              p !{p}
 
                         
               // Product #0 / End

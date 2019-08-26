@@ -523,15 +523,15 @@ router.get('/item/:slug',async function(req, res){
   }).populate('bizid').populate('category');
 
   let bizSlug,bizName,bizDescription,bizEmail,phonNo,owner,bizPhone;
-
+  //console.log(product);
   if(product.bizid){
-    console.log(product.bizid.id);
+    
     bizSlug = product.bizid.slug;
     bizName = product.bizid.name;
     bizDescription = product.bizid.description;
     phonNo = product.bizid.phone;
     bizEmail = product.bizid.email;
-    bizPhone = phonNo.split(","); 
+    bizPhone = phonNo.split(",");
     console.log(phonNo);
     console.log(bizEmail);
 

@@ -40,7 +40,8 @@ block content
               i.fa.fa-star
               i.fa.fa-star
               i.fa.fa-star.empty
-          .product__price #{product.price}
+          .product__price 
+            h5 
         .product__excerpt.product__excerpt--sm
           h6 Description
           | !{product.description}
@@ -54,11 +55,10 @@ block content
               button.btn.btn-xs
                 i.fa.fa-plus
         footer.product__footer
-          a.btn.btn-sm.btn-primary-inverse.btn-icon.product__add-to-cart(href='/biz/'+product.bizid.slug)
-            i.icon-bag
-            |  Contacts
-            if(product.bizid)
-              p #{product.bizid.phone}
+          if(product.bizid)
+            a.btn.btn-sm.btn-primary-inverse.btn-icon.product__add-to-cart(href="#" data-toggle="modal" data-target="#contactsView")
+              i.icon-bag
+              |  Contacts         
           a.btn.btn-sm.btn-default.product__wish(href='404.html')
             i.icon-heart  &#x9;
             |  Add to wishlist
@@ -322,7 +322,35 @@ block content
                   | Ksh 28.00
         // Product #5 / End
       // Products / End
-                         
+  #contactsView.modal.couponview(tabindex='-1' role='dialog' aria-labelledby='mySmallModalLabel' aria-hidden='true')
+    .modal-dialog.modal-sm
+      .modal-content
+        .modal-header.pt-0.pb-0
+          h5.mt-3
+            | Contacts 
+            br
+            if(product.bizid)
+             span.small.text-light #{product.bizid.name}
+          button.close(type='button' data-dismiss='modal' aria-label='Close')
+            span(aria-hidden='true') &times;
+        .modal-body.p-0
+          .card__content.p-2
+            // Products
+            ul.products.products--list.products--list-condensed
+              // Product #0
+              li.product__item.card
+                .product__content.card__content
+                  header.product__header
+                    .product__header-inner
+                      h2.product__title
+                        if(product.bizid)
+                          p !{product.bizid.email}
+                          p !{product.bizid.phone}
+
+                        
+              // Product #0 / End
+            // Products / End
+  // /coupons Modal / End               
 
      
     

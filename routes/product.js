@@ -523,7 +523,7 @@ router.get('/item/:slug',async function(req, res){
   }).populate('bizid').populate('category');
 
   let bizSlug,bizName,bizDescription,bizEmail,phonNo,owner,bizPhone;
-  //console.log(product);
+  console.log(product);
   if(product.bizid){
     
     bizSlug = product.bizid.slug;

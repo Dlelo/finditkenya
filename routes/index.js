@@ -1573,8 +1573,8 @@ router.get('/updatesearch', function (req, res) {
       //console.log(similarbusinesses);
 
 
-
-      res.render('business/search', {
+      res.render('business/list', {
+      //res.render('business/search', {
         title: req.query.search,
         businesses: res2,
         similarbusinesses: values[1],

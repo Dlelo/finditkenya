@@ -95,7 +95,9 @@ block content
         header.product-tabs__header
           h2 Business Information
         if(product.bizid)
-          p !{product.bizid.description}        
+          p !{product.bizid.description}   
+          a.label.label-default(href='/biz/'+product.bizid.slug) 
+            | #{product.bizid.name} read more    
       // Tab: Shipping / End
       // Tab: Reviews
       #tab-reviews.tab-pane.fade(role='tabpanel')

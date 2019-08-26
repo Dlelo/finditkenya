@@ -225,16 +225,14 @@ block content
             | Contacts 
             br
             if(product.bizid)
-             span.small.text-light #{product.bizid.name}
+             h3.text-light #{product.bizid.name}
           button.close(type='button' data-dismiss='modal' aria-label='Close')
             span(aria-hidden='true') &times;
         .modal-body.p-0
           .card__content.p-2
             .product__header-inner(style="width:100%")
               h3.product__title 
-                if(product.bizid)
-                  a(href="/biz/"+product.bizid.slug)
-                    | #{product.bizid.name}
+                
             // Products
             ul.products.products--list.products--list-condensed
               // Product #0

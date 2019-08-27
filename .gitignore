@@ -2,4 +2,4 @@ config.json
 jsonfind.save
 config.json.save
 /public/uploads/
-/node-modules/
+node_modules

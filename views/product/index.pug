@@ -20,18 +20,9 @@ block content
         ul.shop-filter__params
           li.shop-filter__control
             select.form-control.input-xs
-              option Restaurants Price
-              option Low to High
-              option High to Low
-          li.shop-filter__control
-            select.form-control.input-xs
-              option Newest First
-              option Oldest First
-          li.shop-filter__control
-            select.form-control.input-xs
-              option Show 6 per page
-              option Show 12 per page
-              option Show 24 per page
+              option Filter By Price
+              option#low-to-high Low to High
+              option#high-to-low High to Low
         .shop-filter__layout
           a.shop-filter__grid-layout.icon-grid-layout(href='_soccer_shop-grid.html')
             span.icon-grid-layout__inner
@@ -45,7 +36,7 @@ block content
               span.icon-list-layout__item
     .card__content
       // Products
-      ul.products.products--grid.products--grid-condensed.products--grid-light
+      ul#product-filters.products.products--grid.products--grid-condensed.products--grid-light
         // Product #0
         each product in products
          li.product__item.card

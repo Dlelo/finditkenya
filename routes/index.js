@@ -1588,6 +1588,29 @@ router.get('/updatesearch', function (req, res) {
 });
 // End of business search
 
+router.get('/updatesearch2', function (req, res) {
+    if (req.query.type == "product") {
+        let query = req.query.search.trim().toLowerCase();
+        var categories = Category.find({ group: 'shopping' });
+        var products = Product.find({ $text: { $search: query } }).populate('bizid').limit(50);
+        var total = 0;
+        if (req.session.cart) {
+            req.session.cart.forEach(function (i, index) {
+                total += i.count * i.price;
+            });
+        }
+        Promise.all([products, categories]).then(values => {
+            console.log(values[0]);
+            //res.render('product/index', { title: "Products on Findit", products: values[0], categories: values[1], cart: req.session.cart, total: total });
+            res.setHeader('Content-Type', 'application/json');
+            res.json({data: values[0]});
+        });
+    } else {
+        res.json({error: "NOT ME"})
+    }
+});
+// End of business search
+
 router.get('/search', function (req, res, next) {
   var neatString = req.query.search.trim();
   var result = neatString.split(/[,. \/-]/);

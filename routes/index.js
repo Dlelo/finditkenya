@@ -1369,7 +1369,13 @@ router.get('/updatesearch', function (req, res) {
     }
   	Promise.all([products, categories]).then(values => {
       console.log(values[0]);
-      res.render('product/index',{title: "Products on Findit", products: values[0],categories: values[1],cart: req.session.cart,total:total});
+      res.render('product/index',{title: "Products on Findit", 
+        products: values[0],
+        categories: values[1],
+        cart: req.session.cart,
+        total:total,
+        query: query
+      });
     });
   }else{
     let query = req.query.search.trim().toLowerCase();
@@ -1588,11 +1594,23 @@ router.get('/updatesearch', function (req, res) {
 });
 // End of business search
 
-router.get('/updatesearch2', function (req, res) {
+router.get('/sortProductSearch', function (req, res) {
     if (req.query.type == "product") {
         let query = req.query.search.trim().toLowerCase();
         var categories = Category.find({ group: 'shopping' });
-        var products = Product.find({ $text: { $search: query } }).populate('bizid').limit(50);
+        //Sort
+        if(req.query.sort == "HighToLow"){
+          console.log("High to low");
+          var products = Product.find({ $text: { $search: query } }).limit(80).sort({price: -1}).populate('bizid');
+        }else if(req.query.sort == "LowToHigh"){
+          console.log("Low to High");
+          var products = Product.find({ $text: { $search: query } }).limit(80).sort({price: 1}).populate('bizid');
+        }else{
+          //var products = Product.find({ $text: { $search: query } }).limit(80).populate('bizid');
+        }
+        
+        //End of Sort
+        
         var total = 0;
         if (req.session.cart) {
             req.session.cart.forEach(function (i, index) {
@@ -1600,10 +1618,10 @@ router.get('/updatesearch2', function (req, res) {
             });
         }
         Promise.all([products, categories]).then(values => {
-            console.log(values[0]);
+            //console.log(values[0]);
             //res.render('product/index', { title: "Products on Findit", products: values[0], categories: values[1], cart: req.session.cart, total: total });
             res.setHeader('Content-Type', 'application/json');
-            res.json({data: values[0]});
+            res.json({products: values[0]});
         });
     } else {
         res.json({error: "NOT ME"})

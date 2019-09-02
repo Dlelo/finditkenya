@@ -14,15 +14,21 @@ block content
     header.card__header.card__header--shop-filter
       .shop-filter
         if products.length === 1
-          h5.shop-filter__result Showing #{products.length} Product
+          h5.shop-filter__result Showing #{products.length} Product 
+            if(query)
+              |  for  
+              span#searchQuery #{query}
         else
           h5.shop-filter__result Showing #{products.length} Products
+            if(query)
+              |  for  
+              span#searchQuery #{query}
         ul.shop-filter__params
           li.shop-filter__control
-            select.form-control.input-xs
+            select.form-control.input-xs#sortByPrice
               option Filter By Price
-              option#low-to-high Low to High
-              option#high-to-low High to Low
+              option#low-to-high(value="LowToHigh") Low to High
+              option#high-to-low(value="HighToLow") High to Low
         .shop-filter__layout
           a.shop-filter__grid-layout.icon-grid-layout(href='_soccer_shop-grid.html')
             span.icon-grid-layout__inner
@@ -147,3 +153,4 @@ block content
             .products-list__product-sum
               span.products-list__product-price Ksh 28.00
   // Widget: Hot Products / End
+    

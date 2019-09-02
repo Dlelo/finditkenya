@@ -19,7 +19,7 @@ const productSchema = new Schema({
 	description: String,
 	photo: String,
 	gallery: Array,
-  	price: String,
+  	price: Number,
 	oldprice: String,
   	quantity: String,
 	category: { type: Schema.Types.ObjectId, ref: 'Category' },
@@ -28,11 +28,11 @@ const productSchema = new Schema({
 	topdeals: Boolean,
 	featured: Boolean,
 	vat: Boolean,
-  reviews: [{
-    rate: String,
-    msg: String,
-    user_id: { type: Schema.Types.ObjectId, ref: 'User' }
-  }],
+	reviews: [{
+		rate: String,
+		msg: String,
+		user_id: { type: Schema.Types.ObjectId, ref: 'User' }
+	}],
 	status: Boolean
 });
 

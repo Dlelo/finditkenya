@@ -16,7 +16,7 @@ $('body').on('change', '#sortByPrice', function () {
                 let linkImage = "<a href=/product/item/" + data.slug + "><img src=uploads/product/thumbs/" + data.photo + "></img>" + "</a>";
                 let productImage = "<div class='product__img'> <div class='div product__img-holder'>" + linkImage + "</div> </div>";
                 // Card
-                let productTitle = "<h2 class='product__title'><a href='singleproduct.html'>" + data.name + "</a>";
+                let productTitle = "<h2 class='product__title'><a href='singleproduct.html'>" + data.name + "</a></h2>";
                 let productPrice = "<div class='product__price'>" + data.price + "</div>";
                 let productRatings = '<div class="product__ratings"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star empty"></i></div>';
                 let productCategory = "<span class='product__category'>" + data.bizid.category + "</span>"

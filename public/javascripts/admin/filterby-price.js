@@ -15,6 +15,9 @@ $('body').on('change','#sortByPrice', function() {
       $("#product-filters").empty();
       products.forEach(element => {
         $("#product-filters").append("HTML FOR EACH PRODUCT");
+
+        //insert this dynamically
+        //<li class="product__item card"><div class="product__img"><div class="product__img-holder"><a href="/product/item/smartphone-test"><img src="/uploads/product/thumbs/1567412605629dashboardpng.png" alt=""></a></div></div><div class="product__content card__content"><header class="product__header"><div class="product__header-inner"><span class="product__category">BBQ</span><div class="product__ratings"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star empty"></i></div><h2 class="product__title"><a href="singleproduct.html">smartphone test</a></h2><div class="product__price"> KES 18000</div></div></header></div></li>
       });
 
     })

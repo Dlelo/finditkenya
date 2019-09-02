@@ -1,35 +1,48 @@
-$('body').on('change','#sortByPrice', function() {
-    //GET SORT EITHER HIGHTOLOW OR LOWTOHIGH 
-    //alert(this.value);
-
+$('body').on('change', '#sortByPrice', function () {
+    
     //GET SEARCH TERM
     let query = $('#searchQuery').text();
-    //alert(query);
-    
-    axios.get("/sortProductSearch?type=product&search="+query+"&sort="+this.value)
-    .then(function (response) {
-      // handle success
-      console.log(response.data.products);
-      let products = response.data.products;
-      //Clear the Dom
-      $("#product-filters").empty();
-      products.forEach(element => {
-        $("#product-filters").append("HTML FOR EACH PRODUCT");
 
-        //insert this dynamically
-        //<li class="product__item card"><div class="product__img"><div class="product__img-holder"><a href="/product/item/smartphone-test"><img src="/uploads/product/thumbs/1567412605629dashboardpng.png" alt=""></a></div></div><div class="product__content card__content"><header class="product__header"><div class="product__header-inner"><span class="product__category">BBQ</span><div class="product__ratings"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star empty"></i></div><h2 class="product__title"><a href="singleproduct.html">smartphone test</a></h2><div class="product__price"> KES 18000</div></div></header></div></li>
-      });
+    axios.get("/sortProductSearch?type=product&search=" + query + "&sort=" + this.value)
+        .then(function (response) {
+            // handle success
+            //console.log(response.data.products);
+            let products = response.data.products;
+            let result = [];
+            //Clear the Dom
+            $("#product-filters").empty();
 
-    })
-    .catch(function (error) {
-      // handle error
-      console.log(error);
-    })
-    .finally(function () {
-      // always executed
-    });
+            products.forEach(data => {
+                let linkImage = "<a href=/product/item/" + data.slug + "><img src=uploads/product/thumbs/" + data.photo + "></img>" + "</a>";
+                let productImage = "<div class='product__img'> <div class='div product__img-holder'>" + linkImage + "</div> </div>";
+                // Card
+                let productTitle = "<h2 class='product__title'><a href='singleproduct.html'>" + data.name + "</a>";
+                let productPrice = "<div class='product__price'>" + data.price + "</div>";
+                let productRatings = '<div class="product__ratings"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star empty"></i></div>';
+                let productCategory = "<span class='product__category'>" + data.bizid.category + "</span>"
 
-  });
+                let productContent = '<div class="product__content card__content"><header class="product__header"><div class="product__header-inner">' + productCategory + productRatings + productTitle + productPrice + '</div></header></div>';
+
+                let container = "<li class='product__item card'>" + productImage + productContent + "</li>";
+                result.push(container);
+
+                return result
+            });
+
+            result.forEach(data => {
+                $("#product-filters").append(data);
+            })
+
+        })
+        .catch(function (error) {
+            $("#product-filters").append("An error occured while trying to apply the filter");
+            //console.log(error);
+        })
+        .finally(function () {
+            // always executed
+        });
+
+});
 
 
 // let lowToHigh = document.getElementById("low-to-high");

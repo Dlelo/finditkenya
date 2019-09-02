@@ -25,10 +25,10 @@ block content
               span#searchQuery #{query}
         ul.shop-filter__params
           li.shop-filter__control
-            select.form-control.input-xs#sortByPrice
+            select#sortByPrice.form-control.input-xs
               option Filter By Price
-              option#low-to-high(value="LowToHigh") Low to High
-              option#high-to-low(value="HighToLow") High to Low
+              option(value="LowToHigh") Low to High
+              option(value="HighToLow") High to Low
         .shop-filter__layout
           a.shop-filter__grid-layout.icon-grid-layout(href='_soccer_shop-grid.html')
             span.icon-grid-layout__inner

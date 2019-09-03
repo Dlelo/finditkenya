@@ -15,11 +15,11 @@ $('body').on('change', '#sortByPrice', function () {
             products.forEach(data => {
                 let category = "";
                 if(data.bizid){
-                    category = data.bizid.category;
+                   category = data.bizid.category;
                 }
                 let linkImage = "<a href=/product/item/" + data.slug + "><img src=uploads/product/thumbs/" + data.photo + "></img>" + "</a>";
                 let productImage = "<div class='product__img'> <div class='div product__img-holder'>" + linkImage + "</div> </div>";
-                // Card
+                //Card
                 let productTitle = "<h2 class='product__title'><a href='singleproduct.html'>" + data.name + "</a></h2>";
                 let productPrice = "<div class='product__price'>" + data.price + "</div>";
                 let productRatings = '<div class="product__ratings"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star empty"></i></div>';
@@ -29,13 +29,15 @@ $('body').on('change', '#sortByPrice', function () {
 
                 let container = "<li class='product__item card'>" + productImage + productContent + "</li>";
                 result.push(container);
-
                 //return result
             });
 
-            result.forEach(data => {
-                $("#product-filters").append(data);
-            })
+            setTimeout(function(){ 
+                result.forEach(data => {
+                    $("#product-filters").append(data);
+                });
+             }, 2000);
+            
 
         })
         .catch(function (error) {

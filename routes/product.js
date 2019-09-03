@@ -524,10 +524,11 @@ router.get('/item/:slug',async function(req, res){
 
   let bizSlug,bizName,bizDescription,bizEmail,phonNo,owner,bizPhone;
   console.log(product);
+  let similarProds
   if(product.subcategory){
-    let similarProds = await Product.find({subcategory: product.subcategory}).limit(4);
+    similarProds = await Product.find({subcategory: product.subcategory}).limit(4);
   }else{
-    let similarProds = [];
+    similarProds = [];
   }
   
   if(product.bizid){

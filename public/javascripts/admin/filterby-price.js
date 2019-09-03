@@ -6,14 +6,13 @@ $('body').on('change', '#sortByPrice', function () {
     axios.get("/sortProductSearch?type=product&search=" + query + "&sort=" + this.value)
         .then(function (response) {
             // handle success
-            console.log(response.data.products);
+            //console.log(response.data.products);
             let products = response.data.products;
             let result = [];
             //Clear the Dom
             $("#product-filters").empty();
 
             products.forEach(data => {
-                console.log(data);
                 let category = "";
                 if(data.bizid){
                    category = data.bizid.category;

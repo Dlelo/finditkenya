@@ -13,6 +13,7 @@ $('body').on('change', '#sortByPrice', function () {
             $("#product-filters").empty();
 
             products.forEach(data => {
+                console.log(data);
                 let category = "";
                 if(data.bizid){
                    category = data.bizid.category;

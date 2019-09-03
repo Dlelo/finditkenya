@@ -35,6 +35,7 @@ $('body').on('change', '#sortByPrice', function () {
             setTimeout(function(){ 
                 result.forEach(data => {
                     $("#product-filters").append(data);
+                    console.log(data);
                 });
              }, 2000);
             

@@ -30,7 +30,7 @@ $('body').on('change', '#sortByPrice', function () {
                 let container = "<li class='product__item card'>" + productImage + productContent + "</li>";
                 result.push(container);
 
-                return result
+                //return result
             });
 
             result.forEach(data => {

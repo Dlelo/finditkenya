@@ -28,17 +28,14 @@ $('body').on('change', '#sortByPrice', function () {
                 let productContent = '<div class="product__content card__content"><header class="product__header"><div class="product__header-inner">' + productCategory + productRatings + productTitle + productPrice + '</div></header></div>';
 
                 let container = "<li class='product__item card'>" + productImage + productContent + "</li>";
-                result.push(container);
+                //result.push(container);
                 //return result
+                $("#product-filters").append(container);
             });
 
-            setTimeout(function(){ 
-                result.forEach(data => {
-                    $("#product-filters").append(data);
-                    console.log(data);
-                });
-             }, 2000);
-            
+            // result.forEach(data => {
+            //     $("#product-filters").append(data);
+            // });
 
         })
         .catch(function (error) {

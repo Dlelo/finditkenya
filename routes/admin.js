@@ -753,9 +753,9 @@ router.post('/subcategory/add', function(req, res, next){
 		});
 	});
 });
-
-router.get('/pay/:id', function(req, res){
-  ssn = req.session;
+//
+/*router.get('/pay/:id', function(req, res){
+ ssn = req.session;
   ssn.hashkey = "852sokompare963001";
   ssn.vendor_id = "sokompare";
   var fields = {
@@ -781,7 +781,7 @@ router.get('/pay/:id', function(req, res){
   	+fields['p3']+fields['p4']+fields['cbk']+fields['cst']+fields['crl'];
   var hash = crypto.createHmac('sha1',ssn.hashkey).update(datastring).digest('hex');
   res.render('admin/ipayafrica', {title: "Pay",hash: hash, inputs: fields, datastring: datastring});
-});
+});*/
 
 router.get('/activate/all',role.admin, function(req, res){
 	Business.find({})

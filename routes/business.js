@@ -219,7 +219,7 @@ router.get('/add/:package',role.auth, function(req, res, next){
 		if(req.params.package == "free"){
 			res.redirect('/business/freeadd');
 		}else{
-			res.render('business/new',{title: "Find It Categories", categories: data});
+			res.redirect('/business/freeadd')
 		}
 	})
 	.catch(function(err){

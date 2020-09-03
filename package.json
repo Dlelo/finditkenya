@@ -9,7 +9,7 @@
     "bcryptjs": "^2.4.3",
     "bluebird": "^3.5.1",
     "body-parser": "^1.18.3",
-    "bootstrap-select": "^1.13.1",
+    "bootstrap-select": "^1.13.6",
     "connect-flash": "^0.1.1",
     "cookie-parser": "~1.4.3",
     "cookie-session": "^2.0.0-beta.3",

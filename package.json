@@ -44,7 +44,7 @@
     "passport-google-oauth2": "^0.1.6",
     "passport-local": "^1.0.0",
     "popper.js": "^1.14.4",
-    "pug": "^2.0.3",
+    "pug": "^3.0.1",
     "request": "^2.88.0",
     "serve-favicon": "~2.4.5",
     "slug": "^0.9.1",

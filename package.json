@@ -51,7 +51,7 @@
     "socket.io": "^2.1.1",
     "tinymce": "^4.8.2",
     "typo-js": "^1.0.3",
-    "underscore": "^1.9.1",
+    "underscore": "^1.12.1",
     "validator": "^9.4.1"
   },
   "main": "app.js",

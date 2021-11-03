@@ -52,7 +52,7 @@
     "tinymce": "^4.8.2",
     "typo-js": "^1.0.3",
     "underscore": "^1.9.1",
-    "validator": "^9.4.1"
+    "validator": "^13.7.0"
   },
   "main": "app.js",
   "devDependencies": {

@@ -31,7 +31,7 @@
     "mime": "^1.3.6",
     "moment": "^2.22.2",
     "moment-opening-times": "^2.9.0",
-    "moment-timezone": "^0.5.21",
+    "moment-timezone": "^0.5.35",
     "mongoosastic": "^4.4.1",
     "mongoose": "^4.13.14",
     "mongoose-datatables": "^3.2.0",

@@ -18,7 +18,7 @@
     "debug": "~2.2.0",
     "elasticsearch": "^14.2.2",
     "email-templates": "^4.0.3",
-    "express": "^4.16.3",
+    "express": "^4.17.3",
     "express-mailer": "^0.3.1",
     "express-session": "^1.15.1",
     "express-validator": "^5.3.0",

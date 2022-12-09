@@ -49,7 +49,7 @@
     "serve-favicon": "~2.4.5",
     "slug": "^0.9.1",
     "socket.io": "^2.1.1",
-    "tinymce": "^4.8.2",
+    "tinymce": "^5.10.7",
     "typo-js": "^1.0.3",
     "underscore": "^1.9.1",
     "validator": "^9.4.1"
